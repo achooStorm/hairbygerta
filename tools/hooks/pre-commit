@@ -1,0 +1,71 @@
+#!/bin/sh
+# Photo licensing guard for hairbygerta.com (git pre-commit hook).
+#
+# INSTALL: git does not use this file where it is. After "git init", and after
+# every fresh clone, switch it on once. In the site folder run:
+#
+#     python tools/licensing_check.py --install-hook
+#
+# That copies this file to .git/hooks/pre-commit. It works in Command Prompt,
+# PowerShell and Git Bash. By hand, in Git Bash, the same is:
+#
+#     cp tools/hooks/pre-commit .git/hooks/pre-commit
+#
+# (on macOS or Linux also: chmod +x .git/hooks/pre-commit)
+#
+# What it does: before every commit, from the command line or from GitHub
+# Desktop, it runs
+#     python tools/licensing_check.py --staged
+# which compares everything in the commit with the list of Wix-only photos.
+# When a restricted photo, a zip file or anything from a source-photos, zip or
+# _tmp folder is in the commit, or when the check cannot run at all, the
+# commit is stopped.
+#
+# Keep LF line endings in this file. Plain POSIX sh, nothing bash-only.
+
+# Git for Windows lets a commit through when its hook is killed by a signal.
+# So a closed output pipe (SIGPIPE) is ignored here, and the other signals
+# that can be caught end the hook with "stop" instead of killing it.
+trap '' PIPE
+trap 'exit 1' HUP INT QUIT TERM
+
+# Said when the check could not run. When it ran and found something, the
+# check itself says what to do.
+no_skip() {
+    echo 'pre-commit: please do not skip the check: no "Bypass Commit Hooks" in GitHub Desktop and no "git commit --no-verify".' >&2
+}
+
+root=$(git rev-parse --show-toplevel 2>/dev/null) || root=.
+cd "$root" || exit 1
+
+if [ ! -f tools/licensing_check.py ]; then
+    echo "pre-commit: tools/licensing_check.py is missing, so the photo licensing check cannot run." >&2
+    echo "pre-commit: the commit was stopped. Put the file back and commit again. In GitHub Desktop: right-click tools/licensing_check.py in the Changes list and choose Discard Changes." >&2
+    no_skip
+    exit 1
+fi
+
+py=""
+for candidate in python python3 py; do
+    if "$candidate" -c "import sys; sys.exit(sys.version_info < (3, 6))" >/dev/null 2>&1; then
+        py=$candidate
+        break
+    fi
+done
+if [ -z "$py" ]; then
+    echo "pre-commit: Python 3 was not found, so the photo licensing check cannot run." >&2
+    echo "pre-commit: the commit was stopped. Install Python 3 (python.org) and commit again. If you use GitHub Desktop, close it and open it again after the installation." >&2
+    no_skip
+    exit 1
+fi
+
+"$py" -I tools/licensing_check.py --staged
+status=$?
+if [ "$status" -ne 0 ]; then
+    echo "pre-commit: the commit was stopped by the photo licensing check (see the lines above)." >&2
+    if [ "$status" -ne 1 ]; then
+        no_skip
+    fi
+    exit 1
+fi
+exit 0

@@ -1,0 +1,55 @@
+{
+  "slug": "accessibility-statement",
+  "path": "/accessibility-statement/",
+  "title": "Accessibility Statement | Hairbygerta",
+  "description": "Accessibility information for HairByGerta.com – hair stylist & makeup artist in Staten Island, NY. Learn how we make our website easy to use for everyone.",
+  "h1": "ACCESSIBILITY STATEMENT",
+  "blocks": [
+    {
+      "type": "p",
+      "text": "At hairbygerta.com, we are dedicated to making our website accessible to everyone, including those with disabilities. We strive to provide an inclusive online experience for all visitors. If you encounter any accessibility barriers on our site or have suggestions on how we can improve, please contact our accessibility coordinator."
+    },
+    {
+      "type": "p",
+      "text": "This statement reflects our ongoing commitment to accessibility and was last updated on 11/28/2025."
+    },
+    {
+      "type": "h2",
+      "text": "What web accessibility means to us"
+    },
+    {
+      "type": "p",
+      "text": "Web accessibility means that people with different abilities can perceive, understand, navigate, and interact with a website. My goal is to offer an online experience that is as inclusive as possible for all clients who want to learn about my hair and makeup services in Staten Island, NY."
+    },
+    {
+      "type": "h2",
+      "text": "Accessibility in our organization"
+    },
+    {
+      "type": "p",
+      "html": "<em>We are committed to fostering accessibility not only on our website but also within our physical locations. Our organization has implemented a range of accessibility arrangements to ensure that our facilities and services are inclusive for all individuals.</em>"
+    },
+    {
+      "type": "h2",
+      "text": "Feedback and assistance"
+    },
+    {
+      "type": "p",
+      "html": "If you encounter any accessibility challenges while browsing our site, or if you have any suggestions for improving accessibility, please reach out to our accessibility coordinator:<br>• Olgerta Lila<br>• <a href=\"tel:+1-347-671-5095\">347-671-5095</a><br>• <a href=\"mailto:info@hairbygerta.com\">info@hairbygerta.com</a>"
+    }
+  ],
+  "notes": [
+    "Typos fixed: none. The wording is the live Wix text, word for word.",
+    "ASK: none. The earlier question about the reading order is settled by decision 6 in section 10 of the build contract. On the live Wix page (desktop and phone) the paragraph that starts with At hairbygerta.com comes first, then the h1, then the last updated paragraph. In this file and in the page code the h1 comes first and that paragraph is the first block. The stylesheet shows it as the dark band above the title, so the page looks like the live page. The contract got no key for text above the h1 (the idea was a key named lead), and the page module stops the build on a key it does not know, so no such key may be added here.",
+    "title and description are the live Wix title tag and meta description, kept exactly (the description has an en dash, as on Wix). The first version had its own title and description, the live Wix ones win.",
+    "h1 is stored in capitals because the live Wix heading is typed in capitals: textTransform is none for it on desktop and on phone, so the capitals do not come from styling. The first version had Accessibility Statement. The three h2 headings are typed normally on Wix and are stored as typed.",
+    "Reading order on the live page: the first block (the paragraph that starts with At hairbygerta.com) comes before the h1. It sits in a full-width dark band right under the header (background #1d1509, text #fefefd, 18 px on desktop, 16 px on phone). The contract puts h1 before the blocks, so here it is the first block, and the stylesheet draws it as that band above the title (contract section 10, decision 6). The stylesheet picks the paragraph that comes right after the h1, so this block has to stay the first block and has to stay a p block. Everything after it is in the live order.",
+    "Layout on the live page, for reference only: a dotted rule (920 px wide, 1 px dotted #1d1509) sits between the last updated paragraph and the first h2. It is not text, so it is not a block.",
+    "The paragraph under Accessibility in our organization is set in italics on the live page (desktop and phone), and it is the only italic paragraph. The italics are kept with <em> around the whole paragraph. To drop them, turn that block into a plain text block.",
+    "Feedback and assistance: on the live page the sentence and the three contact lines are one paragraph. Each contact line is on its own line and starts with a typed bullet character (U+2022) and a space. The live page has no list element here. It is stored the same way: one html paragraph with a line break (br) before each contact line and the typed bullet characters kept. The sentence ends with a colon, as on the live page. The first version had a full stop there and a ul list for the three lines, the live page wins.",
+    "Phone and email in that paragraph are links, as asked (tel:+1-347-671-5095 and mailto:info@hairbygerta.com). On the live page they are plain text.",
+    "The contact name is Olgerta Lila, exactly as on the live Wix page.",
+    "Invisible characters left out, nothing visible changes: a zero-width space before the h1 text, a no-break space after the heading Accessibility in our organization, and a no-break space after the paragraph under it.",
+    "This page has no image slots. The only images on the live page are the logo and the two social icons, which belong to the shared header and footer."
+  ]
+}

@@ -1,0 +1,1542 @@
+{
+ "ok": true,
+ "base": "local site folder",
+ "generated": "2026-10-13 07:39:32",
+ "results": [
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 41 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 41,
+    "rules_not_applicable": 50,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 42 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 42,
+    "rules_not_applicable": 49,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 42 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-home menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 42,
+    "rules_not_applicable": 49,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-home-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/gallery/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "axe:lightbox-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (lightbox open (after a click on the first photo)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 43 passed, 1 need a human look",
+   "evidence": {
+    "state": "lightbox-open",
+    "state_meaning": "lightbox open (after a click on the first photo)",
+    "address": "/gallery/",
+    "http_status": 200,
+    "state_seen": {
+     "lightbox": true,
+     "class": "lightbox open",
+     "role": "dialog",
+     "aria_modal": "true",
+     "aria_label": "Photo viewer",
+     "body_class": "page-gallery lightbox-open",
+     "image": "../images/g01.jpg",
+     "image_loaded": true,
+     "image_alt": "",
+     "count": "1 / 21",
+     "focus": "button.lb-close",
+     "focus_inside": true,
+     "links": 21
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 43,
+    "rules_not_applicable": 47,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "label-content-name-mismatch",
+      "elements": 3,
+      "selectors": [
+       ".lb-close",
+       ".lb-prev",
+       ".lb-next"
+      ],
+      "why": "Fix any of the following: Unable to determine if the visible text is part of the accessible name"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-gallery-desktop-lightbox-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/gallery/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/gallery/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-gallery menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-gallery-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "axe:lightbox-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (lightbox open (after a click on the first photo)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 43 passed, 1 need a human look",
+   "evidence": {
+    "state": "lightbox-open",
+    "state_meaning": "lightbox open (after a click on the first photo)",
+    "address": "/gallery/",
+    "http_status": 200,
+    "state_seen": {
+     "lightbox": true,
+     "class": "lightbox open",
+     "role": "dialog",
+     "aria_modal": "true",
+     "aria_label": "Photo viewer",
+     "body_class": "page-gallery lightbox-open",
+     "image": "../images/g01.jpg",
+     "image_loaded": true,
+     "image_alt": "",
+     "count": "1 / 21",
+     "focus": "button.lb-close",
+     "focus_inside": true,
+     "links": 21
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 43,
+    "rules_not_applicable": 47,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "label-content-name-mismatch",
+      "elements": 3,
+      "selectors": [
+       ".lb-close",
+       ".lb-prev",
+       ".lb-next"
+      ],
+      "why": "Fix any of the following: Unable to determine if the visible text is part of the accessible name"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-gallery-phone-lightbox-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/book-online/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 39 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/book-online/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 39,
+    "rules_not_applicable": 52,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 39 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/book-online/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-book-online menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 39,
+    "rules_not_applicable": 52,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-book-online-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/about/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/about/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/about/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-about menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-about-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 48 passed, 1 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/contact/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 48,
+    "rules_not_applicable": 42,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "frame-tested",
+      "elements": 1,
+      "selectors": [
+       "iframe"
+      ],
+      "why": "Fix all of the following: The iframe still has to be tested with axe-core"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
+    "notes": [
+     "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "axe:form-blocked",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (contact form after Send was clicked on the empty form) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 48 passed, 1 need a human look",
+   "evidence": {
+    "state": "form-blocked",
+    "state_meaning": "contact form after Send was clicked on the empty form",
+    "address": "/contact/",
+    "http_status": 200,
+    "state_seen": {
+     "form": true,
+     "submit_button": true,
+     "novalidate": false,
+     "valid": false,
+     "email_required": true,
+     "note": "",
+     "note_role": "status",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
+     "mail_links_opened": 0,
+     "submit_events": 0,
+     "aria_invalid": [],
+     "focus": "#email",
+     "missing_fields": []
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 48,
+    "rules_not_applicable": 42,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "frame-tested",
+      "elements": 1,
+      "selectors": [
+       "iframe"
+      ],
+      "why": "Fix all of the following: The iframe still has to be tested with axe-core"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-contact-desktop-form-blocked.png",
+    "notes": [
+     "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "axe:form-sent",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (contact form after a valid message was sent) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 48 passed, 1 need a human look",
+   "evidence": {
+    "state": "form-sent",
+    "state_meaning": "contact form after a valid message was sent",
+    "address": "/contact/",
+    "http_status": 200,
+    "state_seen": {
+     "form": true,
+     "submit_button": true,
+     "novalidate": false,
+     "valid": true,
+     "email_required": true,
+     "note": "Thanks! Your email app should open so you can send the message.",
+     "note_role": "status",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
+     "mail_links_opened": 1,
+     "submit_events": 1,
+     "aria_invalid": [],
+     "focus": "button",
+     "missing_fields": []
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 48,
+    "rules_not_applicable": 42,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "frame-tested",
+      "elements": 1,
+      "selectors": [
+       "iframe"
+      ],
+      "why": "Fix all of the following: The iframe still has to be tested with axe-core"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-contact-desktop-form-sent.png",
+    "notes": [
+     "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 48 passed, 1 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/contact/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 48,
+    "rules_not_applicable": 42,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "frame-tested",
+      "elements": 1,
+      "selectors": [
+       "iframe"
+      ],
+      "why": "Fix all of the following: The iframe still has to be tested with axe-core"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
+    "notes": [
+     "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 48 passed, 1 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/contact/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-contact menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 48,
+    "rules_not_applicable": 42,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "frame-tested",
+      "elements": 1,
+      "selectors": [
+       "iframe"
+      ],
+      "why": "Fix all of the following: The iframe still has to be tested with axe-core"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-contact-phone-menu-open.png",
+    "notes": [
+     "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "axe:form-blocked",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (contact form after Send was clicked on the empty form) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 48 passed, 1 need a human look",
+   "evidence": {
+    "state": "form-blocked",
+    "state_meaning": "contact form after Send was clicked on the empty form",
+    "address": "/contact/",
+    "http_status": 200,
+    "state_seen": {
+     "form": true,
+     "submit_button": true,
+     "novalidate": false,
+     "valid": false,
+     "email_required": true,
+     "note": "",
+     "note_role": "status",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
+     "mail_links_opened": 0,
+     "submit_events": 0,
+     "aria_invalid": [],
+     "focus": "#email",
+     "missing_fields": []
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 48,
+    "rules_not_applicable": 42,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "frame-tested",
+      "elements": 1,
+      "selectors": [
+       "iframe"
+      ],
+      "why": "Fix all of the following: The iframe still has to be tested with axe-core"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-contact-phone-form-blocked.png",
+    "notes": [
+     "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "axe:form-sent",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (contact form after a valid message was sent) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 48 passed, 1 need a human look",
+   "evidence": {
+    "state": "form-sent",
+    "state_meaning": "contact form after a valid message was sent",
+    "address": "/contact/",
+    "http_status": 200,
+    "state_seen": {
+     "form": true,
+     "submit_button": true,
+     "novalidate": false,
+     "valid": true,
+     "email_required": true,
+     "note": "Thanks! Your email app should open so you can send the message.",
+     "note_role": "status",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
+     "mail_links_opened": 1,
+     "submit_events": 1,
+     "aria_invalid": [],
+     "focus": "button",
+     "missing_fields": []
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 48,
+    "rules_not_applicable": 42,
+    "rules_violated": [],
+    "needs_review": [
+     {
+      "rule": "frame-tested",
+      "elements": 1,
+      "selectors": [
+       "iframe"
+      ],
+      "why": "Fix all of the following: The iframe still has to be tested with axe-core"
+     }
+    ],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-contact-phone-form-sent.png",
+    "notes": [
+     "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/english-refund-policy/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/english-refund-policy/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/english-refund-policy/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-english-refund-policy menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-english-refund-policy-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/accessibility-statement/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/accessibility-statement/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/accessibility-statement/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-accessibility-statement menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-accessibility-statement-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/english-privacy-policy/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/english-privacy-policy/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/english-privacy-policy/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-english-privacy-policy menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-english-privacy-policy-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/terms-conditions/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/terms-conditions/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/terms-conditions/",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-terms-conditions menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-terms-conditions-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 35 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/404.html",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 35,
+    "rules_not_applicable": 56,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/404.html",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "axe:menu-open",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "evidence": {
+    "state": "menu-open",
+    "state_meaning": "phone menu open (after a click on .menu-btn)",
+    "address": "/404.html",
+    "http_status": 200,
+    "state_seen": {
+     "button": true,
+     "button_visible": true,
+     "aria_expanded": "true",
+     "nav": true,
+     "nav_class": "main-nav open",
+     "body_class": "page-404 menu-open",
+     "links": 5,
+     "links_visible": 5
+    },
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ],
+    "screenshot": "qa/screenshots/check_a11y-404-phone-menu-open.png"
+   },
+   "owner": "PAGES"
+  }
+ ],
+ "script": "qa/check_a11y.py",
+ "axe_version": "4.14.0",
+ "tags": [
+  "wcag2a",
+  "wcag2aa",
+  "wcag21a",
+  "wcag21aa",
+  "wcag22aa",
+  "best-practice"
+ ],
+ "fails_on_impact": [
+  "serious",
+  "critical"
+ ],
+ "states": {
+  "base": "the page as it loads",
+  "menu-open": "phone menu open (after a click on .menu-btn)",
+  "lightbox-open": "lightbox open (after a click on the first photo)",
+  "form-blocked": "contact form after Send was clicked on the empty form",
+  "form-sent": "contact form after a valid message was sent"
+ },
+ "not_analysed": [
+  "The Google map frame on the contact page. The network rule blocks every host except the site's own and Google Fonts, so the map never loads and axe runs with iframes off. The iframe element itself (for example its title) is still checked.",
+  "What axe-core cannot decide by itself. It is listed as needs_review in each axe:<state> entry, needs a human look and is not a failure.",
+  "The browser's own message bubble on the blocked contact form. The browser draws it, not the page."
+ ],
+ "last_run": {
+  "scans": 36,
+  "scans_failed": 0,
+  "violation_entries": 0,
+  "serious_or_critical": 0,
+  "moderate_or_minor": 0,
+  "pages": [
+   "home",
+   "gallery",
+   "book-online",
+   "about",
+   "contact",
+   "english-refund-policy",
+   "accessibility-statement",
+   "english-privacy-policy",
+   "terms-conditions",
+   "404"
+  ],
+  "viewports": [
+   "desktop",
+   "phone"
+  ]
+ },
+ "distinct_violations": []
+}

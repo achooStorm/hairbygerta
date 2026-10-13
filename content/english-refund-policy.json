@@ -1,0 +1,80 @@
+{
+  "slug": "english-refund-policy",
+  "path": "/english-refund-policy/",
+  "title": "Refund Policy | Hairbygerta",
+  "description": "Refund and cancellation policy for HairByGerta hair and makeup services at Le Vigne Hair Salon in Staten Island, NY.",
+  "h1": "Refund & Cancellation Policy",
+  "blocks": [
+    {
+      "type": "h2",
+      "text": "Services Covered"
+    },
+    {
+      "type": "p",
+      "text": "This Refund & Cancellation Policy applies to all hair and makeup services provided by Gerta Lila at Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310."
+    },
+    {
+      "type": "h2",
+      "text": "Bookings & Payment"
+    },
+    {
+      "type": "p",
+      "html": "At this time, I do not take deposits for appointments.<br>Payment for your service is due at the end of your appointment, according to the salon’s payment methods."
+    },
+    {
+      "type": "h2",
+      "text": "Cancellations & Rescheduling"
+    },
+    {
+      "type": "p",
+      "text": "Your appointment time is reserved just for you. If you need to cancel or reschedule, please contact me at least 24 hours before your appointment. This allows me to reorder my schedule and offer the spot to another client."
+    },
+    {
+      "type": "h2",
+      "text": "Late Arrivals"
+    },
+    {
+      "type": "p",
+      "html": "Running late? Please call or text <a href=\"tel:+1-347-671-5095\">347-671-5095</a> so I know you are on your way. I always try my best to fit you in, but if you arrive more than 15 minutes late, your appointment may need to be moved to another time so the next client is not kept waiting."
+    },
+    {
+      "type": "h2",
+      "text": "Refunds on Services"
+    },
+    {
+      "type": "p",
+      "text": "Because hair and makeup services are based on professional time and products, payments for completed services are non-refundable."
+    },
+    {
+      "type": "p",
+      "text": "If you are unhappy with your result, please let me know before you leave the salon or contact me within 48 hours. I will do my best to offer a reasonable adjustment, in line with Le Vigne Hair Salon’s policies."
+    },
+    {
+      "type": "h2",
+      "text": "Product"
+    },
+    {
+      "type": "p",
+      "text": "For hygiene and safety reasons, opened or used hair and makeup products cannot be returned or refunded. Unopened retail products may be eligible for exchange or store credit, according to the salon’s rules."
+    },
+    {
+      "type": "h2",
+      "text": "Policy Updates"
+    },
+    {
+      "type": "p",
+      "text": "This policy may be updated from time to time to reflect changes in salon procedures or legal requirements. The most recent version will always be available on this page."
+    }
+  ],
+  "notes": [
+    "Typos fixed: none. The wording is the live Wix text, word for word.",
+    "ASK: none.",
+    "title and description are the live Wix title tag and meta description, kept exactly. The first version had its own title and description, the live Wix ones win.",
+    "Headings are stored as the live page shows them. None of them gets its capitals from styling (textTransform is none for every heading).",
+    "Bookings & Payment: the live page has one paragraph with a line break after the first sentence. The line break is kept as <br>.",
+    "Late Arrivals: the phone number is a tel link, as asked. On the live Wix page it is plain text on desktop and a link on phone.",
+    "Cancellations & Rescheduling: the live text ends with one invisible no-break space after the last full stop. It is left out, nothing visible changes.",
+    "Apostrophes: the three apostrophes in the body text (salon’s, Le Vigne Hair Salon’s, salon’s) are curly, as on the live page.",
+    "This page has no image slots. The only images on the live page are the logo and the two social icons, which belong to the shared header and footer."
+  ]
+}

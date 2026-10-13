@@ -1,0 +1,2751 @@
+{
+ "ok": true,
+ "base": "local site folder",
+ "generated": "2026-10-13 07:39:49",
+ "results": [
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "marquee: six copies of the hours text",
+   "ok": true,
+   "expected": "div.track holds six span elements, each saying Tuesday - Saturday, 9 AM - 5 PM",
+   "actual": "six span elements with the hours text",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "marquee: aria-label holds the hours once",
+   "ok": true,
+   "expected": "aria-label of .marquee holds 'Tuesday - Saturday, 9 AM - 5 PM' exactly once, and the six copies are hidden from screen readers (aria-hidden=true on .track)",
+   "actual": "aria-label='Hours: Tuesday - Saturday, 9 AM - 5 PM', aria-hidden on .track: 'true'",
+   "evidence": "role='img'",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "marquee: moves right to left at 25 to 30 px per second",
+   "ok": true,
+   "expected": "the track moves to the left at 25 to 30 px per second, measured over at least 4 seconds",
+   "actual": "27.5 px per second to the left, measured over 4.6 s (278 frames)",
+   "evidence": "speed second by second: [27.5, 27.5, 27.5, 27.5]; track 2055 px wide, text 18px, animation marquee 37.4s linear, font Figtree loaded: yes",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "marquee: stands still with reduced motion",
+   "ok": true,
+   "expected": "with prefers-reduced-motion: reduce the track does not move",
+   "actual": "the track moved 0.0 px in 1.5 s",
+   "evidence": "animation none 1e-05s ease",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "marquee: text shows once with reduced motion",
+   "ok": true,
+   "expected": "with prefers-reduced-motion: reduce exactly one copy of the hours is visible, in full, inside the marquee",
+   "actual": "one copy visible, in full",
+   "evidence": "qa/screenshots/check_behavior-marquee-reduced-motion-desktop.png",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: thumbnail click opens the viewer",
+   "ok": true,
+   "expected": "class open on .lightbox, class lightbox-open on body, the viewer covers the page, the address stays the gallery",
+   "actual": "thumbnail 1: class open on .lightbox: yes, class lightbox-open on body: yes, viewer covers the page: yes",
+   "evidence": "qa/screenshots/check_behavior-lightbox-desktop.png",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: built to the contract",
+   "ok": true,
+   "expected": "one div.lightbox with role=dialog, aria-modal=true, aria-label=Photo viewer, holding button.lb-close, button.lb-prev, img.lb-img, button.lb-next, p.lb-count",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: next button goes through all photos",
+   "ok": true,
+   "expected": "each tap on button.lb-next shows the next gallery photo, in order, to the last one",
+   "actual": "all 21 photos shown in order",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: Escape closes",
+   "ok": true,
+   "expected": "no class open, no class lightbox-open, the viewer no longer covers the page",
+   "actual": "viewer closed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: click on the backdrop closes",
+   "ok": true,
+   "expected": "a click on the dark layer (not the photo, not a button) closes the viewer",
+   "actual": "viewer closed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: close button closes",
+   "ok": true,
+   "expected": "button.lb-close closes the viewer",
+   "actual": "viewer closed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: previous button",
+   "ok": true,
+   "expected": "button.lb-prev shows the photo before",
+   "actual": "works",
+   "evidence": "previous button on photo 11",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: right arrow key",
+   "ok": true,
+   "expected": "ArrowRight shows the next photo",
+   "actual": "works",
+   "evidence": "ArrowRight on photo 10",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: left arrow key",
+   "ok": true,
+   "expected": "ArrowLeft shows the photo before",
+   "actual": "works",
+   "evidence": "ArrowLeft on photo 11",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: wraps from the last photo to the first",
+   "ok": true,
+   "expected": "on the last photo the next button and ArrowRight show photo 1",
+   "actual": "works",
+   "evidence": "next button on photo 21; ArrowRight on photo 21",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: wraps from the first photo to the last",
+   "ok": true,
+   "expected": "on photo 1 the previous button and ArrowLeft show the last photo",
+   "actual": "works",
+   "evidence": "ArrowLeft on photo 1; previous button on photo 1",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: image src equals the link href",
+   "ok": true,
+   "expected": "after every opening and every step img.lb-img shows the full-size file of that gallery link",
+   "actual": "img.lb-img showed the file of the gallery link on all 30 photo views",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: every full-size photo loads",
+   "ok": true,
+   "expected": "each photo shown in the viewer loads (naturalWidth above 0)",
+   "actual": "30 of 30 photo views loaded",
+   "evidence": "",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: alt equals the thumbnail alt",
+   "ok": true,
+   "expected": "img.lb-img has the alt text of the thumbnail of the photo on show",
+   "actual": "equal on 30 photo views",
+   "evidence": "2 of 21 thumbnails have a non-empty alt text",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: counter shows position and total",
+   "ok": true,
+   "expected": "p.lb-count holds the number of the photo on show and the number of photos",
+   "actual": "right on 30 photo views",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: focus stays inside while open",
+   "ok": true,
+   "expected": "focus inside .lightbox right after opening and after every Tab and Shift+Tab",
+   "actual": "focus inside after every opening and after 10 Tab presses",
+   "evidence": "Tab -> button.lb-close; Tab -> button.lb-prev; Tab -> button.lb-next; Tab -> button.lb-close; Tab -> button.lb-prev; Shift+Tab -> button.lb-close; Shift+Tab -> button.lb-next; Shift+Tab -> button.lb-prev; Shift+Tab -> button.lb-close; Shift+Tab -> button.lb-next",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: focus returns to the opening link",
+   "ok": true,
+   "expected": "after closing, the focus is on the gallery link that opened the viewer",
+   "actual": "focus back on the opening link after 3 of 3 ways to close",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lightbox: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: empty email is stopped by the browser",
+   "ok": true,
+   "expected": "no mail link, the status line stays empty, #email is marked as missing by the browser",
+   "actual": "no mail link; status line empty; #email marked as missing",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: malformed email is stopped by the browser",
+   "ok": true,
+   "expected": "no mail link, the status line stays empty, #email is marked as mistyped by the browser",
+   "actual": "no mail link; status line empty; #email marked as mistyped",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: valid submit builds the mail link",
+   "ok": true,
+   "expected": "mailto:info@hairbygerta.com?subject=Website message from Maria Rossi&body=(the message and maria.rossi@example.com), percent-encoded",
+   "actual": "mailto:info@hairbygerta.com with subject 'Website message from Maria Rossi' and a body holding the message and maria.rossi@example.com",
+   "evidence": "mailto:info@hairbygerta.com?subject=Website%20message%20from%20Maria%20Rossi&body=Hello%20Gerta%2C%0D%0AI%20would%20like%20a%20balayage%20%26%20cut%20for%202%20people%20on%205%2F12%20at%2010%20AM%20(%231%20choice).%0D%0AIs%20that%20possible%3F%20I%20am%20100%25%20flexible%20%2B%20can%20come%20earlier.%20Grazie%2C%20caf%C3%A9%20later!%0D%0A%0D%0AMaria%20Rossi%0D%0Amaria.rossi%40example.com",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: mail link is opened by clicking a temporary a element",
+   "ok": true,
+   "expected": "one click on an a element made for it and removed again, no other way of opening",
+   "actual": "one click on a temporary a element, seen by the capture listener on window",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: status line appears in .form-note",
+   "ok": true,
+   "expected": ".form-note shows 'Thanks! Your email app should open so you can send the message.'",
+   "actual": ".form-note says 'Thanks! Your email app should open so you can send the message.'",
+   "evidence": "qa/screenshots/check_behavior-contact-sent-desktop.png",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: submit causes no network request",
+   "ok": true,
+   "expected": "no request of any kind after Send, the page stays where it is",
+   "actual": "no request; the page stayed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "broken address: nope/deeper/ shows the 404 page",
+   "ok": true,
+   "expected": "status 404, div.notfound with its h1, the address stays as typed",
+   "actual": "status 404, 1 div.notfound with h1 'Page not found'",
+   "evidence": "qa/screenshots/check_behavior-404-deep-desktop.png",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "broken address: stylesheet loads on the 404 page",
+   "ok": true,
+   "expected": "css/style.css is fetched from the site root with status 200 and is in use",
+   "actual": "css/style.css from the site root: 200; in use with 240 rules",
+   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "broken address: script and logo load on the 404 page",
+   "ok": true,
+   "expected": "js/site.js is fetched from the site root with status 200, the logo is drawn",
+   "actual": "js/site.js from the site root: 200; logo drawn",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "broken address: navigation links lead to the right pages",
+   "ok": true,
+   "expected": "the five links of #main-nav lead to the five pages of the site",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "broken address: Home button leads to the home page",
+   "ok": true,
+   "expected": ".notfound a.btn opens the home page",
+   "actual": "a click opens / (status 200)",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "broken address: no script error",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "old address: booking-calendar/balayage ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /booking-calendar/balayage 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "old address: service-page/hair-coloring ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /service-page/hair-coloring 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: broken address: nope/deeper/ shows the 404 page",
+   "ok": true,
+   "expected": "status 404, div.notfound with its h1, the address stays as typed",
+   "actual": "status 404, 1 div.notfound with h1 'Page not found'",
+   "evidence": "qa/screenshots/check_behavior-404-deep-root-desktop.png",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: broken address: stylesheet loads on the 404 page",
+   "ok": true,
+   "expected": "css/style.css is fetched from the site root with status 200 and is in use",
+   "actual": "css/style.css from the site root: 200; in use with 240 rules",
+   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: broken address: script and logo load on the 404 page",
+   "ok": true,
+   "expected": "js/site.js is fetched from the site root with status 200, the logo is drawn",
+   "actual": "js/site.js from the site root: 200; logo drawn",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: broken address: navigation links lead to the right pages",
+   "ok": true,
+   "expected": "the five links of #main-nav lead to the five pages of the site",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: broken address: Home button leads to the home page",
+   "ok": true,
+   "expected": ".notfound a.btn opens the home page",
+   "actual": "a click opens / (status 200)",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: broken address: no script error",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: old address: booking-calendar/balayage ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /booking-calendar/balayage 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "site at the top of the host: old address: service-page/hair-coloring ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /service-page/hair-coloring 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "book now: ten Book Now pills",
+   "ok": true,
+   "expected": "10 a.pill[data-book], one per service",
+   "actual": "10 a.pill[data-book], 10 [data-book] elements in all",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "book now: BOOKING_URL is the first statement of js/site.js",
+   "ok": true,
+   "expected": "var BOOKING_URL = \"\"; first in the file (empty until the owner pastes a real https link)",
+   "actual": "var BOOKING_URL = \"\"; (empty, the buttons call the phone)",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "book now: pills call the phone while BOOKING_URL is empty",
+   "ok": true,
+   "expected": "every pill has href tel:+1-347-671-5095 and no target",
+   "actual": "10 pills, all tel:+1-347-671-5095, no target",
+   "evidence": "js/site.js as served",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "book now: pills open the booking link when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book: every pill has that href, target=_blank and rel=noopener",
+   "actual": "10 pills, all https://example.com/book, target=_blank, rel=noopener",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "book now: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "book online button: opens the Book Online page while BOOKING_URL is empty",
+   "ok": true,
+   "expected": "one .hero-box a.btn without data-book, a click opens the Book Online page of this site",
+   "actual": "a click opens /book-online/",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "book online button: opens the Book Online page when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book the same: still the Book Online page of this site, no target",
+   "actual": "a click opens /book-online/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "marquee: six copies of the hours text",
+   "ok": true,
+   "expected": "div.track holds six span elements, each saying Tuesday - Saturday, 9 AM - 5 PM",
+   "actual": "six span elements with the hours text",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "marquee: aria-label holds the hours once",
+   "ok": true,
+   "expected": "aria-label of .marquee holds 'Tuesday - Saturday, 9 AM - 5 PM' exactly once, and the six copies are hidden from screen readers (aria-hidden=true on .track)",
+   "actual": "aria-label='Hours: Tuesday - Saturday, 9 AM - 5 PM', aria-hidden on .track: 'true'",
+   "evidence": "role='img'",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "marquee: moves right to left at 25 to 30 px per second",
+   "ok": true,
+   "expected": "the track moves to the left at 25 to 30 px per second, measured over at least 4 seconds",
+   "actual": "27.5 px per second to the left, measured over 4.6 s (278 frames)",
+   "evidence": "speed second by second: [27.5, 27.5, 27.5, 27.5]; track 1705 px wide, text 14px, animation marquee 31s linear, font Figtree loaded: yes",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "marquee: stands still with reduced motion",
+   "ok": true,
+   "expected": "with prefers-reduced-motion: reduce the track does not move",
+   "actual": "the track moved 0.0 px in 1.5 s",
+   "evidence": "animation none 1e-05s ease",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "marquee: text shows once with reduced motion",
+   "ok": true,
+   "expected": "with prefers-reduced-motion: reduce exactly one copy of the hours is visible, in full, inside the marquee",
+   "actual": "one copy visible, in full",
+   "evidence": "qa/screenshots/check_behavior-marquee-reduced-motion-phone.png",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: thumbnail click opens the viewer",
+   "ok": true,
+   "expected": "class open on .lightbox, class lightbox-open on body, the viewer covers the page, the address stays the gallery",
+   "actual": "thumbnail 1: class open on .lightbox: yes, class lightbox-open on body: yes, viewer covers the page: yes",
+   "evidence": "qa/screenshots/check_behavior-lightbox-phone.png",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: built to the contract",
+   "ok": true,
+   "expected": "one div.lightbox with role=dialog, aria-modal=true, aria-label=Photo viewer, holding button.lb-close, button.lb-prev, img.lb-img, button.lb-next, p.lb-count",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: next button goes through all photos",
+   "ok": true,
+   "expected": "each tap on button.lb-next shows the next gallery photo, in order, to the last one",
+   "actual": "all 21 photos shown in order",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: Escape closes",
+   "ok": true,
+   "expected": "no class open, no class lightbox-open, the viewer no longer covers the page",
+   "actual": "viewer closed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: click on the backdrop closes",
+   "ok": true,
+   "expected": "a click on the dark layer (not the photo, not a button) closes the viewer",
+   "actual": "viewer closed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: close button closes",
+   "ok": true,
+   "expected": "button.lb-close closes the viewer",
+   "actual": "viewer closed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: previous button",
+   "ok": true,
+   "expected": "button.lb-prev shows the photo before",
+   "actual": "works",
+   "evidence": "previous button on photo 11",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: right arrow key",
+   "ok": true,
+   "expected": "ArrowRight shows the next photo",
+   "actual": "works",
+   "evidence": "ArrowRight on photo 10",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: left arrow key",
+   "ok": true,
+   "expected": "ArrowLeft shows the photo before",
+   "actual": "works",
+   "evidence": "ArrowLeft on photo 11",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: wraps from the last photo to the first",
+   "ok": true,
+   "expected": "on the last photo the next button and ArrowRight show photo 1",
+   "actual": "works",
+   "evidence": "next button on photo 21; ArrowRight on photo 21",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: wraps from the first photo to the last",
+   "ok": true,
+   "expected": "on photo 1 the previous button and ArrowLeft show the last photo",
+   "actual": "works",
+   "evidence": "ArrowLeft on photo 1; previous button on photo 1",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: image src equals the link href",
+   "ok": true,
+   "expected": "after every opening and every step img.lb-img shows the full-size file of that gallery link",
+   "actual": "img.lb-img showed the file of the gallery link on all 30 photo views",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: every full-size photo loads",
+   "ok": true,
+   "expected": "each photo shown in the viewer loads (naturalWidth above 0)",
+   "actual": "30 of 30 photo views loaded",
+   "evidence": "",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: alt equals the thumbnail alt",
+   "ok": true,
+   "expected": "img.lb-img has the alt text of the thumbnail of the photo on show",
+   "actual": "equal on 30 photo views",
+   "evidence": "2 of 21 thumbnails have a non-empty alt text",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: counter shows position and total",
+   "ok": true,
+   "expected": "p.lb-count holds the number of the photo on show and the number of photos",
+   "actual": "right on 30 photo views",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: focus stays inside while open",
+   "ok": true,
+   "expected": "focus inside .lightbox right after opening and after every Tab and Shift+Tab",
+   "actual": "focus inside after every opening and after 10 Tab presses",
+   "evidence": "Tab -> button.lb-close; Tab -> button.lb-prev; Tab -> button.lb-next; Tab -> button.lb-close; Tab -> button.lb-prev; Shift+Tab -> button.lb-close; Shift+Tab -> button.lb-next; Shift+Tab -> button.lb-prev; Shift+Tab -> button.lb-close; Shift+Tab -> button.lb-next",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: focus returns to the opening link",
+   "ok": true,
+   "expected": "after closing, the focus is on the gallery link that opened the viewer",
+   "actual": "focus back on the opening link after 3 of 3 ways to close",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lightbox: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: empty email is stopped by the browser",
+   "ok": true,
+   "expected": "no mail link, the status line stays empty, #email is marked as missing by the browser",
+   "actual": "no mail link; status line empty; #email marked as missing",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: malformed email is stopped by the browser",
+   "ok": true,
+   "expected": "no mail link, the status line stays empty, #email is marked as mistyped by the browser",
+   "actual": "no mail link; status line empty; #email marked as mistyped",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: valid submit builds the mail link",
+   "ok": true,
+   "expected": "mailto:info@hairbygerta.com?subject=Website message from Maria Rossi&body=(the message and maria.rossi@example.com), percent-encoded",
+   "actual": "mailto:info@hairbygerta.com with subject 'Website message from Maria Rossi' and a body holding the message and maria.rossi@example.com",
+   "evidence": "mailto:info@hairbygerta.com?subject=Website%20message%20from%20Maria%20Rossi&body=Hello%20Gerta%2C%0D%0AI%20would%20like%20a%20balayage%20%26%20cut%20for%202%20people%20on%205%2F12%20at%2010%20AM%20(%231%20choice).%0D%0AIs%20that%20possible%3F%20I%20am%20100%25%20flexible%20%2B%20can%20come%20earlier.%20Grazie%2C%20caf%C3%A9%20later!%0D%0A%0D%0AMaria%20Rossi%0D%0Amaria.rossi%40example.com",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: mail link is opened by clicking a temporary a element",
+   "ok": true,
+   "expected": "one click on an a element made for it and removed again, no other way of opening",
+   "actual": "one click on a temporary a element, seen by the capture listener on window",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: status line appears in .form-note",
+   "ok": true,
+   "expected": ".form-note shows 'Thanks! Your email app should open so you can send the message.'",
+   "actual": ".form-note says 'Thanks! Your email app should open so you can send the message.'",
+   "evidence": "qa/screenshots/check_behavior-contact-sent-phone.png",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: submit causes no network request",
+   "ok": true,
+   "expected": "no request of any kind after Send, the page stays where it is",
+   "actual": "no request; the page stayed",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "broken address: nope/deeper/ shows the 404 page",
+   "ok": true,
+   "expected": "status 404, div.notfound with its h1, the address stays as typed",
+   "actual": "status 404, 1 div.notfound with h1 'Page not found'",
+   "evidence": "qa/screenshots/check_behavior-404-deep-phone.png",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "broken address: stylesheet loads on the 404 page",
+   "ok": true,
+   "expected": "css/style.css is fetched from the site root with status 200 and is in use",
+   "actual": "css/style.css from the site root: 200; in use with 240 rules",
+   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "broken address: script and logo load on the 404 page",
+   "ok": true,
+   "expected": "js/site.js is fetched from the site root with status 200, the logo is drawn",
+   "actual": "js/site.js from the site root: 200; logo drawn",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "broken address: navigation links lead to the right pages",
+   "ok": true,
+   "expected": "the five links of #main-nav lead to the five pages of the site",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "broken address: Home button leads to the home page",
+   "ok": true,
+   "expected": ".notfound a.btn opens the home page",
+   "actual": "a click opens / (status 200)",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "broken address: no script error",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "old address: booking-calendar/balayage ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /booking-calendar/balayage 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "old address: service-page/hair-coloring ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /service-page/hair-coloring 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: broken address: nope/deeper/ shows the 404 page",
+   "ok": true,
+   "expected": "status 404, div.notfound with its h1, the address stays as typed",
+   "actual": "status 404, 1 div.notfound with h1 'Page not found'",
+   "evidence": "qa/screenshots/check_behavior-404-deep-root-phone.png",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: broken address: stylesheet loads on the 404 page",
+   "ok": true,
+   "expected": "css/style.css is fetched from the site root with status 200 and is in use",
+   "actual": "css/style.css from the site root: 200; in use with 240 rules",
+   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: broken address: script and logo load on the 404 page",
+   "ok": true,
+   "expected": "js/site.js is fetched from the site root with status 200, the logo is drawn",
+   "actual": "js/site.js from the site root: 200; logo drawn",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: broken address: navigation links lead to the right pages",
+   "ok": true,
+   "expected": "the five links of #main-nav lead to the five pages of the site",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: broken address: Home button leads to the home page",
+   "ok": true,
+   "expected": ".notfound a.btn opens the home page",
+   "actual": "a click opens / (status 200)",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: broken address: no script error",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: old address: booking-calendar/balayage ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /booking-calendar/balayage 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "site at the top of the host: old address: service-page/hair-coloring ends on the Book Online page",
+   "ok": true,
+   "expected": "the browser ends on book-online/ and that page answers 200",
+   "actual": "the browser ends on /book-online/ (status 200)",
+   "evidence": "documents on the way: /service-page/hair-coloring 404, /book-online/ 200",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "book now: ten Book Now pills",
+   "ok": true,
+   "expected": "10 a.pill[data-book], one per service",
+   "actual": "10 a.pill[data-book], 10 [data-book] elements in all",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "book now: BOOKING_URL is the first statement of js/site.js",
+   "ok": true,
+   "expected": "var BOOKING_URL = \"\"; first in the file (empty until the owner pastes a real https link)",
+   "actual": "var BOOKING_URL = \"\"; (empty, the buttons call the phone)",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "book now: pills call the phone while BOOKING_URL is empty",
+   "ok": true,
+   "expected": "every pill has href tel:+1-347-671-5095 and no target",
+   "actual": "10 pills, all tel:+1-347-671-5095, no target",
+   "evidence": "js/site.js as served",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "book now: pills open the booking link when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book: every pill has that href, target=_blank and rel=noopener",
+   "actual": "10 pills, all https://example.com/book, target=_blank, rel=noopener",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "book now: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "book online button: opens the Book Online page while BOOKING_URL is empty",
+   "ok": true,
+   "expected": "one .hero-box a.btn without data-book, a click opens the Book Online page of this site",
+   "actual": "a click opens /book-online/",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "book online button: opens the Book Online page when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book the same: still the Book Online page of this site, no target",
+   "actual": "a click opens /book-online/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "footer year follows the visitor's clock",
+   "ok": true,
+   "expected": "with the clock set to 2029 every [data-year] says 2029",
+   "actual": "[data-year] says 2029 (browser clock 2029)",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "menu: navigation shown, no menu button",
+   "ok": true,
+   "expected": "all five links visible in the header, .menu-btn not shown",
+   "actual": "five links visible, button not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "footer year follows the visitor's clock",
+   "ok": true,
+   "expected": "with the clock set to 2029 every [data-year] says 2029",
+   "actual": "[data-year] says 2029 (browser clock 2029)",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "qa/screenshots/check_behavior-menu-open-phone.png",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Gallery opens /gallery/",
+   "actual": "tap on Gallery: the browser is on /gallery/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Book Online opens /book-online/",
+   "actual": "tap on Book Online: the browser is on /book-online/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on About opens /about/",
+   "actual": "tap on About: the browser is on /about/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Contact opens /contact/",
+   "actual": "tap on Contact: the browser is on /contact/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Home opens /",
+   "actual": "tap on Home: the browser is on /",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Home opens /",
+   "actual": "tap on Home: the browser is on /",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Gallery opens /gallery/",
+   "actual": "tap on Gallery: the browser is on /gallery/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Book Online opens /book-online/",
+   "actual": "tap on Book Online: the browser is on /book-online/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on About opens /about/",
+   "actual": "tap on About: the browser is on /about/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "footer year is the current year",
+   "ok": true,
+   "expected": "every [data-year] says 2026",
+   "actual": "[data-year] says 2026",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "menu: five links to the five pages",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact, each to its own page",
+   "actual": "as expected",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "menu: closed at first, button shown",
+   "ok": true,
+   "expected": ".menu-btn visible with aria-expanded=false, no link visible, no class open, no class menu-open",
+   "actual": "button visible, menu closed",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "menu: button opens it",
+   "ok": true,
+   "expected": "class open on #main-nav, aria-expanded=true on .menu-btn, class menu-open on body",
+   "actual": "class open on nav: yes, aria-expanded=true, class menu-open on body: yes",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "menu: five links visible when open",
+   "ok": true,
+   "expected": "all five links inside the screen and not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "menu: button closes it again",
+   "ok": true,
+   "expected": "no class open, aria-expanded=false, no class menu-open, no link visible",
+   "actual": "class open on nav: no, aria-expanded=false, class menu-open on body: no",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "menu: Escape closes it, focus back on the button",
+   "ok": true,
+   "expected": "menu closed and the focus on .menu-btn",
+   "actual": "menu closed, focus on button.menu-btn",
+   "evidence": "focus was on a before Escape",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "menu: link click navigates",
+   "ok": true,
+   "expected": "a tap on Contact opens /contact/",
+   "actual": "tap on Contact: the browser is on /contact/",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "page: no script error, no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "qa/screenshots/check_behavior-nojs-home-phone.png",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "no-js: gallery links point at the full-size images",
+   "ok": true,
+   "expected": "every .gallery a leads to images/NAME.jpg (the file exists) and its thumbnail is images/sm/NAME.jpg",
+   "actual": "21 links, each to an existing full-size image",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "no-js: Book Now links call the phone",
+   "ok": true,
+   "expected": "10 a.pill[data-book], and every [data-book] link has href tel:+1-347-671-5095",
+   "actual": "10 a.pill[data-book], 10 [data-book] links, all call the phone",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "no-js: contact form visible with action mailto",
+   "ok": true,
+   "expected": "#contact-form and its fields are shown, action is mailto:info@hairbygerta.com",
+   "actual": "action='mailto:info@hairbygerta.com'",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "no-js: contact form posts as plain text",
+   "ok": true,
+   "expected": "method=post and enctype=text/plain, so a mail program gets readable text",
+   "actual": "method='post', enctype='text/plain'",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "no-js: five navigation links visible",
+   "ok": true,
+   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "actual": "five links visible",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "no-js: menu button hidden",
+   "ok": true,
+   "expected": ".menu-btn not shown, it cannot work without the script",
+   "actual": "not shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "no-js: no broken request",
+   "ok": true,
+   "expected": "clean",
+   "actual": "clean",
+   "evidence": "blocked as planned: fonts.googleapis.com",
+   "owner": "PAGES"
+  }
+ ],
+ "script": "qa/check_behavior.py",
+ "tested": {
+  "pages": [
+   "home",
+   "gallery",
+   "book-online",
+   "about",
+   "contact",
+   "english-refund-policy",
+   "accessibility-statement",
+   "english-privacy-policy",
+   "terms-conditions",
+   "404"
+  ],
+  "viewports": [
+   "desktop",
+   "phone"
+  ]
+ },
+ "blocked_as_planned": [
+  "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,700&family=Figtree:wght@400;700&display=swap",
+  "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+ ],
+ "note": "Addresses are written from the site root. Blocked requests to Google Fonts and Google Maps are planned and are not failures."
+}

@@ -1,0 +1,316 @@
+{
+ "ok": true,
+ "base": "local site folder",
+ "generated": "2026-10-13 07:38:21",
+ "results": [
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "generator-runs",
+   "ok": true,
+   "expected": "python tools/build_pages.py --out <scratch folder> ends with exit code 0, prints no WARNING and leaves image-manifest.json as it is",
+   "actual": "exit code 0, no warning, manifest unchanged",
+   "evidence": "tools/build_pages.py, run into a scratch folder outside the site folder",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (9622 bytes)",
+   "evidence": "index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "gallery/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (9332 bytes)",
+   "evidence": "gallery/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "book-online/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (11191 bytes)",
+   "evidence": "book-online/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "about/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (6883 bytes)",
+   "evidence": "about/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "contact/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (10080 bytes)",
+   "evidence": "contact/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "english-refund-policy/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (6927 bytes)",
+   "evidence": "english-refund-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "accessibility-statement/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (6676 bytes)",
+   "evidence": "accessibility-statement/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "english-privacy-policy/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (9737 bytes)",
+   "evidence": "english-privacy-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "terms-conditions/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (10566 bytes)",
+   "evidence": "terms-conditions/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "-",
+   "check": "generator-output",
+   "ok": true,
+   "expected": "404.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
+   "actual": "identical (5466 bytes)",
+   "evidence": "404.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "gallery/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "book-online/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "about/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "contact/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "english-refund-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "accessibility-statement/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "english-privacy-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "terms-conditions/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "-",
+   "check": "font-preconnect",
+   "ok": true,
+   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
+   "actual": "both there, before the fonts stylesheet",
+   "evidence": "404.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "line-endings",
+   "ok": true,
+   "expected": "every text file is UTF-8 without a byte order mark and ends its lines with LF alone",
+   "actual": "64 text files checked, none wrong",
+   "evidence": "every file with a text extension (pages, stylesheet, script, JSON, XML, Markdown, Python, the hook), .git and qa/screenshots left out",
+   "owner": "QA"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "no-absolute-path",
+   "ok": true,
+   "expected": "no file names a folder of this computer",
+   "actual": "128 files checked, none wrong",
+   "evidence": "looked for: the home folder, the folder the site folder is in, the tools folder, the temporary folder and the Python folder, with / or \\ and in any capitals; .git and qa/screenshots left out",
+   "owner": "QA"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "no-pycache",
+   "ok": true,
+   "expected": "no __pycache__ folder and no .pyc file (run Python with -B, or set sys.dont_write_bytecode in the script)",
+   "actual": "22 folders checked, none wrong",
+   "evidence": "a compiled file carries the path of this computer; whoever ran the named script left it",
+   "owner": "QA"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "no-leftovers",
+   "ok": true,
+   "expected": "nothing temporary lives in the site folder (decision 20): no _tmp, source-photos or zip folder, no archive, backup or editor leftover",
+   "actual": "306 files and 22 folders checked, none wrong",
+   "evidence": "names only; what is inside a picture is the job of qa/licensing_check.py",
+   "owner": "QA"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "readme-short",
+   "ok": true,
+   "expected": "README.md exists and has fewer than 60 lines",
+   "actual": "59 lines",
+   "evidence": "README.md",
+   "owner": "RUNBOOK"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "docs-no-em-dash",
+   "ok": true,
+   "expected": "no em dash in README.md, MIGRATION.md, redirects-check.md, qa/REPORT.md",
+   "actual": "4 documents checked, none wrong",
+   "evidence": "the character U+2014",
+   "owner": "QA"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "no-cname",
+   "ok": true,
+   "expected": "no CNAME file yet: the domain is not connected in this stage",
+   "actual": "no CNAME file",
+   "evidence": "GitHub adds the file when the custom domain is set (MIGRATION.md). From that day on this check has to expect it, with www.hairbygerta.com in it",
+   "owner": "DEPLOY"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "git-folder",
+   "ok": true,
+   "expected": "no repository yet, or one without surprises: a .git folder of the site folder itself, no remote but github.com/achooStorm/hairbygerta, the commit guard installed (.git/hooks/pre-commit), no repository inside a subfolder, no submodules",
+   "actual": "no repository yet (no .git folder)",
+   "evidence": "read from the files in .git, git itself is not run",
+   "owner": "DEPLOY"
+  }
+ ],
+ "script": "qa/check_repo.py",
+ "last_run": {
+  "pages": [
+   "home",
+   "gallery",
+   "book-online",
+   "about",
+   "contact",
+   "english-refund-policy",
+   "accessibility-statement",
+   "english-privacy-policy",
+   "terms-conditions",
+   "404"
+  ],
+  "checks": 29,
+  "failed": 0,
+  "seconds": 1.6
+ },
+ "note": "These checks read the site folder on this computer, whatever --base says."
+}

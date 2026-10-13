@@ -1,0 +1,21 @@
+{
+  "slug": "404",
+  "path": "/404.html",
+  "title": "Page not found | Hair & Makeup by Gerta",
+  "description": "This page could not be found.",
+  "h1": "Page not found",
+  "message": "Sorry, that page doesn’t exist.",
+  "button": {
+    "label": "Back to Home",
+    "path": "/"
+  },
+  "notes": [
+    "Typos fixed: none.",
+    "This page has no live Wix text to copy. Every string is the wording of the first version of the site (build_pages_v1.py), unchanged: the title tag, the meta description, the heading, the one sentence and the button label.",
+    "Reading order on the page: h1, message, button. The page holds no other text of its own. Header, navigation and footer come from site.json.",
+    "message is written with the curly apostrophe (U+2019) in doesn’t, as a real character and not as an HTML entity. The first version had the same character, written as the entity for a right single quote.",
+    "button.path is a site path. The generator turns it into a relative link to the home page.",
+    "The page has no image slot.",
+    "ASK: none."
+  ]
+}

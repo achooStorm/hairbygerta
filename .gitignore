@@ -1,0 +1,27 @@
+# Photo sources and backups: never commit these (photo licensing, see tools/licensing_check.py)
+source-photos/
+zip/
+_tmp/
+*.zip
+
+# Operating system clutter
+.DS_Store
+Thumbs.db
+
+# Python leftovers
+__pycache__/
+*.pyc
+
+# QA screenshots are evidence, not site files: no picture under qa/ is committed
+qa/screenshots/
+qa/interaction/
+qa/**/*.png
+qa/**/*.jpg
+qa/**/*.jpeg
+qa/**/*.webp
+qa/**/*.gif
+qa/**/*.bmp
+qa/**/*.avif
+qa/**/*.tif
+qa/**/*.tiff
+qa/**/*.svg

@@ -1,0 +1,171 @@
+{
+  "slug": "terms-conditions",
+  "path": "/terms-conditions/",
+  "title": "Terms and Conditions | Hairbygerta",
+  "description": "Review the Terms and Conditions for HairByGerta.com, hair stylist & makeup artist in Staten Island, NY. Learn about booking rules, salon policies, website use and client responsibilities.",
+  "h1": "Terms & Conditions",
+  "blocks": [
+    {
+      "type": "h2",
+      "text": "Legal Information"
+    },
+    {
+      "type": "p",
+      "text": "This website, HairByGerta.com, is owned and operated by:"
+    },
+    {
+      "type": "p",
+      "html": "Olgerta Lila – Hair Stylist & Makeup Artist<br>Le Vigne Hair Salon<br>644 Forest Ave, Staten Island, NY 10310<br>Email: <a href=\"mailto:info@hairbygerta.com\">info@hairbygerta.com</a><br>Phone: <a href=\"tel:+1-347-671-5095\">347-671-5095</a>"
+    },
+    {
+      "type": "p",
+      "text": "These Terms & Conditions explain the rules for using our website and booking hair and makeup services with us. They are for general information only and are not legal advice. You are responsible for making sure that any decisions you make are in line with the laws that apply to you. If you have questions about your legal rights or obligations, please speak with a qualified attorney."
+    },
+    {
+      "type": "p",
+      "html": "By using this site or booking an appointment through it, you agree to these Terms & Conditions and to our <a href=\"{{root}}english-privacy-policy/\">Privacy Policy</a> and <a href=\"{{root}}english-refund-policy/\">Refund & Cancellation Policy</a>."
+    },
+    {
+      "type": "h2",
+      "text": "Understanding Terms & Conditions"
+    },
+    {
+      "type": "p",
+      "text": "These Terms & Conditions form the basic agreement between HairByGerta.com and anyone who visits the site or books an appointment. They explain:"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "how our booking process works",
+        "what you can expect from our services",
+        "what we expect from you as a client"
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Our goal is to keep everything clear, respectful, and fair. The services shown on this website are for in-person hair and makeup appointments at Le Vigne Hair Salon or other locations agreed in advance (for example, on-site bridal or event services). We may update services, prices, or policies from time to time, and the version posted on this page is the one that applies."
+    },
+    {
+      "type": "h2",
+      "text": "Key Considerations for T&C"
+    },
+    {
+      "type": "p",
+      "text": "1. Appointments & Booking"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Appointments can be requested online, by phone, or in person.",
+        "Submitting a booking request does not guarantee availability; your appointment is confirmed only after you receive a confirmation message from us.",
+        "Please arrive on time for your appointment. If you are more than 15 minutes late, we may need to shorten your service or reschedule."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "2. Cancellations & Rescheduling"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "We kindly ask for at least 24 hours’ notice if you need to cancel or change your appointment.",
+        "This allows us to offer the time to another client on our waiting list.",
+        "Repeated no-shows or last-minute cancellations may result in us refusing future bookings."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "3. Pricing & Payment"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Prices shown on the website are a guide and may vary based on hair length, thickness, condition, or any extra services requested during your visit.",
+        "Any final price will be confirmed with you before we start the service.",
+        "Payment is taken in person at the salon on the day of your appointment. We do not currently process payments through this website."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "4. Hair Condition, Color Results & Extensions"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "We always do our best to achieve the look you request, but results can vary based on your natural hair, previous color, and overall hair condition.",
+        "You must inform us about any previous chemical treatments, color, or extensions.",
+        "We cannot guarantee an exact match to inspiration photos, but we will explain what is realistically possible and safe for your hair.",
+        "For extensions, we work carefully to blend them with your natural hair, but proper at-home care is your responsibility."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "5. Allergies, Sensitivities & Patch Tests"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Please tell us about any allergies, sensitivities, or medical conditions that may affect your hair or skin before we begin any service.",
+        "A patch test may be recommended for certain color or makeup products.",
+        "If you do not share important health or allergy information, we cannot be held responsible for reactions that occur."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "6. Children & Guests"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Children’s haircuts are available, but a parent or legal guardian must be present for minors.",
+        "For everyone’s comfort and safety, we may limit the number of additional guests who accompany you to your appointment."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "7. Photos & Social Media"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "We love to share our work. With your verbal or written consent, we may take photos or videos of your hair or makeup to use on our website or social media.",
+        "If you do not wish to be photographed or tagged, simply tell us and we will fully respect your choice."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "8. Changes to Services & Terms"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "We may update prices, services, or these Terms & Conditions from time to time.",
+        "When we make changes, the updated version will be posted on this page with the new effective date. Continuing to use the site or booking services after changes are posted means you accept the updated terms."
+      ]
+    },
+    {
+      "type": "p",
+      "html": "9. Contact<br>If you have any questions about these Terms & Conditions or about a specific appointment, you can contact us at:"
+    },
+    {
+      "type": "p",
+      "html": "Email: <a href=\"mailto:info@hairbygerta.com\">info@hairbygerta.com</a><br>Phone: <a href=\"tel:+1-347-671-5095\">347-671-5095</a>"
+    }
+  ],
+  "notes": [
+    "Typos fixed: none. The wording is the live Wix text, word for word.",
+    "ASK: none. The earlier question about how to mark the numbered lines 1. to 9. is settled by decision 7 in section 10 of the build contract: they are plain paragraphs, as on the live Wix page and in this file, so the page has one h1 and three h2 and looks like Wix without any extra styling. The other version, an earlier draft of this file, had them as h3 sub-headings under Key Considerations for T&C. An h3 block stays allowed on policy pages, this file uses none.",
+    "title and description are the live Wix title tag and meta description, kept exactly (the line break at the end of the Wix description is trimmed). The first version had its own title and description, the live Wix ones win.",
+    "Headings: the live page has one h1 and three h2 (Legal Information, Understanding Terms & Conditions, Key Considerations for T&C). None of them gets its capitals from styling (textTransform is none for every text on the page), so each is stored as shown.",
+    "Numbered lines: on the live page the lines 1. Appointments & Booking to 8. Changes to Services & Terms are plain paragraphs (p tags, 16 px, weight 400, 15 px on the phone layout, not indented, the same look as the body text), each followed by a bulleted list (ul with round bullets). They are stored as p blocks, as on the live page, so the page keeps the live heading outline of one h1 and three h2. The first version had them as h2 and an earlier draft of this file had them as h3. The live page has neither.",
+    "9. Contact: on the live page this line and the sentence after it are one paragraph with one line break between them. It is stored the same way, as one html block with <br>. No word is changed.",
+    "Operator block: one paragraph with four line breaks on the live page, kept as <br>. The name there is Olgerta Lila, as on Wix. The dash after the name is the en dash the live page uses.",
+    "Links: Privacy Policy and Refund & Cancellation Policy are plain text on the live page and are internal links here, written with {{root}}, as asked. Email and phone are links in both places (operator block and section 9), as asked. On the live page only the email address in section 9 is a link.",
+    "In the html fields an ampersand is written as a plain & (Hair Stylist & Makeup Artist, Terms & Conditions, Refund & Cancellation Policy), because the contract allows no HTML entities. The generator has to escape it.",
+    "Left out: two empty spacer paragraphs of the live page, one before and one after the operator block. Each holds only an invisible zero-width space and makes one blank line. All other paragraphs on the live page follow each other without a gap. That spacing belongs to the stylesheet.",
+    "Changed against the first version, because Wix wins: the heading Key Considerations for T&C, which the first version had left out, is back. The colon after 'owned and operated by' and after 'you can contact us at' is back. The numbered lines are no longer h2, they are plain paragraphs. Nothing else differs from the first version.",
+    "Apostrophes: the three apostrophes in the body text (hours’, Children’s, everyone’s) are curly, as on the live page.",
+    "For the owner, nothing changed: section 8 says an updated version will be posted with the new effective date, but the live page shows no date anywhere. No date was added.",
+    "This page has no image slots. The only images on the live page are the logo and the two social icons, which belong to the shared header and footer."
+  ]
+}

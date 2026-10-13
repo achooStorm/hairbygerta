@@ -1,0 +1,90 @@
+{
+  "slug": "home",
+  "path": "/",
+  "title": "Hair & Makeup by Gerta | Hair Stylist & Makeup Artist – Staten Island, NY",
+  "description": "Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion.",
+  "h1": "It's Your Day to Shine!",
+  "site_title": "Hair & Makeup by Gerta",
+  "hero": {
+    "heading": "It's Your Day to Shine!",
+    "welcome": "Welcome to HairByGerta.com. I’m Gerta Lila, a hair stylist and makeup artist in Staten Island, NY. I create fresh cuts, color, extensions and soft, flattering makeup that highlight your natural beauty and last all day.",
+    "button": {
+      "label": "Book Online",
+      "path": "/book-online/"
+    },
+    "phone": "347-671-5095",
+    "salon": "Le Vigne Hair Salon",
+    "address": "644 Forest Ave, Staten Island, NY 10310",
+    "hours": "Tuesday - Saturday, 9 AM - 5 PM",
+    "marquee_repeat": 6
+  },
+  "photo_row": [
+    {
+      "slot": "photo-row-1",
+      "file": "home-styling",
+      "alt": "",
+      "alt_original": "Hair Styling Session",
+      "width": 288,
+      "height": 545
+    },
+    {
+      "slot": "photo-row-2",
+      "file": "foils-highlights",
+      "alt": "",
+      "alt_original": "iStock-1153438285.jpg",
+      "width": 288,
+      "height": 545
+    },
+    {
+      "slot": "photo-row-3",
+      "file": "home-smile",
+      "alt": "",
+      "alt_original": "Smiling client with long dark styled hair",
+      "width": 288,
+      "height": 545
+    },
+    {
+      "slot": "photo-row-4",
+      "file": "home-waves",
+      "alt": "",
+      "alt_original": "Client with voluminous copper waves in the salon chair",
+      "width": 288,
+      "height": 545
+    }
+  ],
+  "meet": {
+    "heading": "Meet Gerta",
+    "paragraph_1": "I offer makeup that looks natural, photographs beautifully, and lasts all day. Whether it’s a party, photoshoot, or any special event, I create the perfect look so you feel confident and beautiful throughout your special day.",
+    "portrait": {
+      "slot": "meet-portrait",
+      "file": "makeup-red-lips",
+      "alt": "",
+      "alt_original": " Makeup artist applies  eye shadow   Beautiful woman face Hand of visagiste, painting  cos",
+      "width": 313,
+      "height": 422
+    },
+    "paragraph_2": "I work with high-quality, hair extensions that blend naturally with your own hair, so they look and move like the real thing. I choose the right products and at-home care so you can keep your look fresh and polished long after you leave the chair.",
+    "large": {
+      "slot": "meet-large",
+      "file": "meet-extensions",
+      "alt": "",
+      "alt_original": "Stylist checking the blend of a client's hair extensions",
+      "width": 424,
+      "height": 637
+    }
+  },
+  "notes": [
+    "Typos fixed: none. Every text on this page is word for word the live Wix text, which is also what the first version had.",
+    "title and description are the live Wix title tag and meta description, unchanged (the title keeps its en dash). They replace the description of the first version, which read: Gerta Lila is a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, NY. Haircuts, color, balayage, extensions and makeup. Tuesday to Saturday, 9 AM to 5 PM.",
+    "h1, site_title and meet.heading are stored as Wix has them. Their capitals are real, not styling (textTransform is none).",
+    "h1 and hero.heading are one and the same heading, kept twice on purpose: h1 is the key every page file has (contract section 3), hero.heading shows where it sits in the hero box. The live page has it once and the page prints it once, as the h1 inside the hero box (contract section 7). When one is edited, the other must get the same text.",
+    "Apostrophes are kept as on the live site: straight in It's Your Day to Shine!, curly in I’m and it’s.",
+    "hero.address is stored without the pin emoji that the live site shows right in front of it. The generator adds the pin as its own hidden span (contract section 7). The tel link and the maps link are not repeated here, they are in site.json.",
+    "hero.hours is stored once. On the live site it is one scrolling line that repeats the same text. marquee_repeat says how many copies the generator writes.",
+    "Kept as the owner wrote it, not changed: I work with high-quality, hair extensions (the comma after high-quality may be unintended, the owner can decide).",
+    "alt is empty for all six photos because all six are placeholders. alt_original of home-styling, foils-highlights and makeup-red-lips is the alt text of the live Wix image, copied exactly. For foils-highlights that is only a file name (the first version described the photo as: Stylist finishing a blowout in the salon). For makeup-red-lips it includes the leading space, the double spaces and the cut-off ending that Wix has.",
+    "alt_original of home-smile, home-waves and meet-extensions comes from the first version, because the live Wix images have an empty alt. For home-smile and home-waves it is word for word. For meet-extensions one word was changed. Old text (first version): Gerta checking the blend of a client's hair extensions. New text: Stylist checking the blend of a client's hair extensions. The name was taken out because meet-extensions is one of the 26 Wix-only stock or template photos, not one of the owner's own photos, and no source says that the person in it is Gerta.",
+    "width and height are the size each photo is shown at on the desktop page, not the pixel size of the image file.",
+    "ASK: none. The earlier question about the shown width of the photo row and of the large Meet Gerta photo is settled by decisions 1 and 2 in section 10 of the build contract. Both sets of numbers are right, each for its own page width. The list in the brief (photo row 288 x 545 each, large photo 424 x 637) was measured on a page 1265 px wide, which is a 1280 px window with a 15 px scrollbar: the Wix measurement at 1265 px gives 288 x 545 and 425 x 637. At 1280 px without a scrollbar (the Wix measurement file measure-home-desktop.json) photos 1, 2 and 4 are 292 x 545, photo 3 is 289 x 540 and the large photo is 430 x 637. The row and the large photo stretch with the page, on Wix and on this site. width and height in this file stay the numbers of the brief and of contract section 7. The portrait is 313 x 422 at every measured width."
+  ]
+}

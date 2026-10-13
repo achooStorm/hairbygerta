@@ -1,0 +1,56 @@
+{
+  "slug": "about",
+  "path": "/about/",
+  "title": "About Gerta Lila | Hair Stylist & Makeup Artist, Staten Island NY",
+  "description": "Learn about Gerta Lila, hair stylist & makeup artist at Le Vigne Hair Salon in Staten Island, NY, creating fresh cuts, color, extensions and natural makeup.",
+  "h1": "About Gerta",
+  "paragraph": "I offer hair and makeup services designed to make you look polished and still like yourself. I specialize in modern haircuts, custom color and high-quality extensions that blend with your natural hair. Every visit starts with a short consultation so we can choose the right length, shape and color for your hair and the right makeup look for your event. Before you leave, I show you how to care for your hair at home and recommend products that fit your hair type, so your style stays healthy and lasts longer between visits.",
+  "photos_left": [
+    {
+      "slot": "left-1",
+      "file": "brunette-balayage",
+      "alt": "",
+      "alt_original": "Soft, long wavy brunette hair with blonde balayage highlights, shown from the back on a neutral gray background.",
+      "width": 200,
+      "height": 373
+    },
+    {
+      "slot": "left-2",
+      "file": "about-salon",
+      "alt": "",
+      "alt_original": "Sunset",
+      "width": 310,
+      "height": 258
+    }
+  ],
+  "photos_right": [
+    {
+      "slot": "right-1",
+      "file": "g10",
+      "alt": "",
+      "alt_original": "Applying blonde highlights with foils to a client’s long hair in the salon.",
+      "width": 132,
+      "height": 195
+    },
+    {
+      "slot": "right-2",
+      "file": "copper-waves",
+      "alt": "",
+      "alt_original": "Final look: long, voluminous copper waves cascading down the back.",
+      "width": 199,
+      "height": 292
+    }
+  ],
+  "notes": [
+    "Typos fixed: none. The h1 and the paragraph are word for word the live Wix text, which is also what the first version had.",
+    "title and description are the live Wix title tag and meta description, unchanged. They replace the description of the first version, which read: Meet Gerta Lila, hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, NY. Modern haircuts, custom color, extensions and makeup.",
+    "The h1 is stored as Wix has it. Its capitals are real, not styling (textTransform is none).",
+    "width and height are the size each photo is shown at on the live Wix page at 1280 px wide, not the pixel size of the image file. Wix crops each photo to fill its box (object-fit cover). The crop is strong for two of them: about-salon is a portrait file shown in a landscape box, and g10 is a landscape file shown in a portrait box.",
+    "Position of each photo box on the live Wix page at 1280 px wide (left edge, top edge): left-1 (brunette-balayage) 105, 269. left-2 (about-salon) 207, 854. right-1 (g10 in this file) 861, 269. right-2 (copper-waves) 931, 642. The two left photos are the ones with the smallest left edge.",
+    "All four photos are placeholders, so alt is empty for each. alt_original for left-1, right-1 and right-2 is the alt text of the live Wix image in that box, with the curly apostrophe Wix uses in client’s.",
+    "Slot right-1 (top right): the file is g10, as the brief and decision 5 in section 10 of the build contract say. The live Wix page shows another photo in that box: the Wix media file 37eb08_e3724fb50274487ab7afa56767278d97~mv2.jpg, which this site calls foils-highlights (it is also photo 2 of the Home photo row, photo 3 of the Gallery and the photo of the Highlights & Lowlights card). g10 is the Wix media file 37eb08_53043275a94b4bf3bd7f48a1544f7371~mv2.jpg and is not on the live About page. The reference screenshots of the live About and Gallery pages show a stylist using hairspray on a finished style in that photo, with no foils. The Wix alt text of the box talks about applying highlights with foils, which is how the Gallery content file describes g10. Both placeholder files are 1600 x 1066 px and both are shown cropped to the same box, so the page looks the same today with either file.",
+    "about-salon: the alt text on the live Wix image is the single word Sunset, which looks like a leftover default and does not describe the photo. It is kept in alt_original because the live Wix value comes first. The first version described the photo as: Gerta's styling station with a lit mirror at Le Vigne Hair Salon. Whoever saves a real photo over this placeholder should write a new alt and not reuse Sunset.",
+    "The Wix phone layout shows only three of the four photos: copper-waves is not in the phone measurement.",
+    "ASK (for the owner, not blocking, the open question of contract decision 5): which photo belongs in the top right box of the About page? Version A, the brief and contract decision 5, used in this file: g10 (highlights being applied with foils, which is what the Wix alt text of that box describes). Version B, the live Wix page: foils-highlights (a stylist using hairspray on a finished style). The answer matters on the day a real photo is saved over a placeholder, so that it lands in the right file. A switch to B means changing file of slot right-1 to foils-highlights, and the contract (section 7 and decision 5) and the QA list of About photos have to change with it."
+  ]
+}

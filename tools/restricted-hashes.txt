@@ -1,0 +1,88 @@
+# Restricted file fingerprints for hairbygerta.com
+#
+# One SHA-256 fingerprint per line, sorted, no file names. A file with one of
+# these fingerprints must never be committed, pushed or published with this
+# site. The list is made from the private folder
+# "hairbygerta-wix-only-photos". When it was first written it held 60 lines:
+#
+#   53  pictures that are licensed for the old Wix site only, or have no
+#       proven license: the 26 original photos and their copies in every size
+#       we know of (52 files) and the contact sheet that shows them
+#    2  backup zip files that hold those pictures
+#    5  old copies, from the first version of this site, of files made from
+#       the licensed pictures (three icons made from the logo and the first
+#       800 px copies of g12.jpg and g13.jpg). They sit inside one of the
+#       backup zip files and are not the files this site uses today. They are
+#       not Wix-only photos. They are kept on the list on purpose, because a
+#       file that comes out of a photo backup does not belong in this site.
+#
+# Not on the list: the licensed files as they are in this site today, which
+# are the salon logo, the owner's own photos g12.jpg and g13.jpg, and the
+# copies and icons made from them. They are recognised by content, not by
+# name. A picture of the private folder that is not exactly one of them is on
+# the list, because any doubt means restricted.
+#
+# tools/licensing_check.py reads this list and stops every commit that holds
+# a file with one of these fingerprints, whatever the file is called.
+# Do not remove lines. To add the fingerprints of new restricted photos run:
+#     python tools/licensing_check.py --write-list
+059fae157fd08228184f130b747eae26e29718aa916d4083f5d7af0bd46806ef
+09ed60c198b93bff510ea81b6a83a625da795dbdac1b669f01bce19d806dd1e6
+1a88d8d033c367429cdec6867380f27e4454907ae1a935e0a4eac24fde395627
+1f4f59bc89c4ca945ff82cda7e38db44dc921f073819ad5fdd0fc9c3d9f30b53
+21cc4ec426ad45123945f72d18bedb1fbee0a7be5f0eebdd38c8e541771986e1
+225c2292790dde7fe46373154d24328ee8121d7d53f0d5a9773cf7268913bf8c
+2342316add3391fe439b6b69a8a3e7febec34a05bcc1182053d0d56e4a13a117
+284ff4265729fecaa5820762eda62d4f896ee2177277ea1b1e3908a7b5d934a7
+32f953f2be783fcf736e154fa36c7179dcbd7a4007644565c77b94c5f6cbb1f3
+410dbccc4333441b6175b18f9ddce4b57c551f8a83427d0db9b0be6f0936db0a
+4532c6650805426e477871682c52b428fbf0222ba0004117c9024367feb5065d
+4a8bb632c56f70b4e4d017faf6fde1bafcf307ba797d4cf7bb6b9966bd0577a2
+5112f3e63cb60202994f834391abf2c44044b986c2783d107219730f5a336a0d
+54114edd524498491d82a3c07dc04d631bb2f872d9e7367df6be8e31da865964
+542b4d119b69d3be507f9d7801c4973ed194fc7f15fcacf76dda8de7536e3154
+5437fe1df414a8f131169f04daaf9fe190535512be76d9063769803e65671f69
+581130d32bc2036dec68ca0bfe3f5c36dea97afef709f6aafd746d94b9aefe09
+5ae2feb668ea4a84ca80688d4d097511826911c8eba1a8c09d1e527827c4bc2f
+5cceea1dc6e689002be97e45d0339f62905987b24e1c9caba5243ae9a78bc4b8
+5ea44eeab7fbb42db76610b69c889aec8f9150119e9ee2b3115f1807f9724e07
+609efb45204f67b2d5637427e4fae3829551bcc3c08dab6668919908f8083221
+635330e0e2bcf0f3308189c3c812c683820cb6b470641fe20b279d865f91476c
+63b56a3e56e297e03ca3c97c915ba4206894f8b37a5b6debe606db2f87184f6f
+68d593860e59da4a549a0d8db92d96e416ceb974a4501e9fada5b09a5335f0bd
+6cddb7fdd55e06f7ef938546aa0af25813a93667f9d18d7b5e74556099d21d79
+73467f42843f47bbfda23754b08a0c982df9d92c30e177808a1c7b88f18656cc
+7a23003642894ae6acf31612b3d98ed09d0f1b94fcaa979080e74785b235fd60
+7b05a457be13be1cc7afa9e4118b155bc49f4ab6f68e70fcb38c6553bf4102d0
+7e7715368f7e23da17c5a999a362af9d18662c0d4045f891aefe9d3172e0eeeb
+86079f2b743103be76deb2c635f725116f856abe00e07f0a1a758ac6c844ade6
+8c5d763c1c53cc058f0e185681e60dba928ab15fd7b0d5abb43886eb88a9e3d4
+8d1df73d09294e5337f07f1d06dfe3e7821ab04bb2e1aa6c6edf544926cb8fbc
+8d9eb89c108176586cf50f7416d39a7d99aa623f534e7fb73ddb88f5288dc374
+8ed290357822a44e2660f95a6e0a5d92258853d89f9a1bd7440547dcf6f101d0
+958a3a6548d24b978a59e160328fabebf9ccdd58b27c9340262eef22222b6eae
+9fabb28e0506c8f27f7ba52c82b357fe6a9995d62cf4e6766036c6b6e24afbe7
+a766af3ec7f85ee6db480528c14133fe1ffa4a9c8137219b7bf188ad0c473aa0
+b542e8ec613dc5f9f33cfe74c2404c1cabc1a8b23d1d6b9579152cdcda208a53
+bb644712886907ba768d5b6dd117a5fb266b5d9e3894625dfd6e149bc73aeb2b
+bd009657675e57427126631ab5a037d65ff318f242f0222573459f7e330996c2
+c00677e9540b3382f2d0a78742d745f79d5de4408275b331441bbbff92f4e8d2
+c2294517c14fc31b48bfbb5e769c61f72a0d9fabba6094a0cf3332334a90b880
+c6f55e3b0177bad09f2d008a73227e34e9448656da9d93c0dade7b7b6edf9fb2
+c707c802526594191a33f3b6a04811abde6cb541517d105c0286752909b6d7bf
+cb6a59ab484c1fd8c875b023b67d4a34c8056929fb1b1d12ec618b49fe9f4736
+d17df474e4b23ba18c23881faf8fb6678b5b02a83836b271c8432585dd3bd59f
+d19247b1f565e60cca67a1d278a38ddc5ab8b99c957e6df44b9e64bb3f3e90c0
+d3001c4cbb11ad247ac4ea23b9b639c782ec0a7495ec5345032fd6fac2828347
+db7061f3e88b3f888e78a132f7453567b89deb3c6b0fb3ef5a6fc0276fd47898
+de27fa4a9918fb94aafa8425a4fbd4a0d46398b3b642bb3bd9cc3c42fd0914ee
+e05b700e2a2edadb1169359438d153b39875bcc031d27a8b3bf5b100cc57e10e
+e70e09698dbceaa1b3d2a2339a6cdd0dded01797cbab6bf10dc1c9f69e4b729c
+ea514a8de8bbbe19bfe41732c46bf19fbd4c3884692bd7ae413682fdfb6be31f
+eee6ae6321810a82cbab9bd6b0812cda67231c5785e5512c492b863e8db63bda
+ef37b2c931f2e7b87f1d44f1eb76a5acbb5cd1b7d1f807d56ffbab97b53a406a
+f120a85a2f865767c02ea8fc312bff235af898f316e3b27c2fce281682c3e85c
+f2541f3c3afc2852643a6ea949120f6ad75543159c1dde26cd66e0e66888b631
+f6f4ba3ca1f3d3dfa4a14988d1ca82099c9d821df915366540c983287df04271
+fad26afe2192bb74cccc9d9d8b4f58f28055165b3b9f5454c3c98a7b26279797
+ff2c02dda08d835c91313cfb492d8abc27f8e25d00cc84cb58757348d2c39a0e

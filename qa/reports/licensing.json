@@ -1,0 +1,2095 @@
+{
+ "ok": true,
+ "base": "local site folder",
+ "generated": "2026-10-13 07:40:16",
+ "results": [
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "manifest",
+   "ok": true,
+   "expected": "image-manifest.json can be read and records logo, g12 and g13 as allowed and nothing else",
+   "actual": "64 files recorded",
+   "evidence": "image-manifest.json",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "restricted_folder",
+   "ok": true,
+   "expected": "every file of the restricted folder can be read and all 26 Wix-only photos are there",
+   "actual": "85 files and 103 archive members hashed, 14 text members of old archives left out, 150 different hashes to compare",
+   "evidence": "restricted folder next to the site folder, read only",
+   "owner": "QA"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "gitignore_rules",
+   "ok": true,
+   "expected": ".gitignore excludes every folder named source-photos, zip, _tmp and every *.zip",
+   "actual": "all 10 sample paths are ignored",
+   "evidence": "git check-ignore against the .gitignore of the folder (not a repository yet)",
+   "owner": "DEPLOY"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "screenshots_ignored",
+   "ok": true,
+   "expected": "git ignores every image file under qa/ (a failure once the folder is a git repository)",
+   "actual": "178 image files under qa/, 0 would not be ignored",
+   "evidence": "git check-ignore against the .gitignore of the folder (not a repository yet)",
+   "owner": "DEPLOY",
+   "level": "note"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "git_tracked_paths",
+   "ok": true,
+   "expected": "checked once the folder is a git repository",
+   "actual": "not applicable: the site folder is not a git repository yet",
+   "evidence": "no usable .git folder",
+   "owner": "DEPLOY",
+   "level": "note"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "git_tracked_images",
+   "ok": true,
+   "expected": "checked once the folder is a git repository",
+   "actual": "not applicable: the site folder is not a git repository yet",
+   "evidence": "no usable .git folder",
+   "owner": "DEPLOY",
+   "level": "note"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "git_history",
+   "ok": true,
+   "expected": "checked once the folder is a git repository",
+   "actual": "not applicable: the site folder is not a git repository yet",
+   "evidence": "no usable .git folder",
+   "owner": "DEPLOY",
+   "level": "note"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "hash_match",
+   "ok": true,
+   "expected": "no file is identical to a file of the restricted folder (0 matches)",
+   "actual": "0 matches",
+   "evidence": "SHA-256 of every file of the site folder (314 files, 0 archive members, 0 embedded pictures, 0 git objects) against 150 restricted hashes",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "archives_readable",
+   "ok": true,
+   "expected": "every archive in the site folder can be opened and checked",
+   "actual": "0 archives opened",
+   "evidence": "zip, tar, gz, bz2 and xz are read in memory",
+   "owner": "DEPLOY"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "archive_pictures",
+   "ok": true,
+   "expected": "a picture inside an archive of the site folder is a verified allowed file or passes the placeholder test",
+   "actual": "0 pictures in archives, 0 of them neither allowed nor a placeholder",
+   "evidence": "no archive in the site folder",
+   "owner": "DEPLOY"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "allowed_images",
+   "ok": true,
+   "expected": "images/logo.jpg, images/g12.jpg and images/g13.jpg are there and have the SHA-256 the manifest records",
+   "actual": "3 of 3 verified",
+   "evidence": "SHA-256 against image-manifest.json",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "allowed_sources",
+   "ok": true,
+   "expected": "each allowed image is byte-identical to its licensed source (logo master, g12 and g13 of the backup)",
+   "actual": "all verified allowed images are identical to their source",
+   "evidence": "SHA-256 against the file with the same name in the restricted folder",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "allowed_derivatives",
+   "ok": true,
+   "expected": "every allowed-derivative has the SHA-256 the manifest records and shows the allowed image it is made from",
+   "actual": "9 derivatives, 0 not proven",
+   "evidence": "SHA-256 against image-manifest.json, small grey copies compared",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "placeholders",
+   "ok": true,
+   "expected": "every placeholder: at least 90 percent of the pixels within 6 levels of (232, 225, 218), darkest channel above 165, standard deviation below 12, the pixel size of the manifest",
+   "actual": "52 of 52 pass",
+   "evidence": "pixel test with Pillow",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "owner_photos",
+   "ok": true,
+   "expected": "every image the manifest records as owner-photo has exactly the SHA-256 recorded there, is not identical to a restricted file and is a photo, not a placeholder",
+   "actual": "no image is recorded as owner-photo",
+   "evidence": "SHA-256 against image-manifest.json and against the restricted hashes (build contract, decision 27)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "unknown_images",
+   "ok": true,
+   "expected": "no image file that is neither allowed, allowed-derivative, placeholder, owner-photo nor a screenshot under qa/",
+   "actual": "0 UNKNOWN images",
+   "evidence": "every file with an image name or image content",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "embedded_pictures",
+   "ok": true,
+   "expected": "no picture is written into a page, stylesheet, script or data file as base64 text",
+   "actual": "0 embedded pictures",
+   "evidence": "every text file read for data addresses",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "svg_files",
+   "ok": true,
+   "expected": "an svg file is only a drawing: no picture inside it, nothing loaded from another address",
+   "actual": "0 svg files flagged for review, 0 with a picture inside",
+   "evidence": "no svg file",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "manifest_files_present",
+   "ok": true,
+   "expected": "every image file the manifest records exists",
+   "actual": "64 of 64 there",
+   "evidence": "image-manifest.json",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "site_screenshots",
+   "ok": true,
+   "expected": "image files under qa/ are evidence of the checks, not site files",
+   "actual": "178 image files under qa/, not for publishing",
+   "evidence": "qa/",
+   "owner": "QA",
+   "level": "note"
+  },
+  {
+   "page": "home",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "17 image addresses, 0 not acceptable",
+   "evidence": "index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "50 image addresses, 0 not acceptable",
+   "evidence": "gallery/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "15 image addresses, 0 not acceptable",
+   "evidence": "book-online/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "13 image addresses, 0 not acceptable",
+   "evidence": "about/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "5 image addresses, 0 not acceptable",
+   "evidence": "contact/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "5 image addresses, 0 not acceptable",
+   "evidence": "english-refund-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "5 image addresses, 0 not acceptable",
+   "evidence": "accessibility-statement/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "5 image addresses, 0 not acceptable",
+   "evidence": "english-privacy-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "5 image addresses, 0 not acceptable",
+   "evidence": "terms-conditions/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "-",
+   "check": "page_images",
+   "ok": true,
+   "expected": "every image address of the page is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "4 image addresses, 0 not acceptable",
+   "evidence": "404.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "stylesheet_images",
+   "ok": true,
+   "expected": "every image address of the stylesheet is an allowed image, an allowed-derivative, a placeholder or an accepted owner photo of this site",
+   "actual": "0 image addresses, 0 not acceptable",
+   "evidence": "css/style.css",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "published_forbidden_addresses",
+   "ok": true,
+   "expected": "checked with --base on the published site",
+   "actual": "not applicable: this run checked the site folder",
+   "evidence": "local files",
+   "owner": "DEPLOY",
+   "level": "note"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "published_screenshots",
+   "ok": true,
+   "expected": "checked with --base on the published site",
+   "actual": "not applicable: this run checked the site folder",
+   "evidence": "local files",
+   "owner": "DEPLOY",
+   "level": "note"
+  }
+ ],
+ "script": "qa/licensing_check.py",
+ "source": "files in the site folder",
+ "verdict": "PASS",
+ "exit_code": 0,
+ "files_hashed": 314,
+ "restricted_hashes": 150,
+ "restricted_files_hashed": 264,
+ "images_checked": 242,
+ "matches": [],
+ "last_run": {
+  "pages": [
+   "home",
+   "gallery",
+   "book-online",
+   "about",
+   "contact",
+   "english-refund-policy",
+   "accessibility-statement",
+   "english-privacy-policy",
+   "terms-conditions",
+   "404"
+  ],
+  "checks": 33,
+  "failed": 0,
+  "matches": 0
+ },
+ "counts": {
+  "site": {
+   "files": 314,
+   "archive_members": 0,
+   "embedded_pictures": 0,
+   "git_objects": 0
+  },
+  "restricted": {
+   "files": 85,
+   "archive_members": 103,
+   "skipped_text_members": 14,
+   "skipped_empty": 0,
+   "reference_screenshots": 90,
+   "different_hashes_compared": 150
+  }
+ },
+ "images_by_class": {
+  "allowed": 3,
+  "allowed-derivative": 9,
+  "placeholder": 52,
+  "owner-photo": 0,
+  "site screenshot": 178,
+  "svg for review": 0,
+  "placeholder that fails the test": 0,
+  "owner-photo that is not accepted": 0,
+  "UNKNOWN": 0
+ },
+ "failures": [],
+ "notes": [],
+ "images": [
+  {
+   "file": "favicon.ico",
+   "class": "allowed-derivative",
+   "bytes": 3683,
+   "sha256": "7de575eeaf70484dcf573e42a91105d7766afcd98925a4184f2020beafaf3f95",
+   "detail": "made from images/logo.jpg, correlation with the logo artwork 0.83 (at least 0.6 needed)"
+  },
+  {
+   "file": "images/about-salon.jpg",
+   "class": "placeholder",
+   "bytes": 16283,
+   "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+   "detail": "1200 x 1600 px, 98.8 percent beige, darkest channel 184, standard deviation 2.6"
+  },
+  {
+   "file": "images/apple-touch-icon.png",
+   "class": "allowed-derivative",
+   "bytes": 14754,
+   "sha256": "82786b130a5392cc2c722cef3ccb7788d51e6be9e3a0e12e018748dd83ec44c1",
+   "detail": "made from images/logo.jpg, correlation with the logo artwork 0.99 (at least 0.6 needed)"
+  },
+  {
+   "file": "images/brunette-balayage.jpg",
+   "class": "placeholder",
+   "bytes": 14418,
+   "sha256": "bb372924ae78a58f61a6d01d052d19d8693959e29747a1c6ac13f34995db34b1",
+   "detail": "1066 x 1600 px, 99.0 percent beige, darkest channel 183, standard deviation 2.4"
+  },
+  {
+   "file": "images/copper-waves.jpg",
+   "class": "placeholder",
+   "bytes": 14435,
+   "sha256": "8f632de1c8d4e210635386b11a896fcd310e9fcbb310bf88daa3e94e35312f11",
+   "detail": "1067 x 1600 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/favicon.png",
+   "class": "allowed-derivative",
+   "bytes": 3115,
+   "sha256": "7280e8c4c1d4705501f438c36a204c83385336492cd5de45623d314b6dc1e146",
+   "detail": "made from images/logo.jpg, correlation with the logo artwork 0.95 (at least 0.6 needed)"
+  },
+  {
+   "file": "images/foils-highlights.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g01.jpg",
+   "class": "placeholder",
+   "bytes": 11236,
+   "sha256": "8db791f6a003db05b8b2b0ed2fb760062ce7b31275881aa447ba837560e6da2e",
+   "detail": "1600 x 843 px, 99.2 percent beige, darkest channel 182, standard deviation 2.2"
+  },
+  {
+   "file": "images/g02.jpg",
+   "class": "placeholder",
+   "bytes": 12136,
+   "sha256": "421128594541e33f042f5072f71f9c65723548da46899eb90809d7c379708588",
+   "detail": "1600 x 900 px, 99.1 percent beige, darkest channel 181, standard deviation 2.3"
+  },
+  {
+   "file": "images/g04.jpg",
+   "class": "placeholder",
+   "bytes": 14359,
+   "sha256": "e27715ab0c37976ea30eb9789316f5e0ff2c67d7991326d48ea2176b0ca4c2b5",
+   "detail": "1600 x 1065 px, 99.0 percent beige, darkest channel 183, standard deviation 2.4"
+  },
+  {
+   "file": "images/g05.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g06.jpg",
+   "class": "placeholder",
+   "bytes": 13254,
+   "sha256": "a17a05ba41e776b41841ccf6b3ad4b58d9afde7c7a29c57508beabe756919739",
+   "detail": "1600 x 985 px, 99.0 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/g07.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g10.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g12.jpg",
+   "class": "allowed",
+   "bytes": 250208,
+   "sha256": "f316a916e98adf76c7a693b85f8caa0d9d1398c075324b5c981b30f64da07636",
+   "detail": ""
+  },
+  {
+   "file": "images/g12.webp",
+   "class": "allowed-derivative",
+   "bytes": 153866,
+   "sha256": "63a862fd2c36d6be078a2fda60c1e3176e6ef193db512a7c017f9220d2e0a188",
+   "detail": "made from images/g12.jpg, mean difference to its source 0.1 of 255 (at most 6 allowed)"
+  },
+  {
+   "file": "images/g13.jpg",
+   "class": "allowed",
+   "bytes": 225296,
+   "sha256": "3abedefb099554e10b83d0776d0aa13f38fadb4d12f36660390a4ce8db11818f",
+   "detail": ""
+  },
+  {
+   "file": "images/g13.webp",
+   "class": "allowed-derivative",
+   "bytes": 138520,
+   "sha256": "11a23c8394304473152028c63482148fd1f230097e657316f7dbc01912f210c3",
+   "detail": "made from images/g13.jpg, mean difference to its source 0.1 of 255 (at most 6 allowed)"
+  },
+  {
+   "file": "images/g14.jpg",
+   "class": "placeholder",
+   "bytes": 14359,
+   "sha256": "fbf11335bec48918f300a654e892173e7bfeeeda519bc1363c92f671efb7b5c4",
+   "detail": "1600 x 1064 px, 99.0 percent beige, darkest channel 183, standard deviation 2.4"
+  },
+  {
+   "file": "images/g15.jpg",
+   "class": "placeholder",
+   "bytes": 14435,
+   "sha256": "8f632de1c8d4e210635386b11a896fcd310e9fcbb310bf88daa3e94e35312f11",
+   "detail": "1067 x 1600 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g16.jpg",
+   "class": "placeholder",
+   "bytes": 16283,
+   "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+   "detail": "1200 x 1600 px, 98.8 percent beige, darkest channel 184, standard deviation 2.6"
+  },
+  {
+   "file": "images/g17.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g18.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g19.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/g20.jpg",
+   "class": "placeholder",
+   "bytes": 14359,
+   "sha256": "fbf11335bec48918f300a654e892173e7bfeeeda519bc1363c92f671efb7b5c4",
+   "detail": "1600 x 1064 px, 99.0 percent beige, darkest channel 183, standard deviation 2.4"
+  },
+  {
+   "file": "images/g21.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/home-smile.jpg",
+   "class": "placeholder",
+   "bytes": 16283,
+   "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+   "detail": "1200 x 1600 px, 98.8 percent beige, darkest channel 184, standard deviation 2.6"
+  },
+  {
+   "file": "images/home-styling.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/home-waves.jpg",
+   "class": "placeholder",
+   "bytes": 12136,
+   "sha256": "421128594541e33f042f5072f71f9c65723548da46899eb90809d7c379708588",
+   "detail": "1600 x 900 px, 99.1 percent beige, darkest channel 181, standard deviation 2.3"
+  },
+  {
+   "file": "images/logo.jpg",
+   "class": "allowed",
+   "bytes": 10497,
+   "sha256": "0a5da586b0fd3b479e52db6b8f3ec51278df09e12f88b528bedb3119e52748f6",
+   "detail": ""
+  },
+  {
+   "file": "images/makeup-red-lips.jpg",
+   "class": "placeholder",
+   "bytes": 10761,
+   "sha256": "f783db3d1ebb702f6fdafcc1669931c767f872d5d38eca086ec754fdc94971a1",
+   "detail": "1600 x 802 px, 99.2 percent beige, darkest channel 183, standard deviation 2.1"
+  },
+  {
+   "file": "images/meet-extensions.jpg",
+   "class": "placeholder",
+   "bytes": 16283,
+   "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+   "detail": "1200 x 1600 px, 98.8 percent beige, darkest channel 184, standard deviation 2.6"
+  },
+  {
+   "file": "images/svc-bridal.jpg",
+   "class": "placeholder",
+   "bytes": 14399,
+   "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+   "detail": "1600 x 1066 px, 99.0 percent beige, darkest channel 184, standard deviation 2.4"
+  },
+  {
+   "file": "images/svc-haircut.jpg",
+   "class": "placeholder",
+   "bytes": 2627,
+   "sha256": "184fddacab9c9f8961c15a59ef34bb4741220fcda8e37d310f66dd5336fc284d",
+   "detail": "411 x 523 px, 98.6 percent beige, darkest channel 181, standard deviation 2.6"
+  },
+  {
+   "file": "images/sm/about-salon.jpg",
+   "class": "placeholder",
+   "bytes": 5044,
+   "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577",
+   "detail": "600 x 800 px, 98.7 percent beige, darkest channel 183, standard deviation 2.6"
+  },
+  {
+   "file": "images/sm/brunette-balayage.jpg",
+   "class": "placeholder",
+   "bytes": 4410,
+   "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9",
+   "detail": "533 x 800 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/copper-waves.jpg",
+   "class": "placeholder",
+   "bytes": 4410,
+   "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9",
+   "detail": "533 x 800 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/foils-highlights.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g01.jpg",
+   "class": "placeholder",
+   "bytes": 3474,
+   "sha256": "f9b999183f8887646862c5229910ba5dd5e75f594c7a2ddfc29c7b37c8a5ec09",
+   "detail": "800 x 422 px, 99.1 percent beige, darkest channel 182, standard deviation 2.1"
+  },
+  {
+   "file": "images/sm/g02.jpg",
+   "class": "placeholder",
+   "bytes": 3685,
+   "sha256": "41afab4b2961a943d89550390ab8890057ad36eb79a101b65125e5015538de00",
+   "detail": "800 x 450 px, 99.0 percent beige, darkest channel 182, standard deviation 2.2"
+  },
+  {
+   "file": "images/sm/g04.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g05.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g06.jpg",
+   "class": "placeholder",
+   "bytes": 4008,
+   "sha256": "11ff1dc87d1f5314c64fb76a3c662cedbad618ec6a09ed88d6dcd7a663692608",
+   "detail": "800 x 493 px, 99.0 percent beige, darkest channel 183, standard deviation 2.3"
+  },
+  {
+   "file": "images/sm/g07.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g10.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g12.jpg",
+   "class": "allowed-derivative",
+   "bytes": 53858,
+   "sha256": "256b2b6b11e8f6a97b1db6cb07ed4a0bcb3f64ca62b3c81b0e7b287e26712168",
+   "detail": "made from images/g12.jpg, mean difference to its source 0.3 of 255 (at most 6 allowed)"
+  },
+  {
+   "file": "images/sm/g12.webp",
+   "class": "allowed-derivative",
+   "bytes": 40788,
+   "sha256": "4bd976a54a7b668201c7e4389e0a089fc6cee7c84e1618c6d1fe5d833e23995c",
+   "detail": "made from images/g12.jpg, mean difference to its source 0.4 of 255 (at most 6 allowed)"
+  },
+  {
+   "file": "images/sm/g13.jpg",
+   "class": "allowed-derivative",
+   "bytes": 53208,
+   "sha256": "c831134985cd38685661df819d15ea1621a38bb74449cb6ff9d259ac149da8e2",
+   "detail": "made from images/g13.jpg, mean difference to its source 0.3 of 255 (at most 6 allowed)"
+  },
+  {
+   "file": "images/sm/g13.webp",
+   "class": "allowed-derivative",
+   "bytes": 41494,
+   "sha256": "0e2a8b19fd1a8bb274190956f1a39fece87224aaeeba44e776804a58e636f1be",
+   "detail": "made from images/g13.jpg, mean difference to its source 0.4 of 255 (at most 6 allowed)"
+  },
+  {
+   "file": "images/sm/g14.jpg",
+   "class": "placeholder",
+   "bytes": 4441,
+   "sha256": "304608beab9afcf041c46103770d7d0f15790c0cb36678143fcaee562f3d8785",
+   "detail": "800 x 532 px, 98.9 percent beige, darkest channel 183, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g15.jpg",
+   "class": "placeholder",
+   "bytes": 4410,
+   "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9",
+   "detail": "533 x 800 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g16.jpg",
+   "class": "placeholder",
+   "bytes": 5044,
+   "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577",
+   "detail": "600 x 800 px, 98.7 percent beige, darkest channel 183, standard deviation 2.6"
+  },
+  {
+   "file": "images/sm/g17.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g18.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g19.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g20.jpg",
+   "class": "placeholder",
+   "bytes": 4441,
+   "sha256": "304608beab9afcf041c46103770d7d0f15790c0cb36678143fcaee562f3d8785",
+   "detail": "800 x 532 px, 98.9 percent beige, darkest channel 183, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/g21.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/home-smile.jpg",
+   "class": "placeholder",
+   "bytes": 5044,
+   "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577",
+   "detail": "600 x 800 px, 98.7 percent beige, darkest channel 183, standard deviation 2.6"
+  },
+  {
+   "file": "images/sm/home-styling.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/home-waves.jpg",
+   "class": "placeholder",
+   "bytes": 3685,
+   "sha256": "41afab4b2961a943d89550390ab8890057ad36eb79a101b65125e5015538de00",
+   "detail": "800 x 450 px, 99.0 percent beige, darkest channel 182, standard deviation 2.2"
+  },
+  {
+   "file": "images/sm/makeup-red-lips.jpg",
+   "class": "placeholder",
+   "bytes": 3258,
+   "sha256": "1ff5b9e8918e003caafbfe1ebf37bd52a3f43fb77b000f2d4f9e93fb9e1154ce",
+   "detail": "800 x 401 px, 99.1 percent beige, darkest channel 182, standard deviation 2.1"
+  },
+  {
+   "file": "images/sm/meet-extensions.jpg",
+   "class": "placeholder",
+   "bytes": 5044,
+   "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577",
+   "detail": "600 x 800 px, 98.7 percent beige, darkest channel 183, standard deviation 2.6"
+  },
+  {
+   "file": "images/sm/svc-bridal.jpg",
+   "class": "placeholder",
+   "bytes": 4452,
+   "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f",
+   "detail": "800 x 533 px, 98.9 percent beige, darkest channel 182, standard deviation 2.4"
+  },
+  {
+   "file": "images/sm/svc-haircut.jpg",
+   "class": "placeholder",
+   "bytes": 2627,
+   "sha256": "184fddacab9c9f8961c15a59ef34bb4741220fcda8e37d310f66dd5336fc284d",
+   "detail": "411 x 523 px, 98.6 percent beige, darkest channel 181, standard deviation 2.6"
+  },
+  {
+   "file": "qa/screenshots/404-desktop.png",
+   "class": "site screenshot",
+   "bytes": 73013,
+   "sha256": "83b309f5a949379edd7d8c22b2316d488afeddc2ffaa46f24187a9701140ef96",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/404-phone.png",
+   "class": "site screenshot",
+   "bytes": 48823,
+   "sha256": "9f876805b8c8a23ba073caaad56f93fb0fc5fc866dc7694df30b4430c7d77441",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/about-desktop.png",
+   "class": "site screenshot",
+   "bytes": 115201,
+   "sha256": "c0aa6a713398a66aa99135d0393b20752703b47db4238b9ecf477d927ba07718",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/about-phone.png",
+   "class": "site screenshot",
+   "bytes": 76518,
+   "sha256": "b916fdcd8bb191bb37f650205280da30e19ebc61fcbc21e7473da1215bc9177f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/accessibility-statement-desktop.png",
+   "class": "site screenshot",
+   "bytes": 235735,
+   "sha256": "d409f59db30dc9c3394d624e7afc9b1ed22d95cb6cc18c1ec6fba7283e503c3a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/accessibility-statement-phone.png",
+   "class": "site screenshot",
+   "bytes": 153398,
+   "sha256": "d7d743cdb308dc5482c28861ecb3d429ac43a6b757d5b2cbb82b8d1e1a43fb6e",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/book-online-desktop.png",
+   "class": "site screenshot",
+   "bytes": 211255,
+   "sha256": "b61a463084de8f33802a99d2e1ba3913437216b7394f17644b898ca6508d1d71",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/book-online-phone.png",
+   "class": "site screenshot",
+   "bytes": 209704,
+   "sha256": "3a8174c763054ccb1de2f5e63ab9d5bd6a6734a71408ee8433ffa8068c6ba192",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-404-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17639,
+   "sha256": "39b019958e942a5386767faf29efb9931cc2b36de3264cf5beef72293a285b4a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-about-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17655,
+   "sha256": "635d4b6ef94de359ad38f160367e575c28d546029f05946e6001b6e160bf33d2",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-accessibility-statement-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17639,
+   "sha256": "39b019958e942a5386767faf29efb9931cc2b36de3264cf5beef72293a285b4a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-book-online-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17655,
+   "sha256": "473b77552e2b7c3d34be9f6031af805ff308b8a72fdbf296b2dd4ca0a53166f5",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-contact-desktop-form-blocked.png",
+   "class": "site screenshot",
+   "bytes": 59904,
+   "sha256": "234e6b9ee48fb62417f572af4f91fb492102c2cbdc512d8e8a72b633b0b6d462",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-contact-desktop-form-sent.png",
+   "class": "site screenshot",
+   "bytes": 68057,
+   "sha256": "1c4e464acf1b9f9fc21b41dea4ab43a939fc3129fbf5a132bd5bb526c580df39",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-contact-phone-form-blocked.png",
+   "class": "site screenshot",
+   "bytes": 14043,
+   "sha256": "3f2abf2b3df19860517788862965ca716c87df9035788e0797659876432f1844",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-contact-phone-form-sent.png",
+   "class": "site screenshot",
+   "bytes": 23715,
+   "sha256": "dadc1494c7be80a2695a3f2eefc12c42dadcbc3948cc1335606fc1444cc7dab4",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-contact-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17656,
+   "sha256": "cf5206645603ca742e170c2577d6dece55cc56b1a68d5c6151587eff7e096c59",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-english-privacy-policy-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17639,
+   "sha256": "39b019958e942a5386767faf29efb9931cc2b36de3264cf5beef72293a285b4a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-english-refund-policy-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17639,
+   "sha256": "39b019958e942a5386767faf29efb9931cc2b36de3264cf5beef72293a285b4a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-gallery-desktop-lightbox-open.png",
+   "class": "site screenshot",
+   "bytes": 18828,
+   "sha256": "0cabd6ad1b1b3a38a4e18af1e43a89e77cec4a59b96de3ecfe92171a8b54372b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-gallery-phone-lightbox-open.png",
+   "class": "site screenshot",
+   "bytes": 5569,
+   "sha256": "130ca59a67a3f766da0187dcdaf9a3b308fe30d6cf9e4bd6186b2a33f0bd3ecd",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-gallery-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17661,
+   "sha256": "0f0a0dd6878f7a4a0c9746f9518dc69edb830dc97e3713d1e718d5a4ac620eef",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-home-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17656,
+   "sha256": "fe6f75b3cc8b4e7955f146d1ddef5964fd64655b68e5a4832add324e1c983918",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_a11y-terms-conditions-phone-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17639,
+   "sha256": "39b019958e942a5386767faf29efb9931cc2b36de3264cf5beef72293a285b4a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-404-deep-desktop.png",
+   "class": "site screenshot",
+   "bytes": 60469,
+   "sha256": "c75dba5324ca31448d993441966d4ae7d5f70c533387e2cd56c358419f0da009",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-404-deep-phone.png",
+   "class": "site screenshot",
+   "bytes": 25856,
+   "sha256": "3a166c9078f39b49abf5c2d00e28df2aa135ba24ee2a5d500b66b1f60a8e33bd",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-404-deep-root-desktop.png",
+   "class": "site screenshot",
+   "bytes": 60469,
+   "sha256": "c75dba5324ca31448d993441966d4ae7d5f70c533387e2cd56c358419f0da009",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-404-deep-root-phone.png",
+   "class": "site screenshot",
+   "bytes": 25856,
+   "sha256": "3a166c9078f39b49abf5c2d00e28df2aa135ba24ee2a5d500b66b1f60a8e33bd",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-contact-sent-desktop.png",
+   "class": "site screenshot",
+   "bytes": 62742,
+   "sha256": "da6342f06ab80b80110133b2c9786fd97f5d515f5d3761ab8a43295d5c2fbc60",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-contact-sent-phone.png",
+   "class": "site screenshot",
+   "bytes": 23225,
+   "sha256": "b757aeb04eb5f9a19370b5ba21c0d8e538308a08f300fd1b3f055f3ef89b3974",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-lightbox-desktop.png",
+   "class": "site screenshot",
+   "bytes": 18758,
+   "sha256": "4867aec547f98a53714744b1bb1505df645ee1434fc6f5401dabb6b6511b51c4",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-lightbox-phone.png",
+   "class": "site screenshot",
+   "bytes": 5512,
+   "sha256": "be5f60a5924df32ba41562c3bf44a77c4902d506fc73985ee4fbb491853d742c",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-marquee-reduced-motion-desktop.png",
+   "class": "site screenshot",
+   "bytes": 77889,
+   "sha256": "f843801ffd6f4c241dd45fb6ddbd3687b3e8aa5f80dbec0a3b94ac2cfcb4546b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-marquee-reduced-motion-phone.png",
+   "class": "site screenshot",
+   "bytes": 43109,
+   "sha256": "0829252381bc2459079baaacbc6ffa5cd7290297c1f0d282252e71b305e7e016",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-menu-open-phone.png",
+   "class": "site screenshot",
+   "bytes": 16937,
+   "sha256": "6d13cb0c151d3eaa9290c05038ced929c8d3d26c8baffa74a64ff09933eb717f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/check_behavior-nojs-home-phone.png",
+   "class": "site screenshot",
+   "bytes": 38262,
+   "sha256": "06241ca04e6c6a82a851e4b545a38f2adeccf8447fd86053e91c215087d99e31",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/contact-desktop.png",
+   "class": "site screenshot",
+   "bytes": 118098,
+   "sha256": "0d8a64bcb6adec11cc7a99d6322981366c396cff2c035add88629f87cfc74f64",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/contact-phone.png",
+   "class": "site screenshot",
+   "bytes": 91764,
+   "sha256": "6f0c3c434f3b7a8cb6890707b4fe23b22d63315d858a69cb1caa9063721cd7d4",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/english-privacy-policy-desktop.png",
+   "class": "site screenshot",
+   "bytes": 377576,
+   "sha256": "15353bc730b7bd12587a31b2c094e150503beecb81d77794d1a26dbab25aecb7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/english-privacy-policy-phone.png",
+   "class": "site screenshot",
+   "bytes": 297046,
+   "sha256": "2dd3fd31a051796676db107648e47005e16789a2f2620c34694f546268f9f778",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/english-refund-policy-desktop.png",
+   "class": "site screenshot",
+   "bytes": 206125,
+   "sha256": "d6c44b4653a360f9450f20b3f3dd86596a72cf03ca3928fe46357ce502edd0a3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/english-refund-policy-phone.png",
+   "class": "site screenshot",
+   "bytes": 157101,
+   "sha256": "5b53b43df1d0ed7664446fb8c8e6e5a115e3ea7134a2de1ac3a39c37dac54ae3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/gallery-desktop.png",
+   "class": "site screenshot",
+   "bytes": 828429,
+   "sha256": "6ae32386ffef8ba5acff6ccbd9f6a2c9ed03e153f5c8eac263077edb70ebf913",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/gallery-phone.png",
+   "class": "site screenshot",
+   "bytes": 226203,
+   "sha256": "150ec6d47120d975846c4476261bbea767430a773ed07b0c1f978c3508d46fb7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/home-desktop.png",
+   "class": "site screenshot",
+   "bytes": 210102,
+   "sha256": "f6a1e857a566cc3876fe858eab2c6bdaa65b20e6852221de8d741b3f88b53083",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/home-phone.png",
+   "class": "site screenshot",
+   "bytes": 132620,
+   "sha256": "f7327c5605e9fd4d76c6533ad06a480974c581da2e73efd1b0d9a0f59daac366",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/terms-conditions-desktop.png",
+   "class": "site screenshot",
+   "bytes": 417540,
+   "sha256": "688530fedcb9f9ddbe025f8615f98249aa17c19f72eec03fac5facea17866918",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/terms-conditions-phone.png",
+   "class": "site screenshot",
+   "bytes": 327334,
+   "sha256": "234e11b6d248bb25ffd8581e10e7e9519a804dd7531e6f2e60df01cb87126079",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-1280x500-scrolled.png",
+   "class": "site screenshot",
+   "bytes": 40191,
+   "sha256": "cb0a07f9c3e16d4afffe6a857d709e8577e7f5e4b3404393946e3ad9591730e3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-focus-00.png",
+   "class": "site screenshot",
+   "bytes": 73366,
+   "sha256": "2c21ff729421bbfcbee7c4cc7c6ef5eb9e7dd94278e3881714d6215e6040e9ce",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-focus-08.png",
+   "class": "site screenshot",
+   "bytes": 73204,
+   "sha256": "1d721306d01bb6920aa44b11665db623f21d5b0789fcd6cfc4a2ab692c67f9ef",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-focus-12.png",
+   "class": "site screenshot",
+   "bytes": 73133,
+   "sha256": "8774b08d894752fa79eace12655ad223718418852a955609c317a7130b0be0a7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-nojs-deep3.png",
+   "class": "site screenshot",
+   "bytes": 32419,
+   "sha256": "ab5ecd3673c20ff51a40d657135f9f5e9193b959a78f5151af9a1e417c990913",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-nojs-direct.png",
+   "class": "site screenshot",
+   "bytes": 73080,
+   "sha256": "caf4f17bea56b093a8495306842da14e530f9116984b2acd481c02104a6d4a7b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-prefix-a_b_c.png",
+   "class": "site screenshot",
+   "bytes": 73080,
+   "sha256": "caf4f17bea56b093a8495306842da14e530f9116984b2acd481c02104a6d4a7b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-prefix-nope.png",
+   "class": "site screenshot",
+   "bytes": 73080,
+   "sha256": "caf4f17bea56b093a8495306842da14e530f9116984b2acd481c02104a6d4a7b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-root-a_b_c.png",
+   "class": "site screenshot",
+   "bytes": 73080,
+   "sha256": "caf4f17bea56b093a8495306842da14e530f9116984b2acd481c02104a6d4a7b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-root-nope.png",
+   "class": "site screenshot",
+   "bytes": 73080,
+   "sha256": "caf4f17bea56b093a8495306842da14e530f9116984b2acd481c02104a6d4a7b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-w1101x900.png",
+   "class": "site screenshot",
+   "bytes": 71567,
+   "sha256": "085e38ac2b239f59fd06b3f9643e7911816441fcf95a856078f37aa8fb6c4957",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-w1265x900.png",
+   "class": "site screenshot",
+   "bytes": 72908,
+   "sha256": "e2ad8804185951a666e04a06e6c7e8c6e93c8952d143b491d95c98cf1f663470",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-w1280x500.png",
+   "class": "site screenshot",
+   "bytes": 72292,
+   "sha256": "0830e0e5f2691578b9b07e33b8ad9b2b159f0796a0fe06d1c21447a0c070cd77",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-w1280x900.png",
+   "class": "site screenshot",
+   "bytes": 73080,
+   "sha256": "caf4f17bea56b093a8495306842da14e530f9116984b2acd481c02104a6d4a7b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-w1440x900.png",
+   "class": "site screenshot",
+   "bytes": 74864,
+   "sha256": "42a6b0de53de1ed58aa1074b2d3d4a45fdb645726329d530027249f77819e5c3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/404-desktop-r2-w1920x1080.png",
+   "class": "site screenshot",
+   "bytes": 79295,
+   "sha256": "da5c7b4e3a95bbe3cda36d44dfaa74b72d090892dbb79b31b43e7870018bde1c",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-full.png",
+   "class": "site screenshot",
+   "bytes": 76452,
+   "sha256": "eb8ed1b8ac232d113f00cf2a8b8b01e8fca7ba642eb98e8c4b06fbe70c3c2722",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-menu-btn-focus.png",
+   "class": "site screenshot",
+   "bytes": 207384,
+   "sha256": "875da28d0d0edd8ce33ead5043c629965c7a15e623021b96d122bb30e304fefc",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-menu-open-scrolled.png",
+   "class": "site screenshot",
+   "bytes": 17643,
+   "sha256": "8c560e5737b38d89ba2b5bdbb2de3faee30744d57a4f4dddeb1e5c4c27de8a63",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17748,
+   "sha256": "5accc38454766e0710edcc8192f3d13ebe74d7c3cccc0f5daddda677bcafc2c8",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-scrolled.png",
+   "class": "site screenshot",
+   "bytes": 30726,
+   "sha256": "18f2c33df905032628cd7834468a8df619f065ebf45919c4461ed745b764942b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-skip-focus.png",
+   "class": "site screenshot",
+   "bytes": 201958,
+   "sha256": "dc5deff71ed8f6bc179440012eecb686fa63ba27161a367704104d0310667584",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w195-zoom200.png",
+   "class": "site screenshot",
+   "bytes": 197113,
+   "sha256": "a8edd52bed0a6471e199652182f042c0df5be7dbe49d947bbcfee86596068e7e",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w320-menu.png",
+   "class": "site screenshot",
+   "bytes": 16708,
+   "sha256": "3f476381aa4553435f10e26ba21ea6c90ff9a65bb64b501f977ade4f69906b41",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w320.png",
+   "class": "site screenshot",
+   "bytes": 75308,
+   "sha256": "819a0aabcc9e7675e9872b9d9e6a80901ccc352d6f5b29ea77bbff363441a7be",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w360.png",
+   "class": "site screenshot",
+   "bytes": 76247,
+   "sha256": "1b5a36ee707229d6b5ca1c89a3d1cc772b84c54449b96e094f14a2a8635adc17",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w414.png",
+   "class": "site screenshot",
+   "bytes": 76208,
+   "sha256": "de4ecfded262afbb7571da8c8c5addb9ba5821deef254a7873f86ed6a8ad9668",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w600.png",
+   "class": "site screenshot",
+   "bytes": 89178,
+   "sha256": "b79e4b5d66adc93d3a15274654e5f2c4dae8abf01f4f7d7472de4b4f7797d503",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w760.png",
+   "class": "site screenshot",
+   "bytes": 91960,
+   "sha256": "465a9ae27c043c86b28cdb484987b9bcbd956d35ee4c8f08cf194178fa230de3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w761.png",
+   "class": "site screenshot",
+   "bytes": 98989,
+   "sha256": "e92ba032466a52dbc586d3c730fea3167e67dd3c77172c262b7d70eb42109b23",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/about-phone-r2-w844.png",
+   "class": "site screenshot",
+   "bytes": 101038,
+   "sha256": "de95213d796b34d6acf9eb01b7d79c5fe25888ff526e86d910414670ba3915fd",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-01.png",
+   "class": "site screenshot",
+   "bytes": 64401,
+   "sha256": "895192ee5220578e06be1b0c8b2caa48a2722e64b0a555dd18a2fad09d836058",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-02.png",
+   "class": "site screenshot",
+   "bytes": 64080,
+   "sha256": "8d61dd365e1ef05896c56ec24ad59aa2ab16edc32b10afc69d8e2d17f64e1938",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-04.png",
+   "class": "site screenshot",
+   "bytes": 64225,
+   "sha256": "a609dbd200f52406853085f9d034a39ddbd0d932de0d1f688af1a831f3dda399",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-07.png",
+   "class": "site screenshot",
+   "bytes": 64223,
+   "sha256": "d14d0110d172c05ce96e515ef56a4b41760260907db05fe05ed3aa48da658fd1",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-08.png",
+   "class": "site screenshot",
+   "bytes": 68355,
+   "sha256": "a31cee53f74b53a47a4564992105972ee66008b7cd4cff14846b64a978b498da",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-11.png",
+   "class": "site screenshot",
+   "bytes": 85180,
+   "sha256": "2ea96b5680cbc898913b1773cd97240fff62e53444764a3053433b76358293f6",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-17.png",
+   "class": "site screenshot",
+   "bytes": 73962,
+   "sha256": "38a2055a5075b58568a32c617a75963a2e8ad248961a18f23522c2a8d8f36f3a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-18.png",
+   "class": "site screenshot",
+   "bytes": 72462,
+   "sha256": "18acd4645c6bf75c4cb5f5352b0a3b131cb7ef9e82b3aef25bc11c8383763a72",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-19.png",
+   "class": "site screenshot",
+   "bytes": 72381,
+   "sha256": "04aa9867ff156d99a2fdbda765521c7273d49260aee7de3630161f465d65a813",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-21.png",
+   "class": "site screenshot",
+   "bytes": 72364,
+   "sha256": "9c189396d6d6b7b1fe06aff3bb721dcd7ccb2da7bcc0e461a898212e24e15086",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-focus-24.png",
+   "class": "site screenshot",
+   "bytes": 72366,
+   "sha256": "1cc1799c9e667941ac441b493584c836ec7de51a7afe4bde71eb7fb52845b24d",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-pill-hover.png",
+   "class": "site screenshot",
+   "bytes": 39416,
+   "sha256": "027ef29792de3f9086feadafc21a08ec72575f420af29015f997e1cc29caa423",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-scroll-1400.png",
+   "class": "site screenshot",
+   "bytes": 68526,
+   "sha256": "09d6a66435b0ae92ed25cb83ba84d25ef7416ce701bdeb8816fb7142ca4618cf",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-scroll-2300.png",
+   "class": "site screenshot",
+   "bytes": 75516,
+   "sha256": "076630ffa641476bd98a70c15a378f0d804a9ac918ce06a11541d1679e8518a9",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-scroll-500.png",
+   "class": "site screenshot",
+   "bytes": 68689,
+   "sha256": "820dd613af0f75084dfc5e4735d3ed3bad133c4ef799162702288b5b0fa2b303",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/book-online-desktop-r2-shifttab-end.png",
+   "class": "site screenshot",
+   "bytes": 71491,
+   "sha256": "c5ce1474122e3e76d49e3a39390502ce844a234217655f561b8af41abadc58ee",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/contact-phone-r2-320-full.png",
+   "class": "site screenshot",
+   "bytes": 89121,
+   "sha256": "21464d022b66b37bfec9a846890da1bb8da91ee3e8aa04df77194f472a2f747b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/contact-phone-r2-form-empty-submit.png",
+   "class": "site screenshot",
+   "bytes": 14174,
+   "sha256": "1b9d7acf700ba7dac8dab415b3cfe813359e053fe4484bd22b62592246820678",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/contact-phone-r2-form-sent-crop.png",
+   "class": "site screenshot",
+   "bytes": 23607,
+   "sha256": "d1b106a6af07bd02dd6f4d4ac26b1a5485c6b91adac9b4fc91d1d1e960544239",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/contact-phone-r2-form-sent.png",
+   "class": "site screenshot",
+   "bytes": 24508,
+   "sha256": "7ca7e37a57f2353576b9205ca0cd306f4d552199639d25858c8f32516a7470ee",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/contact-phone-r2-full.png",
+   "class": "site screenshot",
+   "bytes": 91764,
+   "sha256": "6f0c3c434f3b7a8cb6890707b4fe23b22d63315d858a69cb1caa9063721cd7d4",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/contact-phone-r2-menu-open.png",
+   "class": "site screenshot",
+   "bytes": 17656,
+   "sha256": "cf5206645603ca742e170c2577d6dece55cc56b1a68d5c6151587eff7e096c59",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/contact-phone-r2-scrolled-900.png",
+   "class": "site screenshot",
+   "bytes": 18349,
+   "sha256": "aeefdee7e687c7b1743ea0711a2a3ac3d727b86f19c4a468e97848e0b859191a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/english-refund-policy-desktop-r2-focus.png",
+   "class": "site screenshot",
+   "bytes": 146076,
+   "sha256": "cd543468ac2d75096095983eb01060f577582f16a597602a98efac2fc911d0fe",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 1111488,
+   "sha256": "0fd2ed5d2bec10575d8dc100e930e663a091c3e95ee790313b978d200f323e35",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-after-close.png",
+   "class": "site screenshot",
+   "bytes": 49754,
+   "sha256": "3656676ec08d9a1f1ad83e663ade9a9b55e9bc3495e0d8d39fb153abcb4fd0e1",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-lightbox-1.png",
+   "class": "site screenshot",
+   "bytes": 18828,
+   "sha256": "0cabd6ad1b1b3a38a4e18af1e43a89e77cec4a59b96de3ecfe92171a8b54372b",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-lightbox-1280x500.png",
+   "class": "site screenshot",
+   "bytes": 174108,
+   "sha256": "6b9e4c497f16110980dfb7828c50bef021c183ccace41a866c354baa3d735ecb",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-lightbox-13-keyboard.png",
+   "class": "site screenshot",
+   "bytes": 503137,
+   "sha256": "ab7e28217498c744558edcf4fc778e7c094c3f4023191586c2df9636071edd5f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-lightbox-focus.png",
+   "class": "site screenshot",
+   "bytes": 22342,
+   "sha256": "a7edead0a584dc3c875e2e5db788dfa05916443df6a1e47a666920894fcdde12",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-lightbox-portrait.png",
+   "class": "site screenshot",
+   "bytes": 573113,
+   "sha256": "26e4abb89350e7af2c8d8641ce403f466d442285c25e9c3c24e688a828616f90",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-scrolled-1500.png",
+   "class": "site screenshot",
+   "bytes": 389292,
+   "sha256": "d83f6a9ded572b3e75eb66963361069c8587691ed0e52d96b2dcb0ef26911859",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-shifttab-04.png",
+   "class": "site screenshot",
+   "bytes": 186580,
+   "sha256": "6562e67f9bc0099f45d88bbe89f0eea8e21cab3fc6f5109971cb9a29cabf73e3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-shifttab-11.png",
+   "class": "site screenshot",
+   "bytes": 395154,
+   "sha256": "4ef13e7950f5620296739aeecb50e7848cd5e7d2ffae6844a1893ba65a0c018f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-shifttab-21.png",
+   "class": "site screenshot",
+   "bytes": 47366,
+   "sha256": "3068ca0613eafaf3e8bd2a1ccb61f9e7e5642f9b7a0d06b6e00a093a8e281371",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-01.png",
+   "class": "site screenshot",
+   "bytes": 49957,
+   "sha256": "58c496d9a3da4c0d81d3947204fbd5d4f01c3eba23bc2db9c8b1a5cad4dbc05a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-02.png",
+   "class": "site screenshot",
+   "bytes": 49663,
+   "sha256": "cda76830278b5772a29771e8ed9a0fb4262f386dfefbf3e62f5fd257f1d63146",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-04.png",
+   "class": "site screenshot",
+   "bytes": 49813,
+   "sha256": "ae2e6a05508b165dc694195f75dfe0b377785b724ad8aacf43f856343fd0f017",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-08.png",
+   "class": "site screenshot",
+   "bytes": 49790,
+   "sha256": "c2577945bde5cf1ac590c8290ba65a77627aabc6e4ef2facfe5a2d326459beb0",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-09.png",
+   "class": "site screenshot",
+   "bytes": 49787,
+   "sha256": "7aa22e518d519c817ab6730f4a2404d4b968a2bc6ba29e8319389ab47f03fafc",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-15.png",
+   "class": "site screenshot",
+   "bytes": 393283,
+   "sha256": "6df3172d8fd43c68647febbf89b9cfd9e033ff86cff5935ede5022fd2436a68f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-20.png",
+   "class": "site screenshot",
+   "bytes": 381801,
+   "sha256": "a1109aa25aef85a569bcff15ad515fafb62d815baee2e8990e9118729f83b236",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-28.png",
+   "class": "site screenshot",
+   "bytes": 306321,
+   "sha256": "8406ddd36c1f2684ba87e1f114f70af15ffe4be84af04f066e985da890d58788",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-29.png",
+   "class": "site screenshot",
+   "bytes": 186654,
+   "sha256": "6e0cd2b331dbe499f82e8c0d9b8b3c4433f5fdf510d5762a9d7e1c7922e9b6c7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-30.png",
+   "class": "site screenshot",
+   "bytes": 186684,
+   "sha256": "ab2d9e83e8d71d6236671857bf6cc17fea37f1920c40f1122d8865363f98c561",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-32.png",
+   "class": "site screenshot",
+   "bytes": 186560,
+   "sha256": "133b397e90e86921d3d8adc43a7949cfc15195b728104552392ad924d9d07c33",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-35.png",
+   "class": "site screenshot",
+   "bytes": 186584,
+   "sha256": "cfd2cbe2bda1fcea6464b8a0aef3f56f5534e283b10ba1d9f6629d2f8e4867d8",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/gallery-desktop-tab-36.png",
+   "class": "site screenshot",
+   "bytes": 186730,
+   "sha256": "8833dc6da9642b35f7a7dc3b235d5dae858236423392e4c69f5ad2aa2aa6f253",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/home-phone-menu-open-scrolled.png",
+   "class": "site screenshot",
+   "bytes": 17656,
+   "sha256": "fe6f75b3cc8b4e7955f146d1ddef5964fd64655b68e5a4832add324e1c983918",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/terms-conditions-phone-r2-landscape-menu.png",
+   "class": "site screenshot",
+   "bytes": 16158,
+   "sha256": "513276a62d5ec4623872178a87693fdef0a5235fa637f47c6d134a93aa4cbb23",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/terms-conditions-phone-r2-menu-open-scrolled.png",
+   "class": "site screenshot",
+   "bytes": 76740,
+   "sha256": "7f265f2b5c98cb975cd7840171d877538641050015cc85be12d636ceb59e5db8",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/terms-conditions-phone-r2-scrolled.png",
+   "class": "site screenshot",
+   "bytes": 336503,
+   "sha256": "445be5344b77162ec2251a2cf584037c9005d31a555ef1ff6ae8aae2bfbe41a7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/terms-conditions-phone-r2-skip-focus.png",
+   "class": "site screenshot",
+   "bytes": 274116,
+   "sha256": "05e5f4595e90bd394cdfdd47320174e20b29ced6668b8b69962590efa60f76e4",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/review/terms-conditions-phone-r2-w320.png",
+   "class": "site screenshot",
+   "bytes": 345731,
+   "sha256": "1f1bacf5bf527b9147c24b77833dae5df268f15843fa13f089cb858e69c4c092",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/about-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 114904,
+   "sha256": "5a4ab718ad60e9fe09aeaf2cce28a3e92586cccebfd85287a88f7c7da51e9337",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/about-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 117727,
+   "sha256": "ffc698c4f4d35918fc920695d4e8a638a29ed50e600f72fe64ae8e926c366073",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/about-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 121115,
+   "sha256": "165385e3003f82bb9025cb067c76e323077122bf52f5372b4a1718ba1b250a0f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/about-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 115201,
+   "sha256": "c0aa6a713398a66aa99135d0393b20752703b47db4238b9ecf477d927ba07718",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/about-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 76518,
+   "sha256": "b916fdcd8bb191bb37f650205280da30e19ebc61fcbc21e7473da1215bc9177f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/accessibility-statement-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 235870,
+   "sha256": "4428e9eb59529850a7c78870125885701df8d89c24dcd371bedb0036cce7138f",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/accessibility-statement-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 240076,
+   "sha256": "baa66b3f50ecc2f206a751abefe4f61f6df705df37bd2e5ee54437f6b54d3604",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/accessibility-statement-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 247819,
+   "sha256": "41d9b8e0d640ef215a83b03add45188d49978c7b8597636f01ffcf448b937ae1",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/accessibility-statement-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 235735,
+   "sha256": "d409f59db30dc9c3394d624e7afc9b1ed22d95cb6cc18c1ec6fba7283e503c3a",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/accessibility-statement-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 153398,
+   "sha256": "d7d743cdb308dc5482c28861ecb3d429ac43a6b757d5b2cbb82b8d1e1a43fb6e",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/book-online-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 211307,
+   "sha256": "923090648531c105a0d2a9b11f6f99e6fb04ada596f76d1fa0c951c2ed225164",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/book-online-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 215942,
+   "sha256": "edca05fc3f5d79e29aa22f340252e75b53a0dfb9fdca3cd8894672f38ac1d2f0",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/book-online-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 225528,
+   "sha256": "0b8fc95b261a731def81aa927ba39ccc7edca3eee6095c402cd2fce4401a7f30",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/book-online-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 211255,
+   "sha256": "b61a463084de8f33802a99d2e1ba3913437216b7394f17644b898ca6508d1d71",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/book-online-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 209704,
+   "sha256": "3a8174c763054ccb1de2f5e63ab9d5bd6a6734a71408ee8433ffa8068c6ba192",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/contact-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 117562,
+   "sha256": "ad684280d3daeb8e645cbf57982acecfa7cb90d658e9a3c81584798bf9c7e598",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/contact-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 120672,
+   "sha256": "e846632d3baa98fa5fce28546b54469c3b483279cd93a5105e98ae25b3bd7f27",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/contact-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 123745,
+   "sha256": "1a710801dd21fb129569a7438183a695d1fa22e64cc13fbe43b2e8bf8e7f8800",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/contact-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 118098,
+   "sha256": "0d8a64bcb6adec11cc7a99d6322981366c396cff2c035add88629f87cfc74f64",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/contact-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 91764,
+   "sha256": "6f0c3c434f3b7a8cb6890707b4fe23b22d63315d858a69cb1caa9063721cd7d4",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-privacy-policy-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 377078,
+   "sha256": "7bec09da40cf1759498cd420e2c21c652c746f715976265149310128efbd244e",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-privacy-policy-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 381718,
+   "sha256": "5fe1816b7a825c4875f70ed9adfd07938b4fffd56920cae8876c7f082cbf44d0",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-privacy-policy-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 389777,
+   "sha256": "dee4a3ed6483fcff6c8f7b6fd734a7f450fb0497c2744b476cc5c4e2754b0e47",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-privacy-policy-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 377576,
+   "sha256": "15353bc730b7bd12587a31b2c094e150503beecb81d77794d1a26dbab25aecb7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-privacy-policy-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 297046,
+   "sha256": "2dd3fd31a051796676db107648e47005e16789a2f2620c34694f546268f9f778",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-refund-policy-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 205553,
+   "sha256": "fd90bee3a7be40d48612ee0792c744474e859e6356ef84dadab28d760ecfb337",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-refund-policy-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 209071,
+   "sha256": "b8be883e65e6c6252b1642dbdc937ed647d24575f6118e1b0d2dbe3e77b3c997",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-refund-policy-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 213973,
+   "sha256": "f3e1872e3862aa2331d55a688c52d6fd44c89bf413a68b08e3cd36bfebef296d",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-refund-policy-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 206125,
+   "sha256": "d6c44b4653a360f9450f20b3f3dd86596a72cf03ca3928fe46357ce502edd0a3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/english-refund-policy-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 157101,
+   "sha256": "5b53b43df1d0ed7664446fb8c8e6e5a115e3ea7134a2de1ac3a39c37dac54ae3",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/gallery-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 812292,
+   "sha256": "665bdad3191d91300d5ce8fe54329ec6afafba5e907240f710bf85a08cd5b7e7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/gallery-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 1100329,
+   "sha256": "fc6f2d61bb9c5f1379be06a04339f33461ac232ce1088a37d2aa3d00a9c513a6",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/gallery-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 1111488,
+   "sha256": "0fd2ed5d2bec10575d8dc100e930e663a091c3e95ee790313b978d200f323e35",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/gallery-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 828429,
+   "sha256": "6ae32386ffef8ba5acff6ccbd9f6a2c9ed03e153f5c8eac263077edb70ebf913",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/gallery-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 226203,
+   "sha256": "150ec6d47120d975846c4476261bbea767430a773ed07b0c1f978c3508d46fb7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/home-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 210062,
+   "sha256": "61414f80239e7bdc40c80daa044d4aad72b65f06807c2b8ab00315d52a29673e",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/home-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 213971,
+   "sha256": "94c88fea2d47a9043858889c98d064735f75b4031fae4d64a3373b5cdf2f5b77",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/home-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 222036,
+   "sha256": "bb37fe7fb8d6c04d329f16ae2679543d4014fecc1cb83155946f86b7365dd816",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/home-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 210102,
+   "sha256": "f6a1e857a566cc3876fe858eab2c6bdaa65b20e6852221de8d741b3f88b53083",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/home-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 132620,
+   "sha256": "f7327c5605e9fd4d76c6533ad06a480974c581da2e73efd1b0d9a0f59daac366",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/terms-conditions-desktop-1265-full.png",
+   "class": "site screenshot",
+   "bytes": 417185,
+   "sha256": "080d9634a35f2d5c89b81dfbffc328db0adbbcc9adb542277f050a6c9a086c61",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/terms-conditions-desktop-1440-full.png",
+   "class": "site screenshot",
+   "bytes": 422419,
+   "sha256": "322e56fa755c2595f57813401a38a981fa1b38727ea1e7f8156d958b83d291a7",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/terms-conditions-desktop-1920-full.png",
+   "class": "site screenshot",
+   "bytes": 430528,
+   "sha256": "5e4501926bf455fb0a8b67bd00c0706c909e50c319000e874e6ac1469e523596",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/terms-conditions-desktop-full.png",
+   "class": "site screenshot",
+   "bytes": 417540,
+   "sha256": "688530fedcb9f9ddbe025f8615f98249aa17c19f72eec03fac5facea17866918",
+   "detail": ""
+  },
+  {
+   "file": "qa/screenshots/visual_compare/terms-conditions-phone-full.png",
+   "class": "site screenshot",
+   "bytes": 327334,
+   "sha256": "234e11b6d248bb25ffd8581e10e7e9519a804dd7531e6f2e60df01cb87126079",
+   "detail": ""
+  }
+ ]
+}

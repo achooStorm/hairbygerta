@@ -1,0 +1,453 @@
+{
+ "ok": true,
+ "base": "local site folder",
+ "generated": "2026-10-13 07:38:26",
+ "results": [
+  {
+   "page": "home",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "-",
+   "check": "jsonld-embedded",
+   "ok": true,
+   "expected": "exactly one JSON-LD script in the page, with the same content as seo/jsonld-home.json",
+   "actual": "one JSON-LD script, same content as seo/jsonld-home.json",
+   "evidence": "index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "gallery/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "gallery/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "book-online/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "book-online/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "about/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "about/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "contact/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "contact/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "english-refund-policy/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "english-refund-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "accessibility-statement/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "accessibility-statement/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "english-privacy-policy/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "english-privacy-policy/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "terms-conditions/index.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "terms-conditions/index.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "-",
+   "check": "html-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu HTML validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "404.html, vnu 26.10.12 (973e40b)",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "-",
+   "check": "jsonld-absent",
+   "ok": true,
+   "expected": "no JSON-LD script on this page (the build contract puts it on the home page only)",
+   "actual": "no JSON-LD script",
+   "evidence": "404.html",
+   "owner": "PAGES"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "css-valid",
+   "ok": true,
+   "expected": "0 errors from the vnu CSS validator",
+   "actual": "0 errors, 0 warnings, 0 notes",
+   "evidence": "css/style.css, vnu 26.10.12 (973e40b)",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "sitemap-wellformed",
+   "ok": true,
+   "expected": "well formed XML",
+   "actual": "well formed, 707 bytes",
+   "evidence": "sitemap.xml",
+   "owner": "SEO"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "sitemap-urls",
+   "ok": true,
+   "expected": "exactly these 9 addresses: https://www.hairbygerta.com/, https://www.hairbygerta.com/gallery/, https://www.hairbygerta.com/book-online/, https://www.hairbygerta.com/about/, https://www.hairbygerta.com/contact/, https://www.hairbygerta.com/english-refund-policy/, https://www.hairbygerta.com/accessibility-statement/, https://www.hairbygerta.com/english-privacy-policy/, https://www.hairbygerta.com/terms-conditions/",
+   "actual": "9 addresses, exactly the expected ones",
+   "evidence": "sitemap.xml lists 9 addresss",
+   "owner": "SEO"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "robots-allows-all",
+   "ok": true,
+   "expected": "robots.txt blocks nothing: no Disallow rule with a path, for any crawler",
+   "actual": "User-agent: *, Allow: /",
+   "evidence": "robots.txt",
+   "owner": "SEO"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "robots-sitemap",
+   "ok": true,
+   "expected": "one line  Sitemap: https://www.hairbygerta.com/sitemap.xml",
+   "actual": "Sitemap: https://www.hairbygerta.com/sitemap.xml",
+   "evidence": "robots.txt",
+   "owner": "SEO"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "nojekyll-empty",
+   "ok": true,
+   "expected": ".nojekyll exists and is empty (0 bytes)",
+   "actual": "empty (0 bytes)",
+   "evidence": ".nojekyll",
+   "owner": "SEO"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "jsonld-file-parses",
+   "ok": true,
+   "expected": "seo/jsonld-home.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 13 keys, 1155 bytes)",
+   "evidence": "seo/jsonld-home.json",
+   "owner": "SEO"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "jsonld-facts",
+   "ok": true,
+   "expected": "the facts in seo/jsonld-home.json are the facts of the brief: name Hair & Makeup by Gerta, telephone +1-347-671-5095, email info@hairbygerta.com, url https://www.hairbygerta.com/, address 644 Forest Ave, Staten Island, NY, 10310, open Tuesday to Saturday from 09:00 to 17:00, sameAs the Facebook and the Instagram address",
+   "actual": "all facts match the brief",
+   "evidence": "seo/jsonld-home.json",
+   "owner": "SEO"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/site.json",
+   "ok": true,
+   "expected": "content/site.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 23 keys, 4244 bytes)",
+   "evidence": "content/site.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/home.json",
+   "ok": true,
+   "expected": "content/home.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 10 keys, 6470 bytes)",
+   "evidence": "content/home.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/gallery.json",
+   "ok": true,
+   "expected": "content/gallery.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 8 keys, 4446 bytes)",
+   "evidence": "content/gallery.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/book-online.json",
+   "ok": true,
+   "expected": "content/book-online.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 9 keys, 6236 bytes)",
+   "evidence": "content/book-online.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/about.json",
+   "ok": true,
+   "expected": "content/about.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 9 keys, 5283 bytes)",
+   "evidence": "content/about.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/contact.json",
+   "ok": true,
+   "expected": "content/contact.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 11 keys, 6479 bytes)",
+   "evidence": "content/contact.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/english-refund-policy.json",
+   "ok": true,
+   "expected": "content/english-refund-policy.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 7 keys, 3863 bytes)",
+   "evidence": "content/english-refund-policy.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/accessibility-statement.json",
+   "ok": true,
+   "expected": "content/accessibility-statement.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 7 keys, 5597 bytes)",
+   "evidence": "content/accessibility-statement.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/english-privacy-policy.json",
+   "ok": true,
+   "expected": "content/english-privacy-policy.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 7 keys, 12548 bytes)",
+   "evidence": "content/english-privacy-policy.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/terms-conditions.json",
+   "ok": true,
+   "expected": "content/terms-conditions.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 7 keys, 10320 bytes)",
+   "evidence": "content/terms-conditions.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses content/404.json",
+   "ok": true,
+   "expected": "content/404.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 8 keys, 1068 bytes)",
+   "evidence": "content/404.json",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "json-parses image-manifest.json",
+   "ok": true,
+   "expected": "image-manifest.json parses as strict UTF-8 JSON",
+   "actual": "parses (object with 5 keys, 52493 bytes)",
+   "evidence": "image-manifest.json",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "js-syntax",
+   "ok": true,
+   "expected": "js/site.js passes node --check",
+   "actual": "no syntax error",
+   "evidence": "js/site.js",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "js-booking-url-first",
+   "ok": true,
+   "expected": "the first statement of js/site.js is exactly  var BOOKING_URL = \"\";  or  var BOOKING_URL = \"https://...\";  (empty until the owner pastes the Square link, then the link between the quote marks; build contract, decision 19)",
+   "actual": "the empty form:  var BOOKING_URL = \"\";  No booking link yet, so the Book Now buttons call the phone number",
+   "evidence": "js/site.js",
+   "owner": "INTERACTION",
+   "form": "empty",
+   "booking_url": ""
+  }
+ ],
+ "script": "qa/check_html.py",
+ "source": "files in the site folder",
+ "validator": "vnu 26.10.12 (973e40b)",
+ "booking_url": {
+  "form": "empty",
+  "link": ""
+ },
+ "last_run": {
+  "pages": [
+   "home",
+   "gallery",
+   "book-online",
+   "about",
+   "contact",
+   "english-refund-policy",
+   "accessibility-statement",
+   "english-privacy-policy",
+   "terms-conditions",
+   "404"
+  ],
+  "checks": 42,
+  "failed": 0,
+  "warnings": 0
+ }
+}

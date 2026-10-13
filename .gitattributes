@@ -1,0 +1,40 @@
+# Line endings and file types for git (hairbygerta.com).
+#
+# Text files are stored and checked out with LF line endings on every
+# computer, also on Windows. That keeps the pages byte for byte the same in
+# every clone, so "python tools/build_pages.py" answers "unchanged" when
+# nothing changed, and the commit guard tools/hooks/pre-commit keeps working.
+* text=auto eol=lf
+
+# Files that must be text with LF whatever git guesses
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.webmanifest text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.nojekyll text eol=lf
+CNAME text eol=lf
+tools/hooks/pre-commit text eol=lf
+
+# Pictures and other binary files: git never changes a byte of them
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.avif binary
+*.bmp binary
+*.tif binary
+*.tiff binary
+*.heic binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary

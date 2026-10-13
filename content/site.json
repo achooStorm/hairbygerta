@@ -1,0 +1,68 @@
+{
+  "business_name": "Hair & Makeup by Gerta",
+  "stylist": "Gerta Lila",
+  "role": "Hair Stylist & Makeup Artist",
+  "salon": "Le Vigne Hair Salon",
+  "address_lines": [
+    "Le Vigne Hair Salon",
+    "644 Forest Ave",
+    "Staten Island, NY 10310"
+  ],
+  "address_one_line": "644 Forest Ave, Staten Island, NY 10310",
+  "phone": "347-671-5095",
+  "tel_href": "tel:+1-347-671-5095",
+  "email": "info@hairbygerta.com",
+  "mailto_href": "mailto:info@hairbygerta.com",
+  "hours": "Tuesday - Saturday, 9 AM - 5 PM",
+  "maps_href": "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310",
+  "social": [
+    {
+      "name": "Facebook",
+      "href": "https://www.facebook.com/profile.php?id=61588784402912",
+      "label": "Facebook"
+    },
+    {
+      "name": "Instagram",
+      "href": "https://www.instagram.com/hairbygerta/",
+      "label": "Instagram"
+    }
+  ],
+  "nav": [
+    { "label": "Home", "path": "/" },
+    { "label": "Gallery", "path": "/gallery/" },
+    { "label": "Book Online", "path": "/book-online/" },
+    { "label": "About", "path": "/about/" },
+    { "label": "Contact", "path": "/contact/" }
+  ],
+  "footer": {
+    "name": "Gerta Lila",
+    "role": "Hair Stylist & Makeup Artist",
+    "policy_links": [
+      { "label": "Refund & Cancellation Policy", "path": "/english-refund-policy/" },
+      { "label": "Accessibility Statement", "path": "/accessibility-statement/" },
+      { "label": "Privacy Policy", "path": "/english-privacy-policy/" },
+      { "label": "Terms and Conditions", "path": "/terms-conditions/" }
+    ]
+  },
+  "copyright": "Hair & Makeup by Gerta",
+  "skip_link": "Skip to main content",
+  "logo_label": "Hair & Makeup by Gerta home",
+  "fonts_href": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,700&family=Figtree:wght@400;700&display=swap",
+  "site_url": "https://www.hairbygerta.com",
+  "og_image": "/images/g12.jpg",
+  "og_site_name": "Hair & Makeup by Gerta",
+  "notes": [
+    "No typo was fixed. The header and footer text is the same on all nine live Wix pages and is copied here unchanged, in reading order: nav, footer name, footer role, phone, email, the three address lines, the four policy links.",
+    "skip_link: the live Wix pages show the built-in Wix link 'Skip to Main Content'. This file uses 'Skip to main content', the wording the build contract (section 6) prescribes.",
+    "og_site_name: the live Wix tag og:site_name says 'Hairbygerta'. This file uses the business name 'Hair & Makeup by Gerta' on purpose.",
+    "og_image: the live Wix pages have no og:image tag. g12 is one of the owner's own photos and is licensed for use outside Wix. The generator joins site_url and og_image.",
+    "copyright: this line is not on the Wix site and is added on purpose. The generator prints the copyright sign, the year, then this text.",
+    "logo_label: not visible text. It is the accessible name of the logo link in the header. On Wix the logo image carries the alt text 'Hair & Makeup by Gerta logo' and the link has no name of its own.",
+    "social: name is the network, label is the accessible name of the icon link. The live Wix icon links carry the labels 'Facebook' and 'Instagram', kept as they are.",
+    "address_lines: the three lines of the live footer, salon name first. address_one_line: the street address as the live home page shows it in its maps link, without the pin emoji and without the salon name.",
+    "hours: written with plain hyphens (U+002D) and plain spaces, exactly as the live Wix text.",
+    "fonts_href: Google Fonts Bodoni Moda (italic 400 and 700) and Figtree (400 and 700) with display=swap. They stand in for Didot and Proxima Nova, which are licensed for Wix only. The address holds a plain & character and the generator escapes it.",
+    "Paths in nav and footer.policy_links are site paths with a leading and a trailing slash. The generator turns them into relative links.",
+    "For information: on Wix the footer name and role are links to the home page, and the footer phone number is a tel link in the phone layout only. The build contract prints name and role as plain text and the phone number as a tel link at every width. The text is the same either way."
+  ]
+}

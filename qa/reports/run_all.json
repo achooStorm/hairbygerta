@@ -1,0 +1,200 @@
+{
+ "ok": true,
+ "base": "local site folder",
+ "generated": "2026-10-13 07:40:13",
+ "results": [
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/check_html.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/check_html.json and every check in it passes",
+   "actual": "passed, 42 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/check_page.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/check_page.json and every check in it passes",
+   "actual": "passed, 422 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/check_content.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/check_content.json and every check in it passes",
+   "actual": "passed, 253 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/check_behavior.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/check_behavior.json and every check in it passes",
+   "actual": "passed, 272 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/check_a11y.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/check_a11y.json and every check in it passes",
+   "actual": "passed, 36 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/visual_compare.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/visual_compare.json and every check in it passes",
+   "actual": "passed, 404 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/licensing_check.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/licensing.json and every check in it passes",
+   "actual": "passed, 33 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "qa/check_repo.py",
+   "ok": true,
+   "expected": "the script runs, writes qa/reports/check_repo.json and every check in it passes",
+   "actual": "passed, 29 checks",
+   "evidence": "qa/REPORT.md",
+   "owner": "QA",
+   "owners": {}
+  }
+ ],
+ "script": "qa/run_all.py",
+ "exit_code": 0,
+ "report": "qa/REPORT.md",
+ "failed_checks": 0,
+ "licensing_hard_stop": false,
+ "pages": [
+  "home",
+  "gallery",
+  "book-online",
+  "about",
+  "contact",
+  "english-refund-policy",
+  "accessibility-statement",
+  "english-privacy-policy",
+  "terms-conditions",
+  "404"
+ ],
+ "viewports": [
+  "desktop",
+  "phone"
+ ],
+ "seconds": 114.0,
+ "open_questions": "",
+ "families": [
+  {
+   "name": "html",
+   "script": "qa/check_html.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 7.7,
+   "checks": 42,
+   "failed": 0,
+   "base": "local site folder"
+  },
+  {
+   "name": "page",
+   "script": "qa/check_page.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 92.5,
+   "checks": 422,
+   "failed": 0,
+   "base": "local site folder"
+  },
+  {
+   "name": "content",
+   "script": "qa/check_content.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 2.2,
+   "checks": 253,
+   "failed": 0,
+   "base": "local site folder"
+  },
+  {
+   "name": "behavior",
+   "script": "qa/check_behavior.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 90.8,
+   "checks": 272,
+   "failed": 0,
+   "base": "local site folder"
+  },
+  {
+   "name": "a11y",
+   "script": "qa/check_a11y.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 73.8,
+   "checks": 36,
+   "failed": 0,
+   "base": "local site folder"
+  },
+  {
+   "name": "visual",
+   "script": "qa/visual_compare.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 113.9,
+   "checks": 404,
+   "failed": 0,
+   "base": "local site folder"
+  },
+  {
+   "name": "licensing",
+   "script": "qa/licensing_check.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 16.2,
+   "checks": 33,
+   "failed": 0,
+   "base": "local site folder"
+  },
+  {
+   "name": "repo",
+   "script": "qa/check_repo.py",
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 2.1,
+   "checks": 29,
+   "failed": 0,
+   "base": "local site folder"
+  }
+ ]
+}

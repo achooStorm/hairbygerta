@@ -1,0 +1,1674 @@
+{
+  "images": {
+    "logo": {
+      "status": "allowed",
+      "file": "images/logo.jpg",
+      "width": 225,
+      "height": 225,
+      "bytes": 10497,
+      "sha256": "0a5da586b0fd3b479e52db6b8f3ec51278df09e12f88b528bedb3119e52748f6",
+      "sm": null,
+      "webp": null
+    },
+    "g12": {
+      "status": "allowed",
+      "file": "images/g12.jpg",
+      "width": 900,
+      "height": 1600,
+      "bytes": 250208,
+      "sha256": "f316a916e98adf76c7a693b85f8caa0d9d1398c075324b5c981b30f64da07636",
+      "sm": {
+        "file": "images/sm/g12.jpg",
+        "width": 450,
+        "height": 800,
+        "bytes": 53858,
+        "sha256": "256b2b6b11e8f6a97b1db6cb07ed4a0bcb3f64ca62b3c81b0e7b287e26712168"
+      },
+      "webp": {
+        "file": "images/g12.webp",
+        "width": 900,
+        "height": 1600,
+        "bytes": 153866,
+        "sha256": "63a862fd2c36d6be078a2fda60c1e3176e6ef193db512a7c017f9220d2e0a188",
+        "sm": {
+          "file": "images/sm/g12.webp",
+          "width": 450,
+          "height": 800,
+          "bytes": 40788,
+          "sha256": "4bd976a54a7b668201c7e4389e0a089fc6cee7c84e1618c6d1fe5d833e23995c"
+        }
+      }
+    },
+    "g13": {
+      "status": "allowed",
+      "file": "images/g13.jpg",
+      "width": 900,
+      "height": 1600,
+      "bytes": 225296,
+      "sha256": "3abedefb099554e10b83d0776d0aa13f38fadb4d12f36660390a4ce8db11818f",
+      "sm": {
+        "file": "images/sm/g13.jpg",
+        "width": 450,
+        "height": 800,
+        "bytes": 53208,
+        "sha256": "c831134985cd38685661df819d15ea1621a38bb74449cb6ff9d259ac149da8e2"
+      },
+      "webp": {
+        "file": "images/g13.webp",
+        "width": 900,
+        "height": 1600,
+        "bytes": 138520,
+        "sha256": "11a23c8394304473152028c63482148fd1f230097e657316f7dbc01912f210c3",
+        "sm": {
+          "file": "images/sm/g13.webp",
+          "width": 450,
+          "height": 800,
+          "bytes": 41494,
+          "sha256": "0e2a8b19fd1a8bb274190956f1a39fece87224aaeeba44e776804a58e636f1be"
+        }
+      }
+    },
+    "about-salon": {
+      "status": "placeholder",
+      "file": "images/about-salon.jpg",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 16283,
+      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "sm": {
+        "file": "images/sm/about-salon.jpg",
+        "width": 600,
+        "height": 800,
+        "bytes": 5044,
+        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+      },
+      "webp": null
+    },
+    "brunette-balayage": {
+      "status": "placeholder",
+      "file": "images/brunette-balayage.jpg",
+      "width": 1066,
+      "height": 1600,
+      "bytes": 14418,
+      "sha256": "bb372924ae78a58f61a6d01d052d19d8693959e29747a1c6ac13f34995db34b1",
+      "sm": {
+        "file": "images/sm/brunette-balayage.jpg",
+        "width": 533,
+        "height": 800,
+        "bytes": 4410,
+        "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9"
+      },
+      "webp": null
+    },
+    "copper-waves": {
+      "status": "placeholder",
+      "file": "images/copper-waves.jpg",
+      "width": 1067,
+      "height": 1600,
+      "bytes": 14435,
+      "sha256": "8f632de1c8d4e210635386b11a896fcd310e9fcbb310bf88daa3e94e35312f11",
+      "sm": {
+        "file": "images/sm/copper-waves.jpg",
+        "width": 533,
+        "height": 800,
+        "bytes": 4410,
+        "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9"
+      },
+      "webp": null
+    },
+    "foils-highlights": {
+      "status": "placeholder",
+      "file": "images/foils-highlights.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/foils-highlights.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g01": {
+      "status": "placeholder",
+      "file": "images/g01.jpg",
+      "width": 1600,
+      "height": 843,
+      "bytes": 11236,
+      "sha256": "8db791f6a003db05b8b2b0ed2fb760062ce7b31275881aa447ba837560e6da2e",
+      "sm": {
+        "file": "images/sm/g01.jpg",
+        "width": 800,
+        "height": 422,
+        "bytes": 3474,
+        "sha256": "f9b999183f8887646862c5229910ba5dd5e75f594c7a2ddfc29c7b37c8a5ec09"
+      },
+      "webp": null
+    },
+    "g02": {
+      "status": "placeholder",
+      "file": "images/g02.jpg",
+      "width": 1600,
+      "height": 900,
+      "bytes": 12136,
+      "sha256": "421128594541e33f042f5072f71f9c65723548da46899eb90809d7c379708588",
+      "sm": {
+        "file": "images/sm/g02.jpg",
+        "width": 800,
+        "height": 450,
+        "bytes": 3685,
+        "sha256": "41afab4b2961a943d89550390ab8890057ad36eb79a101b65125e5015538de00"
+      },
+      "webp": null
+    },
+    "g04": {
+      "status": "placeholder",
+      "file": "images/g04.jpg",
+      "width": 1600,
+      "height": 1065,
+      "bytes": 14359,
+      "sha256": "e27715ab0c37976ea30eb9789316f5e0ff2c67d7991326d48ea2176b0ca4c2b5",
+      "sm": {
+        "file": "images/sm/g04.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g05": {
+      "status": "placeholder",
+      "file": "images/g05.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/g05.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g06": {
+      "status": "placeholder",
+      "file": "images/g06.jpg",
+      "width": 1600,
+      "height": 985,
+      "bytes": 13254,
+      "sha256": "a17a05ba41e776b41841ccf6b3ad4b58d9afde7c7a29c57508beabe756919739",
+      "sm": {
+        "file": "images/sm/g06.jpg",
+        "width": 800,
+        "height": 493,
+        "bytes": 4008,
+        "sha256": "11ff1dc87d1f5314c64fb76a3c662cedbad618ec6a09ed88d6dcd7a663692608"
+      },
+      "webp": null
+    },
+    "g07": {
+      "status": "placeholder",
+      "file": "images/g07.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/g07.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g10": {
+      "status": "placeholder",
+      "file": "images/g10.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/g10.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g14": {
+      "status": "placeholder",
+      "file": "images/g14.jpg",
+      "width": 1600,
+      "height": 1064,
+      "bytes": 14359,
+      "sha256": "fbf11335bec48918f300a654e892173e7bfeeeda519bc1363c92f671efb7b5c4",
+      "sm": {
+        "file": "images/sm/g14.jpg",
+        "width": 800,
+        "height": 532,
+        "bytes": 4441,
+        "sha256": "304608beab9afcf041c46103770d7d0f15790c0cb36678143fcaee562f3d8785"
+      },
+      "webp": null
+    },
+    "g15": {
+      "status": "placeholder",
+      "file": "images/g15.jpg",
+      "width": 1067,
+      "height": 1600,
+      "bytes": 14435,
+      "sha256": "8f632de1c8d4e210635386b11a896fcd310e9fcbb310bf88daa3e94e35312f11",
+      "sm": {
+        "file": "images/sm/g15.jpg",
+        "width": 533,
+        "height": 800,
+        "bytes": 4410,
+        "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9"
+      },
+      "webp": null
+    },
+    "g16": {
+      "status": "placeholder",
+      "file": "images/g16.jpg",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 16283,
+      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "sm": {
+        "file": "images/sm/g16.jpg",
+        "width": 600,
+        "height": 800,
+        "bytes": 5044,
+        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+      },
+      "webp": null
+    },
+    "g17": {
+      "status": "placeholder",
+      "file": "images/g17.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/g17.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g18": {
+      "status": "placeholder",
+      "file": "images/g18.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/g18.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g19": {
+      "status": "placeholder",
+      "file": "images/g19.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/g19.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "g20": {
+      "status": "placeholder",
+      "file": "images/g20.jpg",
+      "width": 1600,
+      "height": 1064,
+      "bytes": 14359,
+      "sha256": "fbf11335bec48918f300a654e892173e7bfeeeda519bc1363c92f671efb7b5c4",
+      "sm": {
+        "file": "images/sm/g20.jpg",
+        "width": 800,
+        "height": 532,
+        "bytes": 4441,
+        "sha256": "304608beab9afcf041c46103770d7d0f15790c0cb36678143fcaee562f3d8785"
+      },
+      "webp": null
+    },
+    "g21": {
+      "status": "placeholder",
+      "file": "images/g21.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/g21.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "home-smile": {
+      "status": "placeholder",
+      "file": "images/home-smile.jpg",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 16283,
+      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "sm": {
+        "file": "images/sm/home-smile.jpg",
+        "width": 600,
+        "height": 800,
+        "bytes": 5044,
+        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+      },
+      "webp": null
+    },
+    "home-styling": {
+      "status": "placeholder",
+      "file": "images/home-styling.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/home-styling.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "home-waves": {
+      "status": "placeholder",
+      "file": "images/home-waves.jpg",
+      "width": 1600,
+      "height": 900,
+      "bytes": 12136,
+      "sha256": "421128594541e33f042f5072f71f9c65723548da46899eb90809d7c379708588",
+      "sm": {
+        "file": "images/sm/home-waves.jpg",
+        "width": 800,
+        "height": 450,
+        "bytes": 3685,
+        "sha256": "41afab4b2961a943d89550390ab8890057ad36eb79a101b65125e5015538de00"
+      },
+      "webp": null
+    },
+    "makeup-red-lips": {
+      "status": "placeholder",
+      "file": "images/makeup-red-lips.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 10761,
+      "sha256": "f783db3d1ebb702f6fdafcc1669931c767f872d5d38eca086ec754fdc94971a1",
+      "sm": {
+        "file": "images/sm/makeup-red-lips.jpg",
+        "width": 800,
+        "height": 401,
+        "bytes": 3258,
+        "sha256": "1ff5b9e8918e003caafbfe1ebf37bd52a3f43fb77b000f2d4f9e93fb9e1154ce"
+      },
+      "webp": null
+    },
+    "meet-extensions": {
+      "status": "placeholder",
+      "file": "images/meet-extensions.jpg",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 16283,
+      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "sm": {
+        "file": "images/sm/meet-extensions.jpg",
+        "width": 600,
+        "height": 800,
+        "bytes": 5044,
+        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+      },
+      "webp": null
+    },
+    "svc-bridal": {
+      "status": "placeholder",
+      "file": "images/svc-bridal.jpg",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 14399,
+      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "sm": {
+        "file": "images/sm/svc-bridal.jpg",
+        "width": 800,
+        "height": 533,
+        "bytes": 4452,
+        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+      },
+      "webp": null
+    },
+    "svc-haircut": {
+      "status": "placeholder",
+      "file": "images/svc-haircut.jpg",
+      "width": 411,
+      "height": 523,
+      "bytes": 2627,
+      "sha256": "184fddacab9c9f8961c15a59ef34bb4741220fcda8e37d310f66dd5336fc284d",
+      "sm": {
+        "file": "images/sm/svc-haircut.jpg",
+        "width": 411,
+        "height": 523,
+        "bytes": 2627,
+        "sha256": "184fddacab9c9f8961c15a59ef34bb4741220fcda8e37d310f66dd5336fc284d"
+      },
+      "webp": null
+    }
+  },
+  "icons": [
+    {
+      "file": "favicon.ico",
+      "status": "allowed-derivative",
+      "derived_from": "images/logo.jpg",
+      "sizes": [
+        "32x32",
+        "48x48"
+      ],
+      "bytes": 3683,
+      "sha256": "7de575eeaf70484dcf573e42a91105d7766afcd98925a4184f2020beafaf3f95"
+    },
+    {
+      "file": "images/favicon.png",
+      "status": "allowed-derivative",
+      "derived_from": "images/logo.jpg",
+      "sizes": [
+        "64x64"
+      ],
+      "bytes": 3115,
+      "sha256": "7280e8c4c1d4705501f438c36a204c83385336492cd5de45623d314b6dc1e146"
+    },
+    {
+      "file": "images/apple-touch-icon.png",
+      "status": "allowed-derivative",
+      "derived_from": "images/logo.jpg",
+      "sizes": [
+        "180x180"
+      ],
+      "bytes": 14754,
+      "sha256": "82786b130a5392cc2c722cef3ccb7788d51e6be9e3a0e12e018748dd83ec44c1"
+    }
+  ],
+  "restricted_originals": [
+    {
+      "name": "about-salon",
+      "file": "about-salon.jpg",
+      "where": "folder",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 202110,
+      "sha256": "c00677e9540b3382f2d0a78742d745f79d5de4408275b331441bbbff92f4e8d2",
+      "status": "restricted"
+    },
+    {
+      "name": "brunette-balayage",
+      "file": "brunette-balayage.jpg",
+      "where": "folder",
+      "width": 1066,
+      "height": 1600,
+      "bytes": 267800,
+      "sha256": "d19247b1f565e60cca67a1d278a38ddc5ab8b99c957e6df44b9e64bb3f3e90c0",
+      "status": "restricted"
+    },
+    {
+      "name": "copper-waves",
+      "file": "copper-waves.jpg",
+      "where": "folder",
+      "width": 1067,
+      "height": 1600,
+      "bytes": 187621,
+      "sha256": "bd009657675e57427126631ab5a037d65ff318f242f0222573459f7e330996c2",
+      "status": "restricted"
+    },
+    {
+      "name": "foils-highlights",
+      "file": "foils-highlights.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 270377,
+      "sha256": "5cceea1dc6e689002be97e45d0339f62905987b24e1c9caba5243ae9a78bc4b8",
+      "status": "restricted"
+    },
+    {
+      "name": "g01",
+      "file": "g01.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 843,
+      "bytes": 160000,
+      "sha256": "c6f55e3b0177bad09f2d008a73227e34e9448656da9d93c0dade7b7b6edf9fb2",
+      "status": "restricted"
+    },
+    {
+      "name": "g02",
+      "file": "g02.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 900,
+      "bytes": 181557,
+      "sha256": "059fae157fd08228184f130b747eae26e29718aa916d4083f5d7af0bd46806ef",
+      "status": "restricted"
+    },
+    {
+      "name": "g04",
+      "file": "g04.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1065,
+      "bytes": 146468,
+      "sha256": "21cc4ec426ad45123945f72d18bedb1fbee0a7be5f0eebdd38c8e541771986e1",
+      "status": "restricted"
+    },
+    {
+      "name": "g05",
+      "file": "g05.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 265494,
+      "sha256": "410dbccc4333441b6175b18f9ddce4b57c551f8a83427d0db9b0be6f0936db0a",
+      "status": "restricted"
+    },
+    {
+      "name": "g06",
+      "file": "g06.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 985,
+      "bytes": 235104,
+      "sha256": "4532c6650805426e477871682c52b428fbf0222ba0004117c9024367feb5065d",
+      "status": "restricted"
+    },
+    {
+      "name": "g07",
+      "file": "g07.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 427048,
+      "sha256": "c707c802526594191a33f3b6a04811abde6cb541517d105c0286752909b6d7bf",
+      "status": "restricted"
+    },
+    {
+      "name": "g10",
+      "file": "g10.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 246406,
+      "sha256": "68d593860e59da4a549a0d8db92d96e416ceb974a4501e9fada5b09a5335f0bd",
+      "status": "restricted"
+    },
+    {
+      "name": "g14",
+      "file": "g14.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1064,
+      "bytes": 295159,
+      "sha256": "5112f3e63cb60202994f834391abf2c44044b986c2783d107219730f5a336a0d",
+      "status": "restricted"
+    },
+    {
+      "name": "g15",
+      "file": "g15.jpg",
+      "where": "folder",
+      "width": 1067,
+      "height": 1600,
+      "bytes": 141061,
+      "sha256": "635330e0e2bcf0f3308189c3c812c683820cb6b470641fe20b279d865f91476c",
+      "status": "restricted"
+    },
+    {
+      "name": "g16",
+      "file": "g16.jpg",
+      "where": "folder",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 438491,
+      "sha256": "8ed290357822a44e2660f95a6e0a5d92258853d89f9a1bd7440547dcf6f101d0",
+      "status": "restricted"
+    },
+    {
+      "name": "g17",
+      "file": "g17.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 205172,
+      "sha256": "5437fe1df414a8f131169f04daaf9fe190535512be76d9063769803e65671f69",
+      "status": "restricted"
+    },
+    {
+      "name": "g18",
+      "file": "g18.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 286310,
+      "sha256": "581130d32bc2036dec68ca0bfe3f5c36dea97afef709f6aafd746d94b9aefe09",
+      "status": "restricted"
+    },
+    {
+      "name": "g19",
+      "file": "g19.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 265352,
+      "sha256": "d17df474e4b23ba18c23881faf8fb6678b5b02a83836b271c8432585dd3bd59f",
+      "status": "restricted"
+    },
+    {
+      "name": "g20",
+      "file": "g20.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1064,
+      "bytes": 304196,
+      "sha256": "f2541f3c3afc2852643a6ea949120f6ad75543159c1dde26cd66e0e66888b631",
+      "status": "restricted"
+    },
+    {
+      "name": "g21",
+      "file": "g21.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 331511,
+      "sha256": "bb644712886907ba768d5b6dd117a5fb266b5d9e3894625dfd6e149bc73aeb2b",
+      "status": "restricted"
+    },
+    {
+      "name": "home-smile",
+      "file": "home-smile.jpg",
+      "where": "folder",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 205842,
+      "sha256": "54114edd524498491d82a3c07dc04d631bb2f872d9e7367df6be8e31da865964",
+      "status": "restricted"
+    },
+    {
+      "name": "home-styling",
+      "file": "home-styling.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 188204,
+      "sha256": "1a88d8d033c367429cdec6867380f27e4454907ae1a935e0a4eac24fde395627",
+      "status": "restricted"
+    },
+    {
+      "name": "home-waves",
+      "file": "home-waves.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 900,
+      "bytes": 150710,
+      "sha256": "eee6ae6321810a82cbab9bd6b0812cda67231c5785e5512c492b863e8db63bda",
+      "status": "restricted"
+    },
+    {
+      "name": "makeup-red-lips",
+      "file": "makeup-red-lips.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 802,
+      "bytes": 182457,
+      "sha256": "db7061f3e88b3f888e78a132f7453567b89deb3c6b0fb3ef5a6fc0276fd47898",
+      "status": "restricted"
+    },
+    {
+      "name": "meet-extensions",
+      "file": "meet-extensions.jpg",
+      "where": "folder",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 200925,
+      "sha256": "73467f42843f47bbfda23754b08a0c982df9d92c30e177808a1c7b88f18656cc",
+      "status": "restricted"
+    },
+    {
+      "name": "svc-bridal",
+      "file": "svc-bridal.jpg",
+      "where": "folder",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 201106,
+      "sha256": "8c5d763c1c53cc058f0e185681e60dba928ab15fd7b0d5abb43886eb88a9e3d4",
+      "status": "restricted"
+    },
+    {
+      "name": "svc-haircut",
+      "file": "svc-haircut.jpg",
+      "where": "folder",
+      "width": 411,
+      "height": 523,
+      "bytes": 41448,
+      "sha256": "4a8bb632c56f70b4e4d017faf6fde1bafcf307ba797d4cf7bb6b9966bd0577a2",
+      "status": "restricted"
+    },
+    {
+      "name": "about-salon",
+      "file": "about-salon.jpg",
+      "where": "folder/sm",
+      "width": 600,
+      "height": 800,
+      "bytes": 43712,
+      "sha256": "e70e09698dbceaa1b3d2a2339a6cdd0dded01797cbab6bf10dc1c9f69e4b729c",
+      "status": "restricted"
+    },
+    {
+      "name": "brunette-balayage",
+      "file": "brunette-balayage.jpg",
+      "where": "folder/sm",
+      "width": 533,
+      "height": 800,
+      "bytes": 53696,
+      "sha256": "63b56a3e56e297e03ca3c97c915ba4206894f8b37a5b6debe606db2f87184f6f",
+      "status": "restricted"
+    },
+    {
+      "name": "copper-waves",
+      "file": "copper-waves.jpg",
+      "where": "folder/sm",
+      "width": 533,
+      "height": 800,
+      "bytes": 37502,
+      "sha256": "7a23003642894ae6acf31612b3d98ed09d0f1b94fcaa979080e74785b235fd60",
+      "status": "restricted"
+    },
+    {
+      "name": "foils-highlights",
+      "file": "foils-highlights.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 61405,
+      "sha256": "d3001c4cbb11ad247ac4ea23b9b639c782ec0a7495ec5345032fd6fac2828347",
+      "status": "restricted"
+    },
+    {
+      "name": "g01",
+      "file": "g01.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 422,
+      "bytes": 35822,
+      "sha256": "f120a85a2f865767c02ea8fc312bff235af898f316e3b27c2fce281682c3e85c",
+      "status": "restricted"
+    },
+    {
+      "name": "g02",
+      "file": "g02.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 450,
+      "bytes": 45390,
+      "sha256": "32f953f2be783fcf736e154fa36c7179dcbd7a4007644565c77b94c5f6cbb1f3",
+      "status": "restricted"
+    },
+    {
+      "name": "g04",
+      "file": "g04.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 35224,
+      "sha256": "8d1df73d09294e5337f07f1d06dfe3e7821ab04bb2e1aa6c6edf544926cb8fbc",
+      "status": "restricted"
+    },
+    {
+      "name": "g05",
+      "file": "g05.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 50377,
+      "sha256": "8d9eb89c108176586cf50f7416d39a7d99aa623f534e7fb73ddb88f5288dc374",
+      "status": "restricted"
+    },
+    {
+      "name": "g06",
+      "file": "g06.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 493,
+      "bytes": 42412,
+      "sha256": "7b05a457be13be1cc7afa9e4118b155bc49f4ab6f68e70fcb38c6553bf4102d0",
+      "status": "restricted"
+    },
+    {
+      "name": "g07",
+      "file": "g07.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 83028,
+      "sha256": "b542e8ec613dc5f9f33cfe74c2404c1cabc1a8b23d1d6b9579152cdcda208a53",
+      "status": "restricted"
+    },
+    {
+      "name": "g10",
+      "file": "g10.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 56304,
+      "sha256": "7e7715368f7e23da17c5a999a362af9d18662c0d4045f891aefe9d3172e0eeeb",
+      "status": "restricted"
+    },
+    {
+      "name": "g14",
+      "file": "g14.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 532,
+      "bytes": 64223,
+      "sha256": "5ae2feb668ea4a84ca80688d4d097511826911c8eba1a8c09d1e527827c4bc2f",
+      "status": "restricted"
+    },
+    {
+      "name": "g15",
+      "file": "g15.jpg",
+      "where": "folder/sm",
+      "width": 533,
+      "height": 800,
+      "bytes": 28676,
+      "sha256": "542b4d119b69d3be507f9d7801c4973ed194fc7f15fcacf76dda8de7536e3154",
+      "status": "restricted"
+    },
+    {
+      "name": "g16",
+      "file": "g16.jpg",
+      "where": "folder/sm",
+      "width": 600,
+      "height": 800,
+      "bytes": 85045,
+      "sha256": "5ea44eeab7fbb42db76610b69c889aec8f9150119e9ee2b3115f1807f9724e07",
+      "status": "restricted"
+    },
+    {
+      "name": "g17",
+      "file": "g17.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 42938,
+      "sha256": "2342316add3391fe439b6b69a8a3e7febec34a05bcc1182053d0d56e4a13a117",
+      "status": "restricted"
+    },
+    {
+      "name": "g18",
+      "file": "g18.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 61973,
+      "sha256": "9fabb28e0506c8f27f7ba52c82b357fe6a9995d62cf4e6766036c6b6e24afbe7",
+      "status": "restricted"
+    },
+    {
+      "name": "g19",
+      "file": "g19.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 56958,
+      "sha256": "cb6a59ab484c1fd8c875b023b67d4a34c8056929fb1b1d12ec618b49fe9f4736",
+      "status": "restricted"
+    },
+    {
+      "name": "g20",
+      "file": "g20.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 532,
+      "bytes": 60143,
+      "sha256": "f6f4ba3ca1f3d3dfa4a14988d1ca82099c9d821df915366540c983287df04271",
+      "status": "restricted"
+    },
+    {
+      "name": "g21",
+      "file": "g21.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 68470,
+      "sha256": "de27fa4a9918fb94aafa8425a4fbd4a0d46398b3b642bb3bd9cc3c42fd0914ee",
+      "status": "restricted"
+    },
+    {
+      "name": "home-smile",
+      "file": "home-smile.jpg",
+      "where": "folder/sm",
+      "width": 600,
+      "height": 800,
+      "bytes": 45490,
+      "sha256": "284ff4265729fecaa5820762eda62d4f896ee2177277ea1b1e3908a7b5d934a7",
+      "status": "restricted"
+    },
+    {
+      "name": "home-styling",
+      "file": "home-styling.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 40357,
+      "sha256": "ef37b2c931f2e7b87f1d44f1eb76a5acbb5cd1b7d1f807d56ffbab97b53a406a",
+      "status": "restricted"
+    },
+    {
+      "name": "home-waves",
+      "file": "home-waves.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 450,
+      "bytes": 34956,
+      "sha256": "225c2292790dde7fe46373154d24328ee8121d7d53f0d5a9773cf7268913bf8c",
+      "status": "restricted"
+    },
+    {
+      "name": "makeup-red-lips",
+      "file": "makeup-red-lips.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 401,
+      "bytes": 34956,
+      "sha256": "09ed60c198b93bff510ea81b6a83a625da795dbdac1b669f01bce19d806dd1e6",
+      "status": "restricted"
+    },
+    {
+      "name": "meet-extensions",
+      "file": "meet-extensions.jpg",
+      "where": "folder/sm",
+      "width": 600,
+      "height": 800,
+      "bytes": 48207,
+      "sha256": "e05b700e2a2edadb1169359438d153b39875bcc031d27a8b3bf5b100cc57e10e",
+      "status": "restricted"
+    },
+    {
+      "name": "svc-bridal",
+      "file": "svc-bridal.jpg",
+      "where": "folder/sm",
+      "width": 800,
+      "height": 533,
+      "bytes": 38000,
+      "sha256": "1f4f59bc89c4ca945ff82cda7e38db44dc921f073819ad5fdd0fc9c3d9f30b53",
+      "status": "restricted"
+    },
+    {
+      "name": "svc-haircut",
+      "file": "svc-haircut.jpg",
+      "where": "folder/sm",
+      "width": 411,
+      "height": 523,
+      "bytes": 31140,
+      "sha256": "958a3a6548d24b978a59e160328fabebf9ccdd58b27c9340262eef22222b6eae",
+      "status": "restricted"
+    },
+    {
+      "name": "about-salon",
+      "file": "about-salon.jpg",
+      "where": "zip",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 202110,
+      "sha256": "c00677e9540b3382f2d0a78742d745f79d5de4408275b331441bbbff92f4e8d2",
+      "status": "restricted"
+    },
+    {
+      "name": "brunette-balayage",
+      "file": "brunette-balayage.jpg",
+      "where": "zip",
+      "width": 1066,
+      "height": 1600,
+      "bytes": 267800,
+      "sha256": "d19247b1f565e60cca67a1d278a38ddc5ab8b99c957e6df44b9e64bb3f3e90c0",
+      "status": "restricted"
+    },
+    {
+      "name": "copper-waves",
+      "file": "copper-waves.jpg",
+      "where": "zip",
+      "width": 1067,
+      "height": 1600,
+      "bytes": 187621,
+      "sha256": "bd009657675e57427126631ab5a037d65ff318f242f0222573459f7e330996c2",
+      "status": "restricted"
+    },
+    {
+      "name": "foils-highlights",
+      "file": "foils-highlights.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 270377,
+      "sha256": "5cceea1dc6e689002be97e45d0339f62905987b24e1c9caba5243ae9a78bc4b8",
+      "status": "restricted"
+    },
+    {
+      "name": "g01",
+      "file": "g01.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 843,
+      "bytes": 160000,
+      "sha256": "c6f55e3b0177bad09f2d008a73227e34e9448656da9d93c0dade7b7b6edf9fb2",
+      "status": "restricted"
+    },
+    {
+      "name": "g02",
+      "file": "g02.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 900,
+      "bytes": 181557,
+      "sha256": "059fae157fd08228184f130b747eae26e29718aa916d4083f5d7af0bd46806ef",
+      "status": "restricted"
+    },
+    {
+      "name": "g04",
+      "file": "g04.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1065,
+      "bytes": 146468,
+      "sha256": "21cc4ec426ad45123945f72d18bedb1fbee0a7be5f0eebdd38c8e541771986e1",
+      "status": "restricted"
+    },
+    {
+      "name": "g05",
+      "file": "g05.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 265494,
+      "sha256": "410dbccc4333441b6175b18f9ddce4b57c551f8a83427d0db9b0be6f0936db0a",
+      "status": "restricted"
+    },
+    {
+      "name": "g06",
+      "file": "g06.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 985,
+      "bytes": 235104,
+      "sha256": "4532c6650805426e477871682c52b428fbf0222ba0004117c9024367feb5065d",
+      "status": "restricted"
+    },
+    {
+      "name": "g07",
+      "file": "g07.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 427048,
+      "sha256": "c707c802526594191a33f3b6a04811abde6cb541517d105c0286752909b6d7bf",
+      "status": "restricted"
+    },
+    {
+      "name": "g10",
+      "file": "g10.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 246406,
+      "sha256": "68d593860e59da4a549a0d8db92d96e416ceb974a4501e9fada5b09a5335f0bd",
+      "status": "restricted"
+    },
+    {
+      "name": "g14",
+      "file": "g14.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1064,
+      "bytes": 295159,
+      "sha256": "5112f3e63cb60202994f834391abf2c44044b986c2783d107219730f5a336a0d",
+      "status": "restricted"
+    },
+    {
+      "name": "g15",
+      "file": "g15.jpg",
+      "where": "zip",
+      "width": 1067,
+      "height": 1600,
+      "bytes": 141061,
+      "sha256": "635330e0e2bcf0f3308189c3c812c683820cb6b470641fe20b279d865f91476c",
+      "status": "restricted"
+    },
+    {
+      "name": "g16",
+      "file": "g16.jpg",
+      "where": "zip",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 438491,
+      "sha256": "8ed290357822a44e2660f95a6e0a5d92258853d89f9a1bd7440547dcf6f101d0",
+      "status": "restricted"
+    },
+    {
+      "name": "g17",
+      "file": "g17.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 205172,
+      "sha256": "5437fe1df414a8f131169f04daaf9fe190535512be76d9063769803e65671f69",
+      "status": "restricted"
+    },
+    {
+      "name": "g18",
+      "file": "g18.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 286310,
+      "sha256": "581130d32bc2036dec68ca0bfe3f5c36dea97afef709f6aafd746d94b9aefe09",
+      "status": "restricted"
+    },
+    {
+      "name": "g19",
+      "file": "g19.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 265352,
+      "sha256": "d17df474e4b23ba18c23881faf8fb6678b5b02a83836b271c8432585dd3bd59f",
+      "status": "restricted"
+    },
+    {
+      "name": "g20",
+      "file": "g20.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1064,
+      "bytes": 304196,
+      "sha256": "f2541f3c3afc2852643a6ea949120f6ad75543159c1dde26cd66e0e66888b631",
+      "status": "restricted"
+    },
+    {
+      "name": "g21",
+      "file": "g21.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 331511,
+      "sha256": "bb644712886907ba768d5b6dd117a5fb266b5d9e3894625dfd6e149bc73aeb2b",
+      "status": "restricted"
+    },
+    {
+      "name": "home-smile",
+      "file": "home-smile.jpg",
+      "where": "zip",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 205842,
+      "sha256": "54114edd524498491d82a3c07dc04d631bb2f872d9e7367df6be8e31da865964",
+      "status": "restricted"
+    },
+    {
+      "name": "home-styling",
+      "file": "home-styling.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 188204,
+      "sha256": "1a88d8d033c367429cdec6867380f27e4454907ae1a935e0a4eac24fde395627",
+      "status": "restricted"
+    },
+    {
+      "name": "home-waves",
+      "file": "home-waves.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 900,
+      "bytes": 150710,
+      "sha256": "eee6ae6321810a82cbab9bd6b0812cda67231c5785e5512c492b863e8db63bda",
+      "status": "restricted"
+    },
+    {
+      "name": "makeup-red-lips",
+      "file": "makeup-red-lips.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 802,
+      "bytes": 182457,
+      "sha256": "db7061f3e88b3f888e78a132f7453567b89deb3c6b0fb3ef5a6fc0276fd47898",
+      "status": "restricted"
+    },
+    {
+      "name": "meet-extensions",
+      "file": "meet-extensions.jpg",
+      "where": "zip",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 200925,
+      "sha256": "73467f42843f47bbfda23754b08a0c982df9d92c30e177808a1c7b88f18656cc",
+      "status": "restricted"
+    },
+    {
+      "name": "svc-bridal",
+      "file": "svc-bridal.jpg",
+      "where": "zip",
+      "width": 1600,
+      "height": 1066,
+      "bytes": 201106,
+      "sha256": "8c5d763c1c53cc058f0e185681e60dba928ab15fd7b0d5abb43886eb88a9e3d4",
+      "status": "restricted"
+    },
+    {
+      "name": "svc-haircut",
+      "file": "svc-haircut.jpg",
+      "where": "zip",
+      "width": 411,
+      "height": 523,
+      "bytes": 41448,
+      "sha256": "4a8bb632c56f70b4e4d017faf6fde1bafcf307ba797d4cf7bb6b9966bd0577a2",
+      "status": "restricted"
+    }
+  ],
+  "restricted_sha256": [
+    "059fae157fd08228184f130b747eae26e29718aa916d4083f5d7af0bd46806ef",
+    "09ed60c198b93bff510ea81b6a83a625da795dbdac1b669f01bce19d806dd1e6",
+    "1a88d8d033c367429cdec6867380f27e4454907ae1a935e0a4eac24fde395627",
+    "1f4f59bc89c4ca945ff82cda7e38db44dc921f073819ad5fdd0fc9c3d9f30b53",
+    "21cc4ec426ad45123945f72d18bedb1fbee0a7be5f0eebdd38c8e541771986e1",
+    "225c2292790dde7fe46373154d24328ee8121d7d53f0d5a9773cf7268913bf8c",
+    "2342316add3391fe439b6b69a8a3e7febec34a05bcc1182053d0d56e4a13a117",
+    "284ff4265729fecaa5820762eda62d4f896ee2177277ea1b1e3908a7b5d934a7",
+    "32f953f2be783fcf736e154fa36c7179dcbd7a4007644565c77b94c5f6cbb1f3",
+    "410dbccc4333441b6175b18f9ddce4b57c551f8a83427d0db9b0be6f0936db0a",
+    "4532c6650805426e477871682c52b428fbf0222ba0004117c9024367feb5065d",
+    "4a8bb632c56f70b4e4d017faf6fde1bafcf307ba797d4cf7bb6b9966bd0577a2",
+    "5112f3e63cb60202994f834391abf2c44044b986c2783d107219730f5a336a0d",
+    "54114edd524498491d82a3c07dc04d631bb2f872d9e7367df6be8e31da865964",
+    "542b4d119b69d3be507f9d7801c4973ed194fc7f15fcacf76dda8de7536e3154",
+    "5437fe1df414a8f131169f04daaf9fe190535512be76d9063769803e65671f69",
+    "581130d32bc2036dec68ca0bfe3f5c36dea97afef709f6aafd746d94b9aefe09",
+    "5ae2feb668ea4a84ca80688d4d097511826911c8eba1a8c09d1e527827c4bc2f",
+    "5cceea1dc6e689002be97e45d0339f62905987b24e1c9caba5243ae9a78bc4b8",
+    "5ea44eeab7fbb42db76610b69c889aec8f9150119e9ee2b3115f1807f9724e07",
+    "635330e0e2bcf0f3308189c3c812c683820cb6b470641fe20b279d865f91476c",
+    "63b56a3e56e297e03ca3c97c915ba4206894f8b37a5b6debe606db2f87184f6f",
+    "68d593860e59da4a549a0d8db92d96e416ceb974a4501e9fada5b09a5335f0bd",
+    "73467f42843f47bbfda23754b08a0c982df9d92c30e177808a1c7b88f18656cc",
+    "7a23003642894ae6acf31612b3d98ed09d0f1b94fcaa979080e74785b235fd60",
+    "7b05a457be13be1cc7afa9e4118b155bc49f4ab6f68e70fcb38c6553bf4102d0",
+    "7e7715368f7e23da17c5a999a362af9d18662c0d4045f891aefe9d3172e0eeeb",
+    "8c5d763c1c53cc058f0e185681e60dba928ab15fd7b0d5abb43886eb88a9e3d4",
+    "8d1df73d09294e5337f07f1d06dfe3e7821ab04bb2e1aa6c6edf544926cb8fbc",
+    "8d9eb89c108176586cf50f7416d39a7d99aa623f534e7fb73ddb88f5288dc374",
+    "8ed290357822a44e2660f95a6e0a5d92258853d89f9a1bd7440547dcf6f101d0",
+    "958a3a6548d24b978a59e160328fabebf9ccdd58b27c9340262eef22222b6eae",
+    "9fabb28e0506c8f27f7ba52c82b357fe6a9995d62cf4e6766036c6b6e24afbe7",
+    "b542e8ec613dc5f9f33cfe74c2404c1cabc1a8b23d1d6b9579152cdcda208a53",
+    "bb644712886907ba768d5b6dd117a5fb266b5d9e3894625dfd6e149bc73aeb2b",
+    "bd009657675e57427126631ab5a037d65ff318f242f0222573459f7e330996c2",
+    "c00677e9540b3382f2d0a78742d745f79d5de4408275b331441bbbff92f4e8d2",
+    "c2294517c14fc31b48bfbb5e769c61f72a0d9fabba6094a0cf3332334a90b880",
+    "c6f55e3b0177bad09f2d008a73227e34e9448656da9d93c0dade7b7b6edf9fb2",
+    "c707c802526594191a33f3b6a04811abde6cb541517d105c0286752909b6d7bf",
+    "cb6a59ab484c1fd8c875b023b67d4a34c8056929fb1b1d12ec618b49fe9f4736",
+    "d17df474e4b23ba18c23881faf8fb6678b5b02a83836b271c8432585dd3bd59f",
+    "d19247b1f565e60cca67a1d278a38ddc5ab8b99c957e6df44b9e64bb3f3e90c0",
+    "d3001c4cbb11ad247ac4ea23b9b639c782ec0a7495ec5345032fd6fac2828347",
+    "db7061f3e88b3f888e78a132f7453567b89deb3c6b0fb3ef5a6fc0276fd47898",
+    "de27fa4a9918fb94aafa8425a4fbd4a0d46398b3b642bb3bd9cc3c42fd0914ee",
+    "e05b700e2a2edadb1169359438d153b39875bcc031d27a8b3bf5b100cc57e10e",
+    "e70e09698dbceaa1b3d2a2339a6cdd0dded01797cbab6bf10dc1c9f69e4b729c",
+    "eee6ae6321810a82cbab9bd6b0812cda67231c5785e5512c492b863e8db63bda",
+    "ef37b2c931f2e7b87f1d44f1eb76a5acbb5cd1b7d1f807d56ffbab97b53a406a",
+    "f120a85a2f865767c02ea8fc312bff235af898f316e3b27c2fce281682c3e85c",
+    "f2541f3c3afc2852643a6ea949120f6ad75543159c1dde26cd66e0e66888b631",
+    "f6f4ba3ca1f3d3dfa4a14988d1ca82099c9d821df915366540c983287df04271"
+  ],
+  "checks": [
+    {
+      "id": "manifest_lists_29_images",
+      "what": "images has exactly 29 entries: logo, g12, g13 with status allowed and the 26 restricted names with status placeholder; sm is null for logo only; every file decodes completely and is the format its extension says",
+      "result": "pass",
+      "details": {
+        "entries": 29,
+        "allowed": [
+          "g12",
+          "g13",
+          "logo"
+        ],
+        "placeholders": 26,
+        "with_webp": [
+          "g12",
+          "g13"
+        ],
+        "files_measured": 64
+      }
+    },
+    {
+      "id": "restricted_originals_measured",
+      "what": "the 26 restricted names were found and measured fresh in the restricted folder, in its sm folder and in the backup zip (members read in memory); folder and zip copies are byte-identical; every other image in that folder is either the contact sheet and the old site zip (restricted, their hashes are in restricted_sha256) or was looked at and shows only g12, g13 or the logo",
+      "result": "pass",
+      "details": {
+        "records": 78,
+        "folder": 26,
+        "folder/sm": 26,
+        "zip": 26,
+        "folder_differs_from_zip": [],
+        "zip_bad_crc": null,
+        "extracted_zip_folder_differs": [],
+        "restricted_files_outside_the_three_places": [
+          "sheet.jpg (moved)",
+          "52 photo members of moved-from-working-folder/site.zip, all byte-identical to a folder or sm copy"
+        ],
+        "unique_restricted_hashes": 53,
+        "other_images_there_made_only_from_the_allowed_files": [
+          "moved-from-working-folder/site.zip!favicon.ico (shows the logo artwork)",
+          "moved-from-working-folder/site.zip!images/apple-touch-icon.png (shows the logo artwork)",
+          "moved-from-working-folder/site.zip!images/favicon.png (shows the logo artwork)",
+          "moved-from-working-folder/site.zip!images/sm/g12.jpg (shows g12)",
+          "moved-from-working-folder/site.zip!images/sm/g13.jpg (shows g13)"
+        ],
+        "other_images_there_that_could_not_be_placed": [],
+        "originals_with_exif_rotation": {}
+      }
+    },
+    {
+      "id": "fragments_agree_with_disk",
+      "what": "every pixel size, byte count and SHA-256 was recomputed from the files on disk and compared with the four fragment files of the ASSETS agents (inventory, placeholders, allowed, icons)",
+      "result": "pass",
+      "details": {
+        "differences": [],
+        "restricted_records_compared": 78,
+        "restricted_hashes_compared": 53,
+        "placeholder_files_compared": 52,
+        "allowed_files_compared": 9,
+        "icon_files_compared": 3
+      }
+    },
+    {
+      "id": "placeholder_sizes_match_originals",
+      "what": "each placeholder has the pixel size of its original in the restricted folder, and each small copy has the pixel size of the file with the same name in the restricted sm folder",
+      "result": "pass",
+      "details": {
+        "compared": 52,
+        "wrong": []
+      }
+    },
+    {
+      "id": "placeholders_pass_placeholder_test",
+      "what": "every placeholder (26 full, 26 small) has at least 90 percent of its pixels within 6 levels per channel of (232, 225, 218) and its darkest channel value is above 165",
+      "result": "pass",
+      "details": {
+        "tested": 52,
+        "lowest_beige_share": 0.9863,
+        "highest_beige_share": 0.9919,
+        "darkest_channel_value": 181,
+        "failed": [],
+        "metadata_segments_seen": [
+          "APP0:JFIF:18"
+        ],
+        "method_self_test": {
+          "what": "the same test applied in memory to the 26 restricted originals and to g12 and g13 has to reject every one of them",
+          "real_photos_tested": 28,
+          "rejected": 28
+        }
+      }
+    },
+    {
+      "id": "allowed_files_match_sources",
+      "what": "images/logo.jpg is byte-identical to the logo master, images/g12.jpg and images/g13.jpg are byte-identical to the owner's photos in the backup zip (read in memory); logo is 225 x 225; none of the three carries GPS, camera, date or author metadata; none shares a hash with a restricted file",
+      "result": "pass",
+      "details": {
+        "logo": {
+          "file": "images/logo.jpg",
+          "source": "hbg_logo.jpg (logo master, also member hbg_logo.jpg of the backup zip)",
+          "byte_identical": true,
+          "sha256": "0a5da586b0fd3b479e52db6b8f3ec51278df09e12f88b528bedb3119e52748f6",
+          "source_sha256": "0a5da586b0fd3b479e52db6b8f3ec51278df09e12f88b528bedb3119e52748f6",
+          "pixels": "225x225",
+          "metadata_segments": [
+            "APP0:JFIF:18",
+            "APP2:ICC_PROFILE:474"
+          ],
+          "gps_camera_date_or_author_tags": []
+        },
+        "g12": {
+          "file": "images/g12.jpg",
+          "source": "member g12.jpg of the backup zip hbg_images.zip",
+          "byte_identical": true,
+          "sha256": "f316a916e98adf76c7a693b85f8caa0d9d1398c075324b5c981b30f64da07636",
+          "source_sha256": "f316a916e98adf76c7a693b85f8caa0d9d1398c075324b5c981b30f64da07636",
+          "pixels": "900x1600",
+          "metadata_segments": [
+            "APP1:Exif:190"
+          ],
+          "gps_camera_date_or_author_tags": []
+        },
+        "g13": {
+          "file": "images/g13.jpg",
+          "source": "member g13.jpg of the backup zip hbg_images.zip",
+          "byte_identical": true,
+          "sha256": "3abedefb099554e10b83d0776d0aa13f38fadb4d12f36660390a4ce8db11818f",
+          "source_sha256": "3abedefb099554e10b83d0776d0aa13f38fadb4d12f36660390a4ce8db11818f",
+          "pixels": "900x1600",
+          "metadata_segments": [
+            "APP1:Exif:190"
+          ],
+          "gps_camera_date_or_author_tags": []
+        }
+      }
+    },
+    {
+      "id": "derived_files_come_from_allowed_files",
+      "what": "the 800 px copies and the WebP copies of g12 and g13 show the same picture as g12.jpg and g13.jpg (PSNR; a WebP also has to be at least 20 percent smaller than its JPEG, at least 40 dB, and free of EXIF, ICC and XMP), and every icon frame has the listed pixel size, is opaque on #fefefd and matches the logo artwork (correlation of the box around the ink, limit 0.80)",
+      "result": "pass",
+      "details": {
+        "images/sm/g12.jpg": {
+          "psnr_db_against_downscaled_full_file": 37.66,
+          "metadata_segments": [
+            "APP0:JFIF:18"
+          ],
+          "ok": true
+        },
+        "images/g12.webp": {
+          "psnr_db_against_its_jpeg": 40.44,
+          "smaller_than_jpeg_percent": 38.5,
+          "chunks": [
+            "VP8 "
+          ],
+          "ok": true
+        },
+        "images/sm/g12.webp": {
+          "psnr_db_against_its_jpeg": 40.07,
+          "smaller_than_jpeg_percent": 24.3,
+          "chunks": [
+            "VP8 "
+          ],
+          "ok": true
+        },
+        "images/sm/g13.jpg": {
+          "psnr_db_against_downscaled_full_file": 38.05,
+          "metadata_segments": [
+            "APP0:JFIF:18"
+          ],
+          "ok": true
+        },
+        "images/g13.webp": {
+          "psnr_db_against_its_jpeg": 40.9,
+          "smaller_than_jpeg_percent": 38.5,
+          "chunks": [
+            "VP8 "
+          ],
+          "ok": true
+        },
+        "images/sm/g13.webp": {
+          "psnr_db_against_its_jpeg": 40.33,
+          "smaller_than_jpeg_percent": 22.0,
+          "chunks": [
+            "VP8 "
+          ],
+          "ok": true
+        },
+        "favicon.ico": {
+          "frames": [
+            "32x32",
+            "48x48"
+          ],
+          "likeness_to_logo_artwork": [
+            0.879,
+            0.947
+          ],
+          "opaque_on_page_background": true,
+          "ok": true
+        },
+        "images/favicon.png": {
+          "frames": [
+            "64x64"
+          ],
+          "likeness_to_logo_artwork": [
+            0.97
+          ],
+          "opaque_on_page_background": true,
+          "ok": true
+        },
+        "images/apple-touch-icon.png": {
+          "frames": [
+            "180x180"
+          ],
+          "likeness_to_logo_artwork": [
+            1.0
+          ],
+          "opaque_on_page_background": true,
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "generator_scripts_reproduce_the_files",
+      "what": "tools/make_placeholders.py --check and tools/make_icons.py --check (they write nothing) report that the 52 placeholders and the 3 icons on disk are exactly what the scripts build",
+      "result": "pass",
+      "details": {
+        "tools/make_placeholders.py": {
+          "exit_status": 0,
+          "last_line": "52 files: 52 unchanged"
+        },
+        "tools/make_icons.py": {
+          "exit_status": 0,
+          "last_line": "images/apple-touch-icon.png  180x180       14754 bytes  sha256 82786b130a5392cc2c722cef3ccb7788d51e6be9e3a0e12e018748dd83ec44c1"
+        }
+      }
+    },
+    {
+      "id": "no_restricted_hash_in_working_folder",
+      "what": "LICENSING: every file under the working folder was hashed recursively (and every member of any zip found there); none has a SHA-256 from restricted_sha256, none equals any other image in the restricted folder, and none equals a reference screenshot of the Wix site",
+      "result": "pass",
+      "details": {
+        "files_hashed": 151,
+        "zips_opened": [
+          {
+            "file": "_tmp/site2.zip",
+            "members": 78
+          }
+        ],
+        "zip_members_hashed": 78,
+        "restricted_hashes_compared": 53,
+        "LICENSING_MATCHES": [],
+        "matches_with_other_images_of_the_restricted_folder": [],
+        "reference_screenshots_compared": 36,
+        "matches_with_reference_screenshots": [],
+        "unreadable": [],
+        "links": [],
+        "git_folder_present": false,
+        "method_self_test": {
+          "what": "the same scan run over the 29 files of the extracted backup zip in the restricted folder has to flag the 26 restricted photos and leave g12, g13 and the logo alone",
+          "files_scanned": 29,
+          "restricted_flagged": 26,
+          "allowed_flagged": 0,
+          "ok": true
+        },
+        "note": "a snapshot: other files are still being written into the working folder, the pre-commit check repeats this"
+      }
+    },
+    {
+      "id": "no_restricted_lookalike_in_working_folder",
+      "what": "LICENSING: no image under the working folder (or inside a zip there) looks like a restricted photo (24 x 24 thumbnail comparison; finds re-saved and resized copies, not crops)",
+      "result": "pass",
+      "details": {
+        "images_compared": 160,
+        "restricted_pictures_compared": 53,
+        "limit": 6.0,
+        "LOOKALIKES": [],
+        "closest": [
+          "_tmp/site2.zip!images/sm/makeup-red-lips.jpg (distance 38.45)",
+          "images/g02.jpg (distance 38.45)",
+          "images/home-waves.jpg (distance 38.45)"
+        ],
+        "closest_real_photo": [
+          "_tmp/site2.zip!images/sm/g13.jpg (distance 43.20)"
+        ],
+        "method_self_test": {
+          "what": "largest distance between a restricted original and its own 800 px copy has to stay under the limit, and the scan over the extracted backup zip has to call the 26 restricted photos lookalikes and nothing else",
+          "largest_distance_original_to_own_small_copy": 0.7,
+          "restricted_called_lookalike": 26,
+          "others_called_lookalike": 0,
+          "ok": true
+        }
+      }
+    },
+    {
+      "id": "images_folder_matches_manifest",
+      "what": "images and images/sm contain no file that is missing from the manifest, every file the manifest lists exists, and images has no folder other than sm",
+      "result": "pass",
+      "details": {
+        "files_in_images": 33,
+        "files_in_images_sm": 30,
+        "files_listed": 64,
+        "not_in_manifest": [],
+        "listed_but_missing": [],
+        "folders": [
+          "images/sm"
+        ]
+      }
+    },
+    {
+      "id": "no_absolute_path_in_manifest",
+      "what": "the manifest text holds no drive letter, backslash, user name or folder of this computer, and every file value is a relative path with forward slashes",
+      "result": "pass",
+      "details": {
+        "found": [],
+        "bad_file_values": []
+      }
+    }
+  ]
+}

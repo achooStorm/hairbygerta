@@ -1,0 +1,5700 @@
+{
+ "ok": true,
+ "base": "local site folder",
+ "generated": "2026-10-13 07:39:51",
+ "results": [
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "./",
+    "landed on": "./"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "210102 bytes",
+   "evidence": "qa/screenshots/home-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "10 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "28 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "3 external link(s) to 3 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "7 image(s), 2 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "It's Your Day to Shine!"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Hair & Makeup by Gerta | Hair Stylist & Makeup Artist – Staten Island, NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blow\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "47 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "6 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "./",
+    "landed on": "./"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "132620 bytes",
+   "evidence": "qa/screenshots/home-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "10 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "28 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "3 external link(s) to 3 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "7 image(s), 2 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "It's Your Day to Shine!"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Hair & Makeup by Gerta | Hair Stylist & Makeup Artist – Staten Island, NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blow\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "47 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "6 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "gallery/",
+    "landed on": "gallery/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "828429 bytes",
+   "evidence": "qa/screenshots/gallery-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "25 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "61 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "22 image(s), 18 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 1
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Gallery"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Gallery | Hair & Makeup by Gerta, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"See hair and makeup looks by Gerta Lila in Staten Island, NY. Balayage, highlights, haircuts, extensions and natural makeup at Le Vigne Hair Salon.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/gallery/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/gallery/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "71 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "19 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "gallery/",
+    "landed on": "gallery/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "226203 bytes",
+   "evidence": "qa/screenshots/gallery-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "25 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "61 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "22 image(s), 18 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 1
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Gallery"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Gallery | Hair & Makeup by Gerta, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"See hair and makeup looks by Gerta Lila in Staten Island, NY. Balayage, highlights, haircuts, extensions and natural makeup at Le Vigne Hair Salon.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/gallery/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/gallery/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "71 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "gallery",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "19 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "book-online/",
+    "landed on": "book-online/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "211255 bytes",
+   "evidence": "qa/screenshots/book-online-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "14 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "26 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "12 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "11 image(s), 7 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Our Services"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Book a Hair or Makeup Appointment | Hair by Gerta, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, keratin treatments, Brazilian blowouts and ma\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/book-online/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/book-online/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "46 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "10 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "book-online/",
+    "landed on": "book-online/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "209704 bytes",
+   "evidence": "qa/screenshots/book-online-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "14 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "26 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "12 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "11 image(s), 7 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Our Services"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Book a Hair or Makeup Appointment | Hair by Gerta, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, keratin treatments, Brazilian blowouts and ma\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/book-online/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/book-online/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "46 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "10 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "about/",
+    "landed on": "about/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "115201 bytes",
+   "evidence": "qa/screenshots/about-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 2 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "24 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "5 image(s), 2 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "About Gerta"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"About Gerta Lila | Hair Stylist & Makeup Artist, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Learn about Gerta Lila, hair stylist & makeup artist at Le Vigne Hair Salon in Staten Island, NY, creating fresh cuts, color, extensions and natural makeup.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/about/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/about/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "37 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "4 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "about/",
+    "landed on": "about/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "76518 bytes",
+   "evidence": "qa/screenshots/about-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 2 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "24 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "5 image(s), 2 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "About Gerta"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"About Gerta Lila | Hair Stylist & Makeup Artist, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Learn about Gerta Lila, hair stylist & makeup artist at Le Vigne Hair Salon in Staten Island, NY, creating fresh cuts, color, extensions and natural makeup.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/about/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/about/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "37 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "about",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "4 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "contact/",
+    "landed on": "contact/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "118098 bytes",
+   "evidence": "qa/screenshots/contact-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [
+     "www.google.com"
+    ],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "4 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (2 x)",
+     "https://www.instagram.com/hairbygerta/ (2 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com",
+     "www.google.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "3 tel and 4 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Contact"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Contact | Hair & Makeup by Gerta, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Contact Gerta Lila at Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310. Call 347-671-5095 or email info@hairbygerta.com.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/contact/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/contact/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "33 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "contact/",
+    "landed on": "contact/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "91764 bytes",
+   "evidence": "qa/screenshots/contact-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [
+     "www.google.com"
+    ],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "4 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (2 x)",
+     "https://www.instagram.com/hairbygerta/ (2 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com",
+     "www.google.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "3 tel and 4 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Contact"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Contact | Hair & Makeup by Gerta, Staten Island NY\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Contact Gerta Lila at Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310. Call 347-671-5095 or email info@hairbygerta.com.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/contact/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/contact/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "33 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "english-refund-policy/",
+    "landed on": "english-refund-policy/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "206125 bytes",
+   "evidence": "qa/screenshots/english-refund-policy-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Refund & Cancellation Policy"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Refund Policy | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Refund and cancellation policy for HairByGerta hair and makeup services at Le Vigne Hair Salon in Staten Island, NY.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/english-refund-policy/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/english-refund-policy/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "26 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "english-refund-policy/",
+    "landed on": "english-refund-policy/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "157101 bytes",
+   "evidence": "qa/screenshots/english-refund-policy-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Refund & Cancellation Policy"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Refund Policy | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Refund and cancellation policy for HairByGerta hair and makeup services at Le Vigne Hair Salon in Staten Island, NY.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/english-refund-policy/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/english-refund-policy/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "26 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-refund-policy",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "accessibility-statement/",
+    "landed on": "accessibility-statement/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "235735 bytes",
+   "evidence": "qa/screenshots/accessibility-statement-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "2 tel and 2 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "ACCESSIBILITY STATEMENT"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Accessibility Statement | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Accessibility information for HairByGerta.com – hair stylist & makeup artist in Staten Island, NY. Learn how we make our website easy to use for everyone.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/accessibility-statement/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/accessibility-statement/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "27 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "accessibility-statement/",
+    "landed on": "accessibility-statement/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "153398 bytes",
+   "evidence": "qa/screenshots/accessibility-statement-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "2 tel and 2 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "ACCESSIBILITY STATEMENT"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Accessibility Statement | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Accessibility information for HairByGerta.com – hair stylist & makeup artist in Staten Island, NY. Learn how we make our website easy to use for everyone.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/accessibility-statement/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/accessibility-statement/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "27 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "accessibility-statement",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "english-privacy-policy/",
+    "landed on": "english-privacy-policy/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "377576 bytes",
+   "evidence": "qa/screenshots/english-privacy-policy-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Privacy Policy"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Privacy Policy | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Privacy Policy for HairByGerta.com – hair stylist & makeup artist in Staten Island, NY. Learn how we collect, use and protect your personal information online.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/english-privacy-policy/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/english-privacy-policy/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "29 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "english-privacy-policy/",
+    "landed on": "english-privacy-policy/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "297046 bytes",
+   "evidence": "qa/screenshots/english-privacy-policy-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Privacy Policy"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Privacy Policy | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Privacy Policy for HairByGerta.com – hair stylist & makeup artist in Staten Island, NY. Learn how we collect, use and protect your personal information online.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/english-privacy-policy/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/english-privacy-policy/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "29 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "english-privacy-policy",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "terms-conditions/",
+    "landed on": "terms-conditions/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "417540 bytes",
+   "evidence": "qa/screenshots/terms-conditions-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Terms & Conditions"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Terms and Conditions | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Review the Terms and Conditions for HairByGerta.com, hair stylist & makeup artist in Staten Island, NY. Learn about booking rules, salon policies, website use a\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/terms-conditions/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/terms-conditions/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "31 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200",
+   "actual": "status 200",
+   "evidence": {
+    "address": "terms-conditions/",
+    "landed on": "terms-conditions/"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "327334 bytes",
+   "evidence": "qa/screenshots/terms-conditions-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Terms & Conditions"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Terms and Conditions | Hairbygerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"Review the Terms and Conditions for HairByGerta.com, hair stylist & makeup artist in Staten Island, NY. Learn about booking rules, salon policies, website use a\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "one canonical link, href=\"https://www.hairbygerta.com/terms-conditions/\"",
+   "actual": "1 canonical link(s): [\"https://www.hairbygerta.com/terms-conditions/\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "no noindex on a real page",
+   "actual": "robots meta: none",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "31 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "terms-conditions",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200 (404 is also fine for the 404 page)",
+   "actual": "status 200",
+   "evidence": {
+    "address": "404.html",
+    "landed on": "404.html"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "73013 bytes",
+   "evidence": "qa/screenshots/404-desktop.png",
+   "owner": "QA"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 1280 (no sideways scrolling)",
+   "actual": "scrollWidth 1280, innerWidth 1280, clientWidth 1280",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Page not found"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Page not found | Hair & Makeup by Gerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"This page could not be found.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "canonical",
+   "ok": true,
+   "expected": "no canonical link on the 404 page",
+   "actual": "0 canonical link(s): []",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "the 404 page has <meta name=\"robots\" content=\"noindex\">",
+   "actual": "robots meta: [\"noindex\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "25 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"/hairbygerta/404.html#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "/hairbygerta/404.html#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "desktop",
+   "check": "404-deep-address",
+   "ok": true,
+   "expected": "for a broken address inside a folder the 404 page answers 404 and still finds its stylesheet, script, images and links",
+   "actual": "status 404, stylesheet loaded, 25 links and files checked",
+   "evidence": {
+    "tested address": "qa-check-no-such-folder/no-such-page/",
+    "title": "Page not found | Hair & Makeup by Gerta",
+    "stylesheets": [
+     {
+      "file": "css/style.css",
+      "rules": 240
+     }
+    ],
+    "images not loaded": [],
+    "links that lead nowhere": [],
+    "requests that answered 404 before the page had set its base address (listed, not judged)": [
+     "qa-check-no-such-folder/no-such-page/images/logo.jpg",
+     "qa-check-no-such-folder/no-such-page/css/style.css",
+     "qa-check-no-such-folder/no-such-page/js/site.js"
+    ],
+    "skip link stays on the page when pressed": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "page-loads",
+   "ok": true,
+   "expected": "status 200 (404 is also fine for the 404 page)",
+   "actual": "status 200",
+   "evidence": {
+    "address": "404.html",
+    "landed on": "404.html"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "screenshot",
+   "ok": true,
+   "expected": "a full-page screenshot is saved",
+   "actual": "48823 bytes",
+   "evidence": "qa/screenshots/404-phone.png",
+   "owner": "QA"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "console-errors",
+   "ok": true,
+   "expected": "no console error and no script error",
+   "actual": "0 console error(s), 0 script error(s)",
+   "evidence": {
+    "console errors": [],
+    "script errors": [],
+    "not counted, blocked third party": [],
+    "warnings": []
+   },
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "requests",
+   "ok": true,
+   "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "evidence": {
+    "4xx or 5xx": [],
+    "failed": [],
+    "unexpected third party": [],
+    "expected third parties, blocked or not reachable (not a failure)": [],
+    "fonts": "ready, 3 of 12 font faces loaded"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "internal-links",
+   "ok": true,
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "evidence": {
+    "broken": [],
+    "missing fragment targets": [],
+    "required files not linked": [],
+    "answered after a redirect (not a failure)": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "external-links",
+   "ok": true,
+   "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "evidence": {
+    "external links": [
+     "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
+     "https://www.instagram.com/hairbygerta/ (1 x)"
+    ],
+    "wrong": [],
+    "missing": [],
+    "new tab without rel=noopener": [],
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "tel-mailto",
+   "ok": true,
+   "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "missing": []
+   },
+   "owner": "CONTENT"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "images-load",
+   "ok": true,
+   "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
+   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "evidence": {
+    "not loaded": [],
+    "lazy images that only loaded after loading was forced (not a failure)": [],
+    "skipped, inside the closed photo viewer": 0
+   },
+   "owner": "ASSETS"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "document-width",
+   "ok": true,
+   "expected": "scrollWidth = innerWidth = 390 (no sideways scrolling)",
+   "actual": "scrollWidth 390, innerWidth 390, clientWidth 390",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "one-h1",
+   "ok": true,
+   "expected": "exactly one h1",
+   "actual": "1 h1 on the page, 1 in the HTML source",
+   "evidence": {
+    "h1": [
+     "Page not found"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "title",
+   "ok": true,
+   "expected": "one title tag that is not empty",
+   "actual": "1 title tag(s): [\"Page not found | Hair & Makeup by Gerta\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "meta-description",
+   "ok": true,
+   "expected": "one meta description that is not empty",
+   "actual": "1 meta description(s): [\"This page could not be found.\"]",
+   "evidence": "",
+   "owner": "CONTENT"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "lang",
+   "ok": true,
+   "expected": "html lang=\"en\"",
+   "actual": "lang is \"en\"",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "viewport-meta",
+   "ok": true,
+   "expected": "one viewport meta with width=device-width",
+   "actual": "1 viewport meta: [\"width=device-width, initial-scale=1\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "canonical",
+   "ok": true,
+   "expected": "no canonical link on the 404 page",
+   "actual": "0 canonical link(s): []",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "robots-meta",
+   "ok": true,
+   "expected": "the 404 page has <meta name=\"robots\" content=\"noindex\">",
+   "actual": "robots meta: [\"noindex\"]",
+   "evidence": "",
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "relative-addresses",
+   "ok": true,
+   "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
+   "actual": "25 address(es) in the source, 0 not relative",
+   "evidence": {
+    "not relative": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "no-inline-style",
+   "ok": true,
+   "expected": "no style attribute in the HTML source",
+   "actual": "0 style attribute(s)",
+   "evidence": {
+    "style attributes": [],
+    "style elements in the source (listed, not judged here)": 0
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "landmarks",
+   "ok": true,
+   "expected": "a page header, exactly one main and a page footer, in that order",
+   "actual": "1 header, 1 main, 1 footer",
+   "evidence": {
+    "headers": [
+     "header.site-header"
+    ],
+    "mains": [
+     "main#main"
+    ],
+    "footers": [
+     "footer.site-footer"
+    ],
+    "order": true
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "skip-link",
+   "ok": true,
+   "expected": "the skip link is the first focusable element, its target exists and pressing it stays on the page",
+   "actual": "first Tab lands on a.skip, href \"/hairbygerta/404.html#main\" leads to main#main",
+   "evidence": {
+    "skip link href": "/hairbygerta/404.html#main",
+    "target": "main#main",
+    "first focusable": "a.skip",
+    "first Tab lands on": "a.skip",
+    "href resolves to this page": true,
+    "stays on the page when pressed": true,
+    "elements with a positive tabindex": []
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "ph-alt",
+   "ok": true,
+   "expected": "every placeholder image has class ph and alt=\"\"",
+   "actual": "0 placeholder image(s), 0 wrong",
+   "evidence": {
+    "wrong": [],
+    "placeholder names taken from": "image-manifest.json (26 placeholders)"
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "404",
+   "viewport": "phone",
+   "check": "404-deep-address",
+   "ok": true,
+   "expected": "for a broken address inside a folder the 404 page answers 404 and still finds its stylesheet, script, images and links",
+   "actual": "status 404, stylesheet loaded, 25 links and files checked",
+   "evidence": {
+    "tested address": "qa-check-no-such-folder/no-such-page/",
+    "title": "Page not found | Hair & Makeup by Gerta",
+    "stylesheets": [
+     {
+      "file": "css/style.css",
+      "rules": 240
+     }
+    ],
+    "images not loaded": [],
+    "links that lead nowhere": [],
+    "requests that answered 404 before the page had set its base address (listed, not judged)": [
+     "qa-check-no-such-folder/no-such-page/css/style.css",
+     "qa-check-no-such-folder/no-such-page/images/logo.jpg",
+     "qa-check-no-such-folder/no-such-page/js/site.js"
+    ],
+    "skip link stays on the page when pressed": true
+   },
+   "owner": "PAGES"
+  }
+ ],
+ "script": "qa/check_page.py",
+ "check_page": {
+  "last run": {
+   "pages": [
+    "home",
+    "gallery",
+    "book-online",
+    "about",
+    "contact",
+    "english-refund-policy",
+    "accessibility-statement",
+    "english-privacy-policy",
+    "terms-conditions",
+    "404"
+   ],
+   "viewports": [
+    "desktop",
+    "phone"
+   ],
+   "seconds": 91.8,
+   "BOOKING_URL": "",
+   "placeholder names from": "image-manifest.json (26 placeholders)",
+   "attempts where the connection failed at first (page viewport: attempts)": {},
+   "checked again one at a time after connection errors": [],
+   "connection still failing, results not reliable": []
+  },
+  "checks": [
+   "page-loads",
+   "screenshot",
+   "console-errors",
+   "requests",
+   "internal-links",
+   "external-links",
+   "tel-mailto",
+   "images-load",
+   "document-width",
+   "one-h1",
+   "title",
+   "meta-description",
+   "lang",
+   "viewport-meta",
+   "canonical",
+   "robots-meta",
+   "relative-addresses",
+   "no-inline-style",
+   "landmarks",
+   "skip-link",
+   "ph-alt",
+   "404-deep-address"
+  ]
+ }
+}
