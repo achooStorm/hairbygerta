@@ -570,7 +570,7 @@ def booking_statement(source):
     elif not _LINK_HOST.fullmatch(link_host(link)):
         problem = "there is no web host name (such as book.squareup.com) after https://, so this is not a real address"
     else:
-        # The note in the script shows a made-up address as an example. Pasting that one is not a booking link.
+        # The note in the script may show a made-up address as an example. Pasting that one is not a booking link.
         rest = source[:start] + " " + source[end:]
         examples = {u.rstrip(".,;:)").rstrip("/") for u in re.findall(r"https?://[^\s\"'<>\\]+", rest)}
         problem = "the link is the example address from the notes in the script, not a real booking link" if link.rstrip("/") in examples else ""
@@ -604,8 +604,9 @@ def run_node_check(workdir, name):
 def check_script(got, node_result):
     out = []
     syntax_expected = "%s passes node --check" % JS_FILE
-    first_expected = ("the first statement of %s is exactly  %s  (empty until the owner pastes the Square link, then the link "
-                      "between the quote marks; build contract, decision 19)" % (JS_FILE, BOOKING_EXPECTED))
+    first_expected = ("the first statement of %s is exactly  %s  (empty, because the salon uses its own booking and the Book Now "
+                      "buttons call 347-671-5095. An online booking link, if one is ever added, goes between the quote marks. "
+                      "Build contract, decision 19)" % (JS_FILE, BOOKING_EXPECTED))
     if not got.ok:
         return [entry(SITE_PAGE, "js-syntax", False, syntax_expected, got.problem(), JS_FILE, "INTERACTION")]
     ok, actual, evidence = node_result

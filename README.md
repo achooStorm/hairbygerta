@@ -28,7 +28,7 @@ Before every upload run `python tools/licensing_check.py` in this folder. Go on 
 
 ## Changing a page
 
-1. Edit the text in `content/`. Change only what stands between the quote marks. The `notes` at the end of a file are remarks and never show on the site. A fact that shows in several places is written in several files, so search all of `content/` for it. The phone number is also in `js/site.js` (the line with `var phoneHref`, the number the Book Now buttons call) and in `seo/jsonld-home.json`, which holds the address and the opening hours for search engines too. Change them there as well.
+1. Edit the text in `content/`. Change only what stands between the quote marks. The `notes` at the end of a file are remarks and never show on the site. A fact that shows in several places is written in several files, so search all of `content/` for it. The phone number is also in `js/site.js` (the line with `var phoneHref`, the number the **Book Now** buttons call) and in `seo/jsonld-home.json`, which holds the address and the opening hours for search engines too. Change them there as well.
 2. Run `python tools/build_pages.py` in this folder. It needs Python 3 and nothing else.
 3. Read what it prints: `written` or `unchanged` for each page. A line that starts with `ERROR` or `WARNING` names the file and says what to fix. A page with an error is left as it was.
 
@@ -48,12 +48,12 @@ Run this in the folder, then open http://localhost:8000/ in a browser. Ctrl + C 
 - Address: https://achoostorm.github.io/hairbygerta/. A push to `main` can take up to 10 minutes to show there.
 - No custom domain yet: the Custom domain field stays empty and there is no `CNAME` file. The canonical tags and `sitemap.xml` already name https://www.hairbygerta.com/, the final address. When the domain is set (`MIGRATION.md`, section 4), GitHub adds a file `CNAME` to the repository. Always pull before a push, never force a push and never delete that file. Verifying the domain on GitHub ties hairbygerta.com to the helper's account. That is Gerta's decision, explained in section 4.
 - The empty file `.nojekyll` tells GitHub to publish the files as they are. Keep it.
-- First publishing, done by the helper: create the public repository without a README, `git init -b main`, switch on the commit hook, run the licensing check, commit, push `main`, choose the Pages settings above, wait for the build (up to 10 minutes) and open the address. The steps and their sources are in `MIGRATION.md`, section 1, part 5.
+- First publishing, done by the helper: create the public repository without a README, `git init -b main`, switch on the commit hook, run the licensing check, commit, push `main`, choose the Pages settings above, wait for the build (up to 10 minutes) and open the address. The steps and their sources are in `MIGRATION.md`, section 1, part 4.
 
 ## The booking link
 
-The first line of code in `js/site.js` is `var BOOKING_URL = "";`. The link to the Square Appointments booking page goes between the two quote marks. Nothing else changes and no page has to be rebuilt. While it is empty, every Book Now button calls 347-671-5095.
+Every **Book Now** button calls 347-671-5095. The first line of code in `js/site.js` is `var BOOKING_URL = "";` and it stays empty, because the salon uses its own booking and has no online booking link. If an online booking link is ever added, it goes between the two quote marks. Nothing else changes and no page has to be rebuilt.
 
 ## Everything else
 
-`MIGRATION.md` has the steps for the owner and her helper: the first publishing (section 1, part 5), what to check and save at Wix first (section 2), moving the domain away from Wix (section 3) and pointing it at this site (section 4), email forwarding for info@hairbygerta.com (section 5), replacing a placeholder with a real photo (section 6), pasting the booking link (section 7), what cannot be undone (section 8) and the yearly cost (section 9).
+`MIGRATION.md` has the steps for the owner and her helper: the first publishing (section 1, part 4), what to check and save at Wix first (section 2), moving the domain away from Wix (section 3) and pointing it at this site (section 4), email forwarding for info@hairbygerta.com (section 5), replacing a placeholder with a real photo (section 6), booking by phone and where the phone number is written (section 7), what cannot be undone (section 8) and the yearly cost (section 9).

@@ -3,14 +3,14 @@
 Result: **PASS** (exit code 0)
 
 - Checked: the files in the site folder
-- When: 2026-10-13 07:40:16
+- When: 2026-10-13 07:40:36
 - Script: qa/licensing_check.py, data: qa/reports/licensing.json
 
 ## Files hashed (SHA-256)
 
 | Side | Files | Archive members | Also |
 |---|---|---|---|
-| Site | 314 | 0 | 0 embedded pictures, 0 git objects |
+| Site | 462 | 0 | 0 embedded pictures, 103 git objects |
 | Restricted folder | 85 | 103 | 14 text members of old archives left out, 90 Wix reference screenshots |
 
 Different restricted hashes a site file was compared with: 150
@@ -44,10 +44,10 @@ None.
 | site | manifest | ok | 64 files recorded |
 | site | restricted_folder | ok | 85 files and 103 archive members hashed, 14 text members of old archives left out, 150 different hashes to compare |
 | site | gitignore_rules | ok | all 10 sample paths are ignored |
-| site | screenshots_ignored | ok | 178 image files under qa/, 0 would not be ignored |
-| site | git_tracked_paths | ok | not applicable: the site folder is not a git repository yet |
-| site | git_tracked_images | ok | not applicable: the site folder is not a git repository yet |
-| site | git_history | ok | not applicable: the site folder is not a git repository yet |
+| site | screenshots_ignored | ok | 178 image files under qa/, 0 not ignored |
+| site | git_tracked_paths | ok | 136 files tracked or staged, 0 not allowed |
+| site | git_tracked_images | ok | 3 allowed, 9 allowed-derivative, 52 placeholder |
+| site | git_history | ok | 103 stored files read, 0 identical to a restricted file, 0 forbidden paths in the history |
 | site | hash_match | ok | 0 matches |
 | site | archives_readable | ok | 0 archives opened |
 | site | archive_pictures | ok | 0 pictures in archives, 0 of them neither allowed nor a placeholder |

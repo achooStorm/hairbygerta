@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-10-13 07:40:16",
+ "generated": "2026-10-13 07:40:36",
  "results": [
   {
    "page": "site",
@@ -30,7 +30,7 @@
    "ok": true,
    "expected": ".gitignore excludes every folder named source-photos, zip, _tmp and every *.zip",
    "actual": "all 10 sample paths are ignored",
-   "evidence": "git check-ignore against the .gitignore of the folder (not a repository yet)",
+   "evidence": "git check-ignore in the repository",
    "owner": "DEPLOY"
   },
   {
@@ -38,44 +38,40 @@
    "viewport": "-",
    "check": "screenshots_ignored",
    "ok": true,
-   "expected": "git ignores every image file under qa/ (a failure once the folder is a git repository)",
-   "actual": "178 image files under qa/, 0 would not be ignored",
-   "evidence": "git check-ignore against the .gitignore of the folder (not a repository yet)",
-   "owner": "DEPLOY",
-   "level": "note"
+   "expected": "git ignores every image file under qa/ (screenshots are not for publishing)",
+   "actual": "178 image files under qa/, 0 not ignored",
+   "evidence": "git check-ignore in the repository",
+   "owner": "DEPLOY"
   },
   {
    "page": "site",
    "viewport": "-",
    "check": "git_tracked_paths",
    "ok": true,
-   "expected": "checked once the folder is a git repository",
-   "actual": "not applicable: the site folder is not a git repository yet",
-   "evidence": "no usable .git folder",
-   "owner": "DEPLOY",
-   "level": "note"
+   "expected": "nothing from a folder named source-photos, zip, _tmp and no *.zip is tracked or staged",
+   "actual": "136 files tracked or staged, 0 not allowed",
+   "evidence": "git ls-files and git ls-tree HEAD",
+   "owner": "DEPLOY"
   },
   {
    "page": "site",
    "viewport": "-",
    "check": "git_tracked_images",
    "ok": true,
-   "expected": "checked once the folder is a git repository",
-   "actual": "not applicable: the site folder is not a git repository yet",
-   "evidence": "no usable .git folder",
-   "owner": "DEPLOY",
-   "level": "note"
+   "expected": "every tracked image is allowed, allowed-derivative, a placeholder or an accepted owner photo",
+   "actual": "3 allowed, 9 allowed-derivative, 52 placeholder",
+   "evidence": "content of the git index, sorted like the files",
+   "owner": "ASSETS"
   },
   {
    "page": "site",
    "viewport": "-",
    "check": "git_history",
    "ok": true,
-   "expected": "checked once the folder is a git repository",
-   "actual": "not applicable: the site folder is not a git repository yet",
-   "evidence": "no usable .git folder",
-   "owner": "DEPLOY",
-   "level": "note"
+   "expected": "no object stored by git is identical to a restricted file, no forbidden path in the history",
+   "actual": "103 stored files read, 0 identical to a restricted file, 0 forbidden paths in the history",
+   "evidence": "git rev-list --objects --all and the index, every object hashed",
+   "owner": "DEPLOY"
   },
   {
    "page": "site",
@@ -84,7 +80,7 @@
    "ok": true,
    "expected": "no file is identical to a file of the restricted folder (0 matches)",
    "actual": "0 matches",
-   "evidence": "SHA-256 of every file of the site folder (314 files, 0 archive members, 0 embedded pictures, 0 git objects) against 150 restricted hashes",
+   "evidence": "SHA-256 of every file of the site folder (462 files, 0 archive members, 0 embedded pictures, 103 git objects) against 150 restricted hashes",
    "owner": "ASSETS"
   },
   {
@@ -345,7 +341,7 @@
  "source": "files in the site folder",
  "verdict": "PASS",
  "exit_code": 0,
- "files_hashed": 314,
+ "files_hashed": 462,
  "restricted_hashes": 150,
  "restricted_files_hashed": 264,
  "images_checked": 242,
@@ -369,10 +365,10 @@
  },
  "counts": {
   "site": {
-   "files": 314,
+   "files": 462,
    "archive_members": 0,
    "embedded_pictures": 0,
-   "git_objects": 0
+   "git_objects": 103
   },
   "restricted": {
    "files": 85,

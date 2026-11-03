@@ -1,20 +1,18 @@
 /*
- * ONLINE BOOKING LINK
+ * BOOK NOW BUTTONS
  *
- * The line right under this note is where the link to your Square Appointments
- * online booking page goes.
+ * Every Book Now button calls 347-671-5095.
+ * The salon uses its own booking, so this site has no online booking link.
+ * That is why BOOKING_URL, on the line right under this note, stays empty.
  *
- * How to add it:
- *   1. Copy the full link to your booking page. It starts with https://
+ * If an online booking link is ever added, it goes between the two quote
+ * marks on the line under this note. To add one, follow these steps.
+ *   1. Copy the full link to the booking page. It starts with https://
  *   2. Paste it between the two quote marks on the line under this note.
  *   3. Change nothing else on that line. Both quote marks stay, and so does
  *      the ; at the very end.
  *
- * Example only. This address is made up, your real link will look different:
- *   https://book.squareup.com/appointments/EXAMPLE-ONLY/location/EXAMPLE-ONLY/services
- *
- * Until a link is there, every Book Now button calls 347-671-5095.
- * Once a link is there, every Book Now button opens your booking page in a
+ * Once a link is there, every Book Now button opens the booking page in a
  * new tab instead.
  * To go back to phone calls, delete the link and leave the two quote marks
  * with nothing between them.

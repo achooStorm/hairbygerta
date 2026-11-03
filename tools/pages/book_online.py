@@ -24,9 +24,10 @@ Every word a visitor reads comes from content/book-online.json:
     closing_note_html   the line under the cards, with the phone number as a link
 The phone link of the buttons comes from content/site.json (tel_href).
 
-The Book Now button calls the phone number. The script js/site.js sends every link marked data-book
-to the booking page once BOOKING_URL in that file is filled in, so nothing has to change here on that
-day. A screen reader reads each button as the button text, a colon and the name of the service
+The Book Now button calls the phone number. The salon uses its own booking, so the site has no online
+booking link and BOOKING_URL in js/site.js stays empty. Should a link ever be filled in there, the
+script sends every link marked data-book to it, and nothing has to change here. A screen reader reads
+each button as the button text, a colon and the name of the service
 ("Book Now: Balayage"), so that ten buttons with the same text can be told apart. That label is put
 together here from button_label and the title of the service.
 

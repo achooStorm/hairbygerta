@@ -71,7 +71,8 @@ Shared text (navigation, footer, business facts, social links, fonts link, Open 
 ## 6. HTML every page shares
 
 ```
-<html lang="en"> <head>  charset, viewport, title, meta description, canonical (https://www.hairbygerta.com/…),
+<html lang="en"> <head>  charset, viewport, title, meta description,
+  [home only] the two search engine verification metas (google-site-verification, msvalidate.01), canonical (https://www.hairbygerta.com/…),
   og:type og:site_name og:title og:description og:url og:image (https://www.hairbygerta.com/images/g12.jpg),
   favicon.ico, images/favicon.png, images/apple-touch-icon.png, the two font preconnects, the Google Fonts link (display=swap),
   css/style.css, <script>document.documentElement.classList.add("js")</script>, [home only] the JSON-LD script

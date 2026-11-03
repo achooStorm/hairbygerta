@@ -290,6 +290,14 @@ PLACEHOLDER_STATUS = "placeholder"
 OWNER_STATUS = "owner-photo"
 JSONLD_JSON = "seo/jsonld-home.json"
 JSONLD_SLUG = "home"                    # the only page that carries the JSON-LD script
+# The two tags that show Google Search Console and Bing Webmaster Tools that this site belongs to its owner. They
+# are the same tags the old Wix site had, so both stay verified after the move. Google and Bing read them on the
+# home page, so only the home page has them. Keep them exactly as they are.
+VERIFICATION_SLUG = "home"
+VERIFICATION_TAGS = (
+    ("google-site-verification", "cEwGkDfnBA3KDOjrEJ1VtYTp5NZwNkC0jiX1SQsjxsI"),    # Google Search Console
+    ("msvalidate.01", "2798AE29C3678DCCCB40CFBEF9EF84EA"),                           # Bing Webmaster Tools
+)
 PAGES_DIR = "tools/pages"
 PHONE_MAX = 760                         # the phone breakpoint of the stylesheet, used in the default sizes attribute
 PAGES_HOST = "achoostorm.github.io"     # where the site is published before the domain is connected
@@ -300,7 +308,7 @@ FONT_PRECONNECTS = (
 # The small script in the head of every page. It puts the class "js" on <html> before the page is drawn, which
 # tells the stylesheet that the site script is there (on a phone the menu is then folded behind the menu
 # button). js/site.js starts with "var BOOKING_URL = ...". When that file did not arrive, or the browser could
-# not read it (a quote mark lost while pasting the booking link, for example), BOOKING_URL does not exist once
+# not read it (a quote mark lost while that line was edited, for example), BOOKING_URL does not exist once
 # the page is read. The class is then taken away again, so the menu shows as a plain list and still works.
 JS_FLAG = ('<script>document.documentElement.classList.add("js");document.addEventListener("DOMContentLoaded",function(){'
            'if(typeof BOOKING_URL!=="string"){document.documentElement.classList.remove("js")}})</script>')
@@ -942,6 +950,8 @@ def _document(page, ctx, parts, site, jsonld, year):
     head.append('<meta name="description" content="%s">' % esc(description))
     if robots:
         head.append('<meta name="robots" content="%s">' % esc(robots))
+    if page.slug == VERIFICATION_SLUG:
+        head += ['<meta name="%s" content="%s">' % (esc(name), esc(token)) for name, token in VERIFICATION_TAGS]
     if not noindex:
         head.append('<link rel="canonical" href="%s">' % esc(site_url + page.path))
     og_site_name = _need(site, "og_site_name", str)

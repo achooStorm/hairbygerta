@@ -31,7 +31,10 @@ What it checks on every page
                         the ten services with title, description, duration and price, and the photos, in the order
                         the brief gives
   privacy-...           (Privacy Policy) no sentence says that Wix stores data or sets cookies, the three statements
-                        the brief asks for are there, the last heading is Questions
+                        the brief asks for are there, the last heading is Questions. Online booking was dropped on
+                        2 November 2026, so the booking statement says that appointments are booked by phone and that
+                        the website does not collect or store booking details, and the cookies statement names Google
+                        Maps on the Contact page and Google Fonts (no booking provider any more)
   wix-wording           (the nine pages that exist on Wix) title, meta description, main text, footer and navigation
                         compared sentence by sentence with the reference files in the tools folder (wix-ref/<slug>.txt).
                         One entry per sentence that differs. A difference is intended, and listed with ok true, only
@@ -39,8 +42,12 @@ What it checks on every page
                         the closing booking note, the Hours block of the contact page, the copyright line, text that Wix
                         repeats for screen readers, the copies of the scrolling hours line, an order the build contract
                         decided (sections 10.6 and 10.8), the mark of the required Email field (10.8), the new title of
-                        the Contact page (10.33). A note in a content file does not make a difference intended. A title
-                        tag or meta description that Wix has must equal the Wix value (the Contact title apart).
+                        the Contact page (10.33), and two changes made when online booking was dropped on 2 November 2026
+                        (the Book Now buttons call 347-671-5095): the new meta description of the Book Online page, and
+                        the Privacy Policy list item "Service providers that help us operate the website" without the
+                        words "and booking system". A note in a content file does not make a difference intended. A title
+                        tag or meta description that Wix has must equal the Wix value (the Contact title and the Book
+                        Online meta description apart).
                         Skipped with a note when the reference folder is not there.
   site-json-facts       (page "site") the business facts stored in content/site.json are the facts of the brief
 
@@ -769,6 +776,19 @@ def page_file(slug):
 
 # Decision 33 of the build contract: (page, what, the Wix value, our value). Any other title is a difference.
 CONTACT_TITLE = ("contact", "title", "Contact | Hairbygerta", "Contact | Hair & Makeup by Gerta, Staten Island NY")
+# Online booking was dropped on 2 November 2026, so the Book Online page no longer asks visitors to book online.
+# The Book Now buttons call 347-671-5095. Same shape as CONTACT_TITLE. Any other meta description is a difference.
+BOOK_ONLINE_DESCRIPTION = (
+    "book-online", "meta description",
+    "Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, "
+    "keratin treatments, Brazilian blowouts and makeup in minutes.",
+    "Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, "
+    "keratin treatments, Brazilian blowouts and makeup.")
+# For the same reason the Privacy Policy no longer names a booking system: (page, the Wix list item, our list item).
+# Any other rewording of that list item is a difference.
+PRIVACY_SERVICE_PROVIDERS = ("english-privacy-policy",
+                             "Service providers that help us operate the website and booking system",
+                             "Service providers that help us operate the website")
 
 
 class Rules:
@@ -791,15 +811,19 @@ class Rules:
         return any(s and quoted_in_notes(s, self.ex.notes) for s in sentences_)
 
     def head(self, what, wix_value, our_value):
-        """Why the title tag or the meta description may differ from the Wix one, or None. One case is on the list."""
+        """Why the title tag or the meta description may differ from the Wix one, or None. Two cases are on the list."""
         if (self.slug, what, wix_value, our_value) == CONTACT_TITLE:
             return 'build contract, section 10.33: the Contact page gets the new title (the Wix one is the automatic default)'
+        if (self.slug, what, wix_value, our_value) == BOOK_ONLINE_DESCRIPTION:
+            return "online booking was dropped on 2 November 2026 and the Book Now buttons call 347-671-5095"
         return None
 
     def reworded(self, w, o):
         """Why a sentence may read differently than on the Wix page, or None."""
         if self.slug == "contact" and (w, o) == ("Email", "Email *"):
             return "build contract, section 10.8: the Email label carries the mark of a required field"
+        if (self.slug, w, o) == PRIVACY_SERVICE_PROVIDERS:
+            return "online booking was dropped on 2 November 2026, so the site has no booking system"
         return None
 
     def removed(self, w, wix_rows):
@@ -820,7 +844,9 @@ class Rules:
             return self.by_key[o]
         if self.slug == "english-privacy-policy":
             low = o.lower()
-            if is_no_database(o) or is_square_booking(o) or "google maps" in low or "google fonts" in low or "booking provider" in low:
+            if is_phone_booking(o):
+                return "privacy rule: appointments are booked by phone, online booking was dropped on 2 November 2026"
+            if is_no_database(o) or "google maps" in low or "google fonts" in low:
                 return "privacy rule: one of the statements the brief asks for"
             if o == "Questions" and self.last_heading == "Questions":
                 return 'privacy rule: the last heading is "Questions"'
@@ -1423,14 +1449,17 @@ def is_no_database(s):
     return "database" in low and "visitor" in low and bool(NEGATION.search(low))
 
 
-def is_square_booking(s):
+def is_phone_booking(s):
+    """A sentence that says appointments are booked by phone and the website does not collect or store booking details.
+    Online booking was dropped on 2 November 2026, so this takes the place of the old statement about the online
+    booking provider."""
     low = s.lower()
-    return "square" in low and "book" in low and "server" in low
+    return "book" in low and "phone" in low and ("collect" in low or "store" in low) and bool(NEGATION.search(low))
 
 
 def privacy_findings(rows):
     """rows: (kind, line) of main in reading order. -> the findings the three privacy checks need."""
-    found = {"wix": [], "wix_other": [], "database": [], "square": [], "cookies": {}, "last_heading": None}
+    found = {"wix": [], "wix_other": [], "database": [], "booking": [], "cookies": {}, "last_heading": None}
     lead = ""                                   # the last line that is not a list item: it introduces the list after it
     for kind, line in rows:
         if kind in HEADINGS:
@@ -1444,16 +1473,14 @@ def privacy_findings(rows):
                 found["wix" if claim else "wix_other"].append(s)
             if is_no_database(s):
                 found["database"].append(s)
-            if is_square_booking(s):
-                found["square"].append(s)
+            if is_phone_booking(s):
+                found["booking"].append(s)
         low = line.lower()
         if "cookie" in context.lower():
             if "google maps" in low and "contact page" in low:
                 found["cookies"].setdefault("Google Maps on the Contact page", line)
             if "google fonts" in low:
                 found["cookies"].setdefault("Google Fonts", line)
-            if "booking provider" in low or "square" in low:
-                found["cookies"].setdefault("the booking provider", line)
     return found
 
 
@@ -1470,15 +1497,16 @@ def check_privacy(slug, ex, page):
                      + ("" if not also else ". Wix is also named, without such a statement, in: " + " | ".join(quote(s, 200) for s in also)),
                      where, owner(not in_content["wix"])))
     for key, check, expected in (("database", "privacy-statement-no-visitor-database", "a sentence says that the site keeps no database of visitors"),
-                                 ("square", "privacy-statement-booking-by-square", "a sentence says that online bookings are handled by Square on its own servers")):
+                                 ("booking", "privacy-statement-booking-by-phone", "a sentence says that appointments are booked by phone and that the website does not collect or store booking details")):
         ok = bool(on_page[key]) and bool(in_content[key])
         out.append(entry(slug, check, ok, expected, quote(on_page[key][0], 400) if on_page[key] else "no such sentence on the page",
                          where, owner(bool(in_content[key]))))
-    wanted = ("Google Maps on the Contact page", "Google Fonts", "the booking provider")
+    # Since 2 November 2026 there is no online booking, so no booking provider is named here any more.
+    wanted = ("Google Maps on the Contact page", "Google Fonts")
     lost = [w for w in wanted if w not in on_page["cookies"]]
     lost_content = [w for w in wanted if w not in in_content["cookies"]]
     out.append(entry(slug, "privacy-statement-third-party-cookies", not lost and not lost_content,
-                     "the page says that Google Maps on the Contact page, Google Fonts and the booking provider may set their own cookies",
+                     "the page says that Google Maps on the Contact page and Google Fonts may set their own cookies",
                      " | ".join(quote(on_page["cookies"][w], 200) for w in wanted) if not lost else "not said about: " + ", ".join(lost),
                      where, owner(not lost_content)))
     ok = on_page["last_heading"] == "Questions" and in_content["last_heading"] == "Questions"

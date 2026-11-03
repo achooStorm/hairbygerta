@@ -1,62 +1,65 @@
 # Moving hairbygerta.com off Wix: a step by step guide
 
-This guide is for Gerta, the owner of Hair & Makeup by Gerta, and for whoever helps her. It shows how the salon website moves from Wix to the new site in the folder `hairbygerta`: what can be done now, what to check and save first, how the move itself goes, and what it costs afterwards.
+This guide is for Gerta, the owner of Hair & Makeup by Gerta, and for her helper. It shows how the salon website moves from Wix to the new site in the folder `hairbygerta`, which the helper publishes on GitHub Pages. The address hairbygerta.com, called the domain, moves once, from Wix straight to Porkbun, a company that registers domains [S141]. Mail sent to info@hairbygerta.com is then forwarded for free to Gerta's Gmail address [S132]. The guide shows what can be done now, what was checked in the Wix account, how the move goes day by day, and what it costs afterwards.
 
-Three things to know before you start:
+Four things to know before you start.
 
-- **The Wix site stays untouched.** Nothing in Sections 1 and 2 changes it. It keeps running exactly as it is until you decide to move the domain (the web address hairbygerta.com) in Section 3.
-- **You can look at the new site in the meantime.** On the computer today, and on the internet at the preview address https://achoostorm.github.io/hairbygerta/ once the new site is published. Section 1, Part 1 shows both.
-- **The photos are the one difference.** 26 photos of the Wix site cannot move to the new site. Section 8, Part 4 says why. On the new site a placeholder (a beige box with a faint logo) stands in for each of them until you put in a photo of your own. Never save, copy or upload a photo from the Wix site.
+- **One move, with fixed dates.** On 2 November 2026 the Wix account showed that the Wix site plan and the business email end on the evening of Thursday 26 November 2026, New York time. The domain's registration at Wix expires the same evening [S27]. Auto renew is off for all three. With auto renew off, a Wix subscription does not renew [S59], so nothing has to be canceled. Before that evening the domain moves to Porkbun. Your helper starts the transfer on Monday 9 November 2026, or at the latest on Monday 16 November 2026. [Section 2](#2-what-was-checked-in-wix-on-2-november-2026) has the end dates, and [Section 3](#3-moving-the-domain-from-wix-to-porkbun-step-by-step) has the steps of the move.
+- **The Wix site keeps running until the transfer completes.** Nothing in Sections 1 and 2 changes it. When the transfer completes, Wix disconnects the Wix site from the domain [S35]. The same day your helper points the address at the new site ([Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages)) and turns on the email forwarding ([Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail)).
+- **You can look at the new site in the meantime.** On the computer today, and on the internet at the preview address https://achoostorm.github.io/hairbygerta/ once the new site is published. [Section 1, Part 1](#part-1-look-at-the-new-site) shows both.
+- **The photos are the one difference.** 26 photos of the Wix site cannot move to the new site. [Section 8, Part 4](#part-4-the-14-shutterstock-photos) says why. On the new site a placeholder (a beige box with a faint logo) stands in for each of them until you put in a photo of your own. Never save, copy or upload a photo from the Wix site.
 
-How to read this guide:
+How to read this guide.
 
 - **Your helper** is the person who built the new site and helps you with the computer steps.
-- A step that starts with **Gerta signs in** happens inside one of Gerta's own accounts or her email. Gerta does it herself, or her helper does it with Gerta next to them, saying yes to each step. Nobody signs in as Gerta, asks for her passwords or codes, or types in her bank or card details for her. The same rule holds for every other step inside her Wix, Cloudflare, Square and email accounts.
-- **The GitHub account** that holds the new site is called achooStorm. It belongs to your helper, not to Gerta. So every GitHub step in this guide is one where **your helper signs in**: publishing the site (Section 1, Part 5), setting the domain there (Section 4), publishing a photo (Section 6) and pasting the booking link (Section 7). Gerta cannot do those steps alone. The helper signs in with their own password and sign-in codes, and nobody else types them. What this means for the address hairbygerta.com, and which decision there is Gerta's, is in [Section 4](#whose-github-account-this-is-and-what-gerta-decides).
-- **Bold words** in the steps are the names of buttons, menus and pages, written the way the official help pages write them.
-- A marker like [S12] points to the list [Official help pages used](#official-help-pages-used) at the end. Every statement about how Wix, Cloudflare, GitHub or Square works comes from one of those pages. All of them were opened on 12 or 13 October 2026.
-- Rules, prices and screens change. If a screen does not match a step, stop. Open the help page behind the marker, or ask your helper.
-- Dates are written with the month as a word, for example 27 November 2026, so the day and the month cannot be mixed up.
+- **The helper's accounts.** The Wix account that owns the salon site is in the helper's name, and so is the domain hairbygerta.com. The helper is its registrant, the person listed as the domain's owner. The helper also opens the Porkbun account, with the helper's personal email address. The GitHub account achooStorm, which holds the new site, is the helper's too. A step that starts with **Your helper signs in** happens inside one of these accounts. The helper signs in with their own password and sign-in codes, and nobody else types them. Gerta cannot do those steps alone. She also needs the helper for every later change at Porkbun and on GitHub, for example to publish a photo ([Section 6](#6-how-to-replace-a-placeholder-with-a-real-photo)) or to change the phone number on the site ([Section 7](#7-booking-by-phone)).
+- **Gerta's own accounts.** The business mailbox info@hairbygerta.com is Gerta's. Wix sells it through Google Workspace, Google's paid email service [S20], and Gerta is its administrator. Her Gmail, where the forwarded mail will arrive, is her own too. A step that starts with **Gerta signs in** happens inside one of these. Gerta does it herself, or her helper does it with Gerta next to them, saying yes to each step. Nobody signs in as Gerta, asks for her passwords or codes, or types in her bank or card details for her.
+- **Gerta's decisions.** The site and the mail are for Gerta's salon, so some choices are hers alone, even when the helper does the clicks. She chooses the photos. She decides whether the free email forwarding is enough for her mail, and whether the domain is locked to the helper's GitHub account. Step 9 of [At a glance](#at-a-glance) says by when. [Section 4](#whose-github-account-this-is-and-what-gerta-decides) explains what the helper's GitHub account means for the address hairbygerta.com.
+- **Bold words** in the steps are the names of buttons, menus, fields and pages, written the way the official help pages write them.
+- A marker like [S35] points to the list [Official help pages used](#official-help-pages-used) at the end. Every statement about how Wix, Porkbun, GitHub or Google works comes from one of those pages. The pages were opened on 12 or 13 October 2026 or on 2 November 2026, and the start of that list says which.
+- Rules, prices and screens change. Porkbun's price for a .com domain, for example, went up on 1 November 2026 [S140]. If a screen does not match a step, stop. Open the help page behind the marker, or ask your helper.
+- Dates are written with the month as a word, for example 26 November 2026, so the day and the month cannot be mixed up.
 
 ## At a glance
 
-Tick each step when it is done. The order matters. The link in each step leads to the part of this guide that explains it.
+Tick each step when it is done. The order matters. The link in each step leads to the part of this guide that explains it. Step 1 is already done.
+
+**Already done**
+
+1. [x] On Monday 2 November 2026 the end dates were checked in the Wix account and in the public record [S27]. The Wix site plan, the domain's registration at Wix and the business email all end on the evening of Thursday 26 November 2026, New York time, and none of them renews [S59]. See [Section 2, The end dates](#the-end-dates).
 
 **Now, while everything stays on Wix**
 
-1. [ ] This week: write down the three end dates in Wix, for the site plan, the domain and the business email. See [Section 2, Parts A to C](#2-what-to-check-in-wix-this-week). The domain date is the urgent one.
-2. [ ] This week: back up the mailbox info@hairbygerta.com. See [Section 2, Part D](#part-d-back-up-the-mailbox).
-3. [ ] This week: read [Section 8, What cannot be undone](#8-what-cannot-be-undone) once, before you change anything. It also says by when the Wix site plan and the business email have to be canceled if you do not want Wix to renew them.
-4. [ ] Before the domain's payment date in Wix: decide with your helper how the domain will move and whether Wix should renew it one more time. See [Read this first](#read-this-first-it-takes-two-moves-not-one) and [Check your dates first](#check-your-dates-first) in Section 3. That part also says why the payment date may be as early as around 27 October 2026.
-5. [ ] Look at the new site on the computer. See [Section 1, Part 1](#part-1-look-at-the-new-site).
-6. [ ] Set up Square on the free plan and test a booking. See [Section 1, Part 3](#part-3-set-up-square-appointments-on-the-free-plan) and [Part 4](#part-4-test-a-booking).
-7. [ ] Collect your own photos. See [Section 1, Part 2](#part-2-collect-your-own-photos).
-8. [ ] Your helper publishes the new site, so that it opens at the preview address. Only the helper can do this, because the GitHub account is theirs. See [Section 1, Part 5](#part-5-your-helper-publishes-the-new-site-the-first-time).
-9. [ ] Put your own photos in place of the placeholders, one at a time. See [Section 6](#6-how-to-replace-a-placeholder-with-a-real-photo). You can keep doing this after the move too.
-10. [ ] Paste the Square booking link into the new site. See [Section 7](#7-how-to-paste-the-square-booking-link).
+2. [ ] Look at the new site on the computer. See [Section 1, Part 1](#part-1-look-at-the-new-site).
+3. [ ] Collect your own photos. See [Section 1, Part 2](#part-2-collect-your-own-photos).
+4. [ ] Booking stays by phone and needs no setup. Every **Book Now** button on the new site calls 347-671-5095. See [Section 1, Part 3](#part-3-booking-stays-by-phone).
+5. [ ] Your helper publishes the new site, so that it opens at the preview address. Then you look at every page there together. Do this before the transfer starts in step 10, because the new site has to be ready when the Wix site leaves the address [S35]. Only the helper can publish, because the GitHub account is theirs. See [Section 1, Part 4](#part-4-your-helper-publishes-the-new-site-the-first-time).
+6. [ ] Read [Section 8, What cannot be undone](#8-what-cannot-be-undone) once, before anything is changed at Wix.
 
-**The move: from here on the address hairbygerta.com changes hands**
+**The move, in November 2026**
 
-11. [ ] Get Cloudflare ready. Cloudflare is the company that will hold the domain's settings. See [Section 3, Part A](#part-a-get-cloudflare-ready).
-12. [ ] Make the first move of the domain. Start at least 2 to 3 weeks before the earliest end date you wrote down in step 1. See [Section 3, Part B](#part-b-first-move-from-wix-to-the-in-between-registrar).
-13. [ ] Straight after the first move: point the domain at the new site, together with your helper. See [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages). Before that day, Gerta decides whether the domain is also locked to the helper's GitHub account: see [Whose GitHub account this is, and what Gerta decides](#whose-github-account-this-is-and-what-gerta-decides).
-14. [ ] Turn on the free email forwarding, before the business email end date. See [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail). Then back up the mailbox one last time ([Section 2, Part D](#part-d-back-up-the-mailbox)).
-15. [ ] Wait 60 days, then make the second move, into Cloudflare Registrar. See [Section 3, Part C](#part-c-wait-60-days) and [Part D](#part-d-second-move-into-cloudflare-registrar).
+7. [ ] By Thursday 5 November 2026, your helper turns off **Privacy and DNSSEC protection** at Wix. DNSSEC is a security seal on the domain's settings, and Porkbun recommends deleting DNSSEC records before a transfer [S125]. Wix sells DNSSEC only together with private registration, so the same switch makes the name and contact details of the domain's owner visible in the public record, called WHOIS [S53]. They stay visible until Porkbun's free WHOIS privacy covers them after the move [S121] [S137]. The person listed as the domain's owner decides whether to accept that. Today that is the helper. The switch is on the **Edit contact info** page [S53]. Change nothing else there, because a change to the contact details locks the domain for 60 days [S38] [S54]. Then your helper checks in the public record that DNSSEC is off, before going on [S27] [S28]. See [Section 3, Part A](#part-a-turn-off-privacy-and-dnssec-at-wix).
+8. [ ] Before Monday 9 November 2026, your helper gets Porkbun ready. The Porkbun account is the helper's, opened with the helper's personal email address. See [Section 3, Part B](#part-b-get-porkbun-ready).
+9. [ ] Before Monday 9 November 2026, Gerta makes two decisions and tells her helper. First, whether the free email forwarding is enough for her mail. It only receives mail and passes it on, and her replies go out from her Gmail address [S132] [S135]. Section 5 explains this under [Before you turn on forwarding](#before-you-turn-on-forwarding) and [Limits of the forwarding](#limits-of-the-forwarding). Second, whether the domain is locked to the helper's GitHub account. See [Whose GitHub account this is, and what Gerta decides](#whose-github-account-this-is-and-what-gerta-decides) in Section 4.
+10. [ ] On Monday 9 November 2026, or at the latest on Monday 16 November 2026, your helper starts the transfer. See [Section 3, Part C](#part-c-start-the-transfer), and [The dates](#the-dates) for why these dates. Wix sends the transfer code (the authorization code) to the registrant contact email [S35], which is the helper's personal email address. The helper enters the code at Porkbun, and the transfer is paid there [S120]. Since 1 November 2026 a .com transfer at Porkbun costs \$11.81 [S140] [S141]. Read the price on the screen before paying. The transfer adds one year to the domain [S121] [S124]. If the transfer cannot start by Monday 16 November 2026, your helper extends the domain at Wix before it expires [S105] and moves it later. See [If something goes wrong](#if-something-goes-wrong).
+11. [ ] While the transfer runs, your helper keeps an eye on it. It usually takes five to seven days, and Porkbun sends an email when it is done [S123]. See [Section 3, Part D](#part-d-while-the-transfer-runs).
+12. [ ] The day the transfer completes, your helper points hairbygerta.com at the new site. Wix disconnects the Wix site when the transfer completes [S35], so do this the same day. Until it is done, the address may show no website. See [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages).
+13. [ ] The same day, your helper turns on the free email forwarding from info@hairbygerta.com to Gerta's Gmail address [S132], unless Gerta chose another way in step 9. Then Gerta tests it. See [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail).
+14. [ ] Once the forwarding works, and by Friday 20 November 2026 at the latest, Gerta backs up the mailbox info@hairbygerta.com with Google Takeout [S32]. See [Section 2, Back up the mailbox](#back-up-the-mailbox).
+15. [ ] Thursday 26 November 2026 is Thanksgiving, and nothing has to be done that day. In the evening, New York time, the Wix site plan and the business email end by themselves. There is nothing to cancel and nothing more to pay Wix. By then the domain is at Porkbun. A domain still at Wix that was not extended would expire that evening [S27]. See [Section 8](#8-what-cannot-be-undone).
 
-**Afterwards**
+**Any time, and afterwards**
 
-16. [ ] Before each of the three Wix payment dates and end dates: read the matching part of [Section 8](#8-what-cannot-be-undone) again. A payment date can come weeks before its end date, and Section 8 says how many. Do not cancel or close anything at Wix before you have read that part.
-17. [ ] Once a year: check what you pay. See [Section 9](#9-yearly-cost-after-the-move).
-
-Steps 11 to 15 follow the route with two moves. If you and your helper choose another way in step 4, for example to leave the domain registered at Wix, those steps change. Section 3 names the choices under [Read this first](#read-this-first-it-takes-two-moves-not-one).
+16. [ ] Put your own photos in place of the placeholders, one at a time. This works before and after the move. See [Section 6](#6-how-to-replace-a-placeholder-with-a-real-photo).
+17. [ ] Once a year, check with your helper what the domain costs at Porkbun. It is the one bill left after the move, and Porkbun says the .com price is expected to rise about 7% a year [S140]. See [Section 9](#9-yearly-cost-after-the-move).
 
 ## 1. What can be done now without touching Wix
 
-Nothing in this section changes the Wix site, the domain or your email. Do Part 1 before Part 2, and Part 3 before Part 4. Parts 1 and 2 do not depend on Parts 3 and 4, so either pair can come first. Part 5 is for your helper and can be done on any day.
+Nothing in this section changes the Wix site, the domain or your email. Do Part 1 before Part 2. Part 3 only explains how booking works and has no steps. Part 4 is for your helper and can be done on any day.
 
 ### Part 1: Look at the new site
 
-**On the internet, once the site is published.** Your helper publishes the site. [Part 5](#part-5-your-helper-publishes-the-new-site-the-first-time) shows how. After it, the new site is at this preview address (a temporary web address, used until hairbygerta.com points to the new site):
+**On the internet, once the site is published.** Your helper publishes the site. [Part 4](#part-4-your-helper-publishes-the-new-site-the-first-time) shows how. After it, the new site is at this preview address (a temporary web address, used until hairbygerta.com points to the new site):
 
 https://achoostorm.github.io/hairbygerta/
 
@@ -99,102 +102,11 @@ There are 26 placeholder names. You do not need all of them at once. A spot you 
 
 **The logo.** The logo file is only 225 px wide and 225 px tall (px means pixels, the dots a picture is made of), so it can look a little soft on sharp screens. Ask whoever designed the logo for the original artwork (a vector file such as SVG, AI, EPS or PDF, or a large PNG). A sharper logo can then be put in later. Nothing has to change now.
 
-### Part 3: Set up Square Appointments on the free plan
+### Part 3: Booking stays by phone
 
-Square is the booking service the new site will link to. Its free plan is called Square Free. It costs \$0 a month per location (a location is one place of business, and you have one) and includes an online booking site [S7]. Square lists its card processing fees on the same page [S7]. What the free plan includes, and the fees, are in [Section 9](#square-free-plan-fees-only-on-payments). Square Dashboard is the Square website where you manage your account.
+The owner of Le Vigne Hair Salon wants clients to use the salon's own booking, and there is no online booking link for it. So the new site takes no bookings online. Its Book Online page lists the services, and every **Book Now** button there calls 347-671-5095. There is nothing to set up. [Section 7](#7-booking-by-phone) says where the phone number is written, in case it ever changes.
 
-**Create the account**
-
-1. Go to https://squareup.com/us/en/appointments/pricing
-2. Under **Square Free**, click **Get started** [S7]. Do not click **Try free for 30 days**. That button starts a trial of a paid plan: Square Plus is \$49 and Square Premium is \$149 a month per location [S7].
-3. Answer the sign-up questions yourself. For the login email, use an address you are sure will keep working while the website moves. A personal address is safer for this than info@hairbygerta.com.
-4. If Square asks what kind of business you have, pick the choice closest to a hair salon. Square switches features on by business type [S8].
-5. Verify your identity and link your bank account when Square asks. Square's setup guide lists this as its first step and says you need your bank account and routing numbers [S9]. Do this yourself. Do not give these numbers to anyone who helps you.
-
-**Check your location**
-
-6. In Square Dashboard go to **Account & Settings**, then **My business**, then **Locations** [S10].
-7. Select your location. Square made it when you signed up [S10].
-8. Check the business name (Hair & Makeup by Gerta), the address (Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310), the phone (347-671-5095) and the email (info@hairbygerta.com).
-9. Enter the business hours: Tuesday - Saturday, 9 AM - 5 PM.
-10. Click **Save** [S10].
-
-Before you go on, know this. If a menu, page or tab named in steps 11 to 25 is missing, the booking features are most likely not switched on yet. That can be **Service library** in step 11, the **Appointments** tab in step 19 or **Appointments** in step 25. Square does not show these features in Square Dashboard until they are activated [S11]. To activate them, go to **Add more** in Square Dashboard, select **Bookings** and click **Add** [S11]. Square says some of these features need a paid plan [S11]. If a screen shows a price or asks you to change your plan, stop and ask your helper.
-
-**Add the ten services**
-
-11. Go to **Items & services**, then **Items**, then **Service library**. The first menu may be called **Items & menus** or **Items & inventory** [S12].
-12. Click **Create service** [S12].
-13. Type the name and the description from the table below.
-14. Select the price type and enter the price [S12]. Read the note under the table first.
-15. Enter the duration [S12].
-16. Click **Save** [S12].
-17. Repeat steps 12 to 16 for the other nine services.
-
-| Name | Description | Duration |
-|---|---|---|
-| Haircut & Style | Transform your hair with precision cutting and styling. | 45 min |
-| Hair Coloring | Revitalize your hair with our expert coloring services. | 1 hr 30 min |
-| Makeup Session | Natural makeup that enhances your beauty. | 45 min |
-| Dream Bridal Hair | Romantic, long-lasting bridal hair tailored to your dress and vision. | 1 hr 30 min |
-| Highlights & Lowlights | Customized foils to add brightness, depth, and dimension. | 2 hr 30 min |
-| Balayage | Hand-painted color for a soft, sun-kissed finish. | 3 hr |
-| Keratin Treatment | Frizz-fighting smoothing treatment for sleek, manageable hair. | 2 hr 30 min |
-| Brazilian Blowout | Long-lasting smoothness with mirror-like shine. | 2 hr |
-| Perm & Texture Waves | Custom curls or waves with movement and body. | 1 hr |
-| Kids’ Haircut | Friendly, patient cuts just for kids. | 45 min |
-
-Note on price: your website says "Call for price" for every service. Square's help page does not name its price types, so this guide cannot tell you which one to pick. Open the price type list and read the choices. Pick the one that shows no fixed amount. If Square will not save without an amount, enter your real price. Never enter a guess.
-
-**Make yourself bookable**
-
-18. Go to **Staff**, then **Team**, then **Team members**. The first menu may be called **Staff & payroll** [S13].
-19. Select your own name, then select **Appointments** [S13]. If your name is not in the list, stop and ask Square support (see the end of Part 4).
-20. Select **Add to appointments** [S13].
-21. Turn on **Bookable by customers online** [S12].
-22. Choose all ten services as the services you offer [S12] [S13].
-23. Set your hours of availability to Tuesday - Saturday, 9 AM - 5 PM [S13].
-24. If the page shows a **Done** or **Save** button, click it.
-
-To change your hours later, go to **Appointments**, then **Calendar**, click the clock icon in the top right corner and select **Recurring schedule** [S14].
-
-**Turn on online booking**
-
-25. Click **Appointments**, or **Payments** then **Appointments** [S15]. If you cannot find it, the booking features are not switched on yet [S15]. Add them as described in the note before step 11.
-26. Click **Online Booking**, then **Channels** [S15].
-27. Toggle ON **Enable online booking** (a toggle is an on/off switch) [S15].
-28. Under **Booking channels**, click **Preview & edit** next to **Square Online website** [S15].
-29. Use the options to create your online booking site. Square says this site is free [S15].
-30. Click **Publish** in the top right corner [S15].
-31. On the **Site published** page, copy your online booking site URL (URL means web address) [S15]. Paste it into a note.
-32. Go back to **Online Booking**, then **Channels** [S15].
-33. Under **Add your booking flow to an existing site**, click **Get Started** [S15].
-34. Click **Get URL** [S15]. Do not use **Create button** or **Get embed code**. They give code, not a link [S15].
-35. If Square asks for a location, select the salon [S15].
-36. Select your booking type [S15]. Square's help page does not list the choices. You offer appointments for salon services. If you are not sure which choice fits, stop and ask your helper.
-37. Copy the booking flow URL into the same note [S15].
-38. Click **X**, then **Done** [S15].
-
-Keep both links. Square means the booking flow URL to be used on another website [S15]. In this guide it is called your booking link. It goes behind the Book Now buttons of the new site in [Section 7](#7-how-to-paste-the-square-booking-link). Until then those buttons call 347-671-5095. Leave the Wix site as it is.
-
-### Part 4: Test a booking
-
-1. On your phone, open the online booking site URL from your note. You now see what a client sees.
-2. Check that all ten services are there, with the right names, descriptions and durations. Look at how the price shows.
-3. Choose a service.
-4. Check that the times offered are all within Tuesday - Saturday, 9 AM - 5 PM.
-5. Book a time with your own name, email and phone number.
-6. Write down which messages you get as the client. Square says some notifications need specific subscriptions or settings [S16]. The settings are under **Appointments**, then **Settings**, then **Communications** [S17].
-7. On the computer, in Square Dashboard, go to **Appointments**, then **Calendar** [S14]. Bookings made on the booking site go to your calendar [S15], so the test booking should be there.
-8. If it shows as pending, select it and click **Accept**. Select a notification type, email or text, add a message if you like, and click **Send** [S18]. Whether bookings are accepted automatically is the **Reservation Guarantee** setting under **Appointments**, then **Settings**, then **Calendar & booking** [S17].
-9. Now cancel the test. Go to **Appointments** (or **Payments** then **Appointments**), then **Settings**, then **History**, and select the test appointment [S17]. Square's help page files this list under past appointments [S17]. If the test is not listed there, go back to **Appointments**, then **Calendar**, and click the appointment there instead [S14].
-10. On the **Appointment Details** page click **More**, then **Cancel Appointment** [S17]. If you see no **More** button, stop and ask Square support.
-11. Choose how to notify the client and confirm [S17].
-12. Open your booking link from your note and check that it also opens your booking page.
-
-If something is wrong, fix it in Part 3 and test again. If a screen does not match these steps, Square has changed it since 13 October 2026. Open the help page for that step from the list at the end of this guide, or ask Square support. Square's customer support number is 1 (855) 700-6000 [S7]. On Square Free, Square lists phone support as 6am to 6pm Pacific time, Monday to Friday, and only for the first 90 days [S7]. It lists chat support and email support for Square Free without such a limit [S7].
-
-### Part 5: Your helper publishes the new site the first time
+### Part 4: Your helper publishes the new site the first time
 
 This part is for your helper. The GitHub account achooStorm is the helper's own, so the helper signs in and Gerta cannot do this part alone. It changes nothing at Wix and nothing about the address hairbygerta.com. It needs the folder `hairbygerta`, Python and Git (the free program that sends files to GitHub) on the helper's computer.
 
@@ -245,73 +157,78 @@ If the address still does not open after an hour, look at the workflow runs of t
 
 From now on every push to main is published by itself [S94]. Always pull before you push, and never force a push: GitHub itself adds a file to the repository in Section 4.
 
-## 2. What to check in Wix this week
+## 2. What was checked in Wix on 2 November 2026
 
-You only look and write down. You change nothing in Wix. Use a computer, not a phone. Click only the buttons named in the steps. If a page asks you to pay, renew, cancel or confirm, close it.
+On Monday 2 November 2026 the Wix account and the public record of the domain were checked. Nothing was changed. The main result is three end dates, all on the same evening. This section gives them and shows how to see them again. It also shows how Gerta backs up the business mailbox before it ends.
 
-Words used in this section:
+The check also found three things that later sections use.
 
-- **Site plan**: the paid Wix plan that keeps the Wix site on hairbygerta.com. Wix also calls it a Premium plan [S19].
-- **Domain**: the address of the website, hairbygerta.com.
-- **Auto renew**: Wix charges your card by itself to keep a service running.
-- **Business email**: the info@hairbygerta.com mailbox. Wix sells it through Google Workspace, Google's paid email service [S20].
-- **Hover**: rest the mouse pointer on something without clicking.
+- DNSSEC (a security seal on the domain's settings) is switched on for hairbygerta.com [S27]. [Section 3, Part A](#part-a-turn-off-privacy-and-dnssec-at-wix) turns it off before the transfer.
+- The registrant contact email of the domain (the email address of the domain's owner at Wix) is the helper's personal email address. Wix sends the transfer code to that address [S35]. See [Section 3, Part C](#part-c-start-the-transfer).
+- The DNS records at Wix are the records of the Wix site, two Google verification records and the records of the Google mailbox. Sections 4 and 5 say what happens to them.
 
-Why three dates: canceling the site plan does not cancel the domain or the business email. Each has its own date [S19].
+### The end dates
 
-### Part A: End date of the Wix site plan
+| What | Ends | Auto renew |
+|---|---|---|
+| Wix site plan (Core) | Thursday 26 November 2026, in the evening, New York time | Off |
+| Domain hairbygerta.com, registered at Wix | Thursday 26 November 2026 at 8:04 PM, New York time | Off |
+| Business email info@hairbygerta.com | Thursday 26 November 2026, in the evening, New York time | Off |
 
-1. **Gerta signs in:** go to wix.com and sign in to the Wix account that owns the salon site.
+Words used in this table.
+
+- The **site plan** is the paid Wix plan that keeps the Wix site on hairbygerta.com. Wix also calls it a Premium plan [S19]. This one is called Core.
+- The **domain** is the address of the website, hairbygerta.com. Today it is registered at Wix [S27].
+- The **business email** is the mailbox info@hairbygerta.com. Wix sells it through Google Workspace, Google's paid email service [S20]. This one is the Business Starter plan with one mailbox, and Gerta is its administrator.
+- **Auto renew** means that Wix charges a card by itself to keep a service running. With auto renew off, a Wix subscription does not renew [S59].
+
+Why all three say the same evening. The public record gives the end of the domain as 27 November 2026 at 01:04 UTC [S27]. UTC is the world's standard clock time. In New York that moment is 8:04 PM on Thursday 26 November 2026. The site plan and the business email end with their billing period on 27 November 2026 in UTC too, which is also the evening of 26 November 2026 in New York. So a page may show 26 November or 27 November. Both mean the same evening. That day is Thanksgiving, so plan no step for that day.
+
+What this means for you.
+
+- Nothing has to be canceled, and nothing more is paid to Wix. Each of the three ends by itself at the end of its paid period [S19] [S30] [S45] [S59].
+- The domain must move to Porkbun before that evening. That is [Section 3](#3-moving-the-domain-from-wix-to-porkbun-step-by-step).
+- What happens on that evening to the Wix site, the domain and the mailbox is in [Section 8](#8-what-cannot-be-undone).
+- Do not switch auto renew back on, unless Gerta and your helper have decided to keep something at Wix. **Turn Auto Renew On** switches a site plan back on [S24], and **Turn auto renew on** does the same for a business email [S30]. Wix does not refund renewals [S19] [S30].
+
+To see the dates again, follow the steps below. You only look and change nothing. Use a computer, not a phone. Click only the buttons named in the steps. If a page asks you to pay, renew, cancel or confirm, close it. To hover means to rest the mouse pointer on something without clicking.
+
+**The site plan and the business email**
+
+1. **Your helper signs in** to wix.com with the Wix account that owns the salon site. That account is in the helper's name.
 2. Open the Wix help page "Viewing Your Site Plans and Other Subscriptions" at https://support.wix.com/en/article/viewing-your-premium-plans [S21].
-3. Click **View Subscriptions**. The **Premium Subscriptions** page opens. It lists your plan and everything else you bought from Wix [S21].
-4. Find the row of the site plan.
-5. Read the **Upcoming payment** column in that row [S22].
-6. Hover over the **Info** icon next to it [S22].
-7. Write down the expiration date of the plan. If you only see a payment date, write that down and mark it "payment date".
+3. Click **View Subscriptions**. The **Premium Subscriptions** page opens. It lists the site plan and everything else bought from Wix [S21]. Wix shows the expiration date of a plan on this page [S19].
+4. In the row of the site plan, read the **Upcoming payment** column and hover over the **Info** icon next to it [S22].
+5. Do the same in the row of the business email [S29].
+6. Open manage.wix.com/account/mailboxes. This is the Business Email page that Wix's help links to. Check that info@hairbygerta.com is listed there [S20].
 
-The **Upcoming payment** column shows the next renewal payment, not the end of the plan [S22]. Wix plans renew by themselves at the end of the paid period unless they were canceled [S22]. With auto renew on, Wix may take the payment for a yearly plan up to 3 weeks before the plan's expiration date [S19] [S23]. So a date you see there can be a charge date that comes before the end of the plan.
+The **Upcoming payment** column shows the date of the next renewal payment. With auto renew off, that date can differ a little from the end date [S22] [S29]. If a row does not match the table above, copy it word for word and show your helper.
 
-Wix says a canceled plan stays active until the end of the paid period, and that its expiration date is shown on the Premium Subscriptions page [S19]. The help pages do not name the exact spot. If you see no date, copy what the row says word for word and show your helper. After the expiration date of a canceled plan the site address goes back to a free Wix address and Wix ads appear [S19].
+**The domain**
 
-Do not click **Turn Auto Renew On** this week. It switches a canceled plan back on [S24]. When that can be the right thing to do is in [Section 8, Part 1](#part-1-the-wix-site-plan-ends). That part also says what to do if the plan was never canceled and you do not want to pay Wix for another period.
+7. Click the user panel at the top right (the small menu for your own account) [S25].
+8. Click **Account Settings**, then **Domains** in the menu on the left [S25].
+9. Find hairbygerta.com under **Assigned Domains** [S25]. The page shows its expiry date and its payment renewal date [S25]. On 2 November 2026 it said "Expires on Nov 26, 2026", with auto renew off.
 
-### Part B: Expiry date of the domain
+If hairbygerta.com is not on the **Domains** page, you are most likely signed in to a different Wix account. The help page from step 2 links to an account email locator [S21].
 
-1. Click the user panel at the top right (the small menu for your own account) [S25].
-2. Click **Account Settings** [S25].
-3. Click **Domains** in the menu on the left [S25].
-4. Find hairbygerta.com. Look under **Assigned Domains** first [S25].
-5. Write down the expiry date and the payment renewal date. The page shows both [S25].
-6. Open **Premium Subscriptions** again (Part A, steps 2 and 3).
-7. Find the row of the domain.
-8. Write down what its **Upcoming payment** column says [S26].
-9. Write down whether the row says that auto renew is on or off for the domain. Wix's help pages do not name the spot where this shows. If you cannot tell, copy the row word for word and show your helper.
+**The public record**
 
-Check your date against the public record. On 13 October 2026 the registry (the organization that keeps the official list of all .com addresses) showed hairbygerta.com as registered through Wix.com Ltd. and expiring on 27 November 2026 at 01:04 UTC [S27]. UTC is the world's standard clock time. In New York that moment is 8:04 PM on 26 November 2026. So if Wix shows 26 November, it is the same moment. Your helper can look up the same record at https://lookup.icann.org [S28]. If Wix shows any other date, write down both. This date is close, so show it to your helper this week. What to do about it is in Section 3 under [Check your dates first](#check-your-dates-first).
+The registry is the organization that keeps the official list of all .com addresses. Anyone can look up a domain's record in that list at https://lookup.icann.org [S28]. On 2 November 2026 the record of hairbygerta.com showed the registrar Wix.com Ltd., registered on 27 November 2025 and expiring on 27 November 2026 at 01:04 UTC [S27]. After the move in Section 3, the record names Porkbun and the new expiry date.
 
-Wix renews a domain bought from Wix by itself 30 days before it expires [S26]. So the payment renewal date can be a month earlier than the expiry date.
+### Back up the mailbox
 
-If hairbygerta.com is not on the Domains page, you are most likely signed in to a different Wix account. The help page from Part A, step 2 links to an account email locator [S21].
+Gerta makes a copy of the whole mailbox info@hairbygerta.com with **Google Takeout**, Google's tool for downloading a copy of your data [S32]. After the business email ends, nobody can read, receive or send mail in it any more [S31]. This copy keeps the old mail. The Wix help pages about the business email give no steps for exporting mail [S30] [S31] [S33].
 
-### Part C: End date of the business email
+**When to do it.** After the forwarding in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail) works, and by Friday 20 November 2026 at the latest.
 
-1. Stay on **Premium Subscriptions**.
-2. Find the row of the business email.
-3. Read the **Upcoming payment** column in that row [S29].
-4. Hover over the **Info** icon next to it [S29].
-5. Write down the expiration date. If you only see a payment date, write that down and mark it "payment date".
-6. Open manage.wix.com/account/mailboxes. This is the Business Email page that Wix's help links to [S20].
-7. Check that info@hairbygerta.com is listed there [S20]. If it is not, stop and tell your helper.
+- Why after the forwarding works. From then on the domain's mail goes to Porkbun, which passes it on to Gerta's Gmail address [S132]. So new mail stops landing in this mailbox, and a backup made then holds all its mail. The file may not hold mail that arrives after you ask for it [S32].
+- Why by 20 November 2026. The export can take from a few minutes to a few days [S32], and the mailbox ends on the evening of 26 November 2026.
+- If the forwarding does not work yet on Friday 20 November 2026, do not wait for it. Make the backup that day. Then make one more as soon as the forwarding works, if that is still before 26 November 2026.
 
-The Upcoming payment column shows the next renewal payment [S29]. Wix can take that payment up to 30 days before the mailbox expires [S30]. With auto renew off, the date shown can differ slightly from the expiration date [S29]. The mailbox only ends if it was canceled. Otherwise Wix renews it. What to do about that is in [Section 8, Part 3](#part-3-the-business-email-ends).
+**The steps**
 
-After the mailbox expires you can no longer read, receive or send email from it. Wix gives no number of days for how long the old mail is kept [S31]. So make the backup below well before that date. More on this is in [Section 8, Part 3](#part-3-the-business-email-ends).
-
-### Part D: Back up the mailbox
-
-You use **Google Takeout**, Google's tool for downloading a copy of your data [S32]. The Wix help pages about the business email give no steps for exporting mail [S30] [S31] [S33].
-
-1. **Gerta signs in:** go to gmail.com and sign in with info@hairbygerta.com and its password [S33].
+1. **Gerta signs in** at gmail.com with info@hairbygerta.com and its password [S33].
 2. Go to takeout.google.com [S32].
 3. Check that the picture or initial at the top right belongs to info@hairbygerta.com, not to a personal Gmail account. If it shows another account, click the picture or initial and select info@hairbygerta.com before you go on [S33].
 4. Uncheck the box beside every product you do not need. Keep the box for your email (Gmail) checked. Keep Contacts, Calendar and Drive checked too if you use them [S32].
@@ -320,300 +237,414 @@ You use **Google Takeout**, Google's tool for downloading a copy of your data [S
 7. Choose **One-time archive**. Archive is Google's word for the backup file [S32].
 8. Choose **Zip files**. A zip file is one file that holds many files [S32]. Leave **Archive size** as it is. If your data is larger than that size, Google makes more than one file [S32].
 9. Select **Create export** [S32].
-10. Wait for the email from Google. It can take from a few minutes to a few days. Most people get it the same day [S32].
+10. Wait for the email from Google. It can take from a few minutes to a few days. Most people get it the same day [S32]. Look for it in the inbox of info@hairbygerta.com. If it is not there, look in Gerta's Gmail as well, spam folder included.
 11. In that email select **Download archive** and follow the steps on the screen [S32]. If there is more than one file, download every one of them.
 12. Save the file, or all the files, in a new folder called email-backup in your Documents. Never save them in the `hairbygerta` folder, because the files in that folder are published as the public website.
 13. Copy the file or files to a USB stick as well.
+14. Write down the date of the backup.
 
 Do steps 11 to 13 within a week. The archive expires in about 7 days and can be downloaded 5 times [S32].
 
-Mail that arrives after the export is not in the file. So do Part D now, and one last time later: right after the email forwarding in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail) works, or about one week before the business email end date, whichever comes first. Do not leave it to the last days. The export can take a few days [S32], and after the end date you can no longer open the mailbox to get the download link [S31].
+If Takeout says you cannot download, stop. Takeout is allowed by default for Google Workspace, but an administrator can block it [S34]. Gerta is the administrator of this mailbox. **Gerta signs in** to the Google Admin console, together with your helper, and looks under **Menu**, **Data**, **Data import & export**, **Google Takeout** [S34].
 
-If Takeout says you cannot download, stop and tell your helper. Takeout is allowed by default for Google Workspace, but an administrator can block it [S34].
+## 3. Moving the domain from Wix to Porkbun, step by step
 
-### Write it down
+This section moves the domain hairbygerta.com from Wix to Porkbun, in one move. After the move Porkbun registers and renews the domain and holds its DNS records [S35] [S121]. Your helper does every step in this section. It starts with Part A, by Thursday 5 November 2026.
 
-Write the month as a word, for example 27 November 2026.
+### Read this first
 
-| What | Where you read it | Date | What the Upcoming payment column says |
+**Who signs in.** The Wix account and the domain are in your helper's name. Your helper is the registrant, the person listed as the domain's owner. So every Wix step here starts with **Your helper signs in**. Wix lets only the site owner move a domain away, or a co-owner who owns the payment method used for the domain [S35]. Your helper also opens the Porkbun account, with the helper's personal email address ([Part B](#part-b-get-porkbun-ready)). Nobody else types the helper's passwords or asks for the transfer code. Gerta does not sign in anywhere in this section. She should still know the dates, because the website and the email change on the day the move is done.
+
+Words used in this section.
+
+- **Registrar** means the company where a domain is registered and renewed. For hairbygerta.com that is Wix today [S27], and Porkbun after the move.
+- **Transfer** means the move of a domain from one registrar to another.
+- **Authorization code** (also called EPP code) is a one-time password that lets a domain move to another registrar. Porkbun's field for it is called **Auth Code** [S120].
+- **DNS records** are the list of settings that tells the internet where the website is and where the email goes.
+- **Nameservers** are the addresses that say which company holds a domain's DNS records.
+- **DNSSEC** is a security seal on the DNS records. In the public record it shows as a DS record [S151].
+- **Public record** (also called WHOIS) means the registration data of a domain, which anyone can look up [S28].
+
+What happens, in short.
+
+- The domain moves once, straight from Wix to Porkbun.
+- Porkbun charges its transfer price and adds one year to the domain [S121] [S124]. For a .com name that is \$11.81 since 1 November 2026 [S140] [S141].
+- Porkbun copies the DNS records it can find and holds the domain's DNS after the move [S121].
+- When the move is done, Wix disconnects the Wix site from the domain [S35]. The same day your helper points the domain at the new site ([Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages)) and sets up the email forwarding ([Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail)).
+- The Wix site plan, the old business email and the domain subscription at Wix end by themselves on 26 November 2026. Auto renew was off for all three when the Wix account was checked on 2 November 2026 ([Section 2](#the-end-dates)). Once the domain is at Porkbun, its renewals are managed there [S35]. Nothing has to be canceled at Wix.
+
+One rule holds for the whole section. Do not change the contact details of the domain at Wix, not now and not during the move. Wix says that changing the contact information locks the domain for 60 days [S38] [S54]. The domain could then not move before it expires.
+
+Start only when the new site is published at the preview address and you have checked every page there ([Section 1, Part 4](#part-4-your-helper-publishes-the-new-site-the-first-time)).
+
+### The dates
+
+The domain expires on 27 November 2026 at 01:04 UTC [S27]. UTC is the world's standard clock time. In New York that moment is 8:04 PM on Thursday 26 November 2026, Thanksgiving. So "Expires on Nov 26, 2026" on the Wix **Domains** page is the same moment. The Wix site plan and the business email end that same evening.
+
+| When | Who | What | Where |
 |---|---|---|---|
-| Wix site plan ends | Premium Subscriptions | | |
-| Domain hairbygerta.com expires | Domains | | |
-| Domain payment renewal date | Domains | | |
-| Domain auto renew | Premium Subscriptions | not needed | write "on" or "off" here |
-| Business email ends | Premium Subscriptions | | |
-| Mailbox backup made on | your own note | | not needed |
+| By Thursday 5 November 2026 | Your helper | Turn off privacy and DNSSEC at Wix, then check the public record | [Part A](#part-a-turn-off-privacy-and-dnssec-at-wix) |
+| Before Monday 9 November 2026 | Your helper | Open the Porkbun account and save the list of DNS records at Wix | [Part B](#part-b-get-porkbun-ready) |
+| Monday 9 November 2026, at the latest Monday 16 November 2026 | Your helper | Start the transfer | [Part C](#part-c-start-the-transfer) |
+| About 5 to 7 business days later | Porkbun | The transfer is done and Porkbun sends an email | [Part D](#part-d-while-the-transfer-runs) |
+| The day the transfer is done | Your helper | Point the domain at the new site, then turn on the email forwarding | [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages) and [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail) |
+| As soon as the forwarding works, and no later than Friday 20 November 2026 | Gerta | Back up the old mailbox | [Section 2](#back-up-the-mailbox) |
+| Thursday 26 November 2026, in the evening in New York | Nobody | The Wix site plan, the old business email and the domain subscription at Wix end by themselves | [Section 8](#8-what-cannot-be-undone) |
 
-## 3. Moving the domain from Wix to Cloudflare Registrar, step by step
+Why these dates.
 
-**Who signs in.** Every step in this section that starts with **Gerta signs in** follows the rule at the top of this guide: Gerta does it herself, or her helper does it with Gerta next to them. Nobody asks for her passwords or her transfer code. Wix itself lets only the site owner move a domain away (a co-owner only if they own the payment method used for the domain) [S35].
+- Porkbun says a transfer takes 5 to 7 business days [S120]. Wix says it usually takes up to 7 days [S35]. A transfer started on Monday 16 November 2026 may only be done on Wednesday 25 November 2026, the day before the domain expires. A later start leaves no time to fix a problem.
+- Porkbun warns that the old registrar may block the transfer of an expired domain [S120].
+- A transfer that is done before the domain expires adds one year. The domain then runs until 27 November 2027 [S121] [S124].
+- Part A comes a few days before the transfer. That leaves time to check the public record and, if needed, to ask Wix Customer Care.
 
-### Read this first: it takes two moves, not one
+If the transfer cannot start by Monday 16 November 2026, use the backup plan under [If something goes wrong](#if-something-goes-wrong).
 
-Five words used below:
+### Part A: Turn off privacy and DNSSEC at Wix
 
-- **Cloudflare**: the company that will hold the domain's settings after the first move, and the domain itself after the second.
-- **Registrar**: the company where a domain is registered and renewed. For hairbygerta.com that is Wix today [S27].
-- **Nameservers**: the two addresses that say which company holds a domain's settings.
-- **DNS records**: those settings, a list that tells the internet where the website is and where the email goes.
-- **Authorization code** (also called EPP code): a one-time password that lets a domain move to another registrar.
+Do Part A by Thursday 5 November 2026.
 
-What the official pages say:
+**Why.** Porkbun recommends deleting DNSSEC records before a transfer, to prevent problems with the DNS [S125]. Wix sells DNSSEC only together with private registration, so one switch, **Privacy and DNSSEC protection**, turns off both [S53]. Wix also advises turning privacy off before a transfer, so that you do not miss emails about it [S35].
 
-- Cloudflare Registrar only accepts a domain that is already active in Cloudflare. That means its nameservers were changed to Cloudflare's first [S36].
-- Wix does not let you change the nameservers of a domain bought from Wix [S37].
-- So Cloudflare's guide says a domain cannot go straight from Wix to Cloudflare Registrar. Its route is: move the domain to another registrar, set Cloudflare's nameservers there, wait 60 days, then move it to Cloudflare Registrar [S36]. In this guide the other registrar is called the in-between registrar.
-- After the first move the website and email settings already run on Cloudflare. Cloudflare says you can stop there if that is all you need [S36].
-- There is also a simpler way. Wix says a Wix domain can stay registered at Wix and be pointed to a site hosted elsewhere, with no transfer [S38] [S39]. Know one thing before you choose it: the domain's settings then stay at Wix [S37], and the free email forwarding in Section 5 only works with the settings at Cloudflare [S40]. Sections 4 and 5 are written for the route with two moves.
+Know two things before you click.
 
-Decide with your helper before you start.
+- With the protection off, anyone can see the name and contact details of the domain's owner in the public record (WHOIS) [S53]. The domain is in your helper's name, so these are your helper's details. They stay visible until the move is done and Porkbun's free WHOIS privacy covers them [S121] [S137]. That is about one to three weeks. Your helper decides whether to accept that. If not, stop here and use the backup plan under [If something goes wrong](#if-something-goes-wrong), so that the domain does not expire.
+- On the **Edit contact info** page, change nothing else and save nothing else. Changing the contact information locks the domain for 60 days [S38] [S54].
 
-### The rules today
-
-- **The 60-day lock.** ICANN (the organization that sets the rules for domain names) lets a registrar refuse a transfer in the first 60 days after a domain is registered and in the 60 days after an earlier transfer. It requires a 60-day lock after the owner's name, organization or email is changed, unless the registrar offered an opt-out beforehand [S41] [S42]. Wix and Cloudflare both apply the 60 days [S35] [S36] [S38]. A proposal to shorten this to 30 days is not in force: ICANN's published policy still says 60 days, and its review page lists the Board decision as "TBD" [S41] [S43].
-- **Time.** Wix says a transfer away usually takes up to 7 days [S35]. Cloudflare says a first move like this usually takes 3 to 5 days, and a move into Cloudflare up to 10 days in all [S36]. Under ICANN's policy, if the old registrar does not answer within five calendar days, the transfer goes through [S41].
-- **Cost.** Each move adds one year to the domain, and you pay the registrar that receives it [S36]. Cloudflare charges what the domain costs it, with no markup [S36] [S44]. On 12 October 2026 its domain search showed a .com name at \$10.46, with the line **Renews at \$10.46/year** [S44]. How to check today's price is in [Section 9](#the-domain-the-one-bill). You also see the price on the screen before you buy [S44]. The in-between registrar sets its own price: read it on its website. Wix does not refund domain payments [S45].
-
-### Check your dates first
-
-Use the dates you wrote down in [Section 2](#write-it-down). Wix shows them on the **Premium Subscriptions** page, in the **Upcoming payment** column next to the domain and next to the site plan [S23] [S26].
-
-What the dates mean:
-
-- Wix renews a domain automatically 30 days before it expires, and a yearly site plan up to 3 weeks before it expires [S23] [S26].
-- The public record for hairbygerta.com, read on 13 October 2026, shows: registrar Wix.com Ltd., registered 27 November 2025, expires 27 November 2026 at 01:04 UTC, transfer lock on, DNSSEC on [S27]. In New York that expiry moment is the evening of 26 November 2026. You can look the record up yourself at https://lookup.icann.org [S28] [S42]. Part B says what to do about the lock and about DNSSEC (a security seal on the domain's settings). If the record is right, the first 60 days are long over, and Wix will charge the renewal around 27 October 2026 unless auto renew is off.
-- Cloudflare warns that a domain that is renewed and then moved too soon may not get the extra year of the move. You would then pay for the same year twice [S46]. Its pages count the 45 days of waiting from the renewal [S46] and from the original expiration date [S36] [S47]. Cloudflare says this is a rule of the registry and holds for every registrar [S46].
-- Start the first move at least 2 to 3 weeks before the earliest Wix end date you wrote down. A move can take a week, and a first try can fail.
-- Look at the business email end date too. After that date the mailbox no longer receives mail [S31]. The free forwarding in Section 5 can only be turned on once the domain's settings are at Cloudflare [S40], which is after the first move. If the business email ends before that, mail to info@hairbygerta.com does not arrive in between. Plan the first move so that this cannot happen, or ask your helper.
-
-Pick one of these two ways with your helper, before the domain's **Upcoming payment** date.
-
-**Cheaper:** turn off auto renew and finish the first move before the domain expires.
-
-1. **Gerta signs in** to Wix and goes to **Premium Subscriptions** [S45].
-2. Click the **More Actions** icon next to the domain [S45].
-3. Click **Cancel domain** [S45].
-4. Select **Cancel auto renew** [S45].
-5. Click **Submit** [S45].
-
-You keep the domain until the end of the paid period [S45]. If the public record above is right, start Part B no later than 6 November 2026. If the domain expires first, Wix says it can only be moved while it is in its Grace Period [S35]. What an expired domain means is in [Section 8, Part 2](#part-2-the-domain-expires). Read it before you choose this way.
-
-**Calmer:** let Wix renew the domain for one more year. Afterwards, check on the **Domains** page that the expiry date now says 2027. How to renew by hand, and what happens if the payment fails, is in [Section 8, Part 2](#part-2-the-domain-expires). Then wait until at least 45 days after the domain's old expiry date before you start Part B. That is the later and safer of Cloudflare's two ways of counting [S36] [S46]. If the public record is right, that means not before 11 January 2027. If your site plan ends before then, the domain can be pointed to the new site from inside Wix in the meantime [S39].
-
-### Part A: Get Cloudflare ready
-
-Nothing in Part A changes what visitors see.
-
-1. **Gerta signs in:** go to https://dash.cloudflare.com/sign-up [S48].
-2. Type your own email in **Email** and a new password in **Password** [S48]. Use a personal address, not info@hairbygerta.com. The reason is the same as for the Square login in Section 1, Part 3: the address must keep working while the domain moves.
-3. Click **Create Account** [S48].
-4. Open the email from Cloudflare and open the link in it. This verifies your address [S49].
-
-Do steps 5 to 11 in the same week you start Part B. Cloudflare deletes a Free-plan domain that is still waiting for its nameservers after 28 days [S50].
-
-5. **Gerta signs in** to Cloudflare and goes to **Domains** [S51].
-6. Select **Onboard a domain** [S51].
-7. Type hairbygerta.com, let Cloudflare scan for DNS records, and select **Continue** [S51].
-8. Choose the **Free** plan [S51].
-9. **Gerta signs in** to Wix to see the same list there: **Domains**, then the **Domain Actions** icon next to the domain, then **Manage DNS Records** [S39]. Cloudflare's scan can miss records [S36].
-10. Make sure every email record (the lines whose Type is MX or TXT) is in Cloudflare exactly as Wix shows it. To add one, click **Add record** on the **DNS Records** page, pick the **Type**, fill it in and click **Save** [S52]. Wix says email stops working after a transfer until the MX records are added again [S35]. The website records are covered in [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages).
-11. Write down the two nameservers Cloudflare gives you. They are also on the domain's **Overview** page [S51].
-12. Choose the in-between registrar. It must let you change nameservers [S36]. This guide does not pick one. Read its price and its steps for transferring a domain in on its own help pages. **Gerta signs in** to create the account there, with the same personal email address.
-
-### Part B: First move, from Wix to the in-between registrar
-
-Start only when the new site is published at the preview address and you have checked every page there. Once the domain has been transferred away, Wix disconnects your Wix site from it [S35].
-
-Before you click, know two things:
-
-- Wix sells privacy and DNSSEC as one switch [S53]. Turning it off makes your name and contact details visible to anyone in the public record (Whois) [S53]. Only Gerta can decide whether she accepts that. If she does not, stop here and use the simpler way under [Read this first](#read-this-first-it-takes-two-moves-not-one).
-- On the **Edit contact info** page, change nothing else and save nothing else. Wix says that changing the contact information locks the domain for 60 days [S38] [S54].
-
-1. **Gerta signs in** to Wix and goes to **Domains** [S53].
+1. **Your helper signs in** to Wix and goes to **Domains** [S53].
 2. Click the **Domain Actions** icon next to hairbygerta.com [S53].
-3. Click **Edit contact info** [S53]. Read the email address shown for the registrant contact (the owner of the domain) and write it down. Wix sends the transfer code to that address [S35]. If Gerta cannot open that mailbox, stop and ask your helper. Changing the address locks the domain for 60 days and has to be confirmed from both the old and the new address [S54].
-4. Click **Show more** next to **Privacy and DNSSEC protection** [S53].
-5. Click **Turn off protection** [S53].
-6. Click **Turn Off Protection** to confirm [S53].
-7. Wait at least 24 hours [S36].
+3. Click **Edit contact info** [S53].
+4. Read the email address shown for the registrant contact (the domain's owner). Wix sends the transfer code to that address [S35]. On 2 November 2026 it was the helper's personal email address. If your helper cannot open that mailbox, stop and ask Wix Customer Care. Do not change the address here. A change locks the domain for 60 days and has to be confirmed from both the old and the new address [S54].
+5. At the bottom of the page, click **Show more** next to **Privacy and DNSSEC protection** [S53].
+6. Click **Turn off protection** [S53].
+7. Click **Turn Off Protection** to confirm [S53].
+8. Leave the page without saving anything else.
 
-Why steps 1 to 7: Cloudflare says to turn DNSSEC off before the nameservers change, or the domain can become unreachable [S36] [S51]. Wix advises turning privacy off before a transfer anyway, so you do not miss emails about it [S35]. After step 7, have the public record checked again [S27]. If it still shows DNSSEC on, ask Wix Customer Care before you go on.
+Porkbun says DNSSEC can be turned on again there after the transfer [S125]. This guide does not use it.
 
-8. **Gerta signs in** to Wix, goes to **Domains** and clicks the **Domain Actions** icon again [S35].
-9. Select **Transfer away from Wix** [S35].
-10. Read the page and click **Transfer Domain** [S35].
-11. Click **I Still Want to Transfer** [S35].
-12. **Gerta opens the mailbox of the address from step 3.** Wix sends the authorization code to the registrant contact email of the domain [S35]. Keep it as private as a password. Use it soon, because codes expire [S36].
-13. **Gerta signs in** at the in-between registrar and follows its steps to transfer a domain in. It will ask for the code and for payment [S35] [S36]. If it asks for the contact details of the domain's owner, type your real ones, with an email address that you can open and that does not end in @hairbygerta.com. Wix itself recommends a contact email address that is not tied to the domain [S54].
-14. Wait. If Wix or the new registrar emails you to ask for approval, approve [S35] [S36]. While the move runs, the Status in Wix's Whois Lookup tool shows "pending transfer" [S35]. The Wix help page behind that marker links to the tool.
-15. On the day the move completes, **Gerta signs in** at the in-between registrar and replaces its nameservers with the two from Part A. Copy them exactly [S51].
-16. Wait up to 24 hours. Cloudflare emails you, and the domain shows **Active** on the **Domains** page [S51].
-17. In the two weeks after the move, watch your inbox, spam folder included, for an email from the in-between registrar that asks you to confirm (verify) the contact email address of the domain. Open the link in it at once. ICANN requires a registrar to check the owner's email address or phone number within 15 days of a transfer. A registrar that gets no answer has to check by hand or suspend the domain [S55]. A suspended domain shows no website and receives no email. If no such email comes, there is nothing to do.
+**Check that the DS record is gone**
 
-Wix's guide shows no separate unlock button [S35]. If the in-between registrar says the domain is still locked, ask Wix Customer Care to unlock it. ICANN's policy gives a registrar five calendar days to remove the lock and hand over the code after you ask [S41] [S42].
+Wix's page does not say how soon the change reaches the public record [S53]. So your helper checks it before Part C. The check only reads. It changes nothing.
 
-Between the end of the move and step 16 the web address and the email may not work for a while [S35]. So do step 15 at once. Do not pause after step 16 either. Go straight on to [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages). Keep watching for the email of step 17 in the meantime. Until Section 4 is done, hairbygerta.com may show no website. You do not have to wait for Part C and Part D first: Cloudflare says its DNS can be used as soon as the nameservers are set [S36].
+1. Open https://rdap.verisign.com/com/v1/domain/hairbygerta.com in Chrome or Microsoft Edge. This is the domain's record at Verisign, the registry (the organization that keeps the official list of all .com addresses) [S27]. It is a page of plain text. If the browser offers to save a file instead, cancel and use ICANN Lookup, as the end of this part says.
+2. Press Ctrl + F and type `delegationSigned` [S92] [S93].
+3. Read the word right after it. `true` means a DS record is still there, and a list called `dsData` follows with its details. `false` means the DS record is gone [S151]. On 2 November 2026 it said `true` [S27].
+4. If it says `false`, go on with Part B.
+5. If it still says `true`, wait a few hours and look again. Load the page fresh each time with Ctrl + Shift + R [S92] [S93].
+6. If it still says `true` 48 hours after the protection was turned off, your helper asks Wix Customer Care to remove the DNSSEC record (the DS record) of hairbygerta.com.
+7. Do not start Part C while it says `true`. If it still says `true` on Monday 16 November 2026, use the backup plan under [If something goes wrong](#if-something-goes-wrong).
 
-### Part C: Wait 60 days
+If the Verisign page does not open, use ICANN Lookup at https://lookup.icann.org. Anyone can look up the current registration record of a domain there [S28]. Type hairbygerta.com and look for DNSSEC in the result. If you cannot tell from it whether the DS record is gone, ask Wix Customer Care.
 
-1. Mark the date 60 days after the first move completed [S36].
-2. Until then, do not change the owner's name, organization or email for the domain. That starts another 60-day lock [S36].
+### Part B: Get Porkbun ready
 
-### Part D: Second move, into Cloudflare Registrar
+Do Part B before Monday 9 November 2026. It can be done on the same day as Part A.
 
-1. **Gerta signs in** to Cloudflare and goes to **Billing**, then **Subscriptions**, then **Payment methods** [S56].
-2. Click **Add Payment Method** and enter your own card or PayPal [S56].
-3. Click **Confirm** [S56].
-4. **Gerta signs in** at the in-between registrar and removes the transfer lock on the domain [S36].
-5. Ask the in-between registrar for the authorization code [S36].
-6. **Gerta signs in** to Cloudflare and goes to **Transfer domains** [S36].
-7. Select hairbygerta.com and enter the code [S36]. Read the price on the screen first. Cloudflare charges your payment method when you enter the code and start the transfer, and its FAQ says registration and renewal payments are not refunded [S46].
-8. Type your own contact details: your real name, address and phone number, and an email address you can open. Use the email address of your Cloudflare account, not info@hairbygerta.com. ICANN requires the details to be accurate, and wrong details can get the domain suspended. Cloudflare keeps them out of the public record by default [S36].
-9. Read the domain registration terms shown on the screen. Selecting **Confirm transfer** means that Gerta agrees to them, so only she decides this [S36].
-10. Select **Confirm transfer** [S36].
-11. **Gerta approves** the transfer when the in-between registrar emails her, or in its dashboard. Without approval it can take up to five days to release the domain [S36] [S46].
-12. Check the **Transfer domains** page until the move is complete [S46].
-13. Watch your inbox, spam folder included, for an email from Cloudflare that asks you to verify the contact email address of the domain. Open the link in it at once. If the address is not verified within 15 days, Cloudflare puts a hold on the domain and swaps its nameservers for a parking server until you verify [S47]. The website and the email stop for that time. Cloudflare sends this email when the contact email address differs from the verified email address of the Cloudflare account [S47]. If no such email comes, there is nothing to do.
+1. Your helper opens an account at https://porkbun.com with the helper's personal email address. Do not use info@hairbygerta.com. The business email ends on 26 November 2026, and the email address of the account must keep working while the domain moves and every year after. Wix itself recommends a contact email address that is not tied to the domain [S54].
+2. **Your helper signs in** to Porkbun and looks at the default contact details. Click **ACCOUNT**, then **Settings / Billing**. In the section **Registration Defaults**, under **Default Contacts**, click the pencil icon next to **REGISTRANT** [S150]. The details must be the helper's real name, address and phone number, with the helper's personal email address. Porkbun fills in the contacts of newly registered domains from these details [S150]. Its page does not say the same for a transferred domain, so [Part D](#part-d-while-the-transfer-runs) checks the domain's own contacts after the move.
+3. Look at the price. Porkbun's price list shows a .com transfer at \$11.81 since 1 November 2026, with all fees included. Most transfers include a one year renewal [S140] [S141]. The price shows again on the screen in Part C.
+4. **Your helper signs in** to Wix, goes to **Domains**, clicks the **Domain Actions** icon next to hairbygerta.com and then **Manage DNS Records** [S39].
+5. Take a screenshot of the whole list. Keep it, but not in the `hairbygerta` folder, because everything in that folder is published. Porkbun copies the records it can find, but says its lookup cannot see every record, so they have to be checked after the move [S121]. Section 4 needs this list.
+6. Keep time free for the day the transfer is done. Section 4 and then Section 5 have to be done that same day. Your helper signs in for both, so plan the day together. Porkbun gives 5 to 7 business days [S120]. For a start on Monday 9 November 2026 that is Monday 16 to Wednesday 18 November 2026. It can also come a few days sooner, because under ICANN's policy a transfer goes through when the old registrar does not answer within five calendar days [S41].
+7. Before that day, Gerta decides whether the domain is also locked to the helper's GitHub account. See [Whose GitHub account this is, and what Gerta decides](#whose-github-account-this-is-and-what-gerta-decides) in Section 4.
 
-From then on the domain renews at Cloudflare and must keep Cloudflare's nameservers [S46]. What that costs each year is in [Section 9](#9-yearly-cost-after-the-move).
+On 2 November 2026 the list in Wix had these records.
 
-### If something goes wrong: point the domain back to the Wix site
+| Type | Name | Value | Used for |
+|---|---|---|---|
+| A, three records | hairbygerta.com | addresses of Wix | the Wix site |
+| CNAME | www | `cdn3.wixdns.net` | the Wix site |
+| TXT | hairbygerta.com | `google-site-verification=cEwGkDfnBA3KDOjrEJ1VtYTp5NZwNkC0jiX1SQsjxsI` | Google Search Console |
+| TXT | hairbygerta.com | `google-site-verification=NXMw3mRnshf6rlL9Zr3VDm7ZgP6b0F9xVxUJ2XmSpbQ` | Google Workspace, the business email |
+| TXT | hairbygerta.com | `v=spf1 include:_spf.google.com ~all` | the business email |
+| MX, five records | hairbygerta.com | Google's mail servers | the business email |
 
-This only works while your Wix site plan is active, because Wix needs an upgraded site to connect a domain [S57]. It sends visitors back to the Wix site. It does not move the registration back to Wix [S58].
+### Part C: Start the transfer
 
-Before the first move completes, the website needs no undoing: Wix disconnects the site only once the domain has been transferred [S35]. But two things you changed on the way stay changed:
+Do Part C on Monday 9 November 2026, and at the latest on Monday 16 November 2026. Start only when the check at the end of Part A says `false`.
 
-- If you turned auto renew off under [Check your dates first](#check-your-dates-first) and you give up the move, turn auto renew back on before the domain's end date, or the domain expires. Wix says you can turn auto renew back on before the end of the subscription period [S59]. Its page does not give the clicks for a domain. If you cannot find the switch on the **Premium Subscriptions** page, ask Wix Customer Care.
-- You can switch Privacy and DNSSEC protection back on with **Turn On Protection**, on the page where you turned it off [S53].
+**Get the code from Wix**
 
-After the domain has left Wix:
+1. **Your helper signs in** to Wix and goes to **Domains** [S35].
+2. Click the **Domain Actions** icon next to hairbygerta.com [S35].
+3. Select **Transfer away from Wix** [S35].
+4. Read the page and click **Transfer Domain** [S35].
+5. Click **I Still Want to Transfer** [S35].
+6. **Your helper signs in** to the mailbox of the helper's personal email address, the registrant contact email. Wix sends the authorization code there [S35]. Look in the spam folder too. Keep the code as private as a password. It works only once [S120]. Use it the same day.
 
-1. **Gerta signs in** to Wix, goes to **Domains** and clicks **Add an Existing Domain** [S57].
+**Order the transfer at Porkbun**
+
+7. **Your helper signs in** to Porkbun and goes to https://porkbun.com/transfer, or clicks **TRANSFER** at the top of the page [S120].
+8. In **Domain Name**, type `hairbygerta.com`, without www [S120] [S121].
+9. In **Auth Code**, paste the code from step 6 [S120] [S121].
+10. Click **Submit** [S120] [S121].
+11. Leave these two boxes ticked [S120] [S121].
+    - "Automatically turn on WHOIS privacy / data redaction after domains transfer in." It turns on Porkbun's free WHOIS privacy after the move, so your helper's details are hidden in the public record again [S121] [S137].
+    - "Automatically enable auto renewal so your domains don't accidentally expire after they transfer in." Porkbun then renews the domain every year by itself. What that costs is in [Section 9](#9-yearly-cost-after-the-move).
+12. Of the two DNS choices, choose "Move DNS to Porkbun after the transfer, without pausing anything." Porkbun then copies the DNS records it can find now, and puts the domain on Porkbun's DNS when the transfer is done [S121]. Do not choose "Pause my transfer until I've set up DNS here." That choice holds the transfer back until your helper says go, so that the records can be copied and the nameservers pointed at Porkbun first [S121]. This guide does not change the nameservers at Wix.
+13. Click **Add Transfers to Cart** [S120] [S121].
+14. The cart opens. If it shows the DNS choice again, check that it is still the one from step 12. Then click **Continue to Billing** [S120].
+15. Read the price on the screen. For .com it is \$11.81 since 1 November 2026 [S141].
+16. Your helper pays and finishes the order.
+
+The transfer has now started. [Part D](#part-d-while-the-transfer-runs) shows how to follow it. If Porkbun refuses the code or says the domain is locked, see [If something goes wrong](#if-something-goes-wrong).
+
+### Part D: While the transfer runs
+
+Porkbun says a transfer takes 5 to 7 business days [S120] and sends an email when it is finished [S123]. Wix says up to 7 days [S35]. Under ICANN's policy, if the old registrar does not answer within five calendar days, the transfer goes through [S41].
+
+**Follow the status**
+
+1. **Your helper signs in** to Porkbun and clicks **Transfer** at the top. The **Domain Transfers** page opens [S122].
+2. Read the status of hairbygerta.com and find it in the table below [S122].
+
+| Status | What it means | What to do |
+|---|---|---|
+| pending transfer request | The transfer is queued and not fully sent yet. | Look again after a few minutes. |
+| pending transfer from losing registrar | Porkbun waits for Wix. This is normal and can take 5 to 7 days. | Nothing. Wait. |
+| pending owner confirmation | Porkbun has sent an email to the registrant contact, the helper's personal email address. | Open that email and follow its link. Look in the spam folder too. |
+| bad authcode | The code was not accepted. | See [If something goes wrong](#if-something-goes-wrong). |
+| domain status does not allow transfer | The domain is still locked at Wix. | See [If something goes wrong](#if-something-goes-wrong). |
+| transfer complete | The move is done. The domain shows in **Domain Management** within minutes. | Go on with "The day the transfer is done" below. |
+
+At Wix the transfer can show as pending or in progress. Wix says this is normal [S35]. While the move runs, the Status in Wix's Whois Lookup tool shows "pending transfer" [S35]. The Wix help page behind that marker links to the tool. Wix cannot follow a transfer once it has started, and says to ask the new registrar for news about it [S35]. Here that is Porkbun.
+
+While the transfer runs, keep to three rules.
+
+- If an email asks your helper to approve or confirm the transfer of hairbygerta.com, check that it comes from Wix or Porkbun and names hairbygerta.com. Then approve it.
+- Change nothing at Wix, no contact details [S54] and no DNS records. Porkbun copied the records when the transfer was ordered [S121], so a later change at Wix does not reach Porkbun.
+- Cancel nothing at Wix. The Wix site keeps running until the move is done [S35].
+
+**The day the transfer is done**
+
+Porkbun's email comes [S123], or the status says transfer complete [S122]. Three things are now true.
+
+- Wix has disconnected the Wix site from the domain [S35]. hairbygerta.com may show no website until Section 4 is done.
+- Porkbun puts the domain on its own DNS, because of the choice in Part C, step 12 [S121]. Section 4 checks this.
+- The old business email keeps receiving mail only if Porkbun copied its MX records, the records that deliver the email [S35] [S121]. Section 5 replaces them with the records for the forwarding.
+
+So go straight on to [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages) the same day, and then to [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail).
+
+**In the 15 days after the transfer**
+
+1. **Your helper signs in** to Porkbun. On **Domain Management**, click **Details** next to hairbygerta.com and look at the section **Contacts** [S150]. The details must be the helper's real name, address and phone number, with the helper's personal email address. If something is wrong, click the edit icon next to **Contacts**, correct it in the **DOMAIN CONTACTS** pop-up and click **Submit** [S150].
+2. Porkbun turns on its free WHOIS privacy after the transfer, because the box stayed ticked in Part C [S121] [S137]. On **Domain Management**, the eye icon under **WHOIS**, to the right of the domain, offers **Redact Privacy Data**, **Use Privacy Service** and **Make Public** [S136]. Do not choose **Make Public**.
+3. Watch the helper's personal inbox, spam folder included, for an email from Porkbun that asks to verify (confirm) the contact email address of the domain. Open the link in it at once. ICANN requires a registrar to check the email address or the phone number of the domain's owner within 15 days of a transfer. A registrar that gets no answer has to check by hand or suspend the domain [S55]. A suspended domain shows no website and receives no email. If no such email comes, there is nothing to do.
+
+### If something goes wrong
+
+**The code is refused.** Porkbun shows the status bad authcode [S122]. On the **Domain Transfers** page, check that the code there matches the code in Wix's email, letter by letter [S122]. To enter it again, click **Update authcode** under **Options**. This restarts the transfer [S122]. If the code is right and still refused, ask Wix Customer Care for a new code and enter it the same way [S122]. If it is still refused after that, contact Porkbun support [S122].
+
+**The domain is still locked.** Porkbun shows the status domain status does not allow transfer. Porkbun says this usually means the domain was not unlocked at the old registrar [S122]. Wix says the domain must be unlocked before a transfer, but its guide shows no unlock button [S35]. So your helper asks Wix Customer Care to unlock hairbygerta.com for the transfer. ICANN's policy gives a registrar five calendar days to remove the lock and give out the code after the owner asks [S41] [S42].
+
+To see the lock yourself, open the public record from [Part A](#part-a-turn-off-privacy-and-dnssec-at-wix) again, load it fresh with Ctrl + Shift + R and press Ctrl + F for `transfer prohibited` [S92] [S93]. While its status list says client transfer prohibited, the registry refuses a transfer [S27] [S152]. On 2 November 2026 it said so [S27]. When the words are gone, **your helper signs in** to Porkbun, clicks **Transfer** at the top and then **Update authcode** under **Options**. This sends the transfer again [S122].
+
+The status can also say that the transfer has been submitted and rejected too many times. Porkbun has then tried 15 times without success. Check the lock and the code as above [S122], and ask Porkbun support if nothing moves.
+
+If Wix says the domain is locked for 60 days, for example after a change of the contact details [S38] [S54], it cannot move before it expires. Use the backup plan below.
+
+**The transfer is still running on Monday 23 November 2026.** Ask Wix Customer Care to speed it up. Porkbun says some registrars do this when asked, but not all [S120] [S122]. The domain expires in the evening of Thursday 26 November 2026, so also read the rules for an expired domain below.
+
+**The backup plan, extending the domain at Wix.** Use it if the transfer has not started by Monday 16 November 2026, if the DS record of Part A is still there on that day, if your helper does not accept the public details of Part A, if the domain is locked for 60 days, or if the transfer fails and there is no time to start it again before the domain expires. Extend the domain at Wix before it expires [S105], and move it later.
+
+1. **Your helper signs in** to Wix and goes to **Domains** [S105].
+2. Click **Extend** next to hairbygerta.com [S105].
+3. Choose one year and click **Continue** [S105].
+4. Choose a privacy option and click **Continue** [S105]. If you choose one with DNSSEC, Part A has to be done again before the later move.
+5. Enter the payment information and click **Submit Purchase** [S105].
+
+Read the price on the screen before you click **Submit Purchase**. Wix says the price depends on the domain ending, the currency, the number of years, the privacy option and local taxes [S154]. On 2 November 2026 Wix showed about \$26 a year for this domain at its regular price, more than Porkbun's \$11.81 [S141]. Change nothing in the contact details while you do this. Wix says that would lock the domain from transfer for 60 days [S104]. Afterwards, check on the **Domains** page that the expiry date now says 2027. If a renewal payment fails, the domain still expires on the old date [S103].
+
+What the backup plan means until the later move.
+
+- The domain and its DNS records stay at Wix. A Wix domain can point to a site hosted elsewhere through its A and CNAME records [S39]. So your helper points it at the new site before 26 November 2026, when the Wix site plan ends. First do [Section 4, Part 2](#part-2-tell-github-the-domain). Then put GitHub's values from [Part 3](#part-3-switch-to-porkbuns-nameservers-and-add-the-records) into the records at Wix.
+- The email forwarding of Section 5 is set up at Porkbun, from **Domain Management** [S132]. Porkbun moves a domain into that page when its transfer is complete [S122], so the forwarding has to wait for the move. After 26 November 2026 the old business email no longer receives mail [S31]. So until the move, mail to info@hairbygerta.com does not arrive. Decide with your helper before 26 November 2026 what to do about that. [Section 8, Part 3](#part-3-the-business-email-ends) says what ends with the business email.
+- For the later move, do Parts A to D again.
+
+**The domain expires before the move is done.** It expires on 27 November 2026 at 01:04 UTC, which is 8:04 PM on 26 November 2026 in New York [S27].
+
+- Wix says an expired domain is no longer connected to its site [S101]. ICANN says the website and the email of an expired domain stop for a time [S102]. That hits the new site too.
+- Wix says an expired domain can still be transferred during its grace period, about 30 days from the expiry date. In the redemption period that follows, a transfer is no longer possible [S104].
+- If the transfer of an expired domain fails, the domain may go into the redemption period, and getting it back then costs \$100 [S104]. So Wix recommends extending an expired domain before starting a transfer [S104]. During the grace period that is **Extend Registration** in the banner under the domain on the **Domains** page [S101].
+- Porkbun warns that the old registrar may block the transfer of an expired domain [S120]. Porkbun's transfer page says a transfer includes a one year renewal, unless the domain is inside the auto renew grace period [S121]. Its help page says no year is added when a domain expired, was renewed at the old registrar and is moved fewer than 45 days after the expiry date [S124]. So a transfer after the expiry date may add no year.
+
+[Section 8, Part 2](#part-2-the-domain-expires) says what happens after that.
+
+**Point the domain back to the Wix site.** This only works while the Wix site plan still runs, so only until the evening of 26 November 2026, because Wix needs an upgraded site to connect a domain [S57]. It sends visitors back to the Wix site. It does not move the registration back to Wix [S58].
+
+Before the transfer is complete there is nothing to undo for the website. Wix disconnects the site only once the domain has been transferred [S35]. If you give up the move, your helper can switch **Privacy and DNSSEC protection** back on at any time with **Turn On Protection** [S53].
+
+After the domain has moved to Porkbun, do these steps.
+
+1. **Your helper signs in** to Wix, goes to **Domains** and clicks **Add an Existing Domain** [S57].
 2. Click **Connect a domain you already own** [S57].
 3. Select the site and click **Continue** [S57].
 4. Type hairbygerta.com and click the arrow [S57].
-5. Click **connect it to your site** below the search field [S57]. If a **Start Transfer** option appears, do not click it. Click **connect your domain** in the sentence below it [S57].
+5. Click **connect it to your site** [S57]. If a **Start Transfer** option appears, do not click it. Click **connect your domain** in the sentence below it [S57].
 6. Click **go to our manual setup** [S57].
 7. Click **Start** [S57].
-8. Click **pointing** at the top [S57].
+8. Click **pointing** [S57].
 9. Click **Switch to Pointing Instructions** [S57]. Wix opens a step by step outline. Leave it open [S57].
-10. In a new tab, **Gerta signs in** to Cloudflare and opens the **DNS Records** page [S52].
+10. In a new tab, **your helper signs in** to Porkbun. On **Domain Management**, click **Details** next to hairbygerta.com, then the edit icon next to **DNS Records**. The **Manage DNS Records** page opens [S129].
 11. Back in the Wix outline, click **I logged in** [S57].
 12. Click **I found my domain settings** [S57].
 13. Click **I found the records** [S57]. Wix now gives you its A record and its CNAME record (the two settings that say where the website is) [S57].
-14. In Cloudflare, click **Edit** next to the A record for hairbygerta.com [S52]. If Section 4 was done before, there are four such A records. Pick any one of them.
-15. Type the value Wix shows, set **Proxy status** to **DNS only** and click **Save** [S52] [S60].
-16. Do steps 14 and 15 again for the CNAME record for www [S52].
-17. Delete every other A or CNAME record for those two names: **Edit**, then **Delete**, then **Delete** again [S52]. Wix says to replace your records with its own, not to add to them [S57].
-18. Back in the Wix outline, click **I updated my records** [S57].
-19. Wait up to 48 hours [S57].
+14. At Porkbun, find an A record whose **Host** is empty (the domain itself, without www). Click the pencil icon on it, put the value Wix shows into **Answer** and click the save button [S129] [S130]. If there is no such record, click **Add Record**, choose the **Type** A, leave **Host** empty, put the value into **Answer** and click **Add** [S129] [S130].
+15. Do the same for the CNAME record whose **Host** is www [S129] [S130].
+16. Delete every other A, AAAA or CNAME record for the domain itself and for www, and every record that points to pixie.porkbun.com. For each one, click the trash can icon, then **OK** [S129] [S131]. Wix says to replace your records with its own, not to add to them [S57].
+17. Back in the Wix outline, click **I updated my records** [S57].
+18. Wait up to 48 hours [S57].
 
-Wix's page today lists A record 185.230.63.107 and CNAME www to pointing.wixdns.net. Trust the values on your own Wix screen [S57]. **DNS only** and DNSSEC off are needed because Wix supports neither Cloudflare's proxy nor DNSSEC [S57].
+Wix's page lists the A record 185.230.63.107 and the CNAME www to pointing.wixdns.net. Trust the values on your own Wix screen [S57]. Wix does not support DNSSEC for a domain connected this way [S57]. So check that the **Porkbun DNSSEC** switch under **Details** is off [S142].
 
-If the domain was already pointed at the new site (Section 4), also take the domain out of GitHub afterwards. Those are steps 3 to 5 under [How to undo the switch](#how-to-undo-the-switch) in Section 4.
+These records only count while the domain uses Porkbun's nameservers. [Section 4, Part 3](#part-3-switch-to-porkbuns-nameservers-and-add-the-records) shows how to check that. If the domain was already pointed at the new site, also take the domain out of GitHub afterwards, as the steps under [How to undo the switch](#how-to-undo-the-switch) in Section 4 show.
+
+**The website and the email stop some days after the move.** Look first for the verification email of [Part D](#part-d-while-the-transfer-runs), in the spam folder too. A registrar that gets no answer can suspend the domain [S55].
 
 ## 4. After the transfer: pointing the domain at GitHub Pages
 
-This is the switch. When it is done, www.hairbygerta.com shows the new site from GitHub instead of the Wix site. Your helper changes one setting in GitHub, and Gerta changes a few lines in Cloudflare. Do it together. The work takes about 20 minutes, then you wait. Nothing is changed in Wix or in the `hairbygerta` folder on your computer.
+This is the switch. When it is done, www.hairbygerta.com shows the new site from GitHub. Your helper sets the domain in GitHub and changes a few records at Porkbun, both in the helper's own accounts. Gerta makes one decision beforehand and looks at the result. The work takes about half an hour, then you wait. The switch itself changes nothing in Wix and nothing in the `hairbygerta` folder on your computer.
 
-"The transfer" in the title is the first move of the domain (Section 3, Part B). You do not wait for the second move.
+"The transfer" in the title is the move of the domain from Wix to Porkbun in [Section 3](#3-moving-the-domain-from-wix-to-porkbun-step-by-step). Do this section on the day that move is finished. Read it once before the transfer starts, so that Gerta can make her decision in time.
 
-Words used in this section:
+Words used in this section.
 
-- **DNS records**: the list of settings that tells the internet where the website is and where the email goes. After the first move you edit that list in Cloudflare.
-- **A record**: a DNS record that points a name at the number address of a server. AAAA is the same thing for a newer kind of address [S61].
-- **CNAME record**: a DNS record that points a name at another name [S61].
-- **HTTPS**: the secure form of a web address, the one that starts with https://.
-- **Security certificate**: the proof behind HTTPS. GitHub requests one for your domain by itself [S62].
-- **Repository**: the project on GitHub that holds the site files [S63].
+- **DNS records** are the list of settings that tells the internet where the website is and where the email goes. After the transfer this list is at Porkbun.
+- **Nameservers** say which company holds a domain's DNS records. Porkbun's own nameservers have names that end in `.ns.porkbun.com` [S127].
+- An **A record** points a name at the number address of a server, an IPv4 address. An **AAAA record** does the same with the newer kind of address, an IPv6 address [S130].
+- A **CNAME record** points a name at another full name [S130].
+- A **TXT record** holds a line of text. It is mostly used to prove who owns a domain [S130].
+- **Host** and **Answer** are the two main fields of a record at Porkbun. The Host is the part of the name in front of hairbygerta.com, for example `www`. An empty Host means hairbygerta.com itself. The Answer is the content of the record, for example the address it points to [S130].
+- **HTTPS** is the secure form of a web address, the one that starts with https://.
+- The **security certificate** is the proof behind HTTPS. GitHub requests one for your domain by itself [S62].
+- The **repository** is the project on GitHub that holds the site files [S63].
 
 ### Whose GitHub account this is, and what Gerta decides
 
-The new site is in the GitHub account achooStorm. That account belongs to your helper, not to Gerta. In plain words:
+The new site is in the GitHub account achooStorm. That account belongs to your helper, not to Gerta. In plain words, this means four things.
 
-- **The helper does every GitHub step.** The helper signs in to their own account. Gerta cannot do these steps alone, and she needs the helper again for every later change on GitHub. Only a person with admin rights for the repository can set the domain there [S64].
-- **The address stays Gerta's.** The domain's settings are in Gerta's own Cloudflare account (Section 3). The DNS records of Part 3 point her address at the site in the helper's account. Gerta can change those records herself, as [How to undo the switch](#how-to-undo-the-switch) shows.
+- **The helper does every step at GitHub and at Porkbun.** Only a person with admin rights for the repository can set the domain at GitHub [S64]. The Porkbun account is the one your helper opened in [Section 3, Part B](#part-b-get-porkbun-ready). Gerta cannot do these steps alone, and she needs the helper again for every later change in either place.
+- **The domain is in the helper's name.** Your helper is the registrant, the person listed as the domain's owner. So the helper changes the records at Porkbun, today and later.
 - **The site files are in the helper's account.** Ask your helper for a copy of the folder `hairbygerta` and keep it, so that the site can be published from another account if the two of you ever stop working together.
-- **Gerta's decision: verifying the domain.** GitHub recommends verifying the domain [S64]. That is the optional lock at the end of this section. Verifying ties hairbygerta.com to the helper's GitHub account. From then on only repositories owned by that account may publish a GitHub Pages site at hairbygerta.com or at a name directly under it, such as www.hairbygerta.com [S66]. This protects the address from strangers [S66]. It also binds the address, on GitHub, to an account that is not Gerta's. The TXT record that keeps the domain verified is in Gerta's Cloudflare account [S66]. GitHub's page does not say how a verification is taken off again [S66]. Whether to do this is Gerta's decision alone. The helper verifies the domain only after Gerta has clearly said yes.
+- **Gerta decides about verifying the domain.** GitHub recommends verifying the domain [S64]. That is the optional lock at the end of this section. Verifying ties hairbygerta.com to the helper's GitHub account. From then on only repositories owned by that account may publish a GitHub Pages site at hairbygerta.com or at a name directly under it, such as www.hairbygerta.com [S66]. This protects the address from strangers [S66]. It also ties the address of Gerta's business, on GitHub, to an account that is not hers. The TXT record that keeps the domain verified sits in the domain's DNS records, so at Porkbun, in the helper's account [S66]. GitHub's page does not say how a verification is taken off again [S66]. Whether to do this is Gerta's decision alone. The helper verifies the domain only after Gerta has clearly said yes.
 
 ### Before you start the switch
 
-- The first move in Section 3 is finished ([Part B](#part-b-first-move-from-wix-to-the-in-between-registrar), step 16): hairbygerta.com shows **Active** in Cloudflare [S51].
+- The transfer in Section 3 is finished. Porkbun sends an email when it is done [S123], and hairbygerta.com then shows on the **Domain Management** page at Porkbun [S122]. See [Section 3, Part D](#part-d-while-the-transfer-runs).
 - The new site looks right at the preview address https://achoostorm.github.io/hairbygerta/.
-- Your helper is there to sign in to GitHub. The account achooStorm is the helper's, and only a person with admin rights for the repository can set the domain there [S64].
-- You do this as soon as the first move is finished, without waiting for a quiet day. Wix disconnects the Wix site from the domain once the domain has been transferred away [S35], so the address may show no website until this section is done. The secure address can take up to an hour to start working [S65].
-- Optional, and recommended by GitHub before Part 2: lock the domain to the helper's GitHub account first [S64]. Gerta has decided this beforehand, yes or no (see the part above). See [Optional: lock the domain to the GitHub account](#optional-lock-the-domain-to-the-github-account). It takes about ten minutes of work and then a wait of up to 24 hours [S66]. If the address already shows no website, do Parts 1 to 4 first and the lock straight after. If GitHub says in Part 2 that the domain is already taken, do the lock before you go on [S65].
+- Your helper is there to sign in to GitHub and to Porkbun, and has the pictures of the Wix DNS records from [Section 3, Part B](#part-b-get-porkbun-ready).
+- Gerta has decided about the lock, yes or no. If she said yes before the transfer started, your helper may have done the lock then. See [the optional lock](#optional-lock-the-domain-to-the-github-account) at the end of this section.
+- You do this on the day the transfer is finished, without waiting for a quiet day. Wix disconnects the Wix site from the domain once the domain has been transferred away [S35], so the address may show no website until this section is done. The secure address can take up to an hour to start working [S65].
+- The email forwarding in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail) comes straight after Part 3 of this section, on the same day.
 
 ### Part 1: Save a copy of today's DNS records
 
-You need this copy if you ever undo the switch.
+You need this copy if a record is deleted by mistake, here or in Section 5. It also shows what Porkbun copied from Wix. Porkbun copies the records it can find when the transfer is ordered, and says to check them afterwards, because a lookup cannot see every record [S121].
 
-1. **Gerta signs in** to Cloudflare.
-2. Open the **DNS Records** page for hairbygerta.com. Cloudflare's help page gives this direct link: https://dash.cloudflare.com/?to=/:account/:zone/dns/records [S52].
-3. Take a screenshot or a phone photo of the whole list.
-4. Select **Import and Export** [S67].
-5. Select **Export** [S67].
-6. Keep the downloaded file together with the screenshot. Do not save either of them in the `hairbygerta` folder.
+On 2 November 2026 the Wix account showed these records for hairbygerta.com.
+
+| Type | Name | Value | What it is for | What happens to it |
+|---|---|---|---|---|
+| A, three records | hairbygerta.com | the addresses of the Wix site | the Wix site | deleted in Part 3 |
+| CNAME | www | `cdn3.wixdns.net` | the Wix site | deleted in Part 3 |
+| TXT | hairbygerta.com | `google-site-verification=cEwGkDfnBA3KDOjrEJ1VtYTp5NZwNkC0jiX1SQsjxsI` | Google Search Console | stays |
+| TXT | hairbygerta.com | `google-site-verification=NXMw3mRnshf6rlL9Zr3VDm7ZgP6b0F9xVxUJ2XmSpbQ` | Google Workspace, the business email | stays |
+| TXT | hairbygerta.com | `v=spf1 include:_spf.google.com ~all` | the business email | Section 5 |
+| MX, five records | hairbygerta.com | Google's mail servers | the business email | Section 5 |
+
+If the lock was done at Wix before the transfer, the list at Wix also had the GitHub TXT record. Its name starts with `_github-pages-challenge-`. It stays.
+
+1. **Your helper signs in** to Porkbun and goes to **Domain Management**. If that page does not open by itself, click **ACCOUNT** at the top right and choose **Domain Management** [S127].
+2. Click **Details** next to hairbygerta.com [S127].
+3. Click the edit icon next to **DNS Records**. The **Manage DNS Records** page opens with the list of records [S129].
+4. Change nothing yet. Take a screenshot or a phone photo of the whole list.
+5. Compare the list with the table above. Write down every TXT or MX record that is missing. Part 3 adds a missing verification record. The email records are handled in Section 5.
+6. Keep the pictures together with the pictures of the Wix list. Do not save them in the `hairbygerta` folder, because everything in that folder is published.
 
 ### Part 2: Tell GitHub the domain
 
-GitHub says to do this before the DNS change. Otherwise someone else could host a site on your www address in between [S64].
+GitHub says to do this before the DNS records change. Otherwise someone else could host a site on one of your names in between [S64].
 
 1. **Your helper signs in** to github.com with their account achooStorm.
 2. Open https://github.com/achooStorm/hairbygerta.
 3. Under the repository name, click **Settings**. If you cannot see it, open the dropdown menu with the three dots at the end of that row and click **Settings** there [S64].
 4. In the sidebar, in the section "Code, planning, and automation", click **Pages** [S64].
-5. Under "Custom domain", type `www.hairbygerta.com` [S64].
+5. Under "Custom domain", type `www.hairbygerta.com`, with www at the front [S64].
 6. Click **Save** [S64].
 
-Two things happen now:
+Why www. With www.hairbygerta.com as the custom domain and the records of Part 3 in place for both names, GitHub sends visitors of hairbygerta.com on to www.hairbygerta.com by itself [S64]. The pages of the new site already give https://www.hairbygerta.com/ as their address.
 
-- GitHub starts a DNS check [S62]. It cannot pass yet, because the DNS records do not point to GitHub yet. If GitHub shows a warning now, carry on with Part 3.
-- GitHub adds a small file named CNAME to the repository, because the site is published from a branch [S64]. Never delete it, or the site stops showing at the domain [S65]. Before the next upload from the `hairbygerta` folder, pull first (pull means: fetch GitHub's latest version into the folder), so the folder has that file too [S64]. [Section 6, Part A](#part-a-get-the-latest-version) shows how.
+Two things happen now.
 
-### Part 3: Change the DNS records in Cloudflare
+- GitHub starts a DNS check [S62]. It cannot pass yet, because the records do not point to GitHub yet. If GitHub shows a warning now, carry on with Part 3.
+- GitHub adds a small file named CNAME to the repository, because the site is published from a branch [S64]. Never delete it, or the site stops showing at the domain [S65]. Before the next upload from the `hairbygerta` folder, pull first (pull means fetching GitHub's latest version into the folder), so that the folder has that file too [S64]. [Section 6, Part A](#part-a-get-the-latest-version) shows how.
 
-First remove the old website records. GitHub says leftover records of these kinds can stop the security certificate [S62]. Do steps 1 to 12 in one go: between deleting and adding, the domain shows no website.
+### Part 3: Switch to Porkbun's nameservers and add the records
 
-1. Open the **DNS Records** page again [S52].
-2. Find a record whose Type is A, AAAA or CNAME and whose Name is `hairbygerta.com`, `@` or `www`.
-3. On that record, select **Edit** [S52].
-4. Select **Delete** [S52].
-5. Select **Delete** again to confirm [S52].
-6. Repeat steps 2 to 5 until no such record is left.
+GitHub says to remove a default record that the DNS provider set [S64]. Extra records, or records that do not point to GitHub, can stop the security certificate [S62]. Porkbun's advice is the same. Delete its parking records and the records of the old host before you add your own [S131].
 
-Leave every other record alone, above all MX and TXT. MX records deliver your email [S61]. Email is the subject of [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail).
+**Check the nameservers**
 
-Now add the five new records.
+1. **Your helper signs in** to Porkbun and goes to **Domain Management**, as in Part 1 [S127].
+2. Click **Details** next to hairbygerta.com and look at the nameservers [S127].
+3. They should be `curitiba.ns.porkbun.com`, `fortaleza.ns.porkbun.com`, `maceio.ns.porkbun.com` and `salvador.ns.porkbun.com` [S127]. The choice "Move DNS to Porkbun after the transfer, without pausing anything." in Section 3 puts the domain on Porkbun's DNS when the transfer is done [S121]. If you see these four names, go on with step 7.
+4. If you see other names, for example `ns2.wixdns.net` and `ns3.wixdns.net`, click the edit icon next to the nameservers [S127]. Porkbun does not change the nameservers of a domain on its own when the domain moves in [S126].
+5. Click **Use Our Default Nameservers** [S127].
+6. Click **Save Nameservers**. If Porkbun asks for it, click **Submit** once more [S127] [S128]. The change can take up to 48 hours. Most places see it within a few hours [S127].
 
-7. Select **Add record** [S52].
-8. Choose the **Type** shown in the first row of the table below [S52].
-9. Fill in **Name** and the address or target from the same row [S61].
-10. Set **Proxy status** to **DNS only** [S60].
-11. Select **Save** [S52].
-12. Repeat steps 7 to 11 for the other four rows.
+**Delete the old website records**
 
-| Type | Name | Fill in | Proxy status | TTL |
-|---|---|---|---|---|
-| A | `@` | IPv4 address `185.199.108.153` | DNS only | Auto |
-| A | `@` | IPv4 address `185.199.109.153` | DNS only | Auto |
-| A | `@` | IPv4 address `185.199.110.153` | DNS only | Auto |
-| A | `@` | IPv4 address `185.199.111.153` | DNS only | Auto |
-| CNAME | `www` | Target `achoostorm.github.io` | DNS only | Auto |
+Do steps 7 to 19 in one go, without a break. Between deleting and adding, the address shows no website.
 
-- `@` means the bare domain, hairbygerta.com without www [S61] [S68]. After you save, the list may show this name as `hairbygerta.com` instead of `@`. That is the same record [S51].
-- The four addresses are GitHub's own. They were checked against the GitHub help page on 13 October 2026 [S64]. Check them there again on the day you do this.
-- The target is `achoostorm.github.io` and nothing more. Do not add `/hairbygerta` [S64].
-- TTL is how long other computers remember a record. Leave it on Auto.
-- **DNS only** shows a gray cloud. **Proxied** shows an orange cloud [S60]. Cloudflare turns the proxy on by default when a domain is added, so check all five rows [S60].
+7. Under **Details**, click the edit icon next to **DNS Records**. The **Manage DNS Records** page opens [S129].
+8. Find a record whose Answer is `pixie.porkbun.com`. Porkbun's own default records point there and show its parking page [S131]. If there is none, go on with step 11.
+9. Click the trash can icon beside that record, then click **OK** [S129].
+10. Repeat steps 8 and 9 until no record with `pixie.porkbun.com` is left [S131].
+11. Delete the old Wix website records the same way. These are the three A records for hairbygerta.com itself and the CNAME record for www with the Answer `cdn3.wixdns.net` [S131].
+12. Look through the list once more. No record of the Type A, AAAA, ALIAS or CNAME may be left for hairbygerta.com itself or for www. Delete any that is left [S62] [S131]. Also delete a record of one of these types whose Host is `*`, if there is one. Such a record stands for every name under the domain, and GitHub strongly advises against it [S64].
 
-Why DNS only: the proxy puts Cloudflare between your visitors and the site. With the proxy on, Cloudflare answers with its own addresses instead of GitHub's [S60]. GitHub checks your DNS records before it creates the security certificate, and records that do not point to GitHub can block it [S62]. Cloudflare's own advice for a site hosted on another company's platform is DNS only unless that platform says it supports the proxy, because visitors can otherwise get security errors or endless redirects, where the page keeps sending the browser in a circle [S69]. GitHub's help pages on custom domains and HTTPS do not mention Cloudflare or a proxy at all [S62] [S64] [S65] [S66] [S70]. Cloudflare recommends the proxy for most other websites [S60], so this is a deliberate exception.
+Leave every other record alone, above all the MX and TXT records. The email records are handled in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail). They are the MX records and the TXT record that starts with `v=spf1`. The TXT records whose Answer starts with `google-site-verification=` stay as they are, and so does a TXT record whose Host starts with `_github-pages-challenge-`.
+
+**Add the new records**
+
+13. Click **Add Record** [S129].
+14. In **Type**, choose the type of the first row of the table below. For an A record the list shows **A - Address record** [S130]. For the other rows, choose the entry for the type in the table.
+15. Fill in **Host** from the same row. Where the table says leave empty, leave the field empty [S130].
+16. Fill in **Answer** from the same row. The name of this field changes with the type. For an A record it is called **IPv4 Address** [S130].
+17. Leave **TTL** as it is. **Notes** can stay empty [S130].
+18. Click **Add** [S129] [S130].
+19. Click **Back** and check that the new record is in the list [S129]. Then do steps 13 to 19 again for the next row, until every row that applies is done.
+
+These are the records, in the fields of Porkbun's form [S130].
+
+| Type | Host | Answer | Add it? |
+|---|---|---|---|
+| A | leave empty | `185.199.108.153` | yes |
+| A | leave empty | `185.199.109.153` | yes |
+| A | leave empty | `185.199.110.153` | yes |
+| A | leave empty | `185.199.111.153` | yes |
+| AAAA | leave empty | `2606:50c0:8000::153` | yes |
+| AAAA | leave empty | `2606:50c0:8001::153` | yes |
+| AAAA | leave empty | `2606:50c0:8002::153` | yes |
+| AAAA | leave empty | `2606:50c0:8003::153` | yes |
+| CNAME | `www` | `achoostorm.github.io` | yes |
+| TXT | leave empty | `google-site-verification=cEwGkDfnBA3KDOjrEJ1VtYTp5NZwNkC0jiX1SQsjxsI` | only if it is not in the list yet |
+| TXT | leave empty | `google-site-verification=NXMw3mRnshf6rlL9Zr3VDm7ZgP6b0F9xVxUJ2XmSpbQ` | only if it is not in the list yet |
+| TXT | the name GitHub gave, without `.hairbygerta.com` at the end | the value GitHub gave | only if the lock was done at Wix before the transfer and the record is not in the list yet |
+
+- The four A and the four AAAA addresses are GitHub's own. They were checked against GitHub's help page on 2 November 2026 [S64]. Check them there again on the day you do this.
+- The CNAME answer is `achoostorm.github.io` and nothing more. Do not add `/hairbygerta` [S64].
+- If Porkbun says that a CNAME or ALIAS record with that host already exists, an old record is still there. Delete it as in step 9, then add the row again [S131].
+- The first Google TXT record keeps the site verified in Google Search Console. Google checks from time to time that its record is still there, and says not to remove it [S155]. The home page of the new site carries the same code. The second Google TXT record belongs to the business email. Keep both.
+- The last row keeps the lock in place, if the lock was done at Wix before the transfer. GitHub says the TXT record must stay for the domain to stay verified [S66]. If the lock is still to be done, skip this row. The lock adds the record itself, after Part 4.
+
+When you are done, hairbygerta.com itself has the four A and the four AAAA records of the table, www has the one CNAME record, and the TXT and MX records are still there. Then go on with Part 4. While GitHub checks, your helper can already set up the email forwarding in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail).
 
 ### Part 4: Wait for the check, then turn on HTTPS
 
 1. In GitHub, go back to **Settings**, then **Pages** [S64]. If GitHub asks you to sign in again, the helper does it, as in Part 2.
 2. Reload the page from time to time until a check mark shows beside `www.hairbygerta.com` [S62].
-3. Under "GitHub Pages", select (tick) **Enforce HTTPS** [S62]. From then on everyone is sent to the secure address [S62].
+3. Under "GitHub Pages", select (tick) **Enforce HTTPS** [S62]. From then on everyone is sent to the secure address [S62]. If you cannot select it yet, wait and try again later. It can take up to 24 hours before this option is available [S64].
 
 If there is still no check mark after an hour, restart the check [S62]. GitHub says this can be needed after DNS records were changed [S65].
 
@@ -621,33 +652,61 @@ If there is still no check mark after an hour, restart the check [S62]. GitHub s
 2. Type `www.hairbygerta.com` again.
 3. Click **Save** [S62].
 
+If Part 3 had to switch the nameservers, the check can take longer. See [How long it takes](#how-long-it-takes).
+
+When the check mark shows, go through [What you see when it has worked](#what-you-see-when-it-has-worked). Its last part tells Google about the pages of the new site. If Gerta said yes to the lock and it was not done before the transfer, do [the lock](#optional-lock-the-domain-to-the-github-account) on the same day.
+
 ### How long it takes
 
-- The DNS change: other computers keep a Cloudflare record on Auto for 5 minutes. Your own computer may hold the old answer longer [S71]. GitHub says to allow up to 24 hours [S64].
-- The secure address: up to an hour after the domain is set [S65].
-- The **Enforce HTTPS** box: it can take up to 24 hours before you can tick it [S64].
+- **The records at Porkbun.** GitHub says DNS changes can take up to 24 hours [S64].
+- **The nameservers**, only if Part 3 had to switch them. Up to 48 hours. Most places see the change within a few hours [S127].
+- **The secure address.** Up to an hour after the domain is set [S65].
+- **The Enforce HTTPS option.** Up to 24 hours before you can select it [S64].
+- **The lock**, if you do it. Up to 24 hours [S66].
+
+If your own browser still shows an old page, clear its cache (the copies of pages it keeps) and look again [S65].
 
 ### What you see when it has worked
 
-- In GitHub under **Settings**, **Pages**: a check mark beside www.hairbygerta.com [S62], and **Enforce HTTPS** is ticked. This is the check to trust.
+- In GitHub under **Settings**, **Pages**, a check mark shows beside www.hairbygerta.com [S62], and **Enforce HTTPS** is selected. This is the check to trust.
 - https://www.hairbygerta.com opens the new site. The two sites look alike. As long as some placeholders are left, you can tell the new site by its beige boxes.
 - hairbygerta.com without www jumps to www.hairbygerta.com by itself [S64].
 - The old page addresses still open, for example https://www.hairbygerta.com/gallery/ and https://www.hairbygerta.com/book-online/.
-- If you still see the Wix site, clear your browser's cache (the copies of pages it keeps) and look again [S65].
+- If you still see an old page or a parking page, clear your browser's cache and look again [S65].
+
+**The last step of the switch, telling Google about the new pages**
+
+When all of the above is true, give Google the list of the site's pages. That list is the file sitemap.xml.
+
+1. Open https://www.hairbygerta.com/sitemap.xml in the browser. It must show a list of page addresses that all start with https://www.hairbygerta.com/. Google says to make sure first that the sitemap can be reached [S143].
+2. **Your helper signs in** to Google Search Console with the Google account that is an owner of the site there. Only an owner can submit a sitemap [S143]. If that owner account is Gerta's, **Gerta signs in** instead.
+3. Go to https://search.google.com/search-console/sitemaps. That is where the link **Open the Sitemaps report** on Google's help page leads [S143].
+4. If Search Console asks for a property (its word for a site), choose the one named hairbygerta.com or the one that starts with https://www.hairbygerta.com. Google warns against mixing up www and non-www properties [S143].
+5. In **Add a new sitemap**, enter the address `https://www.hairbygerta.com/sitemap.xml` [S143]. If part of the address is already written in front of the box, do not type that part again. Use this address exactly, with https and www. The report goes by the exact address you submit and does not follow redirects [S143].
+6. Click **Submit** [S143].
+7. Look at the status later. **Success** means that Google has read the file. **Has errors** or **Couldn't fetch** means that something is wrong [S143]. Then click the row in the report to see what is wrong [S143]. Open the address from step 1 again, fix the problem with your helper and submit again [S143].
+
+If the list already shows this address from the Wix site, submit it anyway. Google suggests submitting a sitemap again after big changes to it [S143]. If neither of you is an owner in Search Console, skip steps 2 to 7. The file robots.txt of the new site already names the sitemap, and that is Google's way for people without owner permission [S143].
 
 ### If it has not worked after 24 hours
 
-- Compare the DNS Records page with the table in Part 3: Type, address or target, and Proxy status, letter by letter. A Name shown as `hairbygerta.com` is the `@` of the table. Delete any other A, AAAA or CNAME record named `hairbygerta.com`, `@` or `www` [S62]. Then restart the check as in Part 4.
-- The browser says "too many redirects" or shows a security warning: check that none of the five records is set to Proxied [S69]. If one is, select **Edit** on it, set **Proxy status** to **DNS only** and select **Save** [S52].
-- The list has records of Type CAA (they name who may issue certificates for the domain): at least one of them must contain `letsencrypt.org` [S65]. If there are none, there is nothing to do.
-- GitHub says the domain is already taken: the optional lock below frees the domain for the helper's account [S65]. It is still Gerta's decision.
+- If Part 3 had to switch the nameservers, allow up to 48 hours in all [S127]. Then go through this list.
+- Compare the **Manage DNS Records** page with the table in Part 3. Check the Type and the Answer letter by letter, and that each record is for hairbygerta.com itself or for www, as the table says. Delete any other record of the Type A, AAAA, ALIAS or CNAME for hairbygerta.com itself or for www [S62] [S131]. Then restart the check as in Part 4.
+- A parking page shows, or a record still has the Answer `pixie.porkbun.com`. Delete that record [S131]. Then restart the check as in Part 4.
+- **Details** does not show the four Porkbun nameservers. Switch them as in Part 3, steps 4 to 6 [S127].
+- The list has records of the Type CAA (they name who may issue certificates for the domain). At least one of them must contain `letsencrypt.org` [S65]. If there are none, there is nothing to do.
+- GitHub says the domain is already taken. The optional lock below frees the domain for the helper's account [S65] [S66]. It is still Gerta's decision.
+- The address does not open at all on several devices, and the email stops too. Look at the public record as at the end of [Section 3, Part A](#part-a-turn-off-privacy-and-dnssec-at-wix). If `delegationSigned` still says `true`, an old DNSSEC record from Wix is left. Porkbun recommends deleting DNSSEC records before a transfer, because they can cause DNS problems [S125]. Your helper asks Porkbun's support to remove it.
+- Nothing helps and the Wix site plan still runs. Then you can put the Wix site back for now, as under [How to undo the switch](#how-to-undo-the-switch).
 
 ### How to undo the switch
 
-This puts the Wix site back on the domain. Wix only connects a domain to a site that is upgraded [S57]. So it only works before the end date of the Wix site plan that you wrote down in [Section 2](#write-it-down).
+This puts the Wix site back on the domain. Wix only connects a domain to a site that is upgraded [S57]. So it only works while the Wix site plan still runs, until the evening of 26 November 2026, New York time ([The end dates](#the-end-dates) in Section 2). After that, it would first need a new site plan [S24]. See [Section 8, Part 1](#part-1-the-wix-site-plan-ends). Wix says the change can take up to 48 hours [S57], so decide early.
 
-1. Do the steps under [If something goes wrong: point the domain back to the Wix site](#if-something-goes-wrong-point-the-domain-back-to-the-wix-site) in Section 3. They connect the domain to the Wix site again. They also change the website records in Cloudflare to the values Wix shows and delete the rest of the five records you added in Part 3. Cloudflare's own note on Wix says the same: connect by pointing, with every record set to **DNS only** [S72].
-2. Compare the website records with your screenshot from Part 1. The values on your Wix screen are the ones that count [S57].
+The domain stays registered at Porkbun. Connecting it to the Wix site does not move it back to Wix [S58].
+
+1. Do the steps under "Point the domain back to the Wix site" in Section 3, [If something goes wrong](#if-something-goes-wrong). They connect the domain to the Wix site again. At Porkbun they change the website records to the values Wix shows and delete the rest of the records that Part 3 added for GitHub [S57].
+2. For the website records, the values on your Wix screen count, not the old records in your pictures from Part 1 [S57]. Leave the TXT and MX records as they are. The email forwarding needs the MX records that point to Porkbun [S132].
 3. **Your helper signs in** to GitHub, opens the repository and goes to **Settings**, then **Pages** [S64].
 4. Under "Custom domain", the helper clicks **Remove** [S64]. Do this last. GitHub warns that DNS records pointing at GitHub with no domain set there could let someone else put a site on your name [S64].
 5. Wait. Wix says it may take up to 48 hours [S57].
@@ -656,9 +715,13 @@ The pages of the Wix site and the `hairbygerta` folder on your computer were nev
 
 ### Optional: lock the domain to the GitHub account
 
-This is called verifying the domain. It stops other GitHub users from taking over your domain for a site of their own [S66]. It also ties hairbygerta.com to your helper's GitHub account achooStorm, because that is the account that verifies it [S66]. Do it only if Gerta has said yes. What she decides is explained under [Whose GitHub account this is, and what Gerta decides](#whose-github-account-this-is-and-what-gerta-decides). GitHub recommends doing it before Part 2 [S64]. If you did not do it then, do it as soon as Part 4 is finished.
+This is called verifying the domain. It stops other GitHub users from taking over your domain for a site of their own [S66]. It also ties hairbygerta.com to your helper's GitHub account achooStorm, because that is the account that verifies it [S66]. Do it only if Gerta has said yes. What she decides is explained under [Whose GitHub account this is, and what Gerta decides](#whose-github-account-this-is-and-what-gerta-decides).
 
-The helper does steps 1 to 7 and step 11 in GitHub. Gerta does steps 8 to 10 in Cloudflare.
+**When to do it.** GitHub recommends verifying the domain before it is set in Part 2 [S64]. So if Gerta says yes before the transfer starts, your helper does the lock at Wix before Part C of Section 3 starts the transfer. Not later, because Porkbun copies the records when the transfer is ordered [S121], and Section 3 changes nothing at Wix while the transfer runs. Verifying can take up to 24 hours [S66], and that wait is then over before the day of the switch. The record has to stay for the domain to stay verified [S66], but Porkbun's copy of the records can miss it [S121]. So Part 3 makes sure it is at Porkbun too, in the last row of its table.
+
+If the lock was not done before the transfer, do it straight after Part 4, on the same day, with the record at Porkbun. Do not hold up Parts 2 to 4 for it, because the address may show no website until they are done [S35]. Only if GitHub says in Part 2 that the domain is already taken, do the lock before you go on [S65].
+
+Your helper does every step, in GitHub and in the account that holds the domain's DNS records.
 
 1. **Your helper signs in** to github.com with their account achooStorm and clicks the profile picture in the upper-right corner [S66].
 2. Click **Settings**. These are the profile settings of the helper's account, not the repository settings [S66].
@@ -666,129 +729,117 @@ The helper does steps 1 to 7 and step 11 in GitHub. Gerta does steps 8 to 10 in 
 4. Click **Add a domain** [S66].
 5. Type `hairbygerta.com` under "What domain would you like to add?" [S66].
 6. Select **Add domain** [S66].
-7. Leave this page open. Under "Add a DNS TXT record" it shows a name and a value [S66]. A TXT record is a DNS record that holds a line of text [S61].
-8. **Gerta signs in** to Cloudflare. On the **DNS Records** page, select **Add record** and choose the Type TXT [S52].
-9. Copy the name from GitHub into **Name** and the value from GitHub into **Content** [S61].
-10. Select **Save** [S52].
-11. Back on GitHub, click **Verify** [S66]. The DNS change can take up to 24 hours [S66]. If you left the page in the meantime, open the three-dot menu to the right of the domain and click **Continue verifying** first [S66].
-12. Keep that TXT record for as long as the domain should stay verified. It is what keeps the domain verified [S66].
+7. Leave this page open. Under "Add a DNS TXT record" it shows a name and a value [S66]. The name starts with `_github-pages-challenge-` and ends with `.hairbygerta.com` [S66]. Write both down or take a screenshot, because Part 3 may need them again. Do not save them in the `hairbygerta` folder.
+8. Add the record in a new tab, where the domain's DNS records are on that day.
+   - Before the transfer, at Wix. **Your helper signs in** to Wix, goes to **Domains**, clicks the **Domain Actions** icon next to hairbygerta.com and selects **Manage DNS Records** [S156]. In the **TXT (Text)** section, click **+ Add Record** [S156]. In **Host Name**, type the name from GitHub without `.hairbygerta.com` at the end. Wix says to leave this field blank for @, the domain itself [S156]. So, as at Porkbun, the field takes only the part in front of the domain. In **Value**, paste the value from GitHub [S156]. Click **Save** [S156].
+   - After the transfer, at Porkbun. **Your helper signs in** to Porkbun and opens the **Manage DNS Records** page, as in Part 3, steps 1, 2 and 7 [S129]. Click **Add Record** [S129]. In **Type**, choose TXT. In **Host**, type the name from GitHub without `.hairbygerta.com` at the end, because the Host is only the part in front of the domain [S130]. In **Answer**, paste the value from GitHub [S130]. Click **Add** [S129].
+9. Back on GitHub, click **Verify** [S66]. The DNS change can take up to 24 hours [S66]. If you left the page in the meantime, open the three-dot menu to the right of the domain and click **Continue verifying** first [S66]. If it still fails after 24 hours, compare the record with GitHub's name and value, letter by letter.
+10. Keep that TXT record for as long as the domain should stay verified. It is what keeps the domain verified [S66]. If you added it at Wix, it has to be at Porkbun too after the transfer. That is the last row of the table in Part 3.
 
 ## 5. Free email forwarding from info@hairbygerta.com to Gmail
 
-Cloudflare **Email Routing** takes mail that is sent to info@hairbygerta.com and forwards it to a mailbox you already have, here your Gmail [S40]. It is a forwarder, not a mailbox: it only receives. To send mail from your domain as well you would need a separate mail provider [S73]. Cloudflare's pricing page lists incoming email as Unlimited on its free plan (Workers Free) [S74]. If a screen asks for a card or a paid plan, stop and ask your helper.
+Porkbun's free email forwarding takes the mail sent to info@hairbygerta.com and passes it on to Gerta's Gmail address [S132]. It is not a mailbox. It only receives mail and passes it on [S135].
 
-Why you need it: the form on the Contact page of the new site does not deliver messages by itself. It opens the visitor's own email app with a message addressed to info@hairbygerta.com. The email links on the site do the same. If this forwarding does not work, those messages never reach you.
+**When.** On the same day the transfer in [Section 3](#3-moving-the-domain-from-wix-to-porkbun-step-by-step) completes, straight after [Section 4, Part 3](#part-3-switch-to-porkbuns-nameservers-and-add-the-records). Wix says the business email stops working once the domain has moved away, until the domain's mail records (MX records) are added again [S35]. Until this section is done, mail for info@hairbygerta.com may not arrive anywhere.
 
-Words used in this section:
+**Why you need it.** The form on the Contact page of the new site does not deliver messages by itself. It opens the visitor's own email app with a message to info@hairbygerta.com. The email links on the site do the same. The old business email ends by itself on the evening of Thursday 26 November 2026, New York time (see [The end dates](#the-end-dates)). After that the old mailbox can no longer receive mail [S31]. From then on, mail for info@hairbygerta.com reaches Gerta only through this forwarding.
 
-- **DNS records**: the list of settings that tells the internet where the website is and where the email goes.
-- **MX record**: a DNS record that says which mail servers receive the domain's mail.
-- **TXT record**: a DNS record that holds one line of text. Mail systems read it to check who may handle the domain's mail.
-- **Destination address**: the mailbox the mail is forwarded to, here your Gmail address [S75].
-- **Routing rule**: one line that says "mail for this address goes to that destination" [S75].
-- **Onboard**: Cloudflare's word for signing a domain up for this service.
+**Words used in this section**
+
+- **DNS records** are the list of settings that tells the internet where the website is and where the email goes.
+- An **MX record** is a DNS record that says which mail servers receive the domain's mail.
+- A **TXT record** is a DNS record that holds one line of text.
+- The **SPF record** is the TXT record that starts with `v=spf1`. Mail systems read it to check which servers may send mail for the domain.
+- **Host** is the field on Porkbun's DNS page for the part in front of the domain name. Left empty, the record is for the domain itself, hairbygerta.com [S130].
+- A **forward** is one address that passes its mail on, here info@hairbygerta.com to Gerta's Gmail address [S132].
 
 ### Before you turn on forwarding
 
-- The domain's DNS is at Cloudflare. Email Routing works only then [S40]. That is the case once the first move in Section 3 is finished ([Part B](#part-b-first-move-from-wix-to-the-in-between-registrar), step 16).
-- You have a Gmail address of your own and can open its inbox. Below it is called "your Gmail address".
-- The mailbox backup from [Section 2, Part D](#part-d-back-up-the-mailbox) is done.
-- Today's date is before the business email end date you wrote down in [Section 2, Part C](#part-c-end-date-of-the-business-email). After that date the business email can no longer receive mail [S31], so forwarding must be working by then.
-- info@hairbygerta.com is the only address ending in @hairbygerta.com that you use. Forwarding takes over the mail for the whole domain, and only an address with a routing rule is forwarded [S75] [S76]. If you have another address or an alias (a second name for the same mailbox), tell your helper before Part 1. It needs its own rule (Part 3), or the **Catch-all rule** on the **Routing Rules** tab, which forwards every email sent to the domain to one destination [S75].
+- The transfer in Section 3 is complete. Porkbun sends an email when it is finished [S123], and hairbygerta.com then shows on the **Domain Management** page [S122].
+- Your helper has done [Section 4, Part 3](#part-3-switch-to-porkbuns-nameservers-and-add-the-records). There the helper makes sure the domain uses Porkbun's nameservers. The records at Porkbun only work while it does [S126] [S127]. You do not have to wait for Section 4, Part 4.
+- The Porkbun account is the helper's, so your helper does Parts 1 and 2. Gerta does Part 3 and the last backup.
+- Gerta tells the helper which Gmail address the mail should go to. It is an inbox she can open.
+- info@hairbygerta.com is the only address ending in @hairbygerta.com that Gerta uses. Porkbun has no catch-all that forwards every address of the domain [S132]. If there is another address, tell your helper. It needs its own forward, made as in Part 1.
+- Gerta knows that the forwarding only receives mail, and that her replies go out from her Gmail address [S132].
+- Two other ways are not part of this plan. Porkbun sells hosted email at \$3 a month per address, billed yearly [S135]. Through Wix Customer Care the Google Workspace mailbox can be moved from Wix to Google, and that cannot be undone [S160].
 
-One thing changes when you turn it on. Today, mail for info@hairbygerta.com lands in the business email, the paid mailbox from Wix. On 12 October 2026 the domain's MX records pointed to Google's mail servers [S77]. Email Routing needs Cloudflare's own MX records, and Cloudflare says it cannot be used together with another mail server [S76]. So from the moment you turn it on, new mail for info@hairbygerta.com goes to your Gmail and no longer to the business email. As long as the business email is still paid, your helper can undo this: see [For your helper](#for-your-helper).
+One thing changes in Part 2. Before the move, the mail for info@hairbygerta.com went to the old business email, the Google Workspace mailbox from Wix [S20]. The forwarding needs the domain's MX records to point to Porkbun [S132], and Porkbun says to delete the other MX records [S134]. So once Part 2 takes effect, new mail goes to Gerta's Gmail address and no longer to the old mailbox.
 
-Do Parts 1 to 3 in one sitting, so the address is never left without a rule.
+Do Part 1 and Part 2 in one sitting.
 
-### Part 1: Turn on Email Routing for the domain
+### Part 1: Create the forward at Porkbun
 
-1. **Gerta signs in** to the Cloudflare dashboard (Cloudflare's control panel) at https://dash.cloudflare.com and selects her account [S75].
-2. Go to **Compute**, then **Email Service**, then **Email Routing** [S40]. Cloudflare's help page gives this direct link: https://dash.cloudflare.com/?to=/:account/email-service/routing [S40].
-3. Select **Onboard Domain** [S40].
-4. Choose hairbygerta.com [S40].
-5. If the screen lists the DNS records Cloudflare will add, read them [S40]. They are explained in Part 4.
-6. Select **Done** [S40].
-7. Whatever the screen said, have your helper open the **DNS Records** page now [S52]. hairbygerta.com came to Cloudflare with five Google MX records and one Google SPF record [S77]. Email Routing requires Cloudflare's MX records, and existing MX records have to be removed or updated [S76]. For the name hairbygerta.com the list must show only the three MX records ending in `.mx.cloudflare.net`, and exactly one TXT record that starts with `v=spf1` [S76] [S78].
+1. **Your helper signs in** to Porkbun. The **Domain Management** page opens. If the helper was already signed in, click **ACCOUNT** at the top right and choose **Domain Management** [S132].
+2. Find hairbygerta.com and click the envelope icon in the **EMAIL** column [S132]. The **Email Hosting and Forwarding** page opens [S132].
+3. Go to the section **Porkbun Email Forwarding** [S132].
+4. Under **Create a New Forwarding Address**, type `info` as the username, the part in front of the @ [S132].
+5. As the destination, type Gerta's Gmail address [S132]. Check it with Gerta letter by letter.
+6. Click **Create Email Forward** [S132].
+7. The page loads again and shows the new forward under **Current Forwards** [S132].
 
-If the list shows anything else, or if the screen reported a problem with existing MX or SPF records, stop. Show your helper the part [For your helper](#for-your-helper) below.
+The forwards are free [S132]. If a screen asks for payment, stop and check that you are in the section **Porkbun Email Forwarding**.
 
-### Part 2: Add your Gmail address and confirm it
+### Part 2: The DNS records for forwarding
 
-1. Go to **Compute**, **Email Service**, **Email Routing**, then **Destination Addresses** [S40].
-2. Under **Destination addresses**, type your Gmail address into the form and submit it [S40].
-3. Open your Gmail inbox.
-4. Open the verification email from Cloudflare [S40]. Look in the spam folder if you do not see it.
-5. In that email, select **Verify email address** [S40].
+The forwarding needs these three records on the domain itself [S133].
 
-Nothing is forwarded before step 5. A routing rule stays disabled until its destination address is verified [S75]. If the email never comes, the **Destination Addresses** page lists the address as pending and lets you resend the email [S75].
-
-### Part 3: Create the address info@hairbygerta.com
-
-1. Go to **Compute**, **Email Service**, then **Email Routing** [S40].
-2. Select hairbygerta.com [S40].
-3. Select the **Routing Rules** tab [S40].
-4. Select **Create routing rule** [S40].
-5. In **Email pattern**, type `info` and select hairbygerta.com [S40].
-6. In **Action**, choose **Send to an email** [S40].
-7. In **Destination**, choose your Gmail address [S40].
-8. Select **Save** [S40].
-
-The status button of the rule must show **Active**, not **Disabled** [S75].
-
-### Part 4: The DNS records Cloudflare adds
-
-You do not type these. Cloudflare adds them to the bare domain (hairbygerta.com without www) when you onboard the domain [S76].
-
-| Type | Name | Content | What it is for |
+| Type | Host | Answer | Priority |
 |---|---|---|---|
-| MX, three records | `@` | Cloudflare mail servers, names ending in `.mx.cloudflare.net` | Sends the domain's incoming mail to Cloudflare [S76] |
-| TXT | `@` | `v=spf1 include:_spf.mx.cloudflare.net ~all` | Called SPF. Allows Cloudflare to forward mail for your domain [S76] |
-| TXT | `cf2024-1._domainkey` | A long key that Cloudflare supplies | Called DKIM. A signature that shows forwarded mail is genuine [S76] |
+| MX | leave empty | `fwd1.porkbun.com` | 10 |
+| MX | leave empty | `fwd2.porkbun.com` | 20 |
+| TXT | leave empty | `v=spf1 include:_spf.porkbun.com ~all` | none |
 
-To see them:
+The old Google mail records have to go first. On 2 November 2026 the DNS records at Wix held five Google MX records and the SPF record `v=spf1 include:_spf.google.com ~all`. They may have come along to Porkbun with the domain [S121]. Do steps 1 to 7 without a break.
 
-1. Go to **Compute**, **Email Service**, then **Email Routing** [S76].
-2. Select hairbygerta.com, then open **Settings** [S76].
-3. Look at the **DNS records** section. Each record shows **Locked** or **Unlocked**. Both mean the record is set up correctly [S76].
+1. **Your helper signs in** to Porkbun and goes to **Domain Management** [S132]. Click **Details** next to hairbygerta.com, then the edit icon next to **DNS Records**. The **Manage DNS Records** page opens [S129].
+2. Delete every MX record whose answer contains `google.com`. If they came along, there are five. To delete a record, click the trash can icon to the right of it, then **OK** [S129]. Porkbun says to delete the domain's other MX records [S134].
+3. Delete the TXT record `v=spf1 include:_spf.google.com ~all` the same way [S129]. A domain may have only one SPF record [S134]. Porkbun's own SPF record comes in step 5.
+4. Leave every other record as it is. That includes the two TXT records that start with `google-site-verification=` and the website records from Section 4. The verification records are not mail records.
+5. Open the **Email Hosting and Forwarding** page again (Part 1, step 2). Click **Fix DNS** at the bottom of the page [S133]. Porkbun offers this button for MX records that were deleted or that point to a mail provider you no longer use [S133].
+6. Open the **Manage DNS Records** page again (step 1) and compare it with the table. For the domain itself it must show each of the three records once, no other MX record, and only one TXT record that starts with `v=spf1` [S133] [S134]. Delete any extra one as in step 2. The two `google-site-verification=` records must still be there. If one is missing, see [For your helper](#for-your-helper).
+7. If one of the three is missing, or if there was no **Fix DNS** button, add it by hand. Click **Add Record** [S129]. Choose the **Type**, leave **Host** empty, and type the answer from the table into **Answer**. For an MX record also type the **Priority** from the table [S130] [S133]. Leave **TTL** as it is and **Notes** empty [S130]. Click **Add** [S129] [S130].
+8. Take a screenshot of the list. Do not save it in the `hairbygerta` folder.
 
-Leave these records alone. A locked record cannot be edited or deleted on the **DNS** > **Records** page until it is unlocked [S76]. DNS changes usually take 5 to 15 minutes and can take up to 24 hours [S40].
+### Part 3: Test the forwarding
 
-### Part 5: Test the forwarding
+1. Ask a friend to send an email to info@hairbygerta.com from the friend's own address, not from Gerta's Gmail address. Porkbun says to test from an address that is different from the one the mail is forwarded to [S132].
+2. **Gerta signs in** to her Gmail and looks for the email in the inbox and in the spam folder.
+3. Gerta replies. Ask the friend which address the reply came from. It is Gerta's Gmail address, not info@hairbygerta.com [S132].
+4. Once www.hairbygerta.com shows the new site, test the form of the new site the same way (see [What you see when it has worked](#what-you-see-when-it-has-worked) in Section 4). The friend opens https://www.hairbygerta.com/contact/, fills in the form and clicks **Send**. Their email app opens with a message to info@hairbygerta.com. They send it, and Gerta checks her Gmail.
 
-1. Ask a friend to send an email to info@hairbygerta.com. Do not send it from your own Gmail address. Cloudflare warns that some providers discard a message that seems to come from the account it is delivered to [S40].
-2. Check your Gmail inbox [S40].
-3. If it is not there, check the spam folder [S40].
-4. Reply to the message. Ask your friend which address the reply came from. It will be your Gmail address. The reason is under [Limits of the forwarding](#limits-of-the-forwarding).
-5. Test the form of the new site the same way. Ask your friend to open its Contact page, fill in the form and select **Send**. The page is https://www.hairbygerta.com/contact/ once the domain points to the new site, and https://achoostorm.github.io/hairbygerta/contact/ before that. Their email app opens with a message to info@hairbygerta.com. They send it, and you check your Gmail.
-6. When both tests have worked, back up the business email one last time ([Section 2, Part D](#part-d-back-up-the-mailbox)). Do it before the business email end date.
+**If nothing arrives**
 
-If nothing arrives:
+- Wait and test again later. If the nameservers were changed in Section 4 today, that change can take up to 48 hours. Most finish within a few hours [S127].
+- **Gerta signs in** at gmail.com with info@hairbygerta.com [S33] and looks in the old mailbox too. A change of MX records takes some time to be recognized across the internet [S161]. Until then, mail still goes to the previous mail provider [S162].
+- Your helper checks that the forward is listed under **Current Forwards**, with Gerta's Gmail address spelled right [S132].
+- Your helper checks the records again as in Part 2, step 6 [S133] [S134].
+- If it still does not work the next day, your helper asks Porkbun's support.
 
-- Check that the destination address is verified (Part 2) and the rule shows **Active** (Part 3).
-- Check the DNS records (Part 4). Wait up to 24 hours after Part 1 [S40].
-- Have your helper check on the **DNS Records** page that no Google MX record (`aspmx.l.google.com`, `alt1` to `alt4`) is left. Email Routing does not work together with the MX records of another mail server [S76].
-- Cloudflare keeps an **Activity log** for Email Routing. It marks each message as **Forwarded**, **Dropped**, **Rejected**, **Delivery failed** or **Error** [S79]. The help page does not give the clicks to reach it. Look for "Activity log" inside **Email Routing** and show the line to your helper.
+**The last backup.** When the test has worked, Gerta makes the last backup of the old mailbox, at the latest on Friday 20 November 2026. The steps are in [Back up the mailbox](#back-up-the-mailbox) in Section 2. New mail now goes to Gmail, so this backup holds all the mail the old mailbox received up to the switch. If the forwarding does not work by Friday 20 November 2026, do not wait for it. Make the backup on that day anyway.
+
+Until the evening of 26 November 2026, Gerta also looks into the old mailbox now and then. For a while after Part 2, some mail can still arrive there [S161] [S162]. If she finds a new email there, she forwards it to her Gmail address by hand. After that evening she can no longer read the old mailbox [S31].
+
+On Friday 27 November 2026, the day after the old mailbox has ended, test once more as in steps 1 and 2.
 
 ### Limits of the forwarding
 
-- Replies come from Gmail. Email Routing cannot send or reply as info@hairbygerta.com. Your reply goes out from your Gmail address, and the client sees that address [S80]. Sign your replies with the salon name.
-- No failure notice. If a forwarded message does not reach your Gmail, the sender is not told [S80]. Repeat the test in Part 5 from time to time.
-- Size. A message larger than 25 MiB (a little over 25 megabytes) is rejected [S81].
-- Sender checks. Cloudflare rejects mail that fails both of its sender checks (SPF and DKIM) and mail from senders on spam block lists [S80].
-- One destination. Each routing rule forwards to one destination address [S81].
-- Keep your Gmail address in Cloudflare. Deleting a destination address disables every rule that uses it [S75]. If you change Gmail address, repeat Part 2 with the new one. Then open **Routing Rules**, select **Edit** on the rule and choose the new destination [S75].
-- It works only while the domain's DNS is at Cloudflare [S40].
+- **It only receives.** Gerta's replies go out from her Gmail address, and the client sees that address [S132] [S135]. It helps to sign replies with the business name.
+- **No catch-all.** Only an address with its own forward is passed on [S132]. Mail to any other address at hairbygerta.com does not reach Gerta.
+- **Up to 20 forwards.** Porkbun allows up to 20 free forwards per domain [S132]. One forward can also go to more than one address [S132].
+- **No old mail.** The forwarding passes on the mail it receives [S135]. It does not bring the old mail to Gmail. The old mail is in the backup.
+- **It needs the MX records.** It works only while the domain's MX records point to Porkbun [S132]. If anyone changes them later, for example for another mail provider, the forwarding stops.
+- **It needs the domain.** If the domain expires, its email is cut off too [S102]. So the yearly renewal matters ([Section 9](#the-domain-the-one-bill)).
 
 ### For your helper
 
-On 12 October 2026 public DNS showed five Google MX records on hairbygerta.com (`aspmx.l.google.com` and `alt1` to `alt4`) and the TXT record `v=spf1 include:_spf.google.com ~all` [S77]. Section 3, Part A, step 10 copies these records to Cloudflare, so they will be there when you reach this section:
-
-- MX: Email Routing requires Cloudflare's MX records. Existing ones have to be removed or updated [S76]. Cloudflare's help does not show what the **Onboard Domain** screen does about them. If it does not remove them, delete the Google MX records under **DNS** > **Records**, then repeat Part 1.
-- SPF: a domain may have only one TXT record that starts with `v=spf1` [S78]. Cloudflare says to merge an existing SPF record with its own into one record. While the business email still sends mail, that record is `v=spf1 include:_spf.mx.cloudflare.net include:_spf.google.com ~all` [S76] [S78].
-- If Cloudflare has added its own SPF record next to the Google one: delete the Google one under **DNS** > **Records**. Then go to **Email Routing**, select the domain, open **Settings**, select **Unlock** on the SPF record and edit it to the merged form [S76].
-- Only if you are unsure which SPF record to keep: delete every TXT record that starts with `v=spf1` on the bare domain and onboard again. Cloudflare then adds its own record back [S78]. Unlock and merge it as above.
-- To switch forwarding off: **Email Routing**, select the domain, **Settings**, **Disable Email Routing**, then confirm. This removes the MX, SPF and DKIM records that Cloudflare added [S76]. Before that, select **Unlock** on the records and add the other mail provider's records, so no mail is lost [S76].
-- To send mail back to the business email, the other provider's records are the five Google MX records named above. They are also in the export from [Section 4, Part 1](#part-1-save-a-copy-of-todays-dns-records), if it was made before forwarding was turned on. This only helps while the business email is still paid [S31].
+- Email does not depend on GitHub. If the GitHub steps of Section 4 have to wait, still check the nameservers as in Section 4, Part 3, and do this section on the day the transfer completes.
+- On 2 November 2026 the DNS records at Wix held five Google MX records, the SPF record `v=spf1 include:_spf.google.com ~all` and two TXT records that start with `google-site-verification=`. Section 3 chooses "Move DNS to Porkbun after the transfer, without pausing anything." With that choice Porkbun copies the records its lookup can find, and it puts the domain on Porkbun DNS when the transfer is done. The lookup cannot see every record [S121]. So on the day, the list may hold the Google records, Porkbun's forwarding records, both or neither. Part 2 works in each case.
+- The goal for the domain itself (empty **Host**) is MX `fwd1.porkbun.com` priority 10, MX `fwd2.porkbun.com` priority 20 and TXT `v=spf1 include:_spf.porkbun.com ~all` [S133]. There is no other MX record and no second `v=spf1` record [S133] [S134]. Next to them stay the website records from [Section 4, Part 3](#part-3-switch-to-porkbuns-nameservers-and-add-the-records), the GitHub verification TXT record if the domain was verified, and the two Google verification TXT records.
+- The two Google verification records are `google-site-verification=cEwGkDfnBA3KDOjrEJ1VtYTp5NZwNkC0jiX1SQsjxsI` (Google Search Console) and `google-site-verification=NXMw3mRnshf6rlL9Zr3VDm7ZgP6b0F9xVxUJ2XmSpbQ` (Google Workspace). If one is missing, add it as Type TXT with an empty **Host** [S130].
+- Porkbun's page does not say whether **Fix DNS** removes other MX or SPF records [S133]. That is why Part 2 deletes the Google records first and checks the list afterwards. For records added by hand, Porkbun says to remove the existing MX and SPF records first [S133].
+- A domain may have only one SPF record, and Porkbun shows how two senders are merged into one [S134]. The plan needs no Google part, because Gerta replies from Gmail. Only if she must still send from the old mailbox before it ends, use `v=spf1 include:_spf.porkbun.com include:_spf.google.com ~all` [S134]. Take the Google part out again after 26 November 2026.
+- To send the mail back to the old mailbox before it ends, delete Porkbun's two MX records. Then add Google's MX record with an empty **Host**, the answer `smtp.google.com` and priority 1. Google gives this as its MX value today, and says the older values that start with `aspmx` are still supported [S161]. Then put the old SPF record `v=spf1 include:_spf.google.com ~all` back in place of Porkbun's. Wix says the business email needs its MX records after a transfer [S35]. The forwarding stops then [S132], and the old mailbox ends anyway on the evening of 26 November 2026 [S31].
+- Never write Gerta's Gmail address into this guide or anywhere else in the repository. The repository is public.
 
 ## 6. How to replace a placeholder with a real photo
 
@@ -796,7 +847,7 @@ A placeholder is a beige picture with a faint logo. It holds the spot of a photo
 
 Publishing goes through the GitHub account achooStorm, which belongs to your helper. So Gerta cannot publish a photo alone. She chooses the photos and can do Parts B to D. Part E is done by the helper, or by the two together on a computer where the helper has signed in.
 
-You need the computer that has the folder `hairbygerta`. It also needs Python (the free program that builds the pages) and GitHub Desktop (GitHub's free program for sending changes to GitHub). The steps are written for Windows. The new site must already be published ([Section 1, Part 5](#part-5-your-helper-publishes-the-new-site-the-first-time)).
+You need the computer that has the folder `hairbygerta`. It also needs Python (the free program that builds the pages) and GitHub Desktop (GitHub's free program for sending changes to GitHub). The steps are written for Windows. The new site must already be published ([Section 1, Part 4](#part-4-your-helper-publishes-the-new-site-the-first-time)).
 
 Words used in this section:
 
@@ -834,7 +885,7 @@ Skip this part if GitHub Desktop is already on the computer and shows the reposi
 
 Use the `hairbygerta` folder that the site was published from. On a computer that does not have that folder, open the **File** menu and click **Clone Repository** instead. That makes a copy of the repository on the computer [S90].
 
-A cloned folder has no guard against Wix-only photos yet. The guard is a check that runs with every commit, but only where it was switched on [S82]. Your helper switches it on with one command, once after the repository is created (Section 1, Part 5 does that) and once after every clone: type `python tools/licensing_check.py --install-hook` in the black window (Command Prompt) opened in the folder. Do not copy the guard file by hand. Until then, type `python tools/licensing_check.py` there before Part E, and go on only when it answers `Photo licensing check passed`.
+A cloned folder has no guard against Wix-only photos yet. The guard is a check that runs with every commit, but only where it was switched on [S82]. Your helper switches it on with one command, once after the repository is created (Section 1, Part 4 does that) and once after every clone: type `python tools/licensing_check.py --install-hook` in the black window (Command Prompt) opened in the folder. Do not copy the guard file by hand. Until then, type `python tools/licensing_check.py` there before Part E, and go on only when it answers `Photo licensing check passed`.
 
 ### The steps, shown with one example
 
@@ -940,155 +991,78 @@ To see the size of a placeholder, right-click it, choose **Properties** and open
 - The guard only recognises an exact, unchanged copy of a Wix-only file. A Wix photo that was cropped, resized or saved again is not recognised. So a commit that goes through is no proof that a photo may be used. The rule under [Which photos you may use](#which-photos-you-may-use) decides [S4] [S5].
 - You want the placeholder back after publishing: in GitHub Desktop click **History** in the left sidebar, right-click your commit and click **Revert Changes in Commit** [S84]. This takes back everything in that commit, so every photo you published with it. If you made other commits after it, ask your helper first: GitHub says to revert from newest to oldest, otherwise you may see merge conflicts (changes that do not fit together) [S84]. Then click **Push origin** [S82]. The photo is off the site, but it stays in the history of the repository [S84].
 
-## 7. How to paste the Square booking link
+## 7. Booking by phone
 
-Today every **Book Now** button on the new site calls 347-671-5095. After these steps every **Book Now** button opens your Square booking page. Gerta brings the booking link (Part A). Your helper pastes it into the site (Part B), because the site is in the helper's GitHub account. Gerta cannot do Part B alone. Use a computer. Together it takes about 15 minutes.
+Every **Book Now** button on the new site calls 347-671-5095. There are 10 of them, one for each service on the Book Online page. The **Book Online** button on the home page opens that page. There is no online booking link to paste and nothing to set up. [Section 1, Part 3](#part-3-booking-stays-by-phone) says why.
 
-Words used in this section:
+If the phone number ever changes, tell your helper. The site is in the helper's GitHub account, so the helper makes the change, in three places in the folder `hairbygerta`.
 
-- **Booking link**: the web address of your Square booking page. Square's help page calls it the booking flow URL [S15].
-- **Tab**: one page inside your browser window.
-- **Repository**: the project on GitHub that holds the site files [S63].
-- **Commit**: a saved set of changes with a short note about what changed [S82].
-- **Branch**: a parallel version of the repository [S96]. The site is published from the branch called main.
+- In several files in the folder `content`. Search all of them for the old number, 347-671-5095.
+- In `js/site.js`, on the line with `var phoneHref`. This is the number the **Book Now** buttons call.
+- In `seo/jsonld-home.json`, which gives the number to search engines.
 
-Before you start:
+The helper first gets the latest version as in [Section 6, Part A](#part-a-get-the-latest-version). After the change the helper builds the pages as in [Part D](#part-d-build-the-pages-and-look) of that section, steps 22 and 23, and publishes them as in [Part E](#part-e-publish), steps 29 to 34. In step 30 the list of changed files is then not the one of the photo example. It shows the files the helper changed and the pages that the build wrote again. `README.md` in the folder lists the same three places.
 
-- Your Square online booking site must be published. Square gives the link only after that [S15].
-- The new site must be published, so that it opens at the preview address https://achoostorm.github.io/hairbygerta/.
-
-### Part A: Have your booking link ready
-
-1. Open the note with your booking link. You copied it in [Section 1, Part 3](#part-3-set-up-square-appointments-on-the-free-plan), steps 32 to 38. If the note is lost, do those steps again. Square's help page links to your Square Dashboard at https://app.squareup.com/dashboard/appointments [S15].
-2. Copy the link.
-3. Open a new tab.
-4. Paste the link into the address bar and press Enter. Your booking page must open. If it does not, get the link again as in step 1.
-
-### Part B: Paste the link into the site
-
-1. **Your helper signs in** to github.com with their account achooStorm. Gerta gives the helper the booking link from Part A. Nobody passes on a password or a sign-in code.
-2. Open https://github.com/achooStorm/hairbygerta.
-3. Click the folder **js**.
-4. Click the file **site.js** [S97].
-5. In the upper right corner of the file view, click the pencil icon, **Edit file** [S97].
-6. Near the top of the text, find this line:
-
-   `var BOOKING_URL = "";`
-
-7. Click between the two quote marks.
-8. Paste the link. The line now looks like this, with your own link in the middle:
-
-   `var BOOKING_URL = "https://your-booking-link";`
-
-9. Check the line. Both quote marks are there. The semicolon (;) is still at the end. There is no space inside the quote marks. The link starts with https://. Change nothing else in the file.
-10. Click **Commit changes...** [S97].
-11. In the "Commit message" field, type `Add Square booking link` [S97].
-12. Below the commit message fields, choose to add the commit to the current branch, not to a new branch [S97].
-13. Click **Commit changes** [S97].
-
-About step 12: GitHub's help page suggests a new branch here [S97]. Skip that for this one line. GitHub publishes the site from one branch, and a change on another branch does not reach the website [S94]. If GitHub does not offer the current branch, stop and commit nothing.
-
-GitHub now publishes the change by itself [S94]. It can take up to 10 minutes [S3].
-
-The file js/site.js is now changed on GitHub, but not yet in the `hairbygerta` folder on the computer. Before the next upload from that folder, the helper must pull first. Pull means: fetch GitHub's latest version into the folder [S98]. [Section 6, Part A](#part-a-get-the-latest-version) shows how.
-
-### Part C: Check that it worked
-
-1. Wait 10 minutes [S3].
-2. Open the Book Online page of the new site. Until www.hairbygerta.com shows the new site, use https://achoostorm.github.io/hairbygerta/book-online/. After that, use https://www.hairbygerta.com/book-online/.
-3. Reload the page so the browser fetches the changed file. On Windows hold Ctrl and Shift and press R [S92] [S93]. On a Mac in Chrome hold Command and Shift and press R [S92]. In Safari on a Mac that key combination opens Reader instead [S99]. There, open the **View** menu and choose **Reload Page**, or hold Command and press R [S100].
-4. Click the first **Book Now** button. Your Square booking page must open in a new tab.
-5. Close that tab.
-6. Repeat steps 4 and 5 for the other nine **Book Now** buttons. There are 10 in all.
-7. On your phone, open the same page and tap one **Book Now** button. The booking page must open.
-
-The **Book Online** button on the home page still opens your own Book Online page. That is correct.
-
-If the buttons still call the phone number after an hour [S3], the line most likely has a typing mistake. Open the file again (Part B, steps 2 to 5) and compare the line with step 8, character by character. One wrong character there also switches off the photo viewer in the gallery (each photo then opens on its own) and shows the phone menu as a plain list of links without the menu button, because the same file runs them. The menu links keep working. If you cannot find the mistake, do Part D.
-
-If a **Book Now** button opens a new tab but not your booking page, the link between the quote marks is wrong or not complete. Open the file again (Part B, steps 2 to 5), delete everything between the two quote marks, paste the link from your note again and do Part B, steps 9 to 13.
-
-### Part D: How to go back
-
-1. Do Part B, steps 1 to 5 again.
-2. Delete everything between the two quote marks. The line must again be exactly:
-
-   `var BOOKING_URL = "";`
-
-3. Do Part B, steps 10 to 13. As the message type `Remove Square booking link`.
-4. Wait 10 minutes [S3], then reload the page as in Part C, step 3.
-
-Empty quote marks mean there is no booking link. Every **Book Now** button calls 347-671-5095 again.
+If you ever get an online booking link for the site, ask your helper. `README.md` says where it goes.
 
 ## 8. What cannot be undone
 
-Four things in this move are hard or impossible to undo. Two are final: a domain that was lost after it expired, and a closed Wix account. Two can only be bought again: an ended site plan and an ended mailbox. For the mailbox, Wix names no number of days in which the old mail comes back. For each of the four: what it means for you, and the one thing to do first. The end dates are the ones you wrote down in [Section 2](#write-it-down).
+Four things in this move are hard or impossible to undo. Two of them are final, losing the domain after it expires and closing the Wix account. The other two, the site plan and the mailbox, can only be bought again once they have ended. For each of the four, this section says what it means for you and the one thing to do first.
+
+Nothing has to be canceled. On 2 November 2026 auto renew was already off for the Wix site plan, the domain at Wix and the business email. All three end by themselves on the evening of Thursday 26 November 2026, New York time. That day is Thanksgiving, so plan no step for that day. The dates and how to see them again are in [The end dates](#the-end-dates) in Section 2.
 
 ### Part 1: The Wix site plan ends
 
-**What it means for you.** The Wix site is not deleted and keeps its content [S19]. But it leaves hairbygerta.com: its address goes back to a free Wix address, and Wix ads appear on it [S19]. A site plan that has ended cannot be switched back on. You would have to buy a new one [S24]. So from that day the Wix site is your safety net only if you buy a new plan.
+**What happens on 26 November 2026.** The Wix site plan (Core) ends with its paid period, because auto renew is off [S59]. The Wix site is not deleted and keeps its content [S19]. But from then on it has a free Wix address and shows Wix ads [S19]. A site plan that has ended cannot be switched back on. Someone would have to buy a new one [S24].
 
-A Wix site plan only ends if it was canceled. Otherwise Wix renews it by itself, a yearly plan up to 3 weeks before its expiration date, and it does not refund renewals [S19] [S23]. If you do not want to pay Wix for another period, decide this with your helper more than 3 weeks before the expiration date. Then cancel the plan:
+If the transfer in Section 3 is complete by then, the Wix site is no longer on hairbygerta.com anyway. Wix disconnects the Wix site from the domain when the domain has been transferred away from Wix [S35]. Once [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages) is done, hairbygerta.com shows the new site.
 
-1. **Gerta signs in** to Wix and goes to **Premium Subscriptions** [S19].
-2. Click the **More Actions** icon next to the plan [S19].
-3. Click **Cancel Plan** [S19].
-4. Click **Cancel Now** to confirm [S19].
+**The one thing to do first.** After Section 4, have your helper confirm that hairbygerta.com shows the new site. Do it by Tuesday 24 November 2026 at the latest. The two sites look alike, so do not judge by eye. The checks are in Section 4 under [What you see when it has worked](#what-you-see-when-it-has-worked). If something is wrong, follow [If it has not worked after 24 hours](#if-it-has-not-worked-after-24-hours) in Section 4.
 
-Canceling does not end the plan at once. The plan stays active until the end of the paid period and then does not renew [S19]. So the Wix site keeps running until the end date, and until then a canceled plan can be switched back on [S24]. One exception: a plan that is canceled in its first 14 days ends immediately [S19].
-
-**The one thing to do first.** At least a week before the site plan's end date, have your helper confirm that hairbygerta.com already shows the new site. The two sites look alike, so do not judge by eye. The checks are in Section 4 under [What you see when it has worked](#what-you-see-when-it-has-worked).
-
-If it does not, you can keep the Wix site as your fallback: before the end date, **Turn Auto Renew On** on the **Premium Subscriptions** page switches a canceled plan back on [S24]. That payment cannot be undone either. Wix may take it up to 3 weeks before the end date and does not refund renewals [S19].
-
-If the domain has already left Wix, that alone does not bring the Wix site back to hairbygerta.com, because Wix disconnects the site when the domain is transferred away [S35]. Then also do the steps under [If something goes wrong: point the domain back to the Wix site](#if-something-goes-wrong-point-the-domain-back-to-the-wix-site) in Section 3.
+If the new site still cannot be shown, Gerta and your helper can decide to keep the Wix site for one more year as a fallback. **Your helper signs in** to Wix and clicks **Turn Auto Renew On** under the plan on the **Premium Subscriptions** page. This works only before the plan ends [S24]. It costs one more year of Core, \$348 at the price seen on 2 November 2026, and Wix does not refund renewals [S19]. The plan alone does not bring the Wix site back to hairbygerta.com, because Wix disconnected the site when the domain left [S35]. The domain then also has to be pointed back at the Wix site, as in [How to undo the switch](#how-to-undo-the-switch) in Section 4.
 
 ### Part 2: The domain expires
 
-The domain is the address hairbygerta.com. It has its own end date, separate from the site plan [S19]. The registry (the organization that keeps the official list of all .com addresses) showed that it expires on 27 November 2026 at 01:04 UTC when read on 13 October 2026 [S27]. In New York that is the evening of 26 November 2026, so treat 25 November 2026 as the last safe day. Your **Domains** page in Wix shows the expiry date too [S25].
+The domain is the address hairbygerta.com. It is registered at Wix until 27 November 2026 at 01:04 UTC [S27]. UTC is the world's standard clock time. In New York that moment is 8:04 PM on Thursday 26 November 2026. Auto renew is off, so Wix does not renew it [S45].
 
-**What it means for you.** An expired domain is no longer connected to your site [S101]. ICANN (the organization that sets the rules for domain names) says its website and email get cut off for a time, as a last warning [S102]. That hits the new site and info@hairbygerta.com as well.
+**What happens on 26 November 2026.** If the transfer to Porkbun in [Section 3](#3-moving-the-domain-from-wix-to-porkbun-step-by-step) is complete, nothing happens. The domain is then registered at Porkbun and no longer at Wix [S35] [S122]. In most cases Porkbun adds one year to a transfer, and the time that was left is not lost [S121] [S124]. So the domain then runs until November 2027. Check the new expiry date in the public record at https://lookup.icann.org [S28]. From then on the domain renews at Porkbun. What that costs is in [Section 9](#9-yearly-cost-after-the-move).
 
-How long you can still renew, by Wix's own pages:
+If the domain is still at Wix that evening, it expires. This is the case to avoid.
 
-- **About the first 30 days (the Grace Period).** Renew at no extra fee: on the **Domains** page, click **Extend Registration** in the banner under the domain [S101]. Nobody else can register the name. But in the last 10 days the company Wix resells domains from may auction it privately [S101]. So only about 20 days are safe.
-- **About 30 days more (the Redemption Period).** A last chance: click **Keep Domain** in the banner under the domain and pay a fee [S101]. Wix says this is not guaranteed and can take up to 7 days [S101]. One Wix page says the fee varies and is shown on your **Domains** page [S101]. Two others say \$100 [S103] [S104]. The domain can no longer be moved to another company [S104]. ICANN's rule matches: 30 days, and a fee is allowed [S102].
-- **After that (Pending Delete).** You cannot get it back. 5 to 10 days later anyone can buy it, and you have no claim to it [S101].
+- An expired domain is no longer connected to a site [S101]. ICANN (the organization that sets the rules for domain names) says the website and the email of an expired name are cut off for a time, as a last warning [S102]. That would stop the new site and the email forwarding too.
+- **About the first 30 days (the Grace Period).** The domain can still be extended at Wix at no extra fee. On the **Domains** page, click **Extend Registration** in the banner under the domain [S101]. Wix says it can also still be transferred in this time, but recommends extending it first, because a failed transfer attempt can push it into the Redemption Period [S104]. In the last 10 days of the Grace Period the domain may be auctioned privately [S101]. So only about 20 days are safe.
+- **About 30 days more (the Redemption Period).** The domain can no longer be transferred [S104]. Getting it back costs a fee. Two Wix pages say \$100 [S103] [S104]. Another says the fee varies and is shown on the **Domains** page [S101]. You click **Keep Domain** in the banner under the domain. Wix says this is not guaranteed and can take up to 7 days [S101].
+- **After that (Pending Delete).** The domain cannot be retrieved any more. 5 to 10 days later anyone can register it, and you have no claim to it [S101].
 
 If someone else buys the name, every link, Google result and business card with hairbygerta.com leads to them.
 
-**The one thing to do first.** Before the expiry date, make sure the domain is either renewed at Wix or has completely finished moving to its new registrar (the company where a domain is registered and renewed).
+**The one thing to do first.** Turn off privacy and DNSSEC by Thursday 5 November 2026, as in [Section 3, Part A](#part-a-turn-off-privacy-and-dnssec-at-wix). Then start the transfer on Monday 9 November 2026, and no later than Monday 16 November 2026. Porkbun says a transfer usually takes five to seven days [S123], and Wix says up to 7 days [S35]. Porkbun also says a transfer can be refused when the domain has expired or is about to expire [S120]. So do not leave it to the last week. While it runs, follow it as in [Section 3, Part D](#part-d-while-the-transfer-runs). If a transfer has started but is still not complete on Monday 23 November 2026, read [If something goes wrong](#if-something-goes-wrong) in Section 3 with your helper that same day.
 
-Not sure the move will finish in time? Then renew the domain at Wix for one more year. This is a payment that only Gerta decides on, and Wix does not refund domain payments [S45]. With auto renew on (Wix charges your card by itself), Wix takes the payment 30 days before the expiry date [S26]. If the registry date is right, that is around 27 October 2026. With auto renew off, renew by hand:
+**The backup plan.** If the transfer cannot start by Monday 16 November 2026, extend the domain at Wix for one more year before it expires, and move it to Porkbun later [S105]. On 2 November 2026 Wix showed about \$26 a year for this domain at its regular price. Wix does not refund domain payments [S45]. Gerta and your helper decide on this payment together.
 
-1. **Gerta signs in** to Wix and goes to **Domains** [S105].
+1. **Your helper signs in** to Wix and goes to **Domains** [S105].
 2. Click **Extend** next to hairbygerta.com [S105].
-3. Choose one year and click **Continue** [S105].
-4. Select a privacy option and click **Continue** [S105]. Each option shows its own price. If you choose the one with DNSSEC, Section 3, Part B turns it off again before a move.
-5. Enter your payment information and click **Submit Purchase** [S105].
+3. Choose a registration period of one year and click **Continue** [S105].
+4. Select a privacy option and click **Continue** [S105]. Wix sells DNSSEC only together with private registration [S53]. If you choose an option with DNSSEC, do [Section 3, Part A](#part-a-turn-off-privacy-and-dnssec-at-wix) again before the later transfer. Porkbun recommends deleting DNSSEC records before a transfer [S125].
+5. Enter the payment information and click **Submit Purchase** [S105].
 
-Change nothing in the contact details while you do this. Wix says that would lock the domain from transfer for 60 days [S104]. Either way, open the **Domains** page afterwards and check that the expiry date now says 2027. If a renewal payment fails, the domain still expires on the old date [S103]. Both ways, with and without the renewal, are in Section 3 under [Check your dates first](#check-your-dates-first).
+Change nothing in the contact details while you do this. Wix says that would lock the domain from transfer for 60 days [S104]. Afterwards open the **Domains** page and check that the expiry date now says 2027 [S25].
+
+When to move it after an extension. Porkbun adds no year to a transfer made fewer than 45 days after the day the domain expired, or fewer than five days after it was renewed [S124]. To be safe, count from the old expiry date and start the transfer no earlier than Monday 11 January 2027. That is 45 days after 27 November 2026. Otherwise you may pay twice for the same year.
+
+What the backup plan means for the rest. The site plan and the business email still end on 26 November 2026. Until the later transfer, the domain's settings stay at Wix. Your helper can point the domain at the new site from inside Wix, by its A and CNAME records [S39]. The GitHub steps and values are in [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages). Section 5 is written for a domain that is already at Porkbun, so ask your helper how mail for info@hairbygerta.com is received in between. After 26 November 2026 the business email no longer receives it [S31], unless it is kept (Part 3).
 
 ### Part 3: The business email ends
 
-The business email is the mailbox info@hairbygerta.com, which Wix sells as a Google Workspace business email [S31].
+The business email is the mailbox info@hairbygerta.com. It is a Google Workspace mailbox that Wix sells [S20]. Gerta is its administrator.
 
-**What it means for you.** After it expires you can no longer read, receive or send mail from it [S31]. Wix says the old mail is kept only as long as Google's rules allow, and comes back only if you buy the mailbox again within that time. Wix gives no number of days [S31]. Google's page for people who buy from Google directly says the data is deleted after a cancellation and cannot be restored [S106]. So count on the old mail being gone on the end date.
+**What happens on 26 November 2026.** The mailbox ends with its paid period, because auto renew is off [S30]. After that nobody can read, receive or send email in it [S31]. Wix says the old mail is kept only as long as Google's rules allow, and comes back only if the business email is bought again within that time. Wix gives no number of days [S31]. Google's own page, for customers who buy from Google directly, says the data is deleted after a cancellation and cannot be restored [S106]. So count on the old mail being gone on 26 November 2026.
 
-**The one thing to do first.** Download a copy of the whole mailbox with Google Takeout, Google's tool for downloading your data [S32]. The steps are in [Section 2, Part D](#part-d-back-up-the-mailbox).
+New mail does not stop. From the day the forwarding in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail) works, mail for info@hairbygerta.com goes through Porkbun to Gerta's Gmail address [S132]. Replies then go out from that Gmail address, not from info@hairbygerta.com [S132]. If Gerta wants a mailbox that also sends as info@hairbygerta.com, she decides that before 26 November 2026. Section 5 names the other ways.
 
-Do it now, and one last time later, as Section 2, Part D says. A copy only holds the mail that was there when you asked for it [S32].
+**The one thing to do first.** Back up the whole mailbox with Google Takeout [S32], after the forwarding works and by Friday 20 November 2026. The steps are in [Back up the mailbox](#back-up-the-mailbox) in Section 2. A copy only holds the mail that was there when you asked for it [S32].
 
-The mailbox only ends if you cancel it. Otherwise Wix tries to take the renewal payment up to 30 days before the expiration date, and a business email bought through Wix is not refunded [S30]. If you do not want to pay for another period, decide with your helper and cancel before the date in the **Upcoming payment** column. Make the first backup before you cancel.
-
-1. **Gerta signs in** to Wix and goes to **Premium Subscriptions** [S30].
-2. Click the **More Actions** icon next to the business email [S30].
-3. Click **Cancel subscription** [S30].
-4. Read the screen and follow it to the end. Wix's two help pages name the last clicks differently, so go by what the screen says [S30] [S59].
-
-The mailbox is not canceled at once. It keeps working until the end of the paid period [S30]. Until then you can switch it back on: click the **More Actions** icon next to it, then **Turn auto renew on** [S30].
-
-New mail is a separate matter. After the end date the mailbox no longer receives mail [S31]. From then on, mail for info@hairbygerta.com only reaches you if the forwarding in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail) is on.
+Until the end of the paid period the mailbox can still be switched back on. **Your helper signs in** to Wix, goes to **Premium Subscriptions**, clicks the **More Actions** icon next to the business email, then **Turn auto renew on** [S30]. Wix showed \$84 a year for it on 2 November 2026, and a business email bought through Wix is not refunded [S30]. Do this only if Gerta has decided to keep the mailbox, and ask your helper first. The domain's mail can go to the mailbox or to the forwarding, not to both. Wix says the business email only works after a transfer if its MX records are added again [S35]. The forwarding needs Porkbun's MX records in their place [S132] [S134].
 
 ### Part 4: The 14 Shutterstock photos
 
@@ -1106,79 +1080,105 @@ For the new site, use photos of your own: see [Section 1, Part 2](#part-2-collec
 
 Prices change, so read each price again on the day you pay.
 
-After the move you pay one bill a year: the domain (the address hairbygerta.com). Everything else runs on a free plan.
+After the move you pay one bill a year, for the domain (the address hairbygerta.com) at Porkbun. Everything else is free.
 
 | What | Where | Cost per year |
 |---|---|---|
-| Domain hairbygerta.com | Cloudflare Registrar | \$10.46 at the price shown on 12 October 2026 [S44] |
+| Domain hairbygerta.com | Porkbun | \$11.81, the .com price since 1 November 2026, all fees included [S140] [S141] |
 | Website | GitHub Pages | \$0 [S2] [S108] |
-| Domain settings (DNS) | Cloudflare, Free plan | \$0 [S109] |
-| Email forwarding for info@hairbygerta.com | Cloudflare Email Routing | \$0 [S73] |
-| Online booking | Square, plan Square Free | \$0 [S7] |
-| **Total** | | **\$10.46 a year at today's price, before any sales tax** |
+| Domain settings (DNS) | Porkbun | \$0 [S165] |
+| Email forwarding for info@hairbygerta.com | Porkbun | \$0 [S132] |
+| **Total** | | **\$11.81 a year at the price of 1 November 2026** |
 
-Not in the total:
+**Not in the total**
 
-- Sales tax. Cloudflare collects sales tax based on the billing address in your Cloudflare account [S110]. So the amount on the payment screen and on the invoice can be a little higher than the price in the search.
-- Square's fee on each card payment. See [Square](#square-free-plan-fees-only-on-payments) below.
-- The one-time cost of moving the domain. See [The rules today](#the-rules-today) in Section 3.
-- If you stop after the first move, the domain line is the renewal price of the in-between registrar instead. Read it on its website.
-- If you and your helper decide to leave the domain registered at Wix, the domain line is Wix's renewal price instead, and the two Cloudflare lines fall away. The domain's settings then stay at Wix [S37], and the free email forwarding only works with the settings at Cloudflare [S40]. To keep info@hairbygerta.com you would go on paying Wix for the business email. Look both prices up as shown under [What you pay Wix today](#what-you-pay-wix-today-look-it-up).
+- The transfer in November 2026. It costs \$11.81 once and adds one year to the domain [S121] [S141]. So it pays for the first year, and the first renewal at Porkbun comes in November 2027. The steps are in [Section 3](#3-moving-the-domain-from-wix-to-porkbun-step-by-step).
+- Price rises. Porkbun expects the .com price to rise by about 7% a year until 2030 [S140]. If it rises by 7% before November 2027, that renewal costs about \$12.64.
+- Tax. Porkbun's prices include ICANN fees and any other fees [S141]. Its price page says nothing about tax. So read the total on the payment screen before you pay.
+- A mailbox that can also send mail as info@hairbygerta.com. Forwarding only receives mail and passes it on [S135]. Porkbun's hosted email costs \$3 a month per address, billed yearly [S135]. [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail) names the other ways.
+- The backup plan. If the domain has to be extended at Wix first, as in [Section 8, Part 2](#part-2-the-domain-expires), that year costs about \$26 at Wix, and the move to Porkbun comes later.
 
 ### The domain: the one bill
 
-- A registrar is the company where a domain is registered and renewed. Cloudflare Registrar charges only what the registry (the organization that keeps the official list of all .com addresses) and ICANN (the organization that sets the rules for domain names) charge it, with no markup [S44].
-- On 12 October 2026 Cloudflare's domain search showed a .com name at \$10.46, with the line **Renews at \$10.46/year** [S44].
-- Cloudflare's price list also says "Starting at \$7.85" for its registrar, but names no domain ending [S109]. Go by the search page.
-- Cloudflare renews at the list price set by the registry [S111]. So the price can change from one year to the next.
-- Auto renew means Cloudflare charges your payment method by itself. It is on by default, and the first try comes about 30 days before the domain expires [S111].
-- Auto renew can fail, for example when the card on file has expired. Cloudflare then emails you and tries three more times. If those tries fail too, you must renew by hand: go to **Manage domains**, select **Manage** next to the domain, select **Renew/Extend Domain**, then **Renew** and **Purchase** [S111].
-- A domain that is not renewed before its expiry date goes into a Redemption Grace Period of 30 days. It can be restored, but that may cost an extra fee, and it cannot be transferred during that time [S111].
-- Cloudflare sends two monthly emails: one lists the domains expiring in the next 60 to 90 days, the other lists the domains set to renew automatically within the next 45 days [S111]. The page does not say that the second one comes before the first charge. It names the receiver the Super Admin of the domain [S111]. If these emails do not reach the address Gerta uses to sign in to Cloudflare, ask your helper to check who has that role in the account.
-- The contact email address of the domain also gets warnings: every week in the last month before the expiry date and every day in the last seven days [S111].
-- Renewals are final. Cloudflare gives no refund [S111].
+- A registrar is the company where a domain is registered and renewed. After the move that is Porkbun.
+- Porkbun's price for a .com domain is \$11.81 a year for registration, for renewal and for a transfer, with ICANN fees and any other fees included [S141]. ICANN is the organization that sets the rules for domain names. The price went up to \$11.81 on 1 November 2026 [S140].
+- Porkbun expects the .com price to rise by about 7% every year from 2026 until 2030 [S140]. So the renewal can cost a little more each year.
+- Porkbun says it sends an email each time renewal prices go up across the whole domain industry [S139].
 
-So once a year, check that the payment method in Cloudflare is still valid. After the renewal, check that the domain shows its new expiry date.
+**Auto renew**
 
-Check the price before you pay for the transfer, and again each year when the 60 to 90 day email comes:
+With auto renew on, Porkbun renews the domain by itself as the expiry date comes near. Porkbun's help page says this happens when auto renew is on for the domain and a credit card is on file in the Porkbun account [S166]. The transfer in Section 3 keeps the auto renew box ticked, so auto renew starts on [S121].
 
-1. Go to https://www.cloudflare.com/domains/ [S44].
-2. Click the box **Search for a domain name** [S44].
-3. Type a made-up name that ends in .com, for example your first name with today's date. Typing hairbygerta.com shows **Unavailable** and no price, because that name is taken [S44].
-4. Read the price at the right end of the .com result and the **Renews at** line under it [S44]. Keep the mouse pointer off the result. While the pointer is on it, the price is replaced by the words **Buy now**. Move the pointer away and the price comes back [S44].
-5. Close the page. Do not click a result or its price: the price itself is the **Buy now** button [S44].
+- Porkbun charges the renewal at its price of that day, which can be higher than the year before [S168].
+- Renewal payments are final and not refunded [S168].
+- If the payment fails and nobody fixes it, the domain expires [S168].
+- Porkbun sends a reminder about 1 month and again 1 week before the expiry date, to the main email address of the domain's owner [S168]. The domain is registered in the helper's name, so the helper watches for these emails.
 
-Cloudflare says it shows registration, transfer and renewal prices upfront [S44]. So also read the amount on the Cloudflare screen before you confirm a payment.
+To see or change auto renew, follow these steps.
+
+1. **Your helper signs in** to porkbun.com. The **Domain Management** page opens. If it does not, click **ACCOUNT** at the top right and select **Domain Management** [S138].
+2. Find hairbygerta.com. Look at the icon in the **Renew** column, to the right of the domain [S138].
+3. A white icon means auto renew is off [S138]. To turn it on, click the icon, then **Enable Auto Renew** [S138]. Do not click **Disable Auto Renew**.
+4. To check the card on file, click **ACCOUNT** at the top right and select **Settings / Billing**. The card is shown under **Billing Information** [S167].
+
+Porkbun does not say how many days before the expiry date the renewal is made [S166] [S168]. So check the domain yourself once a year, as below.
+
+**Where to see the renewal price**
+
+1. **Your helper signs in** to porkbun.com and opens **Domain Management** [S139].
+2. Click **Details** at the far right of the row of hairbygerta.com [S139].
+3. Read the **Renewal Price**. It is the domain's current yearly renewal price [S139].
+
+Porkbun lists the current price of every domain ending at https://porkbun.com/products/domains [S141].
+
+**Once a year, in September**
+
+The domain expires in late November. Each September, check these two things.
+
+- The **Renewal Price**, as above [S139].
+- That auto renew is on and the card on file is still valid [S138] [S166] [S167].
+
+After the renewal, the public record at https://lookup.icann.org shows the new expiry date, one year later [S28]. If it still shows the old date in the week before the expiry date, renew by hand as below.
+
+To renew by hand, for example when auto renew is off, follow these steps.
+
+1. **Your helper signs in** to porkbun.com and opens **Domain Management** [S166].
+2. Click the icon in the **Renew** column next to hairbygerta.com [S166].
+3. Under **Manual Renewals**, keep the **Domain** box ticked [S166].
+4. Click **Add Renewals to Cart** [S166].
+5. Read the price in the cart, then click **Continue to Billing** and pay [S166].
+
+ICANN says that when a domain expires, its website and its email are cut off, and getting it back can cost an extra fee [S102]. Porkbun sends one more notice 5 days after a domain has expired [S168]. Do not wait for it.
 
 ### GitHub Pages: free
 
 - Hosting means keeping the site's files on a computer that shows them to visitors. GitHub Pages does this for a public repository (a project on GitHub that anyone can view) on the GitHub Free plan [S108]. GitHub Free costs \$0 [S2].
 - GitHub Pages supports using your own domain [S70].
-- Limits: a site may be no larger than 1 GB, and there is a soft limit of 100 GB of data sent to visitors per month [S108]. The `hairbygerta` folder is a few megabytes.
-- One thing to know. GitHub says Pages may not be used as free hosting to run an online business or an online shop, or for a site that is mainly there to handle sales [S108]. The new site only shows information. It sells nothing and takes no payment: clients book through Square or by phone. The page does not say how GitHub judges a small information site like this one. If GitHub ever writes about it, the message goes to your helper, because the GitHub account is theirs. Ask your helper to tell you at once. Moving the folder to another host could then add a cost.
+- Limits. A site may be no larger than 1 GB, and there is a soft limit of 100 GB of data sent to visitors per month [S108]. The `hairbygerta` folder is a few megabytes.
+- One thing to know. GitHub says Pages may not be used as free hosting to run an online business or an online shop, or for a site that is mainly there to handle sales [S108]. The new site only shows information. It sells nothing and takes no payment. Clients book by phone or through the salon. The page does not say how GitHub judges a small information site like this one. If GitHub ever writes about it, the message goes to your helper, because the GitHub account is theirs. Ask your helper to tell you at once. Moving the folder to another host could then add a cost.
 
-### Cloudflare DNS and email forwarding: free
+### Porkbun DNS and email forwarding: free
 
-- DNS records are the list of settings that tells the internet where the website is and where the email goes. Cloudflare's Free plan costs \$0 a month and includes DNS [S109].
-- Email Routing forwards mail for info@hairbygerta.com to your Gmail (Section 5). Cloudflare offers it as free email forwarding, and its pricing page lists incoming email as Unlimited on the free plan [S73] [S74].
-- You add a card to Cloudflare only to pay for the domain. If a screen asks you to choose or start any paid plan (for example Pro, Business or Workers Paid), stop and ask your helper [S74] [S109].
-
-### Square: free plan, fees only on payments
-
-- The free plan is called **Square Free**. It costs \$0 a month per location (one place of business) [S7].
-- It includes: an online booking website, a Book Now button for your own website, Instagram, Facebook and Google Business Profile, unlimited staff calendars, custom scheduling, automatic text and email appointment reminders, prepayments and appointment deposits [S7].
-- It does not include: a cancellation policy with no-show fees, a waitlist, Google Calendar sync, appointment confirmations, or processing time (clients booking during the waiting time of a color service). Those are in Square Plus, which costs \$49 a month per location [S7].
-- Square says Square Free has no monthly subscription cost. You pay processing fees only when you take a payment [S7]. A processing fee is the part of a card payment that Square keeps. It is taken out of each payment [S112].
-- Fees on Square Free today: 2.6% + 15 cents for a card tapped, dipped or swiped in person, 3.3% + 30 cents for a payment online, 3.5% + 15 cents for a card typed in by hand or kept on file. Cash or check is free [S7].
-- Example: a client pays \$100 by card in the salon. Square keeps \$2.75 and you get \$97.25.
-- How to sign up without starting a paid trial by mistake is in [Section 1, Part 3](#part-3-set-up-square-appointments-on-the-free-plan), step 2.
+- DNS records are the list of settings that tells the internet where the website is and where the email goes. After the move they are kept at Porkbun. Porkbun says it offers DNS management for your domain for free [S165].
+- Email forwarding passes mail for info@hairbygerta.com on to Gerta's Gmail address, as set up in [Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail). Porkbun gives up to 20 forwarding addresses per domain for free [S132].
+- Forwarding only receives mail. Replies go out from Gerta's Gmail address [S132] [S135].
+- Nothing else at Porkbun is needed. If a Porkbun screen asks you to pay for anything other than the domain, stop and ask your helper.
 
 ### What you pay Wix today: look it up
 
-This guide does not know what Wix charges you. Find it yourself. You only look and change nothing.
+On 2 November 2026 the Wix account showed these renewal prices. Auto renew was off on all three, so none of them is renewed after 26 November 2026.
 
-1. **Gerta signs in** to Wix.
-2. Go to the **Billing History** page: https://www.wix.com/account/billing-history [S113]
+| What | Renewal price per year at Wix | Auto renew |
+|---|---|---|
+| Site plan Core | \$348 | Off |
+| Domain hairbygerta.com | about \$26, Wix's regular price | Off |
+| Business email info@hairbygerta.com (Google Workspace) | \$84 | Off |
+| **Total** | **about \$458** | |
+
+At these prices the move saves about \$446 a year, about \$458 at Wix minus \$11.81 at Porkbun. The amounts really paid can differ, so check them on the invoices. You only look and change nothing.
+
+1. **Your helper signs in** to Wix.
+2. Go to the **Billing History** page at https://www.wix.com/account/billing-history [S113].
 3. Use the **All Dates** drop-down to find the charges of the last 12 months [S114].
 4. Click the **More Actions** icon next to a charge [S113].
 5. Click **View Invoice** [S113].
@@ -1186,13 +1186,13 @@ This guide does not know what Wix charges you. Find it yourself. You only look a
 7. Do steps 4 to 6 for every charge of the last 12 months.
 8. Add the totals up.
 
-The Billing History page holds the invoices for everything you paid Wix [S114]. Look for the site plan, the domain and the business email. Two services with the same renewal date can share one invoice [S114]. If you paid for more than one year at once, look further back and divide that charge by the number of years.
+The Billing History page holds the invoices for everything paid at Wix [S114]. Look for the site plan, the domain and the business email. Two services with the same renewal date can share one invoice [S114]. If more than one year was paid at once, look further back and divide that charge by the number of years.
 
-Your saving each year is that sum minus the total in the table above.
+With auto renew off on all three, nothing more is paid to Wix after 26 November 2026. The Wix account itself can stay open for free [S107]. Before you ever close it, read [Section 8, Part 4](#part-4-the-14-shutterstock-photos).
 
 ## Official help pages used
 
-Every page in this list was opened on 12 or 13 October 2026. Each entry gives the page title, its address and what it confirms. The numbers follow the order in which the pages are first used in this guide, except [S115] and [S116], which were added last for Section 1, Part 5. Entries marked as a public record are lookups of the domain's own data, not help pages. One entry is the program text of GitHub Desktop, for three things that no help page shows. A few entries are help pages of Google, Microsoft and Apple, for Google Takeout and for the reload keys of their browsers.
+The pages from [S120] on, most of them pages of Porkbun, were opened on 2 November 2026. The pages with lower numbers were first opened on 12 or 13 October 2026. Some of them were opened again on 2 November 2026, for example the public record [S27] and Wix's pages on moving a domain away [S35] and on DNSSEC [S53]. Each entry gives the page title, its address and what it confirms. A page keeps its number when the guide changes, so the numbers do not follow the order of the sections. A missing number belongs to a page that this guide no longer uses, or was never used. An entry marked as a public record is a lookup of the domain's own data, not a help page. One entry is the program text of GitHub Desktop, for three things that no help page shows. A few entries are help pages of Google and Microsoft, for example for Google Takeout and for the reload keys of their browsers.
 
 - [S1] GitHub Docs, "What is GitHub Pages?". https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages Confirms: the address form of a project site: `http(s)://<owner>.github.io/<repositoryname>`.
 - [S2] GitHub, "Plans & pricing for every developer and team". https://github.com/pricing Confirms: the Free plan costs \$0 per user per month.
@@ -1200,27 +1200,13 @@ Every page in this list was opened on 12 or 13 October 2026. Each entry gives th
 - [S4] Wix Help Center, "Using Shutterstock Media Purchased Through Wix". https://support.wix.com/en/article/using-shutterstock-media-purchased-through-wix Confirms: Shutterstock files bought through Wix are not downloadable; they may only be used in websites and content on Wix, not with other website or content services; they are usable on any site in the same Wix account.
 - [S5] Wix Help Center, "Wix Media: Adding Free Media from Wix". https://support.wix.com/en/article/wix-media-adding-free-media-from-wix Confirms: the free Wix media in the Media Manager and on the template is for digital use within Wix only.
 - [S6] Wix Help Center, "Avoiding Copyright Infringement: Images". https://support.wix.com/en/article/avoiding-copyright-infringement-images Confirms: free Wix images may not be used anywhere outside Wix; for a stock image you bought, check which license you purchased and its restrictions.
-- [S7] Square, "Appointments Pricing & Plans". https://squareup.com/us/en/appointments/pricing Confirms: the plan names and prices (Square Free \$0/mo. per location, Square Plus \$49, Square Premium \$149); the buttons Get started and Try free for 30 days; the features included in and missing from Square Free, among them the online booking site; the processing fees; no monthly subscription cost on Square Free, fees only when you take a payment; the customer support phone number; phone support hours per plan (Square Free: 6am to 6pm PT, Monday to Friday, for the first 90 days), with chat support and email support ticked for all three plans.
-- [S8] Square Support Center, "Switch to the new Square subscription plans". https://squareup.com/help/us/en/article/8569-switch-to-the-new-square-subscription-plans Confirms: advanced capabilities may already be activated based on business type, and may otherwise have to be added.
-- [S9] Square Support Center, "Set up your health & beauty business with Square". https://squareup.com/help/us/en/article/5354-square-appointments-guide Confirms: the setup order, and that step 1 is identity verification and linking a bank account with account and routing numbers.
-- [S10] Square Support Center, "Create and manage multiple locations". https://squareup.com/help/us/en/article/5580-manage-multiple-locations-with-square Confirms: the first location is made at sign-up, the menu path Account & Settings, My business, Locations, the business hours field and the Save button.
-- [S11] Square Support Center, "Add advanced capabilities". https://squareup.com/help/us/en/article/8486-add-advanced-capabilities Confirms: advanced capabilities, Bookings among them, are not visible in Square Dashboard until activated; the steps Add more, select the capability, Add; some of their features need Square Plus or Square Premium.
-- [S12] Square Support Center, "Create and manage services". https://squareup.com/help/us/en/article/6487-create-a-service-from-the-square-appointments-app Confirms: the Service library path, the Create service steps (details, description, price type and price, duration, Save), and the Bookable by customers online switch with its offered services; that Square Free accounts need the advanced bookings capabilities added.
-- [S13] Square Support Center, "Add and manage bookable team members". https://squareup.com/help/us/en/article/5350-create-staff-member-profiles-for-square-appointments Confirms: the path Staff, Team, Team members, the Appointments tab, Add to appointments, and the booking information (online booking, bookable services, hours of availability).
-- [S14] Square Support Center, "Manage bookable staff schedules and availability". https://squareup.com/help/us/en/article/8443-manage-staff-schedules-and-availability-with-square-appointments Confirms: Appointments, Calendar, the clock icon, Recurring schedule, and that you click an appointment on the calendar to change it.
-- [S15] Square Support Center, "Set up online booking". https://squareup.com/help/us/en/article/5355-set-up-online-booking-with-square-appointments Confirms: every step from Enable online booking to Publish; the online booking site URL; that the booking site is free and that its bookings sync with the calendar; that Square Free accounts need the advanced bookings capabilities added; the Square Dashboard link; the steps under "Get your booking flow URL" (Appointments or Payments then Appointments, Online Booking, Channels, "Add your booking flow to an existing site", Get Started, Get URL, location, booking type, copy the booking flow URL, X, Done); that the link is available once the online booking site is published; that Create button and Get embed code give HTML code. The page does not list the booking type choices.
-- [S16] Square Support Center, "Manage appointment booking notifications and reminders". https://squareup.com/help/us/en/article/6729-customer-confirmations-with-square-appointments Confirms: notifications may require specific subscriptions or settings and go out by email or text message.
-- [S17] Square Support Center, "Adjust your appointment settings". https://squareup.com/help/us/en/article/5351-manage-your-square-appointments-account-settings Confirms: the Settings pages Calendar & booking (Reservation Guarantee) and Communications; the path Appointments (or Payments, Appointments), Settings, History to past appointments; and the steps More, Cancel Appointment on the Appointment Details page.
-- [S18] Square Support Center, "Accept or decline appointments". https://squareup.com/help/us/en/article/8444-accept-or-decline-appointments Confirms: a pending appointment appears on the calendar; Accept or Decline, then a notification type (email or text) with an optional message, then Send.
 - [S19] Wix Help Center, "Canceling a Wix Premium or Studio Plan". https://support.wix.com/en/article/canceling-a-wix-premium-plan Confirms: a canceled plan stays active until the end of the subscription period; after that the site stays online with its content, on the free Wix address and with Wix ads; the expiration date is on the Premium Subscriptions page; a plan may renew up to 3 weeks before its expiration date; no refunds for renewals; domain and business email are not canceled with the plan; the steps More Actions, Cancel Plan, Cancel Now; a plan canceled in its first 14 days ends immediately; once auto renew is off the account can be closed without waiting.
 - [S20] Wix Help Center, "Business Email: An Overview". https://support.wix.com/en/article/business-email-an-overview Confirms: Wix business email is Google Workspace; the Business Email page (manage.wix.com/account/mailboxes) shows the business emails you own.
 - [S21] Wix Help Center, "Viewing Your Site Plans and Other Subscriptions". https://support.wix.com/en/article/viewing-your-premium-plans Confirms: plans and other Wix purchases are listed on the Premium Subscriptions page; the View Subscriptions link; the wrong-account note and the account email locator.
 - [S22] Wix Help Center, "Checking Your Upcoming Renewals for Premium or Studio Plans". https://support.wix.com/en/article/checking-your-upcoming-renewals-for-premium-plans Confirms: plans renew automatically at the end of the subscription period; the Upcoming payment column shows the date of the next renewal payment; the Info icon; the date can differ from the expiration date when auto renew is off.
-- [S23] Wix Help Center, "Wix Billing for Site Plans". https://support.wix.com/en/article/wix-billing-for-premium-plans Confirms: where to see the site plan's next payment; yearly plans renew up to 3 weeks before expiry; domains and business emails are charged 30 days before the expiration date.
 - [S24] Wix Help Center, "Reactivating a Canceled Premium or Studio Site Plan". https://support.wix.com/en/article/reactivating-a-canceled-premium-plan Confirms: Turn Auto Renew On on the Premium Subscriptions page reactivates a canceled plan before it ends; after it has ended you have to buy a new plan.
 - [S25] Wix Help Center, "Accessing Your Domains Page". https://support.wix.com/en/article/accessing-your-domains-page Confirms: user panel, Account Settings, Domains; the Assigned Domains section; the Domains page shows the expiry and payment renewal dates.
-- [S26] Wix Help Center, "Checking Your Domain Subscription Renewal Date". https://support.wix.com/en/article/checking-your-domain-subscription-renewal-date Confirms: the Premium Subscriptions page and its Upcoming payment column for the domain; domains bought from Wix renew automatically 30 days before their expiration date.
-- [S27] Verisign (the .com registry), public registration record for hairbygerta.com. https://rdap.verisign.com/com/v1/domain/hairbygerta.com Confirms: a public record, not a help page. Read on 12 and on 13 October 2026: registrar Wix.com Ltd., registered 27 November 2025, expires 27 November 2026 at 01:04:09 UTC; also the lock status, the nameservers and the DNSSEC setting on those days.
+- [S27] Verisign (the .com registry), public registration record for hairbygerta.com. https://rdap.verisign.com/com/v1/domain/hairbygerta.com Confirms: a public record, not a help page. Read on 12 and on 13 October 2026: registrar Wix.com Ltd., registered 27 November 2025, expires 27 November 2026 at 01:04:09 UTC; also the lock status, the nameservers and the DNSSEC setting on those days. Read again on 2 November 2026: the same registration and expiry dates, client transfer prohibited and client update prohibited, nameservers NS2.WIXDNS.NET and NS3.WIXDNS.NET, DNSSEC on (delegationSigned true).
 - [S28] ICANN, "ICANN Lookup" (registration data lookup tool). https://lookup.icann.org Confirms: a page where anyone can look up the current registration record of a domain name. The lookup was not run there for this guide; the record was read at the registry [S27].
 - [S29] Wix Help Center, "Google Workspace: Checking Your Business Email Subscription Renewal Date". https://support.wix.com/en/article/google-workspace-checking-your-business-email-subscription-renewal-date Confirms: the Upcoming payment column for the business email; the Info icon; the date can differ from the expiration date when auto renew is off.
 - [S30] Wix Help Center, "Google Workspace: Canceling Your Business Email Renewal". https://support.wix.com/en/article/google-workspace-canceling-your-business-email-renewal Confirms: renewal payments are attempted up to 30 days before the expiration date; a canceled business email works until the end of the paid period; the steps More Actions, Cancel subscription and what follows; Turn auto renew on; business emails bought through Wix are not refunded. The page has no steps for exporting mail.
@@ -1229,52 +1215,23 @@ Every page in this list was opened on 12 or 13 October 2026. Each entry gives th
 - [S33] Wix Help Center, "Google Workspace: Accessing your Business Email Through Your Wix Account". https://support.wix.com/en/article/google-workspace-accessing-your-business-email-through-your-wix-account Confirms: sign in at Gmail.com with the full business address; switch Google account with the profile image or initial at the top right; the page has no steps for exporting mail.
 - [S34] Google Workspace Admin Help, "Allow or block Google Takeout". https://knowledge.workspace.google.com/admin/users/advanced/allow-or-block-google-takeout Confirms: Takeout is allowed by default for Google Workspace and an administrator can change that (Admin console: Menu, Data, Data import & export, Google Takeout).
 - [S35] Wix Help Center, "Transferring Your Wix Domain Away from Wix". https://support.wix.com/en/article/transferring-your-wix-domain-away-from-wix-2477749 Confirms: the transfer steps and button names; the code goes to the registrant contact email; usually up to 7 days; the Wix site is disconnected and MX records must be added again; who may transfer; privacy advice; the Whois Lookup status; the Grace Period.
-- [S36] Cloudflare Docs, "Transfer your domain to Cloudflare" (last updated Apr 24, 2026). https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/ Confirms: the domain must be active in Cloudflare first; no direct transfer from Wix and the two-move route; 60-day rules; DNSSEC off and the 24 hour wait; codes expire; Transfer domains and Confirm transfer; approval and the five days; up to 10 days; at cost and one year added per transfer; the contact information must be accurate and is kept out of public WHOIS by default; selecting Confirm transfer agrees to the domain registration terms; after a renewal, wait at least 45 days after the original expiration date.
-- [S37] Wix Help Center, "Request: Changing Name Server (NS) Records for a Wix Domain". https://support.wix.com/en/article/request-changing-name-server-ns-records-for-a-wix-domain Confirms: the nameservers of a Wix domain cannot be changed.
 - [S38] Wix Help Center, "ICANN's 60 Day Lock Policy". https://support.wix.com/en/article/icanns-60-day-lock-policy Confirms: Wix applies 60 days after registration, a contact change or a transfer; a locked domain can stay at Wix and be pointed to an external site; the advice to transfer before changing contact information.
 - [S39] Wix Help Center, "Connecting a Wix Domain to an External Site". https://support.wix.com/en/article/connecting-a-wix-domain-to-an-external-site Confirms: Manage DNS Records; a Wix domain can point to an outside site by its A and CNAME records; nameservers cannot be changed.
-- [S40] Cloudflare Docs, "Route emails". https://developers.cloudflare.com/email-service/get-started/route-emails/ Confirms: Email Routing forwards incoming email to existing mailboxes; Cloudflare DNS is required; Compute, Email Service, Email Routing and its direct link; Onboard Domain, Done; the three kinds of DNS records added; 5 to 15 minutes, up to 24 hours; Destination Addresses and Verify email address; Routing Rules, Create routing rule, Email pattern, Action, Send to an email, Destination, Save; the test steps, sending from a different account, the spam folder.
 - [S41] ICANN, "Transfer Policy" (updated 21 February 2024). https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy Confirms: the 60-day periods; the five calendar days for the old registrar to answer; the five calendar days to give the code and remove the lock.
 - [S42] ICANN, "FAQs for Registrants: Transferring Your Domain Name". https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en Confirms: the same 60-day rules in plain words; the code within five calendar days; the registrar can be found with ICANN's lookup tool.
-- [S43] ICANN GNSO, "PDP Transfer Policy Review" (page last updated 21 April 2026). https://gnso.icann.org/en/group-activities/active/transfer-policy-review Confirms: the review that proposes shorter periods has no Board resolution yet ("TBD").
-- [S44] Cloudflare, "Cloudflare Registrar - Search and Buy Domains at Cost". https://www.cloudflare.com/domains/ Confirms: prices at what registries and ICANN charge, no markup; prices shown upfront; the box Search for a domain name; a sample .com name listed at \$10.46 with Renews at \$10.46/year; hairbygerta.com listed as Unavailable with no price; the Buy now button. The page shows no .com price until you search. The older address https://www.cloudflare.com/products/registrar/ leads to this page; the price is part of the Buy now button of a result, and while the pointer is on the result the button shows Buy now in place of the price (seen on the page on 13 October 2026).
 - [S45] Wix Help Center, "Wix Domains: Canceling Your Domain". https://support.wix.com/en/article/canceling-a-wix-domain Confirms: the steps to cancel auto renew; you keep the domain until the end of the period; no refunds for domains.
-- [S46] Cloudflare Docs, "FAQ" (last updated Aug 3, 2026). https://developers.cloudflare.com/registrar/faq/ Confirms: a transfer within 45 days of a renewal may add no extra year, a registry rule that applies to all registrars; billing when the code is entered; no refunds; five days to release; status on the Transfer domains page; Cloudflare nameservers are required.
-- [S47] Cloudflare Docs, "Troubleshoot failed domain transfers". https://developers.cloudflare.com/registrar/troubleshooting/ Confirms: a verification email may go to the registrant contact email after a transfer; without verification within 15 days the domain is put on hold and its nameservers are replaced by a parking server until it is verified; the email is sent when the registrant email differs from the verified email of the Cloudflare account; after a renewal the 45 days count from the original expiration date.
-- [S48] Cloudflare Docs, "Create account" (last updated Sep 17, 2026). https://developers.cloudflare.com/fundamentals/account/create-account/ Confirms: the sign-up address, fields and button.
-- [S49] Cloudflare Docs, "Verify email address" (last updated Apr 20, 2026). https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/ Confirms: verifying by the link in the email.
-- [S50] Cloudflare Docs, "Zone status" (last updated Apr 21, 2026). https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/ Confirms: a pending Free-plan domain is deleted after 28 days.
-- [S51] Cloudflare Docs, "Set up a primary zone (Full setup)" (last updated Jul 29, 2026). https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/ Confirms: Domains, Onboard a domain, the Free plan, the record scan, where the nameservers are shown, DNSSEC off first, copy exactly, up to 24 hours, Active; its example table of records lists the records of the bare domain under the domain name itself.
-- [S52] Cloudflare Docs, "Manage DNS records" (last updated May 6, 2026). https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/ Confirms: the DNS Records page and its direct link; Add record, Type, Proxy status, TTL, Save; Edit; Delete and Delete again.
 - [S53] Wix Help Center, "Activating DNSSEC for a Wix Domain". https://support.wix.com/en/article/activating-dnssec-for-a-wix-domain Confirms: the steps to turn off Privacy and DNSSEC protection; DNSSEC is only sold together with private registration; with the protection off, name and contact information can be seen in the WHOIS database; Turn On Protection switches it back on.
 - [S54] Wix Help Center, "Viewing and Updating Your Wix Domain Contact Information". https://support.wix.com/en/article/viewing-and-updating-your-wix-domain-contact-information Confirms: changing the contact information locks the domain for 60 days; a new email address has to be confirmed from both the old and the new address; Wix recommends a registrant contact email that is not tied to the domain.
 - [S55] ICANN, "2013 Registrar Accreditation Agreement", Whois Accuracy Program Specification. https://www.icann.org/en/contracted-parties/accredited-registrars/registrar-accreditation-agreement/2013-registrar-accreditation-agreement-17-09-2013-en Confirms: within 15 days of a transfer the registrar verifies the email address or the telephone number of the domain owner; without an answer it verifies by hand or suspends the registration.
-- [S56] Cloudflare Docs, "Create billing profile" (last updated May 29, 2026). https://developers.cloudflare.com/billing/get-started/create-billing-profile/ Confirms: Billing, Subscriptions, Payment methods, Add Payment Method, Confirm; cards and PayPal are accepted; the older address without get-started leads to this page.
-- [S57] Wix Help Center, "Connecting a Domain to Wix Using the Pointing Method". https://support.wix.com/en/article/connecting-a-domain-to-wix-using-the-pointing-method Confirms: the Wix site must be upgraded before a domain can be connected; the steps and button names, among them the note on Start Transfer and the outline with I logged in, I found my domain settings, I found the records and I updated my records; the A and CNAME values, which are also shown on the Wix domains page; replace the records; it may take up to 48 hours; no DNSSEC and no DNS proxy such as Cloudflare.
+- [S57] Wix Help Center, "Connecting a Domain to Wix Using the Pointing Method". https://support.wix.com/en/article/connecting-a-domain-to-wix-using-the-pointing-method Confirms: the Wix site must be upgraded before a domain can be connected; the steps and button names, among them the note on Start Transfer and the outline with I logged in, I found my domain settings, I found the records and I updated my records; the A and CNAME values, which are also shown on the Wix domains page; replace the records; it may take up to 48 hours; no DNSSEC and no DNS proxy.
 - [S58] Wix Help Center, "Connecting a Domain You Own to Your Wix Site". https://support.wix.com/en/article/connecting-a-domain-you-own-to-your-wix-site Confirms: connecting is not transferring; the domain stays with its outside registrar.
 - [S59] Wix Help Center, "Turning the Auto Renewal Off for a Wix Premium Subscription". https://support.wix.com/en/article/turning-the-auto-renewal-off-for-a-wix-premium-subscription Confirms: Wix subscriptions renew automatically unless auto renew is turned off; auto renew can be turned back on before the end of the subscription period; for a business email it names other last clicks than the page on canceling a business email.
-- [S60] Cloudflare Docs, "Proxy status" (last updated Apr 21, 2026). https://developers.cloudflare.com/dns/proxy-status/ Confirms: the two states Proxied (orange cloud) and DNS only (gray cloud); a proxied record is answered with Cloudflare addresses; proxying is on by default when a domain is added in the dashboard; Cloudflare's general recommendation to proxy web records.
-- [S61] Cloudflare Docs, "DNS record types". https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/ Confirms: what A, AAAA, CNAME, MX and TXT records do; the fields Name (with @ for the bare domain), IPv4 address and Target; the content of a TXT record.
-- [S62] GitHub Docs, "Securing your GitHub Pages site with HTTPS". https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https Confirms: the Enforce HTTPS steps and that it redirects visitors to HTTPS; the automatic DNS check, the Let's Encrypt certificate and the check mark; Remove and Save again restarts the process; extra A, AAAA or CNAME records, or records not pointing to GitHub, can stop the certificate; the page does not mention Cloudflare or a proxy.
+- [S62] GitHub Docs, "Securing your GitHub Pages site with HTTPS". https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https Confirms: the Enforce HTTPS steps and that it redirects visitors to HTTPS; the automatic DNS check, the Let's Encrypt certificate and the check mark; Remove and Save again restarts the process; extra A, AAAA or CNAME records, or records not pointing to GitHub, can stop the certificate. Also confirms (checked on 2 November 2026): ALIAS and ANAME next to A and AAAA among the extra records on @ that can stop the certificate.
 - [S63] GitHub Docs, "About repositories". https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories Confirms: a repository holds your files and each file's revision history.
-- [S64] GitHub Docs, "Managing a custom domain for your GitHub Pages site". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site Confirms: the four A record addresses; the www CNAME points to the user name followed by .github.io without the repository name; Settings, Pages, "Custom domain", Save and Remove; add the domain in GitHub before changing DNS, and the warning about what can happen otherwise; the tip to verify the domain first; the CNAME file that GitHub adds and the need to pull it; the bare domain redirects to www; DNS changes can take up to 24 hours; Enforce HTTPS can take up to 24 hours to become available; people with admin permissions for the repository can set the custom domain; the dropdown menu (a three-dot icon) that holds Settings when the tab is not shown; the page does not mention Cloudflare or a proxy.
-- [S65] GitHub Docs, "Troubleshooting custom domains and GitHub Pages". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages Confirms: up to an hour until HTTPS works; removing and adding the domain again after DNS changes; the CNAME file must stay in the repository; the CAA rule; clearing the browser cache; what to do when the domain is already taken; the page does not mention Cloudflare or a proxy.
-- [S66] GitHub Docs, "Verifying your custom domain for GitHub Pages". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages Confirms: what verifying protects against, the steps and button names, the wait of up to 24 hours, and that the TXT record must be kept; once a domain is verified, only repositories owned by the account that verified it may publish a GitHub Pages site to the domain or its immediate subdomains; the page does not describe how to remove a verification; verifying frees a domain that another GitHub user has taken; the page does not mention Cloudflare or a proxy.
-- [S67] Cloudflare Docs, "Import and export records". https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ Confirms: Import and Export, then Export, downloads the records.
-- [S68] Cloudflare Docs, "Create zone apex record". https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/ Confirms: a record for the bare domain is made with @ as its Name.
-- [S69] Cloudflare Docs, "Use cases" (Proxy status). https://developers.cloudflare.com/dns/proxy-status/use-cases/ Confirms: for a site hosted on another platform, set the record to DNS-only unless the platform explicitly supports Cloudflare's proxy; proxying can cause SSL errors and redirect loops.
-- [S70] GitHub Docs, "About custom domains and GitHub Pages". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages Confirms: GitHub Pages supports custom domains; the page does not mention Cloudflare or a proxy.
-- [S71] Cloudflare Docs, "Time to Live (TTL)". https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/ Confirms: Auto means 300 seconds (five minutes); a local DNS cache may take longer to update.
-- [S72] Cloudflare Docs, "Vendor-specific DNS records", section "Wix". https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/ Confirms: with DNS at Cloudflare, a domain is connected to Wix by pointing, and all its records should be DNS-only.
-- [S73] Cloudflare Docs, "Set up email records" (last updated Apr 16, 2026). https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/ Confirms: Email Routing is free email forwarding for domains that only need to receive mail; sending and receiving from the domain needs an SMTP provider.
-- [S74] Cloudflare Docs, "Pricing" (Email Service, last updated Jun 9, 2026). https://developers.cloudflare.com/email-service/platform/pricing/ Confirms: Email Routing is available on the Workers Free plan; inbound emails are listed as Unlimited; the paid plan Workers Paid.
-- [S75] Cloudflare Docs, "Email routing rules and addresses". https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/ Confirms: what a destination address and a routing rule are; sign in and select your account; a rule stays disabled until its destination is verified; pending addresses and resending the verification email; deleting a destination address disables its rules; the Active and Disabled status; Edit; the Catch-all rule on the Routing Rules tab forwards every email sent to the domain to one destination.
-- [S76] Cloudflare Docs, "Domain configuration". https://developers.cloudflare.com/email-service/configuration/domains/ Confirms: Cloudflare adds the records itself; MX, SPF and DKIM records on the root domain with their names and values; Settings, the DNS records section, Locked and Unlocked; locked records cannot be edited under DNS > Records; Unlock; existing MX records must be removed or updated and Email Routing cannot be used with external mail servers; existing SPF records are merged into one, with the merged example; Disable Email Routing and what it removes; add the new provider's records before disabling.
-- [S77] Public DNS records of hairbygerta.com (MX, TXT and NS). Confirms: a public record, not a help page. Read on 12 October 2026 with a lookup through Cloudflare's public resolver 1.1.1.1: five Google mail servers, one Google SPF record, name servers at Wix.
-- [S78] Cloudflare Docs, "Troubleshooting". https://developers.cloudflare.com/email-service/reference/troubleshooting/ Confirms: more than one SPF record is not allowed; delete the incorrect SPF record; an existing SPF record on the root domain is changed to include Cloudflare's; only when unsure which one to keep, delete all SPF records under DNS > Records and onboard again to let Cloudflare add its own.
-- [S79] Cloudflare Docs, "Email logs". https://developers.cloudflare.com/email-service/observability/logs/ Confirms: the Activity log and the labels Forwarded, Dropped, Rejected, Delivery failed and Error.
-- [S80] Cloudflare Docs, "Postmaster". https://developers.cloudflare.com/email-service/reference/postmaster/ Confirms: Email Routing does not support sending or replying from your domain, replies go out from the destination address; non-delivery reports are not forwarded to the sender; incoming mail must pass SPF or DKIM; senders on block lists are rejected.
-- [S81] Cloudflare Docs, "Limits". https://developers.cloudflare.com/email-service/platform/limits/ Confirms: inbound messages over 25 MiB are rejected; one routing rule maps one email pattern to one destination.
+- [S64] GitHub Docs, "Managing a custom domain for your GitHub Pages site". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site Confirms: the four A record addresses; the www CNAME points to the user name followed by .github.io without the repository name; Settings, Pages, "Custom domain", Save and Remove; add the domain in GitHub before changing DNS, and the warning about what can happen otherwise; the tip to verify the domain first; the CNAME file that GitHub adds and the need to pull it; the bare domain redirects to www; DNS changes can take up to 24 hours; Enforce HTTPS can take up to 24 hours to become available; people with admin permissions for the repository can set the custom domain; the dropdown menu (a three-dot icon) that holds Settings when the tab is not shown. Also confirms (checked on 2 November 2026): the four AAAA addresses 2606:50c0:8000::153 to 2606:50c0:8003::153; remove a default record that the DNS provider set; GitHub strongly recommends not using wildcard records such as *.example.com.
+- [S65] GitHub Docs, "Troubleshooting custom domains and GitHub Pages". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages Confirms: up to an hour until HTTPS works; removing and adding the domain again after DNS changes; the CNAME file must stay in the repository; the CAA rule; clearing the browser cache; what to do when the domain is already taken.
+- [S66] GitHub Docs, "Verifying your custom domain for GitHub Pages". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages Confirms: what verifying protects against, the steps and button names, the wait of up to 24 hours, and that the TXT record must be kept; once a domain is verified, only repositories owned by the account that verified it may publish a GitHub Pages site to the domain or its immediate subdomains; the page does not describe how to remove a verification; verifying frees a domain that another GitHub user has taken. Also confirms (checked on 2 November 2026): the TXT record name has the form _github-pages-challenge-USERNAME.example.com.
+- [S70] GitHub Docs, "About custom domains and GitHub Pages". https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages Confirms: GitHub Pages supports custom domains.
 - [S82] GitHub Docs, "Committing and reviewing changes to your project in GitHub Desktop". https://docs.github.com/en/desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop Confirms: what a commit is; the Changes tab lists changed files; the Summary field; the Commit to BRANCH button under the Description field (for this site the branch is main); Push origin; Discard Changes, shown in a context menu in the page's picture, and the "Confirm Discard Changes" window; pre-commit hooks run automatically when you commit, if the repository has them; the Bypass Commit Hooks option.
 - [S83] GitHub Docs, "Pushing changes to GitHub from GitHub Desktop". https://docs.github.com/en/desktop/making-changes-in-a-branch/pushing-changes-to-github-from-github-desktop Confirms: pushing sends the committed changes to the repository on GitHub.
 - [S84] GitHub Docs, "Reverting a commit in GitHub Desktop". https://docs.github.com/en/desktop/managing-commits/reverting-a-commit-in-github-desktop Confirms: History, Revert Changes in Commit; the original commit remains in the repository's history; several commits are best reverted from newest to oldest, otherwise merge conflicts are possible.
@@ -1290,10 +1247,6 @@ Every page in this list was opened on 12 or 13 October 2026. Each entry gives th
 - [S94] GitHub Docs, "Configuring a publishing source for your GitHub Pages site". https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site Confirms: when a site is published from a branch, changes pushed to that source branch are published to the site; the steps Settings, Pages, "Build and deployment", "Source", Deploy from a branch, the branch dropdown menu, the folder dropdown menu with the root folder as its default, Save; the site is deployed by a GitHub Actions workflow run that you do not have to write, and errors show in the workflow runs of the repository.
 - [S95] GitHub Docs, "Working with Git hooks in GitHub Desktop". https://docs.github.com/en/desktop/making-changes-in-a-branch/working-with-git-hooks-in-github-desktop Confirms: when a commit hook fails, GitHub Desktop shows its output and offers Commit anyway; Bypass Commit Hooks and Commit anyway commit without the check.
 - [S96] GitHub Docs, "GitHub glossary". https://docs.github.com/en/get-started/learning-about-github/github-glossary Confirms: a branch is a parallel version of a repository.
-- [S97] GitHub Docs, "Editing files". https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files Confirms: browse to the file; the pencil icon labeled "Edit file" in the upper right corner of the file view; Commit changes...; the "Commit message" field; the choice between the current branch and a new branch, and GitHub's advice to use a new branch; the Commit changes button.
-- [S98] GitHub Docs, "Getting changes from a remote repository". https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository Confirms: a pull fetches the changes from GitHub and merges them into the copy on the computer.
-- [S99] Apple Support, "Keyboard shortcuts and gestures in Safari on Mac". https://support.apple.com/guide/safari/keyboard-shortcuts-and-gestures-cpsh003/mac Confirms: in Safari, Shift-Command-R opens Reader.
-- [S100] Apple Support, "If Safari doesn't work as expected on Mac". https://support.apple.com/102564 Confirms: reload a page in Safari from the View menu with Reload Page, or with Command-R.
 - [S101] Wix Help Center, "Domain Life Cycle". https://support.wix.com/en/article/domain-life-cycle Confirms: the Grace Period (about 30 days, no extra fee, domain no longer connected to the site, Extend Registration, private auction possible in the last 10 days); the Redemption Period (about 30 days, fee varies and is shown on the Domains page, Keep Domain, not guaranteed, up to 7 days); Pending Delete, then open to anyone after 5 to 10 days.
 - [S102] ICANN, "5 Things every Domain Name Registrant should know about ICANN's Expired Registration Recovery Policy (ERRP)". https://www.icann.org/resources/pages/registrant-about-errp-2018-12-07-en Confirms: the website and email of an expired name are interrupted before it is deleted and during redemption; a Redemption Grace Period of 30 days in which the name can be restored; the registrar may charge a fee.
 - [S103] Wix Help Center, "Wix Domain Renewal Payment Failure". https://support.wix.com/en/article/wix-domain-renewal-payment-failure Confirms: the 30 day grace period at no extra fee; a redemption fee of \$100; if the payment attempt fails, the domain expires on the anniversary of the original payment.
@@ -1302,11 +1255,44 @@ Every page in this list was opened on 12 or 13 October 2026. Each entry gives th
 - [S106] Google Workspace Help, "Cancel Google Workspace" (last updated 9 October 2026). https://knowledge.workspace.google.com/admin/billing/cancel-google-workspace Confirms: after a subscription bought from Google is canceled, user data is deleted and cannot be restored; customers of a reseller are sent to a different page.
 - [S107] Wix Help Center, "Closing Your Wix Account". https://support.wix.com/en/article/closing-your-wix-account Confirms: closing the account cannot be undone and you lose access to everything in it; you do not need to wait for a canceled subscription to expire; a canceled domain stays registered until it expires; the account can stay open for free after the premium subscriptions are canceled.
 - [S108] GitHub Docs, "GitHub Pages limits". https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits Confirms: GitHub Pages is available in public repositories with GitHub Free; the 1 GB site limit and the 100 GB soft bandwidth limit; the rule against using Pages as free hosting for an online business or shop.
-- [S109] Cloudflare, "Pricing". https://www.cloudflare.com/plans/ Confirms: the Free plan at \$0 a month with DNS among its core features; the paid plans Pro and Business; Cloudflare Registrar "Starting at \$7.85" with no domain ending named; a paid tier under Workers.
-- [S110] Cloudflare Docs, "Sales tax". https://developers.cloudflare.com/billing/understand/sales-tax/ Confirms: Cloudflare collects sales tax based on the billing address; in the US by the postal code of the address on file. The page does not list the states.
-- [S111] Cloudflare Docs, "Renew domains" (last updated Apr 24, 2026). https://developers.cloudflare.com/registrar/account-options/renew-domains/ Confirms: auto renew on by default; renewal at the list price set by the registry; first try about 30 days before expiry; a renewal can fail, then an email and three more tries, then manual renewal (Manage domains, Manage, Renew/Extend Domain, Renew, Purchase); the monthly emails to the Super Admin (domains renewing within 45 days, domains expiring in 60 to 90 days) and the warnings to the registrant contact; the 30 day Redemption Grace Period, a possible restoration fee and no transfer during it; renewals are final, no refunds.
-- [S112] Square Support Center, "Learn about Square fees". https://squareup.com/help/us/en/article/6109-fees-and-payments-faqs Confirms: processing fees are taken out of the total amount of each transaction; the same rates per plan.
 - [S113] Wix Help Center, "Downloading Invoices for Wix Subscriptions and Services". https://support.wix.com/en/article/downloading-invoices-for-wix-subscriptions Confirms: the address of the Billing History page; the More Actions icon; View Invoice.
 - [S114] Wix Help Center, "Managing Invoices Paid for Wix Services". https://support.wix.com/en/article/managing-invoices-paid-for-wix-services Confirms: the Billing History page holds all invoices for services paid at Wix; the All Dates drop-down; services with the same renewal date may share one invoice.
 - [S115] GitHub Docs, "Creating a new repository". https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository Confirms: the plus icon labeled "Create something new", New repository, the Owner dropdown menu, the "Repository name" field, choosing a visibility, the optional README, .gitignore and license, Create repository.
 - [S116] GitHub Docs, "Adding locally hosted code to GitHub". https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github Confirms: do not initialize the new repository with README, license or gitignore files, to avoid errors; copy the repository address from the Quick Setup page; Git Bash on Windows; the commands git init -b main, git add ., git commit -m "First commit", git remote add origin REMOTE-URL and git push -u origin main.
+- [S120] Porkbun Knowledge Base, "How to Transfer a Domain to Porkbun". https://kb.porkbun.com/article/56-how-to-transfer-a-domain-to-porkbun Confirms: unlock the domain and get the authorization (EPP) code at the old registrar, the code works once; start at porkbun.com/transfer or the TRANSFER link at the top; type the domain without www in **Domain Name**, the code in **Auth Code**, click **Submit**, leave the first two boxes ticked (WHOIS privacy and auto renew), choose a DNS option, click **Add Transfers to Cart**, then **Continue to Billing**; a transfer takes 5 to 7 business days; status under **Transfer** in the top menu; a transfer can be refused within 60 days of registration, when the domain has expired or is about to, or with more than 9 years left; in most cases no time is lost and a year is added.
+- [S121] Porkbun, "Domain Transfer" page. https://porkbun.com/transfer Confirms: the fields **Domain Name** and **Auth Code**, the buttons **Submit** and **Add Transfers to Cart**; the boxes "Automatically turn on WHOIS privacy / data redaction after domains transfer in." and "Automatically enable auto renewal so your domains don't accidentally expire after they transfer in."; the two DNS choices "Pause my transfer until I've set up DNS here." and "Move DNS to Porkbun after the transfer, without pausing anything." (the second copies the records Porkbun can find now and puts the domain on Porkbun DNS when the transfer is done, and Porkbun says its lookup cannot see every record, so check them afterwards); gTLD transfers include a one year renewal unless the domain is inside the auto renew grace period.
+- [S122] Porkbun Knowledge Base, "What Do Transfer Statuses Mean?". https://kb.porkbun.com/article/79-what-do-transfer-statuses-mean Confirms: the **Transfer** button at the top opens the **Domain Transfers** page; the statuses pending transfer from losing registrar (5 to 7 days), pending owner confirmation (an email goes to the registrant contact, follow its link), bad authcode (**Update authcode** under **Options**), domain status does not allow transfer (unlock it at the old registrar) and transfer complete (the domain shows in **Domain Management** within minutes).
+- [S123] Porkbun Knowledge Base, "How Long Will It Take to Transfer My Domain to Porkbun?". https://kb.porkbun.com/article/36-how-long-will-it-take-to-transfer-my-domain-to-porkbun Confirms: usually five to seven days; Porkbun sends an email when it is finished.
+- [S124] Porkbun Knowledge Base, "Will I Lose Domain Registration Time if I Transfer?". https://kb.porkbun.com/article/55-lose-domain-registration-time-if-transfer-domains Confirms: no registration time is lost and in most cases a year is added; the year is not added when the transfer happens fewer than 45 days after the day the domain expired or fewer than five days after it was renewed.
+- [S125] Porkbun Knowledge Base, "How to Transfer a Domain to Porkbun With No Downtime". https://kb.porkbun.com/article/89-how-to-transfer-a-domain-to-porkbun-with-no-downtime Confirms: if a domain has DNSSEC records, Porkbun recommends deleting them before the transfer to prevent DNS problems; DNSSEC can be turned on again at Porkbun afterwards.
+- [S126] Porkbun Knowledge Base, "Will My Nameservers Be Imported During a Transfer?". https://kb.porkbun.com/article/117-will-my-nameservers-be-imported-during-a-transfer Confirms: Porkbun does not change the nameservers of a domain when it transfers in; a domain that used the old registrar's nameservers has to be switched to Porkbun's nameservers and its records made again.
+- [S127] Porkbun Knowledge Base, "How to Switch to Porkbun's Nameservers". https://kb.porkbun.com/article/63-how-to-switch-to-porkbuns-nameservers Confirms: **ACCOUNT**, **Domain Management**, **Details** next to the domain, the edit icon next to the nameservers, **Use Our Default Nameservers**, **Save Nameservers**; the default nameservers are curitiba.ns.porkbun.com, fortaleza.ns.porkbun.com, maceio.ns.porkbun.com and salvador.ns.porkbun.com; a change can take up to 48 hours, most finish within a few hours.
+- [S128] Porkbun Knowledge Base, "How to Change Nameservers". https://kb.porkbun.com/article/22-how-to-change-nameservers Confirms: the same path, **Save Nameservers**, and **Submit** if asked; up to 48 hours.
+- [S129] Porkbun Knowledge Base, "How to Edit DNS Records". https://kb.porkbun.com/article/68-how-to-edit-dns-records Confirms: **Details**, the edit icon next to **DNS Records**, the **Manage DNS Records** page, **Add Record**, **Add**, **Back**; the pencil icon edits a record and the trash can icon deletes it after **OK**.
+- [S130] Porkbun Knowledge Base, "How to Add DNS Records on Porkbun". https://kb.porkbun.com/article/231-how-to-add-dns-records-on-porkbun Confirms: the fields **Type**, **Host** (empty for the domain itself), **Answer** (for an A record the IPv4 address), **TTL** (keep the default), **Notes** (optional) and **Priority** (MX records); the button **Add**; a CNAME needs a host and a full domain name as the answer; an AAAA answer is an IPv6 address; TXT records are mostly used to prove ownership. Also confirms: the Type option "A - Address record"; the label of the Answer field changes with the record type, for an A record it is "IPv4 Address".
+- [S131] Porkbun Knowledge Base, "CNAME, ALIAS Record With That Host Already Exists Error". https://kb.porkbun.com/article/239-cname-alias-record-with-that-host-already-exists-error Confirms: Porkbun's default records point to pixie.porkbun.com and show its parking page; delete them, and delete records left from a previous host, before adding your own.
+- [S132] Porkbun Knowledge Base, "How to Set Up Email Forwarding Service". https://kb.porkbun.com/article/10-how-to-set-up-email-forwarding-service Confirms: **Domain Management**, the envelope icon in the **EMAIL** column, the **Email Hosting and Forwarding** page, the **Porkbun Email Forwarding** section, **Create a New Forwarding Address** (user name and destination), **Create Email Forward**, the **Current Forwards** list; up to 20 free forwards per domain; no wildcard or catch-all; replies go out from the personal address; one forward can go to more than one address; test from a different address than the destination; the MX records must point to Porkbun.
+- [S133] Porkbun Knowledge Base, "How to Reset DNS and Park Your Domain". https://kb.porkbun.com/article/183-how-to-reset-dns-and-park-your-domain Confirms: the email forwarding records are MX (host empty) fwd1.porkbun.com priority 10, MX (host empty) fwd2.porkbun.com priority 20 and TXT (host empty) v=spf1 include:_spf.porkbun.com ~all; a **Fix DNS** button at the bottom of the **Email Hosting and Forwarding** page adds them.
+- [S134] Porkbun Knowledge Base, "How to Use Porkbun Email When Your DNS Is Hosted Elsewhere". https://kb.porkbun.com/article/47-how-to-use-porkbun-email-when-your-dns-is-hosted-elsewhere Confirms: the same MX and SPF records; delete other MX records for the domain itself; a domain may have only one SPF record, so two have to be merged into one.
+- [S135] Porkbun Knowledge Base, "Hosted Email vs. Email Forwarding". https://kb.porkbun.com/article/67-hosted-email-vs-email-forwarding Confirms: hosted email costs \$3 a month per address, billed yearly; forwarding only receives mail and passes it on.
+- [S136] Porkbun Knowledge Base, "How to Configure WHOIS Privacy Service". https://kb.porkbun.com/article/97-how-to-configure-whois-privacy-service-porkbun Confirms: WHOIS privacy is free; it is on by default for new registrations; the eye icon under **WHOIS** offers **Redact Privacy Data**, **Use Privacy Service** and **Make Public**.
+- [S137] Porkbun, "Free WHOIS Privacy". https://porkbun.com/products/whois_privacy Confirms: free WHOIS privacy for all participating domains registered with or transferred to Porkbun.
+- [S138] Porkbun Knowledge Base, "How to Turn Off Auto Renew". https://kb.porkbun.com/article/70-how-to-turn-off-auto-renew Confirms: the icon in the **Renew** column, **Disable Auto Renew** and **Enable Auto Renew**.
+- [S139] Porkbun Knowledge Base, "How to Check a Domain's Renewal Price". https://kb.porkbun.com/article/108-how-to-check-domain-renewal-price Confirms: **Details** next to the domain shows the **Renewal Price**.
+- [S140] Porkbun Knowledge Base, "Why Did .com Prices Go Up and How High Will They Go?" (updated 27 May 2026). https://kb.porkbun.com/article/201-why-did-com-prices-go-up-and-how-high-will-they-go Confirms: the .com price rises on 1 November 2026 at 04:00 UTC to about \$11.81, and is expected to rise about 7% a year from 2026 to 2030.
+- [S141] Porkbun, "Domain Name Pricing". https://porkbun.com/products/domains Confirms: .com registration, renewal and transfer each \$11.81, all fees included; most transfers include a one year renewal.
+- [S142] Porkbun Knowledge Base, "How to Enable DNSSEC". https://kb.porkbun.com/article/216 Confirms: the **Porkbun DNSSEC** switch under **Details**.
+- [S143] Google Search Console Help, "Sitemaps report". https://support.google.com/webmasters/answer/7451001 Confirms: an owner of the property adds a sitemap under **Add a new sitemap** with its full address and **Submit**; the status shows Success, Has errors or Couldn't fetch. Also confirms: test first that the sitemap is available to Google; the Sitemap URL is the exact address submitted and redirects are not followed; do not confuse www and non-www properties; click a row that is not Success to see the errors; resubmit after big changes.
+- [S150] Porkbun Knowledge Base, "How to Change Domain and Account Contact Information". https://kb.porkbun.com/article/57-how-to-change-contact-information Confirms: **ACCOUNT**, **Settings / Billing**, the section **Registration Defaults**, the header **Default Contacts**, the pencil icon next to **REGISTRANT**; new domains are filled in with the data of the default contacts; one domain's contacts are changed under **Details**, **Contacts**, the **DOMAIN CONTACTS** pop-up, **Submit**. The page does not say whether the defaults are used for transferred domains.
+- [S151] IETF, RFC 9083 "JSON Responses for the Registration Data Access Protocol (RDAP)", section 5.3. https://www.rfc-editor.org/rfc/rfc9083.html Confirms: in a public record (RDAP), the member secureDNS has delegationSigned, which is true if there are DS records in the parent zone and false otherwise, and dsData, the list of those DS records.
+- [S152] ICANN, "EPP Status Codes: What Do They Mean, and Why Should I Know?". https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en Confirms: the status clientTransferProhibited tells the registry to reject requests to transfer the domain; to transfer the domain you first ask the registrar to remove it; a domain's status codes show in a Whois lookup.
+- [S154] Wix Help Center, "Price of Wix Domain Renewals". https://support.wix.com/en/article/price-of-wix-domain-renewals-6790543 Confirms: the cost of a Wix domain depends on the domain extension, the local currency, the number of years, optional privacy protection and local tax or VAT; the renewal cost shows under **Premium Subscriptions**, **View payment details** in the **Upcoming payment** column. The page gives no price.
+- [S155] Google Search Console Help, "Verify your site ownership". https://support.google.com/webmasters/answer/9008080 Confirms: Search Console periodically checks that the verification token is still present and valid; to stay verified, do not remove the DNS record from the provider, even after verification succeeds; if verification can no longer be confirmed, permissions on the property expire after a grace period.
+- [S156] Wix Help Center, "Adding or Updating TXT Records in Your Wix Account". https://support.wix.com/en/article/adding-or-updating-txt-records-in-your-wix-account Confirms: Domains, the Domain Actions icon, Manage DNS Records, + Add Record in the TXT (Text) section, the Host Name field (left blank for @), the Value field, Save; for a domain connected by pointing, TXT records are added at the domain host. The page does not say how long a change takes and does not show what stands next to the Host Name field.
+- [S160] Wix Help Center, "Google Workspace: FAQs". https://support.wix.com/en/article/google-workspace-faqs Confirms: a Google Workspace business email can be transferred from a Wix account to Google by contacting Wix Customer Care; this is an irreversible action; it disconnects the business email from the Wix account, and the business email cannot then be bought again through Wix.
+- [S161] Google Workspace Admin Help, "Set up MX records for Google Workspace" (last updated 26 October 2026). https://knowledge.workspace.google.com/admin/domains/set-up-mx-records-for-google-workspace Confirms: the Google Workspace MX record value is smtp.google.com with priority 1; older MX values that start with aspmx are still supported; MX record changes take some time to be recognized across the internet.
+- [S162] Google Workspace Admin Help, "Avoid issues when changing MX records" (last updated 26 October 2026). https://knowledge.workspace.google.com/admin/domains/avoid-issues-when-changing-mx-records Confirms: until the new MX records are active, emails are directed to the previous email provider.
+- [S165] Porkbun, "Free DNS Management". https://porkbun.com/products/dns_management Confirms: Porkbun offers DNS management for your domain for free; the page ties it to registering a domain and does not mention transfers or give a price.
+- [S166] Porkbun Knowledge Base, "How to Renew Domain Names". https://kb.porkbun.com/article/45-how-to-renew-domain-name Confirms: a domain renews automatically as its expiration date approaches if a credit card is on file and auto renew is turned on for it; manual renewal by the icon in the **Renew** column, the **Manual Renewals** section with the **Domain** box, **Add Renewals to Cart** and **Continue to Billing**; total registration time may never exceed ten years. The page does not say how many days before expiry the renewal happens or what happens when a payment fails.
+- [S167] Porkbun Knowledge Base, "How to update your credit card billing information". https://kb.porkbun.com/article/142-how-to-update-your-credit-card-billing-information Confirms: **ACCOUNT**, **Settings / Billing**, the **Billing Information** section, **Update Card**, **Submit**; the card shows on the Settings / Billing page.
+- [S168] Porkbun, "Domain Name Registration Agreement" (effective 17 March 2025). https://porkbun.com/legal/agreement/domain_name_registration_agreement Confirms: in "Term of Service", unless automatic renewal is disabled Porkbun attempts to renew the services as they come up for renewal, takes payment from the payment method on the account (or account credit), charges its then-current rates, which may be higher or lower, and renewal payments are final and non-refundable; if an automatic renewal cannot be processed and the problem is not fixed, the services expire; in "Domain Renewal Notification Policy", notices go to the registered name holder's primary email address about 1 month and 1 week before expiration, and one more 5 days after expiration. The agreement gives no number of days for when the renewal is charged.
