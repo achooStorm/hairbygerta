@@ -10,6 +10,7 @@
   --beige: #e8e1da;
   --btn: #554f46;
   --btn-text: #fefefd;
+  --error: #9b1c1c;
   /* Fonts */
   --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --sans: "Figtree", "Proxima Nova", "Helvetica Neue", Arial, sans-serif;
@@ -2255,6 +2256,40 @@ h1.services-title {
   background: var(--ink);
 }
 
+/* The message under the Email field (the script fills it). Dark red on the light page,
+   and the field gets a red edge too, so the message does not rest on colour alone:
+   the words say what is wrong. */
+.field-error {
+  margin: -12px 0 20px;
+  color: var(--error);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.field-error[hidden] {
+  display: none;
+}
+
+.contact-form input[aria-invalid="true"] {
+  border-color: var(--error);
+  box-shadow: inset 0 0 0 1px var(--error);
+}
+
+/* Without the script the form cannot open an email app, so it is not shown. The
+   sentence above it gives the phone number and the email address as links. */
+html:not(.js) .contact {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+html:not(.js) .info {
+  border-right: 0;
+}
+
+html:not(.js) .contact-form {
+  display: none;
+}
+
 .form-note {
   min-height: 20px;
   margin: 14px 0 0;
@@ -2265,15 +2300,35 @@ h1.services-title {
 
 /* ---------- Contact: map ---------- */
 
-.map {
-  background: var(--beige);
-}
-
+/* The frame is beige until the map has arrived (the script loads it when the visitor
+   scrolls near it). */
 .map iframe {
   display: block;
   width: 100%;
   height: 400px;
   border: 0;
+  background: var(--beige);
+}
+
+/* The link under the map: it opens the salon in Google Maps (on a phone, in its map
+   app). A 48 px row, the link underlined like every link in a text. */
+.map-open {
+  margin: 0;
+  padding: 0 var(--gutter);
+  font-size: 16px;
+  line-height: 48px;
+  text-align: center;
+}
+
+.map-open a {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.map-open a:hover {
+  text-decoration-thickness: 2px;
 }
 
 /* ---------- Tablet and small laptop ---------- */

@@ -23,21 +23,23 @@ var BOOKING_URL = "";
  * Nothing below this note has to be changed to add the booking link.
  *
  * Site script for Hair & Makeup by Gerta. Every page loads this one file
- * with "defer". It has five parts:
+ * with "defer". It has six parts:
  *
  *   1. Book Now buttons       every element marked data-book
  *   2. Phone menu             .menu-btn and #main-nav
  *   3. Gallery photo viewer   the links inside .gallery
- *   4. Contact form           #contact-form and .form-note
+ *   4. Contact form           #contact-form, #email-error and .form-note
  *   5. Copyright year         every element marked data-year
+ *   6. Map                    the iframe with data-src inside .map
  *
  * Each part looks for its own elements and does nothing on a page that does
  * not have them. A part that fails does not stop the other parts.
  *
  * The pages also work without this script: the Book Now buttons are phone
  * links, the menu is a plain list of links, each gallery photo opens on its
- * own, the contact form is a plain email form and the year is the one the
- * page was built with.
+ * own, the year is the one the page was built with, and the Contact page
+ * hides its form (the sentence above it gives the phone number and the email
+ * address as links) and offers the map as a link to Google Maps.
  */
 (function () {
   "use strict";
@@ -443,11 +445,16 @@ var BOOKING_URL = "";
   /*
    * Contact form (#contact-form on the Contact page).
    * Pressing Send opens the visitor's own email app with a new message to
-   * info@hairbygerta.com: subject, text, name and email address already filled
-   * in. The visitor then presses send in the email app.
+   * the address in the form's data-mailto (info@hairbygerta.com): subject,
+   * text, name and email address already filled in. The visitor then presses
+   * send in the email app.
    * Nothing is stored and nothing is sent to any server.
    * The line shown under the button afterwards is the form's data-sent text.
-   * Without this script the form is a plain mailto form and still works.
+   * The browser checks the Email field (required, type email). When it finds
+   * a problem, this script shows the matching message from #email-error
+   * (data-missing or data-invalid) under the field, in words, instead of the
+   * browser's own bubble, marks the field and puts the cursor into it.
+   * Without this script the stylesheet hides the form.
    */
   function initContactForm() {
     var form = document.getElementById("contact-form");
@@ -455,7 +462,10 @@ var BOOKING_URL = "";
       return;
     }
 
-    var salonEmail = "info@hairbygerta.com";
+    var salonEmail = (form.getAttribute("data-mailto") || "").replace(/^mailto:/i, "").trim() ||
+      "info@hairbygerta.com";
+    var emailField = form.elements.email;
+    var errorLine = document.getElementById("email-error");
     // Used only when the form has no data-sent text.
     var sentFallback = "Thanks! Your email app should open so you can send the message.";
 
@@ -498,6 +508,41 @@ var BOOKING_URL = "";
     form.addEventListener("input", clearNote);
     form.addEventListener("reset", clearNote);
 
+    // The message under the Email field. Shown when the browser finds the
+    // field empty or not an email address, hidden again once it is right.
+    function showError(text) {
+      if (!errorLine || !emailField) {
+        return;
+      }
+      errorLine.textContent = text;
+      errorLine.hidden = !text;
+      if (text) {
+        emailField.setAttribute("aria-invalid", "true");
+      } else {
+        emailField.removeAttribute("aria-invalid");
+      }
+    }
+
+    if (emailField && errorLine) {
+      emailField.addEventListener("invalid", function (event) {
+        var missing = emailField.validity.valueMissing;
+        var text = errorLine.getAttribute(missing ? "data-missing" : "data-invalid") || "";
+        if (!text) {
+          return;                 // no message of our own: the browser shows its bubble
+        }
+        event.preventDefault();   // our message in place of the browser's bubble
+        showError(text);
+        emailField.focus();
+      });
+      // While the visitor corrects the address the message stays, and it goes
+      // as soon as the address is a possible one.
+      emailField.addEventListener("input", function () {
+        if (!errorLine.hidden && emailField.validity.valid) {
+          showError("");
+        }
+      });
+    }
+
     form.addEventListener("submit", function (event) {
       // Never post the form itself. This script opens the email app instead.
       event.preventDefault();
@@ -508,6 +553,7 @@ var BOOKING_URL = "";
         clearNote();
         return;
       }
+      showError("");
 
       var first = read("first-name");
       var last = read("last-name");
@@ -569,6 +615,49 @@ var BOOKING_URL = "";
   }
 
   // ---------------------------------------------------------------------------
+  // 6. Map
+  // ---------------------------------------------------------------------------
+
+  /*
+   * The Google map of the Contact page. Its address waits in data-src and is
+   * moved into src when the map comes within about one screen of the window,
+   * so a visitor who never scrolls down sends nothing to Google. A browser
+   * without IntersectionObserver gets the map at once.
+   * Without this script the frame stays empty and the link under it opens
+   * the map in Google Maps.
+   */
+  function initMap() {
+    var frames = Array.prototype.slice.call(document.querySelectorAll(".map iframe[data-src]"));
+    if (!frames.length) {
+      return;
+    }
+
+    function load(frame) {
+      var src = frame.getAttribute("data-src");
+      if (src) {
+        frame.removeAttribute("data-src");
+        frame.setAttribute("src", src);
+      }
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      frames.forEach(load);
+      return;
+    }
+    var watcher = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          watcher.unobserve(entry.target);
+          load(entry.target);
+        }
+      });
+    }, { rootMargin: "600px 0px" });
+    frames.forEach(function (frame) {
+      watcher.observe(frame);
+    });
+  }
+
+  // ---------------------------------------------------------------------------
   // Start
   // ---------------------------------------------------------------------------
 
@@ -593,6 +682,7 @@ var BOOKING_URL = "";
     run("Gallery photo viewer", initLightbox);
     run("Contact form", initContactForm);
     run("Copyright year", initYear);
+    run("Map", initMap);
   }
 
   // The pages load this file with "defer", so the whole page has been read

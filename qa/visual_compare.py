@@ -76,7 +76,8 @@ The brief's measurement list (entries whose check name starts with "brief-")
 
 Reported with ok true
   font metrics   width of text and height of wrapped text (Bodoni Moda and Figtree are not Didot and Proxima Nova)
-  intended       placeholders instead of photos, the extra Hours block on the contact page, the closing booking
+  intended       placeholders instead of photos, the extra Hours block and the Open in Google Maps link under the
+                 map on the contact page, the closing booking
                  note, on the Privacy Policy what stands under a sentence about Wix that our page leaves out on
                  purpose (it sits higher than on Wix, because our text there is shorter), the copyright line,
                  the phone photo row (a 2 x 2 grid where Wix hides the row), the Wix chat button, underlined
@@ -1234,6 +1235,8 @@ class Compare:
             return "closing booking note"
         if (".info-item" in marks or ".info" in marks) and text_key(t["group"]) == "hours":
             return "extra Hours block on the contact page"
+        if ".map-open" in marks:
+            return "Open in Google Maps link under the map (decision 41)"
         return ""
 
     def intended_extra(self, reason, item, what):

@@ -40,7 +40,8 @@ What it checks on every page
                         compared sentence by sentence with the reference files in the tools folder (wix-ref/<slug>.txt).
                         One entry per sentence that differs. A difference is intended, and listed with ok true, only
                         when it is on this fixed list: the privacy rule above (with a sentence that goes on about Wix),
-                        the closing booking note, the Hours block of the contact page, the copyright line, the Call
+                        the closing booking note, the Hours block and the Open in Google Maps link of the contact page,
+                        the copyright line, the Call
                         button at the bottom of the screen on phones (its label and the phone number), text that Wix
                         repeats for screen readers, the copies of the scrolling hours line, an order the build contract
                         decided (sections 10.6 and 10.8), the mark of the required Email field (10.8), the new title of
@@ -443,6 +444,7 @@ class Page:
         self.text, self.lines = flow.text, flow.lines
         self.tokens = tokens_of(flow.text, flow.marks)
         self.links, self.images, self.labels, self.forms, self.h1 = [], [], [], [], []
+        self.form_actions = []
         self.year = None
         for n in descend(self.body):
             for attr in LABEL_ATTRS:
@@ -457,7 +459,9 @@ class Page:
             elif n.tag == "img":
                 self.images.append(Image(place_of(n), image_name(n.attrs.get("src", "")), norm(n.attrs.get("alt", "")), n))
             elif n.tag == "form":
-                self.forms.append(n.attrs.get("action", "").strip())
+                # Since 9 November 2026 (decision 41) the form names its address in data-mailto and has no action.
+                self.forms.append(n.attrs.get("data-mailto", "").strip())
+                self.form_actions.append(n.attrs.get("action", "").strip())
             elif n.tag == "h1":
                 self.h1.append(norm(node_text(n)))
             if "data-year" in n.attrs and self.year is None:
@@ -642,8 +646,15 @@ def expect_main(ex, content, site):
         elif key == "map" and isinstance(value, dict):
             label("title", value.get("title"), path + ".title")
             for k, item in value.items():
-                if k not in ("title", "query"):
+                if k == "open_label" and isinstance(item, str):
+                    # the link under the map (9 November 2026): not on Wix, it opens the Maps link of site.json
+                    emit(path + ".open_label", item, intended="the Open in Google Maps link under the map is not on the Wix page, it is added on purpose")
+                    maps = site.get("maps_href") if isinstance(site.get("maps_href"), str) else MAPS
+                    ex.links.append(ContentLink("main", maps.strip(), norm(item), "", "%s: %s.open_label" % (file, path)))
+                elif k not in ("title", "query"):
                     handle(k, item, value, "%s.%s" % (path, k), depth + 1)
+        elif key == "errors" and isinstance(value, dict):
+            pass                                        # shown by the script only, written into the page as data attributes
         elif key == "hours" and isinstance(parent.get("marquee_repeat"), int) and isinstance(value, str):
             count = max(1, parent["marquee_repeat"])
             for i in range(count):
@@ -1191,7 +1202,7 @@ def page_view(slug, page):
     v.units += [("%s, %s" % (where, PLACE_NAMES[l.place]), l.text) for l in page.lines]
     v.units += [("%s, %s" % (where, attr), text) for attr, text, _ in page.labels]
     v.hrefs = [("%s, link %s" % (where, quote(l.text or l.label, 40)), l.href) for l in page.links]
-    v.hrefs += [("%s, form action" % where, a) for a in page.forms if a.lower().startswith("mailto:")]
+    v.hrefs += [("%s, form data-mailto" % where, a) for a in page.forms if a.lower().startswith("mailto:")]
     v.lines = {place: page.lines_in(place) for place in ("top",) + PLACES}
     v.links = [(l.place, l.href, l.text) for l in page.links]
     v.labels = set((attr, text) for attr, text, _ in page.labels)
@@ -1338,7 +1349,9 @@ def required_facts(slug, view, built):
         need("hours", HOURS_DAYS in main and HOURS_TIMES in main, 'main does not show the lines "%s" and "%s"' % (HOURS_DAYS, HOURS_TIMES))
         need("links", has_link("main", FACEBOOK) and has_link("main", INSTAGRAM), "main does not carry the Facebook link and the Instagram link")
         if built is not None:
-            need("email", built.forms == [MAILTO], "the contact form does not send to %s (form action: %s)" % (MAILTO, ", ".join(built.forms) or "none"))
+            need("email", built.forms == [MAILTO], "the contact form does not write to %s (form data-mailto: %s)" % (MAILTO, ", ".join(built.forms) or "none"))
+            need("email", not any(built.form_actions), "the contact form has an action (%s): a mailto action makes browsers warn about an "
+                 "insecure form, the script opens the email app from data-mailto instead (decision 41)" % ", ".join(a for a in built.form_actions if a))
     if slug in LEGAL_NAME_PAGES:
         need("stylist", any(LEGAL_NAME in l for l in main), 'main does not name "%s"' % LEGAL_NAME)
     if slug == "book-online" and built is not None:

@@ -87,7 +87,7 @@
       <p>9 AM - 5 PM</p>
     </div>
   </div>
-  <form id="contact-form" class="contact-form" action="mailto:info@hairbygerta.com" method="post" enctype="text/plain" data-sent="Thanks! Your email app should open so you can send the message.">
+  <form id="contact-form" class="contact-form" data-mailto="mailto:info@hairbygerta.com" data-sent="Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.">
     <div class="row">
       <div>
         <label for="first-name">First Name</label>
@@ -99,7 +99,8 @@
       </div>
     </div>
     <label for="email">Email <span aria-hidden="true">*</span></label>
-    <input id="email" name="email" type="email" autocomplete="email" required>
+    <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+    <p class="field-error" id="email-error" data-missing="Please enter your email address, so I can reply." data-invalid="Please check your email address. It should look like name@example.com." hidden></p>
     <label for="message">Message</label>
     <textarea id="message" name="message" rows="4"></textarea>
     <button type="submit">Send</button>
@@ -107,7 +108,8 @@
   </form>
 </div>
 <div class="map">
-  <iframe src="https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&amp;output=embed" title="Map of Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310" loading="lazy"></iframe>
+  <iframe data-src="https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&amp;output=embed" title="Map of Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310" loading="lazy"></iframe>
+  <p class="map-open"><a href="https://www.google.com/maps/search/?api=1&amp;query=644+Forest+Ave,+Staten+Island,+NY+10310" target="_blank" rel="noopener">Open in Google Maps</a></p>
 </div>
 </main>
 <footer class="site-footer">

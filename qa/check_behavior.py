@@ -483,9 +483,15 @@ JS_FORM = r"""() => {
   const f = document.getElementById('contact-form');
   if (!f) return {form: false};
   const e = document.getElementById('email'), note = document.querySelector('.form-note');
+  const err = document.getElementById('email-error');
   const has = (s) => !!f.querySelector(s);
+  const shown = (el) => { if (!el || el.hidden) return false; const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
   return {form: true, action: f.getAttribute('action'), method: f.getAttribute('method'), enctype: f.getAttribute('enctype'),
-    sent: f.getAttribute('data-sent'), novalidate: f.noValidate,
+    mailto: f.getAttribute('data-mailto'), sent: f.getAttribute('data-sent'), novalidate: f.noValidate,
+    error: err ? {shown: shown(err), text: err.textContent.replace(/\s+/g, ' ').trim(), missing: err.getAttribute('data-missing'),
+                  invalid: err.getAttribute('data-invalid')} : null,
+    ariaInvalid: e ? e.getAttribute('aria-invalid') : null, describedBy: e ? e.getAttribute('aria-describedby') : null,
+    focused: e ? document.activeElement === e : null,
     missing: ['#first-name', '#last-name', '#email', '#message', 'button[type=submit]'].filter((s) => !has(s)).concat(note ? [] : ['.form-note']),
     emailType: e ? e.getAttribute('type') : null, emailRequired: e ? e.required : null,
     emailValue: e ? e.value : null,
@@ -1179,6 +1185,11 @@ def test_contact_form(env, vp):
     plan = [
         (C + "empty email is stopped by the browser", "INTERACTION", "no mail link, the status line stays empty, #email is marked as missing by the browser"),
         (C + "malformed email is stopped by the browser", "INTERACTION", "no mail link, the status line stays empty, #email is marked as mistyped by the browser"),
+        (C + "empty email shows its message in words", "INTERACTION",
+         "#email-error is shown under the field with the text of its data-missing, #email has aria-invalid=true, points at #email-error and has the focus"),
+        (C + "malformed email shows its message in words", "INTERACTION",
+         "#email-error is shown with the text of its data-invalid, #email has aria-invalid=true and the focus"),
+        (C + "the message goes once the address is right", "INTERACTION", "after a valid address is typed #email-error is hidden and #email has no aria-invalid"),
         (C + "valid submit builds the mail link", "INTERACTION", f"{MAILTO}?subject={subject}&body=(the message and {SENDER['email']}), percent-encoded"),
         (C + "mail link is opened by clicking a temporary a element", "INTERACTION", "one click on an a element made for it and removed again, no other way of opening"),
         (C + "status line appears in .form-note", "INTERACTION", "the text of the form's data-sent attribute, visible in .form-note"),
@@ -1242,8 +1253,21 @@ def test_contact_form(env, vp):
             new = [u for u in requests[n0:] if not u.startswith(("mailto:", "data:", "blob:", "about:"))]
             return rec, page.evaluate(JS_FORM), new
 
-        def stopped(check, email, flag, word):
+        def in_words(check, f, which):
+            e = f.get("error")
+            want = e.get(which) if e else None
+            ok = bool(e) and bool(want) and e["shown"] and e["text"] == want and f["ariaInvalid"] == "true" \
+                and f["describedBy"] == "email-error" and f["focused"]
+            ck.put(check, ok, "no #email-error under the field" if not e else
+                   "; ".join([("message shown: %r" % e["text"]) if e["shown"] else "message not shown",
+                              "matches data-%s" % ("missing" if which == "missing" else "invalid") if e["text"] == want else "expected %r" % want,
+                              "aria-invalid=%s" % f["ariaInvalid"], "aria-describedby=%s" % f["describedBy"],
+                              "focus on #email" if f["focused"] else "the focus is elsewhere"]))
+
+        def stopped(check, email, flag, word, words_check=None, which=None):
             rec, f, _ = attempt(email, False)
+            if words_check:
+                in_words(words_check, f, which)
             mails = [c["href"] for c in rec["clicks"]] + [n["url"] for n in rec["navs"]] + rec["opens"]
             marked = bool(f["validity"]) and f["validity"][flag] and not f["novalidate"]
             ok = not mails and not f["note"] and marked
@@ -1255,8 +1279,17 @@ def test_contact_form(env, vp):
                               [f"#email not stopped by the browser (type={f['emailType']}, required={f['emailRequired']}, novalidate={f['novalidate']})"])),
                    owner=owner)
 
-        stopped(C + "empty email is stopped by the browser", "", "valueMissing", "missing")
-        stopped(C + "malformed email is stopped by the browser", "maria.rossi", "typeMismatch", "mistyped")
+        stopped(C + "empty email is stopped by the browser", "", "valueMissing", "missing", C + "empty email shows its message in words", "missing")
+        stopped(C + "malformed email is stopped by the browser", "maria.rossi", "typeMismatch", "mistyped",
+                C + "malformed email shows its message in words", "invalid")
+        # the address is corrected: the message goes as the visitor types
+        page.fill("#email", SENDER["email"])
+        page.wait_for_timeout(200)
+        f = page.evaluate(JS_FORM)
+        e = f.get("error") or {}
+        ck.put(C + "the message goes once the address is right", bool(f.get("error")) and not e.get("shown") and f["ariaInvalid"] is None,
+               "message hidden, no aria-invalid" if not e.get("shown") and f["ariaInvalid"] is None else
+               "message still shown (%r), aria-invalid=%s" % (e.get("text"), f["ariaInvalid"]))
 
         rec, f, new = attempt(SENDER["email"], True)
         evidence = shot(page, f"check_behavior-contact-sent-{vp}.png")
@@ -1458,8 +1491,11 @@ def test_nojs(env, slug):
     if slug == "gallery":
         plan += [(N + "gallery links point at the full-size images", "PAGES", "every .gallery a leads to images/NAME.jpg (the file exists) and its thumbnail is images/sm/NAME.jpg")]
     if slug == "contact":
-        plan += [(N + "contact form visible with action mailto", "PAGES", f"#contact-form and its fields are shown, action is {MAILTO}"),
-                 (N + "contact form posts as plain text", "PAGES", "method=post and enctype=text/plain, so a mail program gets readable text")]
+        plan += [(N + "contact form hidden, phone and email links shown", "DESIGN",
+                  f"#contact-form is not shown (it needs the script to open an email app), the sentence above it shows a link {TEL} and a link {MAILTO}"),
+                 (N + "contact form has no action", "PAGES",
+                  f"no action attribute (a mailto action makes browsers warn about an insecure form, decision 41), data-mailto is {MAILTO}"),
+                 (N + "map link shown", "PAGES", "the map stays empty without the script, the Open in Google Maps link under it is shown")]
     plan += [(N + "no broken request", "PAGES", "clean")]
     ck = Checks(slug, vp, plan)
 
@@ -1512,15 +1548,25 @@ def test_nojs(env, slug):
         if slug == "contact":
             f = page.evaluate(JS_FORM)
             if not f["form"]:
-                ck.put(N + "contact form visible with action mailto", False, "the page has no #contact-form")
-                ck.put(N + "contact form posts as plain text", False, "the page has no #contact-form")
+                ck.put(N + "contact form hidden, phone and email links shown", False, "the page has no #contact-form")
+                ck.put(N + "contact form has no action", False, "the page has no #contact-form")
             else:
-                parts = {s: page.evaluate(JS_VIS, [s, True]) for s in ("#contact-form", "#first-name", "#last-name", "#email", "#message", "#contact-form button[type=submit]")}
-                unseen = [s for s, v in parts.items() if not v or not (v[0]["rendered"] and v[0]["inX"] and v[0]["hit"])]
-                ck.put(N + "contact form visible with action mailto", not unseen and f["action"] == MAILTO,
-                       f"action={f['action']!r}" + ("" if not unseen else ", not visible: " + ", ".join(unseen)))
-                ck.put(N + "contact form posts as plain text", (f["method"] or "").lower() == "post" and (f["enctype"] or "").lower() == "text/plain",
-                       f"method={f['method']!r}, enctype={f['enctype']!r}")
+                form_vis = page.evaluate(JS_VIS, ["#contact-form", True])
+                tel = page.evaluate(JS_VIS, [f".contact-intro a[href='{TEL}']", True])
+                mail = page.evaluate(JS_VIS, [f".contact-intro a[href='{MAILTO}']", True])
+                seen = lambda v: bool(v) and v[0]["rendered"] and v[0]["inX"] and v[0]["hit"]
+                hidden = not any(v["rendered"] for v in form_vis)
+                ck.put(N + "contact form hidden, phone and email links shown", hidden and seen(tel) and seen(mail),
+                       "; ".join(["form hidden" if hidden else "the form is shown, but it cannot work without the script",
+                                  "phone link shown" if seen(tel) else "no visible phone link in .contact-intro",
+                                  "email link shown" if seen(mail) else "no visible email link in .contact-intro"]))
+                ck.put(N + "contact form has no action", f["action"] is None and f["mailto"] == MAILTO,
+                       f"action={f['action']!r}, data-mailto={f['mailto']!r}")
+            link = page.evaluate(JS_VIS, [".map-open a", True])
+            frame = page.evaluate("() => { const i = document.querySelector('.map iframe'); return i ? i.getAttribute('src') : 'no iframe'; }")
+            ck.put(N + "map link shown", bool(link) and link[0]["rendered"] and link[0]["inX"] and frame is None,
+                   "; ".join(["link shown" if link and link[0]["rendered"] else "no visible .map-open link",
+                              "the frame stays empty" if frame is None else "the frame has src=%r" % frame]))
 
     return run_test(env, ck, vp, body, clean_check=N + "no broken request", java_script_enabled=False)
 

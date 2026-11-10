@@ -56,11 +56,16 @@
     ],
     "required_mark": "*",
     "button": "Send",
-    "sent_message": "Thanks! Your email app should open so you can send the message."
+    "sent_message": "Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.",
+    "errors": {
+      "email_missing": "Please enter your email address, so I can reply.",
+      "email_invalid": "Please check your email address. It should look like name@example.com."
+    }
   },
   "map": {
     "title": "Map of Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310",
-    "query": "Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310"
+    "query": "Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310",
+    "open_label": "Open in Google Maps"
   },
   "notes": [
     "Title and description are new. The live Wix contact page has only the automatic title \"Contact | Hairbygerta\" and no meta description. The new title follows the Gallery page title (\"Gallery | Hair & Makeup by Gerta, Staten Island NY\"). The new description is the one from the first version of the site and uses only the business facts.",
@@ -73,7 +78,9 @@
     "The Social Media block has no text lines. It holds the two icon links. Their accessible names on the live page are Facebook and Instagram, and both open in a new tab. The social list has the same shape and the same values as social in content/site.json (name, href, label), so the generator can draw both with one helper.",
     "Form: the label of the email field is \"Email\" in the live page code, the field is required, and Wix draws a star after the label (it shows as \"Email *\"). So the label is stored as \"Email\" with required true, and required_mark holds the star as a separate, decorative mark. The first version wrote the star inside the label text.",
     "Form field ids are the ones fixed in section 7 of the contract (first-name, last-name, email, message). The autocomplete values are carried over from the first version.",
-    "sent_message is new text for the static site, taken from the script of the first version. The static form opens the visitor's email app instead of sending through Wix. The Wix success message was not captured.",
+    "sent_message is new text for the static site. The static form opens the visitor's email app instead of sending through Wix. The Wix success message was not captured. Until 9 November 2026 it read: Thanks! Your email app should open so you can send the message. Since then it also says what to do when no email app opens (on many computers there is none).",
+    "form.errors (9 November 2026): the two messages the script shows under the Email field when Send is pressed with no address or with an address that cannot be one. They are not visible text of the page until then, so they are written into the page as data attributes of that message line.",
+    "map.open_label (9 November 2026): the link under the map that opens the salon in Google Maps (the maps_href of content/site.json), so a phone can hand it to its map app for directions. Not on the Wix page, added on purpose. The map itself now loads only when the visitor scrolls near it, so a visitor who never does sends nothing to Google.",
     "map.title replaces the Wix frame title \"Google Maps\". The first version used \"Map to Le Vigne Hair Salon, 644 Forest Ave, Staten Island\".",
     "This page has no photo slots. The only images are the logo in the header and the icons.",
     "Typos fixed: none.",
