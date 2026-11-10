@@ -313,10 +313,11 @@ body.lightbox-open {
   }
 }
 
-/* Phones (760 px and below): a slightly taller button. No base rule changes at 1100 px. */
+/* Phones (760 px and below): a button 44 px tall, a full tap target. No base rule
+   changes at 1100 px. */
 @media (max-width: 760px) {
   .btn {
-    min-height: 40px;
+    min-height: 44px;
   }
 }
 
@@ -952,8 +953,20 @@ body.lightbox-open {
 }
 
 .site-title a {
+  position: relative;
   color: inherit;
   text-decoration: none;
+}
+
+/* A larger invisible tap area, 44 px tall, around the title link (its line is 30 px,
+   25 px on a phone). The text stays where it is. */
+.site-title a::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 0;
+  bottom: -10px;
+  left: 0;
 }
 
 /* ---------- Beige box ---------- */
