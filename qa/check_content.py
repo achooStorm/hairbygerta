@@ -34,7 +34,8 @@ What it checks on every page
                         the brief asks for are there, the last heading is Questions. Online booking was dropped on
                         2 November 2026, so the booking statement says that appointments are booked by phone and that
                         the website does not collect or store booking details, and the cookies statement names Google
-                        Maps on the Contact page and Google Fonts (no booking provider any more)
+                        Maps on the Contact page (no booking provider any more). Since 9 November 2026 the fonts are
+                        files of the site itself, so the page no longer names Google Fonts, and naming it is a failure
   wix-wording           (the nine pages that exist on Wix) title, meta description, main text, footer and navigation
                         compared sentence by sentence with the reference files in the tools folder (wix-ref/<slug>.txt).
                         One entry per sentence that differs. A difference is intended, and listed with ok true, only
@@ -846,7 +847,7 @@ class Rules:
             low = o.lower()
             if is_phone_booking(o):
                 return "privacy rule: appointments are booked by phone, online booking was dropped on 2 November 2026"
-            if is_no_database(o) or "google maps" in low or "google fonts" in low:
+            if is_no_database(o) or "google maps" in low:
                 return "privacy rule: one of the statements the brief asks for"
             if o == "Questions" and self.last_heading == "Questions":
                 return 'privacy rule: the last heading is "Questions"'
@@ -1459,7 +1460,7 @@ def is_phone_booking(s):
 
 def privacy_findings(rows):
     """rows: (kind, line) of main in reading order. -> the findings the three privacy checks need."""
-    found = {"wix": [], "wix_other": [], "database": [], "booking": [], "cookies": {}, "last_heading": None}
+    found = {"wix": [], "wix_other": [], "database": [], "booking": [], "cookies": {}, "google_fonts": [], "last_heading": None}
     lead = ""                                   # the last line that is not a list item: it introduces the list after it
     for kind, line in rows:
         if kind in HEADINGS:
@@ -1479,8 +1480,8 @@ def privacy_findings(rows):
         if "cookie" in context.lower():
             if "google maps" in low and "contact page" in low:
                 found["cookies"].setdefault("Google Maps on the Contact page", line)
-            if "google fonts" in low:
-                found["cookies"].setdefault("Google Fonts", line)
+        if "google fonts" in low:       # anywhere on the page, not only in the cookies list
+            found["google_fonts"].append(line)
     return found
 
 
@@ -1502,13 +1503,19 @@ def check_privacy(slug, ex, page):
         out.append(entry(slug, check, ok, expected, quote(on_page[key][0], 400) if on_page[key] else "no such sentence on the page",
                          where, owner(bool(in_content[key]))))
     # Since 2 November 2026 there is no online booking, so no booking provider is named here any more.
-    wanted = ("Google Maps on the Contact page", "Google Fonts")
+    # Since 9 November 2026 the fonts are files of the site itself (folder fonts), so Google Fonts is not named either:
+    # a sentence that still names it says something that is no longer true.
+    wanted = ("Google Maps on the Contact page",)
     lost = [w for w in wanted if w not in on_page["cookies"]]
     lost_content = [w for w in wanted if w not in in_content["cookies"]]
-    out.append(entry(slug, "privacy-statement-third-party-cookies", not lost and not lost_content,
-                     "the page says that Google Maps on the Contact page and Google Fonts may set their own cookies",
-                     " | ".join(quote(on_page["cookies"][w], 200) for w in wanted) if not lost else "not said about: " + ", ".join(lost),
-                     where, owner(not lost_content)))
+    stale, stale_content = on_page["google_fonts"], in_content["google_fonts"]
+    out.append(entry(slug, "privacy-statement-third-party-cookies", not lost and not lost_content and not stale and not stale_content,
+                     "the page says that Google Maps on the Contact page may set its own cookies, and it does not name Google Fonts "
+                     "(the fonts are files of the site itself)",
+                     ("not said about: " + ", ".join(lost)) if lost else
+                     ("Google Fonts is still named: " + " | ".join(quote(s, 200) for s in (stale or stale_content))) if (stale or stale_content) else
+                     " | ".join(quote(on_page["cookies"][w], 200) for w in wanted),
+                     where, owner(not lost_content and not stale_content)))
     ok = on_page["last_heading"] == "Questions" and in_content["last_heading"] == "Questions"
     out.append(entry(slug, "privacy-last-heading", ok, 'the last heading of the page is "Questions"',
                      quote(on_page["last_heading"] or "no heading"), where, owner(in_content["last_heading"] == "Questions")))

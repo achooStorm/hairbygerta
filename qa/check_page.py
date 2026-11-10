@@ -13,7 +13,8 @@ For each page and viewport it writes one entry per check into qa/reports/check_p
     console-errors      no console error and no uncaught script error
     requests            no failed request, no 4xx or 5xx answer, no call to an unexpected third party
     internal-links      every internal href, src and srcset entry answers 200 (a trailing-slash redirect is followed),
-                        the page links the stylesheet, the script and the three icons, fragment targets exist
+                        the page links the stylesheet, the script, the three icons and the two font files it preloads,
+                        fragment targets exist
     external-links      every external link is one of the links in FACTS (Facebook, Instagram, Maps link)
     tel-mailto          every tel and mailto link is exactly the salon phone and the salon email
     images-load         every image is complete with a natural width above 0 after the whole page was scrolled
@@ -59,7 +60,8 @@ ALLOWED_EXTERNAL = {FACEBOOK: "Facebook", INSTAGRAM: "Instagram", MAPS: "Maps li
 # Every host this site is or will be published on. An absolute address to one of them is an internal address.
 SITE_HOSTS = ("www.hairbygerta.com", "hairbygerta.com", "achoostorm.github.io")
 # Files every page must link (contract, section 6), given relative to the site root.
-REQUIRED_FILES = ("css/style.css", "js/site.js", "favicon.ico", "images/favicon.png", "images/apple-touch-icon.png")
+REQUIRED_FILES = ("css/style.css", "js/site.js", "favicon.ico", "images/favicon.png", "images/apple-touch-icon.png",
+                  "fonts/figtree-latin.woff2", "fonts/bodoni-moda-italic-latin.woff2")     # the two font preloads (decision 38)
 # Used only when image-manifest.json cannot be read from the site under test.
 PLACEHOLDER_NAMES = (
     "about-salon", "brunette-balayage", "copper-waves", "foils-highlights", "g01", "g02", "g04", "g05", "g06", "g07",

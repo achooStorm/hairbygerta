@@ -299,7 +299,8 @@ def connection_trouble(log, base):
 
 def put_clean(env, ck, check, log):
     """One entry for script errors and broken requests seen during a test.
-    Blocked requests to Google Fonts and Google Maps are expected: listed as evidence, not failures."""
+    Blocked requests to Google Maps are expected: listed as evidence, not failures. (The fonts are files of the site
+    itself since decision 38, so a request to Google Fonts would be a failure like any other unexpected host.)"""
     problems, owner = [], "PAGES"
     for text in log.get("pageerrors", []):
         problems.append("script error: " + one_line(text, 200))
@@ -1766,7 +1767,7 @@ def main():
         "script": "qa/check_behavior.py",
         "tested": {"pages": pages, "viewports": viewports},
         "blocked_as_planned": sorted(shared["blocked_expected"]),
-        "note": "Addresses are written from the site root. Blocked requests to Google Fonts and Google Maps are planned and are not failures."},
+        "note": "Addresses are written from the site root. Blocked requests to Google Maps are planned and are not failures."},
         replace=covered)
     if args.timing:
         for seconds, label in sorted(shared["timing"], reverse=True):

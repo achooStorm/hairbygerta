@@ -1,5 +1,5 @@
 /* Hair & Makeup by Gerta. The one stylesheet of the site.
-   Custom properties first, then the base rules, then one section per part of the site.
+   Custom properties first, then the fonts, the base rules and one section per part of the site.
    Breakpoints: 1100 px and 760 px. Desktop numbers were measured on the old site
    in a 1280 px window. */
 
@@ -45,6 +45,71 @@
 }
 
 /* ==========================================================================
+   05 Fonts
+   The two fonts of the site, loaded from the site's own folder fonts (tools/make_fonts.py
+   makes the files, fonts/fonts.json lists them). Nothing is fetched from a font server.
+   Each font comes as two files: latin holds the letters of English and of western
+   Europe, latin-ext the extra letters of other languages. A browser fetches a file only
+   for a page that shows one of its characters (unicode-range), so an English page
+   fetches the two latin files and nothing else. Every page asks for those two early
+   (the preload links in the head). With font-display: swap the text shows at once in
+   a fallback font and changes to the real font when the file has arrived.
+   One file draws every weight from regular (400) to bold (700), which is what
+   "font-weight: 400 700" says, so bold text needs no second file. Bodoni Moda is only
+   ever used slanted, Figtree upright.
+   The latin rule of a font stands last: three accents are in both files, and for a
+   character in two files the browser takes the last rule, the file it has anyway.
+   ========================================================================== */
+
+/* ---------- Figtree: the text font ---------- */
+
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/figtree-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/figtree-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* ---------- Bodoni Moda Italic: the serif of the headings ---------- */
+
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/bodoni-moda-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
+    U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/bodoni-moda-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
    10 Base
    Reset, document defaults, helpers, the skip link, the focus ring, the dark button,
    the shared page container, scroll locks, reduced motion.
@@ -70,7 +135,9 @@ html {
    it). Left to itself Bodoni Moda draws its thin strokes thinner the larger the text
    is, until they all but vanish in the large titles on an ordinary screen. Didot on
    the old site kept them visible at every size. One fixed optical size does the same
-   and changes the width of a line by less than 3 px. */
+   and changes the width of a line by less than 3 px.
+   The font file of the site has this size built in (tools/make_fonts.py), so the line
+   changes nothing today. It stays for the day the file is swapped for the full font. */
 body {
   margin: 0;
   background: var(--bg);

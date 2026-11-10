@@ -6,7 +6,7 @@ The shared agreement between the people (or agents) who work on this site: who o
 
 | Area | Owns |
 |---|---|
-| ASSETS | `images/`, `images/sm/`, `favicon.ico`, `image-manifest.json`, `tools/make_placeholders.py`, `tools/make_icons.py` |
+| ASSETS | `images/`, `images/sm/`, `favicon.ico`, `image-manifest.json`, `tools/make_placeholders.py`, `tools/make_icons.py`, `fonts/`, `tools/make_fonts.py` |
 | CONTENT | `content/*.json` |
 | DESIGN | `css/style.css` |
 | PAGES | `tools/build_pages.py`, `tools/pages/*.py`, every `index.html`, `404.html` (HTML is only ever produced by the generator, never edited by hand) |
@@ -33,7 +33,7 @@ No committed file may contain an absolute path from this computer. All paths ins
 | terms-conditions | `/terms-conditions/` | `content/terms-conditions.json` | `tools/pages/terms_conditions.py` | `terms-conditions/index.html` |
 | 404 | `/404.html` | `content/404.json` | `tools/pages/not_found.py` | `404.html` |
 
-Shared text (navigation, footer, business facts, social links, fonts link, Open Graph image) lives in `content/site.json`.
+Shared text (navigation, footer, business facts, social links, the font files to preload, Open Graph image) lives in `content/site.json`.
 
 ## 3. Content files (`content/*.json`)
 
@@ -74,7 +74,7 @@ Shared text (navigation, footer, business facts, social links, fonts link, Open 
 <html lang="en"> <head>  charset, viewport, title, meta description,
   [home only] the two search engine verification metas (google-site-verification, msvalidate.01), canonical (https://www.hairbygerta.com/…),
   og:type og:site_name og:title og:description og:url og:image (https://www.hairbygerta.com/images/g12.jpg),
-  favicon.ico, images/favicon.png, images/apple-touch-icon.png, the two font preconnects, the Google Fonts link (display=swap),
+  favicon.ico, images/favicon.png, images/apple-touch-icon.png, the two font preloads (fonts/figtree-latin.woff2 and fonts/bodoni-moda-italic-latin.woff2, as=font, crossorigin),
   css/style.css, <script>document.documentElement.classList.add("js")</script>, [home only] the JSON-LD script
 <body class="page-<slug>">
 <a class="skip" href="#main">Skip to main content</a>
@@ -175,3 +175,4 @@ One file, `css/style.css`, CSS variables in one `:root` block at the top, breakp
 35. **The 404 page** is noindex and carries no canonical link and no Open Graph tags.
 36. **Corrections to decision 30.** The 60 fingerprints are 53 restricted pictures, the two backup zip files, and 5 old copies of files made from the allowed logo, g12 and g13 (kept on purpose: any doubt means restricted). `.gitattributes` is a DEPLOY file: all text is stored and checked out with LF, pictures are binary.
 37. **QA suite.** Eight check families; the eighth, `qa/check_repo.py`, checks the folder itself (pages equal a fresh generator run, line endings, no local paths, no leftovers). The gallery photo area may be up to 20 percent taller than on Wix. The fourth gallery column starts at 1600 px without a media rule.
+38. **The fonts are files of the site (9 November 2026).** Bodoni Moda Italic and Figtree, the same two fonts as before, now come from the folder `fonts/` and no longer from Google Fonts. Each font is two WOFF2 files (latin and latin-ext, as Google cuts them), made by `tools/make_fonts.py` from github.com/google/fonts and listed with their SHA-256 in `fonts/fonts.json`, next to the two license texts. The Bodoni file has the optical size 14 built in and keeps weights 400 to 700; the letters are drawn exactly as before. The section "05 Fonts" of `css/style.css` holds one `@font-face` rule per file (`font-weight: 400 700`, `font-display: swap`, the `unicode-range` of fonts.json). Every page preloads the two latin files. What this changes: no page and no stylesheet asks a font server for anything (`qa/check_repo.py`, font-preload, fonts-folder, font-face-rules), the Privacy Policy no longer names Google Fonts (`qa/check_content.py`), the QA network rule lets no font host through any more (`qa/common.py`, `FONT_HOSTS` is empty), and `content/site.json` has `font_preloads` in place of `fonts_href`.

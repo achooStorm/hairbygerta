@@ -5,8 +5,16 @@
                         outside the site folder; nothing in the site folder is written.
   generator-runs        the generator ends without an error, prints no WARNING and wants no change of
                         image-manifest.json
-  font-preconnect       (one entry per page) the two preconnect links for Google Fonts stand in the head,
-                        before the fonts stylesheet (build contract, section 6)
+  font-preload          (one entry per page) the head asks for the two font files of the site early: one preload link
+                        each for fonts/figtree-latin.woff2 and fonts/bodoni-moda-italic-latin.woff2 (as="font",
+                        type="font/woff2", crossorigin), before the stylesheet, and both files exist. No link of the
+                        page leads to Google Fonts any more (build contract, section 6 and decision 38)
+  fonts-folder          the folder fonts holds exactly the files fonts/fonts.json lists, each font file with the
+                        SHA-256 recorded there, and the two license texts
+  font-face-rules       css/style.css gives every font file of fonts.json an @font-face rule, and the rules cover
+                        Figtree upright 400 and 700 and Bodoni Moda italic 400 and 700 (a rule names one weight or a
+                        range), each with font-display: swap and the characters (unicode-range) fonts.json records,
+                        names no font file that is not there, and no stylesheet or page asks another server for a font
   line-endings          every text file is UTF-8 without a byte order mark and has LF line endings
   no-absolute-path      no file names a folder of this computer (home folder, the folders next to the site folder,
                         the temporary folder, the Python folder), with either kind of slash
@@ -84,7 +92,8 @@ def owner_of(rel):
         return owner_of("/".join([p for p in parts[:-1] if p != "__pycache__"] + [source]))
     if parts[0] == "qa":
         return "QA"
-    if parts[0] == "images" or rel in ("favicon.ico", "image-manifest.json", "tools/make_placeholders.py", "tools/make_icons.py"):
+    if parts[0] in ("images", "fonts") or rel in ("favicon.ico", "image-manifest.json", "tools/make_placeholders.py", "tools/make_icons.py",
+                                                  "tools/make_fonts.py"):
         return "ASSETS"
     if parts[0] == "content":
         return "CONTENT"
@@ -230,7 +239,16 @@ def check_generator(site, env_dir, slugs):
     return results
 
 
-# ---------------------------------------------------------------- one page: preconnect
+# ---------------------------------------------------------------- fonts: the links of a page, the folder, the rules
+
+# Since 9 November 2026 the fonts are files of the site itself (build contract, decision 38). Until then every page
+# linked a Google Fonts stylesheet behind two preconnect links, and this script checked those.
+FONT_LIST = "fonts/fonts.json"
+FONT_PRELOADS = ("fonts/figtree-latin.woff2", "fonts/bodoni-moda-italic-latin.woff2")     # the two files an English page needs
+FONT_SERVERS = ("fonts.googleapis.com", "fonts.gstatic.com")                                # no page and no stylesheet may ask them
+FONT_FACES = (("Figtree", "normal", 400), ("Figtree", "normal", 700), ("Bodoni Moda", "italic", 400), ("Bodoni Moda", "italic", 700))
+STYLESHEET = "css/style.css"
+
 
 class Head(html.parser.HTMLParser):
     def __init__(self):
@@ -248,31 +266,156 @@ class Head(html.parser.HTMLParser):
             self.in_head = False
 
 
-def check_preconnect(site, slug):
+def check_font_preload(site, slug):
     rel = page_file(slug)
-    expected = ('in the head, before the fonts stylesheet: <link rel="preconnect" href="https://fonts.googleapis.com"> and '
-                '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
+    expected = ('in the head, before the stylesheet: <link rel="preload" href=".../%s" as="font" type="font/woff2" crossorigin> and the same '
+                'for %s; both files exist; no link to Google Fonts' % FONT_PRELOADS)
     data = read(site, rel)
     if data is None:
-        return entry(slug, "font-preconnect", False, expected, rel + " is missing", rel, "PAGES")
+        return entry(slug, "font-preload", False, expected, rel + " is missing", rel, "PAGES")
+    text = data.decode("utf-8", "replace")
     head = Head()
-    head.feed(data.decode("utf-8", "replace"))
+    head.feed(text)
     rels = lambda l: l.get("rel", "").lower().split()
-    host = lambda l: l.get("href", "").rstrip("/").lower()
-    where = lambda h, need_cross: next((i for i, l in enumerate(head.links) if "preconnect" in rels(l) and host(l) == h and (not need_cross or "crossorigin" in l)), None)
-    api, static = where("https://fonts.googleapis.com", False), where("https://fonts.gstatic.com", True)
-    sheet = next((i for i, l in enumerate(head.links) if "stylesheet" in rels(l) and "fonts.googleapis.com/css" in l.get("href", "")), None)
+    up = "../" * rel.count("/")                 # from the page to the top of the site
+    sheet = next((i for i, l in enumerate(head.links) if "stylesheet" in rels(l)), None)
     problems = []
-    if api is None:
-        problems.append("no preconnect to https://fonts.googleapis.com")
-    if static is None:
-        loose = any("preconnect" in rels(l) and host(l) == "https://fonts.gstatic.com" for l in head.links)
-        problems.append("the preconnect to https://fonts.gstatic.com has no crossorigin attribute" if loose else "no preconnect to https://fonts.gstatic.com")
+    for font in FONT_PRELOADS:
+        at = next((i for i, l in enumerate(head.links) if "preload" in rels(l) and l.get("href", "") == up + font), None)
+        if at is None:
+            problems.append("no preload link for %s" % font)
+            continue
+        link = head.links[at]
+        if link.get("as", "").lower() != "font":
+            problems.append('the preload link for %s has no as="font"' % font)
+        if link.get("type", "").lower() != "font/woff2":
+            problems.append('the preload link for %s has no type="font/woff2"' % font)
+        if "crossorigin" not in link:
+            problems.append("the preload link for %s has no crossorigin attribute (the browser would fetch the file twice)" % font)
+        if sheet is not None and at > sheet:
+            problems.append("the preload link for %s stands after the stylesheet, where it no longer helps" % font)
+        if not os.path.isfile(os.path.join(site, *font.split("/"))):
+            problems.append("%s is not in the site folder" % font)
     if sheet is None:
-        problems.append("no Google Fonts stylesheet link")
-    elif any(i is not None and i > sheet for i in (api, static)):
-        problems.append("a preconnect link stands after the fonts stylesheet, where it no longer helps")
-    return entry(slug, "font-preconnect", not problems, expected, "; ".join(problems) if problems else "both there, before the fonts stylesheet", rel, "PAGES")
+        problems.append("no stylesheet link")
+    low = text.lower()
+    problems += ["the page still names %s" % host for host in FONT_SERVERS if host in low]
+    return entry(slug, "font-preload", not problems, expected, "; ".join(problems) if problems else "both there, before the stylesheet", rel, "PAGES")
+
+
+def read_font_list(site):
+    """fonts/fonts.json -> (document, problem text)."""
+    raw = read(site, FONT_LIST)
+    if raw is None:
+        return None, "%s is missing" % FONT_LIST
+    try:
+        doc = json.loads(raw.decode("utf-8"))
+    except Exception as e:
+        return None, "%s is not valid JSON (%s)" % (FONT_LIST, short(e, 80))
+    if not isinstance(doc, dict) or not isinstance(doc.get("fonts"), list) or not doc["fonts"]:
+        return None, "%s lists no fonts" % FONT_LIST
+    return doc, None
+
+
+def check_fonts_folder(site):
+    """The folder fonts against fonts/fonts.json (the same comparison tools/make_fonts.py --check makes)."""
+    expected = ("fonts/ holds exactly the files %s lists: each font file is WOFF2 and has the SHA-256 recorded there, "
+                "and the license text of each font is there" % FONT_LIST)
+    doc, problem = read_font_list(site)
+    if problem:
+        return entry(SITE_PAGE, "fonts-folder", False, expected, problem, FONT_LIST, "ASSETS")
+    import hashlib
+    problems, listed = [], {FONT_LIST}
+    for record in doc["fonts"]:
+        rel = record.get("file") if isinstance(record, dict) else None
+        if not isinstance(rel, str) or not rel.startswith("fonts/") or ".." in rel:
+            problems.append("an entry names no file inside fonts/")
+            continue
+        listed.add(rel)
+        data = read(site, rel)
+        if data is None:
+            problems.append("%s is listed but is not there" % rel)
+        elif hashlib.sha256(data).hexdigest() != str(record.get("sha256", "")).lower():
+            problems.append("%s is not the file the list describes (other SHA-256): run tools/make_fonts.py again, or put the file back" % rel)
+        elif data[:4] != b"wOF2":
+            problems.append("%s is not a WOFF2 file" % rel)
+    licenses = [l for l in doc.get("license_files") or [] if isinstance(l, str)]
+    if not licenses:
+        problems.append("%s names no license text" % FONT_LIST)
+    for rel in licenses:
+        listed.add(rel)
+        data = read(site, rel)
+        if data is None:
+            problems.append("the license text %s is not there" % rel)
+        elif b"SIL OPEN FONT LICENSE" not in data.upper():
+            problems.append("%s is not the text of the SIL Open Font License" % rel)
+    folder = os.path.join(site, "fonts")
+    for name in sorted(os.listdir(folder)) if os.path.isdir(folder) else []:
+        if "fonts/" + name not in listed:
+            problems.append("fonts/%s is in the folder but not in the list" % name)
+    return entry(SITE_PAGE, "fonts-folder", not problems, expected,
+                 "; ".join(problems) if problems else "%s and %s, all as listed" % (plural(len(doc["fonts"]), "font file"), plural(len(licenses), "license text")),
+                 "fonts/, %s" % FONT_LIST, "ASSETS")
+
+
+_FACE = re.compile(r"@font-face\s*\{([^}]*)\}", re.S)
+_DECL = re.compile(r"([a-z-]+)\s*:\s*([^;]+);")
+_URL = re.compile(r"url\(\s*[\"']?([^\"')]+)[\"']?\s*\)")
+_COMMENT = re.compile(r"/\*.*?\*/", re.S)
+
+
+def font_ranges(text):
+    """A unicode-range value as a set of its parts, so spaces and line breaks do not count."""
+    return {part.strip().upper() for part in str(text).split(",") if part.strip()}
+
+
+def check_font_faces(site):
+    """The @font-face rules of the stylesheet against fonts/fonts.json."""
+    expected = ("%s has an @font-face rule for every font file, and the rules cover %s; each has font-display: swap, a file of fonts/ that %s lists and "
+                "the unicode-range recorded there; nothing asks another server for a font"
+                % (STYLESHEET, ", ".join("%s %s %d" % f for f in FONT_FACES), FONT_LIST))
+    doc, problem = read_font_list(site)
+    raw = read(site, STYLESHEET)
+    if problem or raw is None:
+        return entry(SITE_PAGE, "font-face-rules", False, expected, problem or STYLESHEET + " is missing", STYLESHEET, "DESIGN")
+    css = _COMMENT.sub("", raw.decode("utf-8", "replace"))
+    records = {r["file"]: r for r in doc["fonts"] if isinstance(r, dict) and isinstance(r.get("file"), str)}
+    problems, seen, used = [], set(), set()
+    for body in _FACE.findall(css):
+        decl = {name.lower(): value.strip() for name, value in _DECL.findall(body)}
+        family = decl.get("font-family", "").strip("\"' ")
+        style = decl.get("font-style", "normal").lower()
+        weight = decl.get("font-weight", "400")
+        what = "the rule %s %s %s" % (family, style, weight)
+        urls = _URL.findall(decl.get("src", ""))
+        if len(urls) != 1:
+            problems.append("%s names %d files, expected one" % (what, len(urls)))
+            continue
+        if re.match(r"(?:[a-z][a-z0-9+.-]*:)?//", urls[0], re.I):
+            problems.append("%s fetches its font from another server (%s)" % (what, short(urls[0], 80)))
+            continue
+        rel = os.path.normpath(os.path.join(os.path.dirname(STYLESHEET), urls[0])).replace(os.sep, "/")
+        record = records.get(rel)
+        if record is None:
+            problems.append("%s names %s, which %s does not list" % (what, rel, FONT_LIST))
+            continue
+        used.add(rel)
+        if decl.get("font-display", "").lower() != "swap":
+            problems.append("%s (%s) has no font-display: swap" % (what, rel))
+        if (family, style) != (record.get("family"), record.get("style")):
+            problems.append("%s names %s, which is %s %s" % (what, rel, record.get("family"), record.get("style")))
+        if font_ranges(decl.get("unicode-range", "")) != font_ranges(record.get("unicode_range", "")):
+            problems.append("%s (%s): the unicode-range is not the one %s records" % (what, rel, FONT_LIST))
+        marks = [int(x) for x in weight.split() if x.isdigit()]          # one weight ("400") or a range ("400 700")
+        if record.get("characters") == "latin" and marks:
+            seen.update((family, style, w) for _f, _s, w in FONT_FACES if min(marks) <= w <= max(marks))
+    problems += ["no @font-face rule for %s %s %d with the latin file" % face for face in FONT_FACES if face not in seen]
+    problems += ["%s is listed in %s but no @font-face rule uses it" % (rel, FONT_LIST) for rel in sorted(set(records) - used)]
+    if re.search(r"@import", css, re.I):
+        problems.append("the stylesheet imports another stylesheet")
+    problems += ["the stylesheet names %s" % host for host in FONT_SERVERS if host in css.lower()]
+    return entry(SITE_PAGE, "font-face-rules", not problems, expected,
+                 "; ".join(problems) if problems else "%s, all in order" % plural(len(_FACE.findall(css)), "rule"), STYLESHEET, "DESIGN")
 
 
 # ---------------------------------------------------------------- the folder
@@ -430,7 +573,8 @@ def main(argv=None):
     site = os.path.abspath(args.root) if args.root else common.SITE
     started = time.time()
     results = []
-    for step in (lambda: check_generator(site, common.ENV, slugs), lambda: [check_preconnect(site, s) for s in slugs], lambda: check_folder(site, common.ENV)):
+    for step in (lambda: check_generator(site, common.ENV, slugs), lambda: [check_font_preload(site, s) for s in slugs], lambda: [check_fonts_folder(site), check_font_faces(site)],
+                 lambda: check_folder(site, common.ENV)):
         try:
             results += step()
         except Exception as e:      # a check that breaks is a failed check of this script, never a crash without a report

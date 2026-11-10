@@ -77,8 +77,10 @@ The brief's measurement list (entries whose check name starts with "brief-")
 Reported with ok true
   font metrics   width of text and height of wrapped text (Bodoni Moda and Figtree are not Didot and Proxima Nova)
   intended       placeholders instead of photos, the extra Hours block on the contact page, the closing booking
-                 note, the copyright line, the phone photo row (a 2 x 2 grid where Wix hides the row), the Wix
-                 chat button, underlined links inside a sentence (decision 18), the centred beige box
+                 note, on the Privacy Policy what stands under a sentence about Wix that our page leaves out on
+                 purpose (it sits higher than on Wix, because our text there is shorter), the copyright line,
+                 the phone photo row (a 2 x 2 grid where Wix hides the row), the Wix chat button, underlined
+                 links inside a sentence (decision 18), the centred beige box
                  (decision 4), an empty stretch of 300 px or more that only the Wix page has above its footer
   intended x     desktop, the horizontal place alone (size, font and vertical place are compared as everywhere):
                  home (decision 21): site title, welcome paragraph, dotted rule, Book Online button and address
@@ -103,7 +105,7 @@ Output
 Exit code 0 when nothing counts as a difference, 1 otherwise.
 """
 import concurrent.futures, difflib, itertools, json, math, os, re, subprocess, sys, time, unicodedata
-from urllib.parse import parse_qsl, urlsplit
+from urllib.parse import urlsplit
 
 sys.dont_write_bytecode = True   # no __pycache__ in the site folder (a compiled file carries the path of this computer)
 import common  # noqa: E402
@@ -120,6 +122,8 @@ DESKTOP_WIDTHS = (1265, 1280, 1440, 1920)
 MIN_DESKTOP = 1101              # below this our stylesheet and the Wix page switch to another layout
 TOL = {"desktop": 2.0, "phone": 4.0}    # lengths. On the phone places and sizes are only listed, from this size on.
 TYPE_TOL = 2.0                  # line height and corner radius
+PRIVACY_SLUG = "english-privacy-policy"
+WIX_WORD = re.compile(r"\bwix\b", re.I)     # a sentence that names Wix (see the privacy rule of qa/check_content.py)
 FONT_TOL = 0.5                  # font size
 SPACING_TOL = 0.3               # letter spacing, and never less than SPACING_EM of the font size
 SPACING_EM = 0.03
@@ -374,7 +378,16 @@ BRIEF_JS = """async (spec) => {
   const bodyS = getComputedStyle(document.body), htmlS = getComputedStyle(document.documentElement);
   out.bodyBg = bodyS.backgroundColor; out.htmlBg = htmlS.backgroundColor; out.bodyFamily = bodyS.fontFamily;
   out.serifFamilies = [...new Set([...document.querySelectorAll('.serif')].filter(vis).map(e => { const t = main(e); return getComputedStyle(t ? t.parentElement : e).fontFamily; }))];
-  out.fontLinks = [...document.querySelectorAll('link[rel~="stylesheet"]')].map(l => l.getAttribute('href') || '').filter(h => h.indexOf('fonts.googleapis.com') >= 0);
+  // fonts: a link that still leads to Google Fonts (there must be none), and the @font-face rules the page really has
+  out.fontLinks = [...document.querySelectorAll('link')].map(l => l.getAttribute('href') || '').filter(h => /fonts\\.(googleapis|gstatic)\\.com/.test(h));
+  out.fontFaces = [];
+  for (const sh of document.styleSheets) { let rules = null; try { rules = sh.cssRules; } catch (err) { continue; }
+    for (const r of rules) { if (!(r instanceof CSSFontFaceRule)) continue;
+      const st = r.style, found = /url\\(\\s*["']?([^"')]+)/.exec(st.getPropertyValue('src') || ''); let abs = '';
+      try { abs = found ? new URL(found[1], sh.href || location.href).href : ''; } catch (err) { abs = ''; }
+      out.fontFaces.push({family: (st.getPropertyValue('font-family') || '').replace(/["']/g, '').trim(), style: (st.getPropertyValue('font-style') || 'normal').trim(),
+        weight: (st.getPropertyValue('font-weight') || '400').trim(), display: (st.getPropertyValue('font-display') || '').trim(), src: abs,
+        own: abs.indexOf(location.origin + '/') === 0 && abs.indexOf('/fonts/') > 0}); } }
   // the breakpoints of our own stylesheet, as the browser read them
   out.media = []; out.sheet = false;
   const walk = rules => { for (const r of rules) { if (r.media && r.cssRules) out.media.push(r.media.mediaText); if (r.cssRules) walk(r.cssRules); } };
@@ -1053,6 +1066,12 @@ class Compare:
             if len(w["key"]) >= 3 and w["key"] in self.ours_text:
                 self.counts["text_part_wix"] = self.counts.get("text_part_wix", 0) + 1
                 continue            # our page has this text inside a longer text node
+            if self.slug == PRIVACY_SLUG and WIX_WORD.search(w["text"]):
+                # The Privacy Policy carries no sentence that names Wix (the privacy rule of qa/check_content.py). Where
+                # Wix has such a sentence our page has a shorter text or none: under "Cookies may be set by:" Wix lists
+                # two items on three lines, our page one item on one line (the booking provider went on 2 November 2026,
+                # Google Fonts on 9 November 2026, decision 38). So what stands under it sits higher than on Wix.
+                self.blocks_wix.append((w["y"], w["y"] + w["h"], "a sentence about Wix that our Privacy Policy leaves out on purpose ('%s')" % short(w["text"], 44)))
             self.unpaired.append({"side": "wix", "text": short(w["text"], 80), "x": round(w["x"], 1), "y": round(w["y"], 1), "where": "%s in %s" % (w["tag"], w["region"])})
         text_pairs = [p for p in self.pairs if p["k"] == "text"]
 
@@ -1810,42 +1829,20 @@ def is_underlined(item):
     return any(visible_edge((item.get(which) or {}).get(side)) for which in ("before", "after") for side in ("top", "bottom"))
 
 
-def font_faces(href):
-    """A Google Fonts address -> ({family: [(italic, lowest weight, highest weight)]}, value of display)."""
-    parts = urlsplit(str(href).replace("&amp;", "&"))
-    families, display = {}, ""
-    for key, value in parse_qsl(parts.query, keep_blank_values=True):
-        if key == "display":
-            display = value
-        if key != "family":
+def face_rules(faces, family, italic, wght):
+    """The @font-face rules of the page (fontFaces of the measurement) that draw this family, slant and weight.
+    A rule names one weight ("400") or a range ("400 700")."""
+    out = []
+    for f in faces or []:
+        if f.get("family") != family or (str(f.get("style", "")).split()[:1] == ["italic"]) != italic:
             continue
-        for one in (value.split("|") if parts.path.rstrip("/").endswith("/css") else [value]):
-            name, _, spec = one.partition(":")
-            faces = []
-            if not spec:
-                faces.append((False, 400.0, 400.0))
-            elif "@" in spec:                   # css2: Bodoni Moda:ital,wght@1,400;1,700
-                axes, _, tuples = spec.partition("@")
-                axes = [a.strip() for a in axes.split(",")]
-                for tup in tuples.split(";"):
-                    vals = dict(zip(axes, [v.strip() for v in tup.split(",")]))
-                    lo, _, hi = vals.get("wght", "400").partition("..")
-                    try:
-                        lo, hi = float(lo), float(hi or lo)
-                    except ValueError:
-                        continue
-                    ital = vals.get("ital", "0")
-                    for italic in ((False, True) if ".." in ital else (ital == "1",)):
-                        faces.append((italic, lo, hi))
-            else:                               # the older form: Bodoni Moda:400i,700i
-                for m in re.finditer(r"(\d{3})\s*(i|italic)?", spec):
-                    faces.append((bool(m.group(2)), float(m.group(1)), float(m.group(1))))
-            families[name.strip()] = families.get(name.strip(), []) + faces
-    return families, display
-
-
-def has_face(faces, italic, wght):
-    return any(i == italic and lo <= wght <= hi for i, lo, hi in faces or [])
+        try:
+            marks = [float(x) for x in str(f.get("weight", "400")).replace("normal", "400").replace("bold", "700").split()]
+        except ValueError:
+            continue
+        if marks and min(marks) <= wght <= max(marks):
+            out.append(f)
+    return out
 
 
 class BriefLine:
@@ -2054,25 +2051,25 @@ def brief_checks(slug, view, m):
         if g:
             b.px("column %d starts at x" % (n + 1), (g[0].get("letters") or {}).get("x"), want)
 
-    b = line("fonts", "Fonts: Google Fonts Bodoni Moda (italic 400 and 700) and Figtree (400 and 700), loaded with display=swap", ())
-    b.where = "the Google Fonts link in the head, body, .serif"
-    hrefs = m.get("fontLinks") or []
-    if not hrefs:
-        b.owner = "PAGES"
-        b.add("Google Fonts link", "a stylesheet link to fonts.googleapis.com", "none in the page", False)
-    else:
-        families, display = {}, ""
-        for href in hrefs:
-            fam, disp = font_faces(href)
-            display = display or disp
-            for k, v in fam.items():
-                families[k] = families.get(k, []) + v
-        link_ok = [b.add("display", "swap", display or "not set", display == "swap")]
-        for fam, italic, wght in ((SERIF, True, 400), (SERIF, True, 700), (SANS, False, 400), (SANS, False, 700)):
-            have = has_face(families.get(fam), italic, wght)
-            link_ok.append(b.add("%s %s%d" % (fam, "italic " if italic else "", wght), "in the link", "in the link" if have else "not in the link (%s)" % short(hrefs[0], 120), have))
-        if not all(link_ok):
-            b.owner = "PAGES"
+    # The brief asked for Google Fonts. Since 9 November 2026 the same two fonts are files of the site itself (build
+    # contract, decision 38): the page must have an @font-face rule for each of the four faces, each with font-display
+    # swap and a file of the site's own folder fonts, and no link to Google Fonts.
+    b = line("fonts", "Fonts: Bodoni Moda (italic 400 and 700) and Figtree (400 and 700), loaded with font-display swap from the "
+                      "site's own folder fonts (the brief named Google Fonts, decision 38 moved the files into the site)", ())
+    b.where = "the @font-face rules of css/style.css, body, .serif"
+    faces, old_links = m.get("fontFaces") or [], m.get("fontLinks") or []
+    rules_ok = [b.add("link to Google Fonts", "none", ", ".join(short(h, 80) for h in old_links) or "none", not old_links)]
+    for fam, italic, wght in ((SERIF, True, 400), (SERIF, True, 700), (SANS, False, 400), (SANS, False, 700)):
+        what = "%s %s%d" % (fam, "italic " if italic else "", wght)
+        mine = face_rules(faces, fam, italic, wght)
+        rules_ok.append(b.add(what, "an @font-face rule", "%d rules" % len(mine) if mine else "no such rule", bool(mine)))
+        if mine:
+            shown = sorted({f.get("display") or "not set" for f in mine})
+            rules_ok.append(b.add(what + " display", "swap", ", ".join(shown), shown == ["swap"]))
+            away = sorted({f.get("src") or "no file" for f in mine if not f.get("own")})
+            rules_ok.append(b.add(what + " file", "a file of the site's own folder fonts", ", ".join(short(a, 80) for a in away) or "own files", not away))
+    if not all(rules_ok):
+        b.owner = "DESIGN"
     b.add("body text font", SANS, first_family(m.get("bodyFamily")), first_family(m.get("bodyFamily")) == SANS)
     serifs = sorted({first_family(f) for f in m.get("serifFamilies") or []})
     if serifs:
@@ -2372,7 +2369,7 @@ def open_page(ctx, base, slug):
     for f in log.get("failed", []):
         url, error = str(f.get("url", "")), str(f.get("error"))
         own = url.startswith(base) and (status == -1 or any(t in error for t in TRANSIENT))
-        font = (urlsplit(url).hostname or "") in common.FONT_HOSTS and url not in blocked      # Google Fonts did not answer
+        font = (urlsplit(url).hostname or "") in common.FONT_HOSTS and url not in blocked      # no host is a font host any more (decision 38)
         if own or font:
             lost.append(f)
     return page, log, status, lost
@@ -2470,7 +2467,7 @@ def compare_page(ctx, base, slug, view, want_images, shared):
         out += brief_checks(slug, view, brief)
         if view.kind == "desktop":
             shared.setdefault("brief", brief)
-    # requests: only the site's own host and Google Fonts are let through
+    # requests: only the site's own host is let through (the fonts are its own files, decision 38)
     blocked = log.get("blocked", [])
     bad = common.unexpected_blocked(log)
     here = lambda u: str(u)[len(base):] if str(u).startswith(base) else str(u)
@@ -2478,11 +2475,11 @@ def compare_page(ctx, base, slug, view, want_images, shared):
     bad += ["%s (failed: %s)" % (here(f["url"]), f["error"]) for f in log.get("failed", []) if f["url"] not in blocked and not common.is_expected_external(f["url"])]
     bad += ["%s (status %s)" % (here(b["url"]), b["status"]) for b in log.get("bad_status", []) if not common.is_expected_external(b["url"])]
     expected_blocked = sorted({u.split("?")[0] for u in blocked if common.is_expected_external(u)})
-    out.append(entry(slug, vp, "requests", not bad, "every file of the page loads from the site itself (Google Fonts allowed, Google Maps blocked on purpose)",
+    out.append(entry(slug, vp, "requests", not bad, "every file of the page loads from the site itself, the fonts too (Google Maps blocked on purpose)",
                      "%d requests failed or went to an unexpected host: %s" % (len(bad), "; ".join(short(b, 160) for b in bad[:6])) if bad else "all loaded",
                      ("blocked on purpose: " + ", ".join(short(u, 90) for u in expected_blocked[:4])) if expected_blocked else "nothing blocked", "PAGES", kind="requests", diff=0.0))
     missing = [f for f in (SANS, SERIF) if f not in fonts]
-    if missing:         # Google Fonts answered (else the page was not compared at all), so the page does not ask for them
+    if missing:         # the font files are the site's own, so a font that is not loaded is one the page does not ask for
         out.append(entry(slug, vp, "web fonts loaded", False, "Bodoni Moda and Figtree are loaded before measuring", "not loaded: %s" % ", ".join(missing),
                          "document.fonts after document.fonts.ready; without them every text is measured in a fallback font", "PAGES", kind="error", diff=0.0))
     if undrawn:         # the picture would show empty tiles that the page itself does not have

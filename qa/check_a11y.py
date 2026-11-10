@@ -9,7 +9,8 @@ Run it with the Python of the tools folder (it has Playwright):
 What it does
   Opens every page at both viewports, brings it into each state below, injects axe-core (common.AXE_JS)
   and runs the rules tagged wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa and best-practice.
-  Google Fonts are let through, and the script waits for them, so contrast and text size are judged on the real fonts.
+  The web fonts are files of the site itself (build contract, decision 38). The script waits for them, so contrast and
+  text size are judged on the real fonts.
 
 States
   base           every page, desktop and phone
@@ -81,7 +82,7 @@ STATE_TEXT = {
     "form-sent": "contact form after a valid message was sent",
 }
 NOT_ANALYSED = [
-    "The Google map frame on the contact page. The network rule blocks every host except the site's own and Google Fonts, "
+    "The Google map frame on the contact page. The network rule blocks every host except the site's own, "
     "so the map never loads and axe runs with iframes off. The iframe element itself (for example its title) is still checked.",
     "What axe-core cannot decide by itself. It is listed as needs_review in each axe:<state> entry, needs a human look and is not a failure.",
     "The browser's own message bubble on the blocked contact form. The browser draws it, not the page.",
@@ -508,7 +509,7 @@ def classify(log, main_url, main_failed):
             continue  # stopped by the network rule (listed above), or not a web request at all (a mail link)
         item = {"url": url, "error": error}
         if (urlsplit(url).hostname or "") in common.FONT_HOSTS:
-            out["font_failed"].append(item)  # no way to Google Fonts from here: a network matter, not a site defect
+            out["font_failed"].append(item)  # a font host that did not answer. There is none any more (decision 38), so this stays empty
         elif "ERR_ABORTED" in error:
             out["cancelled"].append(item)  # the page itself dropped the request, nothing is missing
         elif item not in out["failed"]:

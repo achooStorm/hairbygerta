@@ -1,0 +1,68 @@
+{
+  "what": "The web font files of the site. Written by tools/make_fonts.py, do not edit by hand.",
+  "license": "SIL Open Font License 1.1, the text of each font is in the files named under license_files",
+  "license_files": [
+    "fonts/OFL-Figtree.txt",
+    "fonts/OFL-BodoniModa.txt"
+  ],
+  "source_repository": "https://github.com/google/fonts",
+  "source_commit": "5bb28733cec313b63fbd415b574b5ae35c8aa8b8",
+  "fonts": [
+    {
+      "file": "fonts/figtree-latin.woff2",
+      "family": "Figtree",
+      "style": "normal",
+      "weights": "300 to 900",
+      "characters": "latin",
+      "unicode_range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+      "fixed": "nothing",
+      "source": "ofl/figtree/Figtree[wght].ttf",
+      "source_version": "Version 2.002",
+      "source_sha256": "26ad3db9b31ff7dde67a91ff515d022d2f495cd506590699cf264f0bfe6fb714",
+      "bytes": 20688,
+      "sha256": "36684357cabb5c38142281560d6e228b0056ac3be0ad0a26735bc1666f2393a0"
+    },
+    {
+      "file": "fonts/figtree-latin-ext.woff2",
+      "family": "Figtree",
+      "style": "normal",
+      "weights": "300 to 900",
+      "characters": "latin-ext",
+      "unicode_range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF",
+      "fixed": "nothing",
+      "source": "ofl/figtree/Figtree[wght].ttf",
+      "source_version": "Version 2.002",
+      "source_sha256": "26ad3db9b31ff7dde67a91ff515d022d2f495cd506590699cf264f0bfe6fb714",
+      "bytes": 10144,
+      "sha256": "f88a75c28cfed51e92bf41b8e24524ac992781da600e884a25a2e3d4b3bc3a1d"
+    },
+    {
+      "file": "fonts/bodoni-moda-italic-latin.woff2",
+      "family": "Bodoni Moda",
+      "style": "italic",
+      "weights": "400 to 700",
+      "characters": "latin",
+      "unicode_range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+      "fixed": "optical size 14",
+      "source": "ofl/bodonimoda/BodoniModa-Italic[opsz,wght].ttf",
+      "source_version": "Version 2.005",
+      "source_sha256": "dfff1619f8f6871c6372f8855b67211f9a73b4e93d45aca868cd8f46a48622de",
+      "bytes": 35356,
+      "sha256": "4a4619d74450270c0286e54412f36139498a960c5e08f87a5b81707b522435b4"
+    },
+    {
+      "file": "fonts/bodoni-moda-italic-latin-ext.woff2",
+      "family": "Bodoni Moda",
+      "style": "italic",
+      "weights": "400 to 700",
+      "characters": "latin-ext",
+      "unicode_range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF",
+      "fixed": "optical size 14",
+      "source": "ofl/bodonimoda/BodoniModa-Italic[opsz,wght].ttf",
+      "source_version": "Version 2.005",
+      "source_sha256": "dfff1619f8f6871c6372f8855b67211f9a73b4e93d45aca868cd8f46a48622de",
+      "bytes": 18012,
+      "sha256": "61967b79996cc32a77c5c604383b35612d77a1cd9c7e0e4f1daccdbe82569273"
+    }
+  ]
+}

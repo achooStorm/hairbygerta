@@ -301,10 +301,12 @@ VERIFICATION_TAGS = (
 PAGES_DIR = "tools/pages"
 PHONE_MAX = 760                         # the phone breakpoint of the stylesheet, used in the default sizes attribute
 PAGES_HOST = "achoostorm.github.io"     # where the site is published before the domain is connected
-FONT_PRECONNECTS = (
-    '<link rel="preconnect" href="https://fonts.googleapis.com">',
-    '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
-)
+# The fonts are files of the site itself (folder fonts, see the section "05 Fonts" of css/style.css and
+# tools/make_fonts.py). Every page asks the browser to fetch the font files named in "font_preloads" of
+# content/site.json right away, before it has read the stylesheet, so the text gets its real font sooner.
+# crossorigin belongs on such a link also for a file of the site's own: a browser fetches fonts that way,
+# and without the word it would fetch the file twice.
+FONT_PRELOAD = '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>'
 # The small script in the head of every page. It puts the class "js" on <html> before the page is drawn, which
 # tells the stylesheet that the site script is there (on a phone the menu is then folded behind the menu
 # button). js/site.js starts with "var BOOKING_URL = ...". When that file did not arrive, or the browser could
@@ -937,7 +939,10 @@ def _document(page, ctx, parts, site, jsonld, year):
     og_image = _need(site, "og_image", str)
     if not og_image.startswith("/") or og_image.startswith("//"):
         raise BuildError('%s must be a path that starts with /, like "/images/g12.jpg"' % _where(site, "og_image"))
-    fonts_href = _need(site, "fonts_href", str)
+    font_preloads = _need(site, "font_preloads", list)
+    for i, font in enumerate(font_preloads):
+        if not isinstance(font, str) or not font.startswith("/fonts/") or not font.endswith(".woff2"):
+            raise BuildError('%s must be a font file of the site like "/fonts/figtree-latin.woff2"' % _where(site, "font_preloads[%d]" % i))
     robots = parts["robots"].strip()
     noindex = any(token.strip().lower() in ("noindex", "none") for token in robots.split(","))
 
@@ -971,9 +976,8 @@ def _document(page, ctx, parts, site, jsonld, year):
         '<link rel="icon" type="image/png" href="%s">' % esc(url("/images/favicon.png")),
         '<link rel="apple-touch-icon" href="%s">' % esc(url("/images/apple-touch-icon.png")),
     ]
-    head += FONT_PRECONNECTS
+    head += [FONT_PRELOAD % esc(url(font)) for font in font_preloads]
     head += [
-        '<link rel="stylesheet" href="%s">' % esc(fonts_href),
         '<link rel="stylesheet" href="%s">' % esc(url("/css/style.css")),
         JS_FLAG,
     ]
@@ -1420,8 +1424,6 @@ def build(site_dir, pages_dir=None, out_dir=None, slugs=None, year=None, log=pri
     raw_manifest = _read_json(site_dir, MANIFEST_JSON)
     photos = _Photos(site_dir)
     warnings = _placeholder_warnings(raw_manifest, photos)
-    if "display=swap" not in str(raw_site.get("fonts_href", "")):
-        warnings.append('%s: key "fonts_href" has no display=swap, text may stay invisible while the fonts load.' % SITE_JSON)
 
     failed = 0
     replaced = set()                                # the replaced photos that the pages written in this run show

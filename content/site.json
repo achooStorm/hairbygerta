@@ -47,7 +47,10 @@
   "copyright": "Hair & Makeup by Gerta",
   "skip_link": "Skip to main content",
   "logo_label": "Hair & Makeup by Gerta home",
-  "fonts_href": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,700&family=Figtree:wght@400;700&display=swap",
+  "font_preloads": [
+    "/fonts/figtree-latin.woff2",
+    "/fonts/bodoni-moda-italic-latin.woff2"
+  ],
   "site_url": "https://www.hairbygerta.com",
   "og_image": "/images/g12.jpg",
   "og_site_name": "Hair & Makeup by Gerta",
@@ -61,7 +64,7 @@
     "social: name is the network, label is the accessible name of the icon link. The live Wix icon links carry the labels 'Facebook' and 'Instagram', kept as they are.",
     "address_lines: the three lines of the live footer, salon name first. address_one_line: the street address as the live home page shows it in its maps link, without the pin emoji and without the salon name.",
     "hours: written with plain hyphens (U+002D) and plain spaces, exactly as the live Wix text.",
-    "fonts_href: Google Fonts Bodoni Moda (italic 400 and 700) and Figtree (400 and 700) with display=swap. They stand in for Didot and Proxima Nova, which are licensed for Wix only. The address holds a plain & character and the generator escapes it.",
+    "font_preloads: the two font files every page fetches early. The fonts are Bodoni Moda (italic 400 and 700) and Figtree (400 and 700). They stand in for Didot and Proxima Nova, which are licensed for Wix only. Since 9 November 2026 the pages load them from the folder fonts of the site itself and no longer from Google Fonts (the key was fonts_href, a Google Fonts address, until then). The font rules are in css/style.css, and tools/make_fonts.py makes the files.",
     "Paths in nav and footer.policy_links are site paths with a leading and a trailing slash. The generator turns them into relative links.",
     "For information: on Wix the footer name and role are links to the home page, and the footer phone number is a tel link in the phone layout only. The build contract prints name and role as plain text and the phone number as a tel link at every width. The text is the same either way."
   ]

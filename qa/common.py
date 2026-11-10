@@ -53,9 +53,14 @@ VNU_JAR = os.path.join(ENV, "node_modules", "vnu-jar", "build", "dist", "vnu.jar
 AXE_JS = os.path.join(ENV, "node_modules", "axe-core", "axe.min.js")
 
 PREFIX = "/hairbygerta/"
-FONT_HOSTS = ("fonts.googleapis.com", "fonts.gstatic.com")
-# Third parties the site is expected to call. A blocked request to any other host is a real problem.
-EXPECTED_EXTERNAL_HOSTS = FONT_HOSTS + ("www.google.com", "maps.google.com", "maps.googleapis.com", "maps.gstatic.com")
+# The fonts are files of the site itself since 9 November 2026 (folder fonts, build contract decision 38), so no
+# host is a font host any more and this list is empty. Until that day it held the two servers of Google Fonts,
+# named in OLD_FONT_HOSTS. A request to one of them is now a call to an unexpected third party, like any other.
+FONT_HOSTS = ()
+OLD_FONT_HOSTS = ("fonts.googleapis.com", "fonts.gstatic.com")
+# Third parties the site is expected to call (the Google map of the Contact page). A blocked request to any other
+# host is a real problem.
+EXPECTED_EXTERNAL_HOSTS = ("www.google.com", "maps.google.com", "maps.googleapis.com", "maps.gstatic.com")
 # slug -> address relative to the site root (append to the base url)
 PAGES = {
     "home": "", "gallery": "gallery/", "book-online": "book-online/", "about": "about/", "contact": "contact/",
@@ -133,8 +138,10 @@ def context_options(p, viewport="desktop", dsf=None):
 
 
 def guard(target, log, base, allow_fonts=True):
-    """Let through only requests to the host of the site under test (and Google Fonts when allow_fonts).
-    Everything else is aborted and listed in log['blocked'], so a missing local asset shows up as an error."""
+    """Let through only requests to the host of the site under test. Everything else is aborted and listed in
+    log['blocked'], so a missing local asset shows up as an error.
+    allow_fonts is still accepted because the scripts pass it, and still lets FONT_HOSTS through. That list is
+    empty now: the fonts come from the site's own host."""
     own = urlsplit(base).hostname or "127.0.0.1"
 
     def handle(route):
