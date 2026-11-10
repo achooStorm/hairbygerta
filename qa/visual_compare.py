@@ -80,7 +80,8 @@ Reported with ok true
                  note, on the Privacy Policy what stands under a sentence about Wix that our page leaves out on
                  purpose (it sits higher than on Wix, because our text there is shorter), the copyright line,
                  the phone photo row (a 2 x 2 grid where Wix hides the row), the Wix chat button, underlined
-                 links inside a sentence (decision 18), the centred beige box
+                 links inside a sentence (decision 18), the Call button at the bottom of the phone screen
+                 (decision 40), the centred beige box
                  (decision 4), an empty stretch of 300 px or more that only the Wix page has above its footer
   intended x     desktop, the horizontal place alone (size, font and vertical place are compared as everywhere):
                  home (decision 21): site title, welcome paragraph, dotted rule, Book Online button and address
@@ -122,6 +123,9 @@ DESKTOP_WIDTHS = (1265, 1280, 1440, 1920)
 MIN_DESKTOP = 1101              # below this our stylesheet and the Wix page switch to another layout
 TOL = {"desktop": 2.0, "phone": 4.0}    # lengths. On the phone places and sizes are only listed, from this size on.
 TYPE_TOL = 2.0                  # line height and corner radius
+# The Call button at the bottom of the screen on phones (build contract, decision 40): not on Wix, on purpose. It is
+# fixed to the screen, so it pushes nothing down.
+CALL_BAR = "Call button at the bottom of the screen on phones"
 PRIVACY_SLUG = "english-privacy-policy"
 WIX_WORD = re.compile(r"\bwix\b", re.I)     # a sentence that names Wix (see the privacy rule of qa/check_content.py)
 FONT_TOL = 0.5                  # font size
@@ -1168,6 +1172,8 @@ class Compare:
                     self.fails.append(dict(check="only on Wix: %s box %s x %s at x %s, y %s" % (show_colour(w["bg"]), num(w["w"]), num(w["h"]), num(w["x"]), num(w["y"])),
                                            expected="a %s box of %s x %s px at x %s, y %s" % (show_colour(w["bg"]), num(w["w"]), num(w["h"]), num(w["x"]), num(w["y"])),
                                            actual="our page has no coloured box there", evidence="Wix %s in %s" % (w["tag"], region), owner="DESIGN", d=None))
+                elif self.phone and ".call-bar" in o["marks"]:
+                    self.intended_extra(CALL_BAR, o, "%s box %s x %s px" % (show_colour(o["bg"]), num(o["w"]), num(o["h"])))
                 else:
                     self.fails.append(dict(check="only on our page: %s box %s" % (show_colour(o["bg"]), o["sel"]), expected="no coloured box (the Wix page shows none there)",
                                            actual="%s, %s x %s px at x %s, y %s" % (show_colour(o["bg"]), num(o["w"]), num(o["h"]), num(o["x"]), num(o["y"])), evidence="ours: " + o["sel"], owner="DESIGN", d=None))
@@ -1208,6 +1214,9 @@ class Compare:
                     elif o is not None:
                         if o.get("spare"):
                             continue
+                        if self.phone and ".call-bar" in o["marks"]:
+                            self.intended_extra(CALL_BAR, o, "%s %s x %s px" % (names[kind], num(o["w"]), num(o["h"])))
+                            continue
                         if self.phone and region == "header" and ".menu-btn" in o["marks"]:
                             self.intended.append(("phone menu button", "the brief: phone header with a menu button (see brief-phone-header)",
                                                   "%s x %s px at x %s, y %s" % (num(o["w"]), num(o["h"]), num(o["x"]), num(o["y"])), "ours: " + o["sel"]))
@@ -1219,6 +1228,8 @@ class Compare:
         marks = t["marks"]
         if ".copy" in marks:
             return "copyright line"
+        if ".call-bar" in marks:
+            return CALL_BAR
         if ".book-note" in marks:
             return "closing booking note"
         if (".info-item" in marks or ".info" in marks) and text_key(t["group"]) == "hours":
@@ -1232,7 +1243,7 @@ class Compare:
                 break
         else:
             self.intended.append((reason, "not on the Wix page", what, "ours: " + item["sel"]))
-        if reason != "copyright line":
+        if reason not in ("copyright line", CALL_BAR):     # the call bar is fixed to the screen: it pushes nothing down
             self.blocks_ours.append((item["y"], item["y"] + item["h"], "the " + reason))
 
     def gallery(self, wl, ol):

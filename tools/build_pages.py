@@ -314,6 +314,13 @@ FONT_PRELOAD = '<link rel="preload" href="%s" as="font" type="font/woff2" crosso
 # the page is read. The class is then taken away again, so the menu shows as a plain list and still works.
 JS_FLAG = ('<script>document.documentElement.classList.add("js");document.addEventListener("DOMContentLoaded",function(){'
            'if(typeof BOOKING_URL!=="string"){document.documentElement.classList.remove("js")}})</script>')
+# A telephone handset, the drawing of the Call button at the bottom of the screen on phones. Decoration: the words
+# of the button say what it does.
+CALL_ICON = ('<svg class="call-bar-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" '
+             'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
+             '<path d="M6.6 3.5h2.6a1 1 0 0 1 .95.68l1.1 3.3a1 1 0 0 1-.3 1.07L9.3 9.9a11.5 11.5 0 0 0 4.8 4.8'
+             'l1.35-1.65a1 1 0 0 1 1.07-.3l3.3 1.1a1 1 0 0 1 .68.95v2.6a2.1 2.1 0 0 1-2.1 2.1'
+             'C10.6 19.5 4.5 13.4 4.5 5.6a2.1 2.1 0 0 1 2.1-2.1z"/></svg>')
 MENU_LABEL = "Menu"                     # accessible name of the phone menu button (contract, section 6)
 NAV_LABEL = "Main"                      # accessible name of the navigation (contract, section 6)
 RESULT_KEYS = ("body", "head_extra", "head_first", "robots")
@@ -1052,6 +1059,11 @@ def _document(page, ctx, parts, site, jsonld, year):
     out += [
         "</main>",
         '<footer class="site-footer">',
+        # The Call button that stays at the bottom of the screen on phones (hidden on wider screens).
+        '  <div class="call-bar">',
+        '    <a class="call-bar-call" href="%s">%s<span class="call-bar-label">%s</span> <span class="call-bar-num">%s</span></a>'
+        % (esc(_need(site, "tel_href", str)), CALL_ICON, _text(_need(site, "call_bar_label", str)), _text(_need(site, "phone", str))),
+        "  </div>",
         '  <div class="inner">',
         '    <hr class="foot-rule">',
         '    <div class="foot-cols">',

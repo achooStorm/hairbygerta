@@ -40,7 +40,8 @@ What it checks on every page
                         compared sentence by sentence with the reference files in the tools folder (wix-ref/<slug>.txt).
                         One entry per sentence that differs. A difference is intended, and listed with ok true, only
                         when it is on this fixed list: the privacy rule above (with a sentence that goes on about Wix),
-                        the closing booking note, the Hours block of the contact page, the copyright line, text that Wix
+                        the closing booking note, the Hours block of the contact page, the copyright line, the Call
+                        button at the bottom of the screen on phones (its label and the phone number), text that Wix
                         repeats for screen readers, the copies of the scrolling hours line, an order the build contract
                         decided (sections 10.6 and 10.8), the mark of the required Email field (10.8), the new title of
                         the Contact page (10.33), and two changes made when online booking was dropped on 2 November 2026
@@ -720,6 +721,11 @@ def expect_shell(ex, site, year):
         if isinstance(item, dict):
             ex.piece(ex.header, SITE_FILE, "nav[%d].label" % i, item.get("label"), place="header")
             link("header", item.get("path"), item.get("label"), "", "nav[%d]" % i)
+    # The Call button at the bottom of the screen on phones (9 November 2026): its words, a space, the phone number.
+    call = " ".join(x for x in (need("call_bar_label") or "", need("phone") or "") if x)
+    ex.piece(ex.footer, SITE_FILE, "call_bar_label (then the phone number)", call, place="footer",
+             intended="the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose")
+    link("footer", need("tel_href"), call, "", "call_bar_label")
     ex.piece(ex.footer, SITE_FILE, "footer.name", need("footer.name") or "", place="footer")
     ex.piece(ex.footer, SITE_FILE, "footer.role", need("footer.role") or "", place="footer")
     for i, item in enumerate(need("social", list) or []):
@@ -1037,7 +1043,7 @@ def compare_text(slug, ex, page, wix, rules):
                  "%s (%d of %d texts found in place)" % (plural(len(details), "difference"), in_place, len(pieces)),
                  where, "PAGES" if not details else collections.Counter(d["owner"] for d in details).most_common(1)[0][0])]
     out += details
-    composed = [p.text for p in pieces if not p.file or p.key.startswith("copyright")]
+    composed = [p.text for p in pieces if not p.file or p.key.startswith(("copyright", "call_bar"))]
     out.append(entry(slug, "no-extra-text", not extras,
                      "no visible text that is not in %s, in %s or fixed by the build contract" % (ex.file, SITE_FILE),
                      "none" if not extras else plural(len(extras), "text") + " that no content file holds",

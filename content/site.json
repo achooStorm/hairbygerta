@@ -44,6 +44,7 @@
       { "label": "Terms and Conditions", "path": "/terms-conditions/" }
     ]
   },
+  "call_bar_label": "Call to book",
   "copyright": "Hair & Makeup by Gerta",
   "skip_link": "Skip to main content",
   "logo_label": "Hair & Makeup by Gerta home",
@@ -62,6 +63,7 @@
     "og_site_name: the live Wix tag og:site_name says 'Hairbygerta'. This file uses the business name 'Hair & Makeup by Gerta' on purpose.",
     "og_image: the live Wix pages have no og:image tag. Until 9 November 2026 it was g12, one of the owner's own photos, 900 x 1600 px, which link previews cut badly. Since then it is images/share.jpg, 1200 x 630 px, made by tools/make_share_image.py from g12, g13 and the logo (all three licensed for use outside Wix). The generator joins site_url and og_image and takes the width and height from image-manifest.json. og_image_alt describes that picture for people who cannot see it (og:image:alt and twitter:image:alt). theme_color is the colour a phone browser may give its address bar, the page background.",
     "copyright: this line is not on the Wix site and is added on purpose. The generator prints the copyright sign, the year, then this text.",
+    "call_bar_label: the words of the Call button that stays at the bottom of the screen on phones (added 9 November 2026, not on the Wix site). The generator prints this text, then the phone number, and the button calls tel_href. On screens wider than 760 px the bar is hidden.",
     "logo_label: not visible text. It is the accessible name of the logo link in the header. On Wix the logo image carries the alt text 'Hair & Makeup by Gerta logo' and the link has no name of its own.",
     "social: name is the network, label is the accessible name of the icon link. The live Wix icon links carry the labels 'Facebook' and 'Instagram', kept as they are.",
     "address_lines: the three lines of the live footer, salon name first. address_one_line: the street address as the live home page shows it in its maps link, without the pin emoji and without the salon name.",

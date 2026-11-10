@@ -594,6 +594,15 @@ body.lightbox-open {
   opacity: 0.75;
 }
 
+/* ---------- Call bar ----------
+   A Call button that stays at the bottom of the screen on phones, so the number is one
+   tap away wherever the visitor is on the page. It sits in the footer markup and is
+   hidden on wider screens (see Phones below). It stays under the open phone menu (the
+   header is above it) and under the photo viewer. */
+.call-bar {
+  display: none;
+}
+
 /* ---------- Tablets and small laptops (1100 px and below) ---------- */
 
 @media (max-width: 1100px) {
@@ -813,8 +822,10 @@ body.lightbox-open {
     padding: 0;
   }
 
+  /* Phone, email and the policy links are 44 px tall tap rows. */
   .foot-contact a {
-    padding: 6px 0;
+    display: inline-block;
+    padding: 13px 0;
   }
 
   .foot-contact .foot-addr {
@@ -832,7 +843,81 @@ body.lightbox-open {
 
   .foot-links a {
     display: inline-block;
-    padding: 8px 0;
+    padding: 13px 0;
+  }
+
+  /* The social icons: 44 x 44 tap areas that do not touch (the icons stand 21 px apart). */
+  .social {
+    gap: 21px;
+  }
+
+  .social a::after {
+    top: -10.5px;
+    right: -10.5px;
+    bottom: -10.5px;
+    left: -10.5px;
+  }
+
+  /* The dark footer runs on under the call bar, so its last line is never hidden. */
+  .site-footer .inner {
+    padding-bottom: calc(32px + 64px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .call-bar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    display: flex;
+    padding: 8px var(--gutter) calc(8px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--beige);
+    background: var(--bg);
+    box-shadow: 0 -2px 12px rgba(29, 21, 9, 0.08);
+  }
+
+  .call-bar a {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 16px;
+    background-color: var(--btn);
+    color: var(--btn-text);
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: 0.8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .call-bar a:hover,
+  .call-bar a:focus-visible {
+    background-color: var(--ink);
+  }
+
+  /* On the light bar the dark focus ring of the site shows well. */
+  .call-bar a:focus-visible {
+    outline-color: var(--ink);
+    box-shadow: 0 0 0 2px var(--bg);
+  }
+
+  .call-bar-icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+  }
+
+  .call-bar-num {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* While the visitor types into a field, the phone keyboard needs the room: the bar steps aside. */
+  body:has(input:focus, textarea:focus) .call-bar {
+    display: none;
   }
 
   .copy {
@@ -1223,10 +1308,10 @@ body.lightbox-open {
     font-size: 14px;
   }
 
-  /* Book Online: 142 x 42, as on the old phone page. */
+  /* Book Online: 142 px wide, as on the old phone page, and 44 px tall, a full tap target. */
   .hero-box .btn {
     min-width: min(142px, 100%);
-    min-height: 42px;
+    min-height: 44px;
   }
 
   .hero-box .welcome,
@@ -2399,9 +2484,16 @@ h1.services-title {
     line-height: 24px;
   }
 
-  /* On the old phone page the icons hang 7 px to the left of the heading. */
+  /* On the old phone page the icons hang 7 px to the left of the heading. With the
+     44 px tap areas of the phone the first icon moves 3.5 px right of that, so its
+     tap area does not reach out of the column. */
   .info-item .social {
-    margin-left: -7px;
+    margin-left: -3.5px;
+  }
+
+  /* Phone and email: 44 px tall tap rows. */
+  .info-item p > a {
+    padding: 12.6px 0;
   }
 
   .contact-form {
@@ -2914,5 +3006,19 @@ body.page-404 main {
   .notfound p {
     margin-bottom: 30px;
     font-size: 16px;
+  }
+}
+
+/* ==========================================================================
+   80 Print
+   A printed page has no use for the call bar, the menu button or the skip link.
+   This block is the last in the file, so it wins over the rules above it.
+   ========================================================================== */
+
+@media print {
+  .call-bar,
+  .menu-btn,
+  .skip {
+    display: none;
   }
 }
