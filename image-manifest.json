@@ -516,6 +516,16 @@
       ],
       "bytes": 14754,
       "sha256": "82786b130a5392cc2c722cef3ccb7788d51e6be9e3a0e12e018748dd83ec44c1"
+    },
+    {
+      "file": "images/icon-192.png",
+      "status": "allowed-derivative",
+      "derived_from": "images/logo.jpg",
+      "sizes": [
+        "192x192"
+      ],
+      "bytes": 16368,
+      "sha256": "11fedcfd101862841d18a5dec7d502458f258849e21ea1e85b9391246acaf063"
     }
   ],
   "restricted_originals": [
@@ -1669,6 +1679,109 @@
         "found": [],
         "bad_file_values": []
       }
+    }
+  ],
+  "composites": [
+    {
+      "file": "images/share.jpg",
+      "status": "allowed-derivative",
+      "use": "og:image, the picture of link previews",
+      "width": 1200,
+      "height": 630,
+      "bytes": 106573,
+      "sha256": "b56f0b8772248d3ee4d78ed432bcc00f3af1f6206070f9c0046095efb33ff325",
+      "parts": [
+        {
+          "source": "images/g13.jpg",
+          "kind": "photo",
+          "box": [
+            0,
+            0,
+            354,
+            630
+          ],
+          "source_box": [
+            0.48,
+            0,
+            899.52,
+            1600
+          ]
+        },
+        {
+          "source": "images/g12.jpg",
+          "kind": "photo",
+          "box": [
+            846,
+            0,
+            1200,
+            630
+          ],
+          "source_box": [
+            0.48,
+            0,
+            899.52,
+            1600
+          ]
+        },
+        {
+          "source": "images/logo.jpg",
+          "kind": "artwork",
+          "box": [
+            543,
+            140,
+            658,
+            336
+          ],
+          "source_box": [
+            47,
+            4,
+            177,
+            225
+          ]
+        },
+        {
+          "kind": "text",
+          "box": [
+            383,
+            362,
+            818,
+            401
+          ]
+        },
+        {
+          "kind": "text",
+          "box": [
+            450,
+            419,
+            750,
+            420
+          ]
+        },
+        {
+          "kind": "text",
+          "box": [
+            459,
+            438,
+            742,
+            459
+          ]
+        },
+        {
+          "kind": "text",
+          "box": [
+            406,
+            469,
+            795,
+            490
+          ]
+        }
+      ],
+      "text": [
+        "Hair & Makeup by Gerta",
+        "Hair Stylist & Makeup Artist",
+        "Le Vigne Hair Salon, Staten Island, NY"
+      ],
+      "made_by": "tools/make_share_image.py"
     }
   ]
 }

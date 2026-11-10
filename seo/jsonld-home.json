@@ -7,7 +7,11 @@
   "url": "https://www.hairbygerta.com/",
   "telephone": "+1-347-671-5095",
   "email": "info@hairbygerta.com",
-  "image": "https://www.hairbygerta.com/images/g12.jpg",
+  "image": [
+    "https://www.hairbygerta.com/images/share.jpg",
+    "https://www.hairbygerta.com/images/g12.jpg",
+    "https://www.hairbygerta.com/images/g13.jpg"
+  ],
   "logo": "https://www.hairbygerta.com/images/logo.jpg",
   "address": {
     "@type": "PostalAddress",
@@ -16,6 +20,19 @@
     "addressRegion": "NY",
     "postalCode": "10310",
     "addressCountry": "US"
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310",
+  "containedInPlace": {
+    "@type": "HairSalon",
+    "name": "Le Vigne Hair Salon",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "644 Forest Ave",
+      "addressLocality": "Staten Island",
+      "addressRegion": "NY",
+      "postalCode": "10310",
+      "addressCountry": "US"
+    }
   },
   "openingHoursSpecification": [
     {
@@ -34,5 +51,96 @@
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61588784402912",
     "https://www.instagram.com/hairbygerta/"
-  ]
+  ],
+  "employee": {
+    "@type": "Person",
+    "name": "Gerta Lila",
+    "jobTitle": "Hair Stylist & Makeup Artist"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Hair and makeup services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Haircut & Style",
+          "description": "Transform your hair with precision cutting and styling."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Hair Coloring",
+          "description": "Revitalize your hair with our expert coloring services."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Makeup Session",
+          "description": "Natural makeup that enhances your beauty."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Dream Bridal Hair",
+          "description": "Romantic, long-lasting bridal hair tailored to your dress and vision."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Highlights & Lowlights",
+          "description": "Customized foils to add brightness, depth, and dimension."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Balayage",
+          "description": "Hand-painted color for a soft, sun-kissed finish."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Keratin Treatment",
+          "description": "Frizz-fighting smoothing treatment for sleek, manageable hair."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Brazilian Blowout",
+          "description": "Long-lasting smoothness with mirror-like shine."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Perm & Texture Waves",
+          "description": "Custom curls or waves with movement and body."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Kids’ Haircut",
+          "description": "Friendly, patient cuts just for kids."
+        }
+      }
+    ]
+  }
 }

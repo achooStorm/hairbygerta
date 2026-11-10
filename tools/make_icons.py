@@ -4,10 +4,11 @@
 Source (the only input, a licensed file):
     images/logo.jpg                  black artwork on a white background
 
-Output (all three are made from the logo and nothing else):
+Output (all four are made from the logo and nothing else):
     favicon.ico                      one file holding a 32 px and a 48 px image
     images/favicon.png               64 x 64
-    images/apple-touch-icon.png      180 x 180, opaque, for phone home screens
+    images/apple-touch-icon.png      180 x 180, opaque, for phone home screens (iPhone)
+    images/icon-192.png              192 x 192, opaque, for phone home screens (Android)
 
 How to run it (needs Pillow, nothing else):
     python tools/make_icons.py                 write the three files
@@ -53,6 +54,7 @@ RENDER = {
     48: (2, 1.35, 60),
     64: (3, 1.25, 40),
     180: (14, 1.0, 0),
+    192: (15, 1.0, 0),
 }
 
 # output file: (container, the pixel sizes it holds)
@@ -60,6 +62,7 @@ ICONS = {
     "favicon.ico": ("ico", (32, 48)),
     "images/favicon.png": ("png", (64,)),
     "images/apple-touch-icon.png": ("png", (180,)),
+    "images/icon-192.png": ("png", (192,)),
 }
 
 WHITE_POINT = 244  # JPEG haze at or above this value counts as pure white

@@ -924,6 +924,15 @@ def _site_url(site):
     return site_url
 
 
+def _image_size(manifest, rel):
+    """(width, height) of a picture of the site as image-manifest.json records it (images, icons or composites),
+    or None when the manifest does not list it."""
+    for record in list(manifest.get("images", {}).values()) + list(manifest.get("composites") or []):
+        if isinstance(record, dict) and record.get("file") == rel and record.get("width") and record.get("height"):
+            return int(record["width"]), int(record["height"])
+    return None
+
+
 def _jsonld_script(data):
     text = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     text = text.replace("</", "<\\/").replace("<!--", "\\u003c!--")
@@ -960,21 +969,38 @@ def _document(page, ctx, parts, site, jsonld, year):
     if not noindex:
         head.append('<link rel="canonical" href="%s">' % esc(site_url + page.path))
     og_site_name = _need(site, "og_site_name", str)
+    og_alt = _need(site, "og_image_alt", str)
     if not noindex:
         # A page that search engines must not list (the 404 page) is not an address to share either,
         # so it gets no Open Graph tags, just as it gets no canonical link.
+        size = _image_size(ctx.manifest, og_image.lstrip("/"))
         head += [
             '<meta property="og:type" content="website">',
+            '<meta property="og:locale" content="en_US">',
             '<meta property="og:site_name" content="%s">' % esc(og_site_name),
             '<meta property="og:title" content="%s">' % esc(title),
             '<meta property="og:description" content="%s">' % esc(description),
             '<meta property="og:url" content="%s">' % esc(site_url + page.path),
             '<meta property="og:image" content="%s">' % esc(site_url + og_image),
         ]
+        if size:
+            head += ['<meta property="og:image:width" content="%d">' % size[0], '<meta property="og:image:height" content="%d">' % size[1]]
+        head += [
+            '<meta property="og:image:alt" content="%s">' % esc(og_alt),
+            # X (Twitter) reads these. Other apps read the Open Graph tags above.
+            '<meta name="twitter:card" content="summary_large_image">',
+            '<meta name="twitter:title" content="%s">' % esc(title),
+            '<meta name="twitter:description" content="%s">' % esc(description),
+            '<meta name="twitter:image" content="%s">' % esc(site_url + og_image),
+            '<meta name="twitter:image:alt" content="%s">' % esc(og_alt),
+        ]
     head += [
         '<link rel="icon" href="%s" sizes="any">' % esc(url("/favicon.ico")),
         '<link rel="icon" type="image/png" href="%s">' % esc(url("/images/favicon.png")),
+        # 192 x 192: the icon Android shows when the site is added to the home screen
+        '<link rel="icon" type="image/png" sizes="192x192" href="%s">' % esc(url("/images/icon-192.png")),
         '<link rel="apple-touch-icon" href="%s">' % esc(url("/images/apple-touch-icon.png")),
+        '<meta name="theme-color" content="%s">' % esc(_need(site, "theme_color", str)),
     ]
     head += [FONT_PRELOAD % esc(url(font)) for font in font_preloads]
     head += [

@@ -53,11 +53,14 @@ Shared text (navigation, footer, business facts, social links, the font files to
                           "webp": null } },
   "icons": [ { "file": "favicon.ico", "status": "allowed-derivative", "derived_from": "images/logo.jpg", "bytes": 0, "sha256": "" } ],
   "restricted_originals": [ { "name": "", "file": "<name>.jpg", "where": "folder" | "folder/sm" | "zip", "width": 0, "height": 0, "bytes": 0, "sha256": "", "status": "restricted" } ],
-  "restricted_sha256": [ "every hash of every restricted file, one flat list" ]
+  "restricted_sha256": [ "every hash of every restricted file, one flat list" ],
+  "composites": [ { "file": "images/share.jpg", "status": "allowed-derivative", "width": 1200, "height": 630, "bytes": 0, "sha256": "",
+                    "parts": [ { "source": "images/g13.jpg", "kind": "photo" | "artwork", "box": [x0, y0, x1, y1], "source_box": [...] },
+                               { "kind": "text", "box": [x0, y0, x1, y1] } ], "text": [ "..." ], "made_by": "tools/make_share_image.py" } ]
 }
 ```
 
-`images` has 29 entries: `logo`, `g12`, `g13` (allowed) and the 26 placeholders.
+`images` has 29 entries: `logo`, `g12`, `g13` (allowed) and the 26 placeholders. `icons` has four entries (decision 39 added `images/icon-192.png`). `composites` (decision 39) lists pictures made from several allowed ones; `tools/make_share_image.py` writes its entry.
 
 ## 5. Generator (`tools/build_pages.py`, Python standard library only)
 
@@ -73,8 +76,9 @@ Shared text (navigation, footer, business facts, social links, the font files to
 ```
 <html lang="en"> <head>  charset, viewport, title, meta description,
   [home only] the two search engine verification metas (google-site-verification, msvalidate.01), canonical (https://www.hairbygerta.com/…),
-  og:type og:site_name og:title og:description og:url og:image (https://www.hairbygerta.com/images/g12.jpg),
-  favicon.ico, images/favicon.png, images/apple-touch-icon.png, the two font preloads (fonts/figtree-latin.woff2 and fonts/bodoni-moda-italic-latin.woff2, as=font, crossorigin),
+  og:type og:locale og:site_name og:title og:description og:url og:image (https://www.hairbygerta.com/images/share.jpg) og:image:width og:image:height og:image:alt,
+  twitter:card (summary_large_image) twitter:title twitter:description twitter:image twitter:image:alt,
+  favicon.ico, images/favicon.png, images/icon-192.png (sizes 192x192), images/apple-touch-icon.png, meta theme-color, the two font preloads (fonts/figtree-latin.woff2 and fonts/bodoni-moda-italic-latin.woff2, as=font, crossorigin),
   css/style.css, <script>document.documentElement.classList.add("js")</script>, [home only] the JSON-LD script
 <body class="page-<slug>">
 <a class="skip" href="#main">Skip to main content</a>
@@ -176,3 +180,4 @@ One file, `css/style.css`, CSS variables in one `:root` block at the top, breakp
 36. **Corrections to decision 30.** The 60 fingerprints are 53 restricted pictures, the two backup zip files, and 5 old copies of files made from the allowed logo, g12 and g13 (kept on purpose: any doubt means restricted). `.gitattributes` is a DEPLOY file: all text is stored and checked out with LF, pictures are binary.
 37. **QA suite.** Eight check families; the eighth, `qa/check_repo.py`, checks the folder itself (pages equal a fresh generator run, line endings, no local paths, no leftovers). The gallery photo area may be up to 20 percent taller than on Wix. The fourth gallery column starts at 1600 px without a media rule.
 38. **The fonts are files of the site (9 November 2026).** Bodoni Moda Italic and Figtree, the same two fonts as before, now come from the folder `fonts/` and no longer from Google Fonts. Each font is two WOFF2 files (latin and latin-ext, as Google cuts them), made by `tools/make_fonts.py` from github.com/google/fonts and listed with their SHA-256 in `fonts/fonts.json`, next to the two license texts. The Bodoni file has the optical size 14 built in and keeps weights 400 to 700; the letters are drawn exactly as before. The section "05 Fonts" of `css/style.css` holds one `@font-face` rule per file (`font-weight: 400 700`, `font-display: swap`, the `unicode-range` of fonts.json). Every page preloads the two latin files. What this changes: no page and no stylesheet asks a font server for anything (`qa/check_repo.py`, font-preload, fonts-folder, font-face-rules), the Privacy Policy no longer names Google Fonts (`qa/check_content.py`), the QA network rule lets no font host through any more (`qa/common.py`, `FONT_HOSTS` is empty), and `content/site.json` has `font_preloads` in place of `fonts_href`.
+39. **Share image, search data, home screen icon (9 November 2026).** Link previews show `images/share.jpg`, 1200 x 630 px: g13 and g12 at full height on the left and right, the logo, the business name, the role and the place between them, on the beige, in the site's fonts. `tools/make_share_image.py` makes it and records it in the manifest under `composites` with the box of each part. `qa/licensing_check.py` accepts a composite only when its SHA-256 is the recorded one, every photo or logo part shows the allowed image it names, and everything else is the plain beige of the site or a line of text (a planted photo in the middle or inside a line of text is refused). Every indexable page also carries og:image:width, og:image:height, og:image:alt (`og_image_alt` in `content/site.json`), og:locale and the five twitter tags. `seo/jsonld-home.json` now also gives `hasMap` (the maps link of the site), `containedInPlace` (Le Vigne Hair Salon and its address), `employee` (Gerta Lila, Hair Stylist & Makeup Artist), the ten services as `hasOfferCatalog` (names and descriptions of the Book Online page, no prices) and three images. `tools/make_icons.py` makes a fourth icon, `images/icon-192.png`, linked with `sizes="192x192"` for Android home screens, and every page has `<meta name="theme-color" content="#fefefd">` (`theme_color` in `content/site.json`).

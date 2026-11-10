@@ -33,6 +33,15 @@ What is checked
           the word owner-photo in the manifest never makes a restricted photo acceptable.
           What this cannot see: a Wix-only photo that was saved again or resized has other bytes and another
           hash. The hash proves that a file is not one of the restricted files, not whose picture it is.
+  Composites  an image made from several allowed pictures (the share image images/share.jpg, made by
+          tools/make_share_image.py, build contract decision 39). image-manifest.json lists it under "composites"
+          with its SHA-256 and the box each picture fills ("parts"). It is accepted only when the file has the
+          recorded SHA-256, every picture part comes from a verified allowed image (or an accepted owner photo)
+          and shows it (a photo: the same small grey copy as the recorded box of its source; the logo: the same
+          drawing), and the rest is plain: outside every part at least 99.5 percent of the pixels are the beige of
+          the site (within 12 levels), and inside each text part (a line of text) every pixel lies on the line
+          between the beige and the ink and at least half of them are beige. So no other picture can hide in it:
+          the photos of this site are beige and brown too, which is why the beige itself is tested.
   Pages   every image address in the ten pages and the stylesheets must be one of those checked files.
   Git     .gitignore excludes every folder named source-photos, zip or _tmp and every *.zip. In a repository:
           nothing of that kind is tracked, staged or in the history, no stored object is identical to a
@@ -101,6 +110,15 @@ MAX_STDDEV = 12.0                  # the standard deviation of every channel mus
 # icons correlate 0.85 and more with the logo artwork, photos 0.35 and less).
 MAX_COPY_DIFFERENCE = 6.0
 MIN_ARTWORK_CORRELATION = 0.6
+# A composite (see the docstring): outside its parts the beige of the site, in a text part beige and ink only.
+SITE_BEIGE, SITE_INK = (232, 225, 218), (29, 21, 9)
+BEIGE_LEVELS = 12                   # how far each channel of a background pixel may be from the beige (JPEG noise)
+MIN_BEIGE_SHARE_OUTSIDE = 0.995
+LINE_DISTANCE = 24.0                # how far (RGB) a text pixel may lie from the line beige to ink (anti-aliased edges)
+MIN_TEXT_ON_LINE = 0.99
+MIN_TEXT_BEIGE = 0.5                # a line of text is mostly the beige between the letters
+PART_MARGIN = 8                     # px around a picture part left out of the tests: JPEG blurs the edge of a photo
+TEXT_MARGIN = 3                     # px around a text part counted with it: the anti-aliased edges of the letters
 
 ALLOWED, DERIVATIVE, PLACEHOLDER = "allowed", "allowed-derivative", "placeholder"
 # Build contract, decision 27: a photo of the owner's own that she saved over a placeholder. The site generator writes
@@ -455,6 +473,107 @@ def made_from(copy_data, source_data, artwork):
     return worst <= MAX_COPY_DIFFERENCE, "mean difference to its source %.1f of 255 (at most %d allowed)" % (worst, MAX_COPY_DIFFERENCE)
 
 
+def on_ink_line(rgb):
+    """Does the colour lie on the line between the beige and the ink of the site (a pixel of text)?"""
+    bx, by, bz = (SITE_INK[i] - SITE_BEIGE[i] for i in range(3))
+    dx, dy, dz = (rgb[i] - SITE_BEIGE[i] for i in range(3))
+    t = min(1.0, max(0.0, (dx * bx + dy * by + dz * bz) / float(bx * bx + by * by + bz * bz)))
+    ex, ey, ez = dx - t * bx, dy - t * by, dz - t * bz
+    return ex * ex + ey * ey + ez * ez <= LINE_DISTANCE * LINE_DISTANCE
+
+
+def is_beige(rgb):
+    return all(abs(rgb[i] - SITE_BEIGE[i]) <= BEIGE_LEVELS for i in range(3))
+
+
+def plain_parts(picture, picture_boxes, text_boxes):
+    """-> (share of beige pixels outside every part, [(share on the ink line, share beige) per text part], pixels outside)"""
+    width, height = picture.size
+    pixels = picture.load()
+    grow = lambda b, m: (max(0, b[0] - m), max(0, b[1] - m), min(width, b[2] + m), min(height, b[3] + m))
+    skip = [grow(b, PART_MARGIN) for b in picture_boxes] + [grow(b, TEXT_MARGIN) for b in text_boxes]
+    looked = beige = 0
+    for y in range(height):
+        spans = [(x0, x1) for x0, y0, x1, y1 in skip if y0 <= y < y1]
+        for x in range(width):
+            if any(x0 <= x < x1 for x0, x1 in spans):
+                continue
+            looked += 1
+            beige += is_beige(pixels[x, y])
+    texts = []
+    for box in text_boxes:
+        x0, y0, x1, y1 = grow(box, TEXT_MARGIN)
+        n = on = flat = 0
+        for y in range(y0, y1):
+            for x in range(x0, x1):
+                n += 1
+                rgb = pixels[x, y]
+                on += on_ink_line(rgb)
+                flat += is_beige(rgb)
+        texts.append((on / float(n) if n else 1.0, flat / float(n) if n else 1.0))
+    return (beige / float(looked) if looked else 1.0), texts, looked
+
+
+def composite_shows(data, parts, read_source):
+    """Does a composite show its parts, and nothing else outside them? -> (yes, what was measured, problems).
+    read_source(rel) gives the bytes of a source picture, or None."""
+    problems, measured = [], []
+    try:
+        picture = frames(data)[0]
+    except Exception as e:
+        return False, "", ["cannot be read as an image (%s)" % type(e).__name__]
+    boxes, text_boxes = [], []
+    for n, part in enumerate(parts or []):
+        rel, kind, box = clean_rel(part.get("source")), part.get("kind"), part.get("box")
+        if kind not in ("photo", "artwork", "text") or not (isinstance(box, list) and len(box) == 4 and all(isinstance(v, int) for v in box)):
+            problems.append("part %d: kind must be photo, artwork or text and box four whole numbers" % (n + 1))
+            continue
+        x0, y0, x1, y1 = box
+        if not (0 <= x0 < x1 <= picture.width and 0 <= y0 < y1 <= picture.height):
+            problems.append("part %d: the box %s is not inside the %d x %d px picture" % (n + 1, box, picture.width, picture.height))
+            continue
+        if kind == "text":
+            text_boxes.append(box)
+            continue
+        source_data = read_source(rel) if rel else None
+        if source_data is None:
+            problems.append("part %d: its source %s cannot be read" % (n + 1, part.get("source")))
+            continue
+        source = frames(source_data)[0]
+        region = picture.crop(box)
+        if kind == "artwork":
+            value = abs(correlation(artwork_thumb(region), artwork_thumb(source)))
+            ok, text = value >= MIN_ARTWORK_CORRELATION, "%s correlation with the drawing of %s %.2f" % (kind, rel, value)
+        else:
+            sbox = part.get("source_box")
+            if not (isinstance(sbox, list) and len(sbox) == 4):
+                problems.append("part %d: a photo needs its source_box" % (n + 1))
+                continue
+            cut = source.crop(tuple(int(round(v)) for v in sbox))
+            shape, wanted = region.width / float(region.height), cut.width / float(cut.height)
+            value = difference(gray_thumb(region), gray_thumb(cut))
+            ok = abs(shape - wanted) <= 0.02 * wanted and value <= MAX_COPY_DIFFERENCE
+            text = "%s from %s, mean difference %.1f of 255" % (kind, rel, value)
+        measured.append(text)
+        if not ok:
+            problems.append("part %d does not show what the manifest says (%s)" % (n + 1, text))
+        boxes.append(box)
+    if not boxes:
+        problems.append("the manifest records no picture part")
+    share, texts, looked = plain_parts(picture, boxes, text_boxes)
+    measured.append("outside the parts %.2f percent of %d pixels are the beige" % (share * 100, looked))
+    if share < MIN_BEIGE_SHARE_OUTSIDE:
+        problems.append("outside the parts only %.2f percent of the pixels are the beige (at least %.1f percent needed): "
+                        "the picture holds something the manifest does not record" % (share * 100, MIN_BEIGE_SHARE_OUTSIDE * 100))
+    for n, (on, flat) in enumerate(texts):
+        if on < MIN_TEXT_ON_LINE or flat < MIN_TEXT_BEIGE:
+            problems.append("text part %d is not plain text: %.1f percent of its pixels are beige, ink or a mix (at least %d needed), "
+                            "%.1f percent are beige (at least %d needed)" % (n + 1, on * 100, MIN_TEXT_ON_LINE * 100, flat * 100, MIN_TEXT_BEIGE * 100))
+    if texts:
+        measured.append("%d text parts, the plainest %.1f and the least plain %.1f percent beige" % (len(texts), max(f for _o, f in texts) * 100, min(f for _o, f in texts) * 100))
+    return not problems, "; ".join(measured), problems
+
+
 def svg_findings(data):
     """What makes an svg more than a drawing: a picture inside it or a file fetched from elsewhere."""
     if data[:2] == b"\x1f\x8b":
@@ -557,6 +676,17 @@ def manifest_index(doc):
         if why:
             problems.append("%s: %s" % (short(record.get("file"), 60), why))
         add("icon", record, expect, why, "icon", source)
+    for record in doc.get("composites") or []:
+        if not isinstance(record, dict):
+            continue
+        why, expect = "", DERIVATIVE
+        if record.get("status") != DERIVATIVE:
+            why, expect = "composite with the status %s" % json.dumps(record.get("status")), None
+        if why:
+            problems.append("%s: %s" % (short(record.get("file"), 60), why))
+        rel = add("composite", record, expect, why, "composite", None)
+        if rel is not None:
+            index[rel]["parts"] = record.get("parts") or []
     for name in ALLOWED_NAMES:
         record = doc["images"].get(name)
         if not isinstance(record, dict) or record.get("status") != ALLOWED:
@@ -1330,6 +1460,21 @@ def run(source, slugs, workdir):
     odd = []
     for info in by_class[DERIVATIVE]:
         record = index[info["file"]]
+        if record["role"] == "composite":
+            usable = lambda rel: table.get(rel or "", {}).get("class") in (ALLOWED, OWNER)
+            unproven_sources = [str(p.get("source")) for p in record.get("parts") or []
+                                if p.get("kind") != "text" and not usable(clean_rel(p.get("source")))]
+            if unproven_sources:
+                odd.append("%s: made from %s, which %s not a verified allowed image or accepted owner photo"
+                           % (info["file"], ", ".join(unproven_sources), "is" if len(unproven_sources) == 1 else "are"))
+                continue
+            copy_data = source.read(info["file"])
+            if copy_data is None:
+                continue
+            same, measured, problems = composite_shows(copy_data, record.get("parts"), source.read)
+            info["detail"] = "composite, " + measured
+            odd += ["%s: %s" % (info["file"], p) for p in problems]
+            continue
         origin = table.get(record["source"] or "")
         if not origin or origin["class"] != ALLOWED:
             odd.append("%s: the image it is made from (%s) is not a verified allowed image" % (info["file"], record["source"]))

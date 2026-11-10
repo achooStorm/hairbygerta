@@ -52,13 +52,15 @@
     "/fonts/bodoni-moda-italic-latin.woff2"
   ],
   "site_url": "https://www.hairbygerta.com",
-  "og_image": "/images/g12.jpg",
+  "og_image": "/images/share.jpg",
+  "og_image_alt": "Hair & Makeup by Gerta, hair stylist and makeup artist at Le Vigne Hair Salon, Staten Island, NY, with two photos of long styled hair",
+  "theme_color": "#fefefd",
   "og_site_name": "Hair & Makeup by Gerta",
   "notes": [
     "No typo was fixed. The header and footer text is the same on all nine live Wix pages and is copied here unchanged, in reading order: nav, footer name, footer role, phone, email, the three address lines, the four policy links.",
     "skip_link: the live Wix pages show the built-in Wix link 'Skip to Main Content'. This file uses 'Skip to main content', the wording the build contract (section 6) prescribes.",
     "og_site_name: the live Wix tag og:site_name says 'Hairbygerta'. This file uses the business name 'Hair & Makeup by Gerta' on purpose.",
-    "og_image: the live Wix pages have no og:image tag. g12 is one of the owner's own photos and is licensed for use outside Wix. The generator joins site_url and og_image.",
+    "og_image: the live Wix pages have no og:image tag. Until 9 November 2026 it was g12, one of the owner's own photos, 900 x 1600 px, which link previews cut badly. Since then it is images/share.jpg, 1200 x 630 px, made by tools/make_share_image.py from g12, g13 and the logo (all three licensed for use outside Wix). The generator joins site_url and og_image and takes the width and height from image-manifest.json. og_image_alt describes that picture for people who cannot see it (og:image:alt and twitter:image:alt). theme_color is the colour a phone browser may give its address bar, the page background.",
     "copyright: this line is not on the Wix site and is added on purpose. The generator prints the copyright sign, the year, then this text.",
     "logo_label: not visible text. It is the accessible name of the logo link in the header. On Wix the logo image carries the alt text 'Hair & Makeup by Gerta logo' and the link has no name of its own.",
     "social: name is the network, label is the accessible name of the icon link. The live Wix icon links carry the labels 'Facebook' and 'Instagram', kept as they are.",
