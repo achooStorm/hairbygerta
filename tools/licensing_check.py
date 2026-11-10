@@ -23,8 +23,8 @@ WHAT IT CHECKS
          26 Wix-only photos is never left out.
        A zip archive that hides under another file name is opened and the
        files inside it are checked the same way.
-    2. Path. Nothing inside a folder named source-photos, zip or _tmp and no
-       *.zip file may be committed.
+    2. Path. Nothing inside a folder named source-photos, new-photos, zip or
+       _tmp and no *.zip file may be committed.
     Every other file passes. That includes the file named CNAME that GitHub
     adds to the top folder when the custom domain is set.
 
@@ -80,7 +80,7 @@ PRIVATE_FOLDER_NAME = "hairbygerta-wix-only-photos"
 PRIVATE_FOLDER = os.path.join(os.path.dirname(SITE), PRIVATE_FOLDER_NAME)
 
 # Nothing inside a folder with one of these names may be committed.
-FORBIDDEN_FOLDERS = ("source-photos", "zip", "_tmp")
+FORBIDDEN_FOLDERS = ("source-photos", "new-photos", "zip", "_tmp")
 
 # The licensed files of this site. A file in the private folder with exactly
 # the same content as one of these is licensed too and is not restricted.
@@ -740,7 +740,7 @@ def report(count, problems, restricted, scope, left_out, states=None, hook=None)
     files = "1 file" if count == 1 else "%d files" % count
     if not problems:
         say("Photo licensing check passed: %s checked (%s), no Wix-only photo, no zip "
-            "file, nothing from a source-photos, zip or _tmp folder." % (files, SCOPES[scope]))
+            "file, nothing from a source-photos, new-photos, zip or _tmp folder." % (files, SCOPES[scope]))
         say("Compared with %d fingerprints of restricted files from %s."
             % (restricted.total, restricted.sources()))
         lines.extend(notes(restricted, left_out, hook))
@@ -761,7 +761,8 @@ def report(count, problems, restricted, scope, left_out, states=None, hook=None)
     say("")
     say("Why: the photos of the old Wix site are licensed for Wix only. Only the salon")
     say("logo and the owner's own photos (g12 and g13) may be published with this site.")
-    say("Zip files and the folders source-photos, zip and _tmp are kept out as well,")
+    say("Zip files and the folders source-photos, new-photos, zip and _tmp are kept out")
+    say("as well,")
     say("because that is where photo backups are kept.")
     say("")
     if scope == "staged":
@@ -895,7 +896,7 @@ def main(argv=None):
             pass
     parser = argparse.ArgumentParser(
         description="Photo licensing check: stops a commit that holds a Wix-only photo, a "
-                    "zip file or anything from a source-photos, zip or _tmp folder. With no "
+                    "zip file or anything from a source-photos, new-photos, zip or _tmp folder. With no "
                     "option it checks every file git would track.")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--staged", action="store_true",

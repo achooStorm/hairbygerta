@@ -43,7 +43,8 @@ What is checked
           between the beige and the ink and at least half of them are beige. So no other picture can hide in it:
           the photos of this site are beige and brown too, which is why the beige itself is tested.
   Pages   every image address in the ten pages and the stylesheets must be one of those checked files.
-  Git     .gitignore excludes every folder named source-photos, zip or _tmp and every *.zip. In a repository:
+  Git     .gitignore excludes every folder named source-photos, new-photos, zip or _tmp and every *.zip. In a
+          repository:
           nothing of that kind is tracked, staged or in the history, no stored object is identical to a
           restricted file, every tracked image is allowed, allowed-derivative, a placeholder or an accepted
           owner photo.
@@ -141,11 +142,11 @@ MAX_MEMBER_BYTES = 400 * 1024 * 1024
 MAX_DOWNLOAD_BYTES = 60 * 1024 * 1024
 MAX_LINES_PER_CHECK = 12
 
-FORBIDDEN_FOLDERS = ("source-photos", "zip", "_tmp")
+FORBIDDEN_FOLDERS = ("source-photos", "new-photos", "zip", "_tmp")
 # .gitignore must exclude all of these (git check-ignore is asked).
 IGNORE_SAMPLES = ("source-photos/g01.jpg", "zip/g01.jpg", "_tmp/site2.zip", "_tmp/notes.txt", "backup.zip",
                   "hbg_images.zip", "images/photos.zip", "images/source-photos/g01.jpg", "qa/zip/g01.jpg",
-                  "tools/_tmp/draft.png")
+                  "tools/_tmp/draft.png", "new-photos/IMG_0001.jpg", "images/new-photos/g01.jpg")
 # The published site must answer 404 for these.
 FORBIDDEN_ADDRESSES = ("source-photos/g01.jpg", "zip/g01.jpg", "_tmp/site2.zip", "hbg_images.zip", "site.zip")
 MAX_SCREENSHOT_PROBES = 20
@@ -794,7 +795,7 @@ def embedded_pictures(label, data):
 
 def owner_of(rel):
     """Who has to fix a file, after the table in tools/CONTRACT.md."""
-    if rel.startswith(("_tmp/", "zip/", "source-photos/", ".git", "git object")) or "!" in rel or ext(rel) in ARCHIVE_EXT:
+    if rel.startswith(("_tmp/", "zip/", "source-photos/", "new-photos/", ".git", "git object")) or "!" in rel or ext(rel) in ARCHIVE_EXT:
         return "DEPLOY"
     if rel.startswith("css/"):
         return "DESIGN"

@@ -19,7 +19,7 @@
   no-absolute-path      no file names a folder of this computer (home folder, the folders next to the site folder,
                         the temporary folder, the Python folder), with either kind of slash
   no-pycache            no __pycache__ folder and no compiled Python file
-  no-leftovers          no _tmp, source-photos or zip folder, no archive, backup or editor leftover
+  no-leftovers          no _tmp, source-photos, new-photos or zip folder, no archive, backup or editor leftover
   readme-short          README.md exists and has fewer than 60 lines
   docs-no-em-dash       README.md, MIGRATION.md, redirects-check.md and qa/REPORT.md hold no em dash
   no-cname              there is no CNAME file yet (the domain is connected later; GitHub adds the file then,
@@ -54,7 +54,7 @@ PICTURE_DIRS = ("qa/screenshots",)      # pictures of our own pages, ignored by 
 TEXT_EXT = (".html", ".htm", ".css", ".js", ".cjs", ".mjs", ".json", ".xml", ".txt", ".md", ".py", ".svg", ".yml", ".yaml",
             ".cfg", ".ini", ".toml", ".sh", ".webmanifest", ".csv")
 TEXT_NAMES = (".gitignore", ".gitattributes", ".nojekyll", "CNAME", "pre-commit")
-LEFTOVER_DIRS = ("_tmp", "source-photos", "zip", "tmp", "temp")
+LEFTOVER_DIRS = ("_tmp", "source-photos", "new-photos", "zip", "tmp", "temp")
 LEFTOVER_EXT = (".zip", ".7z", ".rar", ".tar", ".gz", ".tmp", ".bak", ".orig", ".rej", ".swp", ".log")
 LEFTOVER_NAMES = ("thumbs.db", ".ds_store", "desktop.ini")
 GENERATOR = "tools/build_pages.py"
@@ -93,7 +93,7 @@ def owner_of(rel):
     if parts[0] == "qa":
         return "QA"
     if parts[0] in ("images", "fonts") or rel in ("favicon.ico", "image-manifest.json", "tools/make_placeholders.py", "tools/make_icons.py",
-                                                  "tools/make_fonts.py"):
+                                                  "tools/make_fonts.py", "tools/make_share_image.py", "tools/add_photo.py"):
         return "ASSETS"
     if parts[0] == "content":
         return "CONTENT"
@@ -488,7 +488,7 @@ def check_folder(site, env_dir):
     left = [(f, "a folder for temporary files or photo sources") for f in folders if f.split("/")[-1].lower() in LEFTOVER_DIRS]
     left += [(f, "an archive, a backup or a leftover of a program") for f in files
              if f.split("/")[-1].lower().endswith(LEFTOVER_EXT) or f.split("/")[-1].lower() in LEFTOVER_NAMES or f.split("/")[-1].startswith("~$")]
-    results += grouped("no-leftovers", "nothing temporary lives in the site folder (decision 20): no _tmp, source-photos or zip folder, no archive, backup or editor leftover",
+    results += grouped("no-leftovers", "nothing temporary lives in the site folder (decision 20): no _tmp, source-photos, new-photos or zip folder, no archive, backup or editor leftover",
                        left, "%s and %s" % (plural(len(files), "file"), plural(len(folders), "folder")), "names only; what is inside a picture is the job of qa/licensing_check.py")
 
     readme = read(site, "README.md")

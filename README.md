@@ -7,7 +7,7 @@ The website of Hair & Makeup by Gerta as a plain static site: finished HTML page
 | Where | What |
 |---|---|
 | `content/` | All the text. `site.json` holds what every page shares (menu, footer, phone, email, address, social links). The other files hold one page each. The opening hours are in `home.json`, `contact.json` and `book-online.json`. |
-| `tools/` | `build_pages.py` makes the pages. `pages/` has one layout file per page. `CONTRACT.md` lists the names that the HTML, the stylesheet and the script share. The other files make the placeholders and icons and guard the photo rule. |
+| `tools/` | `build_pages.py` makes the pages. `pages/` has one layout file per page. `CONTRACT.md` lists the names that the HTML, the stylesheet and the script share. The other files make the placeholders, icons, fonts and share image, put in new photos (`add_photo.py`) and guard the photo rule. |
 | `index.html`, `404.html`, `gallery/`, `book-online/`, `about/`, `contact/` and the four policy folders | The finished pages, one `index.html` per folder, at the same addresses as on Wix. Made by the build script. |
 | `css/style.css` | All the styling. |
 | `js/site.js` | The booking link, the phone menu, the gallery photo viewer, the contact form and the year in the footer. The contact form opens the visitor's own email program. The site itself sends nothing. |

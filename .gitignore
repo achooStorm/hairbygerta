@@ -1,5 +1,6 @@
 # Photo sources and backups: never commit these (photo licensing, see tools/licensing_check.py)
 source-photos/
+new-photos/
 zip/
 _tmp/
 *.zip

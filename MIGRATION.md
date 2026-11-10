@@ -887,6 +887,15 @@ Use the `hairbygerta` folder that the site was published from. On a computer tha
 
 A cloned folder has no guard against Wix-only photos yet. The guard is a check that runs with every commit, but only where it was switched on [S82]. Your helper switches it on with one command, once after the repository is created (Section 1, Part 4 does that) and once after every clone: type `python tools/licensing_check.py --install-hook` in the black window (Command Prompt) opened in the folder. Do not copy the guard file by hand. Until then, type `python tools/licensing_check.py` there before Part E, and go on only when it answers `Photo licensing check passed`.
 
+### The quick way, for the helper
+
+The script `tools/add_photo.py` does Parts B and C below and the build of Part D in one step. Do Part A first. Keep the original photos outside the folder `hairbygerta`, for example in a folder `new-photos` next to it. In a terminal in the folder `hairbygerta`:
+
+1. `..\hairbygerta-env\venv\Scripts\python.exe tools\add_photo.py --list` shows the 26 places that still show a placeholder.
+2. `..\hairbygerta-env\venv\Scripts\python.exe tools\add_photo.py ..\new-photos\IMG_0001.jpg g05 --alt "Long brunette waves, seen from the back"` puts that photo in the place `g05`. Add `--dry-run` first to see what would happen.
+3. The script turns the photo upright, makes the two sizes and a smaller WebP copy of each, removes the place and date the phone saved in the photo, writes the alt text and builds the pages.
+4. Look at the page as in Part D, then publish with Part E. The commit holds more files than the list in step 30, because of the WebP copies.
+
 ### The steps, shown with one example
 
 The example puts your photo in the fifth spot of the Gallery page. The file name of that spot is `g05`. For another spot, use its name wherever the steps say `g05`. The table after the steps lists every name.
