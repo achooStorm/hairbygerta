@@ -2,7 +2,7 @@
   "slug": "home",
   "path": "/",
   "title": "Hair & Makeup by Gerta | Hair Stylist & Makeup Artist – Staten Island, NY",
-  "description": "Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion.",
+  "description": "Gerta Lila, hair stylist and makeup artist at Le Vigne Hair Salon, Staten Island, NY. Balayage, color, cuts, keratin, Brazilian blowouts and natural makeup.",
   "h1": "It's Your Day to Shine!",
   "site_title": "Hair & Makeup by Gerta",
   "hero": {
@@ -63,7 +63,7 @@
       "width": 313,
       "height": 422
     },
-    "paragraph_2": "I work with high-quality, hair extensions that blend naturally with your own hair, so they look and move like the real thing. I choose the right products and at-home care so you can keep your look fresh and polished long after you leave the chair.",
+    "paragraph_2": "I work with high-quality hair extensions that blend naturally with your own hair, so they look and move like the real thing. I choose the right products and at-home care so you can keep your look fresh and polished long after you leave the chair.",
     "large": {
       "slot": "meet-large",
       "file": "meet-extensions",
@@ -74,14 +74,14 @@
     }
   },
   "notes": [
-    "Typos fixed: none. Every text on this page is word for word the live Wix text, which is also what the first version had.",
-    "title and description are the live Wix title tag and meta description, unchanged (the title keeps its en dash). They replace the description of the first version, which read: Gerta Lila is a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, NY. Haircuts, color, balayage, extensions and makeup. Tuesday to Saturday, 9 AM to 5 PM.",
+    "Typos fixed: one, on 9 November 2026: the comma in high-quality, hair extensions (meet.paragraph_2) was taken out, it now reads high-quality hair extensions. Every other text on this page is word for word the live Wix text.",
+    "title is the live Wix title tag, unchanged (it keeps its en dash). description was rewritten on 9 November 2026, because the Wix text read badly (\"is a hair stylist Staten Island NY and makeup artist\"). The Wix text was: Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion. The new text names Gerta, the salon and the town, and fits in the 160 characters a search result shows. This change and the comma are on the fixed list of intended differences in qa/check_content.py. Earlier note: They replace the description of the first version, which read: Gerta Lila is a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, NY. Haircuts, color, balayage, extensions and makeup. Tuesday to Saturday, 9 AM to 5 PM.",
     "h1, site_title and meet.heading are stored as Wix has them. Their capitals are real, not styling (textTransform is none).",
     "h1 and hero.heading are one and the same heading, kept twice on purpose: h1 is the key every page file has (contract section 3), hero.heading shows where it sits in the hero box. The live page has it once and the page prints it once, as the h1 inside the hero box (contract section 7). When one is edited, the other must get the same text.",
     "Apostrophes are kept as on the live site: straight in It's Your Day to Shine!, curly in I’m and it’s.",
     "hero.address is stored without the pin emoji that the live site shows right in front of it. The generator adds the pin as its own hidden span (contract section 7). The tel link and the maps link are not repeated here, they are in site.json.",
     "hero.hours is stored once. On the live site it is one scrolling line that repeats the same text. marquee_repeat says how many copies the generator writes.",
-    "Kept as the owner wrote it, not changed: I work with high-quality, hair extensions (the comma after high-quality may be unintended, the owner can decide).",
+    "The comma after high-quality in meet.paragraph_2 was taken out on 9 November 2026 (see the first note).",
     "alt is empty for all six photos because all six are placeholders. alt_original of home-styling, foils-highlights and makeup-red-lips is the alt text of the live Wix image, copied exactly. For foils-highlights that is only a file name (the first version described the photo as: Stylist finishing a blowout in the salon). For makeup-red-lips it includes the leading space, the double spaces and the cut-off ending that Wix has.",
     "alt_original of home-smile, home-waves and meet-extensions comes from the first version, because the live Wix images have an empty alt. For home-smile and home-waves it is word for word. For meet-extensions one word was changed. Old text (first version): Gerta checking the blend of a client's hair extensions. New text: Stylist checking the blend of a client's hair extensions. The name was taken out because meet-extensions is one of the 26 Wix-only stock or template photos, not one of the owner's own photos, and no source says that the person in it is Gerta.",
     "width and height are the size each photo is shown at on the desktop page, not the pixel size of the image file.",

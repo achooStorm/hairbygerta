@@ -46,9 +46,10 @@ What it checks on every page
                         the Contact page (10.33), and two changes made when online booking was dropped on 2 November 2026
                         (the Book Now buttons call 347-671-5095): the new meta description of the Book Online page, and
                         the Privacy Policy list item "Service providers that help us operate the website" without the
-                        words "and booking system". A note in a content file does not make a difference intended. A title
-                        tag or meta description that Wix has must equal the Wix value (the Contact title and the Book
-                        Online meta description apart).
+                        words "and booking system"; and two changes of 9 November 2026: the new meta description of the
+                        home page and the comma taken out of "high-quality, hair extensions" on the home page. A note in
+                        a content file does not make a difference intended. A title tag or meta description that Wix has
+                        must equal the Wix value (the Contact title and the Book Online and home meta descriptions apart).
                         Skipped with a note when the reference folder is not there.
   site-json-facts       (page "site") the business facts stored in content/site.json are the facts of the brief
 
@@ -785,6 +786,18 @@ BOOK_ONLINE_DESCRIPTION = (
     "keratin treatments, Brazilian blowouts and makeup in minutes.",
     "Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, "
     "keratin treatments, Brazilian blowouts and makeup.")
+# 9 November 2026: the Wix meta description of the home page read badly ("is a hair stylist Staten Island NY and makeup
+# artist"), so it was rewritten. Same shape as CONTACT_TITLE.
+HOME_DESCRIPTION = (
+    "home", "meta description",
+    "Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, "
+    "cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion.",
+    "Gerta Lila, hair stylist and makeup artist at Le Vigne Hair Salon, Staten Island, NY. Balayage, color, cuts, keratin, "
+    "Brazilian blowouts and natural makeup.")
+# 9 November 2026, a typo: the comma after "high-quality" on the home page. (page, the Wix sentence, our sentence).
+HOME_EXTENSIONS = ("home",
+                   "I work with high-quality, hair extensions that blend naturally with your own hair, so they look and move like the real thing.",
+                   "I work with high-quality hair extensions that blend naturally with your own hair, so they look and move like the real thing.")
 # For the same reason the Privacy Policy no longer names a booking system: (page, the Wix list item, our list item).
 # Any other rewording of that list item is a difference.
 PRIVACY_SERVICE_PROVIDERS = ("english-privacy-policy",
@@ -817,6 +830,8 @@ class Rules:
             return 'build contract, section 10.33: the Contact page gets the new title (the Wix one is the automatic default)'
         if (self.slug, what, wix_value, our_value) == BOOK_ONLINE_DESCRIPTION:
             return "online booking was dropped on 2 November 2026 and the Book Now buttons call 347-671-5095"
+        if (self.slug, what, wix_value, our_value) == HOME_DESCRIPTION:
+            return "rewritten on 9 November 2026: the Wix text read badly (a hair stylist Staten Island NY and makeup artist)"
         return None
 
     def reworded(self, w, o):
@@ -825,6 +840,8 @@ class Rules:
             return "build contract, section 10.8: the Email label carries the mark of a required field"
         if (self.slug, w, o) == PRIVACY_SERVICE_PROVIDERS:
             return "online booking was dropped on 2 November 2026, so the site has no booking system"
+        if (self.slug, w, o) == HOME_EXTENSIONS:
+            return "typo fixed on 9 November 2026: no comma after high-quality"
         return None
 
     def removed(self, w, wix_rows):
