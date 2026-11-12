@@ -1,56 +1,36 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-10-13 07:39:49",
+ "generated": "2026-11-12 14:07:19",
  "results": [
   {
    "page": "home",
    "viewport": "desktop",
-   "check": "marquee: six copies of the hours text",
+   "check": "reveal: the hero photos are revealed from top to bottom, once",
    "ok": true,
-   "expected": "div.track holds six span elements, each saying Tuesday - Saturday, 9 AM - 5 PM",
-   "actual": "six span elements with the hours text",
+   "expected": "div.hero-photos runs the animation reveal once, 500 to 700 ms, from clip-path inset(0px 0px 100% 0px) to inset(0px)",
+   "actual": "animation reveal, 600 ms, 1 time(s), key frames ['inset(0px 0px 100%)', 'inset(0px)']",
    "evidence": "",
-   "owner": "PAGES"
-  },
-  {
-   "page": "home",
-   "viewport": "desktop",
-   "check": "marquee: aria-label holds the hours once",
-   "ok": true,
-   "expected": "aria-label of .marquee holds 'Tuesday - Saturday, 9 AM - 5 PM' exactly once, and the six copies are hidden from screen readers (aria-hidden=true on .track)",
-   "actual": "aria-label='Hours: Tuesday - Saturday, 9 AM - 5 PM', aria-hidden on .track: 'true'",
-   "evidence": "role='img'",
-   "owner": "PAGES"
-  },
-  {
-   "page": "home",
-   "viewport": "desktop",
-   "check": "marquee: moves right to left at 25 to 30 px per second",
-   "ok": true,
-   "expected": "the track moves to the left at 25 to 30 px per second, measured over at least 4 seconds",
-   "actual": "27.5 px per second to the left, measured over 4.6 s (278 frames)",
-   "evidence": "speed second by second: [27.5, 27.5, 27.5, 27.5]; track 2055 px wide, text 18px, animation marquee 37.4s linear, font Figtree loaded: yes",
    "owner": "DESIGN"
   },
   {
    "page": "home",
    "viewport": "desktop",
-   "check": "marquee: stands still with reduced motion",
+   "check": "reveal: nothing else moves",
    "ok": true,
-   "expected": "with prefers-reduced-motion: reduce the track does not move",
-   "actual": "the track moved 0.0 px in 1.5 s",
-   "evidence": "animation none 1e-05s ease",
+   "expected": "after 1.5 s no animation of the home page is still running, and the reveal was the only one",
+   "actual": "no animation is running",
+   "evidence": "",
    "owner": "DESIGN"
   },
   {
    "page": "home",
    "viewport": "desktop",
-   "check": "marquee: text shows once with reduced motion",
+   "check": "reveal: skipped with reduced motion",
    "ok": true,
-   "expected": "with prefers-reduced-motion: reduce exactly one copy of the hours is visible, in full, inside the marquee",
-   "actual": "one copy visible, in full",
-   "evidence": "qa/screenshots/check_behavior-marquee-reduced-motion-desktop.png",
+   "expected": "with prefers-reduced-motion: reduce div.hero-photos has no animation and the photos show in full",
+   "actual": "animation none, clip-path 'none'",
+   "evidence": "",
    "owner": "DESIGN"
   },
   {
@@ -79,7 +59,7 @@
    "check": "lightbox: next button goes through all photos",
    "ok": true,
    "expected": "each tap on button.lb-next shows the next gallery photo, in order, to the last one",
-   "actual": "all 21 photos shown in order",
+   "actual": "all 2 photos shown in order",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -120,7 +100,7 @@
    "ok": true,
    "expected": "button.lb-prev shows the photo before",
    "actual": "works",
-   "evidence": "previous button on photo 11",
+   "evidence": "previous button on photo 2 (the gallery has two photos, so a step back and a step forward lead to the same photo: this check is weaker until a third photo is added)",
    "owner": "INTERACTION"
   },
   {
@@ -130,7 +110,7 @@
    "ok": true,
    "expected": "ArrowRight shows the next photo",
    "actual": "works",
-   "evidence": "ArrowRight on photo 10",
+   "evidence": "ArrowRight on photo 1",
    "owner": "INTERACTION"
   },
   {
@@ -140,7 +120,7 @@
    "ok": true,
    "expected": "ArrowLeft shows the photo before",
    "actual": "works",
-   "evidence": "ArrowLeft on photo 11",
+   "evidence": "ArrowLeft on photo 2",
    "owner": "INTERACTION"
   },
   {
@@ -150,7 +130,7 @@
    "ok": true,
    "expected": "on the last photo the next button and ArrowRight show photo 1",
    "actual": "works",
-   "evidence": "next button on photo 21; ArrowRight on photo 21",
+   "evidence": "next button on photo 2; ArrowRight on photo 2",
    "owner": "INTERACTION"
   },
   {
@@ -169,7 +149,7 @@
    "check": "lightbox: image src equals the link href",
    "ok": true,
    "expected": "after every opening and every step img.lb-img shows the full-size file of that gallery link",
-   "actual": "img.lb-img showed the file of the gallery link on all 30 photo views",
+   "actual": "img.lb-img showed the file of the gallery link on all 11 photo views",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -179,7 +159,7 @@
    "check": "lightbox: every full-size photo loads",
    "ok": true,
    "expected": "each photo shown in the viewer loads (naturalWidth above 0)",
-   "actual": "30 of 30 photo views loaded",
+   "actual": "11 of 11 photo views loaded",
    "evidence": "",
    "owner": "ASSETS"
   },
@@ -189,8 +169,8 @@
    "check": "lightbox: alt equals the thumbnail alt",
    "ok": true,
    "expected": "img.lb-img has the alt text of the thumbnail of the photo on show",
-   "actual": "equal on 30 photo views",
-   "evidence": "2 of 21 thumbnails have a non-empty alt text",
+   "actual": "equal on 11 photo views",
+   "evidence": "2 of 2 thumbnails have a non-empty alt text",
    "owner": "INTERACTION"
   },
   {
@@ -199,7 +179,7 @@
    "check": "lightbox: counter shows position and total",
    "ok": true,
    "expected": "p.lb-count holds the number of the photo on show and the number of photos",
-   "actual": "right on 30 photo views",
+   "actual": "right on 11 photo views",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -230,8 +210,18 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: empty email shows its message in words",
+   "ok": true,
+   "expected": "#email-error is shown under the field with the text of its data-missing, #email has aria-invalid=true, points at #email-error and has the focus",
+   "actual": "message shown: 'Please enter your email address, so I can reply.'; matches data-missing; aria-invalid=true; aria-describedby=email-error; focus on #email",
+   "evidence": "",
+   "owner": "INTERACTION"
   },
   {
    "page": "contact",
@@ -246,10 +236,30 @@
   {
    "page": "contact",
    "viewport": "desktop",
+   "check": "contact form: malformed email shows its message in words",
+   "ok": true,
+   "expected": "#email-error is shown with the text of its data-invalid, #email has aria-invalid=true and the focus",
+   "actual": "message shown: 'Please check your email address. It should look like name@example.com.'; matches data-invalid; aria-invalid=true; aria-describedby=email-error; focus on #email",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
    "check": "contact form: malformed email is stopped by the browser",
    "ok": true,
    "expected": "no mail link, the status line stays empty, #email is marked as mistyped by the browser",
    "actual": "no mail link; status line empty; #email marked as mistyped",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "desktop",
+   "check": "contact form: the message goes once the address is right",
+   "ok": true,
+   "expected": "after a valid address is typed #email-error is hidden and #email has no aria-invalid",
+   "actual": "message hidden, no aria-invalid",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -278,8 +288,8 @@
    "viewport": "desktop",
    "check": "contact form: status line appears in .form-note",
    "ok": true,
-   "expected": ".form-note shows 'Thanks! Your email app should open so you can send the message.'",
-   "actual": ".form-note says 'Thanks! Your email app should open so you can send the message.'",
+   "expected": ".form-note shows 'Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.'",
+   "actual": ".form-note says 'Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.'",
    "evidence": "qa/screenshots/check_behavior-contact-sent-desktop.png",
    "owner": "INTERACTION"
   },
@@ -300,7 +310,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "evidence": "blocked as planned: www.google.com",
    "owner": "PAGES"
   },
   {
@@ -319,8 +329,8 @@
    "check": "broken address: stylesheet loads on the 404 page",
    "ok": true,
    "expected": "css/style.css is fetched from the site root with status 200 and is in use",
-   "actual": "css/style.css from the site root: 200; in use with 240 rules",
-   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "actual": "css/style.css from the site root: 200; in use with 203 rules",
+   "evidence": "button background rgb(29, 21, 9); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/fonts/bodoni-moda-italic-latin.woff2', '/nope/deeper/fonts/figtree-latin.woff2', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
    "owner": "PAGES"
   },
   {
@@ -366,7 +376,7 @@
   {
    "page": "404",
    "viewport": "desktop",
-   "check": "old address: booking-calendar/balayage ends on the Book Online page",
+   "check": "old address: booking-calendar/balayage ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -376,7 +386,7 @@
   {
    "page": "404",
    "viewport": "desktop",
-   "check": "old address: service-page/hair-coloring ends on the Book Online page",
+   "check": "old address: service-page/hair-coloring ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -399,8 +409,8 @@
    "check": "site at the top of the host: broken address: stylesheet loads on the 404 page",
    "ok": true,
    "expected": "css/style.css is fetched from the site root with status 200 and is in use",
-   "actual": "css/style.css from the site root: 200; in use with 240 rules",
-   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "actual": "css/style.css from the site root: 200; in use with 203 rules",
+   "evidence": "button background rgb(29, 21, 9); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/fonts/bodoni-moda-italic-latin.woff2', '/nope/deeper/fonts/figtree-latin.woff2', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
    "owner": "PAGES"
   },
   {
@@ -446,7 +456,7 @@
   {
    "page": "404",
    "viewport": "desktop",
-   "check": "site at the top of the host: old address: booking-calendar/balayage ends on the Book Online page",
+   "check": "site at the top of the host: old address: booking-calendar/balayage ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -456,7 +466,7 @@
   {
    "page": "404",
    "viewport": "desktop",
-   "check": "site at the top of the host: old address: service-page/hair-coloring ends on the Book Online page",
+   "check": "site at the top of the host: old address: service-page/hair-coloring ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -466,121 +476,121 @@
   {
    "page": "book-online",
    "viewport": "desktop",
-   "check": "book now: ten Book Now pills",
+   "check": "call button: calls 347-671-5095 while BOOKING_URL is empty",
    "ok": true,
-   "expected": "10 a.pill[data-book], one per service",
-   "actual": "10 a.pill[data-book], 10 [data-book] elements in all",
+   "expected": "one .svc-call a.btn-call with the text Call 347-671-5095 and href tel:+1-347-671-5095, no data-book, no target",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the call block of the Services page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "text link: texts the same number",
+   "ok": true,
+   "expected": "one .svc-call a.text-link with the text Text Gerta and href sms:+13476715095, no data-book, no target",
+   "actual": "text 'Text Gerta', href 'sms:+13476715095', target None, data-book: no",
+   "evidence": "the call block of the Services page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "call button: still calls 347-671-5095 when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book the button still calls tel:+1-347-671-5095",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the call block of the Services page",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "booking link: BOOKING_URL is the first statement of js/site.js",
+   "ok": true,
+   "expected": "var BOOKING_URL = \"\"; first in the file (empty, the site has no online booking)",
+   "actual": "var BOOKING_URL = \"\"; (empty)",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "desktop",
+   "check": "booking link: nothing on the page is marked data-book",
+   "ok": true,
+   "expected": "0 [data-book] elements, with BOOKING_URL empty and with it set: no link of the page can be turned into a booking link",
+   "actual": "0 [data-book] elements with BOOKING_URL empty, 0 with it set",
    "evidence": "",
    "owner": "PAGES"
   },
   {
    "page": "book-online",
    "viewport": "desktop",
-   "check": "book now: BOOKING_URL is the first statement of js/site.js",
-   "ok": true,
-   "expected": "var BOOKING_URL = \"\"; first in the file (empty until the owner pastes a real https link)",
-   "actual": "var BOOKING_URL = \"\"; (empty, the buttons call the phone)",
-   "evidence": "",
-   "owner": "INTERACTION"
-  },
-  {
-   "page": "book-online",
-   "viewport": "desktop",
-   "check": "book now: pills call the phone while BOOKING_URL is empty",
-   "ok": true,
-   "expected": "every pill has href tel:+1-347-671-5095 and no target",
-   "actual": "10 pills, all tel:+1-347-671-5095, no target",
-   "evidence": "js/site.js as served",
-   "owner": "INTERACTION"
-  },
-  {
-   "page": "book-online",
-   "viewport": "desktop",
-   "check": "book now: pills open the booking link when BOOKING_URL is set",
-   "ok": true,
-   "expected": "with BOOKING_URL = https://example.com/book: every pill has that href, target=_blank and rel=noopener",
-   "actual": "10 pills, all https://example.com/book, target=_blank, rel=noopener",
-   "evidence": "",
-   "owner": "INTERACTION"
-  },
-  {
-   "page": "book-online",
-   "viewport": "desktop",
-   "check": "book now: no script error, no broken request",
+   "check": "booking link: no script error, no broken request",
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
-   "owner": "PAGES"
-  },
-  {
-   "page": "home",
-   "viewport": "desktop",
-   "check": "book online button: opens the Book Online page while BOOKING_URL is empty",
-   "ok": true,
-   "expected": "one .hero-box a.btn without data-book, a click opens the Book Online page of this site",
-   "actual": "a click opens /book-online/",
    "evidence": "",
    "owner": "PAGES"
   },
   {
    "page": "home",
    "viewport": "desktop",
-   "check": "book online button: opens the Book Online page when BOOKING_URL is set",
+   "check": "call button: calls 347-671-5095 while BOOKING_URL is empty",
    "ok": true,
-   "expected": "with BOOKING_URL = https://example.com/book the same: still the Book Online page of this site, no target",
-   "actual": "a click opens /book-online/",
-   "evidence": "",
+   "expected": "one .hero a.btn-call with the text Call 347-671-5095 and href tel:+1-347-671-5095, no data-book, no target",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the first screen of the home page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "text link: texts the same number",
+   "ok": true,
+   "expected": "one .hero a.text-link with the text Text Gerta and href sms:+13476715095, no data-book, no target",
+   "actual": "text 'Text Gerta', href 'sms:+13476715095', target None, data-book: no",
+   "evidence": "the first screen of the home page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "desktop",
+   "check": "call button: still calls 347-671-5095 when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book the button still calls tel:+1-347-671-5095",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the first screen of the home page",
    "owner": "INTERACTION"
   },
   {
    "page": "home",
    "viewport": "phone",
-   "check": "marquee: six copies of the hours text",
+   "check": "reveal: the hero photos are revealed from top to bottom, once",
    "ok": true,
-   "expected": "div.track holds six span elements, each saying Tuesday - Saturday, 9 AM - 5 PM",
-   "actual": "six span elements with the hours text",
+   "expected": "div.hero-photos runs the animation reveal once, 500 to 700 ms, from clip-path inset(0px 0px 100% 0px) to inset(0px)",
+   "actual": "animation reveal, 600 ms, 1 time(s), key frames ['inset(0px 0px 100%)', 'inset(0px)']",
    "evidence": "",
-   "owner": "PAGES"
-  },
-  {
-   "page": "home",
-   "viewport": "phone",
-   "check": "marquee: aria-label holds the hours once",
-   "ok": true,
-   "expected": "aria-label of .marquee holds 'Tuesday - Saturday, 9 AM - 5 PM' exactly once, and the six copies are hidden from screen readers (aria-hidden=true on .track)",
-   "actual": "aria-label='Hours: Tuesday - Saturday, 9 AM - 5 PM', aria-hidden on .track: 'true'",
-   "evidence": "role='img'",
-   "owner": "PAGES"
-  },
-  {
-   "page": "home",
-   "viewport": "phone",
-   "check": "marquee: moves right to left at 25 to 30 px per second",
-   "ok": true,
-   "expected": "the track moves to the left at 25 to 30 px per second, measured over at least 4 seconds",
-   "actual": "27.5 px per second to the left, measured over 4.6 s (278 frames)",
-   "evidence": "speed second by second: [27.5, 27.5, 27.5, 27.5]; track 1705 px wide, text 14px, animation marquee 31s linear, font Figtree loaded: yes",
    "owner": "DESIGN"
   },
   {
    "page": "home",
    "viewport": "phone",
-   "check": "marquee: stands still with reduced motion",
+   "check": "reveal: nothing else moves",
    "ok": true,
-   "expected": "with prefers-reduced-motion: reduce the track does not move",
-   "actual": "the track moved 0.0 px in 1.5 s",
-   "evidence": "animation none 1e-05s ease",
+   "expected": "after 1.5 s no animation of the home page is still running, and the reveal was the only one",
+   "actual": "no animation is running",
+   "evidence": "",
    "owner": "DESIGN"
   },
   {
    "page": "home",
    "viewport": "phone",
-   "check": "marquee: text shows once with reduced motion",
+   "check": "reveal: skipped with reduced motion",
    "ok": true,
-   "expected": "with prefers-reduced-motion: reduce exactly one copy of the hours is visible, in full, inside the marquee",
-   "actual": "one copy visible, in full",
-   "evidence": "qa/screenshots/check_behavior-marquee-reduced-motion-phone.png",
+   "expected": "with prefers-reduced-motion: reduce div.hero-photos has no animation and the photos show in full",
+   "actual": "animation none, clip-path 'none'",
+   "evidence": "",
    "owner": "DESIGN"
   },
   {
@@ -609,7 +619,7 @@
    "check": "lightbox: next button goes through all photos",
    "ok": true,
    "expected": "each tap on button.lb-next shows the next gallery photo, in order, to the last one",
-   "actual": "all 21 photos shown in order",
+   "actual": "all 2 photos shown in order",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -650,7 +660,7 @@
    "ok": true,
    "expected": "button.lb-prev shows the photo before",
    "actual": "works",
-   "evidence": "previous button on photo 11",
+   "evidence": "previous button on photo 2 (the gallery has two photos, so a step back and a step forward lead to the same photo: this check is weaker until a third photo is added)",
    "owner": "INTERACTION"
   },
   {
@@ -660,7 +670,7 @@
    "ok": true,
    "expected": "ArrowRight shows the next photo",
    "actual": "works",
-   "evidence": "ArrowRight on photo 10",
+   "evidence": "ArrowRight on photo 1",
    "owner": "INTERACTION"
   },
   {
@@ -670,7 +680,7 @@
    "ok": true,
    "expected": "ArrowLeft shows the photo before",
    "actual": "works",
-   "evidence": "ArrowLeft on photo 11",
+   "evidence": "ArrowLeft on photo 2",
    "owner": "INTERACTION"
   },
   {
@@ -680,7 +690,7 @@
    "ok": true,
    "expected": "on the last photo the next button and ArrowRight show photo 1",
    "actual": "works",
-   "evidence": "next button on photo 21; ArrowRight on photo 21",
+   "evidence": "next button on photo 2; ArrowRight on photo 2",
    "owner": "INTERACTION"
   },
   {
@@ -699,7 +709,7 @@
    "check": "lightbox: image src equals the link href",
    "ok": true,
    "expected": "after every opening and every step img.lb-img shows the full-size file of that gallery link",
-   "actual": "img.lb-img showed the file of the gallery link on all 30 photo views",
+   "actual": "img.lb-img showed the file of the gallery link on all 11 photo views",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -709,7 +719,7 @@
    "check": "lightbox: every full-size photo loads",
    "ok": true,
    "expected": "each photo shown in the viewer loads (naturalWidth above 0)",
-   "actual": "30 of 30 photo views loaded",
+   "actual": "11 of 11 photo views loaded",
    "evidence": "",
    "owner": "ASSETS"
   },
@@ -719,8 +729,8 @@
    "check": "lightbox: alt equals the thumbnail alt",
    "ok": true,
    "expected": "img.lb-img has the alt text of the thumbnail of the photo on show",
-   "actual": "equal on 30 photo views",
-   "evidence": "2 of 21 thumbnails have a non-empty alt text",
+   "actual": "equal on 11 photo views",
+   "evidence": "2 of 2 thumbnails have a non-empty alt text",
    "owner": "INTERACTION"
   },
   {
@@ -729,7 +739,7 @@
    "check": "lightbox: counter shows position and total",
    "ok": true,
    "expected": "p.lb-count holds the number of the photo on show and the number of photos",
-   "actual": "right on 30 photo views",
+   "actual": "right on 11 photo views",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -760,8 +770,18 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: empty email shows its message in words",
+   "ok": true,
+   "expected": "#email-error is shown under the field with the text of its data-missing, #email has aria-invalid=true, points at #email-error and has the focus",
+   "actual": "message shown: 'Please enter your email address, so I can reply.'; matches data-missing; aria-invalid=true; aria-describedby=email-error; focus on #email",
+   "evidence": "",
+   "owner": "INTERACTION"
   },
   {
    "page": "contact",
@@ -776,10 +796,30 @@
   {
    "page": "contact",
    "viewport": "phone",
+   "check": "contact form: malformed email shows its message in words",
+   "ok": true,
+   "expected": "#email-error is shown with the text of its data-invalid, #email has aria-invalid=true and the focus",
+   "actual": "message shown: 'Please check your email address. It should look like name@example.com.'; matches data-invalid; aria-invalid=true; aria-describedby=email-error; focus on #email",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
    "check": "contact form: malformed email is stopped by the browser",
    "ok": true,
    "expected": "no mail link, the status line stays empty, #email is marked as mistyped by the browser",
    "actual": "no mail link; status line empty; #email marked as mistyped",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "contact form: the message goes once the address is right",
+   "ok": true,
+   "expected": "after a valid address is typed #email-error is hidden and #email has no aria-invalid",
+   "actual": "message hidden, no aria-invalid",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -808,8 +848,8 @@
    "viewport": "phone",
    "check": "contact form: status line appears in .form-note",
    "ok": true,
-   "expected": ".form-note shows 'Thanks! Your email app should open so you can send the message.'",
-   "actual": ".form-note says 'Thanks! Your email app should open so you can send the message.'",
+   "expected": ".form-note shows 'Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.'",
+   "actual": ".form-note says 'Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.'",
    "evidence": "qa/screenshots/check_behavior-contact-sent-phone.png",
    "owner": "INTERACTION"
   },
@@ -830,7 +870,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "evidence": "blocked as planned: www.google.com",
    "owner": "PAGES"
   },
   {
@@ -849,8 +889,8 @@
    "check": "broken address: stylesheet loads on the 404 page",
    "ok": true,
    "expected": "css/style.css is fetched from the site root with status 200 and is in use",
-   "actual": "css/style.css from the site root: 200; in use with 240 rules",
-   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "actual": "css/style.css from the site root: 200; in use with 203 rules",
+   "evidence": "button background rgb(29, 21, 9); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/fonts/bodoni-moda-italic-latin.woff2', '/nope/deeper/fonts/figtree-latin.woff2', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
    "owner": "PAGES"
   },
   {
@@ -896,7 +936,7 @@
   {
    "page": "404",
    "viewport": "phone",
-   "check": "old address: booking-calendar/balayage ends on the Book Online page",
+   "check": "old address: booking-calendar/balayage ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -906,7 +946,7 @@
   {
    "page": "404",
    "viewport": "phone",
-   "check": "old address: service-page/hair-coloring ends on the Book Online page",
+   "check": "old address: service-page/hair-coloring ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -929,8 +969,8 @@
    "check": "site at the top of the host: broken address: stylesheet loads on the 404 page",
    "ok": true,
    "expected": "css/style.css is fetched from the site root with status 200 and is in use",
-   "actual": "css/style.css from the site root: 200; in use with 240 rules",
-   "evidence": "button background rgb(85, 79, 70); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
+   "actual": "css/style.css from the site root: 200; in use with 203 rules",
+   "evidence": "button background rgb(29, 21, 9); other addresses that answered 404 on the way: ['/nope/deeper/css/style.css', '/nope/deeper/fonts/bodoni-moda-italic-latin.woff2', '/nope/deeper/fonts/figtree-latin.woff2', '/nope/deeper/images/logo.jpg', '/nope/deeper/js/site.js']",
    "owner": "PAGES"
   },
   {
@@ -976,7 +1016,7 @@
   {
    "page": "404",
    "viewport": "phone",
-   "check": "site at the top of the host: old address: booking-calendar/balayage ends on the Book Online page",
+   "check": "site at the top of the host: old address: booking-calendar/balayage ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -986,7 +1026,7 @@
   {
    "page": "404",
    "viewport": "phone",
-   "check": "site at the top of the host: old address: service-page/hair-coloring ends on the Book Online page",
+   "check": "site at the top of the host: old address: service-page/hair-coloring ends on the Services page",
    "ok": true,
    "expected": "the browser ends on book-online/ and that page answers 200",
    "actual": "the browser ends on /book-online/ (status 200)",
@@ -996,71 +1036,91 @@
   {
    "page": "book-online",
    "viewport": "phone",
-   "check": "book now: ten Book Now pills",
+   "check": "call button: calls 347-671-5095 while BOOKING_URL is empty",
    "ok": true,
-   "expected": "10 a.pill[data-book], one per service",
-   "actual": "10 a.pill[data-book], 10 [data-book] elements in all",
+   "expected": "one .svc-call a.btn-call with the text Call 347-671-5095 and href tel:+1-347-671-5095, no data-book, no target",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the call block of the Services page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "text link: texts the same number",
+   "ok": true,
+   "expected": "one .svc-call a.text-link with the text Text Gerta and href sms:+13476715095, no data-book, no target",
+   "actual": "text 'Text Gerta', href 'sms:+13476715095', target None, data-book: no",
+   "evidence": "the call block of the Services page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "call button: still calls 347-671-5095 when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book the button still calls tel:+1-347-671-5095",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the call block of the Services page",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "booking link: BOOKING_URL is the first statement of js/site.js",
+   "ok": true,
+   "expected": "var BOOKING_URL = \"\"; first in the file (empty, the site has no online booking)",
+   "actual": "var BOOKING_URL = \"\"; (empty)",
+   "evidence": "",
+   "owner": "INTERACTION"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
+   "check": "booking link: nothing on the page is marked data-book",
+   "ok": true,
+   "expected": "0 [data-book] elements, with BOOKING_URL empty and with it set: no link of the page can be turned into a booking link",
+   "actual": "0 [data-book] elements with BOOKING_URL empty, 0 with it set",
    "evidence": "",
    "owner": "PAGES"
   },
   {
    "page": "book-online",
    "viewport": "phone",
-   "check": "book now: BOOKING_URL is the first statement of js/site.js",
-   "ok": true,
-   "expected": "var BOOKING_URL = \"\"; first in the file (empty until the owner pastes a real https link)",
-   "actual": "var BOOKING_URL = \"\"; (empty, the buttons call the phone)",
-   "evidence": "",
-   "owner": "INTERACTION"
-  },
-  {
-   "page": "book-online",
-   "viewport": "phone",
-   "check": "book now: pills call the phone while BOOKING_URL is empty",
-   "ok": true,
-   "expected": "every pill has href tel:+1-347-671-5095 and no target",
-   "actual": "10 pills, all tel:+1-347-671-5095, no target",
-   "evidence": "js/site.js as served",
-   "owner": "INTERACTION"
-  },
-  {
-   "page": "book-online",
-   "viewport": "phone",
-   "check": "book now: pills open the booking link when BOOKING_URL is set",
-   "ok": true,
-   "expected": "with BOOKING_URL = https://example.com/book: every pill has that href, target=_blank and rel=noopener",
-   "actual": "10 pills, all https://example.com/book, target=_blank, rel=noopener",
-   "evidence": "",
-   "owner": "INTERACTION"
-  },
-  {
-   "page": "book-online",
-   "viewport": "phone",
-   "check": "book now: no script error, no broken request",
+   "check": "booking link: no script error, no broken request",
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
-   "owner": "PAGES"
-  },
-  {
-   "page": "home",
-   "viewport": "phone",
-   "check": "book online button: opens the Book Online page while BOOKING_URL is empty",
-   "ok": true,
-   "expected": "one .hero-box a.btn without data-book, a click opens the Book Online page of this site",
-   "actual": "a click opens /book-online/",
    "evidence": "",
    "owner": "PAGES"
   },
   {
    "page": "home",
    "viewport": "phone",
-   "check": "book online button: opens the Book Online page when BOOKING_URL is set",
+   "check": "call button: calls 347-671-5095 while BOOKING_URL is empty",
    "ok": true,
-   "expected": "with BOOKING_URL = https://example.com/book the same: still the Book Online page of this site, no target",
-   "actual": "a click opens /book-online/",
-   "evidence": "",
+   "expected": "one .hero a.btn-call with the text Call 347-671-5095 and href tel:+1-347-671-5095, no data-book, no target",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the first screen of the home page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "text link: texts the same number",
+   "ok": true,
+   "expected": "one .hero a.text-link with the text Text Gerta and href sms:+13476715095, no data-book, no target",
+   "actual": "text 'Text Gerta', href 'sms:+13476715095', target None, data-book: no",
+   "evidence": "the first screen of the home page",
+   "owner": "PAGES"
+  },
+  {
+   "page": "home",
+   "viewport": "phone",
+   "check": "call button: still calls 347-671-5095 when BOOKING_URL is set",
+   "ok": true,
+   "expected": "with BOOKING_URL = https://example.com/book the button still calls tel:+1-347-671-5095",
+   "actual": "text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no",
+   "evidence": "the first screen of the home page",
    "owner": "INTERACTION"
   },
   {
@@ -1110,7 +1170,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1150,7 +1210,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1190,7 +1250,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1230,7 +1290,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1270,7 +1330,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "evidence": "blocked as planned: www.google.com",
    "owner": "PAGES"
   },
   {
@@ -1310,7 +1370,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1350,7 +1410,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1390,7 +1450,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1430,7 +1490,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1470,7 +1530,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1570,7 +1630,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1648,8 +1708,8 @@
    "viewport": "phone",
    "check": "menu: link click navigates",
    "ok": true,
-   "expected": "a tap on Book Online opens /book-online/",
-   "actual": "tap on Book Online: the browser is on /book-online/",
+   "expected": "a tap on Services opens /book-online/",
+   "actual": "tap on Services: the browser is on /book-online/",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -1660,7 +1720,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1750,7 +1810,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1840,7 +1900,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -1930,7 +1990,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2020,7 +2080,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2110,7 +2170,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2188,8 +2248,8 @@
    "viewport": "phone",
    "check": "menu: link click navigates",
    "ok": true,
-   "expected": "a tap on Book Online opens /book-online/",
-   "actual": "tap on Book Online: the browser is on /book-online/",
+   "expected": "a tap on Services opens /book-online/",
+   "actual": "tap on Services: the browser is on /book-online/",
    "evidence": "",
    "owner": "INTERACTION"
   },
@@ -2200,7 +2260,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2290,7 +2350,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2380,7 +2440,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2388,7 +2448,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "qa/screenshots/check_behavior-nojs-home-phone.png",
    "owner": "DESIGN"
@@ -2410,7 +2470,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2418,7 +2478,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2439,7 +2499,7 @@
    "check": "no-js: gallery links point at the full-size images",
    "ok": true,
    "expected": "every .gallery a leads to images/NAME.jpg (the file exists) and its thumbnail is images/sm/NAME.jpg",
-   "actual": "21 links, each to an existing full-size image",
+   "actual": "2 links, each to an existing full-size image",
    "evidence": "",
    "owner": "PAGES"
   },
@@ -2450,7 +2510,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2458,7 +2518,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2476,10 +2536,10 @@
   {
    "page": "book-online",
    "viewport": "phone",
-   "check": "no-js: Book Now links call the phone",
+   "check": "no-js: Call button calls the phone",
    "ok": true,
-   "expected": "10 a.pill[data-book], and every [data-book] link has href tel:+1-347-671-5095",
-   "actual": "10 a.pill[data-book], 10 [data-book] links, all call the phone",
+   "expected": "one .svc-call a.btn-call with href tel:+1-347-671-5095, one .svc-call a.text-link with href sms:+13476715095, nothing marked data-book",
+   "actual": "Call button: text 'Call 347-671-5095', href 'tel:+1-347-671-5095', target None, data-book: no; Text link: text 'Text Gerta', href 'sms:+13476715095', target None, data-book: no; 0 [data-book] elements",
    "evidence": "",
    "owner": "PAGES"
   },
@@ -2490,7 +2550,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2498,7 +2558,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2520,7 +2580,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2528,7 +2588,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2546,20 +2606,30 @@
   {
    "page": "contact",
    "viewport": "phone",
-   "check": "no-js: contact form visible with action mailto",
+   "check": "no-js: contact form hidden, phone and email links shown",
    "ok": true,
-   "expected": "#contact-form and its fields are shown, action is mailto:info@hairbygerta.com",
-   "actual": "action='mailto:info@hairbygerta.com'",
+   "expected": "#contact-form is not shown (it needs the script to open an email app), the sentence above it shows a link tel:+1-347-671-5095 and a link mailto:info@hairbygerta.com",
+   "actual": "form hidden; phone link shown; email link shown",
+   "evidence": "",
+   "owner": "DESIGN"
+  },
+  {
+   "page": "contact",
+   "viewport": "phone",
+   "check": "no-js: contact form has no action",
+   "ok": true,
+   "expected": "no action attribute (a mailto action makes browsers warn about an insecure form, decision 41), data-mailto is mailto:info@hairbygerta.com",
+   "actual": "action=None, data-mailto='mailto:info@hairbygerta.com'",
    "evidence": "",
    "owner": "PAGES"
   },
   {
    "page": "contact",
    "viewport": "phone",
-   "check": "no-js: contact form posts as plain text",
+   "check": "no-js: map link shown",
    "ok": true,
-   "expected": "method=post and enctype=text/plain, so a mail program gets readable text",
-   "actual": "method='post', enctype='text/plain'",
+   "expected": "the map stays empty without the script, the Open in Google Maps link under it is shown",
+   "actual": "link shown; the frame stays empty",
    "evidence": "",
    "owner": "PAGES"
   },
@@ -2570,7 +2640,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com, www.google.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2578,7 +2648,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2600,7 +2670,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2608,7 +2678,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2630,7 +2700,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2638,7 +2708,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2660,7 +2730,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2668,7 +2738,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2690,7 +2760,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   },
   {
@@ -2698,7 +2768,7 @@
    "viewport": "phone",
    "check": "no-js: five navigation links visible",
    "ok": true,
-   "expected": "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered",
+   "expected": "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered",
    "actual": "five links visible",
    "evidence": "",
    "owner": "DESIGN"
@@ -2720,7 +2790,7 @@
    "ok": true,
    "expected": "clean",
    "actual": "clean",
-   "evidence": "blocked as planned: fonts.googleapis.com",
+   "evidence": "",
    "owner": "PAGES"
   }
  ],
@@ -2744,8 +2814,7 @@
   ]
  },
  "blocked_as_planned": [
-  "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,700&family=Figtree:wght@400;700&display=swap",
   "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
  ],
- "note": "Addresses are written from the site root. Blocked requests to Google Fonts and Google Maps are planned and are not failures."
+ "note": "Addresses are written from the site root. Blocked requests to Google Maps are planned and are not failures."
 }
