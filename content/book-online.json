@@ -17,14 +17,14 @@
       "description": "Revitalize your hair with our expert coloring services.",
       "duration": "1 hr 30 min",
       "price": "Call for price",
-      "image": {"slot": "service-02", "file": "g10", "alt": "", "alt_original": "Applying highlights with foils"}
+      "image": {"slot": "service-02", "file": "g10", "alt": "Applying blonde highlights with foils", "alt_original": "Applying highlights with foils"}
     },
     {
       "title": "Makeup Session",
       "description": "Natural makeup that enhances your beauty.",
       "duration": "45 min",
       "price": "Call for price",
-      "image": {"slot": "service-03", "file": "makeup-red-lips", "alt": "", "alt_original": "Makeup with a bold red lip"}
+      "image": {"slot": "service-03", "file": "makeup-red-lips", "alt": "Makeup artist applying eyeshadow", "alt_original": "Makeup with a bold red lip"}
     },
     {
       "title": "Dream Bridal Hair",
@@ -38,28 +38,28 @@
       "description": "Customized foils to add brightness, depth, and dimension.",
       "duration": "2 hr 30 min",
       "price": "Call for price",
-      "image": {"slot": "service-05", "file": "foils-highlights", "alt": "", "alt_original": "Stylist finishing a blowout with hairspray"}
+      "image": {"slot": "service-05", "file": "foils-highlights", "alt": "Applying highlights with foils", "alt_original": "Stylist finishing a blowout with hairspray"}
     },
     {
       "title": "Balayage",
       "description": "Hand-painted color for a soft, sun-kissed finish.",
       "duration": "3 hr",
       "price": "Call for price",
-      "image": {"slot": "service-06", "file": "g19", "alt": "", "alt_original": "Happy client with fresh balayage"}
+      "image": {"slot": "service-06", "file": "g19", "alt": "Happy client with fresh balayage", "alt_original": "Happy client with fresh balayage"}
     },
     {
       "title": "Keratin Treatment",
       "description": "Frizz-fighting smoothing treatment for sleek, manageable hair.",
       "duration": "2 hr 30 min",
       "price": "Call for price",
-      "image": {"slot": "service-07", "file": "g17", "alt": "", "alt_original": "Smoothing blow-dry with a round brush"}
+      "image": {"slot": "service-07", "file": "g17", "alt": "Smoothing blow-dry with a round brush", "alt_original": "Smoothing blow-dry with a round brush"}
     },
     {
       "title": "Brazilian Blowout",
       "description": "Long-lasting smoothness with mirror-like shine.",
       "duration": "2 hr",
       "price": "Call for price",
-      "image": {"slot": "service-08", "file": "g16", "alt": "", "alt_original": "Blonde balayage with loose waves"}
+      "image": {"slot": "service-08", "file": "g16", "alt": "Blonde balayage with loose waves", "alt_original": "Blonde balayage with loose waves"}
     },
     {
       "title": "Perm & Texture Waves",

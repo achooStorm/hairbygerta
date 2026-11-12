@@ -3,7 +3,7 @@
 Written by `qa/run_all.py`. Every path in this report is relative to the site folder.
 
 - Address tested: the site folder on this computer (local site folder). Each browser check serves it through its own local server (qa/serve.py) on a free port
-- Time: 2026-11-12 21:27:08, the run took 8 seconds
+- Time: 2026-11-12 23:07:02, the run took 3 seconds
 - Pages: all 10
 - Viewports: desktop (1280 x 900), phone (iPhone 13)
 - Checks run: content, repo
@@ -19,12 +19,12 @@ Licensing was not checked in this run. Run the full suite before any commit.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | html | `qa/check_html.py` | not run | - | - | - | - | last report on disk (2026-10-13 07:38:26): pass |
 | page | `qa/check_page.py` | not run | - | - | - | - | last report on disk (2026-10-13 07:39:51): pass |
-| content | `qa/check_content.py` | pass | 272 | 0 | 0 | 2 | local site folder |
+| content | `qa/check_content.py` | pass | 272 | 0 | 0 | 1 | local site folder |
 | behavior | `qa/check_behavior.py` | not run | - | - | - | - | last report on disk (2026-10-13 07:39:49): pass |
 | a11y | `qa/check_a11y.py` | not run | - | - | - | - | last report on disk (2026-10-13 07:39:32): pass |
 | visual | `qa/visual_compare.py` | not run | - | - | - | - | last report on disk (2026-10-13 07:40:13): pass |
 | licensing | `qa/licensing_check.py` | not run | - | - | - | - | last report on disk (2026-10-13 07:40:36): pass |
-| repo | `qa/check_repo.py` | pass | 31 | 0 | 0 | 7 | local site folder |
+| repo | `qa/check_repo.py` | pass | 31 | 0 | 0 | 3 | local site folder |
 
 ## Pages
 

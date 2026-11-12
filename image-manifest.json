@@ -85,20 +85,33 @@
       "webp": null
     },
     "brunette-balayage": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/brunette-balayage.jpg",
       "width": 1066,
       "height": 1600,
-      "bytes": 14418,
-      "sha256": "bb372924ae78a58f61a6d01d052d19d8693959e29747a1c6ac13f34995db34b1",
+      "bytes": 199239,
+      "sha256": "03493cb6036c43440e392a6440ae78394a149edc99a3acfed5455fc2046c285c",
       "sm": {
         "file": "images/sm/brunette-balayage.jpg",
         "width": 533,
         "height": 800,
-        "bytes": 4410,
-        "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9"
+        "bytes": 57482,
+        "sha256": "0ecc74ebaa21e5a42afb1f235d3c1085a0cfb6b3ecc2b0cd1b849fae8ab296bd"
       },
-      "webp": null
+      "webp": {
+        "file": "images/brunette-balayage.webp",
+        "width": 1066,
+        "height": 1600,
+        "bytes": 112534,
+        "sha256": "979ccc148871280f2d403406d8c30d693ffe03e82a374d552461de2b19901dc5",
+        "sm": {
+          "file": "images/sm/brunette-balayage.webp",
+          "width": 533,
+          "height": 800,
+          "bytes": 33970,
+          "sha256": "8fb3ce97b37401aa7b0dd55282e752c0ba7c2948181428ddfa3ed0999eb4b654"
+        }
+      }
     },
     "copper-waves": {
       "status": "placeholder",
@@ -117,20 +130,33 @@
       "webp": null
     },
     "foils-highlights": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/foils-highlights.jpg",
       "width": 1600,
       "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "bytes": 187114,
+      "sha256": "547e5dc1fce38cc5cc30e8a381058549782b12c7466c24d7e597720ef3ccf9b2",
       "sm": {
         "file": "images/sm/foils-highlights.jpg",
         "width": 800,
         "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "bytes": 61288,
+        "sha256": "f3b8e77b3d10b054f461a877df78efde289c0d5712030bc7c91a61412b96f352"
       },
-      "webp": null
+      "webp": {
+        "file": "images/foils-highlights.webp",
+        "width": 1600,
+        "height": 1066,
+        "bytes": 97572,
+        "sha256": "2d0967766bbbb8bc951cb022cb5143986d6b81a786c75f83f42f90a2aba1b38b",
+        "sm": {
+          "file": "images/sm/foils-highlights.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 35410,
+          "sha256": "ef64e1bc4f32efbeff764df1b0e6e64fb175c36c1e73aa340a017cb7d90bab22"
+        }
+      }
     },
     "g01": {
       "status": "placeholder",
@@ -165,20 +191,33 @@
       "webp": null
     },
     "g04": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g04.jpg",
       "width": 1600,
-      "height": 1065,
-      "bytes": 14359,
-      "sha256": "e27715ab0c37976ea30eb9789316f5e0ff2c67d7991326d48ea2176b0ca4c2b5",
+      "height": 1066,
+      "bytes": 108324,
+      "sha256": "cc76ad72435da142c30ebd8920e04edf4c6f65b8d5d090afb8e37c8e2070ec83",
       "sm": {
         "file": "images/sm/g04.jpg",
         "width": 800,
         "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "bytes": 37536,
+        "sha256": "1d3174139ddf8c78c2c54cfde9e758f16238fd5e51598769f0b0f5a1a3e6c9a4"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g04.webp",
+        "width": 1600,
+        "height": 1066,
+        "bytes": 40630,
+        "sha256": "bb30fcbcb206748ebfc3c255caf59cf0738d71c0615485885176b987362f9ee9",
+        "sm": {
+          "file": "images/sm/g04.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 16886,
+          "sha256": "976bd27377427f6928d1428ada82860c3a40feb8f2c3f77122b1064d38d288cc"
+        }
+      }
     },
     "g05": {
       "status": "placeholder",
@@ -229,20 +268,33 @@
       "webp": null
     },
     "g10": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g10.jpg",
       "width": 1600,
       "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "bytes": 183502,
+      "sha256": "2b21f371fa9adadf5f08b22c9091fffe1e6ef6c2bd9841706161a57aa0e1f7a0",
       "sm": {
         "file": "images/sm/g10.jpg",
         "width": 800,
         "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "bytes": 60385,
+        "sha256": "cbc1f1a71bbae84f69a642e840e52d8183c5882c377735439a979f72934c381b"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g10.webp",
+        "width": 1600,
+        "height": 1066,
+        "bytes": 99176,
+        "sha256": "ccfd437018342f61e2b7b4ac514864c0d8143fe63beb8ce034e994f9c03def10",
+        "sm": {
+          "file": "images/sm/g10.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 36326,
+          "sha256": "3b0ff4eb6e3f5fe16cff345c7a32496d8b9e3569b1b7696890a2d9d6d10e991b"
+        }
+      }
     },
     "g14": {
       "status": "placeholder",
@@ -277,36 +329,62 @@
       "webp": null
     },
     "g16": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g16.jpg",
       "width": 1200,
       "height": 1600,
-      "bytes": 16283,
-      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "bytes": 351242,
+      "sha256": "34faf0997b757a9f763e4eb147ed571e6939d4788e8afdcd41f8a23cdf5ca6ba",
       "sm": {
         "file": "images/sm/g16.jpg",
         "width": 600,
         "height": 800,
-        "bytes": 5044,
-        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+        "bytes": 92598,
+        "sha256": "2265849f039693579caa9de3674a4cddbb9484d4bac68e591637d6f44e157422"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g16.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 247472,
+        "sha256": "f9afff918c90b66253a4fe462b84a09d7828ef117f97e3453a80fa02a307b3de",
+        "sm": {
+          "file": "images/sm/g16.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 67800,
+          "sha256": "9344d304f8747877905c18e2a8be6ddbeb2ff655589bd398bce96bdbfeb2a897"
+        }
+      }
     },
     "g17": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g17.jpg",
       "width": 1600,
       "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "bytes": 134897,
+      "sha256": "d5147bad74e774785c74aa48649e2030c89a7277cbf2fb698c988203214e81f9",
       "sm": {
         "file": "images/sm/g17.jpg",
         "width": 800,
         "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "bytes": 45542,
+        "sha256": "e71db7dd16fa8e898a926bb0ede995d28c389b5e7b2171ebb307d940df13d3e6"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g17.webp",
+        "width": 1600,
+        "height": 1066,
+        "bytes": 65308,
+        "sha256": "88ba1cc2f3433c5883afa4fb52795049c53c6ff31baad99d775b018e8619154e",
+        "sm": {
+          "file": "images/sm/g17.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 25754,
+          "sha256": "ff2a22fb58e10e8f6bf20cdb94e82a93aea945b6a119678d2f693195efe6a8c7"
+        }
+      }
     },
     "g18": {
       "status": "placeholder",
@@ -325,20 +403,33 @@
       "webp": null
     },
     "g19": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g19.jpg",
       "width": 1600,
       "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "bytes": 193158,
+      "sha256": "8a8dbd11f17c6261841add0d636f4c9fb678f3799aedf37debee798b25745618",
       "sm": {
         "file": "images/sm/g19.jpg",
         "width": 800,
         "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "bytes": 63136,
+        "sha256": "657a74b040bdd9d676e1c92a5d27dd6ce5c704acacf35374ecd35337fe1a5fca"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g19.webp",
+        "width": 1600,
+        "height": 1066,
+        "bytes": 103890,
+        "sha256": "592a9069a567ffb83ec5dd050f36546585605d39a6a46434eeb19c2847226830",
+        "sm": {
+          "file": "images/sm/g19.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 37852,
+          "sha256": "ea1beb40d17841e294083196f6a5d2353fff8323c77171d7b8d1fd9c9890def1"
+        }
+      }
     },
     "g20": {
       "status": "placeholder",
@@ -357,20 +448,33 @@
       "webp": null
     },
     "g21": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g21.jpg",
       "width": 1600,
       "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "bytes": 225503,
+      "sha256": "d8353891b72140e579f1d280f77eb364c007e5494bd185e7666bcd7fa62723af",
       "sm": {
         "file": "images/sm/g21.jpg",
         "width": 800,
         "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "bytes": 70416,
+        "sha256": "2d2e0f40799e91168ead6753ec640c97961b391be2cfdb8be7d74d3f9117f4db"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g21.webp",
+        "width": 1600,
+        "height": 1066,
+        "bytes": 138418,
+        "sha256": "23b7c16d4539b45850463a82537ebb7ceae1f712cbfb302744afd85d63a446cf",
+        "sm": {
+          "file": "images/sm/g21.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 46646,
+          "sha256": "afe97f1c05fd830450ddd8bad49faf37a0de0ac5431c90f3bd1a4a40ed82774f"
+        }
+      }
     },
     "home-smile": {
       "status": "placeholder",
@@ -389,20 +493,33 @@
       "webp": null
     },
     "home-styling": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/home-styling.jpg",
       "width": 1600,
-      "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "height": 1067,
+      "bytes": 125315,
+      "sha256": "fa7310e0e0504457edef4c377f1b550eae78530d3a6d169566d27691259660d8",
       "sm": {
         "file": "images/sm/home-styling.jpg",
         "width": 800,
-        "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "height": 534,
+        "bytes": 46129,
+        "sha256": "ab6bf25fa442119640720680d107cd7a3d272f0f0ef15ed70df5fccd3d189e39"
       },
-      "webp": null
+      "webp": {
+        "file": "images/home-styling.webp",
+        "width": 1600,
+        "height": 1067,
+        "bytes": 53804,
+        "sha256": "95ca3f761d95ebef43a1609276f022d5be6c0b12dac6d0d05e7edd5a6eee6001",
+        "sm": {
+          "file": "images/sm/home-styling.webp",
+          "width": 800,
+          "height": 534,
+          "bytes": 22916,
+          "sha256": "825b74110c7911815f489d8e6885e7b7bb3bc5c6948d982be4bb74881a7aceb8"
+        }
+      }
     },
     "home-waves": {
       "status": "placeholder",
@@ -421,20 +538,33 @@
       "webp": null
     },
     "makeup-red-lips": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/makeup-red-lips.jpg",
       "width": 1600,
-      "height": 802,
-      "bytes": 10761,
-      "sha256": "f783db3d1ebb702f6fdafcc1669931c767f872d5d38eca086ec754fdc94971a1",
+      "height": 1023,
+      "bytes": 159892,
+      "sha256": "12c301df660b3bc78824d5f873a95f996d87b4549b1192947c3e3d4349e9f1ee",
       "sm": {
         "file": "images/sm/makeup-red-lips.jpg",
         "width": 800,
-        "height": 401,
-        "bytes": 3258,
-        "sha256": "1ff5b9e8918e003caafbfe1ebf37bd52a3f43fb77b000f2d4f9e93fb9e1154ce"
+        "height": 511,
+        "bytes": 46824,
+        "sha256": "0148bf21b8f057d085564d0f8987b3971b030cd2b6cd8b2e23ee81c27954d943"
       },
-      "webp": null
+      "webp": {
+        "file": "images/makeup-red-lips.webp",
+        "width": 1600,
+        "height": 1023,
+        "bytes": 83282,
+        "sha256": "2bf44139fe9ebd3a3887a1be5524d5c1d78b5c8e4c0f5a7a2801ae7dfc61013d",
+        "sm": {
+          "file": "images/sm/makeup-red-lips.webp",
+          "width": 800,
+          "height": 511,
+          "bytes": 26514,
+          "sha256": "025101b81d2c6dc66980e6d6d6e86dbf3afc58e6d2f54719625f0fc9256961b3"
+        }
+      }
     },
     "meet-extensions": {
       "status": "placeholder",

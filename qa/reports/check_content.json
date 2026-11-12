@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 21:27:10",
+ "generated": "2026-11-12 23:07:03",
  "results": [
   {
    "page": "site",
@@ -109,8 +109,8 @@
    "check": "screen-reader-labels",
    "ok": true,
    "expected": "every aria-label, alt, title and data-sent is a text of content/home.json or content/site.json, or a label the page module composes from it",
-   "actual": "7 labels, all known",
-   "evidence": "index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Hours: Tuesday - Saturday, 9 AM - 5 PM\" | aria-label \"Featured work\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
+   "actual": "10 labels, all known",
+   "evidence": "index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Hours: Tuesday - Saturday, 9 AM - 5 PM\" | aria-label \"Featured work\" | alt \"Stylist applying hair color with a brush\" | alt \"Applying highlights with foils\" | alt \"Makeup artist applying eyeshadow\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
    "owner": "PAGES",
    "labels": [
     "aria-label \"Hair & Makeup by Gerta home\"",
@@ -118,6 +118,9 @@
     "aria-label \"Main\"",
     "aria-label \"Hours: Tuesday - Saturday, 9 AM - 5 PM\"",
     "aria-label \"Featured work\"",
+    "alt \"Stylist applying hair color with a brush\"",
+    "alt \"Applying highlights with foils\"",
+    "alt \"Makeup artist applying eyeshadow\"",
     "aria-label \"Facebook\"",
     "aria-label \"Instagram\""
    ]
@@ -137,7 +140,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/home.json, in order, each with the alt of its slot: home-styling, foils-highlights, home-smile, home-waves, makeup-red-lips, meet-extensions",
+   "expected": "the photos in main are the image slots of content/home.json, in order, each with the alt of its slot: home-styling (alt \"Stylist applying hair color with a brush\"), foils-highlights (alt \"Applying highlights with foils\"), home-smile, home-waves, makeup-red-lips (alt \"Makeup artist applying eyeshadow\"), meet-extensions",
    "actual": "as expected",
    "evidence": "index.html",
    "owner": "PAGES"
@@ -393,8 +396,8 @@
    "check": "screen-reader-labels",
    "ok": true,
    "expected": "every aria-label, alt, title and data-sent is a text of content/gallery.json or content/site.json, or a label the page module composes from it",
-   "actual": "28 labels, all known",
-   "evidence": "gallery/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"View photo 1 of 21\" | aria-label \"View photo 2 of 21\" | aria-label \"View photo 3 of 21\" | aria-label \"View photo 4 of 21\" | aria-label \"View photo 5 of 21\" | aria-label \"View photo 6 of 21\" | aria-label \"View photo 7 of 21\" | aria-label \"View photo 8 of 21\" | aria-label \"View photo 9 of 21\" | aria-label \"View photo 10 of 21\" | aria-label \"View photo 11 of 21\" | aria-label \"View photo 12 of 21\" | alt \"Long dark waves from the back\" | aria-label \"View photo 13 of 21\" | alt \"Long brunette curls from the back\" | aria-label \"View photo 14 of 21\" | aria-label \"View photo 15 of 21\" | aria-label \"View photo 16 of 21\" | aria-label \"View photo 17 of 21\" | aria-label \"View photo 18 of 21\" | aria-label \"View photo 19 of 21\" | aria-label \"View photo 20 of 21\" | aria-label \"View photo 21 of 21\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
+   "actual": "37 labels, all known",
+   "evidence": "gallery/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"View photo 1 of 21\" | aria-label \"View photo 2 of 21\" | aria-label \"View photo 3 of 21\" | alt \"Applying highlights with foils\" | aria-label \"View photo 4 of 21\" | alt \"Relaxing shampoo at the wash station\" | aria-label \"View photo 5 of 21\" | aria-label \"View photo 6 of 21\" | aria-label \"View photo 7 of 21\" | aria-label \"View photo 8 of 21\" | alt \"Long brunette balayage with soft waves\" | aria-label \"View photo 9 of 21\" | aria-label \"View photo 10 of 21\" | alt \"Applying blonde highlights with foils\" | aria-label \"View photo 11 of 21\" | alt \"Makeup artist applying eyeshadow\" | aria-label \"View photo 12 of 21\" | alt \"Long dark waves from the back\" | aria-label \"View photo 13 of 21\" | alt \"Long brunette curls from the back\" | aria-label \"View photo 14 of 21\" | aria-label \"View photo 15 of 21\" | aria-label \"View photo 16 of 21\" | alt \"Blonde balayage with loose waves\" | aria-label \"View photo 17 of 21\" | alt \"Smoothing blow-dry with a round brush\" | aria-label \"View photo 18 of 21\" | aria-label \"View photo 19 of 21\" | alt \"Happy client with fresh balayage\" | aria-label \"View photo 20 of 21\" | aria-label \"View photo 21 of 21\" | alt \"Blow-drying soft blonde curls\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
    "owner": "PAGES",
    "labels": [
     "aria-label \"Hair & Makeup by Gerta home\"",
@@ -403,14 +406,19 @@
     "aria-label \"View photo 1 of 21\"",
     "aria-label \"View photo 2 of 21\"",
     "aria-label \"View photo 3 of 21\"",
+    "alt \"Applying highlights with foils\"",
     "aria-label \"View photo 4 of 21\"",
+    "alt \"Relaxing shampoo at the wash station\"",
     "aria-label \"View photo 5 of 21\"",
     "aria-label \"View photo 6 of 21\"",
     "aria-label \"View photo 7 of 21\"",
     "aria-label \"View photo 8 of 21\"",
+    "alt \"Long brunette balayage with soft waves\"",
     "aria-label \"View photo 9 of 21\"",
     "aria-label \"View photo 10 of 21\"",
+    "alt \"Applying blonde highlights with foils\"",
     "aria-label \"View photo 11 of 21\"",
+    "alt \"Makeup artist applying eyeshadow\"",
     "aria-label \"View photo 12 of 21\"",
     "alt \"Long dark waves from the back\"",
     "aria-label \"View photo 13 of 21\"",
@@ -418,11 +426,15 @@
     "aria-label \"View photo 14 of 21\"",
     "aria-label \"View photo 15 of 21\"",
     "aria-label \"View photo 16 of 21\"",
+    "alt \"Blonde balayage with loose waves\"",
     "aria-label \"View photo 17 of 21\"",
+    "alt \"Smoothing blow-dry with a round brush\"",
     "aria-label \"View photo 18 of 21\"",
     "aria-label \"View photo 19 of 21\"",
+    "alt \"Happy client with fresh balayage\"",
     "aria-label \"View photo 20 of 21\"",
     "aria-label \"View photo 21 of 21\"",
+    "alt \"Blow-drying soft blonde curls\"",
     "aria-label \"Facebook\"",
     "aria-label \"Instagram\""
    ]
@@ -442,7 +454,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/gallery.json, in order, each with the alt of its slot: g01, g02, foils-highlights, g04, g05, g06, g07, brunette-balayage, copper-waves, g10, makeup-red-lips, g12 (alt \"Long dark waves from the back\"), g13 (alt \"Long brunette curls from the back\"), g14, g15, g16, g17, g18, g19, g20, g21",
+   "expected": "the photos in main are the image slots of content/gallery.json, in order, each with the alt of its slot: g01, g02, foils-highlights (alt \"Applying highlights with foils\"), g04 (alt \"Relaxing shampoo at the wash station\"), g05, g06, g07, brunette-balayage (alt \"Long brunette balayage with soft waves\"), copper-waves, g10 (alt \"Applying blonde highlights with foils\"), makeup-red-lips (alt \"Makeup artist applying eyeshadow\"), g12 (alt \"Long dark waves from the back\"), g13 (alt \"Long brunette curls from the back\"), g14, g15, g16 (alt \"Blonde balayage with loose waves\"), g17 (alt \"Smoothing blow-dry with a round brush\"), g18, g19 (alt \"Happy client with fresh balayage\"), g20, g21 (alt \"Blow-drying soft blonde curls\")",
    "actual": "as expected",
    "evidence": "gallery/index.html",
    "owner": "PAGES"
@@ -665,20 +677,26 @@
    "check": "screen-reader-labels",
    "ok": true,
    "expected": "every aria-label, alt, title and data-sent is a text of content/book-online.json or content/site.json, or a label the page module composes from it",
-   "actual": "15 labels, all known",
-   "evidence": "book-online/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Book Now: Haircut & Style\" | aria-label \"Book Now: Hair Coloring\" | aria-label \"Book Now: Makeup Session\" | aria-label \"Book Now: Dream Bridal Hair\" | aria-label \"Book Now: Highlights & Lowlights\" | aria-label \"Book Now: Balayage\" | aria-label \"Book Now: Keratin Treatment\" | aria-label \"Book Now: Brazilian Blowout\" | aria-label \"Book Now: Perm & Texture Waves\" | aria-label \"Book Now: Kids’ Haircut\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
+   "actual": "21 labels, all known",
+   "evidence": "book-online/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Book Now: Haircut & Style\" | alt \"Applying blonde highlights with foils\" | aria-label \"Book Now: Hair Coloring\" | alt \"Makeup artist applying eyeshadow\" | aria-label \"Book Now: Makeup Session\" | aria-label \"Book Now: Dream Bridal Hair\" | alt \"Applying highlights with foils\" | aria-label \"Book Now: Highlights & Lowlights\" | alt \"Happy client with fresh balayage\" | aria-label \"Book Now: Balayage\" | alt \"Smoothing blow-dry with a round brush\" | aria-label \"Book Now: Keratin Treatment\" | alt \"Blonde balayage with loose waves\" | aria-label \"Book Now: Brazilian Blowout\" | aria-label \"Book Now: Perm & Texture Waves\" | aria-label \"Book Now: Kids’ Haircut\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
    "owner": "PAGES",
    "labels": [
     "aria-label \"Hair & Makeup by Gerta home\"",
     "aria-label \"Menu\"",
     "aria-label \"Main\"",
     "aria-label \"Book Now: Haircut & Style\"",
+    "alt \"Applying blonde highlights with foils\"",
     "aria-label \"Book Now: Hair Coloring\"",
+    "alt \"Makeup artist applying eyeshadow\"",
     "aria-label \"Book Now: Makeup Session\"",
     "aria-label \"Book Now: Dream Bridal Hair\"",
+    "alt \"Applying highlights with foils\"",
     "aria-label \"Book Now: Highlights & Lowlights\"",
+    "alt \"Happy client with fresh balayage\"",
     "aria-label \"Book Now: Balayage\"",
+    "alt \"Smoothing blow-dry with a round brush\"",
     "aria-label \"Book Now: Keratin Treatment\"",
+    "alt \"Blonde balayage with loose waves\"",
     "aria-label \"Book Now: Brazilian Blowout\"",
     "aria-label \"Book Now: Perm & Texture Waves\"",
     "aria-label \"Book Now: Kids’ Haircut\"",
@@ -701,7 +719,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/book-online.json, in order, each with the alt of its slot: svc-haircut, g10, makeup-red-lips, svc-bridal, foils-highlights, g19, g17, g16, g14, g18",
+   "expected": "the photos in main are the image slots of content/book-online.json, in order, each with the alt of its slot: svc-haircut, g10 (alt \"Applying blonde highlights with foils\"), makeup-red-lips (alt \"Makeup artist applying eyeshadow\"), svc-bridal, foils-highlights (alt \"Applying highlights with foils\"), g19 (alt \"Happy client with fresh balayage\"), g17 (alt \"Smoothing blow-dry with a round brush\"), g16 (alt \"Blonde balayage with loose waves\"), g14, g18",
    "actual": "as expected",
    "evidence": "book-online/index.html",
    "owner": "PAGES"
@@ -967,13 +985,15 @@
    "check": "screen-reader-labels",
    "ok": true,
    "expected": "every aria-label, alt, title and data-sent is a text of content/about.json or content/site.json, or a label the page module composes from it",
-   "actual": "5 labels, all known",
-   "evidence": "about/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
+   "actual": "7 labels, all known",
+   "evidence": "about/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | alt \"Long brunette balayage with soft waves\" | alt \"Applying blonde highlights with foils\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
    "owner": "PAGES",
    "labels": [
     "aria-label \"Hair & Makeup by Gerta home\"",
     "aria-label \"Menu\"",
     "aria-label \"Main\"",
+    "alt \"Long brunette balayage with soft waves\"",
+    "alt \"Applying blonde highlights with foils\"",
     "aria-label \"Facebook\"",
     "aria-label \"Instagram\""
    ]
@@ -993,7 +1013,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/about.json, in order, each with the alt of its slot: brunette-balayage, about-salon, g10, copper-waves",
+   "expected": "the photos in main are the image slots of content/about.json, in order, each with the alt of its slot: brunette-balayage (alt \"Long brunette balayage with soft waves\"), about-salon, g10 (alt \"Applying blonde highlights with foils\"), copper-waves",
    "actual": "as expected",
    "evidence": "about/index.html",
    "owner": "PAGES"
@@ -2905,6 +2925,6 @@
   "checks": 272,
   "failed": 0,
   "intended_differences_from_wix": 51,
-  "seconds": 1.4
+  "seconds": 0.5
  }
 }
