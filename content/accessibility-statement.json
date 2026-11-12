@@ -1,7 +1,7 @@
 {
   "slug": "accessibility-statement",
   "path": "/accessibility-statement/",
-  "title": "Accessibility Statement | Hairbygerta",
+  "title": "Accessibility Statement | Hair & Makeup by Gerta",
   "description": "Accessibility information for HairByGerta.com – hair stylist & makeup artist in Staten Island, NY. Learn how we make our website easy to use for everyone.",
   "h1": "ACCESSIBILITY STATEMENT",
   "blocks": [
@@ -11,7 +11,7 @@
     },
     {
       "type": "p",
-      "text": "This statement reflects our ongoing commitment to accessibility and was last updated on 11/28/2025."
+      "text": "This statement reflects our ongoing commitment to accessibility and was last updated on 11/12/2026."
     },
     {
       "type": "h2",
@@ -39,9 +39,11 @@
     }
   ],
   "notes": [
-    "Typos fixed: none. The wording is the live Wix text, word for word.",
+    "Typos fixed: none. Apart from the one change listed below (the date), the wording is the live Wix text, word for word.",
     "ASK: none. The earlier question about the reading order is settled by decision 6 in section 10 of the build contract. On the live Wix page (desktop and phone) the paragraph that starts with At hairbygerta.com comes first, then the h1, then the last updated paragraph. In this file and in the page code the h1 comes first and that paragraph is the first block. The stylesheet shows it as the dark band above the title, so the page looks like the live page. The contract got no key for text above the h1 (the idea was a key named lead), and the page module stops the build on a key it does not know, so no such key may be added here.",
-    "title and description are the live Wix title tag and meta description, kept exactly (the description has an en dash, as on Wix). The first version had its own title and description, the live Wix ones win.",
+    "description is the live Wix meta description, kept exactly (it has an en dash, as on Wix). The first version had its own title and description, the live Wix ones won. The title was changed later, see the title note below.",
+    "Title changed on purpose on 12 November 2026. Old, the live Wix title tag: \"Accessibility Statement | Hairbygerta\". New: \"Accessibility Statement | Hair & Makeup by Gerta\". The four policy pages now carry the business name that the other pages use in their titles.",
+    "Change made on purpose on 12 November 2026 (second paragraph, the date). Old: \"This statement reflects our ongoing commitment to accessibility and was last updated on 11/28/2025.\" New: \"This statement reflects our ongoing commitment to accessibility and was last updated on 11/12/2026.\" The statement was read again that day, after the site was rebuilt as a static site, so it carries that date.",
     "h1 is stored in capitals because the live Wix heading is typed in capitals: textTransform is none for it on desktop and on phone, so the capitals do not come from styling. The first version had Accessibility Statement. The three h2 headings are typed normally on Wix and are stored as typed.",
     "Reading order on the live page: the first block (the paragraph that starts with At hairbygerta.com) comes before the h1. It sits in a full-width dark band right under the header (background #1d1509, text #fefefd, 18 px on desktop, 16 px on phone). The contract puts h1 before the blocks, so here it is the first block, and the stylesheet draws it as that band above the title (contract section 10, decision 6). The stylesheet picks the paragraph that comes right after the h1, so this block has to stay the first block and has to stay a p block. Everything after it is in the live order.",
     "Layout on the live page, for reference only: a dotted rule (920 px wide, 1 px dotted #1d1509) sits between the last updated paragraph and the first h2. It is not text, so it is not a block.",

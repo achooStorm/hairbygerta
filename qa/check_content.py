@@ -49,9 +49,13 @@ What it checks on every page
                         (the Book Now buttons call 347-671-5095): the new meta description of the Book Online page, and
                         the Privacy Policy list item "Service providers that help us operate the website" without the
                         words "and booking system"; and two changes of 9 November 2026: the new meta description of the
-                        home page and the comma taken out of "high-quality, hair extensions" on the home page. A note in
+                        home page and the comma taken out of "high-quality, hair extensions" on the home page; and three
+                        changes of 12 November 2026: the titles of the four policy pages end with "Hair & Makeup by Gerta"
+                        (Wix: "Hairbygerta"), three sentences of the Terms & Conditions no longer speak of booking online
+                        or through the site, and the Accessibility Statement says it was last updated on 11/12/2026. A note in
                         a content file does not make a difference intended. A title tag or meta description that Wix has
-                        must equal the Wix value (the Contact title and the Book Online and home meta descriptions apart).
+                        must equal the Wix value (the Contact title, the four policy page titles and the Book Online and
+                        home meta descriptions apart).
                         Skipped with a note when the reference folder is not there.
   site-json-facts       (page "site") the business facts stored in content/site.json are the facts of the brief
 
@@ -820,6 +824,31 @@ HOME_EXTENSIONS = ("home",
 PRIVACY_SERVICE_PROVIDERS = ("english-privacy-policy",
                              "Service providers that help us operate the website and booking system",
                              "Service providers that help us operate the website")
+# 12 November 2026: the four policy pages carry the business name that the other pages use in their titles.
+# Same shape as CONTACT_TITLE: (page, what, the Wix value, our value). Any other title is a difference.
+POLICY_TITLES = (
+    ("english-refund-policy", "title", "Refund Policy | Hairbygerta", "Refund Policy | Hair & Makeup by Gerta"),
+    ("accessibility-statement", "title", "Accessibility Statement | Hairbygerta", "Accessibility Statement | Hair & Makeup by Gerta"),
+    ("english-privacy-policy", "title", "Privacy Policy | Hairbygerta", "Privacy Policy | Hair & Makeup by Gerta"),
+    ("terms-conditions", "title", "Terms and Conditions | Hairbygerta", "Terms and Conditions | Hair & Makeup by Gerta"),
+)
+# 12 November 2026: online booking was dropped on 2 November 2026, so the Terms & Conditions no longer speak of booking
+# online or through the site. (page, the Wix sentence, our sentence). Any other rewording of these is a difference.
+TERMS_PHONE_BOOKING = (
+    ("terms-conditions",
+     "By using this site or booking an appointment through it, you agree to these Terms & Conditions and to our Privacy Policy and Refund & Cancellation Policy.",
+     "By using this site or booking an appointment, you agree to these Terms & Conditions and to our Privacy Policy and Refund & Cancellation Policy."),
+    ("terms-conditions",
+     "Appointments can be requested online, by phone, or in person.",
+     "Appointments can be requested by phone or in person."),
+    ("terms-conditions",
+     "Submitting a booking request does not guarantee availability; your appointment is confirmed only after you receive a confirmation message from us.",
+     "Requesting an appointment does not guarantee availability; your appointment is confirmed only after you receive a confirmation from us."),
+)
+# 12 November 2026: the Accessibility Statement carries the day it was last read again. (page, the Wix sentence, our sentence).
+ACCESSIBILITY_UPDATED = ("accessibility-statement",
+                         "This statement reflects our ongoing commitment to accessibility and was last updated on 11/28/2025.",
+                         "This statement reflects our ongoing commitment to accessibility and was last updated on 11/12/2026.")
 
 
 class Rules:
@@ -842,13 +871,15 @@ class Rules:
         return any(s and quoted_in_notes(s, self.ex.notes) for s in sentences_)
 
     def head(self, what, wix_value, our_value):
-        """Why the title tag or the meta description may differ from the Wix one, or None. Two cases are on the list."""
+        """Why the title tag or the meta description may differ from the Wix one, or None. Only the cases below are on the list."""
         if (self.slug, what, wix_value, our_value) == CONTACT_TITLE:
             return 'build contract, section 10.33: the Contact page gets the new title (the Wix one is the automatic default)'
         if (self.slug, what, wix_value, our_value) == BOOK_ONLINE_DESCRIPTION:
             return "online booking was dropped on 2 November 2026 and the Book Now buttons call 347-671-5095"
         if (self.slug, what, wix_value, our_value) == HOME_DESCRIPTION:
             return "rewritten on 9 November 2026: the Wix text read badly (a hair stylist Staten Island NY and makeup artist)"
+        if (self.slug, what, wix_value, our_value) in POLICY_TITLES:
+            return "changed on 12 November 2026: the policy pages carry the business name that the other pages use in their titles"
         return None
 
     def reworded(self, w, o):
@@ -859,6 +890,10 @@ class Rules:
             return "online booking was dropped on 2 November 2026, so the site has no booking system"
         if (self.slug, w, o) == HOME_EXTENSIONS:
             return "typo fixed on 9 November 2026: no comma after high-quality"
+        if (self.slug, w, o) in TERMS_PHONE_BOOKING:
+            return "changed on 12 November 2026: online booking was dropped on 2 November 2026, appointments are booked by phone"
+        if (self.slug, w, o) == ACCESSIBILITY_UPDATED:
+            return "changed on 12 November 2026: the statement carries the day it was last read again"
         return None
 
     def removed(self, w, wix_rows):
