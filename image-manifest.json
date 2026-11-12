@@ -188,20 +188,33 @@
       }
     },
     "g02": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g02.jpg",
-      "width": 1600,
-      "height": 900,
-      "bytes": 12136,
-      "sha256": "421128594541e33f042f5072f71f9c65723548da46899eb90809d7c379708588",
+      "width": 1012,
+      "height": 1600,
+      "bytes": 107417,
+      "sha256": "61bc08dc9449e5053d6c207c03c0ecc5d7a723ffd0ce2224ffa5ce7c696566df",
       "sm": {
         "file": "images/sm/g02.jpg",
-        "width": 800,
-        "height": 450,
-        "bytes": 3685,
-        "sha256": "41afab4b2961a943d89550390ab8890057ad36eb79a101b65125e5015538de00"
+        "width": 506,
+        "height": 800,
+        "bytes": 34012,
+        "sha256": "c5b75e72af0cd5957f2f5fdff0a41f1dec86ff36adb2b50bc413699d7cdf7219"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g02.webp",
+        "width": 1012,
+        "height": 1600,
+        "bytes": 43806,
+        "sha256": "2a538642a8f216caa518853348f50d209fcf4b3afd6fb6279c53accaca673771",
+        "sm": {
+          "file": "images/sm/g02.webp",
+          "width": 506,
+          "height": 800,
+          "bytes": 15752,
+          "sha256": "4ada735e66e0c5afee5fa0647633979900886cae7371f223996bc437b1c799cd"
+        }
+      }
     },
     "g04": {
       "status": "owner-photo",
@@ -561,20 +574,33 @@
       }
     },
     "home-waves": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/home-waves.jpg",
-      "width": 1600,
-      "height": 900,
-      "bytes": 12136,
-      "sha256": "421128594541e33f042f5072f71f9c65723548da46899eb90809d7c379708588",
+      "width": 845,
+      "height": 1600,
+      "bytes": 93008,
+      "sha256": "76fc64a2a13bfe9445fd0b84218c291d6d9e371efa275ddbbe73e70167ae2e74",
       "sm": {
         "file": "images/sm/home-waves.jpg",
-        "width": 800,
-        "height": 450,
-        "bytes": 3685,
-        "sha256": "41afab4b2961a943d89550390ab8890057ad36eb79a101b65125e5015538de00"
+        "width": 423,
+        "height": 800,
+        "bytes": 29437,
+        "sha256": "65f07b8ec7f317acebacb4d1c4919fe01fb3420942ee0858668d41143c29c481"
       },
-      "webp": null
+      "webp": {
+        "file": "images/home-waves.webp",
+        "width": 845,
+        "height": 1600,
+        "bytes": 38398,
+        "sha256": "77bd6a7be7958e684b2f750996b0d05dc78117616d74f41ff75f464e2e88e1fa",
+        "sm": {
+          "file": "images/sm/home-waves.webp",
+          "width": 423,
+          "height": 800,
+          "bytes": 13818,
+          "sha256": "bacb62c59e97792988cf575ec3b18f5a1308f967070c366cacb83c910e7f708b"
+        }
+      }
     },
     "makeup-red-lips": {
       "status": "owner-photo",
