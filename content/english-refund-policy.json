@@ -1,7 +1,7 @@
 {
   "slug": "english-refund-policy",
   "path": "/english-refund-policy/",
-  "title": "Refund Policy | Hairbygerta",
+  "title": "Refund Policy | Hair & Makeup by Gerta",
   "description": "Refund and cancellation policy for HairByGerta hair and makeup services at Le Vigne Hair Salon in Staten Island, NY.",
   "h1": "Refund & Cancellation Policy",
   "blocks": [
@@ -69,7 +69,8 @@
   "notes": [
     "Typos fixed: none. The wording is the live Wix text, word for word.",
     "ASK: none.",
-    "title and description are the live Wix title tag and meta description, kept exactly. The first version had its own title and description, the live Wix ones win.",
+    "description is the live Wix meta description, kept exactly. The first version had its own title and description, the live Wix ones won. The title was changed later, see the title note below.",
+    "Title changed on purpose on 12 November 2026. Old, the live Wix title tag: \"Refund Policy | Hairbygerta\". New: \"Refund Policy | Hair & Makeup by Gerta\". The four policy pages now carry the business name that the other pages use in their titles.",
     "Headings are stored as the live page shows them. None of them gets its capitals from styling (textTransform is none for every heading).",
     "Bookings & Payment: the live page has one paragraph with a line break after the first sentence. The line break is kept as <br>.",
     "Late Arrivals: the phone number is a tel link, as asked. On the live Wix page it is plain text on desktop and a link on phone.",

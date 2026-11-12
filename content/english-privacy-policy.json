@@ -1,7 +1,7 @@
 {
   "slug": "english-privacy-policy",
   "path": "/english-privacy-policy/",
-  "title": "Privacy Policy | Hairbygerta",
+  "title": "Privacy Policy | Hair & Makeup by Gerta",
   "description": "Privacy Policy for HairByGerta.com – hair stylist & makeup artist in Staten Island, NY. Learn how we collect, use and protect your personal information online.",
   "h1": "Privacy Policy",
   "blocks": [
@@ -188,7 +188,8 @@
     "Change 5 of 5 made on purpose on 9 November 2026 (section \"How do we use cookies and other tracking tools?\", the list under \"Cookies may be set by:\", one list item removed). Removed: \"Google Fonts, which provides the website’s fonts\". Since that day the fonts are files of the site itself (folder fonts), so no page asks Google Fonts for anything and the sentence was no longer true. The list now has one item: \"Google Maps, on the Contact page\". The map still comes from Google, so that item stays.",
     "Nothing else differs from the live Wix page. No other sentence, heading or list item was removed, added, reworded or moved. The order is the live desktop order.",
     "Where the first version differed from the live page without the rule asking for it, the live text is back: \"The website is operated by:\" has its colon again. \"These third-party services may have their own privacy and cookie policies about how they collect and store information.\" has the word may again. \"You can manage cookies through your browser settings. Most browsers allow you to:\" is followed by its list of three items again (the first version had joined them into one sentence). The three passages named in ASK 1 are back in the live wording, and the sentence named in ASK 2 is left out.",
-    "title and description are the live Wix title tag and meta description, kept exactly (the description has an en dash, as on Wix). The first version had its own title and description, the live Wix ones win.",
+    "description is the live Wix meta description, kept exactly (it has an en dash, as on Wix). The first version had its own title and description, the live Wix ones won. The title was changed later, see the title note below.",
+    "Title changed on purpose on 12 November 2026. Old, the live Wix title tag: \"Privacy Policy | Hairbygerta\". New: \"Privacy Policy | Hair & Makeup by Gerta\". The four policy pages now carry the business name that the other pages use in their titles.",
     "Headings are stored as the live page shows them. None of them gets its capitals from styling (textTransform is none for every heading, on desktop and on phone). The six section headings are h2 on the live page.",
     "The two contact blocks (under \"The website is operated by:\" and under the last heading) are one paragraph each with line breaks on the live page. Each is stored as one html block with <br>. The dash after Gerta Lila is an en dash, as on the live page.",
     "Email and phone in the two contact blocks are links (mailto:info@hairbygerta.com and tel:+1-347-671-5095), as in the first version. On the live desktop page they are plain text. The visible text is unchanged.",

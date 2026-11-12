@@ -3,20 +3,69 @@
   "path": "/",
   "title": "Hair & Makeup by Gerta | Hair Stylist & Makeup Artist – Staten Island, NY",
   "description": "Gerta Lila, hair stylist and makeup artist at Le Vigne Hair Salon, Staten Island, NY. Balayage, color, cuts, keratin, Brazilian blowouts and natural makeup.",
-  "h1": "It's Your Day to Shine!",
-  "site_title": "Hair & Makeup by Gerta",
+  "h1": "Hair & Makeup by Gerta",
   "hero": {
-    "heading": "It's Your Day to Shine!",
-    "welcome": "Welcome to HairByGerta.com. I’m Gerta Lila, a hair stylist and makeup artist in Staten Island, NY. I create fresh cuts, color, extensions and soft, flattering makeup that highlight your natural beauty and last all day.",
-    "button": {
-      "label": "Book Online",
+    "welcome": "I’m Gerta Lila, a hair stylist and makeup artist in Staten Island, NY. I create fresh cuts, color, extensions and soft, flattering makeup that highlight your natural beauty and last all day.",
+    "call": "Call 347-671-5095",
+    "text": "Text Gerta",
+    "hours": "Tuesday to Saturday, 9 AM to 5 PM",
+    "photos": [
+      {
+        "slot": "hero-1",
+        "file": "g13",
+        "alt": "Long brunette curls from the back",
+        "alt_original": "Long brunette curls from the back",
+        "width": 360,
+        "height": 640
+      },
+      {
+        "slot": "hero-2",
+        "file": "g12",
+        "alt": "Long dark waves from the back",
+        "alt_original": "Long dark waves from the back",
+        "width": 288,
+        "height": 512
+      }
+    ]
+  },
+  "services": {
+    "heading": "Services",
+    "groups": [
+      {
+        "heading": "Cut and style",
+        "items": [
+          "Haircut & Style",
+          "Kids’ Haircut"
+        ]
+      },
+      {
+        "heading": "Color",
+        "items": [
+          "Hair Coloring",
+          "Highlights & Lowlights",
+          "Balayage"
+        ]
+      },
+      {
+        "heading": "Smoothing and texture",
+        "items": [
+          "Keratin Treatment",
+          "Brazilian Blowout",
+          "Perm & Texture Waves"
+        ]
+      },
+      {
+        "heading": "Occasions",
+        "items": [
+          "Dream Bridal Hair",
+          "Makeup Session"
+        ]
+      }
+    ],
+    "more": {
+      "label": "More about each service",
       "path": "/book-online/"
-    },
-    "phone": "347-671-5095",
-    "salon": "Le Vigne Hair Salon",
-    "address": "644 Forest Ave, Staten Island, NY 10310",
-    "hours": "Tuesday - Saturday, 9 AM - 5 PM",
-    "marquee_repeat": 6
+    }
   },
   "photo_row": [
     {
@@ -24,32 +73,32 @@
       "file": "home-styling",
       "alt": "",
       "alt_original": "Hair Styling Session",
-      "width": 288,
-      "height": 545
+      "width": 270,
+      "height": 480
     },
     {
       "slot": "photo-row-2",
       "file": "foils-highlights",
       "alt": "",
       "alt_original": "iStock-1153438285.jpg",
-      "width": 288,
-      "height": 545
+      "width": 270,
+      "height": 480
     },
     {
       "slot": "photo-row-3",
       "file": "home-smile",
       "alt": "",
       "alt_original": "Smiling client with long dark styled hair",
-      "width": 288,
-      "height": 545
+      "width": 270,
+      "height": 480
     },
     {
       "slot": "photo-row-4",
       "file": "home-waves",
       "alt": "",
       "alt_original": "Client with voluminous copper waves in the salon chair",
-      "width": 288,
-      "height": 545
+      "width": 270,
+      "height": 480
     }
   ],
   "meet": {
@@ -60,8 +109,8 @@
       "file": "makeup-red-lips",
       "alt": "",
       "alt_original": " Makeup artist applies  eye shadow   Beautiful woman face Hand of visagiste, painting  cos",
-      "width": 313,
-      "height": 422
+      "width": 270,
+      "height": 480
     },
     "paragraph_2": "I work with high-quality hair extensions that blend naturally with your own hair, so they look and move like the real thing. I choose the right products and at-home care so you can keep your look fresh and polished long after you leave the chair.",
     "large": {
@@ -69,22 +118,25 @@
       "file": "meet-extensions",
       "alt": "",
       "alt_original": "Stylist checking the blend of a client's hair extensions",
-      "width": 424,
-      "height": 637
+      "width": 270,
+      "height": 480
     }
   },
+  "find": {
+    "heading": "Find me",
+    "salon": "Le Vigne Hair Salon",
+    "address": "644 Forest Ave, Staten Island, NY 10310",
+    "hours": "Tuesday to Saturday, 9 AM to 5 PM",
+    "map_label": "Open in Google Maps"
+  },
   "notes": [
-    "Typos fixed: one, on 9 November 2026: the comma in high-quality, hair extensions (meet.paragraph_2) was taken out, it now reads high-quality hair extensions. Every other text on this page is word for word the live Wix text.",
-    "title is the live Wix title tag, unchanged (it keeps its en dash). description was rewritten on 9 November 2026, because the Wix text read badly (\"is a hair stylist Staten Island NY and makeup artist\"). The Wix text was: Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion. The new text names Gerta, the salon and the town, and fits in the 160 characters a search result shows. This change and the comma are on the fixed list of intended differences in qa/check_content.py. Earlier note: They replace the description of the first version, which read: Gerta Lila is a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, NY. Haircuts, color, balayage, extensions and makeup. Tuesday to Saturday, 9 AM to 5 PM.",
-    "h1, site_title and meet.heading are stored as Wix has them. Their capitals are real, not styling (textTransform is none).",
-    "h1 and hero.heading are one and the same heading, kept twice on purpose: h1 is the key every page file has (contract section 3), hero.heading shows where it sits in the hero box. The live page has it once and the page prints it once, as the h1 inside the hero box (contract section 7). When one is edited, the other must get the same text.",
-    "Apostrophes are kept as on the live site: straight in It's Your Day to Shine!, curly in I’m and it’s.",
-    "hero.address is stored without the pin emoji that the live site shows right in front of it. The generator adds the pin as its own hidden span (contract section 7). The tel link and the maps link are not repeated here, they are in site.json.",
-    "hero.hours is stored once. On the live site it is one scrolling line that repeats the same text. marquee_repeat says how many copies the generator writes.",
-    "The comma after high-quality in meet.paragraph_2 was taken out on 9 November 2026 (see the first note).",
-    "alt is empty for all six photos because all six are placeholders. alt_original of home-styling, foils-highlights and makeup-red-lips is the alt text of the live Wix image, copied exactly. For foils-highlights that is only a file name (the first version described the photo as: Stylist finishing a blowout in the salon). For makeup-red-lips it includes the leading space, the double spaces and the cut-off ending that Wix has.",
-    "alt_original of home-smile, home-waves and meet-extensions comes from the first version, because the live Wix images have an empty alt. For home-smile and home-waves it is word for word. For meet-extensions one word was changed. Old text (first version): Gerta checking the blend of a client's hair extensions. New text: Stylist checking the blend of a client's hair extensions. The name was taken out because meet-extensions is one of the 26 Wix-only stock or template photos, not one of the owner's own photos, and no source says that the person in it is Gerta.",
-    "width and height are the size each photo is shown at on the desktop page, not the pixel size of the image file.",
-    "ASK: none. The earlier question about the shown width of the photo row and of the large Meet Gerta photo is settled by decisions 1 and 2 in section 10 of the build contract. Both sets of numbers are right, each for its own page width. The list in the brief (photo row 288 x 545 each, large photo 424 x 637) was measured on a page 1265 px wide, which is a 1280 px window with a 15 px scrollbar: the Wix measurement at 1265 px gives 288 x 545 and 425 x 637. At 1280 px without a scrollbar (the Wix measurement file measure-home-desktop.json) photos 1, 2 and 4 are 292 x 545, photo 3 is 289 x 540 and the large photo is 430 x 637. The row and the large photo stretch with the page, on Wix and on this site. width and height in this file stay the numbers of the brief and of contract section 7. The portrait is 313 x 422 at every measured width."
+    "Redesign of 12 November 2026 (build contract, decisions 44 and 45). The page is laid out anew and its words are cut and rearranged from the live Wix text. Every change of wording is on the fixed list of intended differences in qa/check_content.py, with the date and the reason. They are these. (1) The h1 is the business name Hair & Makeup by Gerta, the site title that Wix shows above the beige box. (2) The headline \"It's Your Day to Shine!\" is gone, together with the beige box. (3) hero.welcome starts with I’m Gerta Lila. The first sentence of the Wix text, \"Welcome to HairByGerta.com.\", is cut, the other two sentences are word for word. (4) The Book Online button is gone. hero.call is the Call button (Call 347-671-5095, it calls the number) and hero.text the Text link (Text Gerta, it starts a text message to the same number). (5) The phone number no longer stands on its own line, it is part of the Call button. (6) The scrolling hours line is plain text, shown once in the hero (hero.hours) and once under Find me (find.hours), in the words of content/site.json, which reads Tuesday to Saturday, 9 AM to 5 PM since that day (the Wix text has hyphens, Tuesday - Saturday, 9 AM - 5 PM). (7) The salon name and the address moved from the beige box to Find me, without the map pin. (8) New words that the Wix home page does not have, the headings Services and Find me, the four group names Cut and style, Color, Smoothing and texture and Occasions, the ten service names of the Book Online page, the link More about each service and the link Open in Google Maps (the same words as under the map of the Contact page).",
+    "The hours read Tuesday to Saturday, 9 AM to 5 PM, as the sketch of the design brief writes them. The owner left the choice between this wording and the Wix one (Tuesday - Saturday, 9 AM - 5 PM) to the builder on 12 November 2026 (build contract, decision 46). The word to reads better as plain text, a screen reader speaks it as written, and the closing line of the Services page already used it. hero.hours and find.hours must be the hours of content/site.json word for word, and the generator stops when they are not.",
+    "services.groups lists the ten services (items) of content/book-online.json in the four groups of the design brief, with the names exactly as the Book Online page writes them (Kids’ Haircut keeps its curly apostrophe). When a service is renamed, added or removed, change both files.",
+    "hero.photos are g13 and g12, the owner's own photos and the only photos of the site that are licensed for use outside Wix. Their alt texts are the ones of the Gallery page, word for word. width and height of a photo slot are the size its img element states, which gives the shape of the frame (9 to 16). The stylesheet decides how big it is shown.",
+    "photo_row (four photos) and the two Meet Gerta photos (meet.portrait, meet.large) are placeholders today, so alt is empty and the page leaves them out (decision 44). When the owner puts in one of these photos with tools/add_photo.py, it appears by itself, the photo row under Services and the Meet Gerta photos under her text. alt_original of home-styling, foils-highlights and makeup-red-lips is the alt text of the live Wix image, copied exactly. For foils-highlights that is only a file name (the first version described the photo as Stylist finishing a blowout in the salon). For makeup-red-lips it includes the leading space, the double spaces and the cut-off ending that Wix has. alt_original of home-smile, home-waves and meet-extensions comes from the first version, because the live Wix images have an empty alt. For meet-extensions one word was changed (Gerta became Stylist), because it is one of the 26 Wix-only stock or template photos and no source says that the person in it is Gerta.",
+    "Typo fixed on 9 November 2026. The comma in high-quality, hair extensions (meet.paragraph_2) was taken out, it now reads high-quality hair extensions. On the fixed list of intended differences.",
+    "title is the live Wix title tag, unchanged (it keeps its en dash). description was rewritten on 9 November 2026, because the Wix text read badly (\"is a hair stylist Staten Island NY and makeup artist\"). The Wix text was Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion. The new text names Gerta, the salon and the town, and fits in the 160 characters a search result shows. On the fixed list of intended differences.",
+    "meet.heading is stored as Wix has it (Meet Gerta, a name, so its capitals stay). Apostrophes are kept as on the live site, curly in I’m and it’s."
   ]
 }

@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-10-13 07:38:26",
+ "generated": "2026-11-12 14:07:19",
  "results": [
   {
    "page": "home",
@@ -219,7 +219,7 @@
    "check": "sitemap-wellformed",
    "ok": true,
    "expected": "well formed XML",
-   "actual": "well formed, 707 bytes",
+   "actual": "well formed, 968 bytes",
    "evidence": "sitemap.xml",
    "owner": "SEO"
   },
@@ -269,7 +269,7 @@
    "check": "jsonld-file-parses",
    "ok": true,
    "expected": "seo/jsonld-home.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 13 keys, 1155 bytes)",
+   "actual": "parses (object with 17 keys, 4184 bytes)",
    "evidence": "seo/jsonld-home.json",
    "owner": "SEO"
   },
@@ -289,7 +289,7 @@
    "check": "json-parses content/site.json",
    "ok": true,
    "expected": "content/site.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 23 keys, 4244 bytes)",
+   "actual": "parses (object with 26 keys, 6328 bytes)",
    "evidence": "content/site.json",
    "owner": "CONTENT"
   },
@@ -299,7 +299,7 @@
    "check": "json-parses content/home.json",
    "ok": true,
    "expected": "content/home.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 10 keys, 6470 bytes)",
+   "actual": "parses (object with 11 keys, 8742 bytes)",
    "evidence": "content/home.json",
    "owner": "CONTENT"
   },
@@ -309,7 +309,7 @@
    "check": "json-parses content/gallery.json",
    "ok": true,
    "expected": "content/gallery.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 8 keys, 4446 bytes)",
+   "actual": "parses (object with 9 keys, 5761 bytes)",
    "evidence": "content/gallery.json",
    "owner": "CONTENT"
   },
@@ -319,7 +319,7 @@
    "check": "json-parses content/book-online.json",
    "ok": true,
    "expected": "content/book-online.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 9 keys, 6236 bytes)",
+   "actual": "parses (object with 9 keys, 5359 bytes)",
    "evidence": "content/book-online.json",
    "owner": "CONTENT"
   },
@@ -329,7 +329,7 @@
    "check": "json-parses content/about.json",
    "ok": true,
    "expected": "content/about.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 9 keys, 5283 bytes)",
+   "actual": "parses (object with 9 keys, 6107 bytes)",
    "evidence": "content/about.json",
    "owner": "CONTENT"
   },
@@ -339,7 +339,7 @@
    "check": "json-parses content/contact.json",
    "ok": true,
    "expected": "content/contact.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 11 keys, 6479 bytes)",
+   "actual": "parses (object with 10 keys, 8662 bytes)",
    "evidence": "content/contact.json",
    "owner": "CONTENT"
   },
@@ -349,7 +349,7 @@
    "check": "json-parses content/english-refund-policy.json",
    "ok": true,
    "expected": "content/english-refund-policy.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 7 keys, 3863 bytes)",
+   "actual": "parses (object with 7 keys, 4160 bytes)",
    "evidence": "content/english-refund-policy.json",
    "owner": "CONTENT"
   },
@@ -359,7 +359,7 @@
    "check": "json-parses content/accessibility-statement.json",
    "ok": true,
    "expected": "content/accessibility-statement.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 7 keys, 5597 bytes)",
+   "actual": "parses (object with 7 keys, 6359 bytes)",
    "evidence": "content/accessibility-statement.json",
    "owner": "CONTENT"
   },
@@ -369,7 +369,7 @@
    "check": "json-parses content/english-privacy-policy.json",
    "ok": true,
    "expected": "content/english-privacy-policy.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 7 keys, 12548 bytes)",
+   "actual": "parses (object with 7 keys, 13907 bytes)",
    "evidence": "content/english-privacy-policy.json",
    "owner": "CONTENT"
   },
@@ -379,7 +379,7 @@
    "check": "json-parses content/terms-conditions.json",
    "ok": true,
    "expected": "content/terms-conditions.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 7 keys, 10320 bytes)",
+   "actual": "parses (object with 7 keys, 11747 bytes)",
    "evidence": "content/terms-conditions.json",
    "owner": "CONTENT"
   },
@@ -399,7 +399,7 @@
    "check": "json-parses image-manifest.json",
    "ok": true,
    "expected": "image-manifest.json parses as strict UTF-8 JSON",
-   "actual": "parses (object with 5 keys, 52493 bytes)",
+   "actual": "parses (object with 6 keys, 54751 bytes)",
    "evidence": "image-manifest.json",
    "owner": "ASSETS"
   },
@@ -418,7 +418,7 @@
    "viewport": "-",
    "check": "js-booking-url-first",
    "ok": true,
-   "expected": "the first statement of js/site.js is exactly  var BOOKING_URL = \"\";  or  var BOOKING_URL = \"https://...\";  (empty until the owner pastes the Square link, then the link between the quote marks; build contract, decision 19)",
+   "expected": "the first statement of js/site.js is exactly  var BOOKING_URL = \"\";  or  var BOOKING_URL = \"https://...\";  (empty, because the salon uses its own booking and the Book Now buttons call 347-671-5095. An online booking link, if one is ever added, goes between the quote marks. Build contract, decision 19)",
    "actual": "the empty form:  var BOOKING_URL = \"\";  No booking link yet, so the Book Now buttons call the phone number",
    "evidence": "js/site.js",
    "owner": "INTERACTION",

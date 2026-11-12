@@ -13,7 +13,7 @@
   "tel_href": "tel:+1-347-671-5095",
   "email": "info@hairbygerta.com",
   "mailto_href": "mailto:info@hairbygerta.com",
-  "hours": "Tuesday - Saturday, 9 AM - 5 PM",
+  "hours": "Tuesday to Saturday, 9 AM to 5 PM",
   "maps_href": "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310",
   "social": [
     {
@@ -30,7 +30,7 @@
   "nav": [
     { "label": "Home", "path": "/" },
     { "label": "Gallery", "path": "/gallery/" },
-    { "label": "Book Online", "path": "/book-online/" },
+    { "label": "Services", "path": "/book-online/" },
     { "label": "About", "path": "/about/" },
     { "label": "Contact", "path": "/contact/" }
   ],
@@ -44,7 +44,7 @@
       { "label": "Terms and Conditions", "path": "/terms-conditions/" }
     ]
   },
-  "call_bar_label": "Call to book",
+  "call_bar_label": "Call",
   "copyright": "Hair & Makeup by Gerta",
   "skip_link": "Skip to main content",
   "logo_label": "Hair & Makeup by Gerta home",
@@ -63,11 +63,12 @@
     "og_site_name: the live Wix tag og:site_name says 'Hairbygerta'. This file uses the business name 'Hair & Makeup by Gerta' on purpose.",
     "og_image: the live Wix pages have no og:image tag. Until 9 November 2026 it was g12, one of the owner's own photos, 900 x 1600 px, which link previews cut badly. Since then it is images/share.jpg, 1200 x 630 px, made by tools/make_share_image.py from g12, g13 and the logo (all three licensed for use outside Wix). The generator joins site_url and og_image and takes the width and height from image-manifest.json. og_image_alt describes that picture for people who cannot see it (og:image:alt and twitter:image:alt). theme_color is the colour a phone browser may give its address bar, the page background.",
     "copyright: this line is not on the Wix site and is added on purpose. The generator prints the copyright sign, the year, then this text.",
-    "call_bar_label: the words of the Call button that stays at the bottom of the screen on phones (added 9 November 2026, not on the Wix site). The generator prints this text, then the phone number, and the button calls tel_href. On screens wider than 760 px the bar is hidden.",
+    "call_bar_label is the word in front of the phone number on every Call button (build contract, decision 45). The generator prints this text, then the phone number, and the button calls tel_href. The Call button at the bottom of the screen on phones (added 9 November 2026, not on the Wix site) and the Call button of the header use it. Changed on 12 November 2026 from \"Call to book\" to \"Call\" for the redesign (decision 44). A button says what it does, so every Call button reads Call 347-671-5095. On the fixed list of intended differences in qa/check_content.py.",
+    "The third item of nav was called Book Online on Wix. Since 12 November 2026 it is called Services, for the redesign (decision 44), because booking is by phone only and the page lists the services. Its address stays /book-online/. On the fixed list of intended differences in qa/check_content.py.",
     "logo_label: not visible text. It is the accessible name of the logo link in the header. On Wix the logo image carries the alt text 'Hair & Makeup by Gerta logo' and the link has no name of its own.",
     "social: name is the network, label is the accessible name of the icon link. The live Wix icon links carry the labels 'Facebook' and 'Instagram', kept as they are.",
     "address_lines: the three lines of the live footer, salon name first. address_one_line: the street address as the live home page shows it in its maps link, without the pin emoji and without the salon name.",
-    "hours: written with plain hyphens (U+002D) and plain spaces, exactly as the live Wix text.",
+    "hours is written with the word to since 12 November 2026 (Tuesday to Saturday, 9 AM to 5 PM), the wording of the owner's design brief and of the closing line of the Services page. The owner left the choice to the builder that day (build contract, decision 46). The days and the times are the same as before. Until then it read Tuesday - Saturday, 9 AM - 5 PM, with plain hyphens, exactly as the live Wix text. On the fixed list of intended differences in qa/check_content.py.",
     "font_preloads: the two font files every page fetches early. The fonts are Bodoni Moda (italic 400 and 700) and Figtree (400 and 700). They stand in for Didot and Proxima Nova, which are licensed for Wix only. Since 9 November 2026 the pages load them from the folder fonts of the site itself and no longer from Google Fonts (the key was fonts_href, a Google Fonts address, until then). The font rules are in css/style.css, and tools/make_fonts.py makes the files.",
     "Paths in nav and footer.policy_links are site paths with a leading and a trailing slash. The generator turns them into relative links.",
     "For information: on Wix the footer name and role are links to the home page, and the footer phone number is a tel link in the phone layout only. The build contract prints name and role as plain text and the phone number as a tel link at every width. The text is the same either way."

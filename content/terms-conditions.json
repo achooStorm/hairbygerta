@@ -1,7 +1,7 @@
 {
   "slug": "terms-conditions",
   "path": "/terms-conditions/",
-  "title": "Terms and Conditions | Hairbygerta",
+  "title": "Terms and Conditions | Hair & Makeup by Gerta",
   "description": "Review the Terms and Conditions for HairByGerta.com, hair stylist & makeup artist in Staten Island, NY. Learn about booking rules, salon policies, website use and client responsibilities.",
   "h1": "Terms & Conditions",
   "blocks": [
@@ -23,7 +23,7 @@
     },
     {
       "type": "p",
-      "html": "By using this site or booking an appointment through it, you agree to these Terms & Conditions and to our <a href=\"{{root}}english-privacy-policy/\">Privacy Policy</a> and <a href=\"{{root}}english-refund-policy/\">Refund & Cancellation Policy</a>."
+      "html": "By using this site or booking an appointment, you agree to these Terms & Conditions and to our <a href=\"{{root}}english-privacy-policy/\">Privacy Policy</a> and <a href=\"{{root}}english-refund-policy/\">Refund & Cancellation Policy</a>."
     },
     {
       "type": "h2",
@@ -56,8 +56,8 @@
     {
       "type": "ul",
       "items": [
-        "Appointments can be requested online, by phone, or in person.",
-        "Submitting a booking request does not guarantee availability; your appointment is confirmed only after you receive a confirmation message from us.",
+        "Appointments can be requested by phone or in person.",
+        "Requesting an appointment does not guarantee availability; your appointment is confirmed only after you receive a confirmation from us.",
         "Please arrive on time for your appointment. If you are more than 15 minutes late, we may need to shorten your service or reschedule."
       ]
     },
@@ -153,9 +153,13 @@
     }
   ],
   "notes": [
-    "Typos fixed: none. The wording is the live Wix text, word for word.",
+    "Typos fixed: none. Apart from the three changes listed below, the wording is the live Wix text, word for word.",
     "ASK: none. The earlier question about how to mark the numbered lines 1. to 9. is settled by decision 7 in section 10 of the build contract: they are plain paragraphs, as on the live Wix page and in this file, so the page has one h1 and three h2 and looks like Wix without any extra styling. The other version, an earlier draft of this file, had them as h3 sub-headings under Key Considerations for T&C. An h3 block stays allowed on policy pages, this file uses none.",
-    "title and description are the live Wix title tag and meta description, kept exactly (the line break at the end of the Wix description is trimmed). The first version had its own title and description, the live Wix ones win.",
+    "description is the live Wix meta description, kept exactly (the line break at the end of the Wix description is trimmed). The first version had its own title and description, the live Wix ones won. The title was changed later, see the title note below.",
+    "Title changed on purpose on 12 November 2026. Old, the live Wix title tag: \"Terms and Conditions | Hairbygerta\". New: \"Terms and Conditions | Hair & Makeup by Gerta\". The four policy pages now carry the business name that the other pages use in their titles.",
+    "Change 1 of 3 made on purpose on 12 November 2026 (second paragraph). Old: \"By using this site or booking an appointment through it, you agree\". New: \"By using this site or booking an appointment, you agree\". Online booking was dropped on 2 November 2026, so nobody books through the site. The Book Now buttons call 347-671-5095.",
+    "Change 2 of 3 made on purpose on 12 November 2026 (1. Appointments & Booking, first list item). Old: \"Appointments can be requested online, by phone, or in person.\" New: \"Appointments can be requested by phone or in person.\" Same reason.",
+    "Change 3 of 3 made on purpose on 12 November 2026 (1. Appointments & Booking, second list item). Old: \"Submitting a booking request does not guarantee availability; your appointment is confirmed only after you receive a confirmation message from us.\" New: \"Requesting an appointment does not guarantee availability; your appointment is confirmed only after you receive a confirmation from us.\" Same reason: the site has no booking form to submit, and a confirmation given on the phone is not a message.",
     "Headings: the live page has one h1 and three h2 (Legal Information, Understanding Terms & Conditions, Key Considerations for T&C). None of them gets its capitals from styling (textTransform is none for every text on the page), so each is stored as shown.",
     "Numbered lines: on the live page the lines 1. Appointments & Booking to 8. Changes to Services & Terms are plain paragraphs (p tags, 16 px, weight 400, 15 px on the phone layout, not indented, the same look as the body text), each followed by a bulleted list (ul with round bullets). They are stored as p blocks, as on the live page, so the page keeps the live heading outline of one h1 and three h2. The first version had them as h2 and an earlier draft of this file had them as h3. The live page has neither.",
     "9. Contact: on the live page this line and the sentence after it are one paragraph with one line break between them. It is stored the same way, as one html block with <br>. No word is changed.",

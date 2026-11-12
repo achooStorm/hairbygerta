@@ -4,7 +4,6 @@
   "title": "Contact | Hair & Makeup by Gerta, Staten Island NY",
   "description": "Contact Gerta Lila at Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310. Call 347-671-5095 or email info@hairbygerta.com.",
   "h1": "Contact",
-  "kicker": "Let's Connect",
   "intro_html": "Have a question about a service or price? Call <a href=\"tel:+1-347-671-5095\">347-671-5095</a>, email <a href=\"mailto:info@hairbygerta.com\">info@hairbygerta.com</a>, or send a message below and I will get back to you soon.",
   "info": [
     {
@@ -19,40 +18,76 @@
       "id": "phone",
       "heading": "Phone",
       "lines": [
-        {"html": "<a href=\"tel:+1-347-671-5095\">347-671-5095</a>"}
+        {
+          "html": "<a href=\"tel:+1-347-671-5095\">347-671-5095</a>"
+        }
       ]
     },
     {
       "id": "email",
       "heading": "Email",
       "lines": [
-        {"html": "<a href=\"mailto:info@hairbygerta.com\">info@hairbygerta.com</a>"}
+        {
+          "html": "<a href=\"mailto:info@hairbygerta.com\">info@hairbygerta.com</a>"
+        }
       ]
     },
     {
       "id": "social",
-      "heading": "Social Media",
+      "heading": "Social media",
       "lines": [],
       "social": [
-        {"name": "Facebook", "href": "https://www.facebook.com/profile.php?id=61588784402912", "label": "Facebook"},
-        {"name": "Instagram", "href": "https://www.instagram.com/hairbygerta/", "label": "Instagram"}
+        {
+          "name": "Facebook",
+          "href": "https://www.facebook.com/profile.php?id=61588784402912",
+          "label": "Facebook"
+        },
+        {
+          "name": "Instagram",
+          "href": "https://www.instagram.com/hairbygerta/",
+          "label": "Instagram"
+        }
       ]
     },
     {
       "id": "hours",
       "heading": "Hours",
       "lines": [
-        "Tuesday - Saturday",
-        "9 AM - 5 PM"
+        "Tuesday to Saturday",
+        "9 AM to 5 PM"
       ]
     }
   ],
   "form": {
+    "heading": "Let's connect",
     "fields": [
-      {"id": "first-name", "label": "First Name", "type": "text", "required": false, "autocomplete": "given-name"},
-      {"id": "last-name", "label": "Last Name", "type": "text", "required": false, "autocomplete": "family-name"},
-      {"id": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email"},
-      {"id": "message", "label": "Message", "type": "textarea", "required": false}
+      {
+        "id": "first-name",
+        "label": "First name",
+        "type": "text",
+        "required": false,
+        "autocomplete": "given-name"
+      },
+      {
+        "id": "last-name",
+        "label": "Last name",
+        "type": "text",
+        "required": false,
+        "autocomplete": "family-name"
+      },
+      {
+        "id": "email",
+        "label": "Email",
+        "type": "email",
+        "required": true,
+        "autocomplete": "email"
+      },
+      {
+        "id": "message",
+        "label": "Message",
+        "type": "textarea",
+        "required": false
+      }
     ],
     "required_mark": "*",
     "button": "Send",
@@ -73,7 +108,7 @@
     "kicker and h1 are written as the live page shows them. textTransform is none for both in the Wix measurements, so no capitals come from styling. \"Let's Connect\" has a straight apostrophe on the live site and keeps it here.",
     "intro_html is the live Wix sentence word for word. The first version of the site had only the email address under the heading, so Wix wins. The phone number is a tel link and the email address is a mailto link. On the live desktop page only the email address is a link, and on the live phone page both are.",
     "info order here is Address, Phone, Email, Social Media, Hours. This is the order the page brief gives and the order of the first version of the site. It follows the rows of the live desktop page, which shows two columns: Address and Phone on top, Email and Social Media below. The text order in the live page code is different: Address, Email, Phone, Social Media at both widths, and the live phone page stacks them in that order. Decision 8 in section 10 of the build contract fixes the order used here (see the last note).",
-    "The Hours block is not on the live Wix contact page. It is added on purpose (it was already in the first version of the site) and holds the business hours in two lines: Tuesday - Saturday and 9 AM - 5 PM.",
+    "The Hours block is not on the live Wix contact page. It is added on purpose (it was already in the first version of the site) and holds the business hours in two lines. Since 12 November 2026 they read Tuesday to Saturday and 9 AM to 5 PM, the wording of content/site.json (build contract, decision 46). Until then they read Tuesday - Saturday and 9 AM - 5 PM.",
     "A line in info.lines is a plain string or an object with an html field (a link). The id of each info block (address, phone, email, social, hours) names the icon to draw. The live page uses a map pin, a phone handset, an envelope and a thumbs-up, all decorative.",
     "The Social Media block has no text lines. It holds the two icon links. Their accessible names on the live page are Facebook and Instagram, and both open in a new tab. The social list has the same shape and the same values as social in content/site.json (name, href, label), so the generator can draw both with one helper.",
     "Form: the label of the email field is \"Email\" in the live page code, the field is required, and Wix draws a star after the label (it shows as \"Email *\"). So the label is stored as \"Email\" with required true, and required_mark holds the star as a separate, decorative mark. The first version wrote the star inside the label text.",
@@ -84,6 +119,7 @@
     "map.title replaces the Wix frame title \"Google Maps\". The first version used \"Map to Le Vigne Hair Salon, 644 Forest Ave, Staten Island\".",
     "This page has no photo slots. The only images are the logo in the header and the icons.",
     "Typos fixed: none.",
-    "ASK: none. The earlier question about the order of the Phone and Email blocks in info is settled by decision 8 in section 10 of the build contract: Address, Phone, Email, Social Media, Hours, which is the order of the page brief and of the first version of the site and the order of this file. The text order of the live Wix page and its phone layout (Address, Email, Phone, Social Media) is not copied, so a phone layout of one column shows Phone above Email, the other way round from Wix. The same decision fixes the star of the Email label: the page prints required_mark inside the label, hidden from screen readers."
+    "ASK: none. The earlier question about the order of the Phone and Email blocks in info is settled by decision 8 in section 10 of the build contract: Address, Phone, Email, Social Media, Hours, which is the order of the page brief and of the first version of the site and the order of this file. The text order of the live Wix page and its phone layout (Address, Email, Phone, Social Media) is not copied, so a phone layout of one column shows Phone above Email, the other way round from Wix. The same decision fixes the star of the Email label: the page prints required_mark inside the label, hidden from screen readers.",
+    "Redesign of 12 November 2026 (build contract, decisions 44 and 47). Every text keeps its words. Four of them changed their capital letters to sentence case, the rule of the new look. Let's Connect reads Let's connect, Social Media reads Social media, First Name reads First name and Last Name reads Last name. Let's connect no longer stands as a small line above the heading Contact (key kicker until that day). It is the heading of the form now (form.heading). All five changes are on the fixed list of intended differences in qa/check_content.py. The small drawings above the five info items are gone."
   ]
 }

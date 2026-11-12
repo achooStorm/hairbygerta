@@ -5,28 +5,134 @@
   "description": "See hair and makeup looks by Gerta Lila in Staten Island, NY. Balayage, highlights, haircuts, extensions and natural makeup at Le Vigne Hair Salon.",
   "h1": "Gallery",
   "images": [
-    {"slot": "gallery-01", "file": "g01", "alt": "", "alt_original": "Stylist pinning an elegant updo"},
-    {"slot": "gallery-02", "file": "g02", "alt": "", "alt_original": "Comb gliding through glossy brown hair"},
-    {"slot": "gallery-03", "file": "foils-highlights", "alt": "", "alt_original": "Stylist finishing a blowout with hairspray"},
-    {"slot": "gallery-04", "file": "g04", "alt": "", "alt_original": "Relaxing shampoo at the wash station"},
-    {"slot": "gallery-05", "file": "g05", "alt": "", "alt_original": "Precision haircut with comb and scissors"},
-    {"slot": "gallery-06", "file": "g06", "alt": "", "alt_original": "Soft brunette waves with blonde highlights"},
-    {"slot": "gallery-07", "file": "g07", "alt": "", "alt_original": "Close-up of shiny chocolate brown hair"},
-    {"slot": "gallery-08", "file": "brunette-balayage", "alt": "", "alt_original": "Long brunette balayage with soft waves"},
-    {"slot": "gallery-09", "file": "copper-waves", "alt": "", "alt_original": "Long copper waves from the back"},
-    {"slot": "gallery-10", "file": "g10", "alt": "", "alt_original": "Applying highlights with foils"},
-    {"slot": "gallery-11", "file": "makeup-red-lips", "alt": "", "alt_original": "Makeup with a bold red lip"},
-    {"slot": "gallery-12", "file": "g12", "alt": "Long dark waves from the back", "alt_original": "Long dark waves from the back"},
-    {"slot": "gallery-13", "file": "g13", "alt": "Long brunette curls from the back", "alt_original": "Long brunette curls from the back"},
-    {"slot": "gallery-14", "file": "g14", "alt": "", "alt_original": "Curling iron waves in the salon"},
-    {"slot": "gallery-15", "file": "g15", "alt": "", "alt_original": "Curling long blonde hair"},
-    {"slot": "gallery-16", "file": "g16", "alt": "", "alt_original": "Blonde balayage with loose waves"},
-    {"slot": "gallery-17", "file": "g17", "alt": "", "alt_original": "Smoothing blow-dry with a round brush"},
-    {"slot": "gallery-18", "file": "g18", "alt": "", "alt_original": "Sectioning hair for a kids haircut"},
-    {"slot": "gallery-19", "file": "g19", "alt": "", "alt_original": "Happy client with fresh balayage"},
-    {"slot": "gallery-20", "file": "g20", "alt": "", "alt_original": "Creating soft golden curls"},
-    {"slot": "gallery-21", "file": "g21", "alt": "", "alt_original": "Blow-drying a bouncy blonde style"}
+    {
+      "slot": "gallery-01",
+      "file": "g01",
+      "alt": "",
+      "alt_original": "Stylist pinning an elegant updo"
+    },
+    {
+      "slot": "gallery-02",
+      "file": "g02",
+      "alt": "",
+      "alt_original": "Comb gliding through glossy brown hair"
+    },
+    {
+      "slot": "gallery-03",
+      "file": "foils-highlights",
+      "alt": "",
+      "alt_original": "Stylist finishing a blowout with hairspray"
+    },
+    {
+      "slot": "gallery-04",
+      "file": "g04",
+      "alt": "",
+      "alt_original": "Relaxing shampoo at the wash station"
+    },
+    {
+      "slot": "gallery-05",
+      "file": "g05",
+      "alt": "",
+      "alt_original": "Precision haircut with comb and scissors"
+    },
+    {
+      "slot": "gallery-06",
+      "file": "g06",
+      "alt": "",
+      "alt_original": "Soft brunette waves with blonde highlights"
+    },
+    {
+      "slot": "gallery-07",
+      "file": "g07",
+      "alt": "",
+      "alt_original": "Close-up of shiny chocolate brown hair"
+    },
+    {
+      "slot": "gallery-08",
+      "file": "brunette-balayage",
+      "alt": "",
+      "alt_original": "Long brunette balayage with soft waves"
+    },
+    {
+      "slot": "gallery-09",
+      "file": "copper-waves",
+      "alt": "",
+      "alt_original": "Long copper waves from the back"
+    },
+    {
+      "slot": "gallery-10",
+      "file": "g10",
+      "alt": "",
+      "alt_original": "Applying highlights with foils"
+    },
+    {
+      "slot": "gallery-11",
+      "file": "makeup-red-lips",
+      "alt": "",
+      "alt_original": "Makeup with a bold red lip"
+    },
+    {
+      "slot": "gallery-12",
+      "file": "g12",
+      "alt": "Long dark waves from the back",
+      "alt_original": "Long dark waves from the back"
+    },
+    {
+      "slot": "gallery-13",
+      "file": "g13",
+      "alt": "Long brunette curls from the back",
+      "alt_original": "Long brunette curls from the back"
+    },
+    {
+      "slot": "gallery-14",
+      "file": "g14",
+      "alt": "",
+      "alt_original": "Curling iron waves in the salon"
+    },
+    {
+      "slot": "gallery-15",
+      "file": "g15",
+      "alt": "",
+      "alt_original": "Curling long blonde hair"
+    },
+    {
+      "slot": "gallery-16",
+      "file": "g16",
+      "alt": "",
+      "alt_original": "Blonde balayage with loose waves"
+    },
+    {
+      "slot": "gallery-17",
+      "file": "g17",
+      "alt": "",
+      "alt_original": "Smoothing blow-dry with a round brush"
+    },
+    {
+      "slot": "gallery-18",
+      "file": "g18",
+      "alt": "",
+      "alt_original": "Sectioning hair for a kids haircut"
+    },
+    {
+      "slot": "gallery-19",
+      "file": "g19",
+      "alt": "",
+      "alt_original": "Happy client with fresh balayage"
+    },
+    {
+      "slot": "gallery-20",
+      "file": "g20",
+      "alt": "",
+      "alt_original": "Creating soft golden curls"
+    },
+    {
+      "slot": "gallery-21",
+      "file": "g21",
+      "alt": "",
+      "alt_original": "Blow-drying a bouncy blonde style"
+    }
   ],
+  "more_html": "See more of my work on <a href=\"https://www.instagram.com/hairbygerta/\" target=\"_blank\" rel=\"noopener\">Instagram</a>.",
   "link_label": "View photo {n} of {total}",
   "notes": [
     "Typos fixed: none. The main area of the live Wix gallery page holds one piece of text, the heading Gallery. It is stored exactly as Wix writes it. Its capital G is typed, not styling (textTransform is none).",
@@ -38,6 +144,7 @@
     "foils-highlights (slot gallery-03) is also used on the live Home, About and Book Online pages. Wix gives it other alt texts there (only a file name on Home, a sentence about foil highlights on About). Neither describes the photo, which shows a stylist finishing a style with hairspray, so the first version description is kept here.",
     "link_label is the accessible name of each photo link. {n} is the position of the photo (1 to 21) and {total} is the number of photos.",
     "The photo viewer (lightbox) is built by js/site.js (contract section 8), so its button labels are not in this file.",
-    "ASK: none."
+    "ASK: none.",
+    "Redesign of 12 November 2026 (build contract, decisions 44 and 47). The page shows only the photos that are no longer placeholders, in tall frames, and the numbers in the link labels count the photos shown (View photo 1 of 2 today). A photo put in with tools/add_photo.py appears by itself. more_html is one new sentence that the Wix page does not have. The page shows it only while it has fewer than six photos, and it links the Instagram address of content/site.json. On the fixed list of intended differences in qa/check_content.py."
   ]
 }

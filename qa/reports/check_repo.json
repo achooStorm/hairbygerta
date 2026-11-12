@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-10-13 07:38:21",
+ "generated": "2026-11-12 20:05:48",
  "results": [
   {
    "page": "site",
@@ -19,7 +19,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (9622 bytes)",
+   "actual": "identical (13780 bytes)",
    "evidence": "index.html",
    "owner": "PAGES"
   },
@@ -29,7 +29,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "gallery/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (9332 bytes)",
+   "actual": "identical (7981 bytes)",
    "evidence": "gallery/index.html",
    "owner": "PAGES"
   },
@@ -39,7 +39,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "book-online/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (11191 bytes)",
+   "actual": "identical (10175 bytes)",
    "evidence": "book-online/index.html",
    "owner": "PAGES"
   },
@@ -49,7 +49,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "about/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (6883 bytes)",
+   "actual": "identical (7879 bytes)",
    "evidence": "about/index.html",
    "owner": "PAGES"
   },
@@ -59,7 +59,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "contact/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (10080 bytes)",
+   "actual": "identical (10580 bytes)",
    "evidence": "contact/index.html",
    "owner": "PAGES"
   },
@@ -69,7 +69,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "english-refund-policy/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (6927 bytes)",
+   "actual": "identical (8849 bytes)",
    "evidence": "english-refund-policy/index.html",
    "owner": "PAGES"
   },
@@ -79,7 +79,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "accessibility-statement/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (6676 bytes)",
+   "actual": "identical (8624 bytes)",
    "evidence": "accessibility-statement/index.html",
    "owner": "PAGES"
   },
@@ -89,7 +89,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "english-privacy-policy/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (9737 bytes)",
+   "actual": "identical (11745 bytes)",
    "evidence": "english-privacy-policy/index.html",
    "owner": "PAGES"
   },
@@ -99,7 +99,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "terms-conditions/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (10566 bytes)",
+   "actual": "identical (12727 bytes)",
    "evidence": "terms-conditions/index.html",
    "owner": "PAGES"
   },
@@ -109,109 +109,129 @@
    "check": "generator-output",
    "ok": true,
    "expected": "404.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (5466 bytes)",
+   "actual": "identical (6430 bytes)",
    "evidence": "404.html",
    "owner": "PAGES"
   },
   {
    "page": "home",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "index.html",
    "owner": "PAGES"
   },
   {
    "page": "gallery",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "gallery/index.html",
    "owner": "PAGES"
   },
   {
    "page": "book-online",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "book-online/index.html",
    "owner": "PAGES"
   },
   {
    "page": "about",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "about/index.html",
    "owner": "PAGES"
   },
   {
    "page": "contact",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "contact/index.html",
    "owner": "PAGES"
   },
   {
    "page": "english-refund-policy",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "english-refund-policy/index.html",
    "owner": "PAGES"
   },
   {
    "page": "accessibility-statement",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "accessibility-statement/index.html",
    "owner": "PAGES"
   },
   {
    "page": "english-privacy-policy",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "english-privacy-policy/index.html",
    "owner": "PAGES"
   },
   {
    "page": "terms-conditions",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "terms-conditions/index.html",
    "owner": "PAGES"
   },
   {
    "page": "404",
    "viewport": "-",
-   "check": "font-preconnect",
+   "check": "font-preload",
    "ok": true,
-   "expected": "in the head, before the fonts stylesheet: <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> and <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>",
-   "actual": "both there, before the fonts stylesheet",
+   "expected": "in the head, before the stylesheet: <link rel=\"preload\" href=\".../fonts/figtree-latin.woff2\" as=\"font\" type=\"font/woff2\" crossorigin> and the same for fonts/bodoni-moda-italic-latin.woff2; both files exist; no link to Google Fonts",
+   "actual": "both there, before the stylesheet",
    "evidence": "404.html",
    "owner": "PAGES"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "fonts-folder",
+   "ok": true,
+   "expected": "fonts/ holds exactly the files fonts/fonts.json lists: each font file is WOFF2 and has the SHA-256 recorded there, and the license text of each font is there",
+   "actual": "4 font files and 2 license texts, all as listed",
+   "evidence": "fonts/, fonts/fonts.json",
+   "owner": "ASSETS"
+  },
+  {
+   "page": "site",
+   "viewport": "-",
+   "check": "font-face-rules",
+   "ok": true,
+   "expected": "css/style.css has an @font-face rule for every font file, and the rules cover Figtree normal 400, Figtree normal 700, Bodoni Moda italic 400, Bodoni Moda italic 700; each has font-display: swap, a file of fonts/ that fonts/fonts.json lists and the unicode-range recorded there; nothing asks another server for a font",
+   "actual": "4 rules, all in order",
+   "evidence": "css/style.css",
+   "owner": "DESIGN"
   },
   {
    "page": "site",
@@ -219,7 +239,7 @@
    "check": "line-endings",
    "ok": true,
    "expected": "every text file is UTF-8 without a byte order mark and ends its lines with LF alone",
-   "actual": "64 text files checked, none wrong",
+   "actual": "79 text files checked, none wrong",
    "evidence": "every file with a text extension (pages, stylesheet, script, JSON, XML, Markdown, Python, the hook), .git and qa/screenshots left out",
    "owner": "QA"
   },
@@ -229,7 +249,7 @@
    "check": "no-absolute-path",
    "ok": true,
    "expected": "no file names a folder of this computer",
-   "actual": "128 files checked, none wrong",
+   "actual": "149 files checked, none wrong",
    "evidence": "looked for: the home folder, the folder the site folder is in, the tools folder, the temporary folder and the Python folder, with / or \\ and in any capitals; .git and qa/screenshots left out",
    "owner": "QA"
   },
@@ -239,7 +259,7 @@
    "check": "no-pycache",
    "ok": true,
    "expected": "no __pycache__ folder and no .pyc file (run Python with -B, or set sys.dont_write_bytecode in the script)",
-   "actual": "22 folders checked, none wrong",
+   "actual": "23 folders checked, none wrong",
    "evidence": "a compiled file carries the path of this computer; whoever ran the named script left it",
    "owner": "QA"
   },
@@ -248,8 +268,8 @@
    "viewport": "-",
    "check": "no-leftovers",
    "ok": true,
-   "expected": "nothing temporary lives in the site folder (decision 20): no _tmp, source-photos or zip folder, no archive, backup or editor leftover",
-   "actual": "306 files and 22 folders checked, none wrong",
+   "expected": "nothing temporary lives in the site folder (decision 20): no _tmp, source-photos, new-photos or zip folder, no archive, backup or editor leftover",
+   "actual": "327 files and 23 folders checked, none wrong",
    "evidence": "names only; what is inside a picture is the job of qa/licensing_check.py",
    "owner": "QA"
   },
@@ -289,7 +309,7 @@
    "check": "git-folder",
    "ok": true,
    "expected": "no repository yet, or one without surprises: a .git folder of the site folder itself, no remote but github.com/achooStorm/hairbygerta, the commit guard installed (.git/hooks/pre-commit), no repository inside a subfolder, no submodules",
-   "actual": "no repository yet (no .git folder)",
+   "actual": "a repository with 1 remote and the commit guard installed",
    "evidence": "read from the files in .git, git itself is not run",
    "owner": "DEPLOY"
   }
@@ -308,9 +328,9 @@
    "terms-conditions",
    "404"
   ],
-  "checks": 29,
+  "checks": 31,
   "failed": 0,
-  "seconds": 1.6
+  "seconds": 1.5
  },
  "note": "These checks read the site folder on this computer, whatever --base says."
 }
