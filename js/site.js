@@ -1,26 +1,31 @@
 /*
- * BOOKING BY PHONE
+ * BOOK NOW BUTTONS
  *
- * The site has no online booking. Every Call button calls 347-671-5095 and
- * every Text Gerta link starts a text message to that number. Those are plain
- * links of the pages, this script does not touch them.
+ * Every Book Now button calls 347-671-5095.
+ * The salon uses its own booking, so this site has no online booking link.
+ * That is why BOOKING_URL, on the line right under this note, stays empty.
  *
- * BOOKING_URL, on the line right under this note, stays empty. Keep the line
- * exactly as it is and keep it the first line of code, because every page uses
- * it to see that this script has loaded.
+ * If an online booking link is ever added, it goes between the two quote
+ * marks on the line under this note. To add one, follow these steps.
+ *   1. Copy the full link to the booking page. It starts with https://
+ *   2. Paste it between the two quote marks on the line under this note.
+ *   3. Change nothing else on that line. Both quote marks stay, and so does
+ *      the ; at the very end.
  *
- * Since the redesign of 12 November 2026 no button of the site is marked
- * data-book, so a link pasted between the two quote marks changes nothing.
+ * Once a link is there, every Book Now button opens the booking page in a
+ * new tab instead.
+ * To go back to phone calls, delete the link and leave the two quote marks
+ * with nothing between them.
  */
 var BOOKING_URL = "";
 
 /*
- * Nothing below this note has to be changed by hand.
+ * Nothing below this note has to be changed to add the booking link.
  *
  * Site script for Hair & Makeup by Gerta. Every page loads this one file
  * with "defer". It has six parts:
  *
- *   1. Booking links          every element marked data-book (none today)
+ *   1. Book Now buttons       every element marked data-book
  *   2. Phone menu             .menu-btn and #main-nav
  *   3. Gallery photo viewer   the links inside .gallery
  *   4. Contact form           #contact-form, #email-error and .form-note
@@ -30,8 +35,8 @@ var BOOKING_URL = "";
  * Each part looks for its own elements and does nothing on a page that does
  * not have them. A part that fails does not stop the other parts.
  *
- * The pages also work without this script: the Call buttons and the Text
- * links are plain links, the menu is a plain list of links, each gallery photo opens on its
+ * The pages also work without this script: the Book Now buttons are phone
+ * links, the menu is a plain list of links, each gallery photo opens on its
  * own, the year is the one the page was built with, and the Contact page
  * hides its form (the sentence above it gives the phone number and the email
  * address as links) and offers the map as a link to Google Maps.
@@ -40,16 +45,16 @@ var BOOKING_URL = "";
   "use strict";
 
   // ---------------------------------------------------------------------------
-  // 1. Booking links
+  // 1. Book Now buttons
   // ---------------------------------------------------------------------------
 
   /*
-   * Booking links (every element marked data-book).
-   * Since the redesign of 12 November 2026 no page has such an element, so
-   * this part does nothing today. It stays for the day a page gets one.
-   * With no booking link at the top of this file (empty or only spaces) each
-   * such element calls 347-671-5095. With a booking link there, each such
-   * element opens that link in a new tab.
+   * Book Now buttons (every element marked data-book).
+   * No booking link at the top of this file (empty or only spaces): each
+   * button calls 347-671-5095.
+   * A booking link at the top of this file: each button opens that link in a
+   * new tab.
+   * Without this script the buttons are plain phone links and still work.
    */
   function initBooking(bookingUrl) {
     var phoneHref = "tel:+1-347-671-5095";
@@ -669,7 +674,7 @@ var BOOKING_URL = "";
   }
 
   function start() {
-    run("Booking links", function () {
+    run("Book Now buttons", function () {
       // The link from the top of this file.
       initBooking(BOOKING_URL);
     });

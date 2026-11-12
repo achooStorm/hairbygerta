@@ -6,14 +6,14 @@
     ../hairbygerta-env/venv/Scripts/python.exe qa/run_all.py --base https://achoostorm.github.io/hairbygerta/
 
 What it does
-  1. Starts every check script of the suite (the seven families listed in FAMILIES below) as its own process,
+  1. Starts every check script of the suite (the eight families listed in FAMILIES below) as its own process,
      all at the same time, with the same Python. --base, --page and --viewport are handed on unchanged.
      Each script starts its own local server on its own free port (unless --base is given).
   2. Reads the report each script wrote to qa/reports/<script name>.json
      ({ok, base, generated, results: [{page, viewport, check, ok, expected, actual, evidence, owner}]}).
-     The visual comparison with the Wix reference (qa/visual_compare.py) is retired since 12 November 2026
-     (build contract, decision 44, because the site no longer copies the Wix look). It is listed in RETIRED_FAMILIES,
-     never started, and the report says so. The script stays in the folder.
+     The visual comparison measures the desktop layout at several widths and names them in "viewport":
+     desktop-1265, desktop (1280), desktop-1440, desktop-1920, and phone. The pages table counts all of them in
+     its one visual column, the visual section lists the biggest differences width by width.
   3. Writes qa/REPORT.md (for people) and qa/reports/run_all.json (for programs).
      When a file qa/open-questions.md exists, its text is copied into the report under "Open questions".
 
@@ -37,16 +37,10 @@ FAMILIES = (
     ("content", "check_content.py"),
     ("behavior", "check_behavior.py"),
     ("a11y", "check_a11y.py"),
+    ("visual", "visual_compare.py"),
     ("licensing", "licensing_check.py"),
     ("repo", "check_repo.py"),
 )
-# Families that are no longer run, by name -> (script, why). The script stays in the folder, --only refuses the name
-# with the reason, and the report says why the family is missing.
-RETIRED_FAMILIES = {
-    "visual": ("visual_compare.py",
-               "retired on 12 November 2026 by decision 44 of tools/CONTRACT.md. The site no longer copies the Wix look, "
-               "so a measurement against the Wix reference says nothing about whether the pages are right"),
-}
 ALIASES = {"behaviour": "behavior", "accessibility": "a11y", "axe": "a11y", "compare": "visual", "visual_compare": "visual",
            "license": "licensing", "licence": "licensing", "licensing_check": "licensing", "text": "content",
            "repository": "repo", "folder": "repo", "check_repo": "repo"}
@@ -54,8 +48,7 @@ ALIASES = {"behaviour": "behavior", "accessibility": "a11y", "axe": "a11y", "com
 # used to write a second copy named visual.json. That copy is no longer written and must not be read.
 SCRIPT_NAME_ONLY = ("visual",)
 # Reports that no script writes any more, by file name without .json -> what to tell the reader when one is still there.
-RETIRED_REPORTS = {"visual": "old second copy of visual_compare.json, no longer written or read: delete it",
-                   "visual_compare": "last report of the retired visual comparison with Wix (decision 44), no longer written or read"}
+RETIRED_REPORTS = {"visual": "old second copy of visual_compare.json, no longer written or read: delete it"}
 # Who fixes what. Failures are listed in this order, any other owner name after these.
 OWNERS = ("DESIGN", "PAGES", "INTERACTION", "CONTENT", "SEO", "ASSETS", "DEPLOY", "RUNBOOK", "QA")
 SELF = "run_all"
@@ -65,7 +58,7 @@ NOT_AUTOMATED = (
     ("Visible focus on every link, button and field.",
      "Tab through each page at 1280 px and on a phone and look for the outline on every stop (qa/check_a11y.py runs axe, which does not read outlines)."),
     ("No sideways scroll at every width from 320 to 1920 px.",
-     "The suite tests 390 and 1280 px only. Drag the window from 320 px upwards, slowly past 760 and 1100 px, on every page."),
+     "The suite tests 390, 1265, 1280, 1440 and 1920 px only. Drag the window from 320 px upwards, slowly past 760 and 1100 px, on every page."),
     ("README.md and MIGRATION.md say the right things.",
      "The suite counts the lines of README.md and looks for em dashes, nothing else. Read both: the nine sections of the guide, its sources, and every command typed as written."),
     ("The commit guard really stops a commit.",
@@ -1102,9 +1095,7 @@ def build_markdown(suite):
     # ---- visual comparison
     w("## Visual comparison with the Wix reference")
     w("")
-    if vis is None and "visual" in RETIRED_FAMILIES:
-        w("Not run. `qa/%s` was %s." % RETIRED_FAMILIES["visual"])
-    elif vis is None or not vis["ran"]:
+    if vis is None or not vis["ran"]:
         w("Not run this time.")
     elif vis["doc"] is None:
         w("**No result from `qa/%s`:** %s." % (vis["script"], "; ".join(one_line(p) for p in vis["problems"]) or "no report"))
@@ -1275,23 +1266,12 @@ def parse_args(argv):
     for n, s in FAMILIES:
         by_name[os.path.splitext(s)[0]] = (n, s)
         by_name[s] = (n, s)
-    retired = {}
-    for n, (s, why) in RETIRED_FAMILIES.items():
-        for key in (n, os.path.splitext(s)[0], s):
-            retired[key] = (n, why)
     for alias, n in ALIASES.items():
-        if n in RETIRED_FAMILIES:
-            retired.setdefault(alias, (n, RETIRED_FAMILIES[n][1]))
-        else:
-            by_name.setdefault(alias, by_name[n])
+        by_name.setdefault(alias, by_name[n])
     if args.only is None:
         args.selected = list(FAMILIES)
     else:
         wanted = [s.strip().lower() for s in args.only.split(",") if s.strip()]
-        gone = [s for s in wanted if s in retired and s not in by_name]
-        if gone:
-            n, why = retired[gone[0]]
-            ap.error("the check %s is not run any more, it was %s. Checks: %s" % (n, why, names))
         unknown = [s for s in wanted if s not in by_name]
         if unknown or not wanted:
             ap.error("unknown check %s. Checks: %s" % (", ".join(unknown) or "(none)", names))

@@ -157,9 +157,7 @@ ctx.img(name, alt="", width=None, height=None, lazy=True, variant="full", sizes=
     sizes are read from images/NAME.jpg and images/sm/NAME.jpg themselves, which must be JPG files.
 
 ctx.is_placeholder(name) -> bool
-    True when name is in PLACEHOLDERS. Since the redesign (contract, decision 44) a page never shows a
-    placeholder photo. A page module leaves out every image slot whose file is a placeholder and lays out
-    the photos that are left, so a photo put in with tools/add_photo.py appears by itself.
+    True when name is in PLACEHOLDERS. ctx.img already takes care of placeholders, so this is rarely needed.
 
 ctx.social(links=None, icons="disc") -> str
     The <div class="social"> with one icon link per network (svg icon, aria-label, target="_blank",
@@ -170,17 +168,6 @@ ctx.social(links=None, icons="disc") -> str
         icons="bare"    the sign alone, a letter f and the outline of a camera, as in the Social Media
                         item of the Contact page
     (This helper is an addition to the list in section 5 of the contract.)
-
-ctx.shade() -> str
-    The shade strip, the signature of the look (contract, decision 45, and tools/DESIGN.md). Five flat bands
-    side by side, from the darkest root to the lightest end, hidden from screen readers:
-        <div class="shade" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-    A page uses it once, right under its hero or its title, outside every element that limits the width,
-    so the strip runs from one edge of the window to the other.
-
-ctx.sms_href -> str
-    The address of the Text link, made from "tel_href" of content/site.json: "sms:+13476715095". A text
-    message goes to the same number the Call buttons call.
 
 RULES FOR A PAGE MODULE
 
@@ -234,8 +221,7 @@ import urllib.parse
 #   3. Open the content file of the page that shows the photo (folder content) and write a short
 #      description of the photo between the quotes after "alt", in the entry with "file": "NAME".
 #   4. Run this script again:  python tools/build_pages.py
-# As long as a name is in this list, the page modules leave its photo out (contract, decision 44), and
-# ctx.img would only ever write it without a description (alt="") and with class="ph".
+# As long as a name is in this list, its photo is shown without a description (alt="") and with class="ph".
 # For a name that is no longer in this list the script reads the pixel size from the two photo files
 # themselves. When it builds a page that shows the photo, and neither of the two files is a placeholder
 # picture any more, it also writes the photo into image-manifest.json by itself: the status "owner-photo"
@@ -336,8 +322,6 @@ CALL_ICON = ('<svg class="call-bar-icon" viewBox="0 0 24 24" width="20" height="
              'l1.35-1.65a1 1 0 0 1 1.07-.3l3.3 1.1a1 1 0 0 1 .68.95v2.6a2.1 2.1 0 0 1-2.1 2.1'
              'C10.6 19.5 4.5 13.4 4.5 5.6a2.1 2.1 0 0 1 2.1-2.1z"/></svg>')
 MENU_LABEL = "Menu"                     # accessible name of the phone menu button (contract, section 6)
-SHADE_BANDS = 5                         # the shade strip: Espresso, Chestnut, Caramel, Honey, Blonde (decision 45)
-LOGO_SIZE = 48                          # the logo file is square, the header shows it at 48 px (40 px on phones)
 NAV_LABEL = "Main"                      # accessible name of the navigation (contract, section 6)
 RESULT_KEYS = ("body", "head_extra", "head_first", "robots")
 INLINE_TAGS = ("a", "br", "strong", "em")
@@ -923,19 +907,6 @@ class Ctx:
         lines.append("</div>")
         return "\n".join(lines)
 
-    def shade(self):
-        """The shade strip (contract, decision 45): five empty spans, the stylesheet colors them."""
-        return '<div class="shade" aria-hidden="true">%s</div>' % ("<span></span>" * SHADE_BANDS)
-
-    @property
-    def sms_href(self):
-        """The Text link: an sms address with the digits of tel_href, for example sms:+13476715095."""
-        tel = _need(self.site, "tel_href", str).strip()
-        digits = re.sub(r"[^0-9+]", "", tel[4:] if tel.lower().startswith("tel:") else tel)
-        if not re.fullmatch(r"\+?[0-9]{7,15}", digits):
-            raise BuildError('%s must be a phone link like "tel:+1-347-671-5095"' % _where(self.site, "tel_href"))
-        return "sms:" + digits
-
 
 # ----------------------------------------------------------------------------------------------------------
 # The shared page: head, header, footer (contract, section 6)
@@ -1069,20 +1040,17 @@ def _document(page, ctx, parts, site, jsonld, year):
         '<a class="skip" href="#main">%s</a>' % _text(_need(site, "skip_link", str)),
         '<header class="site-header">',
         '  <div class="inner">',
-        '    <a class="logo" href="%s" aria-label="%s"><img src="%s" alt="" width="%d" height="%d"></a>'
-        % (esc(url("/")), esc(_need(site, "logo_label", str)), esc(url("/images/logo.jpg")), LOGO_SIZE, LOGO_SIZE),
+        '    <a class="logo" href="%s" aria-label="%s"><img src="%s" alt="" width="134" height="138"></a>'
+        % (esc(url("/")), esc(_need(site, "logo_label", str)), esc(url("/images/logo.jpg"))),
         '    <button class="menu-btn" type="button" aria-label="%s" aria-expanded="false" aria-controls="main-nav">'
         "<span></span><span></span><span></span></button>" % esc(MENU_LABEL),
         '    <nav class="main-nav" id="main-nav" aria-label="%s">' % esc(NAV_LABEL),
         "      <ul>",
     ]
     out += ["        " + line for line in nav]
-    call_text = "%s %s" % (_text(_need(site, "call_bar_label", str)), _text(_need(site, "phone", str)))
     out += [
         "      </ul>",
         "    </nav>",
-        # The Call button of the header (decision 45). Hidden on phones, where the call bar does its job.
-        '    <a class="head-call" href="%s">%s</a>' % (esc(_need(site, "tel_href", str)), call_text),
         "  </div>",
         "</header>",
         '<main id="main">',
@@ -1097,6 +1065,7 @@ def _document(page, ctx, parts, site, jsonld, year):
         % (esc(_need(site, "tel_href", str)), CALL_ICON, _text(_need(site, "call_bar_label", str)), _text(_need(site, "phone", str))),
         "  </div>",
         '  <div class="inner">',
+        '    <hr class="foot-rule">',
         '    <div class="foot-cols">',
         '      <div class="foot-brand">',
         '        <p class="foot-name serif">%s</p>' % _text(_need(footer, "name", str)),

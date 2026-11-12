@@ -1,37 +1,15 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 14:07:19",
+ "generated": "2026-11-12 21:27:17",
  "results": [
-  {
-   "page": "site",
-   "viewport": "-",
-   "check": "qa/check_html.py",
-   "ok": true,
-   "expected": "the script runs, writes qa/reports/check_html.json and every check in it passes",
-   "actual": "passed, 42 checks",
-   "evidence": "qa/REPORT.md",
-   "owner": "QA",
-   "owners": {}
-  },
-  {
-   "page": "site",
-   "viewport": "-",
-   "check": "qa/check_page.py",
-   "ok": true,
-   "expected": "the script runs, writes qa/reports/check_page.json and every check in it passes",
-   "actual": "passed, 422 checks",
-   "evidence": "qa/REPORT.md",
-   "owner": "QA",
-   "owners": {}
-  },
   {
    "page": "site",
    "viewport": "-",
    "check": "qa/check_content.py",
    "ok": true,
    "expected": "the script runs, writes qa/reports/check_content.json and every check in it passes",
-   "actual": "passed, 379 checks",
+   "actual": "passed, 272 checks",
    "evidence": "qa/REPORT.md",
    "owner": "QA",
    "owners": {}
@@ -39,21 +17,10 @@
   {
    "page": "site",
    "viewport": "-",
-   "check": "qa/check_behavior.py",
+   "check": "qa/check_repo.py",
    "ok": true,
-   "expected": "the script runs, writes qa/reports/check_behavior.json and every check in it passes",
-   "actual": "passed, 279 checks",
-   "evidence": "qa/REPORT.md",
-   "owner": "QA",
-   "owners": {}
-  },
-  {
-   "page": "site",
-   "viewport": "-",
-   "check": "qa/check_a11y.py",
-   "ok": true,
-   "expected": "the script runs, writes qa/reports/check_a11y.json and every check in it passes",
-   "actual": "passed, 36 checks",
+   "expected": "the script runs, writes qa/reports/check_repo.json and every check in it passes",
+   "actual": "passed, 31 checks",
    "evidence": "qa/REPORT.md",
    "owner": "QA",
    "owners": {}
@@ -80,58 +47,68 @@
   "desktop",
   "phone"
  ],
- "seconds": 31.1,
- "open_questions": "qa/open-questions.md",
+ "seconds": 8.5,
+ "open_questions": "",
  "families": [
   {
    "name": "html",
    "script": "qa/check_html.py",
-   "status": "passed",
-   "exit_code": 0,
-   "seconds": 31.0,
-   "checks": 42,
+   "status": "not run",
+   "exit_code": null,
+   "seconds": 0.0,
+   "checks": 0,
    "failed": 0,
-   "base": "local site folder"
+   "base": ""
   },
   {
    "name": "page",
    "script": "qa/check_page.py",
-   "status": "passed",
-   "exit_code": 0,
-   "seconds": 24.2,
-   "checks": 422,
+   "status": "not run",
+   "exit_code": null,
+   "seconds": 0.0,
+   "checks": 0,
    "failed": 0,
-   "base": "local site folder"
+   "base": ""
   },
   {
    "name": "content",
    "script": "qa/check_content.py",
    "status": "passed",
    "exit_code": 0,
-   "seconds": 0.8,
-   "checks": 379,
+   "seconds": 2.2,
+   "checks": 272,
    "failed": 0,
    "base": "local site folder"
   },
   {
    "name": "behavior",
    "script": "qa/check_behavior.py",
-   "status": "passed",
-   "exit_code": 0,
-   "seconds": 30.9,
-   "checks": 279,
+   "status": "not run",
+   "exit_code": null,
+   "seconds": 0.0,
+   "checks": 0,
    "failed": 0,
-   "base": "local site folder"
+   "base": ""
   },
   {
    "name": "a11y",
    "script": "qa/check_a11y.py",
-   "status": "passed",
-   "exit_code": 0,
-   "seconds": 28.6,
-   "checks": 36,
+   "status": "not run",
+   "exit_code": null,
+   "seconds": 0.0,
+   "checks": 0,
    "failed": 0,
-   "base": "local site folder"
+   "base": ""
+  },
+  {
+   "name": "visual",
+   "script": "qa/visual_compare.py",
+   "status": "not run",
+   "exit_code": null,
+   "seconds": 0.0,
+   "checks": 0,
+   "failed": 0,
+   "base": ""
   },
   {
    "name": "licensing",
@@ -146,12 +123,12 @@
   {
    "name": "repo",
    "script": "qa/check_repo.py",
-   "status": "not run",
-   "exit_code": null,
-   "seconds": 0.0,
-   "checks": 0,
+   "status": "passed",
+   "exit_code": 0,
+   "seconds": 6.5,
+   "checks": 31,
    "failed": 0,
-   "base": ""
+   "base": "local site folder"
   }
  ]
 }

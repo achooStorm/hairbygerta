@@ -2,9 +2,7 @@
 """Put one of Gerta's own photos in the place of a placeholder, ready to publish.
 
     python tools/add_photo.py --list
-        the 26 places that still wait for a photo: name, the shape the page shows it in, page. A page leaves
-        such a place out until its photo is in (build contract, decision 44), and every page shows a photo
-        in a tall frame, 9 to 16
+        the 26 places that still show a placeholder: name, page, the shape the page shows it in
 
     python tools/add_photo.py PHOTO NAME --alt "What the photo shows"
         puts the photo PHOTO (a .jpg, .jpeg, .png or .webp file, anywhere on this computer) in the place NAME
@@ -200,9 +198,6 @@ def set_alt(text, name, alt):
 def add(photo, name, alt, dry, names, where):
     if name not in names:
         raise Refused('"%s" is not a place that shows a placeholder. Run --list for the names' % name)
-    if not where.get(name):
-        raise Refused('no page shows the place "%s" today (run --list), so a photo put there would not be seen. '
-                      "Pick a place that a page shows" % name)
     if not alt or not alt.strip():
         raise Refused("the photo for %s needs an alt text: a few words that say what it shows" % name)
     im = load(photo)
@@ -258,18 +253,17 @@ def main():
     ap.add_argument("name", nargs="?", help="the place, for example g05 (see --list)")
     ap.add_argument("--alt", help="what the photo shows, in a few words")
     ap.add_argument("--batch", metavar="LIST.csv", help="many photos: one line photo,name,alt per photo")
-    ap.add_argument("--list", action="store_true", help="show the places that still wait for a photo")
+    ap.add_argument("--list", action="store_true", help="show the places that still show a placeholder")
     ap.add_argument("--dry-run", action="store_true", help="show what would happen, write nothing")
     args = ap.parse_args()
 
     names, where = placeholders(), places()
     if args.list:
-        # Every page shows a photo in a tall frame since the redesign of 12 November 2026 (decision 44), whatever
-        # shape the placeholder file has. A name that no content file uses has no page.
         print("%-18s %-10s %s" % ("name", "shape", "shown on"))
         for name in names:
-            pages = sorted({page for _rel, page, _size in where.get(name, [])})
-            print("%-18s %-10s %s" % (name, "tall" if pages else "-", ", ".join(pages) or "no page shows this place today"))
+            size = Image.open(os.path.join(SITE, "images", name + ".jpg")).size
+            shape = "wide" if size[0] > size[1] else "tall" if size[1] > size[0] else "square"
+            print("%-18s %-10s %s" % (name, shape, ", ".join(sorted({page for _rel, page, _size in where.get(name, [])}))))
         return 0
 
     jobs = []

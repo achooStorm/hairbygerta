@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 14:06:49",
+ "generated": "2026-11-12 21:27:10",
  "results": [
   {
    "page": "site",
@@ -12,16 +12,6 @@
    "actual": "16 values, all exact",
    "evidence": "content/site.json",
    "owner": "CONTENT"
-  },
-  {
-   "page": "site",
-   "viewport": "-",
-   "check": "placeholders-list",
-   "ok": true,
-   "expected": "the list PLACEHOLDERS of tools/build_pages.py can be read: the photos a page leaves out (decision 44)",
-   "actual": "26 placeholders, every other photo is shown",
-   "evidence": "tools/build_pages.py",
-   "owner": "PAGES"
   },
   {
    "page": "home",
@@ -39,7 +29,7 @@
    "check": "content-file",
    "ok": true,
    "expected": "content/home.json has a title, a description, an h1 and notes, and every text key holds a text",
-   "actual": "as expected, 29 texts",
+   "actual": "as expected, 17 texts",
    "evidence": "content/home.json",
    "owner": "CONTENT"
   },
@@ -68,8 +58,8 @@
    "viewport": "-",
    "check": "h1",
    "ok": true,
-   "expected": "one h1 \"Hair & Makeup by Gerta\"",
-   "actual": "\"Hair & Makeup by Gerta\"",
+   "expected": "one h1 \"It's Your Day to Shine!\"",
+   "actual": "\"It's Your Day to Shine!\"",
    "evidence": "index.html, content/home.json: h1",
    "owner": "PAGES"
   },
@@ -88,8 +78,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 49 texts of content/home.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 49 found in order",
+   "expected": "all 36 texts of content/home.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 36 found in order",
    "evidence": "index.html",
    "owner": "PAGES"
   },
@@ -100,7 +90,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/home.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "index.html. Fixed by the build contract and allowed: \"📍\", \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -120,14 +110,14 @@
    "ok": true,
    "expected": "every aria-label, alt, title and data-sent is a text of content/home.json or content/site.json, or a label the page module composes from it",
    "actual": "7 labels, all known",
-   "evidence": "index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | alt \"Long brunette curls from the back\" | alt \"Long dark waves from the back\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
+   "evidence": "index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Hours: Tuesday - Saturday, 9 AM - 5 PM\" | aria-label \"Featured work\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
    "owner": "PAGES",
    "labels": [
     "aria-label \"Hair & Makeup by Gerta home\"",
     "aria-label \"Menu\"",
     "aria-label \"Main\"",
-    "alt \"Long brunette curls from the back\"",
-    "alt \"Long dark waves from the back\"",
+    "aria-label \"Hours: Tuesday - Saturday, 9 AM - 5 PM\"",
+    "aria-label \"Featured work\"",
     "aria-label \"Facebook\"",
     "aria-label \"Instagram\""
    ]
@@ -138,7 +128,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/home.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 20 there",
+   "actual": "all 18 there",
    "evidence": "index.html",
    "owner": "PAGES"
   },
@@ -147,7 +137,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/home.json, in order, each with the alt of its slot: g13 (alt \"Long brunette curls from the back\"), g12 (alt \"Long dark waves from the back\")",
+   "expected": "the photos in main are the image slots of content/home.json, in order, each with the alt of its slot: home-styling, foils-highlights, home-smile, home-waves, makeup-red-lips, meet-extensions",
    "actual": "as expected",
    "evidence": "index.html",
    "owner": "PAGES"
@@ -198,7 +188,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "8 mentions on the page, all exact",
+   "actual": "6 mentions on the page, all exact",
    "evidence": "index.html, content/home.json, content/site.json",
    "owner": "PAGES"
   },
@@ -217,8 +207,8 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
-   "actual": "4 mentions on the page, all exact",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
+   "actual": "14 mentions on the page, all exact",
    "evidence": "index.html, content/home.json, content/site.json",
    "owner": "PAGES"
   },
@@ -237,7 +227,7 @@
    "viewport": "-",
    "check": "fact-home-photos",
    "ok": true,
-   "expected": "the home photos (hero, photo row, Meet Gerta), in this order: hero: g13, g12, photo row: home-styling, foils-highlights, home-smile, home-waves, Meet Gerta: makeup-red-lips, meet-extensions. The page shows hero: g13, g12, photo row: , Meet Gerta: , because it leaves out the placeholders (decision 44)",
+   "expected": "the home photo row and the Meet Gerta photos, in this order: photo row: home-styling, foils-highlights, home-smile, home-waves, Meet Gerta: makeup-red-lips, meet-extensions",
    "actual": "as the brief says",
    "evidence": "index.html, content/home.json",
    "owner": "PAGES"
@@ -248,7 +238,7 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "33 sentences compared with Wix: 33 differences, 33 intended, 0 not",
+   "actual": "33 sentences compared with Wix: 5 differences, 5 intended, 0 not",
    "evidence": "index.html, wix-ref/home.txt",
    "owner": "PAGES"
   },
@@ -266,40 +256,7 @@
   {
    "page": "home",
    "viewport": "-",
-   "check": "wix-wording 02: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Le Vigne Hair Salon\" comes after \"347-671-5095\"",
-   "actual": "ours: \"Le Vigne Hair Salon\" comes after \"Find me\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the salon stands under Find me",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 03: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"347-671-5095\"",
-   "actual": "ours: \"Call 347-671-5095 Text Gerta\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the phone number is part of the Call button, the Text Gerta link stands beside it",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 04: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"Tuesday - Saturday, 9 AM - 5 PM\"",
-   "actual": "ours: \"Tuesday to Saturday, 9 AM to 5 PM\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the hours are written with the word to on every page (decision 46)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 05: main sentence differs",
+   "check": "wix-wording 02: main sentence differs",
    "ok": true,
    "expected": "Wix: \"I work with high-quality, hair extensions that blend naturally with your own hair, so they look and move like the real thing.\"",
    "actual": "ours: \"I work with high-quality hair extensions that blend naturally with your own hair, so they look and move like the real thing.\"",
@@ -310,263 +267,10 @@
   {
    "page": "home",
    "viewport": "-",
-   "check": "wix-wording 06: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"📍644 Forest Ave, Staten Island, NY 10310\"",
-   "actual": "ours: \"644 Forest Ave, Staten Island, NY 10310\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the address stands under Find me, without the map pin",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 07: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"It's Your Day to Shine!\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the headline went with the beige box, the h1 is the business name",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 08: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Welcome to HairByGerta.com.\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the first sentence of the welcome text is cut, the two sentences about Gerta stay",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 09: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the Book Online button is gone, the Call button and the Text Gerta link take its place",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 10: main sentence is not on the Wix page",
+   "check": "wix-wording 03: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the heading of the list of services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 11: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Cut and style\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 12: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Haircut & Style\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 13: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Kids’ Haircut\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 14: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Color\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 15: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Hair Coloring\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 16: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Highlights & Lowlights\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 17: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Balayage\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 18: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Smoothing and texture\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 19: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Keratin Treatment\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 20: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Brazilian Blowout\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 21: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Perm & Texture Waves\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 22: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Occasions\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 23: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Dream Bridal Hair\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 24: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Makeup Session\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the name of a service, as the Services page writes it",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 25: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"More about each service\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the link to the Services page",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 26: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Find me\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the heading of the salon, its address and the hours",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 27: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Tuesday to Saturday, 9 AM to 5 PM\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the hours stand under the Call button and again under Find me",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 28: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Open in Google Maps\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the link to the map, the same words as under the map of the Contact page",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 29: footer sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
+   "actual": "ours: \"Call to book 347-671-5095\"",
    "evidence": "index.html, wix-ref/home.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -574,7 +278,7 @@
   {
    "page": "home",
    "viewport": "-",
-   "check": "wix-wording 30: footer sentence is not on the Wix page",
+   "check": "wix-wording 04: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
@@ -585,33 +289,11 @@
   {
    "page": "home",
    "viewport": "-",
-   "check": "wix-wording 31: header sentence of Wix is not on our page",
+   "check": "wix-wording 05: main text repeated",
    "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the Book Online button is gone, the Call button and the Text Gerta link take its place",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 32: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the heading of the list of services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "home",
-   "viewport": "-",
-   "check": "wix-wording 33: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "index.html, wix-ref/home.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
+   "expected": "Wix: \"Tuesday - Saturday, 9 AM - 5 PM\" never repeats the line before it",
+   "actual": "ours: \"Tuesday - Saturday, 9 AM - 5 PM\" repeats the line before it 5 times",
+   "evidence": "index.html, wix-ref/home.txt. Intended: the content file asks for these copies (a scrolling line)",
    "owner": "CONTENT",
    "intended": true
   },
@@ -631,7 +313,7 @@
    "check": "content-file",
    "ok": true,
    "expected": "content/gallery.json has a title, a description, an h1 and notes, and every text key holds a text",
-   "actual": "as expected, 2 texts",
+   "actual": "as expected, 1 text",
    "evidence": "content/gallery.json",
    "owner": "CONTENT"
   },
@@ -680,8 +362,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 22 texts of content/gallery.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 22 found in order",
+   "expected": "all 20 texts of content/gallery.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 20 found in order",
    "evidence": "gallery/index.html",
    "owner": "PAGES"
   },
@@ -692,7 +374,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/gallery.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "gallery/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "gallery/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -711,17 +393,36 @@
    "check": "screen-reader-labels",
    "ok": true,
    "expected": "every aria-label, alt, title and data-sent is a text of content/gallery.json or content/site.json, or a label the page module composes from it",
-   "actual": "9 labels, all known",
-   "evidence": "gallery/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"View photo 1 of 2\" | alt \"Long dark waves from the back\" | aria-label \"View photo 2 of 2\" | alt \"Long brunette curls from the back\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
+   "actual": "28 labels, all known",
+   "evidence": "gallery/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"View photo 1 of 21\" | aria-label \"View photo 2 of 21\" | aria-label \"View photo 3 of 21\" | aria-label \"View photo 4 of 21\" | aria-label \"View photo 5 of 21\" | aria-label \"View photo 6 of 21\" | aria-label \"View photo 7 of 21\" | aria-label \"View photo 8 of 21\" | aria-label \"View photo 9 of 21\" | aria-label \"View photo 10 of 21\" | aria-label \"View photo 11 of 21\" | aria-label \"View photo 12 of 21\" | alt \"Long dark waves from the back\" | aria-label \"View photo 13 of 21\" | alt \"Long brunette curls from the back\" | aria-label \"View photo 14 of 21\" | aria-label \"View photo 15 of 21\" | aria-label \"View photo 16 of 21\" | aria-label \"View photo 17 of 21\" | aria-label \"View photo 18 of 21\" | aria-label \"View photo 19 of 21\" | aria-label \"View photo 20 of 21\" | aria-label \"View photo 21 of 21\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
    "owner": "PAGES",
    "labels": [
     "aria-label \"Hair & Makeup by Gerta home\"",
     "aria-label \"Menu\"",
     "aria-label \"Main\"",
-    "aria-label \"View photo 1 of 2\"",
+    "aria-label \"View photo 1 of 21\"",
+    "aria-label \"View photo 2 of 21\"",
+    "aria-label \"View photo 3 of 21\"",
+    "aria-label \"View photo 4 of 21\"",
+    "aria-label \"View photo 5 of 21\"",
+    "aria-label \"View photo 6 of 21\"",
+    "aria-label \"View photo 7 of 21\"",
+    "aria-label \"View photo 8 of 21\"",
+    "aria-label \"View photo 9 of 21\"",
+    "aria-label \"View photo 10 of 21\"",
+    "aria-label \"View photo 11 of 21\"",
+    "aria-label \"View photo 12 of 21\"",
     "alt \"Long dark waves from the back\"",
-    "aria-label \"View photo 2 of 2\"",
+    "aria-label \"View photo 13 of 21\"",
     "alt \"Long brunette curls from the back\"",
+    "aria-label \"View photo 14 of 21\"",
+    "aria-label \"View photo 15 of 21\"",
+    "aria-label \"View photo 16 of 21\"",
+    "aria-label \"View photo 17 of 21\"",
+    "aria-label \"View photo 18 of 21\"",
+    "aria-label \"View photo 19 of 21\"",
+    "aria-label \"View photo 20 of 21\"",
+    "aria-label \"View photo 21 of 21\"",
     "aria-label \"Facebook\"",
     "aria-label \"Instagram\""
    ]
@@ -732,7 +433,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/gallery.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 17 there",
+   "actual": "all 15 there",
    "evidence": "gallery/index.html",
    "owner": "PAGES"
   },
@@ -741,7 +442,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/gallery.json, in order, each with the alt of its slot: g12 (alt \"Long dark waves from the back\"), g13 (alt \"Long brunette curls from the back\")",
+   "expected": "the photos in main are the image slots of content/gallery.json, in order, each with the alt of its slot: g01, g02, foils-highlights, g04, g05, g06, g07, brunette-balayage, copper-waves, g10, makeup-red-lips, g12 (alt \"Long dark waves from the back\"), g13 (alt \"Long brunette curls from the back\"), g14, g15, g16, g17, g18, g19, g20, g21",
    "actual": "as expected",
    "evidence": "gallery/index.html",
    "owner": "PAGES"
@@ -792,7 +493,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "6 mentions on the page, all exact",
+   "actual": "4 mentions on the page, all exact",
    "evidence": "gallery/index.html, content/gallery.json, content/site.json",
    "owner": "PAGES"
   },
@@ -811,7 +512,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "as expected",
    "evidence": "gallery/index.html, content/gallery.json, content/site.json",
    "owner": "PAGES"
@@ -822,7 +523,7 @@
    "check": "fact-links",
    "ok": true,
    "expected": "the Facebook, Instagram and Maps links are exactly the three links of the brief",
-   "actual": "3 mentions on the page, all exact",
+   "actual": "2 mentions on the page, all exact",
    "evidence": "gallery/index.html, content/gallery.json, content/site.json",
    "owner": "PAGES"
   },
@@ -831,7 +532,7 @@
    "viewport": "-",
    "check": "fact-gallery-images",
    "ok": true,
-   "expected": "the 21 gallery photos, in this order: g01, g02, foils-highlights, g04, g05, g06, g07, brunette-balayage, copper-waves, g10, makeup-red-lips, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21. The page shows g12, g13, because it leaves out the placeholders (decision 44)",
+   "expected": "the 21 gallery photos, in this order: g01, g02, foils-highlights, g04, g05, g06, g07, brunette-balayage, copper-waves, g10, makeup-red-lips, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21",
    "actual": "as the brief says",
    "evidence": "gallery/index.html, content/gallery.json",
    "owner": "PAGES"
@@ -842,18 +543,18 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "19 sentences compared with Wix: 6 differences, 6 intended, 0 not",
+   "actual": "19 sentences compared with Wix: 2 differences, 2 intended, 0 not",
    "evidence": "gallery/index.html, wix-ref/gallery.txt",
    "owner": "PAGES"
   },
   {
    "page": "gallery",
    "viewport": "-",
-   "check": "wix-wording 01: main sentence is not on the Wix page",
+   "check": "wix-wording 01: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"See more of my work on Instagram.\"",
-   "evidence": "gallery/index.html, wix-ref/gallery.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), one new line that points to her Instagram, shown while the page has fewer than six photos",
+   "actual": "ours: \"Call to book 347-671-5095\"",
+   "evidence": "gallery/index.html, wix-ref/gallery.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -863,52 +564,8 @@
    "check": "wix-wording 02: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "gallery/index.html, wix-ref/gallery.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "gallery",
-   "viewport": "-",
-   "check": "wix-wording 03: footer sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
    "evidence": "gallery/index.html, wix-ref/gallery.txt. Intended: the copyright line is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "gallery",
-   "viewport": "-",
-   "check": "wix-wording 04: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "gallery/index.html, wix-ref/gallery.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "gallery",
-   "viewport": "-",
-   "check": "wix-wording 05: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "gallery/index.html, wix-ref/gallery.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "gallery",
-   "viewport": "-",
-   "check": "wix-wording 06: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "gallery/index.html, wix-ref/gallery.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -928,7 +585,7 @@
    "check": "content-file",
    "ok": true,
    "expected": "content/book-online.json has a title, a description, an h1 and notes, and every text key holds a text",
-   "actual": "as expected, 39 texts",
+   "actual": "as expected, 52 texts",
    "evidence": "content/book-online.json",
    "owner": "CONTENT"
   },
@@ -957,8 +614,8 @@
    "viewport": "-",
    "check": "h1",
    "ok": true,
-   "expected": "one h1 \"Our services\"",
-   "actual": "\"Our services\"",
+   "expected": "one h1 \"Our Services\"",
+   "actual": "\"Our Services\"",
    "evidence": "book-online/index.html, content/book-online.json: h1",
    "owner": "PAGES"
   },
@@ -977,8 +634,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 59 texts of content/book-online.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 59 found in order",
+   "expected": "all 71 texts of content/book-online.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 71 found in order",
    "evidence": "book-online/index.html",
    "owner": "PAGES"
   },
@@ -989,7 +646,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/book-online.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "book-online/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "book-online/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -1008,13 +665,23 @@
    "check": "screen-reader-labels",
    "ok": true,
    "expected": "every aria-label, alt, title and data-sent is a text of content/book-online.json or content/site.json, or a label the page module composes from it",
-   "actual": "5 labels, all known",
-   "evidence": "book-online/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
+   "actual": "15 labels, all known",
+   "evidence": "book-online/index.html. Labels on the page: aria-label \"Hair & Makeup by Gerta home\" | aria-label \"Menu\" | aria-label \"Main\" | aria-label \"Book Now: Haircut & Style\" | aria-label \"Book Now: Hair Coloring\" | aria-label \"Book Now: Makeup Session\" | aria-label \"Book Now: Dream Bridal Hair\" | aria-label \"Book Now: Highlights & Lowlights\" | aria-label \"Book Now: Balayage\" | aria-label \"Book Now: Keratin Treatment\" | aria-label \"Book Now: Brazilian Blowout\" | aria-label \"Book Now: Perm & Texture Waves\" | aria-label \"Book Now: Kids’ Haircut\" | aria-label \"Facebook\" | aria-label \"Instagram\"",
    "owner": "PAGES",
    "labels": [
     "aria-label \"Hair & Makeup by Gerta home\"",
     "aria-label \"Menu\"",
     "aria-label \"Main\"",
+    "aria-label \"Book Now: Haircut & Style\"",
+    "aria-label \"Book Now: Hair Coloring\"",
+    "aria-label \"Book Now: Makeup Session\"",
+    "aria-label \"Book Now: Dream Bridal Hair\"",
+    "aria-label \"Book Now: Highlights & Lowlights\"",
+    "aria-label \"Book Now: Balayage\"",
+    "aria-label \"Book Now: Keratin Treatment\"",
+    "aria-label \"Book Now: Brazilian Blowout\"",
+    "aria-label \"Book Now: Perm & Texture Waves\"",
+    "aria-label \"Book Now: Kids’ Haircut\"",
     "aria-label \"Facebook\"",
     "aria-label \"Instagram\""
    ]
@@ -1025,7 +692,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/book-online.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 19 there",
+   "actual": "all 16 there",
    "evidence": "book-online/index.html",
    "owner": "PAGES"
   },
@@ -1034,7 +701,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/book-online.json, in order, each with the alt of its slot: no photo",
+   "expected": "the photos in main are the image slots of content/book-online.json, in order, each with the alt of its slot: svc-haircut, g10, makeup-red-lips, svc-bridal, foils-highlights, g19, g17, g16, g14, g18",
    "actual": "as expected",
    "evidence": "book-online/index.html",
    "owner": "PAGES"
@@ -1085,7 +752,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "10 mentions on the page, all exact",
+   "actual": "16 mentions on the page, all exact",
    "evidence": "book-online/index.html, content/book-online.json, content/site.json",
    "owner": "PAGES"
   },
@@ -1104,7 +771,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "2 mentions on the page, all exact",
    "evidence": "book-online/index.html, content/book-online.json, content/site.json",
    "owner": "PAGES"
@@ -1124,7 +791,7 @@
    "viewport": "-",
    "check": "fact-services",
    "ok": true,
-   "expected": "the ten services in their four groups (title / description / duration), in this order: group: Cut and style, Haircut & Style / Transform your hair with precision cutting and styling. / 45 min, Kids' Haircut / Friendly, patient cuts just for kids. / 45 min, group: Color, Hair Coloring / Revitalize your hair with our expert coloring services. / 1 hr 30 min, Highlights & Lowlights / Customized foils to add brightness, depth, and dimension. / 2 hr 30 min, Balayage / Hand-painted color for a soft, sun-kissed finish. / 3 hr, group: Smoothing and texture, Keratin Treatment / Frizz-fighting smoothing treatment for sleek, manageable hair. / 2 hr 30 min, Brazilian Blowout / Long-lasting smoothness with mirror-like shine. / 2 hr, Perm & Texture Waves / Custom curls or waves with movement and body. / 1 hr, group: Occasions, Dream Bridal Hair / Romantic, long-lasting bridal hair tailored to your dress and vision. / 1 hr 30 min, Makeup Session / Natural makeup that enhances your beauty. / 45 min",
+   "expected": "the ten services (title / description / duration / price), in this order: Haircut & Style / Transform your hair with precision cutting and styling. / 45 min / Call for price, Hair Coloring / Revitalize your hair with our expert coloring services. / 1 hr 30 min / Call for price, Makeup Session / Natural makeup that enhances your beauty. / 45 min / Call for price, Dream Bridal Hair / Romantic, long-lasting bridal hair tailored to your dress and vision. / 1 hr 30 min / Call for price, Highlights & Lowlights / Customized foils to add brightness, depth, and dimension. / 2 hr 30 min / Call for price, Balayage / Hand-painted color for a soft, sun-kissed finish. / 3 hr / Call for price, Keratin Treatment / Frizz-fighting smoothing treatment for sleek, manageable hair. / 2 hr 30 min / Call for price, Brazilian Blowout / Long-lasting smoothness with mirror-like shine. / 2 hr / Call for price, Perm & Texture Waves / Custom curls or waves with movement and body. / 1 hr / Call for price, Kids' Haircut / Friendly, patient cuts just for kids. / 45 min / Call for price",
    "actual": "as the brief says",
    "evidence": "book-online/index.html, content/book-online.json",
    "owner": "PAGES"
@@ -1134,7 +801,7 @@
    "viewport": "-",
    "check": "fact-service-images",
    "ok": true,
-   "expected": "the photos of the Services page (it shows none, decision 47), in this order: none",
+   "expected": "the photos of the ten service cards, in this order: svc-haircut, g10, makeup-red-lips, svc-bridal, foils-highlights, g19, g17, g16, g14, g18",
    "actual": "as the brief says",
    "evidence": "book-online/index.html, content/book-online.json",
    "owner": "PAGES"
@@ -1145,7 +812,7 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "69 sentences compared with Wix: 56 differences, 56 intended, 0 not",
+   "actual": "69 sentences compared with Wix: 5 differences, 5 intended, 0 not",
    "evidence": "book-online/index.html, wix-ref/book-online.txt",
    "owner": "PAGES"
   },
@@ -1163,549 +830,21 @@
   {
    "page": "book-online",
    "viewport": "-",
-   "check": "wix-wording 02: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Dream Bridal Hair\" comes after \"Book Now\"",
-   "actual": "ours: \"Dream Bridal Hair\" comes after \"Occasions\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 03: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Romantic, long-lasting bridal hair tailored to your dress and vision.\" comes after \"Dream Bridal Hair\"",
-   "actual": "ours: \"Romantic, long-lasting bridal hair tailored to your dress and vision.\" comes after \"Dream Bridal Hair\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 04: main order differs",
-   "ok": true,
-   "expected": "Wix: \"1 hr 30 min\" comes after \"Revitalize your hair with our expert coloring services.\"",
-   "actual": "ours: \"1 hr 30 min\" comes after \"Revitalize your hair with our expert coloring services.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 05: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Highlights & Lowlights\" comes after \"Book Now\"",
-   "actual": "ours: \"Highlights & Lowlights\" comes after \"1 hr 30 min\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 06: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Customized foils to add brightness, depth, and dimension.\" comes after \"Highlights & Lowlights\"",
-   "actual": "ours: \"Customized foils to add brightness, depth, and dimension.\" comes after \"Highlights & Lowlights\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 07: main order differs",
-   "ok": true,
-   "expected": "Wix: \"2 hr 30 min\" comes after \"Customized foils to add brightness, depth, and dimension.\"",
-   "actual": "ours: \"2 hr 30 min\" comes after \"Customized foils to add brightness, depth, and dimension.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 08: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Balayage\" comes after \"Book Now\"",
-   "actual": "ours: \"Balayage\" comes after \"2 hr 30 min\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 09: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Hand-painted color for a soft, sun-kissed finish.\" comes after \"Balayage\"",
-   "actual": "ours: \"Hand-painted color for a soft, sun-kissed finish.\" comes after \"Balayage\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 10: main order differs",
-   "ok": true,
-   "expected": "Wix: \"3 hr\" comes after \"Hand-painted color for a soft, sun-kissed finish.\"",
-   "actual": "ours: \"3 hr\" comes after \"Hand-painted color for a soft, sun-kissed finish.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 11: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Keratin Treatment\" comes after \"Book Now\"",
-   "actual": "ours: \"Keratin Treatment\" comes after \"Smoothing and texture\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 12: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Frizz-fighting smoothing treatment for sleek, manageable hair.\" comes after \"Keratin Treatment\"",
-   "actual": "ours: \"Frizz-fighting smoothing treatment for sleek, manageable hair.\" comes after \"Keratin Treatment\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 13: main order differs",
-   "ok": true,
-   "expected": "Wix: \"2 hr 30 min\" comes after \"Customized foils to add brightness, depth, and dimension.\"",
-   "actual": "ours: \"2 hr 30 min\" comes after \"Customized foils to add brightness, depth, and dimension.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 14: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Brazilian Blowout\" comes after \"Book Now\"",
-   "actual": "ours: \"Brazilian Blowout\" comes after \"2 hr 30 min\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 15: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Long-lasting smoothness with mirror-like shine.\" comes after \"Brazilian Blowout\"",
-   "actual": "ours: \"Long-lasting smoothness with mirror-like shine.\" comes after \"Brazilian Blowout\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 16: main order differs",
-   "ok": true,
-   "expected": "Wix: \"2 hr\" comes after \"Long-lasting smoothness with mirror-like shine.\"",
-   "actual": "ours: \"2 hr\" comes after \"Long-lasting smoothness with mirror-like shine.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 17: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Perm & Texture Waves\" comes after \"Book Now\"",
-   "actual": "ours: \"Perm & Texture Waves\" comes after \"2 hr\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 18: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Custom curls or waves with movement and body.\" comes after \"Perm & Texture Waves\"",
-   "actual": "ours: \"Custom curls or waves with movement and body.\" comes after \"Perm & Texture Waves\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 19: main order differs",
-   "ok": true,
-   "expected": "Wix: \"1 hr\" comes after \"Custom curls or waves with movement and body.\"",
-   "actual": "ours: \"1 hr\" comes after \"Custom curls or waves with movement and body.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 20: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Kids’ Haircut\" comes after \"Book Now\"",
-   "actual": "ours: \"Kids’ Haircut\" comes after \"45 min\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 21: main order differs",
-   "ok": true,
-   "expected": "Wix: \"Friendly, patient cuts just for kids.\" comes after \"Kids’ Haircut\"",
-   "actual": "ours: \"Friendly, patient cuts just for kids.\" comes after \"Kids’ Haircut\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 22: main order differs",
-   "ok": true,
-   "expected": "Wix: \"45 min\" comes after \"Transform your hair with precision cutting and styling.\"",
-   "actual": "ours: \"45 min\" comes after \"Transform your hair with precision cutting and styling.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the services stand in the four groups of the design brief, no longer in the order of the Wix page",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 23: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"Our Services\"",
-   "actual": "ours: \"Our services\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the heading of the page, in sentence case",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 24: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: \"Call for price.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, as a sentence",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 25: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 26: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 27: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 28: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 29: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 30: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 31: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 32: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 33: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 34: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 35: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 36: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 37: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 38: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 39: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 40: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 41: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 42: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Call for price\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), Call for price is said once, at the top of the page, and no longer in every service",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 43: main sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Now\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the ten Book Now buttons are gone, one call block holds the Call button and the Text Gerta link",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 44: main sentence is not on the Wix page",
+   "check": "wix-wording 02: main sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"To book, call or text 347-671-5095.\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the first half of the closing line of the page (not on the Wix page), now at the top",
+   "actual": "ours: \"To book, call or text 347-671-5095, Tuesday to Saturday, 9 AM to 5 PM.\"",
+   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: the closing booking note is not on the Wix page, it is kept from the first version of the site",
    "owner": "CONTENT",
    "intended": true
   },
   {
    "page": "book-online",
    "viewport": "-",
-   "check": "wix-wording 45: main sentence is not on the Wix page",
+   "check": "wix-wording 03: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Cut and style\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 46: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Color\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 47: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Smoothing and texture\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 48: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Occasions\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the name of a group of services (design brief)",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 49: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095 Text Gerta\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the Call button and the Text Gerta link of the call block",
-   "owner": "PAGES",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 50: main sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Tuesday to Saturday, 9 AM to 5 PM\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the hours of the call block, the second half of the closing line of the page",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 51: footer sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
+   "actual": "ours: \"Call to book 347-671-5095\"",
    "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -1713,7 +852,7 @@
   {
    "page": "book-online",
    "viewport": "-",
-   "check": "wix-wording 52: footer sentence is not on the Wix page",
+   "check": "wix-wording 04: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
@@ -1724,40 +863,7 @@
   {
    "page": "book-online",
    "viewport": "-",
-   "check": "wix-wording 53: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 54: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 55: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "book-online/index.html, wix-ref/book-online.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "book-online",
-   "viewport": "-",
-   "check": "wix-wording 56: main text repeated",
+   "check": "wix-wording 05: main text repeated",
    "ok": true,
    "expected": "Wix: \"Call for price\" repeats the line before it 10 times",
    "actual": "ours: \"Call for price\" never repeats the line before it",
@@ -1781,7 +887,7 @@
    "check": "content-file",
    "ok": true,
    "expected": "content/about.json has a title, a description, an h1 and notes, and every text key holds a text",
-   "actual": "as expected, 6 texts",
+   "actual": "as expected, 2 texts",
    "evidence": "content/about.json",
    "owner": "CONTENT"
   },
@@ -1830,8 +936,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 26 texts of content/about.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 26 found in order",
+   "expected": "all 21 texts of content/about.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 21 found in order",
    "evidence": "about/index.html",
    "owner": "PAGES"
   },
@@ -1842,7 +948,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/about.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "about/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "about/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -1878,7 +984,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/about.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 18 there",
+   "actual": "all 15 there",
    "evidence": "about/index.html",
    "owner": "PAGES"
   },
@@ -1887,7 +993,7 @@
    "viewport": "-",
    "check": "images-from-content",
    "ok": true,
-   "expected": "the photos in main are the image slots of content/about.json, in order, each with the alt of its slot: no photo",
+   "expected": "the photos in main are the image slots of content/about.json, in order, each with the alt of its slot: brunette-balayage, about-salon, g10, copper-waves",
    "actual": "as expected",
    "evidence": "about/index.html",
    "owner": "PAGES"
@@ -1938,7 +1044,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "8 mentions on the page, all exact",
+   "actual": "4 mentions on the page, all exact",
    "evidence": "about/index.html, content/about.json, content/site.json",
    "owner": "PAGES"
   },
@@ -1957,7 +1063,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "as expected",
    "evidence": "about/index.html, content/about.json, content/site.json",
    "owner": "PAGES"
@@ -1977,7 +1083,7 @@
    "viewport": "-",
    "check": "fact-about-photos",
    "ok": true,
-   "expected": "the About photos, in this order: brunette-balayage, about-salon, g10, copper-waves. The page shows none, because it leaves out the placeholders (decision 44)",
+   "expected": "the About photos, in this order: left: brunette-balayage, about-salon, right: g10, copper-waves",
    "actual": "as the brief says",
    "evidence": "about/index.html, content/about.json",
    "owner": "PAGES"
@@ -1988,19 +1094,19 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "23 sentences compared with Wix: 6 differences, 6 intended, 0 not",
+   "actual": "23 sentences compared with Wix: 2 differences, 2 intended, 0 not",
    "evidence": "about/index.html, wix-ref/about.txt",
    "owner": "PAGES"
   },
   {
    "page": "about",
    "viewport": "-",
-   "check": "wix-wording 01: main sentence is not on the Wix page",
+   "check": "wix-wording 01: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095 Text Gerta\"",
-   "evidence": "about/index.html, wix-ref/about.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the Call button and the Text Gerta link under her text",
-   "owner": "PAGES",
+   "actual": "ours: \"Call to book 347-671-5095\"",
+   "evidence": "about/index.html, wix-ref/about.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
+   "owner": "CONTENT",
    "intended": true
   },
   {
@@ -2009,52 +1115,8 @@
    "check": "wix-wording 02: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "about/index.html, wix-ref/about.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "about",
-   "viewport": "-",
-   "check": "wix-wording 03: footer sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
    "evidence": "about/index.html, wix-ref/about.txt. Intended: the copyright line is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "about",
-   "viewport": "-",
-   "check": "wix-wording 04: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "about/index.html, wix-ref/about.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "about",
-   "viewport": "-",
-   "check": "wix-wording 05: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "about/index.html, wix-ref/about.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "about",
-   "viewport": "-",
-   "check": "wix-wording 06: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "about/index.html, wix-ref/about.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -2123,8 +1185,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 41 texts of content/contact.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 41 found in order",
+   "expected": "all 40 texts of content/contact.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 40 found in order",
    "evidence": "contact/index.html",
    "owner": "PAGES"
   },
@@ -2135,7 +1197,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/contact.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "contact/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "contact/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -2175,7 +1237,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/contact.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 23 there",
+   "actual": "all 22 there",
    "evidence": "contact/index.html",
    "owner": "PAGES"
   },
@@ -2235,7 +1297,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "13 mentions on the page, all exact",
+   "actual": "11 mentions on the page, all exact",
    "evidence": "contact/index.html, content/contact.json, content/site.json",
    "owner": "PAGES"
   },
@@ -2254,7 +1316,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "2 mentions on the page, all exact",
    "evidence": "contact/index.html, content/contact.json, content/site.json",
    "owner": "PAGES"
@@ -2275,7 +1337,7 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "34 sentences compared with Wix: 17 differences, 17 intended, 0 not",
+   "actual": "34 sentences compared with Wix: 10 differences, 10 intended, 0 not",
    "evidence": "contact/index.html, wix-ref/contact.txt",
    "owner": "PAGES"
   },
@@ -2329,39 +1391,6 @@
    "viewport": "-",
    "check": "wix-wording 05: main sentence differs",
    "ok": true,
-   "expected": "Wix: \"Social Media\"",
-   "actual": "ours: \"Social media\"",
-   "evidence": "contact/index.html, wix-ref/contact.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the name of the info item, in sentence case",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "contact",
-   "viewport": "-",
-   "check": "wix-wording 06: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"First Name\"",
-   "actual": "ours: \"First name\"",
-   "evidence": "contact/index.html, wix-ref/contact.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the label of the field, in sentence case",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "contact",
-   "viewport": "-",
-   "check": "wix-wording 07: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"Last Name\"",
-   "actual": "ours: \"Last name\"",
-   "evidence": "contact/index.html, wix-ref/contact.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), the label of the field, in sentence case",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "contact",
-   "viewport": "-",
-   "check": "wix-wording 08: main sentence differs",
-   "ok": true,
    "expected": "Wix: \"Email\"",
    "actual": "ours: \"Email *\"",
    "evidence": "contact/index.html, wix-ref/contact.txt. Intended: build contract, section 10.8: the Email label carries the mark of a required field",
@@ -2371,18 +1400,7 @@
   {
    "page": "contact",
    "viewport": "-",
-   "check": "wix-wording 09: main sentence differs",
-   "ok": true,
-   "expected": "Wix: \"Let's Connect\"",
-   "actual": "ours: \"Let's connect\"",
-   "evidence": "contact/index.html, wix-ref/contact.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 47), in sentence case, and it is the heading of the form now, no longer a small line above the heading Contact",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "contact",
-   "viewport": "-",
-   "check": "wix-wording 10: main sentence is not on the Wix page",
+   "check": "wix-wording 06: main sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"Hours\"",
@@ -2393,10 +1411,10 @@
   {
    "page": "contact",
    "viewport": "-",
-   "check": "wix-wording 11: main sentence is not on the Wix page",
+   "check": "wix-wording 07: main sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Tuesday to Saturday\"",
+   "actual": "ours: \"Tuesday - Saturday\"",
    "evidence": "contact/index.html, wix-ref/contact.txt. Intended: the Hours block of the contact page is not on the Wix page, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -2404,10 +1422,10 @@
   {
    "page": "contact",
    "viewport": "-",
-   "check": "wix-wording 12: main sentence is not on the Wix page",
+   "check": "wix-wording 08: main sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"9 AM to 5 PM\"",
+   "actual": "ours: \"9 AM - 5 PM\"",
    "evidence": "contact/index.html, wix-ref/contact.txt. Intended: the Hours block of the contact page is not on the Wix page, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -2415,7 +1433,7 @@
   {
    "page": "contact",
    "viewport": "-",
-   "check": "wix-wording 13: main sentence is not on the Wix page",
+   "check": "wix-wording 09: main sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"Open in Google Maps\"",
@@ -2426,10 +1444,10 @@
   {
    "page": "contact",
    "viewport": "-",
-   "check": "wix-wording 14: footer sentence is not on the Wix page",
+   "check": "wix-wording 10: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
+   "actual": "ours: \"Call to book 347-671-5095\"",
    "evidence": "contact/index.html, wix-ref/contact.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -2437,44 +1455,11 @@
   {
    "page": "contact",
    "viewport": "-",
-   "check": "wix-wording 15: footer sentence is not on the Wix page",
+   "check": "wix-wording 11: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
    "evidence": "contact/index.html, wix-ref/contact.txt. Intended: the copyright line is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "contact",
-   "viewport": "-",
-   "check": "wix-wording 16: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "contact/index.html, wix-ref/contact.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "contact",
-   "viewport": "-",
-   "check": "wix-wording 17: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "contact/index.html, wix-ref/contact.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "contact",
-   "viewport": "-",
-   "check": "wix-wording 18: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "contact/index.html, wix-ref/contact.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -2543,8 +1528,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 36 texts of content/english-refund-policy.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 36 found in order",
+   "expected": "all 35 texts of content/english-refund-policy.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 35 found in order",
    "evidence": "english-refund-policy/index.html",
    "owner": "PAGES"
   },
@@ -2555,7 +1540,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/english-refund-policy.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "english-refund-policy/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "english-refund-policy/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -2591,7 +1576,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/english-refund-policy.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 17 there",
+   "actual": "all 16 there",
    "evidence": "english-refund-policy/index.html",
    "owner": "PAGES"
   },
@@ -2651,7 +1636,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "8 mentions on the page, all exact",
+   "actual": "6 mentions on the page, all exact",
    "evidence": "english-refund-policy/index.html, content/english-refund-policy.json, content/site.json",
    "owner": "PAGES"
   },
@@ -2670,7 +1655,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "as expected",
    "evidence": "english-refund-policy/index.html, content/english-refund-policy.json, content/site.json",
    "owner": "PAGES"
@@ -2691,7 +1676,7 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "42 sentences compared with Wix: 6 differences, 6 intended, 0 not",
+   "actual": "42 sentences compared with Wix: 3 differences, 3 intended, 0 not",
    "evidence": "english-refund-policy/index.html, wix-ref/english-refund-policy.txt",
    "owner": "PAGES"
   },
@@ -2712,7 +1697,7 @@
    "check": "wix-wording 02: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
+   "actual": "ours: \"Call to book 347-671-5095\"",
    "evidence": "english-refund-policy/index.html, wix-ref/english-refund-policy.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -2725,39 +1710,6 @@
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
    "evidence": "english-refund-policy/index.html, wix-ref/english-refund-policy.txt. Intended: the copyright line is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "english-refund-policy",
-   "viewport": "-",
-   "check": "wix-wording 04: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "english-refund-policy/index.html, wix-ref/english-refund-policy.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "english-refund-policy",
-   "viewport": "-",
-   "check": "wix-wording 05: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "english-refund-policy/index.html, wix-ref/english-refund-policy.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "english-refund-policy",
-   "viewport": "-",
-   "check": "wix-wording 06: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "english-refund-policy/index.html, wix-ref/english-refund-policy.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -2826,8 +1778,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 29 texts of content/accessibility-statement.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 29 found in order",
+   "expected": "all 28 texts of content/accessibility-statement.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 28 found in order",
    "evidence": "accessibility-statement/index.html",
    "owner": "PAGES"
   },
@@ -2838,7 +1790,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/accessibility-statement.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "accessibility-statement/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "accessibility-statement/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -2874,7 +1826,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/accessibility-statement.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 18 there",
+   "actual": "all 17 there",
    "evidence": "accessibility-statement/index.html",
    "owner": "PAGES"
   },
@@ -2934,7 +1886,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "8 mentions on the page, all exact",
+   "actual": "6 mentions on the page, all exact",
    "evidence": "accessibility-statement/index.html, content/accessibility-statement.json, content/site.json",
    "owner": "PAGES"
   },
@@ -2953,7 +1905,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "as expected",
    "evidence": "accessibility-statement/index.html, content/accessibility-statement.json, content/site.json",
    "owner": "PAGES"
@@ -2974,7 +1926,7 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "34 sentences compared with Wix: 8 differences, 8 intended, 0 not",
+   "actual": "34 sentences compared with Wix: 5 differences, 5 intended, 0 not",
    "evidence": "accessibility-statement/index.html, wix-ref/accessibility-statement.txt",
    "owner": "PAGES"
   },
@@ -3017,7 +1969,7 @@
    "check": "wix-wording 04: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
+   "actual": "ours: \"Call to book 347-671-5095\"",
    "evidence": "accessibility-statement/index.html, wix-ref/accessibility-statement.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -3030,39 +1982,6 @@
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
    "evidence": "accessibility-statement/index.html, wix-ref/accessibility-statement.txt. Intended: the copyright line is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "accessibility-statement",
-   "viewport": "-",
-   "check": "wix-wording 06: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "accessibility-statement/index.html, wix-ref/accessibility-statement.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "accessibility-statement",
-   "viewport": "-",
-   "check": "wix-wording 07: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "accessibility-statement/index.html, wix-ref/accessibility-statement.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "accessibility-statement",
-   "viewport": "-",
-   "check": "wix-wording 08: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "accessibility-statement/index.html, wix-ref/accessibility-statement.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -3131,8 +2050,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 74 texts of content/english-privacy-policy.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 74 found in order",
+   "expected": "all 73 texts of content/english-privacy-policy.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 73 found in order",
    "evidence": "english-privacy-policy/index.html",
    "owner": "PAGES"
   },
@@ -3143,7 +2062,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/english-privacy-policy.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "english-privacy-policy/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "english-privacy-policy/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -3179,7 +2098,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/english-privacy-policy.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 20 there",
+   "actual": "all 19 there",
    "evidence": "english-privacy-policy/index.html",
    "owner": "PAGES"
   },
@@ -3239,7 +2158,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "10 mentions on the page, all exact",
+   "actual": "8 mentions on the page, all exact",
    "evidence": "english-privacy-policy/index.html, content/english-privacy-policy.json, content/site.json",
    "owner": "PAGES"
   },
@@ -3258,7 +2177,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "as expected",
    "evidence": "english-privacy-policy/index.html, content/english-privacy-policy.json, content/site.json",
    "owner": "PAGES"
@@ -3329,7 +2248,7 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "84 sentences compared with Wix: 16 differences, 16 intended, 0 not",
+   "actual": "84 sentences compared with Wix: 13 differences, 13 intended, 0 not",
    "evidence": "english-privacy-policy/index.html, wix-ref/english-privacy-policy.txt",
    "owner": "PAGES"
   },
@@ -3460,7 +2379,7 @@
    "check": "wix-wording 12: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
+   "actual": "ours: \"Call to book 347-671-5095\"",
    "evidence": "english-privacy-policy/index.html, wix-ref/english-privacy-policy.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -3473,39 +2392,6 @@
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
    "evidence": "english-privacy-policy/index.html, wix-ref/english-privacy-policy.txt. Intended: the copyright line is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "english-privacy-policy",
-   "viewport": "-",
-   "check": "wix-wording 14: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "english-privacy-policy/index.html, wix-ref/english-privacy-policy.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "english-privacy-policy",
-   "viewport": "-",
-   "check": "wix-wording 15: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "english-privacy-policy/index.html, wix-ref/english-privacy-policy.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "english-privacy-policy",
-   "viewport": "-",
-   "check": "wix-wording 16: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "english-privacy-policy/index.html, wix-ref/english-privacy-policy.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -3574,8 +2460,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 65 texts of content/terms-conditions.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 65 found in order",
+   "expected": "all 64 texts of content/terms-conditions.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 64 found in order",
    "evidence": "terms-conditions/index.html",
    "owner": "PAGES"
   },
@@ -3586,7 +2472,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/terms-conditions.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "terms-conditions/index.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "terms-conditions/index.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -3622,7 +2508,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/terms-conditions.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 22 there",
+   "actual": "all 21 there",
    "evidence": "terms-conditions/index.html",
    "owner": "PAGES"
   },
@@ -3682,7 +2568,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "10 mentions on the page, all exact",
+   "actual": "8 mentions on the page, all exact",
    "evidence": "terms-conditions/index.html, content/terms-conditions.json, content/site.json",
    "owner": "PAGES"
   },
@@ -3701,7 +2587,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "as expected",
    "evidence": "terms-conditions/index.html, content/terms-conditions.json, content/site.json",
    "owner": "PAGES"
@@ -3722,7 +2608,7 @@
    "check": "wix-wording",
    "ok": true,
    "expected": "title, meta description, main text, footer and navigation are the live Wix wording, apart from the intended differences",
-   "actual": "79 sentences compared with Wix: 9 differences, 9 intended, 0 not",
+   "actual": "79 sentences compared with Wix: 6 differences, 6 intended, 0 not",
    "evidence": "terms-conditions/index.html, wix-ref/terms-conditions.txt",
    "owner": "PAGES"
   },
@@ -3776,7 +2662,7 @@
    "check": "wix-wording 05: footer sentence is not on the Wix page",
    "ok": true,
    "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
+   "actual": "ours: \"Call to book 347-671-5095\"",
    "evidence": "terms-conditions/index.html, wix-ref/terms-conditions.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
@@ -3789,39 +2675,6 @@
    "expected": "Wix: (not on the Wix page)",
    "actual": "ours: \"© 2026 Hair & Makeup by Gerta\"",
    "evidence": "terms-conditions/index.html, wix-ref/terms-conditions.txt. Intended: the copyright line is not on the Wix site, it is added on purpose",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "terms-conditions",
-   "viewport": "-",
-   "check": "wix-wording 07: header sentence of Wix is not on our page",
-   "ok": true,
-   "expected": "Wix: \"Book Online\"",
-   "actual": "ours: (not on our page)",
-   "evidence": "terms-conditions/index.html, wix-ref/terms-conditions.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "terms-conditions",
-   "viewport": "-",
-   "check": "wix-wording 08: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Services\"",
-   "evidence": "terms-conditions/index.html, wix-ref/terms-conditions.txt. Intended: changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45), the navigation item Book Online is called Services",
-   "owner": "CONTENT",
-   "intended": true
-  },
-  {
-   "page": "terms-conditions",
-   "viewport": "-",
-   "check": "wix-wording 09: header sentence is not on the Wix page",
-   "ok": true,
-   "expected": "Wix: (not on the Wix page)",
-   "actual": "ours: \"Call 347-671-5095\"",
-   "evidence": "terms-conditions/index.html, wix-ref/terms-conditions.txt. Intended: the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose",
    "owner": "CONTENT",
    "intended": true
   },
@@ -3890,8 +2743,8 @@
    "viewport": "-",
    "check": "text-in-order",
    "ok": true,
-   "expected": "all 23 texts of content/404.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
-   "actual": "all 23 found in order",
+   "expected": "all 22 texts of content/404.json and of the header and footer in content/site.json are on the page, in this order, nothing lost",
+   "actual": "all 22 found in order",
    "evidence": "404.html",
    "owner": "PAGES"
   },
@@ -3902,7 +2755,7 @@
    "ok": true,
    "expected": "no visible text that is not in content/404.json, in content/site.json or fixed by the build contract",
    "actual": "none",
-   "evidence": "404.html. Fixed by the build contract and allowed: \"Call 347-671-5095\", \"Call 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
+   "evidence": "404.html. Fixed by the build contract and allowed: \"Call to book 347-671-5095\", \"© 2026 Hair & Makeup by Gerta\"",
    "owner": "PAGES"
   },
   {
@@ -3938,7 +2791,7 @@
    "check": "links-from-content",
    "ok": true,
    "expected": "every link of content/404.json and content/site.json is on the page with the same text and the same target",
-   "actual": "all 17 there",
+   "actual": "all 16 there",
    "evidence": "404.html",
    "owner": "PAGES"
   },
@@ -3998,7 +2851,7 @@
    "check": "fact-phone",
    "ok": true,
    "expected": "the phone number is written \"347-671-5095\" and every phone link is tel:+1-347-671-5095",
-   "actual": "6 mentions on the page, all exact",
+   "actual": "4 mentions on the page, all exact",
    "evidence": "404.html, content/404.json, content/site.json",
    "owner": "PAGES"
   },
@@ -4017,7 +2870,7 @@
    "viewport": "-",
    "check": "fact-hours",
    "ok": true,
-   "expected": "the hours are exactly \"Tuesday to Saturday, 9 AM to 5 PM\"",
+   "expected": "the hours are exactly \"Tuesday - Saturday, 9 AM - 5 PM\"",
    "actual": "as expected",
    "evidence": "404.html, content/404.json, content/site.json",
    "owner": "PAGES"
@@ -4049,9 +2902,9 @@
    "terms-conditions",
    "404"
   ],
-  "checks": 379,
+  "checks": 272,
   "failed": 0,
-  "intended_differences_from_wix": 157,
-  "seconds": 0.6
+  "intended_differences_from_wix": 51,
+  "seconds": 1.4
  }
 }

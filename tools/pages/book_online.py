@@ -1,100 +1,99 @@
-"""Page module of /book-online/ (Our services), built as section 7 of tools/CONTRACT.md lists it (decision 47):
+"""Page module of /book-online/ (Our Services).
 
-    div.page-head
-      h1                          the heading of the page
-      p.lead                      "intro_html": prices are given by phone, and how to book
-    div.shade                     the shade strip, once, right under the page title
-    div.services
-      div.menu
-        section.menu-group        one per group of "groups", in the order of the content file
-          h2                      the name of the group
-          ul > li.svc             one per service of the group
-            h3                    the name of the service
-            p.desc                its one line
-            p.duration            its time
-      div.svc-call                the call block, it stays in view on a wide screen
-        p.actions                 a.btn.btn-call "call_block.call" (calls the number) and
-                                  a.text-link "call_block.text" (starts a text message)
-        p.hours                   "call_block.hours"
+Contract, section 7, Book Online:
 
-The page is a typeset menu. It has no photos and no cards, and no button inside a service.
+    div.page
+      h1.services-title.serif
+      div.services
+        article.card              one per service, in the order of the content file
+          img                     the small copy of the photo, 290 x 195
+          div.body
+            h2.serif              the name of the service
+            p.desc                one sentence about it
+            div.meta
+              p.duration
+              p.price
+            a.pill[data-book]     the Book Now button
+      p.book-note                 the closing line under the cards
 
-Every word a visitor reads comes from content/book-online.json. Where the Call button and the Text link lead
-comes from content/site.json (tel_href). The salon takes bookings by phone, so the site has no online booking
-link and nothing on this page is marked data-book.
+Every word a visitor reads comes from content/book-online.json:
+    h1                  the heading of the page
+    services            the cards, each with title, description, duration, price and image
+                        (image is an image slot, see section 3 of tools/CONTRACT.md)
+    button_label        the text of the button in every card
+    closing_note_html   the line under the cards, with the phone number as a link
+The phone link of the buttons comes from content/site.json (tel_href).
 
-To add, remove, reorder or reword a service or a group, edit "groups" in the content file and run
+The Book Now button calls the phone number. The salon uses its own booking, so the site has no online
+booking link and BOOKING_URL in js/site.js stays empty. Should a link ever be filled in there, the
+script sends every link marked data-book to it, and nothing has to change here. A screen reader reads
+each button as the button text, a colon and the name of the service
+("Book Now: Balayage"), so that ten buttons with the same text can be told apart. That label is put
+together here from button_label and the title of the service.
+
+To add, remove, reorder or reword a service, edit "services" in the content file and run:
     python tools/build_pages.py --only book-online
-The home page lists the same services by name (content/home.json), so change both files.
 """
 
 SLUG = "book-online"
 
-CONTENT_FILE = "content/%s.json" % SLUG     # only used to name the file in an error message
+# The size a card photo is shown at on the desktop page (contract, section 7). The stylesheet crops the
+# photo to fill this box.
+PHOTO_WIDTH = 290
+PHOTO_HEIGHT = 195
+
+# The desktop page shows three cards side by side and the first row is on screen as soon as the page
+# opens, so the photos of that row load right away. Every later photo loads when the visitor gets near it.
+FIRST_ROW = 3
 
 
-def _wrong(key, problem):
-    """The error that stops the build and names the content file and the key."""
-    return ValueError('%s: key "%s" %s' % (CONTENT_FILE, key, problem))
+def _indent(markup, spaces):
+    """Shift finished markup to the right, one nesting level is two spaces."""
+    pad = " " * spaces
+    return "\n".join(pad + line if line else line for line in markup.split("\n"))
 
 
-def _group(ctx, number, group):
-    """One group of services, starting at the left edge."""
-    services = group["services"]
-    if not isinstance(services, list) or not services:
-        raise _wrong("groups[%d].services" % (number - 1), "must be a list with at least one service")
-    anchor = "group-%d" % number
-    lines = [
-        '<section class="menu-group" aria-labelledby="%s">' % anchor,
-        '  <h2 id="%s">%s</h2>' % (anchor, ctx.esc(group["heading"])),
-        "  <ul>",
-    ]
-    for service in services:
-        lines += [
-            '    <li class="svc">',
-            "      <h3>%s</h3>" % ctx.esc(service["title"]),
-            '      <p class="desc">%s</p>' % ctx.esc(service["description"]),
-            '      <p class="duration">%s</p>' % ctx.esc(service["duration"]),
-            "    </li>",
-        ]
-    lines += ["  </ul>", "</section>"]
-    return lines
+def _card(ctx, service, button, tel_href, on_screen):
+    """One service card, starting at the left edge."""
+    title = service["title"]
+    photo = service["image"]
+    return "\n".join([
+        '<article class="card">',
+        "  " + ctx.img(photo["file"], photo["alt"], PHOTO_WIDTH, PHOTO_HEIGHT, lazy=not on_screen, variant="sm"),
+        '  <div class="body">',
+        '    <h2 class="serif">%s</h2>' % ctx.esc(title),
+        '    <p class="desc">%s</p>' % ctx.esc(service["description"]),
+        '    <div class="meta">',
+        '      <p class="duration">%s</p>' % ctx.esc(service["duration"]),
+        '      <p class="price">%s</p>' % ctx.esc(service["price"]),
+        "    </div>",
+        '    <a class="pill" data-book href="%s" aria-label="%s">%s</a>'
+        % (ctx.esc(tel_href), ctx.esc("%s: %s" % (button, title)), ctx.esc(button)),
+        "  </div>",
+        "</article>",
+    ])
 
 
 def render(ctx):
-    c, site, esc = ctx.content, ctx.site, ctx.esc
-    groups, block = c["groups"], c["call_block"]
-    if not isinstance(groups, list) or not groups:
-        raise _wrong("groups", "must be a list with at least one group of services")
-    # The call block shows two business facts of content/site.json in its own words, so check that they agree.
-    if site["phone"] not in block["call"]:
-        raise _wrong("call_block.call", 'must show the phone number of content/site.json ("%s"), because the button calls it'
-                     % site["phone"])
-    if block["hours"] != site["hours"]:
-        raise _wrong("call_block.hours", 'must be the hours of content/site.json, word for word ("%s")' % site["hours"])
-
-    lines = [
-        '<div class="page-head">',
-        '  <div class="wrap">',
-        "    <h1>%s</h1>" % esc(c["h1"]),
-        '    <p class="lead">%s</p>' % ctx.inline(c["intro_html"]),
+    c = ctx.content
+    services = c["services"]
+    if not isinstance(services, list) or not services:
+        raise ValueError('content/book-online.json: key "services" must be a list with at least one service')
+    for number, service in enumerate(services, 1):
+        if not isinstance(service, dict):
+            raise ValueError('content/book-online.json: service %d in "services" must be an object with title, '
+                             "description, duration, price and image" % number)
+    button = c["button_label"]
+    tel_href = ctx.site["tel_href"]
+    cards = [_card(ctx, service, button, tel_href, on_screen=position < FIRST_ROW)
+             for position, service in enumerate(services)]
+    body = "\n".join([
+        '<div class="page">',
+        '  <h1 class="services-title serif">%s</h1>' % ctx.esc(c["h1"]),
+        '  <div class="services">',
+        _indent("\n".join(cards), 4),
         "  </div>",
+        '  <p class="book-note">%s</p>' % ctx.inline(c["closing_note_html"]),
         "</div>",
-        ctx.shade(),
-        '<div class="services">',
-        '  <div class="wrap">',
-        '    <div class="menu">',
-    ]
-    for number, group in enumerate(groups, 1):
-        lines += ["      " + line for line in _group(ctx, number, group)]
-    lines += [
-        "    </div>",
-        '    <div class="svc-call">',
-        '      <p class="actions"><a class="btn btn-call" href="%s">%s</a> <a class="text-link" href="%s">%s</a></p>'
-        % (esc(site["tel_href"]), esc(block["call"]), esc(ctx.sms_href), esc(block["text"])),
-        '      <p class="hours">%s</p>' % esc(block["hours"]),
-        "    </div>",
-        "  </div>",
-        "</div>",
-    ]
-    return {"body": "\n".join(lines), "head_extra": ""}
+    ])
+    return {"body": body, "head_extra": ""}

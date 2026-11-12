@@ -3,90 +3,90 @@
   "path": "/book-online/",
   "title": "Book a Hair or Makeup Appointment | Hair by Gerta, Staten Island NY",
   "description": "Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup.",
-  "h1": "Our services",
-  "intro_html": "Call for price. To book, call or text <a href=\"tel:+1-347-671-5095\">347-671-5095</a>.",
-  "groups": [
+  "h1": "Our Services",
+  "services": [
     {
-      "heading": "Cut and style",
-      "services": [
-        {
-          "title": "Haircut & Style",
-          "description": "Transform your hair with precision cutting and styling.",
-          "duration": "45 min"
-        },
-        {
-          "title": "Kids’ Haircut",
-          "description": "Friendly, patient cuts just for kids.",
-          "duration": "45 min"
-        }
-      ]
+      "title": "Haircut & Style",
+      "description": "Transform your hair with precision cutting and styling.",
+      "duration": "45 min",
+      "price": "Call for price",
+      "image": {"slot": "service-01", "file": "svc-haircut", "alt": "", "alt_original": ""}
     },
     {
-      "heading": "Color",
-      "services": [
-        {
-          "title": "Hair Coloring",
-          "description": "Revitalize your hair with our expert coloring services.",
-          "duration": "1 hr 30 min"
-        },
-        {
-          "title": "Highlights & Lowlights",
-          "description": "Customized foils to add brightness, depth, and dimension.",
-          "duration": "2 hr 30 min"
-        },
-        {
-          "title": "Balayage",
-          "description": "Hand-painted color for a soft, sun-kissed finish.",
-          "duration": "3 hr"
-        }
-      ]
+      "title": "Hair Coloring",
+      "description": "Revitalize your hair with our expert coloring services.",
+      "duration": "1 hr 30 min",
+      "price": "Call for price",
+      "image": {"slot": "service-02", "file": "g10", "alt": "", "alt_original": "Applying highlights with foils"}
     },
     {
-      "heading": "Smoothing and texture",
-      "services": [
-        {
-          "title": "Keratin Treatment",
-          "description": "Frizz-fighting smoothing treatment for sleek, manageable hair.",
-          "duration": "2 hr 30 min"
-        },
-        {
-          "title": "Brazilian Blowout",
-          "description": "Long-lasting smoothness with mirror-like shine.",
-          "duration": "2 hr"
-        },
-        {
-          "title": "Perm & Texture Waves",
-          "description": "Custom curls or waves with movement and body.",
-          "duration": "1 hr"
-        }
-      ]
+      "title": "Makeup Session",
+      "description": "Natural makeup that enhances your beauty.",
+      "duration": "45 min",
+      "price": "Call for price",
+      "image": {"slot": "service-03", "file": "makeup-red-lips", "alt": "", "alt_original": "Makeup with a bold red lip"}
     },
     {
-      "heading": "Occasions",
-      "services": [
-        {
-          "title": "Dream Bridal Hair",
-          "description": "Romantic, long-lasting bridal hair tailored to your dress and vision.",
-          "duration": "1 hr 30 min"
-        },
-        {
-          "title": "Makeup Session",
-          "description": "Natural makeup that enhances your beauty.",
-          "duration": "45 min"
-        }
-      ]
+      "title": "Dream Bridal Hair",
+      "description": "Romantic, long-lasting bridal hair tailored to your dress and vision.",
+      "duration": "1 hr 30 min",
+      "price": "Call for price",
+      "image": {"slot": "service-04", "file": "svc-bridal", "alt": "", "alt_original": ""}
+    },
+    {
+      "title": "Highlights & Lowlights",
+      "description": "Customized foils to add brightness, depth, and dimension.",
+      "duration": "2 hr 30 min",
+      "price": "Call for price",
+      "image": {"slot": "service-05", "file": "foils-highlights", "alt": "", "alt_original": "Stylist finishing a blowout with hairspray"}
+    },
+    {
+      "title": "Balayage",
+      "description": "Hand-painted color for a soft, sun-kissed finish.",
+      "duration": "3 hr",
+      "price": "Call for price",
+      "image": {"slot": "service-06", "file": "g19", "alt": "", "alt_original": "Happy client with fresh balayage"}
+    },
+    {
+      "title": "Keratin Treatment",
+      "description": "Frizz-fighting smoothing treatment for sleek, manageable hair.",
+      "duration": "2 hr 30 min",
+      "price": "Call for price",
+      "image": {"slot": "service-07", "file": "g17", "alt": "", "alt_original": "Smoothing blow-dry with a round brush"}
+    },
+    {
+      "title": "Brazilian Blowout",
+      "description": "Long-lasting smoothness with mirror-like shine.",
+      "duration": "2 hr",
+      "price": "Call for price",
+      "image": {"slot": "service-08", "file": "g16", "alt": "", "alt_original": "Blonde balayage with loose waves"}
+    },
+    {
+      "title": "Perm & Texture Waves",
+      "description": "Custom curls or waves with movement and body.",
+      "duration": "1 hr",
+      "price": "Call for price",
+      "image": {"slot": "service-09", "file": "g14", "alt": "", "alt_original": "Curling iron waves in the salon"}
+    },
+    {
+      "title": "Kids’ Haircut",
+      "description": "Friendly, patient cuts just for kids.",
+      "duration": "45 min",
+      "price": "Call for price",
+      "image": {"slot": "service-10", "file": "g18", "alt": "", "alt_original": "Sectioning hair for a kids haircut"}
     }
   ],
-  "call_block": {
-    "call": "Call 347-671-5095",
-    "text": "Text Gerta",
-    "hours": "Tuesday to Saturday, 9 AM to 5 PM"
-  },
+  "button_label": "Book Now",
+  "closing_note_html": "To book, call or text <a href=\"tel:+1-347-671-5095\">347-671-5095</a>, Tuesday to Saturday, 9 AM to 5 PM.",
   "notes": [
-    "Redesign of 12 November 2026 (build contract, decisions 44 and 47). The page is a typeset menu with no photos and no cards. The ten services keep their names, their one line and their time, word for word as on the live Wix page (Kids’ Haircut keeps the curly apostrophe Wix uses). Every change of wording is on the fixed list of intended differences in qa/check_content.py, with the date and the reason. They are these. (1) The heading reads Our services, in sentence case (Wix has Our Services). (2) The services stand in the four groups of the design brief, Cut and style, Color, Smoothing and texture and Occasions, and no longer in the order of the Wix page. The four group names are new words. (3) Call for price is said once, at the top, and no longer in every service (Wix prints it in each of the ten cards). (4) The ten Book Now buttons are gone. One call block holds the Call button (Call 347-671-5095, it calls the number), the Text link (Text Gerta, it starts a text message to the same number) and the hours. (5) The closing line of the page (To book, call or text 347-671-5095, Tuesday to Saturday, 9 AM to 5 PM.) is cut in two. Its first half stands at the top after Call for price, its hours stand in the call block.",
-    "The title tag is the live Wix title, unchanged. The meta description was changed on purpose on 2 November 2026, when online booking was dropped. The live Wix description was \"Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup in minutes.\" The new one is \"Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup.\" On the fixed list of intended differences.",
-    "call_block.call must show the phone number of content/site.json and call_block.hours must be the hours stored there, word for word. The generator stops when they are not. Where the Call button and the Text link lead comes from content/site.json (tel_href).",
-    "The page shows no photos, so the services have no image slots any more. Until 12 November 2026 each service card had a photo (svc-haircut, g10, makeup-red-lips, svc-bridal, foils-highlights, g19, g17, g16, g14, g18, all placeholders). Eight of them are also places of the Gallery page. svc-haircut and svc-bridal were shown on this page only, so no page shows them now. Their files stay in the folder images.",
-    "When a service is renamed, added or removed, change the list of the home page too (content/home.json, services.groups). seo/jsonld-home.json lists the ten services for search engines and is a file of its own."
+    "INFO: No typos fixed. Title tag, the heading Our Services and all ten service cards (title, description, duration, price, button text) are character for character the live Wix text, in the live Wix order. Kids’ Haircut keeps the curly apostrophe Wix uses.",
+    "INFO: The meta description was changed on purpose on 2 November 2026, so it is no longer the live Wix text. Online booking was dropped that day. The salon owner wants clients to use the salon's own booking, so there is no online booking link, and the Book Now buttons call 347-671-5095. The live Wix description was \"Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup in minutes.\" The new one is \"Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup.\" This change is on the fixed list of intended differences in qa/check_content.py.",
+    "INFO: No heading on the live page gets its capitals from styling (textTransform is none for every text), so every heading is stored as Wix writes it.",
+    "INFO: Live Wix prints Call for price twice in each card. The first copy is a 1 px label for screen readers only. It is stored once, in price.",
+    "INFO: button_label is the text of the button in every card. On live Wix the photo, the title and the Book Now button of a card all link to a Wix Bookings page for that service. Those pages are not part of this site. Here only the button is a link, and it calls the phone number. No online booking link is planned, because clients book through the salon's own booking.",
+    "INFO: closing_note_html is not on the live Wix page. Until 9 November 2026 it was the closing line of the first version of this site (Prefer to book by phone or text? Call 347-671-5095, ...). Since online booking was dropped, every booking goes by phone, so the line now says so: To book, call or text 347-671-5095, Tuesday to Saturday, 9 AM to 5 PM. The phone number is a tel link.",
+    "INFO: All ten card photos are placeholders, so alt is empty for each. Live Wix also gives all ten an empty alt, and so did the first version of this page, so there is no old alt text for these slots. alt_original holds, for reference only, the description the first version gave the same photo file on its Gallery page (the same text as in the gallery content file). svc-haircut and svc-bridal are used on this page only and have no description in either source, so their alt_original is empty.",
+    "INFO: Each card photo is shown 290 x 195 px. Wix crops the photo to fill that box (object-fit cover).",
+    "ASK: none. The earlier question was what the photo foils-highlights (Highlights & Lowlights card) shows. Version 1, first version of this site: Stylist finishing a blowout with hairspray (Gallery page) and Stylist finishing a blowout in the salon (Home page). Version 2, live Wix About page, alt text on the same Wix media file (37eb08_e3724fb50274487ab7afa56767278d97~mv2.jpg): Applying blonde highlights with foils to a client’s long hair in the salon. The reference screenshots of the live Gallery and About pages answer it: the photo shows a stylist using hairspray on a finished style, with no foils. So alt_original keeps version 1, the same as the gallery content file, and the Wix alt text of version 2 does not describe this photo. Nothing shown on the page depends on it. The one question left for the owner on this subject is which photo belongs in the top right box of the About page, see the ASK in content/about.json."
   ]
 }
