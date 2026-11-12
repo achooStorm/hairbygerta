@@ -10,7 +10,7 @@
       "description": "Transform your hair with precision cutting and styling.",
       "duration": "45 min",
       "price": "Call for price",
-      "image": {"slot": "service-01", "file": "svc-haircut", "alt": "", "alt_original": ""}
+      "image": {"slot": "service-01", "file": "svc-haircut", "alt": "Layered haircut with caramel highlights", "alt_original": ""}
     },
     {
       "title": "Hair Coloring",

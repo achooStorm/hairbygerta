@@ -235,20 +235,15 @@ import urllib.parse
 PLACEHOLDERS = [
     "about-salon",
     "copper-waves",
-    "g01",
     "g02",
-    "g05",
     "g06",
     "g07",
     "g14",
     "g15",
     "g18",
     "g20",
-    "home-smile",
     "home-waves",
-    "meet-extensions",
     "svc-bridal",
-    "svc-haircut",
 ]
 
 # ----------------------------------------------------------------------------------------------------------

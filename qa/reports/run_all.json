@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 23:07:06",
+ "generated": "2026-11-12 23:39:45",
  "results": [
   {
    "page": "site",
@@ -47,7 +47,7 @@
   "desktop",
   "phone"
  ],
- "seconds": 3.1,
+ "seconds": 3.4,
  "open_questions": "",
  "families": [
   {
@@ -125,7 +125,7 @@
    "script": "qa/check_repo.py",
    "status": "passed",
    "exit_code": 0,
-   "seconds": 2.6,
+   "seconds": 2.8,
    "checks": 31,
    "failed": 0,
    "base": "local site folder"

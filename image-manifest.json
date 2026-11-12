@@ -159,20 +159,33 @@
       }
     },
     "g01": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g01.jpg",
-      "width": 1600,
-      "height": 843,
-      "bytes": 11236,
-      "sha256": "8db791f6a003db05b8b2b0ed2fb760062ce7b31275881aa447ba837560e6da2e",
+      "width": 1170,
+      "height": 1237,
+      "bytes": 219428,
+      "sha256": "e98be957776741858ee5d7975670ca90f67e4f8ca7c5430c3f34633bfc43edd5",
       "sm": {
         "file": "images/sm/g01.jpg",
-        "width": 800,
-        "height": 422,
-        "bytes": 3474,
-        "sha256": "f9b999183f8887646862c5229910ba5dd5e75f594c7a2ddfc29c7b37c8a5ec09"
+        "width": 757,
+        "height": 800,
+        "bytes": 100062,
+        "sha256": "54b266d918a6ea5d092e67df1ab126986e3dbbd7114cace076268deadf6a6c41"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g01.webp",
+        "width": 1170,
+        "height": 1237,
+        "bytes": 111510,
+        "sha256": "1f8756fee6f724b526a2a65beff4808b7c5454eede69ba30f14a855d7cdbdbcf",
+        "sm": {
+          "file": "images/sm/g01.webp",
+          "width": 757,
+          "height": 800,
+          "bytes": 63154,
+          "sha256": "0d8ba46af933770fb01a34d330f6081f36436251ee2a5c0a9b3b2290c33c3da6"
+        }
+      }
     },
     "g02": {
       "status": "placeholder",
@@ -220,20 +233,33 @@
       }
     },
     "g05": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g05.jpg",
-      "width": 1600,
-      "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 163497,
+      "sha256": "2af34aa0d6b32c6fc118ea3d08bba51ecd1831e1f2edd4260bcc476df2b13ac6",
       "sm": {
         "file": "images/sm/g05.jpg",
-        "width": 800,
-        "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "width": 600,
+        "height": 800,
+        "bytes": 47217,
+        "sha256": "810537878da3123e53470e4e8e73e03dc36219c389af38b1cf5bfa7a039460db"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g05.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 87864,
+        "sha256": "fe6f59b744c4234ee8bf4f4b292bf74017d18ba1a1bcfdc2679f2ab711e36af2",
+        "sm": {
+          "file": "images/sm/g05.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 24910,
+          "sha256": "c59e3290191b77654eff1eba859cdd7e738c5ba7d41f4ee200ca1bce3d063bdf"
+        }
+      }
     },
     "g06": {
       "status": "placeholder",
@@ -477,20 +503,33 @@
       }
     },
     "home-smile": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/home-smile.jpg",
       "width": 1200,
       "height": 1600,
-      "bytes": 16283,
-      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "bytes": 163497,
+      "sha256": "2af34aa0d6b32c6fc118ea3d08bba51ecd1831e1f2edd4260bcc476df2b13ac6",
       "sm": {
         "file": "images/sm/home-smile.jpg",
         "width": 600,
         "height": 800,
-        "bytes": 5044,
-        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+        "bytes": 47217,
+        "sha256": "810537878da3123e53470e4e8e73e03dc36219c389af38b1cf5bfa7a039460db"
       },
-      "webp": null
+      "webp": {
+        "file": "images/home-smile.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 87864,
+        "sha256": "fe6f59b744c4234ee8bf4f4b292bf74017d18ba1a1bcfdc2679f2ab711e36af2",
+        "sm": {
+          "file": "images/sm/home-smile.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 24910,
+          "sha256": "c59e3290191b77654eff1eba859cdd7e738c5ba7d41f4ee200ca1bce3d063bdf"
+        }
+      }
     },
     "home-styling": {
       "status": "owner-photo",
@@ -567,20 +606,33 @@
       }
     },
     "meet-extensions": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/meet-extensions.jpg",
-      "width": 1200,
-      "height": 1600,
-      "bytes": 16283,
-      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "width": 1170,
+      "height": 1237,
+      "bytes": 219428,
+      "sha256": "e98be957776741858ee5d7975670ca90f67e4f8ca7c5430c3f34633bfc43edd5",
       "sm": {
         "file": "images/sm/meet-extensions.jpg",
-        "width": 600,
+        "width": 757,
         "height": 800,
-        "bytes": 5044,
-        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+        "bytes": 100062,
+        "sha256": "54b266d918a6ea5d092e67df1ab126986e3dbbd7114cace076268deadf6a6c41"
       },
-      "webp": null
+      "webp": {
+        "file": "images/meet-extensions.webp",
+        "width": 1170,
+        "height": 1237,
+        "bytes": 111510,
+        "sha256": "1f8756fee6f724b526a2a65beff4808b7c5454eede69ba30f14a855d7cdbdbcf",
+        "sm": {
+          "file": "images/sm/meet-extensions.webp",
+          "width": 757,
+          "height": 800,
+          "bytes": 63154,
+          "sha256": "0d8ba46af933770fb01a34d330f6081f36436251ee2a5c0a9b3b2290c33c3da6"
+        }
+      }
     },
     "svc-bridal": {
       "status": "placeholder",
@@ -599,20 +651,33 @@
       "webp": null
     },
     "svc-haircut": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/svc-haircut.jpg",
-      "width": 411,
-      "height": 523,
-      "bytes": 2627,
-      "sha256": "184fddacab9c9f8961c15a59ef34bb4741220fcda8e37d310f66dd5336fc284d",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 163497,
+      "sha256": "2af34aa0d6b32c6fc118ea3d08bba51ecd1831e1f2edd4260bcc476df2b13ac6",
       "sm": {
         "file": "images/sm/svc-haircut.jpg",
-        "width": 411,
-        "height": 523,
-        "bytes": 2627,
-        "sha256": "184fddacab9c9f8961c15a59ef34bb4741220fcda8e37d310f66dd5336fc284d"
+        "width": 600,
+        "height": 800,
+        "bytes": 47217,
+        "sha256": "810537878da3123e53470e4e8e73e03dc36219c389af38b1cf5bfa7a039460db"
       },
-      "webp": null
+      "webp": {
+        "file": "images/svc-haircut.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 87864,
+        "sha256": "fe6f59b744c4234ee8bf4f4b292bf74017d18ba1a1bcfdc2679f2ab711e36af2",
+        "sm": {
+          "file": "images/sm/svc-haircut.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 24910,
+          "sha256": "c59e3290191b77654eff1eba859cdd7e738c5ba7d41f4ee200ca1bce3d063bdf"
+        }
+      }
     }
   },
   "icons": [
