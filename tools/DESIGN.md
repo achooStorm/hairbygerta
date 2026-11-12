@@ -32,7 +32,7 @@ Sentence case everywhere. No all caps, no small label above a heading, no single
 
 | Role | Desktop | Phone | Line height |
 |---|---|---|---|
-| Business name, home page (h1) | 104 px, up to 136 px on wide screens | 50 px | 0.92 |
+| Business name, home page (h1) | 10 % of the window width, 110 to 128 px on desktop | 50 px | 0.92 (0.95 on phones) |
 | Page title (h1 of the other pages) | 72 px | 48 px | 1.0 |
 | Section heading (h2) | 56 px | 38 px | 1.05 |
 | Group heading (h3) | 28 px | 26 px | 1.15 |
@@ -54,7 +54,7 @@ Text blocks are at most 30 em wide (about 68 characters of Figtree at 18 px), th
 
 ## The parts every page shares
 
-- **Header.** Sticky, 72 px tall on desktop and 64 px on phones, Paper with one Blonde line under it. Logo on the left (48 px, 40 px on phones), then the navigation, then the Call button on the right. On phones the navigation folds behind the menu button and the Call button of the header gives way to the call bar.
+- **Header.** Sticky, 72 px tall on desktop and 64 px on phones, Paper, no line under it. Logo on the left (48 px, 40 px on phones), then the navigation, then the Call button on the right. The current page is underlined in Caramel. On phones the navigation folds behind the menu button into a Paper sheet with the five page names in Bodoni Italic, and the Call button of the header gives way to the call bar.
 - **Logo.** A small JPG with a white box around it. Shown at 72 px or smaller, only on Paper or Blonde, with `mix-blend-mode: multiply` so the white box does not show. Never on Espresso.
 - **Buttons.** A button says what it does. The Call button is Espresso with Paper text, 44 px tall or more, Chestnut under the mouse. "Text Gerta" is a text link (an sms link to the same number) with a 44 px tall tap area.
 - **Shade strip.** The signature element. Five flat bands side by side, Espresso, Chestnut, Caramel, Honey, Blonde, 10 px tall, as wide as the window. Once per page, under the hero or the page title, and nowhere else. It replaces every dotted rule.
@@ -78,9 +78,9 @@ Sketches at 1280 px (desktop) and 390 px (phone). `####` is the shade strip, `::
 +--------------------------------------------------------------------------------------+
 | (logo)  Home  Gallery  Services  About  Contact                  [ Call 347-671-5095 ] |
 +--------------------------------------------------------------------------------------+
-|  Hair & Makeup                                    +------------+                      |
-|  by Gerta                                         |            |   +----------+       |
-|                                                   |    g13     |   |          |       |
+|  Hair &                                           +------------+                      |
+|  Makeup                                           |            |   +----------+       |
+|  by Gerta                                         |    g13     |   |          |       |
 |  I'm Gerta Lila, a hair stylist and makeup        |    9:16    |   |   g12    |       |
 |  artist in Staten Island, NY. I create fresh      |            |   |   9:16   |       |
 |  cuts, color, extensions and soft, flattering     |            |   |          |       |
@@ -130,6 +130,8 @@ Sketches at 1280 px (desktop) and 390 px (phone). `####` is the shade strip, `::
 | [      Call 347-671-5095         ] |   call bar, fixed
 +------------------------------------+
 ```
+
+On desktop and on tablets the name breaks into three lines (Hair &, Makeup, by Gerta). The sketch of the brief has two lines, but two lines would have to shrink below 96 px between 1101 and 1280 px to leave the photos their room. Three lines keep the name at 110 to 128 px and echo the tall photos. On phones it has two lines at 50 px. When a window is too narrow for text and photos side by side (a tablet held upright, below about 860 px), the photos move under the text by themselves.
 
 The photo row and the two Meet Gerta photos of the old page are placeholders today, so they are left out. When the owner adds them, the row shows under Services as tall frames, four across on desktop and two on phones, and the Meet Gerta photos show under her text.
 
@@ -241,9 +243,18 @@ The wording stays word for word. Only the styling is new.
 Before any code was written, the plan was held against the looks that show up whatever the subject (the list in the Frontend Design skill). What matched, and what changed.
 
 - A warm cream page with a high contrast serif and a terracotta accent. The serif is the brief's own choice, and it stays. The page is Paper, near white, not cream. Blonde is kept to one quiet band per page, never the whole page. There is no single accent color. The warm tones come as the full shade strip, the colors of her photos.
-- A broadsheet with hairline rules everywhere. The square corners are the brief's choice. The first plan had a thin line between the services. Those lines are gone, the rows are told apart by space. The one line left is under the sticky header, where it separates the header from the page that scrolls under it.
+- A broadsheet with hairline rules everywhere. The square corners are the brief's choice. The first plan had a thin line between the services. Those lines are gone, the rows are told apart by space. The plan kept one line under the sticky header. The critique of the first build took that one away too (see below).
 - The kit of identical rounded cards with shadows. The Services page had ten cards. It is now a typeset menu. The call block of the Services page is one flat Blonde surface, not a card.
 - Template chrome. The first plan had a small label above each heading and numbers in front of the home sections (01, 02, 03). Both are gone, because the sections are not a sequence. No middle dots between facts, no arrows after link text, no monospace labels.
 - The usual salon page (cream, a slogan in a serif, three rounded service cards with icons, a carousel of reviews). Nothing of it is here. There are no reviews, because the site invents none.
 
 What makes the site its own is in three places. The shade strip, once per page. The photos, tall and uncropped in shape, revealed from root to ends. The business name set very big in Bodoni Italic. Everything around them stays quiet.
+
+## Critique of the home page
+
+The home page was built first, looked at in screenshots at 1280 px and 390 px (and at 320, 360, 768, 800, 860, 1024, 1101 and 1440 px), and changed where it was weak.
+
+- Tablet held upright (768 px). The photos stood small at the bottom right of a tall column of text, with an empty corner above them. Now text and photos share a row only when both fit (text at least 330 px, photos at least 440 px), else the photos move under the text at a size that shows the hair.
+- A phone 320 px wide. The page was 30 px wider than the screen, because the text column kept its desktop minimum width. Fixed.
+- The welcome text ran to about 70 characters a line on a tablet. It is limited to 26 em now, about 60 characters.
+- One accessory less. The Blonde line under the header went. The Paper header is enough of an edge, and the page has one line fewer that is only decoration.

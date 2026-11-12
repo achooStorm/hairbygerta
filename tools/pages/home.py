@@ -1,56 +1,51 @@
-"""The home page, / (index.html), built as section 7 of tools/CONTRACT.md lists it:
+"""The home page, / (index.html), built as section 7 of tools/CONTRACT.md lists it (decision 45):
 
-    p.site-title.serif > a                  the business name, a link to the home page
-    section.hero-box                        the beige box
-      h1#hero-h.serif                       "h1" (the same text as "hero.heading")
-      hr.dots                               the dotted rule
-      p.welcome                             "hero.welcome"
-      a.btn                                 "hero.button", goes to the Book Online page
-      a.phone                               "hero.phone", calls the number
-      p.salon                               "hero.salon"
-      a.addr                                "hero.address" behind a map pin, opens the map in a new tab
-      div.marquee > div.track > span x 6    "hero.hours", the line that scrolls
-    section.photo-row > img x 4             "photo_row"
-    section.meet                            "meet"
-      h2#meet-h.serif                       "meet.heading"
-      p.t1, div.p1 > img                    "meet.paragraph_1", "meet.portrait"
-      p.t2, div.p2 > img                    "meet.paragraph_2", "meet.large"
+    section.hero                            the first screen
+      div.hero-text
+        h1#hero-h                           "h1", the business name, in three spans (the stylesheet decides
+                                            where the lines break)
+        p.lead                              "hero.welcome"
+        p.actions                           a.btn.btn-call "hero.call" (calls the number) and
+                                            a.text-link "hero.text" (starts a text message)
+        p.hours                             "hero.hours"
+      div.hero-photos > div.frame x 2       "hero.photos", tall frames, revealed from top to bottom
+    div.shade                               the shade strip, once, right under the hero
+    section.svc-list                        "services": h2, four groups (h3 + ul), the link to the Services page
+    section.work                            "photo_row", only the photos that are no longer placeholders
+    section.meet                            "meet": h2, two paragraphs, and its photos once they are real
+    section.find                            "find": h2, salon, address, hours, the Google Maps link
 
 Where the words come from
-    content/home.json    every text of the page, the photos and the size each photo is shown at
-    content/site.json    the two addresses behind the phone number and the street address
-                         ("tel_href" and "maps_href")
+    content/home.json    every text of the page, the photos and the shape of each frame
+    content/site.json    the phone link (tel_href), the Maps link (maps_href), and the business facts the page
+                         is checked against (phone, hours, salon, address_one_line)
+
+A photo whose name is in PLACEHOLDERS (tools/build_pages.py) is never shown (decision 44). The page leaves it
+out and the layout closes up, so a photo put in with tools/add_photo.py appears by itself.
 
 To change a text or a photo, edit content/home.json and run
     python tools/build_pages.py --only home
-This module holds no text that a visitor reads. The only words typed here are the two labels below, which
-screen readers speak and nobody sees.
+This module holds no text that a visitor reads. The only words typed here are the label below, which screen
+readers speak and nobody sees.
 """
 SLUG = "home"
 
 CONTENT_FILE = "content/%s.json" % SLUG     # only used to name the file in an error message
 
-# Spoken by screen readers, never shown (contract, section 7). %s is the hours text.
-HOURS_LABEL = "Hours: %s"
+# Spoken by screen readers, never shown (contract, section 7): the name of the row of photos.
 PHOTO_ROW_LABEL = "Featured work"
 
-# The map pin in front of the street address. It is decoration, so screen readers skip it.
-PIN = '<span class="pin" aria-hidden="true">&#128205;</span>'
-
-# The stylesheet lays the photo row out as four columns, so the row holds four photos.
+# The content file holds four photos for the row (the old page showed four).
 PHOTOS_IN_ROW = 4
 
 # How wide a photo is on screen, for the browser to pick between the small copy and the full file. These
-# two texts never change how the page looks, they only steer which file is fetched. 760 px is the phone
-# breakpoint of the stylesheet, and "vw" is one hundredth of the width of the window.
-# The photo row: on a phone it is two photos wide, so a photo is at most half the window wide. On a wider
-# screen the four photos share the width of the window, each is a little under a quarter of it.
-PHOTO_ROW_SIZES = "(max-width: 760px) 50vw, 24vw"
-# The large photo of Meet Gerta: on a phone it runs from one edge of the screen to the other. Up to 1100 px
-# (the second breakpoint of the stylesheet) it is at most 424 px wide, which is up to half of such a window.
-# On a wider screen it grows with the window and takes about a third of its width (35 % of the room between
-# the side margins). If the stylesheet changes these shares, bring the numbers in line with it.
-LARGE_PHOTO_SIZES = "(max-width: 760px) 100vw, (max-width: 1100px) 424px, 35vw"
+# texts never change how the page looks, they only steer which file is fetched. 760 px is the phone breakpoint
+# of the stylesheet, "vw" is one hundredth of the width of the window. The two hero photos stand side by side
+# on every screen, a little under half the window wide on a phone. On a wider screen the larger one is at most
+# about 380 px wide and the smaller one about 290 px. The row and the Meet Gerta photos are two across on a
+# phone and four across on a wide screen.
+HERO_SIZES = ("(max-width: 760px) 46vw, 380px", "(max-width: 760px) 46vw, 290px")
+ROW_SIZES = "(max-width: 760px) 46vw, 282px"
 
 
 def _wrong(key, problem):
@@ -58,60 +53,125 @@ def _wrong(key, problem):
     return ValueError('%s: key "%s" %s' % (CONTENT_FILE, key, problem))
 
 
-def _photo(ctx, slot, lazy=True, sizes=None):
-    """The img of one image slot of the content file, at the size the slot gives."""
-    return ctx.img(slot["file"], slot["alt"], slot["width"], slot["height"], lazy=lazy, sizes=sizes)
+def _real(ctx, slots):
+    """The image slots whose photo is no longer a placeholder, in the order of the content file."""
+    return [slot for slot in slots if not ctx.is_placeholder(slot["file"])]
+
+
+def _frame(ctx, slot, lazy=True, sizes=None):
+    """One photo in a tall frame."""
+    return '<div class="frame">%s</div>' % ctx.img(slot["file"], slot["alt"], slot["width"], slot["height"],
+                                                  lazy=lazy, sizes=sizes)
+
+
+def _name(ctx, name):
+    """The business name in three spans: "Hair &", "Makeup" and "by Gerta". The stylesheet shows the first two on
+    one line on most screens. The spaces between the spans keep the name one text for search engines and
+    screen readers."""
+    head, sep, tail = name.partition(" by ")
+    if not sep:
+        return "<span>%s</span>" % ctx.esc(name)
+    first, space, second = head.rpartition(" ")
+    parts = [first, second] if space else [head]
+    parts.append("by " + tail)
+    return " ".join("<span>%s</span>" % ctx.esc(part) for part in parts)
 
 
 def render(ctx):
     c, site, esc = ctx.content, ctx.site, ctx.esc
-    hero, meet, row = c["hero"], c["meet"], c["photo_row"]
+    hero, services, meet, find, row = c["hero"], c["services"], c["meet"], c["find"], c["photo_row"]
 
-    # The heading is in the content file twice and on the page once.
-    if hero["heading"] != c["h1"]:
-        raise _wrong("hero.heading", 'must be the very same text as "h1". The page shows this heading once, '
-                                     "so when one of the two is edited the other needs the same change")
-    # The stylesheet slides the hours line to the left by half of its length and starts over. That only
-    # looks seamless when the line is made of two equal halves, so the number of copies must be even.
-    copies = hero["marquee_repeat"]
-    if isinstance(copies, bool) or not isinstance(copies, int) or copies < 2 or copies % 2:
-        raise _wrong("hero.marquee_repeat", "must be an even whole number, 2 or more (it is 6 on the finished page)")
+    # The page shows the business facts of content/site.json in its own words, so check that they agree.
+    if site["phone"] not in hero["call"]:
+        raise _wrong("hero.call", 'must show the phone number of content/site.json ("%s"), because the button calls it'
+                     % site["phone"])
+    for key, value in (("hero.hours", hero["hours"]), ("find.hours", find["hours"])):
+        if value != site["hours"]:
+            raise _wrong(key, 'must be the hours of content/site.json, word for word ("%s")' % site["hours"])
+    if find["salon"] != site["salon"]:
+        raise _wrong("find.salon", 'must be the salon of content/site.json ("%s")' % site["salon"])
+    if find["address"] != site["address_one_line"]:
+        raise _wrong("find.address", 'must be address_one_line of content/site.json ("%s")' % site["address_one_line"])
     if not isinstance(row, list) or len(row) != PHOTOS_IN_ROW:
-        raise _wrong("photo_row", "must be a list of exactly %d photos, because the row is %d photos wide"
-                     % (PHOTOS_IN_ROW, PHOTOS_IN_ROW))
+        raise _wrong("photo_row", "must be a list of exactly %d photos" % PHOTOS_IN_ROW)
 
-    hours = hero["hours"]
+    hero_photos = _real(ctx, hero["photos"])
     lines = [
-        '<p class="site-title serif"><a href="%s">%s</a></p>' % (esc(ctx.url("/")), esc(c["site_title"])),
-        '<section class="hero-box" aria-labelledby="hero-h">',
-        '  <h1 id="hero-h" class="serif">%s</h1>' % esc(c["h1"]),
-        '  <hr class="dots">',
-        '  <p class="welcome">%s</p>' % esc(hero["welcome"]),
-        '  <a class="btn" href="%s">%s</a>' % (esc(ctx.url(hero["button"]["path"])), esc(hero["button"]["label"])),
-        '  <a class="phone" href="%s">%s</a>' % (esc(site["tel_href"]), esc(hero["phone"])),
-        '  <p class="salon">%s</p>' % esc(hero["salon"]),
-        '  <a class="addr" href="%s" target="_blank" rel="noopener">%s%s</a>'
-        % (esc(site["maps_href"]), PIN, esc(hero["address"])),
-        # Screen readers hear the hours once, from the label. The moving copies are hidden from them. The
-        # copies stand in one line with nothing between them, so the scrolling line has no uneven gaps.
-        '  <div class="marquee" role="img" aria-label="%s">' % esc(HOURS_LABEL % hours),
-        '    <div class="track" aria-hidden="true">%s</div>' % (("<span>%s</span>" % esc(hours)) * copies),
+        '<section class="hero" aria-labelledby="hero-h">',
+        '  <div class="wrap">',
+        '    <div class="hero-text">',
+        '      <h1 id="hero-h">%s</h1>' % _name(ctx, c["h1"]),
+        '      <p class="lead">%s</p>' % esc(hero["welcome"]),
+        '      <p class="actions"><a class="btn btn-call" href="%s">%s</a> <a class="text-link" href="%s">%s</a></p>'
+        % (esc(site["tel_href"]), esc(hero["call"]), esc(ctx.sms_href), esc(hero["text"])),
+        '      <p class="hours">%s</p>' % esc(hero["hours"]),
+        "    </div>",
+    ]
+    if hero_photos:
+        # On screen as soon as the page opens, so fetched at once (loading="eager").
+        lines.append('    <div class="hero-photos">')
+        lines += ["      " + _frame(ctx, slot, lazy=False, sizes=HERO_SIZES[min(i, 1)])
+                  for i, slot in enumerate(hero_photos)]
+        lines.append("    </div>")
+    lines += [
         "  </div>",
         "</section>",
-        '<section class="photo-row" aria-label="%s">' % esc(PHOTO_ROW_LABEL),
+        ctx.shade(),
+        '<section class="svc-list" aria-labelledby="services-h">',
+        '  <div class="wrap">',
+        '    <h2 id="services-h">%s</h2>' % esc(services["heading"]),
+        '    <div class="groups">',
     ]
-    # The row is high on the page and on screen as soon as the page opens, so these four are fetched at
-    # once (loading="eager"). The two photos of Meet Gerta are further down and are fetched when the
-    # visitor scrolls near them (loading="lazy").
-    lines += ["  " + _photo(ctx, slot, lazy=False, sizes=PHOTO_ROW_SIZES) for slot in row]
+    for group in services["groups"]:
+        lines += [
+            '      <div class="group">',
+            "        <h3>%s</h3>" % esc(group["heading"]),
+            "        <ul>",
+        ]
+        lines += ["          <li>%s</li>" % esc(name) for name in group["items"]]
+        lines += ["        </ul>", "      </div>"]
+    more = services["more"]
     lines += [
+        "    </div>",
+        '    <p class="more"><a href="%s">%s</a></p>' % (esc(ctx.url(more["path"])), esc(more["label"])),
+        "  </div>",
         "</section>",
+    ]
+
+    work = _real(ctx, row)
+    if work:
+        lines += ['<section class="work" aria-label="%s">' % esc(PHOTO_ROW_LABEL), '  <div class="wrap">']
+        lines += ["    " + _frame(ctx, slot, sizes=ROW_SIZES) for slot in work]
+        lines += ["  </div>", "</section>"]
+
+    meet_photos = _real(ctx, [meet["portrait"], meet["large"]])
+    lines += [
         '<section class="meet" aria-labelledby="meet-h">',
-        '  <h2 id="meet-h" class="serif">%s</h2>' % esc(meet["heading"]),
-        '  <p class="t1">%s</p>' % esc(meet["paragraph_1"]),
-        '  <div class="p1">%s</div>' % _photo(ctx, meet["portrait"]),
-        '  <p class="t2">%s</p>' % esc(meet["paragraph_2"]),
-        '  <div class="p2">%s</div>' % _photo(ctx, meet["large"], sizes=LARGE_PHOTO_SIZES),
+        '  <div class="wrap">',
+        '    <h2 id="meet-h">%s</h2>' % esc(meet["heading"]),
+        '    <div class="meet-text">',
+        "      <p>%s</p>" % esc(meet["paragraph_1"]),
+        "      <p>%s</p>" % esc(meet["paragraph_2"]),
+        "    </div>",
+    ]
+    if meet_photos:
+        lines.append('    <div class="meet-photos">')
+        lines += ["      " + _frame(ctx, slot, sizes=ROW_SIZES) for slot in meet_photos]
+        lines.append("    </div>")
+    lines += [
+        "  </div>",
+        "</section>",
+        '<section class="find" aria-labelledby="find-h">',
+        '  <div class="wrap">',
+        '    <h2 id="find-h">%s</h2>' % esc(find["heading"]),
+        '    <div class="find-place">',
+        '      <p class="salon">%s</p>' % esc(find["salon"]),
+        '      <p class="addr">%s</p>' % esc(find["address"]),
+        "    </div>",
+        '    <p class="find-hours">%s</p>' % esc(find["hours"]),
+        '    <p class="find-map"><a href="%s" target="_blank" rel="noopener">%s</a></p>'
+        % (esc(site["maps_href"]), esc(find["map_label"])),
+        "  </div>",
         "</section>",
     ]
     return {"body": "\n".join(lines), "head_extra": ""}

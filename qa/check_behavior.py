@@ -1,8 +1,9 @@
 """Behaviour tests on the real pages.
 
 What is tested:
-  phone menu, gallery photo viewer (lightbox), Book Now buttons, contact form, the scrolling hours line,
-  the footer year, the site with JavaScript switched off, broken addresses and old Wix addresses.
+  phone menu, gallery photo viewer (lightbox), Book Now buttons, contact form, the Call button and the Text link
+  and the one motion of the home page, the footer year, the site with JavaScript switched off, broken addresses
+  and old Wix addresses.
 
 Run it with the Python of the tools folder (it has Playwright), from anywhere:
 
@@ -18,7 +19,9 @@ Run it with the Python of the tools folder (it has Playwright), from anywhere:
 
 Which page slug carries which tests:
   every page    menu, footer year, the navigation without JavaScript
-  home          hours line (marquee), Book Online button, footer year with another clock
+  home          the reveal of the hero photos (the one motion of the site), the Call button and the Text link,
+                footer year with another clock. The scrolling hours line and the Book Online button were tested here
+                until the redesign of 12 November 2026 removed them (build contract, decisions 44 and 45).
   gallery       photo viewer, gallery links without JavaScript
   book-online   Book Now buttons, with and without a booking link, and without JavaScript
   contact       contact form, with and without JavaScript
@@ -42,10 +45,10 @@ import common  # noqa: E402
 from playwright.sync_api import sync_playwright  # noqa: E402
 
 NAME = "check_behavior"
-HOURS = "Tuesday - Saturday, 9 AM - 5 PM"
 TEL = "tel:" + common.PHONE
 MAILTO = "mailto:" + common.EMAIL
-NAV = [("Home", "home"), ("Gallery", "gallery"), ("Book Online", "book-online"), ("About", "about"), ("Contact", "contact")]
+# The third item is called Services since the redesign of 12 November 2026 (Book Online until then), its address stays.
+NAV = [("Home", "home"), ("Gallery", "gallery"), ("Services", "book-online"), ("About", "about"), ("Contact", "contact")]
 TEST_BOOKING_URL = "https://example.com/book"
 BROKEN = "nope/deeper/"
 OLD_ADDRESSES = ["booking-calendar/balayage", "service-page/hair-coloring"]
@@ -53,7 +56,8 @@ ACTION_MS = 8000      # longest wait for one click, tap or key
 STATE_MS = 5000       # longest wait for the page to show the result of a click, tap or key
 # The waits are long on purpose: they end as soon as the expected state is there, and a busy computer must not turn into a failed check.
 NAV_MS = 30000        # longest wait for one page load
-MARQUEE_MIN, MARQUEE_MAX = 25.0, 30.0   # px per second
+REVEAL_MS = (500, 700)                  # the reveal of the hero photos takes about 600 ms (design brief, decision 45)
+SMS = "sms:+13476715095"                # the Text link: the digits of the phone number (decision 45)
 SENDER = {"first": "Maria", "last": "Rossi", "email": "maria.rossi@example.com",
           "message": "Hello Gerta,\nI would like a balayage & cut for 2 people on 5/12 at 10 AM (#1 choice).\n"
                      "Is that possible? I am 100% flexible + can come earlier. Grazie, caf\u00e9 later!"}
@@ -422,8 +426,12 @@ JS_BOOK = r"""() => ({
     target: a.getAttribute('target'), rel: a.getAttribute('rel'), text: a.textContent.replace(/\s+/g, ' ').trim()})),
   marked: document.querySelectorAll('[data-book]').length})"""
 
-JS_HOME_BTN = r"""() => Array.from(document.querySelectorAll('.hero-box a.btn')).map((a) => ({href: a.href, attr: a.getAttribute('href'),
-  target: a.getAttribute('target'), book: a.hasAttribute('data-book'), text: a.textContent.replace(/\s+/g, ' ').trim()}))"""
+JS_HOME_LINKS = r"""() => ({
+  call: Array.from(document.querySelectorAll('.hero a.btn-call')).map((a) => ({attr: a.getAttribute('href'),
+    target: a.getAttribute('target'), book: a.hasAttribute('data-book'), text: a.textContent.replace(/\s+/g, ' ').trim()})),
+  text: Array.from(document.querySelectorAll('.hero a.text-link')).map((a) => ({attr: a.getAttribute('href'),
+    target: a.getAttribute('target'), book: a.hasAttribute('data-book'), text: a.textContent.replace(/\s+/g, ' ').trim()})),
+  marked: document.querySelectorAll('[data-book]').length})"""
 
 # Watches every way a page can open a mail link, and stops it so that no mail program starts:
 #  - a click on an a element (capture-phase listener on window, and on the a element itself when the script
@@ -499,39 +507,17 @@ JS_FORM = r"""() => {
     note: note ? note.textContent.replace(/\s+/g, ' ').trim() : null, url: location.href};
 }"""
 
-# Position of the track at every animation frame, with the frame's own timestamp.
-JS_MARQUEE_SAMPLE = r"""(ms) => new Promise((resolve) => {
-  const t = document.querySelector('.marquee .track');
-  if (!t) { resolve(null); return; }
-  const out = [];
-  let t0 = null;
-  function frame(ts) {
-    if (t0 === null) t0 = ts;
-    out.push([ts - t0, t.getBoundingClientRect().left]);
-    if (ts - t0 < ms) requestAnimationFrame(frame); else resolve(out);
-  }
-  requestAnimationFrame(frame);
-})"""
-
-JS_MARQUEE_INFO = r"""() => {
-  const m = document.querySelector('.marquee'), t = m ? m.querySelector('.track') : null;
-  if (!m || !t) return {marquee: !!m, track: !!t};
-  const mr = m.getBoundingClientRect(), cs = getComputedStyle(t);
-  const spans = Array.from(t.children).map((s) => {
-    const r = s.getBoundingClientRect(), c = getComputedStyle(s);
-    const drawn = s.getClientRects().length > 0 && r.width > 1 && r.height > 1 && c.visibility === 'visible' &&
-      (typeof s.checkVisibility !== 'function' || s.checkVisibility({checkOpacity: true, checkVisibilityCSS: true}));
-    const overlap = Math.min(r.right, mr.right) - Math.max(r.left, mr.left);
-    return {tag: s.tagName.toLowerCase(), text: s.textContent.replace(/[\s\u00a0]+/g, ' ').trim(), drawn,
-            visible: drawn && overlap > 1, inside: r.left >= mr.left - 1 && r.right <= mr.right + 1 && r.left >= -1 && r.right <= window.innerWidth + 1,
-            left: Math.round(r.left), width: Math.round(r.width)};
-  });
-  return {marquee: true, track: true, label: m.getAttribute('aria-label'), role: m.getAttribute('role'),
-    trackHidden: t.getAttribute('aria-hidden'), trackText: t.textContent.replace(/[\s\u00a0]+/g, ' ').trim(), spans,
-    box: [Math.round(mr.left), Math.round(mr.top), Math.round(mr.width), Math.round(mr.height)],
-    trackWidth: Math.round(t.getBoundingClientRect().width), animation: cs.animationName + ' ' + cs.animationDuration + ' ' + cs.animationTimingFunction,
-    fontSize: cs.fontSize, family: cs.fontFamily,
-    fontsLoaded: Array.from(new Set(Array.from(document.fonts).filter((f) => f.status === 'loaded').map((f) => f.family.replace(/["']/g, ''))))};
+# The animations of the home page: the reveal of the hero photos and anything else that moves.
+JS_REVEAL = r"""() => {
+  const box = document.querySelector('.hero-photos');
+  const all = document.getAnimations().map((a) => ({name: a.animationName || a.constructor.name, state: a.playState,
+    target: a.effect && a.effect.target ? (a.effect.target.className || a.effect.target.tagName) : ''}));
+  if (!box) return {box: false, all};
+  const cs = getComputedStyle(box);
+  const own = box.getAnimations()[0];
+  const frames = own && own.effect ? own.effect.getKeyframes().map((k) => k.clipPath || '') : [];
+  return {box: true, all, name: cs.animationName, duration: cs.animationDuration, count: cs.animationIterationCount,
+          clip: cs.clipPath, frames, photos: box.querySelectorAll('img').length};
 }"""
 
 JS_404 = r"""() => {
@@ -1126,43 +1112,42 @@ def test_book_now(env, vp):
     return run_test(env, ck, vp, body, clean_check=B + "no script error, no broken request")
 
 
-def test_home_button(env, vp):
-    H = "book online button: "
+def test_home_links(env, vp):
+    """The Call button and the Text link of the hero (decision 45). They call and text the number whatever
+    BOOKING_URL says: a button says what it does, so neither is marked data-book."""
+    C, T = "call button: ", "text link: "
     plan = [
-        (H + "opens the Book Online page while BOOKING_URL is empty", "PAGES", "one .hero-box a.btn without data-book, a click opens the Book Online page of this site"),
-        (H + "opens the Book Online page when BOOKING_URL is set", "INTERACTION", f"with BOOKING_URL = {TEST_BOOKING_URL} the same: still the Book Online page of this site, no target"),
+        (C + "calls 347-671-5095 while BOOKING_URL is empty", "PAGES", f"one .hero a.btn-call with the text Call 347-671-5095 and href {TEL}, no data-book, no target"),
+        (C + "still calls 347-671-5095 when BOOKING_URL is set", "INTERACTION", f"with BOOKING_URL = {TEST_BOOKING_URL} the button still calls {TEL}"),
+        (T + "texts the same number", "PAGES", f"one .hero a.text-link with the text Text Gerta and href {SMS}, no data-book, no target"),
     ]
     ck = Checks("home", vp, plan)
-    target = env.url("book-online")
 
-    def one_case(page, check, value):
-        try:
-            with booking_url_forced(page, value) as hits:
-                page.goto(env.url("home"), wait_until="load")
-                if not any(hits):
-                    ck.put(check, False, "the test could not set BOOKING_URL: js/site.js was " +
-                           ("not requested by the page" if not hits else "requested, but has no BOOKING_URL declaration"), owner="INTERACTION")
-                    return
-                btns = page.evaluate(JS_HOME_BTN)
-                if len(btns) != 1:
-                    ck.put(check, False, f"{len(btns)} .hero-box a.btn on the home page", owner="PAGES")
-                    return
-                b = btns[0]
-                if b["book"] or b["target"] or norm_url(b["href"]) != target:
-                    ck.put(check, False, f"the button has href {b['attr']!r} (leads to {b['href']}), target={b['target']!r}, data-book: {'yes' if b['book'] else 'no'}")
-                    return
-                press(vp, page.locator(".hero-box a.btn"))
-                arrived = poll(page, lambda: page.url, lambda u: norm_url(u) == target, 8000, default="")
-                with contextlib.suppress(Exception):
-                    page.wait_for_load_state("load")
-                ck.put(check, norm_url(arrived) == target, f"a click opens {norm_url(page.url)}")
-        except Exception as exc:
-            ck.put(check, False, brief(exc))
+    def one_case(page, value):
+        with booking_url_forced(page, value) as hits:
+            page.goto(env.url("home"), wait_until="load")
+            if not any(hits):
+                raise Stop("the test could not set BOOKING_URL: js/site.js was " +
+                           ("not requested by the page" if not hits else "requested, but has no BOOKING_URL declaration"), "INTERACTION")
+            page.wait_for_timeout(200)          # js/site.js runs on DOMContentLoaded, give it a moment
+            return page.evaluate(JS_HOME_LINKS)
+
+    def judge(links, kind, text, href):
+        found = links[kind]
+        if len(found) != 1:
+            return False, f"{len(found)} links of this kind on the home page"
+        a = found[0]
+        ok = a["text"] == text and a["attr"] == href and not a["book"] and not a["target"]
+        return ok, f"text {a['text']!r}, href {a['attr']!r}, target {a['target']!r}, data-book: {'yes' if a['book'] else 'no'}"
 
     def body(ctx, page, log):
         status, text, served, first, err = read_site_js(ctx, env)
-        one_case(page, H + "opens the Book Online page while BOOKING_URL is empty", None if served is not None and not served.strip() else "")
-        one_case(page, H + "opens the Book Online page when BOOKING_URL is set", TEST_BOOKING_URL)
+        links = one_case(page, None if served is not None and not served.strip() else "")
+        ck.put(C + "calls 347-671-5095 while BOOKING_URL is empty", *judge(links, "call", "Call 347-671-5095", TEL))
+        ck.put(T + "texts the same number", *judge(links, "text", "Text Gerta", SMS))
+        links = one_case(page, TEST_BOOKING_URL)
+        ok, actual = judge(links, "call", "Call 347-671-5095", TEL)
+        ck.put(C + "still calls 347-671-5095 when BOOKING_URL is set", ok, actual)
 
     return run_test(env, ck, vp, body)
 
@@ -1371,110 +1356,69 @@ def test_contact_form(env, vp):
     return run_test(env, ck, vp, body, clean_check=C + "no script error, no broken request")
 
 
-# ----------------------------------------------------------------------------- marquee (home)
+# ----------------------------------------------------------------------------- the reveal of the hero photos (home)
 
-def marquee_speed(samples):
-    """samples = [[ms, left], ...], one per animation frame.
-    -> (px per second towards the left, seconds measured, restarts of the loop, steps to the right, speed per second)"""
-    steps = [(samples[i][0] - samples[i - 1][0], samples[i][1] - samples[i - 1][1]) for i in range(1, len(samples))]
-    restarts = sum(1 for _, d in steps if d > 2)                 # the loop starts again: one jump back to the right
-    normal = [(dt, d) for dt, d in steps if d <= 2 and dt > 0]
-    ms = sum(dt for dt, _ in normal)
-    speed = -sum(d for _, d in normal) / (ms / 1000) if ms else 0.0
-    backwards = sum(1 for _, d in normal if d > 0.05)
-    windows, t, moved = [], 0.0, 0.0
-    for dt, d in normal:
-        t += dt
-        moved -= d
-        if t >= 1000:
-            windows.append(round(moved / (t / 1000), 1))
-            t, moved = 0.0, 0.0
-    return speed, ms / 1000, restarts, backwards, windows
+def inset_sides(value):
+    """'inset(0px 0px 100%)' -> ('0', '0', '100%', '0'): top, right, bottom, left as CSS fills them in. None for anything else."""
+    m = re.fullmatch(r"\s*inset\(([^)]*)\)\s*", value or "")
+    if not m:
+        return None
+    parts = [re.sub(r"^0(px|%)?$", "0", p) for p in m.group(1).split()]
+    if not 1 <= len(parts) <= 4:
+        return None
+    top = parts[0]
+    right = parts[1] if len(parts) > 1 else top
+    bottom = parts[2] if len(parts) > 2 else top
+    left = parts[3] if len(parts) > 3 else right
+    return (top, right, bottom, left)
 
 
-def test_marquee(env, vp):
-    M = "marquee: "
+def test_reveal(env, vp):
+    """The one motion of the site (design brief of 12 November 2026, decision 45): the hero photos are revealed from
+    top to bottom once when the home page opens, in about 600 ms, and not at all when the visitor prefers reduced
+    motion. Nothing else on the page moves. It took the place of the scrolling hours line."""
+    R = "reveal: "
     plan = [
-        (M + "moves right to left at 25 to 30 px per second", "DESIGN", "the track moves to the left at 25 to 30 px per second, measured over at least 4 seconds"),
-        (M + "six copies of the hours text", "PAGES", f"div.track holds six span elements, each saying {HOURS}"),
-        (M + "aria-label holds the hours once", "PAGES", f"aria-label of .marquee holds '{HOURS}' exactly once, and the six copies are hidden from screen readers (aria-hidden=true on .track)"),
-        (M + "stands still with reduced motion", "DESIGN", "with prefers-reduced-motion: reduce the track does not move"),
-        (M + "text shows once with reduced motion", "DESIGN", "with prefers-reduced-motion: reduce exactly one copy of the hours is visible, in full, inside the marquee"),
+        (R + "the hero photos are revealed from top to bottom, once", "DESIGN",
+         f"div.hero-photos runs the animation reveal once, {REVEAL_MS[0]} to {REVEAL_MS[1]} ms, from clip-path inset(0px 0px 100% 0px) to inset(0px)"),
+        (R + "nothing else moves", "DESIGN", "after 1.5 s no animation of the home page is still running, and the reveal was the only one"),
+        (R + "skipped with reduced motion", "DESIGN", "with prefers-reduced-motion: reduce div.hero-photos has no animation and the photos show in full"),
     ]
     ck = Checks("home", vp, plan)
     url = env.url("home")
 
-    def load(page):
-        page.goto(url, wait_until="load")
-        with contextlib.suppress(Exception):
-            page.evaluate("() => document.fonts.ready.then(() => true)")
-        page.wait_for_timeout(300)
-        with contextlib.suppress(Exception):
-            page.evaluate("() => document.fonts.ready.then(() => true)")
-        page.mouse.move(2, 2)       # keep the pointer away from the hours line (it may pause under the pointer)
-        info = page.evaluate(JS_MARQUEE_INFO)
-        if not info.get("marquee") or not info.get("track"):
-            raise Stop("the home page has no " + ("div.marquee" if not info.get("marquee") else ".marquee .track"), "PAGES")
-        return info
-
     def body(ctx, page, log):
-        info = load(page)
-        spans = info["spans"]
-        six = len(spans) == 6 and all(s["tag"] == "span" and s["text"].count(HOURS) == 1 for s in spans) and info["trackText"].count(HOURS) == 6
-        ck.put(M + "six copies of the hours text", six,
-               "six span elements with the hours text" if six else
-               f"{len(spans)} children in .track, the hours text appears {info['trackText'].count(HOURS)} times; texts: " +
-               one_line(" | ".join(sorted({s['text'] for s in spans})), 200))
-        label = re.sub(r"[\s\u00a0]+", " ", info["label"] or "")
-        once = label.count(HOURS) == 1 and info["trackHidden"] == "true"
-        ck.put(M + "aria-label holds the hours once", once,
-               f"aria-label={info['label']!r}, aria-hidden on .track: {info['trackHidden']!r}", evidence=f"role={info['role']!r}")
-
-        samples = page.evaluate(JS_MARQUEE_SAMPLE, 4600) or []
-        speed, seconds, restarts, backwards, windows = marquee_speed(samples) if len(samples) > 2 else (0.0, 0.0, 0, 0, [])
-        family = (info["family"] or "").split(",")[0].strip().strip("\"'")
-        font_ok = family in info["fontsLoaded"]
-        ok = len(samples) >= 10 and seconds >= 4.0 and MARQUEE_MIN <= speed <= MARQUEE_MAX and restarts <= 1 and backwards == 0
-        if len(samples) < 10 or seconds < 4.0:
-            actual = f"could not be measured: only {len(samples)} frames in {seconds:.1f} s"
-        elif abs(speed) < 0.05:
-            actual = "the track does not move"
-        else:
-            actual = (f"{abs(speed):.1f} px per second to the {'left' if speed > 0 else 'right'}, measured over {seconds:.1f} s ({len(samples)} frames)" +
-                      (f", the loop restarted {restarts} times" if restarts > 1 else "") +
-                      (f", {backwards} steps went the wrong way" if backwards else ""))
-        if not ok and not font_ok:
-            actual += f" (the web font {family} was not loaded, so the text may be wider or narrower than for visitors)"
-        ck.put(M + "moves right to left at 25 to 30 px per second", ok, actual,
-               evidence=f"speed second by second: {windows}; track {info['trackWidth']} px wide, text {info['fontSize']}, "
-                        f"animation {info['animation']}, font {family} loaded: {'yes' if font_ok else 'no'}")
-
-        # reduced motion: the same page, with the browser told that the visitor asked for less motion
+        page.goto(url, wait_until="load")
+        info = page.evaluate(JS_REVEAL)
+        if not info.get("box"):
+            raise Stop("the home page has no div.hero-photos", "PAGES")
+        ms = float(info["duration"][:-2]) * 1000 if info["duration"].endswith("ms") else float(info["duration"][:-1] or 0) * 1000
+        frames = [re.sub(r"\s+", " ", f) for f in info["frames"]]
+        sides = [inset_sides(f) for f in frames]
+        top_down = len(sides) >= 2 and sides[0] == ("0", "0", "100%", "0") and sides[-1] == ("0", "0", "0", "0")
+        ok = info["name"] == "reveal" and info["count"] == "1" and REVEAL_MS[0] <= ms <= REVEAL_MS[1] and top_down
+        ck.put(R + "the hero photos are revealed from top to bottom, once", ok,
+               f"animation {info['name']}, {ms:.0f} ms, {info['count']} time(s), key frames {frames}")
+        page.wait_for_timeout(1500)
+        later = page.evaluate(JS_REVEAL)
+        running = [a for a in later["all"] if a["state"] == "running"]
+        others = sorted({a["name"] for a in later["all"] if a["name"] != "reveal"})
+        ck.put(R + "nothing else moves", not running and not others,
+               "no animation is running" + (", but there were others: %s" % ", ".join(others) if others else "")
+               if not running else "still running: " + ", ".join("%s on %s" % (a["name"], a["target"]) for a in running))
         try:
             page.emulate_media(reduced_motion="reduce")
-            info2 = load(page)
+            page.goto(url, wait_until="load")
+            calm = page.evaluate(JS_REVEAL)
             asked = page.evaluate("() => matchMedia('(prefers-reduced-motion: reduce)').matches")
-            samples2 = page.evaluate(JS_MARQUEE_SAMPLE, 1500) or []
-            lefts = [x for _, x in samples2]
-            drift = (max(lefts) - min(lefts)) if lefts else 0.0
-            ck.put(M + "stands still with reduced motion", asked and len(samples2) >= 5 and drift <= 0.5,
-                   (f"the track moved {drift:.1f} px in {samples2[-1][0] / 1000:.1f} s" if samples2 else "could not be measured") +
-                   ("" if asked else " (the browser did not take over the reduced motion setting)"),
-                   evidence=f"animation {info2['animation']}")
-            page.locator(".marquee").scroll_into_view_if_needed()
-            info2 = page.evaluate(JS_MARQUEE_INFO)
-            visible = [s for s in info2["spans"] if s["visible"]]
-            once_ok = len(visible) == 1 and visible[0]["text"].count(HOURS) == 1 and visible[0]["inside"]
-            ck.put(M + "text shows once with reduced motion", once_ok,
-                   "one copy visible, in full" if once_ok else
-                   f"{len(visible)} copies visible" + ("" if len(visible) != 1 or visible[0]["inside"] else
-                                                      f", and it is cut off (text from x {visible[0]['left']}, {visible[0]['width']} px wide, marquee box {info2['box']})"),
-                   evidence=shot(page, f"check_behavior-marquee-reduced-motion-{vp}.png"))
+            still = calm["name"] == "none" and calm["clip"] in ("none", "") and not [a for a in calm["all"] if a["name"] == "reveal"]
+            ck.put(R + "skipped with reduced motion", asked and still,
+                   f"animation {calm['name']}, clip-path {calm['clip']!r}" + ("" if asked else " (the browser did not take over the reduced motion setting)"))
         finally:
             with contextlib.suppress(Exception):
                 page.emulate_media(reduced_motion="null")
 
-    return run_test(env, ck, vp, body, allow_fonts=True)
+    return run_test(env, ck, vp, body)
 
 
 # ----------------------------------------------------------------------------- JavaScript off (phone)
@@ -1705,7 +1649,7 @@ def build_tasks(pages, viewports):
     tasks = []
     for vp in viewports:
         if "home" in pages:
-            tasks.append((f"marquee {vp}", "home", vp, lambda env, vp=vp: test_marquee(env, vp)))
+            tasks.append((f"reveal {vp}", "home", vp, lambda env, vp=vp: test_reveal(env, vp)))
         if "gallery" in pages:
             tasks.append((f"lightbox {vp}", "gallery", vp, lambda env, vp=vp: test_lightbox(env, vp)))
         if "contact" in pages:
@@ -1716,7 +1660,7 @@ def build_tasks(pages, viewports):
         if "book-online" in pages:
             tasks.append((f"book now {vp}", "book-online", vp, lambda env, vp=vp: test_book_now(env, vp)))
         if "home" in pages:
-            tasks.append((f"book online button {vp}", "home", vp, lambda env, vp=vp: test_home_button(env, vp)))
+            tasks.append((f"call and text {vp}", "home", vp, lambda env, vp=vp: test_home_links(env, vp)))
     for vp in viewports:
         for slug in pages:
             tasks.append((f"menu and year {slug} {vp}", slug, vp, lambda env, vp=vp, slug=slug: test_page(env, vp, slug)))

@@ -21,7 +21,9 @@ What it checks on every page
                         The labels found are listed in the entry.
   links-from-content    every link written in a content file (nav, footer, buttons, links inside html fields) is on
                         the page with the same text and the same target
-  images-from-content   the photos of the page are the image slots of the content file, in the same order
+  images-from-content   the photos of the page are the image slots of the content file, in the same order, leaving out
+                        every slot whose photo is still in PLACEHOLDERS of tools/build_pages.py, because a page never
+                        shows a placeholder since the redesign of 12 November 2026 (build contract, decision 44)
   copyright-line        the footer ends with the copyright sign, a year and the business name
   fact-...              the business facts are exact wherever they appear: business name, Gerta Lila (Olgerta Lila on
                         the Terms and Accessibility pages only), salon name and address, phone text and tel links,
@@ -52,7 +54,15 @@ What it checks on every page
                         home page and the comma taken out of "high-quality, hair extensions" on the home page; and three
                         changes of 12 November 2026: the titles of the four policy pages end with "Hair & Makeup by Gerta"
                         (Wix: "Hairbygerta"), three sentences of the Terms & Conditions no longer speak of booking online
-                        or through the site, and the Accessibility Statement says it was last updated on 11/12/2026. A note in
+                        or through the site, and the Accessibility Statement says it was last updated on 11/12/2026; and the
+                        changes of the redesign of 12 November 2026 (build contract, decisions 44 and 45). Those are the
+                        navigation item Services on every page (Wix calls it Book Online), the Call button of the header,
+                        and on the home page the business name as its heading, the headline It's Your Day to Shine!, the
+                        sentence Welcome to HairByGerta.com. and the Book Online button left out, the phone number inside
+                        the Call button with the Text Gerta link beside it, the address without the map pin, the salon, the
+                        address and the hours under Find me (the hours a second time), and the new headings and links
+                        Services, Cut and style, Color, Smoothing and texture, Occasions, the ten service names, More about
+                        each service, Find me and Open in Google Maps. A note in
                         a content file does not make a difference intended. A title tag or meta description that Wix has
                         must equal the Wix value (the Contact title, the four policy page titles and the Book Online and
                         home meta descriptions apart).
@@ -135,20 +145,21 @@ GALLERY_IMAGES = ("g01", "g02", "foils-highlights", "g04", "g05", "g06", "g07", 
                   "makeup-red-lips", "g12", "g13", "g14", "g15", "g16", "g17", "g18", "g19", "g20", "g21")
 ABOUT_LEFT, ABOUT_RIGHT = ("brunette-balayage", "about-salon"), ("g10", "copper-waves")
 HOME_ROW, HOME_MEET = ("home-styling", "foils-highlights", "home-smile", "home-waves"), ("makeup-red-lips", "meet-extensions")
+HOME_HERO = ("g13", "g12")                              # the design brief of 12 November 2026: g13, then g12, tall
 BRIEF_IMAGES = {"book-online": SERVICE_IMAGES, "gallery": GALLERY_IMAGES, "about": ABOUT_LEFT + ABOUT_RIGHT,
                 "home": HOME_ROW + HOME_MEET}
 
 # ---------------------------------------------------------------- what the build contract fixes (tools/CONTRACT.md)
 MENU_LABEL, NAV_LABEL = "Menu", "Main"                  # section 6: button.menu-btn, nav.main-nav
-PHOTO_ROW_LABEL = "Featured work"                       # section 7, Home: section.photo-row
+PHOTO_ROW_LABEL = "Featured work"                       # section 7, Home: section.work, only once a photo of the row is real
 HOURS_LABEL = "Hours: %s"                               # section 7, Home: div.marquee
 BOOK_LABEL = "%s: %s"                                   # section 7, Book Online: "Book Now: SERVICE"
 BOOK_TEXT = "Book Now"                                  # section 7, used when the content file has no button_label
 GALLERY_LABEL = "View photo {n} of {total}"             # section 7, used when the content file has no link_label
 PIN = "\U0001F4CD"                                      # section 7, Home: span.pin in front of the address
 COPYRIGHT_SIGN = "\u00a9"                               # section 6: p.copy
-H1_IS_ALSO = {"home": "hero.heading"}                   # the h1 is stored twice in home.json, the page prints it once
-H1_COMES_AFTER = {"home": "site_title", "contact": "kicker"}    # section 7: where the h1 is not the first text of main
+H1_IS_ALSO = {}                                         # a page whose h1 is stored a second time under another key (none since 12 November 2026)
+H1_COMES_AFTER = {"contact": "kicker"}                  # section 7: where the h1 is not the first text of main
 PLACES = ("header", "main", "footer")
 PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "footer": "footer"}
 
@@ -534,6 +545,7 @@ class Expected:
         self.slug, self.file = slug, "content/%s.json" % slug
         self.top, self.header, self.main, self.footer = [], [], [], []
         self.labels, self.links, self.slots, self.problems = [], [], [], []
+        self.all_slots = []     # every image slot of the content file, placeholders too (self.slots: the ones a page shows)
         self.title = self.description = self.h1 = None
         self.notes = ""
 
@@ -566,6 +578,42 @@ def is_slot(value):
     return isinstance(value, dict) and isinstance(value.get("file"), str) and ("slot" in value or "alt" in value)
 
 
+# The names in PLACEHOLDERS of tools/build_pages.py, read once by main(). Since the redesign of 12 November 2026 a
+# page never shows such a photo (build contract, decision 44), so the checks of the photos leave them out.
+PLACEHOLDER_NAMES = frozenset()
+
+
+def read_placeholders(site_dir):
+    """The list PLACEHOLDERS of tools/build_pages.py, read without running the file. -> (names, problem)"""
+    import ast
+    path = os.path.join(site_dir, "tools", "build_pages.py")
+    try:
+        with open(path, encoding="utf-8") as f:
+            tree = ast.parse(f.read())
+    except (OSError, UnicodeError, SyntaxError) as e:
+        return frozenset(), "tools/build_pages.py cannot be read (%s)" % type(e).__name__
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and t.id == "PLACEHOLDERS" for t in node.targets):
+            try:
+                names = ast.literal_eval(node.value)
+            except ValueError:
+                break
+            if isinstance(names, (list, tuple)) and all(isinstance(n, str) for n in names):
+                return frozenset(names), None
+    return frozenset(), "tools/build_pages.py has no list PLACEHOLDERS of photo names"
+
+
+def shown(names):
+    """The photos a page shows: every name that is not a placeholder, in the same order."""
+    return [n for n in names if n not in PLACEHOLDER_NAMES]
+
+
+def sms_of(tel):
+    """The address of the Text link that the generator makes from tel_href: sms: and the digits (decision 45)."""
+    tel = tel.strip()
+    return "sms:" + re.sub(r"[^0-9+]", "", tel[4:] if tel.lower().startswith("tel:") else tel)
+
+
 def expect_main(ex, content, site):
     """Walk the content file in key order: that is the reading order of the page (contract, section 3)."""
     slug, file = ex.slug, ex.file
@@ -580,6 +628,9 @@ def expect_main(ex, content, site):
 
     def walk(value, path, depth):
         if is_slot(value):
+            ex.all_slots.append(value["file"])
+            if not shown([value["file"]]):
+                return                                  # a placeholder: the page leaves it out (decision 44)
             alt = value.get("alt") if isinstance(value.get("alt"), str) else ""
             ex.slots.append(Slot("%s: %s" % (file, path), value["file"], norm(alt)))
             label("alt", alt, path + ".alt")
@@ -664,15 +715,14 @@ def expect_main(ex, content, site):
             for i in range(count):
                 emit("%s (copy %d of %d)" % (path, i + 1, count), value)
             label("aria-label", HOURS_LABEL % norm(value), path)
-        elif key == "address" and slug == "home" and isinstance(value, str):
-            ex.piece(ex.main, "", "the pin the build contract puts in front of the address (section 7)", PIN)
-            emit(path, value)
-            maps = site.get("maps_href") if isinstance(site.get("maps_href"), str) else MAPS
-            ex.links.append(ContentLink("main", maps.strip(), norm(value), "", "%s: %s, a Maps link by section 7 of the build contract" % (file, path)))
-        elif key == "phone" and slug == "home" and isinstance(value, str):
+        elif slug == "home" and key in ("call", "text", "map_label") and isinstance(value, str):
+            # Since the redesign of 12 November 2026 (decision 45) the home page has a Call button, a Text link and a
+            # Google Maps link. Their words are in content/home.json, where they lead is in content/site.json.
             emit(path, value)
             tel = site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL
-            ex.links.append(ContentLink("main", tel.strip(), norm(value), "", "%s: %s, a phone link by section 7 of the build contract" % (file, path)))
+            target = {"call": tel, "text": sms_of(tel), "map_label": site.get("maps_href") if isinstance(site.get("maps_href"), str) else MAPS}[key]
+            what = {"call": "the Call button", "text": "the Text link", "map_label": "the Google Maps link"}[key]
+            ex.links.append(ContentLink("main", target.strip(), norm(value), "", "%s: %s, %s (decision 45)" % (file, path, what)))
         elif isinstance(value, dict) and isinstance(value.get("label"), str) and isinstance(value.get("path"), str):
             emit(path + ".label", value["label"])       # a button: a text and where it leads
             ex.links.append(ContentLink("main", content_target(value["path"]), norm(value["label"]), "", "%s: %s" % (file, path)))
@@ -690,7 +740,7 @@ def expect_main(ex, content, site):
         template = content.get("link_label") if isinstance(content.get("link_label"), str) else GALLERY_LABEL
         for i in range(len(ex.slots)):
             label("aria-label", template.replace("{n}", str(i + 1)).replace("{total}", str(len(ex.slots))), "link_label")
-    if slug == "home":
+    if slug == "home" and any(is_slot(slot) and shown([slot["file"]]) for slot in content.get("photo_row") or []):
         ex.labels.append(("aria-label", PHOTO_ROW_LABEL, "build contract, section 7"))
 
     # The h1: the contract fixes its key (fifth in the file), not its place on the page.
@@ -738,6 +788,10 @@ def expect_shell(ex, site, year):
             link("header", item.get("path"), item.get("label"), "", "nav[%d]" % i)
     # The Call button at the bottom of the screen on phones (9 November 2026): its words, a space, the phone number.
     call = " ".join(x for x in (need("call_bar_label") or "", need("phone") or "") if x)
+    # The Call button of the header (12 November 2026, decision 45): the same words, it calls the same number.
+    ex.piece(ex.header, SITE_FILE, "call_bar_label (then the phone number), the Call button of the header", call, place="header",
+             intended="the Call button of the header is not on the Wix site, it is added on purpose for the redesign of 12 November 2026 (decision 45)")
+    link("header", need("tel_href"), call, "", "call_bar_label (header)")
     ex.piece(ex.footer, SITE_FILE, "call_bar_label (then the phone number)", call, place="footer",
              intended="the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose")
     link("footer", need("tel_href"), call, "", "call_bar_label")
@@ -851,6 +905,39 @@ ACCESSIBILITY_UPDATED = ("accessibility-statement",
                          "This statement reflects our ongoing commitment to accessibility and was last updated on 11/12/2026.")
 
 
+# 12 November 2026, the redesign (build contract, decisions 44 and 45). The navigation item Book Online is called Services
+# on every page, and the home page is laid out anew from the words it had. Every difference below is intended on the
+# page named and nowhere else, any other change of these sentences is a difference.
+REDESIGN = "changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45)"
+NAV_SERVICES = ("Book Online", "Services")          # (Wix, ours): the third item of the navigation, on every page
+HOME_REMOVED = {                                    # Wix sentence of the home page -> why our home page does not have it
+    "It's Your Day to Shine!": "the headline went with the beige box, the h1 is the business name",
+    "Welcome to HairByGerta.com.": "the first sentence of the welcome text is cut, the two sentences about Gerta stay",
+    "Book Online": "the Book Online button is gone, the Call button and the Text Gerta link take its place",
+}
+HOME_REWORDED = {                                   # (Wix sentence, ours) -> why
+    ("347-671-5095", "Call 347-671-5095 Text Gerta"): "the phone number is part of the Call button, the Text Gerta link stands beside it",
+    ("\U0001F4CD644 Forest Ave, Staten Island, NY 10310", "644 Forest Ave, Staten Island, NY 10310"):
+        "the address stands under Find me, without the map pin",
+}
+HOME_ADDED = {                                      # our sentence that the Wix home page does not have -> why
+    "Services": "the heading of the list of services",
+    "Cut and style": "the name of a group of services (design brief)",
+    "Color": "the name of a group of services (design brief)",
+    "Smoothing and texture": "the name of a group of services (design brief)",
+    "Occasions": "the name of a group of services (design brief)",
+    "More about each service": "the link to the Services page",
+    "Find me": "the heading of the salon, its address and the hours",
+    "Open in Google Maps": "the link to the map, the same words as under the map of the Contact page",
+    HOURS: "the hours stand under the Call button and again under Find me",
+}
+HOME_ADDED.update((title, "the name of a service, as the Services page writes it") for title, _d, _t, _p in SERVICES)
+# The service names of the brief have a straight apostrophe, the page has the curly one of Wix (Kids’ Haircut, decision 23).
+HOME_ADDED_FOLDED = {fold(k): v for k, v in HOME_ADDED.items()}
+HOME_MOVED = {SALON: "the salon stands under Find me", ADDRESS: "the address stands under Find me",
+              HOURS: "the hours stand under the Call button and again under Find me", PHONE_TEXT: "the phone number is part of the Call button"}
+
+
 class Rules:
     """Which differences from the live Wix wording are intended. The list is fixed and lives in this class (and in the
     intended= marks of the extraction: copyright line, Hours block, closing booking note). Nothing else is intended."""
@@ -894,10 +981,18 @@ class Rules:
             return "changed on 12 November 2026: online booking was dropped on 2 November 2026, appointments are booked by phone"
         if (self.slug, w, o) == ACCESSIBILITY_UPDATED:
             return "changed on 12 November 2026: the statement carries the day it was last read again"
+        if (w, o) == NAV_SERVICES:
+            return REDESIGN + ", the navigation item Book Online is called Services, its address stays /book-online/"
+        if self.slug == "home" and (w, o) in HOME_REWORDED:
+            return "%s, %s" % (REDESIGN, HOME_REWORDED[(w, o)])
         return None
 
     def removed(self, w, wix_rows):
         """Why a sentence of the Wix page may be missing on ours, or None."""
+        if self.slug == "home" and w in HOME_REMOVED:
+            return "%s, %s" % (REDESIGN, HOME_REMOVED[w])
+        if w == NAV_SERVICES[0]:
+            return REDESIGN + ", the navigation item Book Online is called Services"
         if self.slug == "english-privacy-policy":
             if WIX_WORD.search(w):
                 return "privacy rule: a sentence that names Wix is not carried over"
@@ -912,6 +1007,10 @@ class Rules:
         """Why a sentence of ours may be missing on the Wix page, or None."""
         if o in self.by_key:
             return self.by_key[o]
+        if self.slug == "home" and fold(o) in HOME_ADDED_FOLDED:
+            return "%s, %s" % (REDESIGN, HOME_ADDED_FOLDED[fold(o)])
+        if o == NAV_SERVICES[1]:
+            return REDESIGN + ", the navigation item Book Online is called Services"
         if self.slug == "english-privacy-policy":
             low = o.lower()
             if is_phone_booking(o):
@@ -924,6 +1023,8 @@ class Rules:
 
     def moved(self, s):
         """Why a sentence may stand in another place than on the Wix page, or None."""
+        if self.slug == "home" and s in HOME_MOVED:
+            return "%s, %s" % (REDESIGN, HOME_MOVED[s])
         if self.slug == "contact" and s in ("Phone", PHONE_TEXT, "Email", EMAIL):
             return "build contract, section 10.8: the info blocks come in the order Address, Phone, Email, Social Media, Hours"
         if self.slug == "accessibility-statement" and (s == self.ex.h1 or s in self.first_block):
@@ -1370,13 +1471,14 @@ def required_facts(slug, view, built):
     need("email", has_link("footer", MAILTO, EMAIL), 'the footer has no link %s with the text "%s"' % (MAILTO, EMAIL))
     need("links", has_link("footer", FACEBOOK) and has_link("footer", INSTAGRAM), "the footer does not carry the Facebook link and the Instagram link")
     if slug == "home":
-        need("business", BUSINESS in main, 'main does not show the site title "%s"' % BUSINESS)
-        need("phone", has_link("main", TEL, PHONE_TEXT), 'main has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
-        need("address", SALON in main, 'main has no line "%s"' % SALON)
-        need("address", has_link("main", MAPS, ADDRESS), 'main has no Maps link with the text "%s"' % ADDRESS)
+        # Since the redesign of 12 November 2026 (decision 45): the business name is the h1, the Call button ends with
+        # the number, the salon and the address stand as two lines under Find me with the Maps link after them, the
+        # hours show as plain text.
+        need("business", BUSINESS in main, 'main does not show the business name "%s"' % BUSINESS)
+        need("phone", has_link("main", TEL, PHONE_TEXT), 'main has no link %s whose text ends with "%s"' % (TEL, PHONE_TEXT))
+        need("address", SALON in main and ADDRESS in main, 'main does not show the lines "%s" and "%s"' % (SALON, ADDRESS))
         need("links", has_link("main", MAPS), "main does not carry the Maps link %s" % MAPS)
         need("hours", HOURS in main, 'main does not show the hours line "%s"' % HOURS)
-        need("hours", ("aria-label", HOURS_LABEL % HOURS) in view.labels, 'no element is labelled "%s"' % (HOURS_LABEL % HOURS))
     if slug == "contact":
         need("phone", has_link("main", TEL, PHONE_TEXT), 'main has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
         need("email", has_link("main", MAILTO, EMAIL), 'main has no link %s with the text "%s"' % (MAILTO, EMAIL))
@@ -1445,18 +1547,22 @@ def check_site_facts(site, problem):
                   "%d values, all exact" % checked if not wrong else "; ".join(wrong), SITE_FILE, "CONTENT")]
 
 
-def order_entry(slug, check, what, brief, in_content, on_page, ex):
-    """One list of the brief (services, photos) against the content file and against the page."""
+def order_entry(slug, check, what, brief, in_content, on_page, ex, shown=None):
+    """One list of the brief (services, photos) against the content file and against the page. shown: what the page
+    has to show when it is less than the brief (the photos without the placeholders, decision 44)."""
     show = lambda rows: ", ".join(str(r) for r in rows) if rows else "none"
     content_ok = in_content is None or list(in_content) == list(brief)
-    page_ok = list(on_page) == list(brief)
+    page_ok = list(on_page) == list(brief if shown is None else shown)
     if content_ok and page_ok:
         actual = "as the brief says"
     elif not content_ok:
         actual = "%s has: %s" % (ex.file, show(in_content)) + ("" if page_ok else ". The page has: " + show(on_page))
     else:
         actual = "the page has: " + show(on_page)
-    return entry(slug, check, content_ok and page_ok, "%s, in this order: %s" % (what, show(brief)), actual,
+    expected = "%s, in this order: %s" % (what, show(brief))
+    if shown is not None and list(shown) != list(brief):
+        expected += ". The page shows %s, because it leaves out the placeholders (decision 44)" % show(shown)
+    return entry(slug, check, content_ok and page_ok, expected, actual,
                  "%s, %s" % (page_file(slug), ex.file), "PAGES" if content_ok else "CONTENT")
 
 
@@ -1466,7 +1572,7 @@ def names_in(nodes):
 
 def check_page_facts(slug, ex, page, content):
     """The services and the photo orders the brief gives."""
-    slots = [s.file for s in ex.slots]
+    slots = list(ex.all_slots)      # the order of the content file, placeholders included
     out = []
     if slug == "book-online":
         row = lambda cells: " / ".join(fold(c if isinstance(c, str) else "(missing)") for c in cells)
@@ -1501,11 +1607,19 @@ def check_page_facts(slug, ex, page, content):
             in_content = ["all: " + ", ".join(slots)]
         out.append(order_entry(slug, "fact-about-photos", "the About photos", side(ABOUT_LEFT, ABOUT_RIGHT), in_content, side(left, right), ex))
     elif slug == "home":
-        row = names_in(page.with_class("photo-row"))
-        meet = names_in(page.with_class("p1")) + names_in(page.with_class("p2"))
-        split = lambda a, b: ["photo row: " + ", ".join(a), "Meet Gerta: " + ", ".join(b)]
-        out.append(order_entry(slug, "fact-home-photos", "the home photo row and the Meet Gerta photos", split(HOME_ROW, HOME_MEET),
-                               split(slots[:len(HOME_ROW)], slots[len(HOME_ROW):]), split(row, meet), ex))
+        # Since the redesign of 12 November 2026 (decisions 44 and 45): the two photos of the owner in the hero, the photo
+        # row (section.work) and the Meet Gerta photos (div.meet-photos), each without the placeholders.
+        hero = names_in(page.with_class("hero-photos"))
+        row = names_in(page.with_class("work"))
+        meet = names_in(page.with_class("meet-photos"))
+        split = lambda h, a, b: ["hero: " + ", ".join(h), "photo row: " + ", ".join(a), "Meet Gerta: " + ", ".join(b)]
+        files = lambda rows: [r.get("file") for r in rows if isinstance(r, dict)]
+        hero_c = files((content.get("hero") or {}).get("photos") or []) if isinstance(content.get("hero"), dict) else []
+        meet_c = content.get("meet") if isinstance(content.get("meet"), dict) else {}
+        in_content = split(hero_c, files(content.get("photo_row") or []), files([meet_c.get("portrait"), meet_c.get("large")]))
+        out.append(order_entry(slug, "fact-home-photos", "the home photos (hero, photo row, Meet Gerta)", split(HOME_HERO, HOME_ROW, HOME_MEET),
+                               in_content, split(hero, row, meet), ex,
+                               shown=split(shown(HOME_HERO), shown(HOME_ROW), shown(HOME_MEET))))
     return out
 
 
@@ -1823,9 +1937,15 @@ def main(argv=None):
         common.REPORTS = os.path.join(os.path.abspath(out_dir), "reports")
 
     started = time.time()
+    global PLACEHOLDER_NAMES
+    PLACEHOLDER_NAMES, placeholder_problem = read_placeholders(site_dir)
     site, site_problem = load_json(content_dir, "site.json")
     wix_there = os.path.isdir(common.WIX_REF)
     results = check_site_facts(site or {}, site_problem)
+    results.append(entry(SITE_PAGE, "placeholders-list", placeholder_problem is None,
+                         "the list PLACEHOLDERS of tools/build_pages.py can be read: the photos a page leaves out (decision 44)",
+                         placeholder_problem or "%s, every other photo is shown" % plural(len(PLACEHOLDER_NAMES), "placeholder"),
+                         "tools/build_pages.py", "PAGES"))
     if not wix_there:
         results.append(entry(SITE_PAGE, "wix-wording", True, "the text of the nine pages is compared with the live Wix wording",
                              "skipped: the folder with the Wix reference files (wix-ref in the tools folder next to the site folder) is not there",
