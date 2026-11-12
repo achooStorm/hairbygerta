@@ -258,3 +258,4 @@ The home page was built first, looked at in screenshots at 1280 px and 390 px (a
 - A phone 320 px wide. The page was 30 px wider than the screen, because the text column kept its desktop minimum width. Fixed.
 - The welcome text ran to about 70 characters a line on a tablet. It is limited to 26 em now, about 60 characters.
 - One accessory less. The Blonde line under the header went. The Paper header is enough of an edge, and the page has one line fewer that is only decoration.
+- Two Call buttons on the first screen of a phone, the one of the hero and the call bar. Both stay (build contract, decision 46). The button belongs to the text it follows, the bar is the one that stays when the visitor scrolls.

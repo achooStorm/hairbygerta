@@ -13,7 +13,7 @@
   "tel_href": "tel:+1-347-671-5095",
   "email": "info@hairbygerta.com",
   "mailto_href": "mailto:info@hairbygerta.com",
-  "hours": "Tuesday - Saturday, 9 AM - 5 PM",
+  "hours": "Tuesday to Saturday, 9 AM to 5 PM",
   "maps_href": "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310",
   "social": [
     {
@@ -68,7 +68,7 @@
     "logo_label: not visible text. It is the accessible name of the logo link in the header. On Wix the logo image carries the alt text 'Hair & Makeup by Gerta logo' and the link has no name of its own.",
     "social: name is the network, label is the accessible name of the icon link. The live Wix icon links carry the labels 'Facebook' and 'Instagram', kept as they are.",
     "address_lines: the three lines of the live footer, salon name first. address_one_line: the street address as the live home page shows it in its maps link, without the pin emoji and without the salon name.",
-    "hours: written with plain hyphens (U+002D) and plain spaces, exactly as the live Wix text.",
+    "hours is written with the word to since 12 November 2026 (Tuesday to Saturday, 9 AM to 5 PM), the wording of the owner's design brief and of the closing line of the Services page. The owner left the choice to the builder that day (build contract, decision 46). The days and the times are the same as before. Until then it read Tuesday - Saturday, 9 AM - 5 PM, with plain hyphens, exactly as the live Wix text. On the fixed list of intended differences in qa/check_content.py.",
     "font_preloads: the two font files every page fetches early. The fonts are Bodoni Moda (italic 400 and 700) and Figtree (400 and 700). They stand in for Didot and Proxima Nova, which are licensed for Wix only. Since 9 November 2026 the pages load them from the folder fonts of the site itself and no longer from Google Fonts (the key was fonts_href, a Google Fonts address, until then). The font rules are in css/style.css, and tools/make_fonts.py makes the files.",
     "Paths in nav and footer.policy_links are site paths with a leading and a trailing slash. The generator turns them into relative links.",
     "For information: on Wix the footer name and role are links to the home page, and the footer phone number is a tel link in the phone layout only. The build contract prints name and role as plain text and the phone number as a tel link at every width. The text is the same either way."

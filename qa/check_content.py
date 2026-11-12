@@ -62,7 +62,9 @@ What it checks on every page
                         the Call button with the Text Gerta link beside it, the address without the map pin, the salon, the
                         address and the hours under Find me (the hours a second time), and the new headings and links
                         Services, Cut and style, Color, Smoothing and texture, Occasions, the ten service names, More about
-                        each service, Find me and Open in Google Maps. A note in
+                        each service, Find me and Open in Google Maps; and one more change of 12 November 2026 (decision
+                        46): the hours read "Tuesday to Saturday, 9 AM to 5 PM" on every page (Wix: "Tuesday - Saturday,
+                        9 AM - 5 PM"), the same days and times. A note in
                         a content file does not make a difference intended. A title tag or meta description that Wix has
                         must equal the Wix value (the Contact title, the four policy page titles and the Book Online and
                         home meta descriptions apart).
@@ -119,11 +121,15 @@ PHONE_TEXT = "347-671-5095"
 TEL = "tel:" + common.PHONE
 EMAIL = common.EMAIL
 MAILTO = "mailto:" + EMAIL
-HOURS_DAYS, HOURS_TIMES = "Tuesday - Saturday", "9 AM - 5 PM"
+# 12 November 2026 (build contract, decision 46): the hours are written with the word "to" on every page, as the owner's
+# design brief and the closing note of the Book Online page write them. The days and the times are the same as before.
+# Until that day they read HOURS_WIX, the live Wix text with plain hyphens.
+HOURS_DAYS, HOURS_TIMES = "Tuesday to Saturday", "9 AM to 5 PM"
 HOURS = HOURS_DAYS + ", " + HOURS_TIMES
-# The closing note of the Book Online page is the closing line of the first version of the site, word for word.
-# It gives the hours with "to". That wording is accepted on that page only.
-HOURS_OTHER_WORDING = {"book-online": ("Tuesday to Saturday", "9 AM to 5 PM", "Tuesday to Saturday, 9 AM to 5 PM")}
+HOURS_WIX = "Tuesday - Saturday, 9 AM - 5 PM"
+# A page that may write the hours in other words: slug -> (days, times, the full line). None since decision 46 (until
+# then the closing note of the Book Online page was the only place with "to").
+HOURS_OTHER_WORDING = {}
 FACEBOOK = "https://www.facebook.com/profile.php?id=61588784402912"
 INSTAGRAM = "https://www.instagram.com/hairbygerta/"
 MAPS = "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310"
@@ -911,11 +917,13 @@ ACCESSIBILITY_UPDATED = ("accessibility-statement",
 REDESIGN = "changed on 12 November 2026 for the redesign (build contract, decisions 44 and 45)"
 NAV_SERVICES = ("Book Online", "Services")          # (Wix, ours): the third item of the navigation, on every page
 HOME_REMOVED = {                                    # Wix sentence of the home page -> why our home page does not have it
+    HOURS_WIX: "the hours are written with the word to on every page (decision 46)",
     "It's Your Day to Shine!": "the headline went with the beige box, the h1 is the business name",
     "Welcome to HairByGerta.com.": "the first sentence of the welcome text is cut, the two sentences about Gerta stay",
     "Book Online": "the Book Online button is gone, the Call button and the Text Gerta link take its place",
 }
 HOME_REWORDED = {                                   # (Wix sentence, ours) -> why
+    (HOURS_WIX, HOURS): "the hours are written with the word to on every page (decision 46)",
     ("347-671-5095", "Call 347-671-5095 Text Gerta"): "the phone number is part of the Call button, the Text Gerta link stands beside it",
     ("\U0001F4CD644 Forest Ave, Staten Island, NY 10310", "644 Forest Ave, Staten Island, NY 10310"):
         "the address stands under Find me, without the map pin",
