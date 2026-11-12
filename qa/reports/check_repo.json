@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 21:27:15",
+ "generated": "2026-11-12 23:07:05",
  "results": [
   {
    "page": "site",
@@ -19,7 +19,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (13374 bytes)",
+   "actual": "identical (13930 bytes)",
    "evidence": "index.html",
    "owner": "PAGES"
   },
@@ -29,7 +29,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "gallery/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (10918 bytes)",
+   "actual": "identical (12505 bytes)",
    "evidence": "gallery/index.html",
    "owner": "PAGES"
   },
@@ -39,7 +39,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "book-online/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (12755 bytes)",
+   "actual": "identical (13370 bytes)",
    "evidence": "book-online/index.html",
    "owner": "PAGES"
   },
@@ -49,7 +49,7 @@
    "check": "generator-output",
    "ok": true,
    "expected": "about/index.html is byte for byte what the generator writes (HTML is never edited by hand, build contract section 1)",
-   "actual": "identical (8497 bytes)",
+   "actual": "identical (8922 bytes)",
    "evidence": "about/index.html",
    "owner": "PAGES"
   },
@@ -249,7 +249,7 @@
    "check": "no-absolute-path",
    "ok": true,
    "expected": "no file names a folder of this computer",
-   "actual": "147 files checked, none wrong",
+   "actual": "167 files checked, none wrong",
    "evidence": "looked for: the home folder, the folder the site folder is in, the tools folder, the temporary folder and the Python folder, with / or \\ and in any capitals; .git and qa/screenshots left out",
    "owner": "QA"
   },
@@ -269,7 +269,7 @@
    "check": "no-leftovers",
    "ok": true,
    "expected": "nothing temporary lives in the site folder (decision 20): no _tmp, source-photos, new-photos or zip folder, no archive, backup or editor leftover",
-   "actual": "325 files and 23 folders checked, none wrong",
+   "actual": "345 files and 23 folders checked, none wrong",
    "evidence": "names only; what is inside a picture is the job of qa/licensing_check.py",
    "owner": "QA"
   },
@@ -330,7 +330,7 @@
   ],
   "checks": 31,
   "failed": 0,
-  "seconds": 6.0
+  "seconds": 2.4
  },
  "note": "These checks read the site folder on this computer, whatever --base says."
 }
