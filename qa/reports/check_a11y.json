@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 14:07:16",
+ "generated": "2026-10-13 07:39:32",
  "results": [
   {
    "page": "home",
@@ -9,7 +9,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 41 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -24,8 +24,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 36,
-    "rules_not_applicable": 55,
+    "rules_passed": 41,
+    "rules_not_applicable": 50,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -41,7 +41,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 42 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -56,8 +56,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 37,
-    "rules_not_applicable": 54,
+    "rules_passed": 42,
+    "rules_not_applicable": 49,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -73,7 +73,7 @@
    "check": "axe:menu-open",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 42 passed, 0 need a human look",
    "evidence": {
     "state": "menu-open",
     "state_meaning": "phone menu open (after a click on .menu-btn)",
@@ -98,8 +98,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 37,
-    "rules_not_applicable": 54,
+    "rules_passed": 42,
+    "rules_not_applicable": 49,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -116,7 +116,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -131,8 +131,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 38,
-    "rules_not_applicable": 53,
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -148,7 +148,7 @@
    "check": "axe:lightbox-open",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (lightbox open (after a click on the first photo)) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 44 passed, 1 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 43 passed, 1 need a human look",
    "evidence": {
     "state": "lightbox-open",
     "state_meaning": "lightbox open (after a click on the first photo)",
@@ -161,13 +161,13 @@
      "aria_modal": "true",
      "aria_label": "Photo viewer",
      "body_class": "page-gallery lightbox-open",
-     "image": "../images/g12.jpg",
+     "image": "../images/g01.jpg",
      "image_loaded": true,
-     "image_alt": "Long dark waves from the back",
-     "count": "1 / 2",
+     "image_alt": "",
+     "count": "1 / 21",
      "focus": "button.lb-close",
      "focus_inside": true,
-     "links": 2
+     "links": 21
     },
     "axe_version": "4.14.0",
     "tags": [
@@ -178,8 +178,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 44,
-    "rules_not_applicable": 46,
+    "rules_passed": 43,
+    "rules_not_applicable": 47,
     "rules_violated": [],
     "needs_review": [
      {
@@ -207,7 +207,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 39 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -222,8 +222,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 39,
-    "rules_not_applicable": 52,
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -239,7 +239,7 @@
    "check": "axe:menu-open",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 39 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
    "evidence": {
     "state": "menu-open",
     "state_meaning": "phone menu open (after a click on .menu-btn)",
@@ -264,8 +264,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 39,
-    "rules_not_applicable": 52,
+    "rules_passed": 38,
+    "rules_not_applicable": 53,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -282,7 +282,7 @@
    "check": "axe:lightbox-open",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (lightbox open (after a click on the first photo)) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 44 passed, 1 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 43 passed, 1 need a human look",
    "evidence": {
     "state": "lightbox-open",
     "state_meaning": "lightbox open (after a click on the first photo)",
@@ -295,13 +295,13 @@
      "aria_modal": "true",
      "aria_label": "Photo viewer",
      "body_class": "page-gallery lightbox-open",
-     "image": "../images/g12.jpg",
+     "image": "../images/g01.jpg",
      "image_loaded": true,
-     "image_alt": "Long dark waves from the back",
-     "count": "1 / 2",
+     "image_alt": "",
+     "count": "1 / 21",
      "focus": "button.lb-close",
      "focus_inside": true,
-     "links": 2
+     "links": 21
     },
     "axe_version": "4.14.0",
     "tags": [
@@ -312,8 +312,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 44,
-    "rules_not_applicable": 46,
+    "rules_passed": 43,
+    "rules_not_applicable": 47,
     "rules_violated": [],
     "needs_review": [
      {
@@ -341,38 +341,6 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
-   "evidence": {
-    "state": "base",
-    "state_meaning": "the page as it loads",
-    "address": "/book-online/",
-    "http_status": 200,
-    "axe_version": "4.14.0",
-    "tags": [
-     "wcag2a",
-     "wcag2aa",
-     "wcag21a",
-     "wcag21aa",
-     "wcag22aa",
-     "best-practice"
-    ],
-    "rules_passed": 36,
-    "rules_not_applicable": 55,
-    "rules_violated": [],
-    "needs_review": [],
-    "fonts_loaded": [
-     "Bodoni Moda",
-     "Figtree"
-    ]
-   },
-   "owner": "PAGES"
-  },
-  {
-   "page": "book-online",
-   "viewport": "phone",
-   "check": "axe:base",
-   "ok": true,
-   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
    "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
    "evidence": {
     "state": "base",
@@ -402,10 +370,42 @@
   {
    "page": "book-online",
    "viewport": "phone",
+   "check": "axe:base",
+   "ok": true,
+   "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 39 passed, 0 need a human look",
+   "evidence": {
+    "state": "base",
+    "state_meaning": "the page as it loads",
+    "address": "/book-online/",
+    "http_status": 200,
+    "axe_version": "4.14.0",
+    "tags": [
+     "wcag2a",
+     "wcag2aa",
+     "wcag21a",
+     "wcag21aa",
+     "wcag22aa",
+     "best-practice"
+    ],
+    "rules_passed": 39,
+    "rules_not_applicable": 52,
+    "rules_violated": [],
+    "needs_review": [],
+    "fonts_loaded": [
+     "Bodoni Moda",
+     "Figtree"
+    ]
+   },
+   "owner": "PAGES"
+  },
+  {
+   "page": "book-online",
+   "viewport": "phone",
    "check": "axe:menu-open",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (phone menu open (after a click on .menu-btn)) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 38 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 39 passed, 0 need a human look",
    "evidence": {
     "state": "menu-open",
     "state_meaning": "phone menu open (after a click on .menu-btn)",
@@ -430,8 +430,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 38,
-    "rules_not_applicable": 53,
+    "rules_passed": 39,
+    "rules_not_applicable": 52,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -448,7 +448,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 35 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -463,8 +463,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 35,
-    "rules_not_applicable": 56,
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -616,12 +616,10 @@
      "email_required": true,
      "note": "",
      "note_role": "status",
-     "sent_text": "Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
      "mail_links_opened": 0,
      "submit_events": 0,
-     "aria_invalid": [
-      "email"
-     ],
+     "aria_invalid": [],
      "focus": "#email",
      "missing_fields": []
     },
@@ -679,9 +677,9 @@
      "novalidate": false,
      "valid": true,
      "email_required": true,
-     "note": "Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.",
+     "note": "Thanks! Your email app should open so you can send the message.",
      "note_role": "status",
-     "sent_text": "Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
      "mail_links_opened": 1,
      "submit_events": 1,
      "aria_invalid": [],
@@ -762,6 +760,9 @@
      "Bodoni Moda",
      "Figtree"
     ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
     "notes": [
      "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
     ]
@@ -816,6 +817,9 @@
      "Bodoni Moda",
      "Figtree"
     ],
+    "blocked_expected": [
+     "https://www.google.com/maps?q=Le+Vigne+Hair+Salon,+644+Forest+Ave,+Staten+Island,+NY+10310&output=embed"
+    ],
     "screenshot": "qa/screenshots/check_a11y-contact-phone-menu-open.png",
     "notes": [
      "The Google map frame is blocked by the network rule and is not analysed. The iframe element itself is."
@@ -843,12 +847,10 @@
      "email_required": true,
      "note": "",
      "note_role": "status",
-     "sent_text": "Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
      "mail_links_opened": 0,
      "submit_events": 0,
-     "aria_invalid": [
-      "email"
-     ],
+     "aria_invalid": [],
      "focus": "#email",
      "missing_fields": []
     },
@@ -906,9 +908,9 @@
      "novalidate": false,
      "valid": true,
      "email_required": true,
-     "note": "Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.",
+     "note": "Thanks! Your email app should open so you can send the message.",
      "note_role": "status",
-     "sent_text": "Thanks! Your email app should open now with your message. Press send there. If no email app opens, email info@hairbygerta.com or call 347-671-5095.",
+     "sent_text": "Thanks! Your email app should open so you can send the message.",
      "mail_links_opened": 1,
      "submit_events": 1,
      "aria_invalid": [],
@@ -957,7 +959,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -972,8 +974,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 36,
-    "rules_not_applicable": 55,
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -1064,7 +1066,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 35 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -1079,8 +1081,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 35,
-    "rules_not_applicable": 56,
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -1171,7 +1173,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 35 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -1186,8 +1188,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 35,
-    "rules_not_applicable": 56,
+    "rules_passed": 36,
+    "rules_not_applicable": 55,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -1278,7 +1280,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 36 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 37 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -1293,8 +1295,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 36,
-    "rules_not_applicable": 55,
+    "rules_passed": 37,
+    "rules_not_applicable": 54,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -1385,7 +1387,7 @@
    "check": "axe:base",
    "ok": true,
    "expected": "the page loads without a missing or unexpected request, the state is reached (the page as it loads) and axe-core runs",
-   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 34 passed, 0 need a human look",
+   "actual": "axe-core 4.14.0 ran: 0 rule(s) violated (0 serious or critical, 0 moderate or minor), 35 passed, 0 need a human look",
    "evidence": {
     "state": "base",
     "state_meaning": "the page as it loads",
@@ -1400,8 +1402,8 @@
      "wcag22aa",
      "best-practice"
     ],
-    "rules_passed": 34,
-    "rules_not_applicable": 57,
+    "rules_passed": 35,
+    "rules_not_applicable": 56,
     "rules_violated": [],
     "needs_review": [],
     "fonts_loaded": [
@@ -1509,7 +1511,7 @@
   "form-sent": "contact form after a valid message was sent"
  },
  "not_analysed": [
-  "The Google map frame on the contact page. The network rule blocks every host except the site's own, so the map never loads and axe runs with iframes off. The iframe element itself (for example its title) is still checked.",
+  "The Google map frame on the contact page. The network rule blocks every host except the site's own and Google Fonts, so the map never loads and axe runs with iframes off. The iframe element itself (for example its title) is still checked.",
   "What axe-core cannot decide by itself. It is listed as needs_review in each axe:<state> entry, needs a human look and is not a failure.",
   "The browser's own message bubble on the blocked contact form. The browser draws it, not the page."
  ],

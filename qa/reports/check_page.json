@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 14:07:11",
+ "generated": "2026-10-13 07:39:51",
  "results": [
   {
    "page": "home",
@@ -22,7 +22,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "925641 bytes",
+   "actual": "210102 bytes",
    "evidence": "qa/screenshots/home-desktop.png",
    "owner": "QA"
   },
@@ -47,13 +47,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "10 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -62,8 +62,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "27 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "28 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -88,7 +88,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -98,7 +101,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -111,7 +114,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "3 image(s), 0 lazy, 0 not loaded",
+   "actual": "7 image(s), 2 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -138,7 +141,7 @@
    "actual": "1 h1 on the page, 1 in the HTML source",
    "evidence": {
     "h1": [
-     "Hair & Makeup by Gerta"
+     "It's Your Day to Shine!"
     ]
    },
    "owner": "PAGES"
@@ -159,7 +162,7 @@
    "check": "meta-description",
    "ok": true,
    "expected": "one meta description that is not empty",
-   "actual": "1 meta description(s): [\"Gerta Lila, hair stylist and makeup artist at Le Vigne Hair Salon, Staten Island, NY. Balayage, color, cuts, keratin, Brazilian blowouts and natural makeup.\"]",
+   "actual": "1 meta description(s): [\"Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blow\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -209,7 +212,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "41 address(es) in the source, 0 not relative",
+   "actual": "47 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -273,7 +276,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "6 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -299,7 +302,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "390851 bytes",
+   "actual": "132620 bytes",
    "evidence": "qa/screenshots/home-phone.png",
    "owner": "QA"
   },
@@ -324,13 +327,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "10 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -339,8 +342,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "27 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "28 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -365,7 +368,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -375,7 +381,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -388,7 +394,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "3 image(s), 0 lazy, 0 not loaded",
+   "actual": "7 image(s), 2 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -415,7 +421,7 @@
    "actual": "1 h1 on the page, 1 in the HTML source",
    "evidence": {
     "h1": [
-     "Hair & Makeup by Gerta"
+     "It's Your Day to Shine!"
     ]
    },
    "owner": "PAGES"
@@ -436,7 +442,7 @@
    "check": "meta-description",
    "ok": true,
    "expected": "one meta description that is not empty",
-   "actual": "1 meta description(s): [\"Gerta Lila, hair stylist and makeup artist at Le Vigne Hair Salon, Staten Island, NY. Balayage, color, cuts, keratin, Brazilian blowouts and natural makeup.\"]",
+   "actual": "1 meta description(s): [\"Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blow\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -486,7 +492,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "41 address(es) in the source, 0 not relative",
+   "actual": "47 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -550,7 +556,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "6 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -576,7 +582,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "817983 bytes",
+   "actual": "828429 bytes",
    "evidence": "qa/screenshots/gallery-desktop.png",
    "owner": "QA"
   },
@@ -601,13 +607,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "25 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -616,8 +622,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "27 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "61 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -632,16 +638,19 @@
    "check": "external-links",
    "ok": true,
    "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
-   "actual": "3 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
    "evidence": {
     "external links": [
      "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
-     "https://www.instagram.com/hairbygerta/ (2 x)"
+     "https://www.instagram.com/hairbygerta/ (1 x)"
     ],
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -651,7 +660,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "3 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -664,7 +673,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "3 image(s), 0 lazy, 0 not loaded",
+   "actual": "22 image(s), 18 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -762,7 +771,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "36 address(es) in the source, 0 not relative",
+   "actual": "71 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -826,7 +835,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "19 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -852,7 +861,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "247607 bytes",
+   "actual": "226203 bytes",
    "evidence": "qa/screenshots/gallery-phone.png",
    "owner": "QA"
   },
@@ -877,13 +886,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "25 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -892,8 +901,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "27 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "61 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -908,16 +917,19 @@
    "check": "external-links",
    "ok": true,
    "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
-   "actual": "3 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "actual": "2 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
    "evidence": {
     "external links": [
      "https://www.facebook.com/profile.php?id=61588784402912 (1 x)",
-     "https://www.instagram.com/hairbygerta/ (2 x)"
+     "https://www.instagram.com/hairbygerta/ (1 x)"
     ],
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -927,7 +939,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "3 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -940,7 +952,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "3 image(s), 0 lazy, 0 not loaded",
+   "actual": "22 image(s), 18 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -1038,7 +1050,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "36 address(es) in the source, 0 not relative",
+   "actual": "71 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -1102,7 +1114,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "19 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -1128,7 +1140,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "301973 bytes",
+   "actual": "211255 bytes",
    "evidence": "qa/screenshots/book-online-desktop.png",
    "owner": "QA"
   },
@@ -1153,13 +1165,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "14 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -1168,8 +1180,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "26 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -1193,7 +1205,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -1203,7 +1218,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "12 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -1216,7 +1231,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "actual": "11 image(s), 7 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -1243,7 +1258,7 @@
    "actual": "1 h1 on the page, 1 in the HTML source",
    "evidence": {
     "h1": [
-     "Our services"
+     "Our Services"
     ]
    },
    "owner": "PAGES"
@@ -1264,7 +1279,7 @@
    "check": "meta-description",
    "ok": true,
    "expected": "one meta description that is not empty",
-   "actual": "1 meta description(s): [\"Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup.\"]",
+   "actual": "1 meta description(s): [\"Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, keratin treatments, Brazilian blowouts and ma\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -1314,7 +1329,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "30 address(es) in the source, 0 not relative",
+   "actual": "46 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -1378,7 +1393,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "10 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -1404,7 +1419,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "239992 bytes",
+   "actual": "209704 bytes",
    "evidence": "qa/screenshots/book-online-phone.png",
    "owner": "QA"
   },
@@ -1429,13 +1444,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "14 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -1444,8 +1459,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "26 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -1469,7 +1484,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -1479,7 +1497,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "12 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -1492,7 +1510,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "actual": "11 image(s), 7 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -1519,7 +1537,7 @@
    "actual": "1 h1 on the page, 1 in the HTML source",
    "evidence": {
     "h1": [
-     "Our services"
+     "Our Services"
     ]
    },
    "owner": "PAGES"
@@ -1540,7 +1558,7 @@
    "check": "meta-description",
    "ok": true,
    "expected": "one meta description that is not empty",
-   "actual": "1 meta description(s): [\"Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup.\"]",
+   "actual": "1 meta description(s): [\"Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, keratin treatments, Brazilian blowouts and ma\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -1590,7 +1608,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "30 address(es) in the source, 0 not relative",
+   "actual": "46 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -1654,7 +1672,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "10 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -1680,7 +1698,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "173067 bytes",
+   "actual": "115201 bytes",
    "evidence": "qa/screenshots/about-desktop.png",
    "owner": "QA"
   },
@@ -1705,13 +1723,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 2 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -1720,8 +1738,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "24 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -1745,7 +1763,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -1755,7 +1776,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -1768,7 +1789,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "actual": "5 image(s), 2 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -1866,7 +1887,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "29 address(es) in the source, 0 not relative",
+   "actual": "37 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -1930,7 +1951,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "4 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -1956,7 +1977,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "130485 bytes",
+   "actual": "76518 bytes",
    "evidence": "qa/screenshots/about-phone.png",
    "owner": "QA"
   },
@@ -1981,13 +2002,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "8 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 2 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -1996,8 +2017,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "24 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -2021,7 +2042,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -2031,7 +2055,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -2044,7 +2068,7 @@
    "check": "images-load",
    "ok": true,
    "expected": "every image is complete with a natural width above 0 after the whole page was scrolled",
-   "actual": "1 image(s), 0 lazy, 0 not loaded",
+   "actual": "5 image(s), 2 lazy, 0 not loaded",
    "evidence": {
     "not loaded": [],
     "lazy images that only loaded after loading was forced (not a failure)": [],
@@ -2142,7 +2166,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "29 address(es) in the source, 0 not relative",
+   "actual": "37 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -2206,7 +2230,7 @@
    "check": "ph-alt",
    "ok": true,
    "expected": "every placeholder image has class ph and alt=\"\"",
-   "actual": "0 placeholder image(s), 0 wrong",
+   "actual": "4 placeholder image(s), 0 wrong",
    "evidence": {
     "wrong": [],
     "placeholder names taken from": "image-manifest.json (26 placeholders)"
@@ -2232,7 +2256,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "194369 bytes",
+   "actual": "118098 bytes",
    "evidence": "qa/screenshots/contact-desktop.png",
    "owner": "QA"
   },
@@ -2257,7 +2281,7 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
@@ -2265,7 +2289,7 @@
     "expected third parties, blocked or not reachable (not a failure)": [
      "www.google.com"
     ],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -2274,8 +2298,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -2290,17 +2314,18 @@
    "check": "external-links",
    "ok": true,
    "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
-   "actual": "5 external link(s) to 3 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "actual": "4 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
    "evidence": {
     "external links": [
      "https://www.facebook.com/profile.php?id=61588784402912 (2 x)",
-     "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310 (1 x)",
      "https://www.instagram.com/hairbygerta/ (2 x)"
     ],
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
     "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com",
      "www.google.com"
     ]
    },
@@ -2312,7 +2337,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 3 mailto link(s) on the page; 0 wrong",
+   "actual": "3 tel and 4 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -2423,7 +2448,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "34 address(es) in the source, 0 not relative",
+   "actual": "33 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -2513,7 +2538,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "144483 bytes",
+   "actual": "91764 bytes",
    "evidence": "qa/screenshots/contact-phone.png",
    "owner": "QA"
   },
@@ -2538,7 +2563,7 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
@@ -2546,7 +2571,7 @@
     "expected third parties, blocked or not reachable (not a failure)": [
      "www.google.com"
     ],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -2555,8 +2580,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -2571,17 +2596,20 @@
    "check": "external-links",
    "ok": true,
    "expected": "every external link is the Facebook, Instagram or Maps link from FACTS, written exactly; Facebook and Instagram on every page, the Maps link on the home page",
-   "actual": "5 external link(s) to 3 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
+   "actual": "4 external link(s) to 2 address(es); 0 wrong, 0 missing, 0 without rel=noopener",
    "evidence": {
     "external links": [
      "https://www.facebook.com/profile.php?id=61588784402912 (2 x)",
-     "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310 (1 x)",
      "https://www.instagram.com/hairbygerta/ (2 x)"
     ],
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com",
+     "www.google.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -2591,7 +2619,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 3 mailto link(s) on the page; 0 wrong",
+   "actual": "3 tel and 4 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -2702,7 +2730,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "34 address(es) in the source, 0 not relative",
+   "actual": "33 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -2792,7 +2820,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "381073 bytes",
+   "actual": "206125 bytes",
    "evidence": "qa/screenshots/english-refund-policy-desktop.png",
    "owner": "QA"
   },
@@ -2817,13 +2845,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -2832,8 +2860,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -2857,7 +2885,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -2867,7 +2898,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -2918,7 +2949,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Refund Policy | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Refund Policy | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -2978,7 +3009,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "28 address(es) in the source, 0 not relative",
+   "actual": "26 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -3068,7 +3099,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "301380 bytes",
+   "actual": "157101 bytes",
    "evidence": "qa/screenshots/english-refund-policy-phone.png",
    "owner": "QA"
   },
@@ -3093,13 +3124,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -3108,8 +3139,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -3133,7 +3164,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -3143,7 +3177,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "2 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -3194,7 +3228,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Refund Policy | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Refund Policy | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -3254,7 +3288,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "28 address(es) in the source, 0 not relative",
+   "actual": "26 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -3344,7 +3378,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "316061 bytes",
+   "actual": "235735 bytes",
    "evidence": "qa/screenshots/accessibility-statement-desktop.png",
    "owner": "QA"
   },
@@ -3369,13 +3403,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -3384,8 +3418,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -3409,7 +3443,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -3419,7 +3456,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 2 mailto link(s) on the page; 0 wrong",
+   "actual": "2 tel and 2 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -3470,7 +3507,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Accessibility Statement | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Accessibility Statement | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -3530,7 +3567,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "29 address(es) in the source, 0 not relative",
+   "actual": "27 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -3620,7 +3657,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "252713 bytes",
+   "actual": "153398 bytes",
    "evidence": "qa/screenshots/accessibility-statement-phone.png",
    "owner": "QA"
   },
@@ -3645,13 +3682,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -3660,8 +3697,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -3685,7 +3722,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -3695,7 +3735,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "4 tel and 2 mailto link(s) on the page; 0 wrong",
+   "actual": "2 tel and 2 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -3746,7 +3786,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Accessibility Statement | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Accessibility Statement | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -3806,7 +3846,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "29 address(es) in the source, 0 not relative",
+   "actual": "27 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -3896,7 +3936,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "693072 bytes",
+   "actual": "377576 bytes",
    "evidence": "qa/screenshots/english-privacy-policy-desktop.png",
    "owner": "QA"
   },
@@ -3921,13 +3961,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -3936,8 +3976,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -3961,7 +4001,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -3971,7 +4014,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 3 mailto link(s) on the page; 0 wrong",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -4022,7 +4065,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Privacy Policy | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Privacy Policy | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -4082,7 +4125,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "31 address(es) in the source, 0 not relative",
+   "actual": "29 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -4172,7 +4215,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "559437 bytes",
+   "actual": "297046 bytes",
    "evidence": "qa/screenshots/english-privacy-policy-phone.png",
    "owner": "QA"
   },
@@ -4197,13 +4240,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -4212,8 +4255,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -4237,7 +4280,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -4247,7 +4293,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 3 mailto link(s) on the page; 0 wrong",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -4298,7 +4344,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Privacy Policy | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Privacy Policy | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -4358,7 +4404,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "31 address(es) in the source, 0 not relative",
+   "actual": "29 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -4448,7 +4494,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "759137 bytes",
+   "actual": "417540 bytes",
    "evidence": "qa/screenshots/terms-conditions-desktop.png",
    "owner": "QA"
   },
@@ -4473,13 +4519,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -4488,8 +4534,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -4513,7 +4559,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -4523,7 +4572,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 3 mailto link(s) on the page; 0 wrong",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -4574,7 +4623,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Terms and Conditions | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Terms and Conditions | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -4634,7 +4683,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "33 address(es) in the source, 0 not relative",
+   "actual": "31 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -4724,7 +4773,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "630020 bytes",
+   "actual": "327334 bytes",
    "evidence": "qa/screenshots/terms-conditions-phone.png",
    "owner": "QA"
   },
@@ -4749,13 +4798,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -4764,8 +4813,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -4789,7 +4838,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -4799,7 +4851,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "5 tel and 3 mailto link(s) on the page; 0 wrong",
+   "actual": "3 tel and 3 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -4850,7 +4902,7 @@
    "check": "title",
    "ok": true,
    "expected": "one title tag that is not empty",
-   "actual": "1 title tag(s): [\"Terms and Conditions | Hair & Makeup by Gerta\"]",
+   "actual": "1 title tag(s): [\"Terms and Conditions | Hairbygerta\"]",
    "evidence": "",
    "owner": "CONTENT"
   },
@@ -4910,7 +4962,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "33 address(es) in the source, 0 not relative",
+   "actual": "31 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -5000,7 +5052,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "102623 bytes",
+   "actual": "73013 bytes",
    "evidence": "qa/screenshots/404-desktop.png",
    "owner": "QA"
   },
@@ -5025,13 +5077,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -5040,8 +5092,8 @@
    "viewport": "desktop",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -5065,7 +5117,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -5075,7 +5130,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "3 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -5186,7 +5241,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "27 address(es) in the source, 0 not relative",
+   "actual": "25 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -5263,23 +5318,21 @@
    "check": "404-deep-address",
    "ok": true,
    "expected": "for a broken address inside a folder the 404 page answers 404 and still finds its stylesheet, script, images and links",
-   "actual": "status 404, stylesheet loaded, 27 links and files checked",
+   "actual": "status 404, stylesheet loaded, 25 links and files checked",
    "evidence": {
     "tested address": "qa-check-no-such-folder/no-such-page/",
     "title": "Page not found | Hair & Makeup by Gerta",
     "stylesheets": [
      {
       "file": "css/style.css",
-      "rules": 203
+      "rules": 240
      }
     ],
     "images not loaded": [],
     "links that lead nowhere": [],
     "requests that answered 404 before the page had set its base address (listed, not judged)": [
-     "qa-check-no-such-folder/no-such-page/fonts/figtree-latin.woff2",
-     "qa-check-no-such-folder/no-such-page/css/style.css",
-     "qa-check-no-such-folder/no-such-page/fonts/bodoni-moda-italic-latin.woff2",
      "qa-check-no-such-folder/no-such-page/images/logo.jpg",
+     "qa-check-no-such-folder/no-such-page/css/style.css",
      "qa-check-no-such-folder/no-such-page/js/site.js"
     ],
     "skip link stays on the page when pressed": true
@@ -5305,7 +5358,7 @@
    "check": "screenshot",
    "ok": true,
    "expected": "a full-page screenshot is saved",
-   "actual": "74060 bytes",
+   "actual": "48823 bytes",
    "evidence": "qa/screenshots/404-phone.png",
    "owner": "QA"
   },
@@ -5330,13 +5383,13 @@
    "check": "requests",
    "ok": true,
    "expected": "no failed request, no 4xx or 5xx answer, no call to an unexpected third party",
-   "actual": "6 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
+   "actual": "4 answers from the site; 0 with 4xx or 5xx, 0 failed, 0 to an unexpected third party",
    "evidence": {
     "4xx or 5xx": [],
     "failed": [],
     "unexpected third party": [],
     "expected third parties, blocked or not reachable (not a failure)": [],
-    "fonts": "ready, 2 of 4 font faces loaded"
+    "fonts": "ready, 3 of 12 font faces loaded"
    },
    "owner": "PAGES"
   },
@@ -5345,8 +5398,8 @@
    "viewport": "phone",
    "check": "internal-links",
    "ok": true,
-   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, fonts/figtree-latin.woff2, fonts/bodoni-moda-italic-latin.woff2, every fragment target exists",
-   "actual": "19 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
+   "expected": "every internal address answers 200, the page links css/style.css, js/site.js, favicon.ico, images/favicon.png, images/apple-touch-icon.png, every fragment target exists",
+   "actual": "16 distinct internal addresses requested, 0 did not answer 200, 0 fragment target(s) missing, 0 required file(s) not linked",
    "evidence": {
     "broken": [],
     "missing fragment targets": [],
@@ -5370,7 +5423,10 @@
     "wrong": [],
     "missing": [],
     "new tab without rel=noopener": [],
-    "other third-party hosts (fonts, map)": []
+    "other third-party hosts (fonts, map)": [
+     "fonts.googleapis.com",
+     "fonts.gstatic.com"
+    ]
    },
    "owner": "PAGES"
   },
@@ -5380,7 +5436,7 @@
    "check": "tel-mailto",
    "ok": true,
    "expected": "every tel link is \"tel:+1-347-671-5095\" and every mailto link is \"mailto:info@hairbygerta.com\", at least one of each",
-   "actual": "3 tel and 1 mailto link(s) on the page; 0 wrong",
+   "actual": "1 tel and 1 mailto link(s) on the page; 0 wrong",
    "evidence": {
     "wrong": [],
     "missing": []
@@ -5491,7 +5547,7 @@
    "check": "relative-addresses",
    "ok": true,
    "expected": "every internal address in the HTML source is relative (no leading slash, no absolute address of this site)",
-   "actual": "27 address(es) in the source, 0 not relative",
+   "actual": "25 address(es) in the source, 0 not relative",
    "evidence": {
     "not relative": []
    },
@@ -5568,22 +5624,20 @@
    "check": "404-deep-address",
    "ok": true,
    "expected": "for a broken address inside a folder the 404 page answers 404 and still finds its stylesheet, script, images and links",
-   "actual": "status 404, stylesheet loaded, 27 links and files checked",
+   "actual": "status 404, stylesheet loaded, 25 links and files checked",
    "evidence": {
     "tested address": "qa-check-no-such-folder/no-such-page/",
     "title": "Page not found | Hair & Makeup by Gerta",
     "stylesheets": [
      {
       "file": "css/style.css",
-      "rules": 203
+      "rules": 240
      }
     ],
     "images not loaded": [],
     "links that lead nowhere": [],
     "requests that answered 404 before the page had set its base address (listed, not judged)": [
      "qa-check-no-such-folder/no-such-page/css/style.css",
-     "qa-check-no-such-folder/no-such-page/fonts/figtree-latin.woff2",
-     "qa-check-no-such-folder/no-such-page/fonts/bodoni-moda-italic-latin.woff2",
      "qa-check-no-such-folder/no-such-page/images/logo.jpg",
      "qa-check-no-such-folder/no-such-page/js/site.js"
     ],
@@ -5611,7 +5665,7 @@
     "desktop",
     "phone"
    ],
-   "seconds": 23.2,
+   "seconds": 91.8,
    "BOOKING_URL": "",
    "placeholder names from": "image-manifest.json (26 placeholders)",
    "attempts where the connection failed at first (page viewport: attempts)": {},

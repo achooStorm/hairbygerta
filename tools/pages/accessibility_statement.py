@@ -1,8 +1,7 @@
 """Page module of /accessibility-statement/ (Accessibility Statement).
 
-Contract, section 7, policy pages (decision 47): article.legal holding div.page-head with the
-h1, the shade strip, and div.legal-body with the h2, h3, p and ul elements made from the "blocks"
-list of the content file. Only the styling is new, the wording is untouched.
+Contract, section 7, policy pages: article.legal holding the h1, then the h2, p and ul
+elements made from the "blocks" list of the content file.
 
 Every word on the page comes from content/accessibility-statement.json:
     h1       the heading of the page
@@ -43,17 +42,8 @@ def render(ctx):
                          % (ctx.slug, unknown[0], ", ".join(HEAD_KEYS + EDITOR_KEYS)))
     body = "\n".join([
         '<article class="legal">',
-        '  <div class="page-head">',
-        '    <div class="wrap">',
-        "      <h1>%s</h1>" % ctx.esc(c["h1"]),
-        "    </div>",
-        "  </div>",
-        _indent(ctx.shade()),
-        '  <div class="legal-body">',
-        '    <div class="wrap">',
-        _indent(ctx.blocks(c["blocks"]), 6),
-        "    </div>",
-        "  </div>",
+        "  <h1>%s</h1>" % ctx.esc(c["h1"]),
+        _indent(ctx.blocks(c["blocks"])),
         "</article>",
     ])
     return {"body": body, "head_extra": ""}

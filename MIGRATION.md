@@ -7,7 +7,7 @@ Four things to know before you start.
 - **One move, with fixed dates.** On 2 November 2026 the Wix account showed that the Wix site plan and the business email end on the evening of Thursday 26 November 2026, New York time. The domain's registration at Wix expires the same evening [S27]. Auto renew is off for all three. With auto renew off, a Wix subscription does not renew [S59], so nothing has to be canceled. Before that evening the domain moves to Porkbun. Your helper starts the transfer on Monday 9 November 2026, or at the latest on Monday 16 November 2026. [Section 2](#2-what-was-checked-in-wix-on-2-november-2026) has the end dates, and [Section 3](#3-moving-the-domain-from-wix-to-porkbun-step-by-step) has the steps of the move.
 - **The Wix site keeps running until the transfer completes.** Nothing in Sections 1 and 2 changes it. When the transfer completes, Wix disconnects the Wix site from the domain [S35]. The same day your helper points the address at the new site ([Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages)) and turns on the email forwarding ([Section 5](#5-free-email-forwarding-from-infohairbygertacom-to-gmail)).
 - **You can look at the new site in the meantime.** On the computer today, and on the internet at the preview address https://achoostorm.github.io/hairbygerta/ once the new site is published. [Section 1, Part 1](#part-1-look-at-the-new-site) shows both.
-- **The photos are the one difference.** 26 photos of the Wix site cannot move to the new site. [Section 8, Part 4](#part-4-the-14-shutterstock-photos) says why. The new site does not show them. Each one has a spot that is left out of its page until you put in a photo of your own, and the pages look finished without it. Never save, copy or upload a photo from the Wix site.
+- **The photos are the one difference.** 26 photos of the Wix site cannot move to the new site. [Section 8, Part 4](#part-4-the-14-shutterstock-photos) says why. On the new site a placeholder (a beige box with a faint logo) stands in for each of them until you put in a photo of your own. Never save, copy or upload a photo from the Wix site.
 
 How to read this guide.
 
@@ -32,7 +32,7 @@ Tick each step when it is done. The order matters. The link in each step leads t
 
 2. [ ] Look at the new site on the computer. See [Section 1, Part 1](#part-1-look-at-the-new-site).
 3. [ ] Collect your own photos. See [Section 1, Part 2](#part-2-collect-your-own-photos).
-4. [ ] Booking stays by phone and needs no setup. Every **Call 347-671-5095** button on the new site calls the number, and **Text Gerta** starts a text message to it. See [Section 1, Part 3](#part-3-booking-stays-by-phone).
+4. [ ] Booking stays by phone and needs no setup. Every **Book Now** button on the new site calls 347-671-5095. See [Section 1, Part 3](#part-3-booking-stays-by-phone).
 5. [ ] Your helper publishes the new site, so that it opens at the preview address. Then you look at every page there together. Do this before the transfer starts in step 10, because the new site has to be ready when the Wix site leaves the address [S35]. Only the helper can publish, because the GitHub account is theirs. See [Section 1, Part 4](#part-4-your-helper-publishes-the-new-site-the-first-time).
 6. [ ] Read [Section 8, What cannot be undone](#8-what-cannot-be-undone) once, before anything is changed at Wix.
 
@@ -75,7 +75,7 @@ GitHub is the service that will hold the site, on its free plan [S1] [S2]. It gi
 6. Click through every page.
 7. Close the black window when you are done. This stops the preview.
 
-The site shows two photos today, both your own. 26 more spots wait for your own photos. A spot without a photo is left out of its page, so you will not see an empty box.
+The beige boxes with a faint logo are placeholders (stand-in pictures). Each one marks a spot for one of your own photos.
 
 ### Part 2: Collect your own photos
 
@@ -90,21 +90,21 @@ A photo is safe to use only if one of these is true:
 Not safe: a photo saved or screenshotted from the old Wix site, anything in the folder `hairbygerta-wix-only-photos`, and photos found on Google, Pinterest or Instagram. If a client can be recognised in a photo, get the client's written OK too.
 
 1. Start the preview on the computer (Part 1).
-2. Open the table [Which name is used where](#which-name-is-used-where) in Section 6. It lists the 26 spot names, for example `home-smile`, and the pages that show each one.
-3. Pick your own photo for that spot. Every spot is tall, like a phone photo held upright. The page crops the photo to fit, so keep the hair or face near the middle.
+2. Right-click a beige box and choose **Open image in new tab**. The end of the address shows the placeholder's file name, for example `home-smile.jpg`.
+3. Pick your own photo for that spot. Keep tall spots tall and wide spots wide. Most spots crop the photo to fit, so keep the hair or face near the middle.
 4. Copy the photo you picked into a new folder of its own, for example a folder called salon-photos in your Pictures. Use the original photo file, not a screenshot. Do not put it into the `hairbygerta` folder yet.
 5. Write down the placeholder's file name for this photo, and a few words on what the photo shows.
 6. Repeat steps 2 to 5 for the next spot.
 
 When a photo is ready to go onto the site, follow [Section 6](#6-how-to-replace-a-placeholder-with-a-real-photo). It shows how to save the photo in the right size and under the right name, and how to publish it. Section 6 also has a table of all 26 placeholder names. If those computer steps are not for you, give your helper the folder with your photos and your notes.
 
-There are 26 placeholder names. You do not need all of them at once. A spot you do not fill is left out of its page. Some photos are used on more than one page.
+There are 26 placeholder names. You do not need all of them at once. A spot you do not fill stays a beige box. Some photos are used on more than one page.
 
 **The logo.** The logo file is only 225 px wide and 225 px tall (px means pixels, the dots a picture is made of), so it can look a little soft on sharp screens. Ask whoever designed the logo for the original artwork (a vector file such as SVG, AI, EPS or PDF, or a large PNG). A sharper logo can then be put in later. Nothing has to change now.
 
 ### Part 3: Booking stays by phone
 
-The owner of Le Vigne Hair Salon wants clients to use the salon's own booking, and there is no online booking link for it. So the new site takes no bookings online. Its Services page lists the services, and the **Call 347-671-5095** button there calls the number. There is nothing to set up. [Section 7](#7-booking-by-phone) says where the phone number is written, in case it ever changes.
+The owner of Le Vigne Hair Salon wants clients to use the salon's own booking, and there is no online booking link for it. So the new site takes no bookings online. Its Book Online page lists the services, and every **Book Now** button there calls 347-671-5095. There is nothing to set up. [Section 7](#7-booking-by-phone) says where the phone number is written, in case it ever changes.
 
 ### Part 4: Your helper publishes the new site the first time
 
@@ -669,7 +669,7 @@ If your own browser still shows an old page, clear its cache (the copies of page
 ### What you see when it has worked
 
 - In GitHub under **Settings**, **Pages**, a check mark shows beside www.hairbygerta.com [S62], and **Enforce HTTPS** is selected. This is the check to trust.
-- https://www.hairbygerta.com opens the new site. It has its own look since 12 November 2026. You can tell it by the Call button at the top right and by the strip of five hair colors under the first photos.
+- https://www.hairbygerta.com opens the new site. The two sites look alike. As long as some placeholders are left, you can tell the new site by its beige boxes.
 - hairbygerta.com without www jumps to www.hairbygerta.com by itself [S64].
 - The old page addresses still open, for example https://www.hairbygerta.com/gallery/ and https://www.hairbygerta.com/book-online/.
 - If you still see an old page or a parking page, clear your browser's cache and look again [S65].
@@ -843,7 +843,7 @@ On Friday 27 November 2026, the day after the old mailbox has ended, test once m
 
 ## 6. How to replace a placeholder with a real photo
 
-A placeholder is a stand-in file, a beige picture with a faint logo. It holds the spot of a photo that could not move with you from Wix. The site does not show it. The spot shows on its page as soon as your own photo is in. This section shows how to put your own photo in such a spot and publish it. Start with one spot. If the computer steps are new to you, do them together with your helper.
+A placeholder is a beige picture with a faint logo. It holds the spot of a photo that could not move with you from Wix. This section shows how to put your own photo in such a spot and publish it. Start with one spot. If the computer steps are new to you, do them together with your helper.
 
 Publishing goes through the GitHub account achooStorm, which belongs to your helper. So Gerta cannot publish a photo alone. She chooses the photos and can do Parts B to D. Part E is done by the helper, or by the two together on a computer where the helper has signed in.
 
@@ -891,7 +891,7 @@ A cloned folder has no guard against Wix-only photos yet. The guard is a check t
 
 The script `tools/add_photo.py` does Parts B and C below and the build of Part D in one step. Do Part A first. Keep the original photos outside the folder `hairbygerta`, for example in a folder `new-photos` next to it. In a terminal in the folder `hairbygerta`:
 
-1. `..\hairbygerta-env\venv\Scripts\python.exe tools\add_photo.py --list` shows the 26 places that still wait for a photo.
+1. `..\hairbygerta-env\venv\Scripts\python.exe tools\add_photo.py --list` shows the 26 places that still show a placeholder.
 2. `..\hairbygerta-env\venv\Scripts\python.exe tools\add_photo.py ..\new-photos\IMG_0001.jpg g05 --alt "Long brunette waves, seen from the back"` puts that photo in the place `g05`. Add `--dry-run` first to see what would happen.
 3. The script turns the photo upright, makes the two sizes and a smaller WebP copy of each, removes the place and date the phone saved in the photo, writes the alt text and builds the pages.
 4. Look at the page as in Part D, then publish with Part E. The commit holds more files than the list in step 30, because of the WebP copies.
@@ -911,7 +911,7 @@ The example puts your photo in the fifth spot of the Gallery page. The file name
 4. Open the folder `hairbygerta`, then `images`, and look at `g05.jpg`. It is a wide picture, 1600 x 1066 px.
 5. Pick a photo of yours for this spot. A wide spot needs a wide photo, a tall spot a tall one.
 6. Open your photo in any photo program.
-7. Crop it to a tall shape, 9 wide to 16 high, like a phone photo held upright.
+7. Crop it to about the shape of the placeholder.
 8. With the Resize or Export option, save a copy as a JPG file, 1600 px on its long side. Name it `g05.jpg` and save it in `hairbygerta/images`.
 9. Say yes when the computer asks whether to replace the file.
 10. Save a second copy as a JPG file, 800 px on its long side. Name it `g05.jpg` too and save it in `hairbygerta/images/sm`.
@@ -950,7 +950,7 @@ About the description: say what the photo shows, in a few words. Do not start wi
 27. Click the photo. The large copy opens.
 28. Close the black window. This stops the preview.
 
-If you do not see your photo, hold Ctrl and Shift and press R. That loads the page fresh, without the copy the browser kept [S92] [S93].
+If you still see the beige box, hold Ctrl and Shift and press R. That loads the page fresh, without the copy the browser kept [S92] [S93].
 
 #### Part E: Publish
 
@@ -960,7 +960,7 @@ If you do not see your photo, hold Ctrl and Shift and press R. That loads the pa
 32. Under the Description field, click the button that starts with **Commit** and ends with **to main**. GitHub's help page calls it **Commit to BRANCH** [S82]. The program puts the number of files into the name, so for this example it reads **Commit 6 files to main** [S86].
 33. Click **Push origin** [S82]. This sends the commit to GitHub [S83]. GitHub then publishes the change to the site by itself [S94].
 34. Wait up to 10 minutes [S3].
-35. Open https://achoostorm.github.io/hairbygerta/gallery/ and check the photo. Once the domain points to the new site, use https://www.hairbygerta.com/gallery/. Hold Ctrl and Shift and press R if you do not see your photo.
+35. Open https://achoostorm.github.io/hairbygerta/gallery/ and check the photo. Once the domain points to the new site, use https://www.hairbygerta.com/gallery/. Hold Ctrl and Shift and press R if you still see the beige box.
 
 If the list in step 30 shows more files, look at each one before you commit. Other `index.html` files and `404.html` that the build wrote again are fine. After New Year all ten change once, because the build puts the year into the footer of every page. A picture or a zip file that you did not put there yourself is not fine. Take it out of the folder first.
 
@@ -975,17 +975,17 @@ A name can be used on more than one page. Do steps 17 to 21 in every content fil
 | File names | Content files (in `hairbygerta/content`) |
 |---|---|
 | `g01` `g02` `g04` `g05` `g06` `g07` `g15` `g20` `g21` | `gallery.json` |
-| `g14` `g16` `g17` `g18` `g19` | `gallery.json` |
-| `g10` | `gallery.json`, `about.json` |
+| `g14` `g16` `g17` `g18` `g19` | `gallery.json`, `book-online.json` |
+| `g10` | `gallery.json`, `book-online.json`, `about.json` |
 | `brunette-balayage` `copper-waves` | `gallery.json`, `about.json` |
-| `foils-highlights` `makeup-red-lips` | `home.json`, `gallery.json` |
+| `foils-highlights` `makeup-red-lips` | `home.json`, `gallery.json`, `book-online.json` |
 | `home-styling` `home-smile` `home-waves` `meet-extensions` | `home.json` |
 | `about-salon` | `about.json` |
-| `svc-haircut` `svc-bridal` | no page (the Services page shows no photos since 12 November 2026) |
+| `svc-haircut` `svc-bridal` | `book-online.json` |
 
-`home.json` is the Home page, `gallery.json` the Gallery page and `about.json` the About page. Every page shows a photo in a tall frame and cuts it to fit, so keep the hair or the face near the middle. In the Gallery a click on a photo opens the whole photo.
+`home.json` is the Home page, `gallery.json` the Gallery page, `book-online.json` the Book Online page and `about.json` the About page. Outside the Gallery, the page cuts the photo to the shape of its spot, so keep the hair or the face near the middle.
 
-Every spot is tall, 9 wide to 16 high, whatever shape the placeholder file has. Crop your photo to that tall shape in step 7, not to the shape of the placeholder. A wide photo would be cut hard at the sides.
+On the Home page every spot is tall, whatever shape the placeholder file has. The four photos in the row are shown about 288 x 545 px, the small Meet Gerta photo about 313 x 422 px and the large one about 424 x 637 px. For `home-styling`, `home-smile`, `home-waves` and `meet-extensions`, crop your photo to a tall shape like that in step 7, not to the shape of the placeholder. A wide photo would be cut hard at the sides and look soft there.
 
 The two real photos on the site, `g12` and `g13`, are not in this table, because they are not placeholders. To change one of them, ask your helper: each has two more copies in another file format that have to be changed with it.
 
@@ -1002,12 +1002,12 @@ To see the size of a placeholder, right-click it, choose **Properties** and open
 
 ## 7. Booking by phone
 
-Every **Call 347-671-5095** button on the new site calls the number, and every **Text Gerta** link starts a text message to it. A Call button is at the top of every page, and on a phone one stays at the bottom of the screen. The Home page, the Services page and the About page have a Call button and a Text Gerta link of their own. There is no online booking link to paste and nothing to set up. [Section 1, Part 3](#part-3-booking-stays-by-phone) says why.
+Every **Book Now** button on the new site calls 347-671-5095. There are 10 of them, one for each service on the Book Online page. The **Book Online** button on the home page opens that page. There is no online booking link to paste and nothing to set up. [Section 1, Part 3](#part-3-booking-stays-by-phone) says why.
 
 If the phone number ever changes, tell your helper. The site is in the helper's GitHub account, so the helper makes the change, in three places in the folder `hairbygerta`.
 
 - In several files in the folder `content`. Search all of them for the old number, 347-671-5095.
-- In `js/site.js`, on the line with `var phoneHref`. No button uses that line today, but keep it in step with the number.
+- In `js/site.js`, on the line with `var phoneHref`. This is the number the **Book Now** buttons call.
 - In `seo/jsonld-home.json`, which gives the number to search engines.
 
 The helper first gets the latest version as in [Section 6, Part A](#part-a-get-the-latest-version). After the change the helper builds the pages as in [Part D](#part-d-build-the-pages-and-look) of that section, steps 22 and 23, and publishes them as in [Part E](#part-e-publish), steps 29 to 34. In step 30 the list of changed files is then not the one of the photo example. It shows the files the helper changed and the pages that the build wrote again. `README.md` in the folder lists the same three places.
@@ -1026,7 +1026,7 @@ Nothing has to be canceled. On 2 November 2026 auto renew was already off for th
 
 If the transfer in Section 3 is complete by then, the Wix site is no longer on hairbygerta.com anyway. Wix disconnects the Wix site from the domain when the domain has been transferred away from Wix [S35]. Once [Section 4](#4-after-the-transfer-pointing-the-domain-at-github-pages) is done, hairbygerta.com shows the new site.
 
-**The one thing to do first.** After Section 4, have your helper confirm that hairbygerta.com shows the new site. Do it by Tuesday 24 November 2026 at the latest. A browser can show an old copy of a page, so do not judge by eye alone. The checks are in Section 4 under [What you see when it has worked](#what-you-see-when-it-has-worked). If something is wrong, follow [If it has not worked after 24 hours](#if-it-has-not-worked-after-24-hours) in Section 4.
+**The one thing to do first.** After Section 4, have your helper confirm that hairbygerta.com shows the new site. Do it by Tuesday 24 November 2026 at the latest. The two sites look alike, so do not judge by eye. The checks are in Section 4 under [What you see when it has worked](#what-you-see-when-it-has-worked). If something is wrong, follow [If it has not worked after 24 hours](#if-it-has-not-worked-after-24-hours) in Section 4.
 
 If the new site still cannot be shown, Gerta and your helper can decide to keep the Wix site for one more year as a fallback. **Your helper signs in** to Wix and clicks **Turn Auto Renew On** under the plan on the **Premium Subscriptions** page. This works only before the plan ends [S24]. It costs one more year of Core, \$348 at the price seen on 2 November 2026, and Wix does not refund renewals [S19]. The plan alone does not bring the Wix site back to hairbygerta.com, because Wix disconnected the site when the domain left [S35]. The domain then also has to be pointed back at the Wix site, as in [How to undo the switch](#how-to-undo-the-switch) in Section 4.
 
