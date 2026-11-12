@@ -1,9 +1,9 @@
 """Behaviour tests on the real pages.
 
 What is tested:
-  phone menu, gallery photo viewer (lightbox), Book Now buttons, contact form, the Call button and the Text link
-  and the one motion of the home page, the footer year, the site with JavaScript switched off, broken addresses
-  and old Wix addresses.
+  phone menu, gallery photo viewer (lightbox), the Call button and the Text link of the home page and of the
+  Services page, contact form, the one motion of the home page, the footer year, the site with JavaScript
+  switched off, broken addresses and old Wix addresses.
 
 Run it with the Python of the tools folder (it has Playwright), from anywhere:
 
@@ -23,9 +23,12 @@ Which page slug carries which tests:
                 footer year with another clock. The scrolling hours line and the Book Online button were tested here
                 until the redesign of 12 November 2026 removed them (build contract, decisions 44 and 45).
   gallery       photo viewer, gallery links without JavaScript
-  book-online   Book Now buttons, with and without a booking link, and without JavaScript
+  book-online   the Call button and the Text link of the call block, with and without a booking link in js/site.js,
+                and without JavaScript. Until the redesign of 12 November 2026 the page had ten Book Now buttons, which
+                were tested here (build contract, decision 47).
   contact       contact form, with and without JavaScript
-  404           a broken address shows the styled 404 page, old Wix booking addresses end on Book Online.
+  404           a broken address shows the styled 404 page, old Wix booking addresses end on the Services page
+                (book-online/).
                 Run twice on a local run: with the site under /hairbygerta/ (the GitHub Pages address) and with the
                 site at the top of the host (www.hairbygerta.com), check names of the second start with
                 "site at the top of the host:"
@@ -421,15 +424,12 @@ JS_BACKDROP = r"""() => {
   return best;
 }"""
 
-JS_BOOK = r"""() => ({
-  pills: Array.from(document.querySelectorAll('a.pill[data-book]')).map((a) => ({href: a.getAttribute('href'),
-    target: a.getAttribute('target'), rel: a.getAttribute('rel'), text: a.textContent.replace(/\s+/g, ' ').trim()})),
-  marked: document.querySelectorAll('[data-book]').length})"""
-
-JS_HOME_LINKS = r"""() => ({
-  call: Array.from(document.querySelectorAll('.hero a.btn-call')).map((a) => ({attr: a.getAttribute('href'),
+# The Call button and the Text link inside one part of a page (the hero of the home page, the call block of the
+# Services page), and how many elements of the page are marked data-book.
+JS_CALL_LINKS = r"""(scope) => ({
+  call: Array.from(document.querySelectorAll(scope + ' a.btn-call')).map((a) => ({attr: a.getAttribute('href'),
     target: a.getAttribute('target'), book: a.hasAttribute('data-book'), text: a.textContent.replace(/\s+/g, ' ').trim()})),
-  text: Array.from(document.querySelectorAll('.hero a.text-link')).map((a) => ({attr: a.getAttribute('href'),
+  text: Array.from(document.querySelectorAll(scope + ' a.text-link')).map((a) => ({attr: a.getAttribute('href'),
     target: a.getAttribute('target'), book: a.hasAttribute('data-book'), text: a.textContent.replace(/\s+/g, ' ').trim()})),
   marked: document.querySelectorAll('[data-book]').length})"""
 
@@ -749,7 +749,11 @@ def test_lightbox(env, vp):
         page.goto(url, wait_until="load")
         links = page.evaluate(JS_GALLERY)
         total = len(links)
-        if total < 3:
+        # Since the redesign of 12 November 2026 the gallery shows only the photos that are no longer placeholders
+        # (decision 44), two today. Two are enough to test the viewer. With two, one step forward and one step back
+        # both lead to the other photo, so the test cannot tell a previous button that goes forward from one that goes
+        # back until the gallery has a third photo. The evidence of the previous button check says so.
+        if total < 2:
             raise Stop(f"the gallery has {total} links (.gallery a), the viewer cannot be tested", "PAGES")
 
         def state():
@@ -936,6 +940,10 @@ def test_lightbox(env, vp):
                    evidence="; ".join(what for what, _ in done), owner="DESIGN" if only_unpressable else None)
 
         verdict(L + "previous button", ["prev"], ["previous button"])
+        if total == 2:
+            for e in ck.entries:
+                if e["check"] in (L + "previous button", L + "left arrow key"):
+                    e["evidence"] = (e.get("evidence") or "") + " (the gallery has two photos, so a step back and a step forward lead to the same photo: this check is weaker until a third photo is added)"
         verdict(L + "right arrow key", ["right"], ["ArrowRight"])
         verdict(L + "left arrow key", ["left"], ["ArrowLeft"])
         verdict(L + "wraps from the last photo to the first", ["wrap_end"], ["next button", "ArrowRight"])
@@ -1032,124 +1040,72 @@ def real_link(value):
         and "example" not in value.lower()
 
 
-def test_book_now(env, vp):
-    B = "book now: "
-    plan = [
-        (B + "ten Book Now pills", "PAGES", "10 a.pill[data-book], one per service"),
-        (B + "BOOKING_URL is the first statement of js/site.js", "INTERACTION", 'var BOOKING_URL = ""; first in the file (empty until the owner pastes a real https link)'),
-        (B + "pills call the phone while BOOKING_URL is empty", "INTERACTION", f"every pill has href {TEL} and no target"),
-        (B + "pills open the booking link when BOOKING_URL is set", "INTERACTION", f"with BOOKING_URL = {TEST_BOOKING_URL}: every pill has that href, target=_blank and rel=noopener"),
-        (B + "no script error, no broken request", "PAGES", "clean"),
-    ]
-    ck = Checks("book-online", vp, plan)
-    url = env.url("book-online")
+def judge_link(links, kind, text, href):
+    """One Call button or Text link: exactly one, with these words and this address, no data-book, no target."""
+    found = links[kind]
+    if len(found) != 1:
+        return False, f"{len(found)} links of this kind"
+    a = found[0]
+    ok = a["text"] == text and a["attr"] == href and not a["book"] and not a["target"]
+    return ok, f"text {a['text']!r}, href {a['attr']!r}, target {a['target']!r}, data-book: {'yes' if a['book'] else 'no'}"
 
-    def pills_wrong(pills, href, new_tab):
-        bad = []
-        for i, p in enumerate(pills, 1):
-            if p["href"] != href:
-                bad.append(f"pill {i} href {p['href']!r}")
-            elif new_tab and (p["target"] != "_blank" or "noopener" not in (p["rel"] or "").split()):
-                bad.append(f"pill {i} target={p['target']!r} rel={p['rel']!r}")
-            elif not new_tab and p["target"]:
-                bad.append(f"pill {i} has target={p['target']!r}")
-        return bad
+
+def test_call_links(env, vp, slug, scope, where):
+    """The Call button and the Text link of one page (decisions 45 and 47). They call and text the number whatever
+    BOOKING_URL says: a button says what it does, so nothing on the pages is marked data-book.
+    slug: the page, scope: the selector of the part that holds the two links, where: that part in words.
+    On the Services page the test also checks the BOOKING_URL statement of js/site.js, as the Book Now test did."""
+    C, T, B = "call button: ", "text link: ", "booking link: "
+    plan = [
+        (C + "calls 347-671-5095 while BOOKING_URL is empty", "PAGES", f"one {scope} a.btn-call with the text Call 347-671-5095 and href {TEL}, no data-book, no target"),
+        (C + "still calls 347-671-5095 when BOOKING_URL is set", "INTERACTION", f"with BOOKING_URL = {TEST_BOOKING_URL} the button still calls {TEL}"),
+        (T + "texts the same number", "PAGES", f"one {scope} a.text-link with the text Text Gerta and href {SMS}, no data-book, no target"),
+    ]
+    if slug == "book-online":
+        plan += [
+            (B + "BOOKING_URL is the first statement of js/site.js", "INTERACTION", 'var BOOKING_URL = ""; first in the file (empty, the site has no online booking)'),
+            (B + "nothing on the page is marked data-book", "PAGES", "0 [data-book] elements, with BOOKING_URL empty and with it set: no link of the page can be turned into a booking link"),
+            (B + "no script error, no broken request", "PAGES", "clean"),
+        ]
+    ck = Checks(slug, vp, plan)
+
+    def one_case(page, value):
+        with booking_url_forced(page, value) as hits:
+            page.goto(env.url(slug), wait_until="load")
+            if not any(hits):
+                raise Stop("the test could not set BOOKING_URL: js/site.js was " +
+                           ("not requested by the page" if not hits else "requested, but has no BOOKING_URL declaration"), "INTERACTION")
+            page.wait_for_timeout(200)          # js/site.js runs on DOMContentLoaded, give it a moment
+            return page.evaluate(JS_CALL_LINKS, scope)
 
     def body(ctx, page, log):
         status, text, served, first, err = read_site_js(ctx, env)
         if status != 200:
             raise Stop(f"js/site.js could not be read (status {status}{', ' + err if err else ''})")
-
-        # as served
-        page.goto(url, wait_until="load")
-        got = page.evaluate(JS_BOOK)
-        pills = got["pills"]
-        ck.put(B + "ten Book Now pills", len(pills) == 10,
-               f"{len(pills)} a.pill[data-book], {got['marked']} [data-book] elements in all")
-        as_served_bad = []
-        if served:
-            link = served.strip()
-            as_served_bad = pills_wrong(pills, link if re.match(r"https?://", link, re.I) else "https://" + link.lstrip("/"), True)
-        setting_ok = first and served is not None and (served.strip() == "" or (real_link(served) and not as_served_bad))
+        empty = one_case(page, None if served is not None and not served.strip() else "")
+        ck.put(C + "calls 347-671-5095 while BOOKING_URL is empty", *judge_link(empty, "call", "Call 347-671-5095", TEL), evidence=where)
+        ck.put(T + "texts the same number", *judge_link(empty, "text", "Text Gerta", SMS), evidence=where)
+        filled = one_case(page, TEST_BOOKING_URL)
+        ok, actual = judge_link(filled, "call", "Call 347-671-5095", TEL)
+        ck.put(C + "still calls 347-671-5095 when BOOKING_URL is set", ok, actual, evidence=where)
+        if slug != "book-online":
+            return
+        setting_ok = first and served is not None and (served.strip() == "" or real_link(served))
         if served is None:
             actual = "no BOOKING_URL declaration found in js/site.js"
         elif not first:
             actual = f"BOOKING_URL = {served!r} is declared, but not as the first statement with var"
         elif served.strip() == "":
-            actual = 'var BOOKING_URL = ""; (empty, the buttons call the phone)'
+            actual = 'var BOOKING_URL = ""; (empty)'
         elif not real_link(served):
             actual = f"BOOKING_URL is set to {served!r}, which is not a real https booking link"
         else:
-            actual = f"BOOKING_URL is set to {served!r}" + ("" if not as_served_bad else ", but the pills do not follow it: " + "; ".join(as_served_bad[:3]))
+            actual = f"BOOKING_URL is set to {served!r}"
         ck.put(B + "BOOKING_URL is the first statement of js/site.js", setting_ok, actual)
+        ck.put(B + "nothing on the page is marked data-book", empty["marked"] == 0 and filled["marked"] == 0,
+               f"{empty['marked']} [data-book] elements with BOOKING_URL empty, {filled['marked']} with it set")
 
-        # empty: as served when it is empty, otherwise with a copy of the script in which it is emptied
-        how = "js/site.js as served"
-        if served is None or served.strip():
-            with booking_url_forced(page, "") as hits:
-                page.goto(url, wait_until="load")
-                pills_e = page.evaluate(JS_BOOK)["pills"]
-            how = "js/site.js served with BOOKING_URL emptied" if any(hits) else "BOOKING_URL could not be emptied (no declaration)"
-        else:
-            pills_e = pills
-        bad = pills_wrong(pills_e, TEL, False)
-        ck.put(B + "pills call the phone while BOOKING_URL is empty", bool(pills_e) and not bad,
-               f"{len(pills_e)} pills, all {TEL}, no target" if pills_e and not bad else "; ".join(bad[:5]) or "no pills", evidence=how)
-
-        # set
-        with booking_url_forced(page, TEST_BOOKING_URL) as hits:
-            page.goto(url, wait_until="load")
-            pills_s = page.evaluate(JS_BOOK)["pills"]
-        if not any(hits):
-            ck.put(B + "pills open the booking link when BOOKING_URL is set", False,
-                   "the test could not set BOOKING_URL: js/site.js was " + ("not requested by the page" if not hits else "requested, but has no BOOKING_URL declaration"),
-                   owner="PAGES" if not hits else "INTERACTION")
-        else:
-            bad = pills_wrong(pills_s, TEST_BOOKING_URL, True)
-            ck.put(B + "pills open the booking link when BOOKING_URL is set", bool(pills_s) and not bad,
-                   f"{len(pills_s)} pills, all {TEST_BOOKING_URL}, target=_blank, rel=noopener" if pills_s and not bad else "; ".join(bad[:5]) or "no pills")
-
-    return run_test(env, ck, vp, body, clean_check=B + "no script error, no broken request")
-
-
-def test_home_links(env, vp):
-    """The Call button and the Text link of the hero (decision 45). They call and text the number whatever
-    BOOKING_URL says: a button says what it does, so neither is marked data-book."""
-    C, T = "call button: ", "text link: "
-    plan = [
-        (C + "calls 347-671-5095 while BOOKING_URL is empty", "PAGES", f"one .hero a.btn-call with the text Call 347-671-5095 and href {TEL}, no data-book, no target"),
-        (C + "still calls 347-671-5095 when BOOKING_URL is set", "INTERACTION", f"with BOOKING_URL = {TEST_BOOKING_URL} the button still calls {TEL}"),
-        (T + "texts the same number", "PAGES", f"one .hero a.text-link with the text Text Gerta and href {SMS}, no data-book, no target"),
-    ]
-    ck = Checks("home", vp, plan)
-
-    def one_case(page, value):
-        with booking_url_forced(page, value) as hits:
-            page.goto(env.url("home"), wait_until="load")
-            if not any(hits):
-                raise Stop("the test could not set BOOKING_URL: js/site.js was " +
-                           ("not requested by the page" if not hits else "requested, but has no BOOKING_URL declaration"), "INTERACTION")
-            page.wait_for_timeout(200)          # js/site.js runs on DOMContentLoaded, give it a moment
-            return page.evaluate(JS_HOME_LINKS)
-
-    def judge(links, kind, text, href):
-        found = links[kind]
-        if len(found) != 1:
-            return False, f"{len(found)} links of this kind on the home page"
-        a = found[0]
-        ok = a["text"] == text and a["attr"] == href and not a["book"] and not a["target"]
-        return ok, f"text {a['text']!r}, href {a['attr']!r}, target {a['target']!r}, data-book: {'yes' if a['book'] else 'no'}"
-
-    def body(ctx, page, log):
-        status, text, served, first, err = read_site_js(ctx, env)
-        links = one_case(page, None if served is not None and not served.strip() else "")
-        ck.put(C + "calls 347-671-5095 while BOOKING_URL is empty", *judge(links, "call", "Call 347-671-5095", TEL))
-        ck.put(T + "texts the same number", *judge(links, "text", "Text Gerta", SMS))
-        links = one_case(page, TEST_BOOKING_URL)
-        ok, actual = judge(links, "call", "Call 347-671-5095", TEL)
-        ck.put(C + "still calls 347-671-5095 when BOOKING_URL is set", ok, actual)
-
-    return run_test(env, ck, vp, body)
+    return run_test(env, ck, vp, body, clean_check=B + "no script error, no broken request" if slug == "book-online" else None)
 
 
 # ----------------------------------------------------------------------------- contact form
@@ -1427,11 +1383,11 @@ def test_nojs(env, slug):
     vp = "phone"
     N = "no-js: "
     plan = [
-        (N + "five navigation links visible", "DESIGN", "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered"),
+        (N + "five navigation links visible", "DESIGN", "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered"),
         (N + "menu button hidden", "DESIGN", ".menu-btn not shown, it cannot work without the script"),
     ]
     if slug == "book-online":
-        plan += [(N + "Book Now links call the phone", "PAGES", f"10 a.pill[data-book], and every [data-book] link has href {TEL}")]
+        plan += [(N + "Call button calls the phone", "PAGES", f"one .svc-call a.btn-call with href {TEL}, one .svc-call a.text-link with href {SMS}, nothing marked data-book")]
     if slug == "gallery":
         plan += [(N + "gallery links point at the full-size images", "PAGES", "every .gallery a leads to images/NAME.jpg (the file exists) and its thumbnail is images/sm/NAME.jpg")]
     if slug == "contact":
@@ -1461,11 +1417,11 @@ def test_nojs(env, slug):
         ck.put(N + "menu button hidden", not any(b["rendered"] for b in btn), "not shown" if not any(b["rendered"] for b in btn) else f"shown at {btn[0]['box']}")
 
         if slug == "book-online":
-            links = page.evaluate("() => Array.from(document.querySelectorAll('[data-book]')).map((a) => a.getAttribute('href'))")
-            pills = page.locator("a.pill[data-book]").count()
-            bad = [h for h in links if h != TEL]
-            ck.put(N + "Book Now links call the phone", pills == 10 and not bad,
-                   f"{pills} a.pill[data-book], {len(links)} [data-book] links" + (", all call the phone" if not bad else ", wrong href: " + ", ".join(repr(h) for h in bad[:4])))
+            links = page.evaluate(JS_CALL_LINKS, ".svc-call")
+            call_ok, call_text = judge_link(links, "call", "Call 347-671-5095", TEL)
+            text_ok, text_text = judge_link(links, "text", "Text Gerta", SMS)
+            ck.put(N + "Call button calls the phone", call_ok and text_ok and links["marked"] == 0,
+                   f"Call button: {call_text}; Text link: {text_text}; {links['marked']} [data-book] elements")
 
         if slug == "gallery":
             links = page.evaluate(JS_GALLERY)
@@ -1529,7 +1485,7 @@ def test_broken(env, vp, layout="", tag=""):
         (X + "navigation links lead to the right pages", "PAGES", "the five links of #main-nav lead to the five pages of the site"),
         (X + "Home button leads to the home page", "PAGES", ".notfound a.btn opens the home page"),
         (X + "no script error", "INTERACTION", "clean"),
-    ] + [(O + path + " ends on the Book Online page", "PAGES", "the browser ends on book-online/ and that page answers 200") for path in OLD_ADDRESSES]
+    ] + [(O + path + " ends on the Services page", "PAGES", "the browser ends on book-online/ and that page answers 200") for path in OLD_ADDRESSES]
     ck = Checks("404", vp, plan)
     home, book = env.url("home"), env.url("book-online")
 
@@ -1589,7 +1545,7 @@ def test_broken(env, vp, layout="", tag=""):
         ck.put(X + "no script error", not errors, "clean" if not errors else "; ".join(errors[:5]))
 
         for path in OLD_ADDRESSES:
-            check = O + path + " ends on the Book Online page"
+            check = O + path + " ends on the Services page"
             try:
                 page.goto("about:blank")
                 del docs[:]
@@ -1658,9 +1614,11 @@ def build_tasks(pages, viewports):
             tasks.append((f"broken addresses {vp}", "404", vp, lambda env, vp=vp: test_broken(env, vp)))
             tasks.append((f"broken addresses at the top of the host {vp}", "404", vp, lambda env, vp=vp: test_broken_at_root(env, vp)))
         if "book-online" in pages:
-            tasks.append((f"book now {vp}", "book-online", vp, lambda env, vp=vp: test_book_now(env, vp)))
+            tasks.append((f"call and text book-online {vp}", "book-online", vp,
+                          lambda env, vp=vp: test_call_links(env, vp, "book-online", ".svc-call", "the call block of the Services page")))
         if "home" in pages:
-            tasks.append((f"call and text {vp}", "home", vp, lambda env, vp=vp: test_home_links(env, vp)))
+            tasks.append((f"call and text home {vp}", "home", vp,
+                          lambda env, vp=vp: test_call_links(env, vp, "home", ".hero", "the first screen of the home page")))
     for vp in viewports:
         for slug in pages:
             tasks.append((f"menu and year {slug} {vp}", slug, vp, lambda env, vp=vp, slug=slug: test_page(env, vp, slug)))

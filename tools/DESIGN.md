@@ -61,7 +61,8 @@ Text blocks are at most 30 em wide (about 68 characters of Figtree at 18 px), th
 - **Footer.** Espresso, left aligned, the same content as before. Paper text, Honey for the quieter lines, links underlined.
 - **Call bar.** Phones only (760 px and below). Espresso, fixed to the bottom of the screen, "Call 347-671-5095".
 - **Focus.** A 2 px Espresso outline 3 px outside every link, button and field. Honey on Espresso.
-- **Motion.** One only. On the home page the hero photos are revealed from top to bottom, root to ends, once when the page opens, in 600 ms. Skipped when the visitor prefers reduced motion. Nothing else moves.
+- **Motion.** One only. On the home page the hero photos are revealed from top to bottom, root to ends, once when the page opens, in 600 ms. Skipped when the visitor prefers reduced motion. Nothing else moves. No hover fades, and the photo viewer opens at once.
+- **Page title.** Every page but Home starts with its title in Bodoni Italic (72 px on desktop, 48 px on phones), on some pages one sentence under it, then the shade strip.
 
 ## Photos
 
@@ -140,7 +141,7 @@ The photo row and the two Meet Gerta photos of the old page are placeholders tod
 ```
 1280
 |  Our services                                                                     |
-|  Prices are given by phone. Call or text 347-671-5095.                            |
+|  Call for price. To book, call or text 347-671-5095.                              |
 |##################################################################################|
 |  Cut and style                                         +-----------------------+ |
 |  Haircut & Style ............................ 45 min   | [ Call 347-671-5095 ] | |
@@ -153,7 +154,7 @@ The photo row and the two Meet Gerta photos of the old page are placeholders tod
 
 390
 | Our services                       |
-| Prices are given by phone. ...     |
+| Call for price. To book, call ...  |
 |####################################|
 | Cut and style                      |
 | Haircut & Style            45 min  |
@@ -162,7 +163,7 @@ The photo row and the two Meet Gerta photos of the old page are placeholders tod
 | [ call bar ]                       |
 ```
 
-A typeset menu with no photos and no cards. Each row shows the name, its one line and its time. The dots above only mark the row, the page has no dot leaders.
+A typeset menu with no photos and no cards. Each row shows the name (Bodoni Italic, 26 px), its one line and its time. The times stand in a column of their own, so they all start at the same place. The dots above only mark the row, the page has no dot leaders and no lines between the rows. On phones the time stands under the one line, and the call block follows the menu.
 
 ### Gallery
 
@@ -170,10 +171,10 @@ A typeset menu with no photos and no cards. Each row shows the name, its one lin
 1280
 |  Gallery                                                       |
 |################################################################|
-|  +----------+  +----------+   More of my work is on            |
-|  |   g12    |  |   g13    |   Instagram.                       |
-|  |   9:16   |  |   9:16   |                                    |
 |  +----------+  +----------+                                    |
+|  |   g12    |  |   g13    |                                    |
+|  |   9:16   |  |   9:16   |   See more of my work on           |
+|  +----------+  +----------+   Instagram.                       |
 
 390
 | Gallery                            |
@@ -181,10 +182,10 @@ A typeset menu with no photos and no cards. Each row shows the name, its one lin
 | +-------------+ +-------------+    |
 | |    g12      | |    g13      |    |
 | +-------------+ +-------------+    |
-| More of my work is on Instagram.   |
+| See more of my work on Instagram.  |
 ```
 
-Three columns on desktop, two on phones, tall frames, the photo viewer opens on a tap. With fewer than six photos one line points to her Instagram.
+Three columns on desktop, two on phones, tall frames, the photo viewer opens on a tap. With fewer than six photos one line points to her Instagram. It stands at the foot of the next free place of the last row, like a caption, and under the photos on a phone. The viewer is an Espresso layer with square buttons, the counter in the top left corner.
 
 ### About
 
@@ -193,16 +194,16 @@ Three columns on desktop, two on phones, tall frames, the photo viewer opens on 
 |  About Gerta                                                   |
 |################################################################|
 |  I offer hair and makeup services designed to make you        |
-|  look polished and still like yourself. ...  (lead, 21 px)    |
+|  look polished and still like yourself. ...  (lead, 26 px)    |
 |                                                                |
-|  Every visit starts with a short consultation ...             |
-|  Before you leave, I show you how to care for your hair ...   |
+|  Every visit starts with a     Before you leave, I show you    |
+|  short consultation ...        how to care for your hair ...   |
 |  [ Call 347-671-5095 ]   Text Gerta                            |
 
 390   the same, one column
 ```
 
-Led by text. Her one long paragraph is split into three short ones, her words unchanged. A photo shows beside the text only when a real one exists.
+Led by text. Her one long paragraph is split into three short ones, her words unchanged. The first is set larger (26 px), the other two stand side by side in two columns on a wide screen. A photo shows beside the text, in the right columns, only when a real one exists.
 
 ### Contact
 
@@ -211,11 +212,11 @@ Led by text. Her one long paragraph is split into three short ones, her words un
 |  Contact                                                       |
 |  Have a question about a service or price? Call ...           |
 |################################################################|
-|  Address                         First name      Last name     |
-|  Le Vigne Hair Salon             Email                         |
-|  Phone                           Message                       |
-|  Email                           [ Send ]                      |
-|  Social media                                                  |
+|  Address                         Let's connect                 |
+|  Le Vigne Hair Salon             First name      Last name     |
+|  Phone                           Email                         |
+|  Email                           Message                       |
+|  Social media                    [ Send ]                      |
 |  Hours                                                         |
 |  +----------------------------------------------------------+ |
 |  |                     map (Blonde while empty)              | |
@@ -224,6 +225,8 @@ Led by text. Her one long paragraph is split into three short ones, her words un
 
 390   info list, then the form, then the map
 ```
+
+The five info items have no drawings above them, only their name in Bodoni Italic. The fields are Paper with a Chestnut edge and square corners. Without the script the form is not shown, and the sentence under the title still gives the phone number and the email address.
 
 ### Policy pages and the 404 page
 
@@ -259,3 +262,9 @@ The home page was built first, looked at in screenshots at 1280 px and 390 px (a
 - The welcome text ran to about 70 characters a line on a tablet. It is limited to 26 em now, about 60 characters.
 - One accessory less. The Blonde line under the header went. The Paper header is enough of an edge, and the page has one line fewer that is only decoration.
 - Two Call buttons on the first screen of a phone, the one of the hero and the call bar. Both stay (build contract, decision 46). The button belongs to the text it follows, the bar is the one that stays when the visitor scrolls.
+
+## Critique of the other pages
+
+- About, without a photo. The text stood in a narrow column with half the page empty. Now the first paragraph is larger and the other two stand side by side, so the page reads as composed.
+- A phone number broke over two lines in two places. A phone link never breaks now.
+- Decorations taken away while building. The line under the header, the five small drawings above the info items of the Contact page, the fade of the photo viewer and its round buttons.

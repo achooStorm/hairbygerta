@@ -1,16 +1,16 @@
 # hairbygerta.com
 
-The website of Hair & Makeup by Gerta as a plain static site: finished HTML pages, one stylesheet, one script and the images. It is made to take the place of the Wix site, with the same look, the same text and the same page addresses, hosted for free on GitHub Pages. This file is for whoever looks after the folder. The owner's step by step guide is `MIGRATION.md`. The official GitHub help pages behind what is said here about GitHub are listed at its end.
+The website of Hair & Makeup by Gerta as a plain static site: finished HTML pages, one stylesheet, one script and the images. It is made to take the place of the Wix site, with the same page addresses, hosted for free on GitHub Pages. Since 12 November 2026 it has a look of its own (`tools/DESIGN.md`), and its words are cut and rearranged from the Wix text. This file is for whoever looks after the folder. The owner's step by step guide is `MIGRATION.md`. The official GitHub help pages behind what is said here about GitHub are listed at its end.
 
 ## What is where
 
 | Where | What |
 |---|---|
-| `content/` | All the text. `site.json` holds what every page shares (menu, footer, phone, email, address, social links). The other files hold one page each. The opening hours are in `home.json`, `contact.json` and `book-online.json`. |
-| `tools/` | `build_pages.py` makes the pages. `pages/` has one layout file per page. `CONTRACT.md` lists the names that the HTML, the stylesheet and the script share. The other files make the placeholders, icons, fonts and share image, put in new photos (`add_photo.py`) and guard the photo rule. |
+| `content/` | All the text. `site.json` holds what every page shares (menu, footer, phone, email, address, social links). The other files hold one page each. The opening hours are in `site.json`, `home.json`, `contact.json` and `book-online.json`. |
+| `tools/` | `build_pages.py` makes the pages. `pages/` has one layout file per page. `CONTRACT.md` lists the names that the HTML, the stylesheet and the script share, `DESIGN.md` the colors, the type and a sketch of every page. The other files make the placeholders, icons, fonts and share image, put in new photos (`add_photo.py`) and guard the photo rule. |
 | `index.html`, `404.html`, `gallery/`, `book-online/`, `about/`, `contact/` and the four policy folders | The finished pages, one `index.html` per folder, at the same addresses as on Wix. Made by the build script. |
 | `css/style.css` | All the styling. |
-| `js/site.js` | The booking link, the phone menu, the gallery photo viewer, the contact form and the year in the footer. The contact form opens the visitor's own email program. The site itself sends nothing. |
+| `js/site.js` | The phone menu, the gallery photo viewer, the contact form and the year in the footer. The contact form opens the visitor's own email program. The site itself sends nothing. |
 | `images/`, `images/sm/`, `favicon.ico`, `fonts/` | The pictures in full size, their small copies (at most 800 px on the long side) and the icons. `image-manifest.json` lists each picture with its size and status. `fonts/` holds the two fonts of the site (free under the SIL Open Font License, the license texts are next to them). `tools/make_fonts.py` makes them, `fonts/fonts.json` lists them. The site loads nothing from Google Fonts. |
 | `seo/`, `sitemap.xml`, `robots.txt` | What search engines read. The build script copies `seo/jsonld-home.json` into the home page. |
 | `qa/` | The test scripts and their last report, `qa/REPORT.md`. They need the Python setup in `hairbygerta-env`, a folder next to this one. `qa/run_all.py` says how to start them. A run takes about two minutes. Exit code 2 means a licensing match (a Wix-only photo was found in this folder): do not commit. A replaced photo is listed in the class `owner-photo`. A copy of a Wix photo stays a LICENSING MATCH whatever the manifest says. With `--base` it tests a published address, and it refuses an address that still shows the Wix site. |
@@ -19,7 +19,7 @@ The website of Hair & Makeup by Gerta as a plain static site: finished HTML page
 ## The photo rule
 
 - Only `images/logo.jpg`, `images/g12.jpg` and `images/g13.jpg` are licensed for use outside Wix, together with the copies and icons made from them.
-- The other 26 photos are placeholders: beige pictures with a faint logo, each with the file name and pixel size of the photo it stands for.
+- The other 26 photos are placeholders: beige pictures with a faint logo, each with the file name and pixel size of the photo it stands for. No page shows a placeholder. A page leaves the spot out until a real photo is in, and then shows it by itself.
 - The original Wix photos live outside this folder, in the private folder `hairbygerta-wix-only-photos` next to it. They are never copied in, committed or uploaded.
 - To put a real photo in place of a placeholder, follow `MIGRATION.md`, section 6. Both files must be replaced, `images/NAME.jpg` and `images/sm/NAME.jpg`. The build then records the photo in `image-manifest.json` with the status `owner-photo`, so that file needs no hand edit. `g12` and `g13` also have `.webp` copies in `images/` and `images/sm/`, which browsers show first: whoever replaces one of these two photos replaces its `.webp` copies too.
 - `tools/make_placeholders.py` makes the placeholder files again. It needs Pillow, which the Python setup in `hairbygerta-env` has. It leaves real photos alone, lists them as kept and then ends with status 2, which is expected. `--check` writes nothing. Never use `--force` once real photos are in: it overwrites them.
@@ -28,7 +28,7 @@ Before every upload run `python tools/licensing_check.py` in this folder. Go on 
 
 ## Changing a page
 
-1. Edit the text in `content/`. Change only what stands between the quote marks. The `notes` at the end of a file are remarks and never show on the site. A fact that shows in several places is written in several files, so search all of `content/` for it. The phone number is also in `js/site.js` (the line with `var phoneHref`, the number the **Book Now** buttons call) and in `seo/jsonld-home.json`, which holds the address and the opening hours for search engines too. Change them there as well.
+1. Edit the text in `content/`. Change only what stands between the quote marks. The `notes` at the end of a file are remarks and never show on the site. A fact that shows in several places is written in several files, so search all of `content/` for it. The phone number is also in `js/site.js` (the line with `var phoneHref`, which no button uses today) and in `seo/jsonld-home.json`, which holds the address and the opening hours for search engines too. Change them there as well.
 2. Run `python tools/build_pages.py` in this folder. It needs Python 3 and nothing else.
 3. Read what it prints: `written` or `unchanged` for each page. A line that starts with `ERROR` or `WARNING` names the file and says what to fix. A page with an error is left as it was.
 
@@ -50,9 +50,9 @@ Run this in the folder, then open http://localhost:8000/ in a browser. Ctrl + C 
 - The empty file `.nojekyll` tells GitHub to publish the files as they are. Keep it.
 - First publishing, done by the helper: create the public repository without a README, `git init -b main`, switch on the commit hook, run the licensing check, commit, push `main`, choose the Pages settings above, wait for the build (up to 10 minutes) and open the address. The steps and their sources are in `MIGRATION.md`, section 1, part 4.
 
-## The booking link
+## Booking by phone
 
-Every **Book Now** button calls 347-671-5095. The first line of code in `js/site.js` is `var BOOKING_URL = "";` and it stays empty, because the salon uses its own booking and has no online booking link. If an online booking link is ever added, it goes between the two quote marks. Nothing else changes and no page has to be rebuilt.
+Every **Call 347-671-5095** button calls the number and every **Text Gerta** link starts a text message to it. The salon uses its own booking, so the site has no online booking link. The first line of code in `js/site.js` is `var BOOKING_URL = "";`. It stays as it is, because every page uses that line to see that the script has loaded. No button reads it since the redesign.
 
 ## Everything else
 

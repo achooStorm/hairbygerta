@@ -1,7 +1,8 @@
 """Page module of the 404 page (404.html, the page GitHub Pages shows for every address that does not exist).
 
 The text comes from content/404.json: "h1", "message" and "button" (label and path). The markup inside main
-is the one section 7 of tools/CONTRACT.md lists for this page: div.notfound holding h1, p and a.btn.
+is the one section 7 of tools/CONTRACT.md lists for this page (decision 47): div.notfound holding div.page-head
+with the h1, the shade strip, and div.notfound-body with p.lead and a.btn.
 
 THE SMALL SCRIPT IN THE HEAD
 
@@ -16,7 +17,7 @@ The script sits right after the viewport meta, before the browser reads any othe
      there. Because of that base a link like href="#main" (the skip link) would lead to the home page, so
      once the page is read the script points every such link back at the address the visitor is on.
   3. Old Wix booking addresses, anything under booking-calendar/ or service-page/, have no page of their
-     own on this site. The script sends them on to the Book Online page with location.replace, so the Back
+     own on this site. The script sends them on to the Services page (book-online/) with location.replace, so the Back
      button does not return to the broken address. The page stays hidden for that short moment.
 
 A page opened straight from a folder on a computer (file:) is left alone, its relative addresses are right.
@@ -28,8 +29,8 @@ import json
 SLUG = "404"
 
 PROJECT_FOLDER = "hairbygerta"                          # first folder of the test address on github.io
-OLD_BOOKING = ("booking-calendar/", "service-page/")    # old Wix addresses that now lead to Book Online
-BOOK_PATH = "/book-online/"                             # the Book Online page (page table, contract section 2)
+OLD_BOOKING = ("booking-calendar/", "service-page/")    # old Wix addresses that now lead to the Services page
+BOOK_PATH = "/book-online/"                             # the Services page (page table, contract section 2)
 
 _SCRIPT = """<script>
 (function () {
@@ -69,9 +70,18 @@ def render(ctx):
     button = c["button"]
     body = "\n".join([
         '<div class="notfound">',
-        "  <h1>%s</h1>" % ctx.esc(c["h1"]),
-        "  <p>%s</p>" % ctx.esc(c["message"]),
-        '  <a class="btn" href="%s">%s</a>' % (ctx.esc(ctx.url(button["path"])), ctx.esc(button["label"])),
+        '  <div class="page-head">',
+        '    <div class="wrap">',
+        "      <h1>%s</h1>" % ctx.esc(c["h1"]),
+        "    </div>",
+        "  </div>",
+        "  " + ctx.shade(),
+        '  <div class="notfound-body">',
+        '    <div class="wrap">',
+        '      <p class="lead">%s</p>' % ctx.esc(c["message"]),
+        '      <a class="btn" href="%s">%s</a>' % (ctx.esc(ctx.url(button["path"])), ctx.esc(button["label"])),
+        "    </div>",
+        "  </div>",
         "</div>",
     ])
     script = _SCRIPT % {
