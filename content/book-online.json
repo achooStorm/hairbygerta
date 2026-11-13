@@ -31,7 +31,7 @@
       "description": "Romantic, long-lasting bridal hair tailored to your dress and vision.",
       "duration": "1 hr 30 min",
       "price": "Call for price",
-      "image": {"slot": "service-04", "file": "svc-bridal", "alt": "", "alt_original": ""}
+      "image": {"slot": "service-04", "file": "svc-bridal", "alt": "Bridal updo with a twisted bun", "alt_original": ""}
     },
     {
       "title": "Highlights & Lowlights",

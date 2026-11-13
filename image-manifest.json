@@ -417,20 +417,33 @@
       }
     },
     "g15": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g15.jpg",
-      "width": 1067,
+      "width": 1207,
       "height": 1600,
-      "bytes": 14435,
-      "sha256": "8f632de1c8d4e210635386b11a896fcd310e9fcbb310bf88daa3e94e35312f11",
+      "bytes": 98612,
+      "sha256": "caa83b7e2871a13855ce01f0e0dba41e30563ba1ec78a0f96e350fd51ec67969",
       "sm": {
         "file": "images/sm/g15.jpg",
-        "width": 533,
+        "width": 603,
         "height": 800,
-        "bytes": 4410,
-        "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9"
+        "bytes": 34950,
+        "sha256": "a2544d1afd679d205544613da3c34df6d5cfbcfff78961d69328015c7feb5c63"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g15.webp",
+        "width": 1207,
+        "height": 1600,
+        "bytes": 35546,
+        "sha256": "03d53d16f0df1a7589a709d57f9b2925a3cafcc253b8da79d1339eab72287c3b",
+        "sm": {
+          "file": "images/sm/g15.webp",
+          "width": 603,
+          "height": 800,
+          "bytes": 14420,
+          "sha256": "e10a5f248272cb90827c49385bfb598303b5899c39e71f96000f484716c46529"
+        }
+      }
     },
     "g16": {
       "status": "owner-photo",
@@ -726,20 +739,33 @@
       }
     },
     "svc-bridal": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/svc-bridal.jpg",
-      "width": 1600,
-      "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "width": 1320,
+      "height": 880,
+      "bytes": 69436,
+      "sha256": "efb21f45d1bcc34670d39cb7bde9821cf67f05ed82c428b926f5e600f1b9dd34",
       "sm": {
         "file": "images/sm/svc-bridal.jpg",
         "width": 800,
         "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "bytes": 33396,
+        "sha256": "314c6d8cc1ceed0a98de4d466f5022b9d5acdfebd537fae7f8ed4c3c647e7f15"
       },
-      "webp": null
+      "webp": {
+        "file": "images/svc-bridal.webp",
+        "width": 1320,
+        "height": 880,
+        "bytes": 26202,
+        "sha256": "8a8ea4520f175f5d6c5b30d802aed2e9e618189fdaf6c58be268380843e8e918",
+        "sm": {
+          "file": "images/sm/svc-bridal.webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 13624,
+          "sha256": "f12b659800a97774175d48c37b7eac9174f1e3816cd5512ed59425f701ca04fa"
+        }
+      }
     },
     "svc-haircut": {
       "status": "owner-photo",
