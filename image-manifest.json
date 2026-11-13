@@ -275,36 +275,62 @@
       }
     },
     "g06": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g06.jpg",
-      "width": 1600,
-      "height": 985,
-      "bytes": 13254,
-      "sha256": "a17a05ba41e776b41841ccf6b3ad4b58d9afde7c7a29c57508beabe756919739",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 239586,
+      "sha256": "b29827221e981f54180d5e64939bfdb1f16cc0f250b685bddb2fffe1b6fab95a",
       "sm": {
         "file": "images/sm/g06.jpg",
-        "width": 800,
-        "height": 493,
-        "bytes": 4008,
-        "sha256": "11ff1dc87d1f5314c64fb76a3c662cedbad618ec6a09ed88d6dcd7a663692608"
+        "width": 600,
+        "height": 800,
+        "bytes": 67600,
+        "sha256": "fd1e96ce8f99cde173b7dd17432185ae9e465cfe39254d6a61b57145fe2c3194"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g06.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 124790,
+        "sha256": "7d514bf18d8c31094f0dec3b2d76c3a72156c864854b249cb11cdd45328c94cd",
+        "sm": {
+          "file": "images/sm/g06.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 38396,
+          "sha256": "02574b807f94a90bc0948b96bfb67486e490beb98f689a62e7b42b2de32f51a8"
+        }
+      }
     },
     "g07": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g07.jpg",
-      "width": 1600,
-      "height": 1066,
-      "bytes": 14399,
-      "sha256": "cb709a60397dd72e6c7ba20b4310afdc17527a9e297127b9be53acf8c9a5915d",
+      "width": 1200,
+      "height": 1600,
+      "bytes": 176723,
+      "sha256": "9f4e63febac0f128b5517f7e0cfa03210a2d5e59c177f57cb275c7e5ff288e3b",
       "sm": {
         "file": "images/sm/g07.jpg",
-        "width": 800,
-        "height": 533,
-        "bytes": 4452,
-        "sha256": "14136bb173369725a18eab44abd68fd21fe82c6ab80e96629cfa7c3be389680f"
+        "width": 600,
+        "height": 800,
+        "bytes": 60242,
+        "sha256": "b88c66923bd37fb77e7f44e9217d8f3c84b4a44e13af4ff03eda5a3849522cbd"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g07.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 76316,
+        "sha256": "b4e2923f9245fc657bce2466d64820bfeba28af59ec1183becc1002493eaeeb9",
+        "sm": {
+          "file": "images/sm/g07.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 29614,
+          "sha256": "675c028dcabd8f21567836ad1402852a0ae190b29835d8e3366e77146cee269f"
+        }
+      }
     },
     "g10": {
       "status": "owner-photo",

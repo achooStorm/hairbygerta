@@ -235,8 +235,6 @@ import urllib.parse
 PLACEHOLDERS = [
     "about-salon",
     "copper-waves",
-    "g06",
-    "g07",
     "g14",
     "g15",
     "g18",
