@@ -233,11 +233,6 @@ import urllib.parse
 # list, or the description is still empty.
 # ----------------------------------------------------------------------------------------------------------
 PLACEHOLDERS = [
-    "about-salon",
-    "copper-waves",
-    "g06",
-    "g07",
-    "g14",
     "g15",
     "g18",
     "g20",

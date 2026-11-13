@@ -1,7 +1,7 @@
 {
  "ok": true,
  "base": "local site folder",
- "generated": "2026-11-12 23:56:05",
+ "generated": "2026-11-13 00:25:07",
  "results": [
   {
    "page": "site",
@@ -47,7 +47,7 @@
   "desktop",
   "phone"
  ],
- "seconds": 3.4,
+ "seconds": 7.0,
  "open_questions": "",
  "families": [
   {
@@ -75,7 +75,7 @@
    "script": "qa/check_content.py",
    "status": "passed",
    "exit_code": 0,
-   "seconds": 0.8,
+   "seconds": 1.3,
    "checks": 272,
    "failed": 0,
    "base": "local site folder"
@@ -125,7 +125,7 @@
    "script": "qa/check_repo.py",
    "status": "passed",
    "exit_code": 0,
-   "seconds": 2.8,
+   "seconds": 5.7,
    "checks": 31,
    "failed": 0,
    "base": "local site folder"
