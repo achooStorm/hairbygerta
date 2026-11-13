@@ -549,20 +549,33 @@
       }
     },
     "g20": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g20.jpg",
-      "width": 1600,
-      "height": 1064,
-      "bytes": 14359,
-      "sha256": "fbf11335bec48918f300a654e892173e7bfeeeda519bc1363c92f671efb7b5c4",
+      "width": 999,
+      "height": 1234,
+      "bytes": 162778,
+      "sha256": "b228be110d991179133fc82cc45dfc4b8ec1040b6498f7612b48e0d2f997bdc8",
       "sm": {
         "file": "images/sm/g20.jpg",
-        "width": 800,
-        "height": 532,
-        "bytes": 4441,
-        "sha256": "304608beab9afcf041c46103770d7d0f15790c0cb36678143fcaee562f3d8785"
+        "width": 648,
+        "height": 800,
+        "bytes": 69621,
+        "sha256": "922da450fff1a9a73ec884f549e8d080d4147042ece99616897ab607d6b87450"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g20.webp",
+        "width": 999,
+        "height": 1234,
+        "bytes": 73902,
+        "sha256": "a7e0b07558406499cc9f3dd53e934add50b97b7306d28af896a71c071650ebf5",
+        "sm": {
+          "file": "images/sm/g20.webp",
+          "width": 648,
+          "height": 800,
+          "bytes": 40074,
+          "sha256": "087eca4361b9c97d7338801ddbfc556a1e5f1009670f2488731cd218577b9f7e"
+        }
+      }
     },
     "g21": {
       "status": "owner-photo",
@@ -590,6 +603,35 @@
           "height": 533,
           "bytes": 46646,
           "sha256": "afe97f1c05fd830450ddd8bad49faf37a0de0ac5431c90f3bd1a4a40ed82774f"
+        }
+      }
+    },
+    "g22": {
+      "status": "owner-photo",
+      "file": "images/g22.jpg",
+      "width": 999,
+      "height": 1069,
+      "bytes": 128499,
+      "sha256": "990fe268d33faeb426b602fe4d682deacd62cb090ab95cb3502347aa46dcde43",
+      "sm": {
+        "file": "images/sm/g22.jpg",
+        "width": 748,
+        "height": 800,
+        "bytes": 71166,
+        "sha256": "2a92d4c5bbcff1997b756398161c078884cfe0548da7fe245a9ab9ae5faddaad"
+      },
+      "webp": {
+        "file": "images/g22.webp",
+        "width": 999,
+        "height": 1069,
+        "bytes": 56262,
+        "sha256": "8ed63e43b87879d20df12c3851e740fd8396761d2331cb41447898e2ffdb6445",
+        "sm": {
+          "file": "images/sm/g22.webp",
+          "width": 748,
+          "height": 800,
+          "bytes": 38208,
+          "sha256": "f27cf203c53363453b3d48558b678000446646c714864162f4efd1d0c7bd9d2f"
         }
       }
     },

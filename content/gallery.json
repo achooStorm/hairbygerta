@@ -24,8 +24,9 @@
     {"slot": "gallery-17", "file": "g17", "alt": "Smoothing blow-dry with a round brush", "alt_original": "Smoothing blow-dry with a round brush"},
     {"slot": "gallery-18", "file": "g18", "alt": "", "alt_original": "Sectioning hair for a kids haircut"},
     {"slot": "gallery-19", "file": "g19", "alt": "Happy client with fresh balayage", "alt_original": "Happy client with fresh balayage"},
-    {"slot": "gallery-20", "file": "g20", "alt": "", "alt_original": "Creating soft golden curls"},
-    {"slot": "gallery-21", "file": "g21", "alt": "Blow-drying soft blonde curls", "alt_original": "Blow-drying a bouncy blonde style"}
+    {"slot": "gallery-20", "file": "g20", "alt": "Sleek pulled-back hair with soft makeup seen from the front", "alt_original": "Creating soft golden curls"},
+    {"slot": "gallery-21", "file": "g22", "alt": "Sleek pulled-back hair with soft makeup seen from an angle", "alt_original": ""},
+    {"slot": "gallery-22", "file": "g21", "alt": "Blow-drying soft blonde curls", "alt_original": "Blow-drying a bouncy blonde style"}
   ],
   "link_label": "View photo {n} of {total}",
   "notes": [
@@ -36,7 +37,8 @@
     "The live Wix gallery gives all 21 photos an empty alt text, so every alt_original is the description from the first version, copied exactly. Each one was compared with the reference screenshot and describes the photo in its position.",
     "Only g12 and g13 are real photos and show their alt. The other 19 are placeholders, so their alt is empty until the owner saves a licensed photo over them.",
     "foils-highlights (slot gallery-03) is also used on the live Home, About and Book Online pages. Wix gives it other alt texts there (only a file name on Home, a sentence about foil highlights on About). Neither describes the photo, which shows a stylist finishing a style with hairspray, so the first version description is kept here.",
-    "link_label is the accessible name of each photo link. {n} is the position of the photo (1 to 21) and {total} is the number of photos.",
+    "link_label is the accessible name of each photo link. {n} is the position of the photo (1 to 22) and {total} is the number of photos.",
+    "Slot gallery-21 (g22) is not on the Wix page. It was added on 12 November 2026 for a second photo of the client of g20 (contract decision 55), so it has no alt_original. The notes above that speak of 21 slots mean the 21 Wix photos; g21, the last of them, is in slot gallery-22 now.",
     "The photo viewer (lightbox) is built by js/site.js (contract section 8), so its button labels are not in this file.",
     "ASK: none."
   ]
