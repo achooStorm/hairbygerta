@@ -132,7 +132,7 @@ SERVICES = (    # title, description, duration, price
 )
 SERVICE_IMAGES = ("svc-haircut", "g10", "makeup-red-lips", "svc-bridal", "foils-highlights", "g19", "g17", "g16", "g14", "g18")
 GALLERY_IMAGES = ("g01", "g02", "foils-highlights", "g04", "g05", "g06", "g07", "brunette-balayage", "copper-waves", "g10",
-                  "makeup-red-lips", "g12", "g13", "g14", "g15", "g16", "g17", "g18", "g19", "g20", "g21")
+                  "makeup-red-lips", "g12", "g13", "g14", "g15", "g16", "g17", "g18", "g19", "g20", "g22", "g21")
 ABOUT_LEFT, ABOUT_RIGHT = ("brunette-balayage", "about-salon"), ("g10", "copper-waves")
 HOME_ROW, HOME_MEET = ("home-styling", "foils-highlights", "home-smile", "home-waves"), ("makeup-red-lips", "meet-extensions")
 BRIEF_IMAGES = {"book-online": SERVICE_IMAGES, "gallery": GALLERY_IMAGES, "about": ABOUT_LEFT + ABOUT_RIGHT,
@@ -1484,7 +1484,7 @@ def check_page_facts(slug, ex, page, content):
         links = [l for l in page.links if l.place == "main" and find(l.node, "img")]
         thumbs = [image_name(find(l.node, "img")[0].attrs.get("src", "")) for l in links]
         large = [image_name(l.href) for l in links]
-        out.append(order_entry(slug, "fact-gallery-images", "the 21 gallery photos", GALLERY_IMAGES, slots, thumbs, ex))
+        out.append(order_entry(slug, "fact-gallery-images", "the 22 gallery photos (the 21 of the brief and g22, decision 55)", GALLERY_IMAGES, slots, thumbs, ex))
         if thumbs != large:
             e = out[-1]
             e["ok"], e["owner"] = False, "PAGES" if e["owner"] == "PAGES" else e["owner"]
