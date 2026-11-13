@@ -69,20 +69,33 @@
       }
     },
     "about-salon": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/about-salon.jpg",
-      "width": 1200,
-      "height": 1600,
-      "bytes": 16283,
-      "sha256": "1c42599c84d9e92823c368b579c98ccc20df7dad1dab4307d20ce87feda2baa5",
+      "width": 1320,
+      "height": 1099,
+      "bytes": 303011,
+      "sha256": "0220086b7cea2ccd3fc3a217b4259ef384b2f24fe50e2baaed882c53e67db63a",
       "sm": {
         "file": "images/sm/about-salon.jpg",
-        "width": 600,
-        "height": 800,
-        "bytes": 5044,
-        "sha256": "3e333f3595ddc2b5cbea5b77cabcf8d2f7ce3c00267f6184ee77270f95311577"
+        "width": 800,
+        "height": 666,
+        "bytes": 111295,
+        "sha256": "631d689cf3c48ef2b69a8a23659c1d227ec95edd5df0404e24d04fded8e22b03"
       },
-      "webp": null
+      "webp": {
+        "file": "images/about-salon.webp",
+        "width": 1320,
+        "height": 1099,
+        "bytes": 230992,
+        "sha256": "080036a8b6d826756368ba78fcb6f24f00ba718d9d58004bef9f754106993c22",
+        "sm": {
+          "file": "images/sm/about-salon.webp",
+          "width": 800,
+          "height": 666,
+          "bytes": 83120,
+          "sha256": "e984a577714e91a83ee466e8aeba80e8c37babdace519a376ed9a98fad63ef07"
+        }
+      }
     },
     "brunette-balayage": {
       "status": "owner-photo",
@@ -114,20 +127,33 @@
       }
     },
     "copper-waves": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/copper-waves.jpg",
-      "width": 1067,
+      "width": 1200,
       "height": 1600,
-      "bytes": 14435,
-      "sha256": "8f632de1c8d4e210635386b11a896fcd310e9fcbb310bf88daa3e94e35312f11",
+      "bytes": 348058,
+      "sha256": "1c074dd3b14a7e52cb2f5caca3bf2a8a25bdc26925c00d2e0992492361e8d55b",
       "sm": {
         "file": "images/sm/copper-waves.jpg",
-        "width": 533,
+        "width": 600,
         "height": 800,
-        "bytes": 4410,
-        "sha256": "0f8596f3b8757fd9a9dd6ff00a0de36fa707b02b044f118790fe4908dd691bf9"
+        "bytes": 93134,
+        "sha256": "ee60994e127bad323c1f0fc6ce9df55bdbb6e93db629959cbdfa251c39ede3a2"
       },
-      "webp": null
+      "webp": {
+        "file": "images/copper-waves.webp",
+        "width": 1200,
+        "height": 1600,
+        "bytes": 244912,
+        "sha256": "0521cd373682cf4143008c45e2558d31aaca57c9e11b47a29bd5f8bfec47289a",
+        "sm": {
+          "file": "images/sm/copper-waves.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 67088,
+          "sha256": "101556b5a7f3a02ea01bfcd1ee36eff5e8450b599a815b0f7ee2e6580be9d466"
+        }
+      }
     },
     "foils-highlights": {
       "status": "owner-photo",
@@ -362,20 +388,33 @@
       }
     },
     "g14": {
-      "status": "placeholder",
+      "status": "owner-photo",
       "file": "images/g14.jpg",
-      "width": 1600,
-      "height": 1064,
-      "bytes": 14359,
-      "sha256": "fbf11335bec48918f300a654e892173e7bfeeeda519bc1363c92f671efb7b5c4",
+      "width": 1320,
+      "height": 1417,
+      "bytes": 367334,
+      "sha256": "80c56210d767f214fd5adbf161e79575ad45050c5a2a0f543b9eec439e2d32d8",
       "sm": {
         "file": "images/sm/g14.jpg",
-        "width": 800,
-        "height": 532,
-        "bytes": 4441,
-        "sha256": "304608beab9afcf041c46103770d7d0f15790c0cb36678143fcaee562f3d8785"
+        "width": 745,
+        "height": 800,
+        "bytes": 113175,
+        "sha256": "17a53873dd0f3e53e5c8a8d629963d20e7db11e748639bb0ed8aaa4422722c0a"
       },
-      "webp": null
+      "webp": {
+        "file": "images/g14.webp",
+        "width": 1320,
+        "height": 1417,
+        "bytes": 263752,
+        "sha256": "6595fc5543810e5c536bac3280353e65f31d10eafa1484a4af131a29ef73b68d",
+        "sm": {
+          "file": "images/sm/g14.webp",
+          "width": 745,
+          "height": 800,
+          "bytes": 82520,
+          "sha256": "6247338d1ff6e87dd9f0cea1c18da29a5f8677040f124f3195b255165834c1d7"
+        }
+      }
     },
     "g15": {
       "status": "placeholder",
