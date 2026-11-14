@@ -67,19 +67,12 @@
       "duration": "1 hr",
       "price": "Call for price",
       "image": {"slot": "service-09", "file": "g14", "alt": "Long blonde balayage waves from the back", "alt_original": "Curling iron waves in the salon"}
-    },
-    {
-      "title": "Kids’ Haircut",
-      "description": "Friendly, patient cuts just for kids.",
-      "duration": "45 min",
-      "price": "Call for price",
-      "image": {"slot": "service-10", "file": "g18", "alt": "", "alt_original": "Sectioning hair for a kids haircut"}
     }
   ],
   "button_label": "Book Now",
   "closing_note_html": "To book, call or text <a href=\"tel:+1-347-671-5095\">347-671-5095</a>, Tuesday to Saturday, 9 AM to 5 PM.",
   "notes": [
-    "INFO: No typos fixed. Title tag, the heading Our Services and all ten service cards (title, description, duration, price, button text) are character for character the live Wix text, in the live Wix order. Kids’ Haircut keeps the curly apostrophe Wix uses.",
+    "INFO: No typos fixed. Title tag, the heading Our Services and all the service cards (title, description, duration, price, button text) are character for character the live Wix text, in the live Wix order. The live Wix page has a tenth card, Kids’ Haircut, which was taken off this page on 13 November 2026 (contract decision 60).",
     "INFO: The meta description was changed on purpose on 2 November 2026, so it is no longer the live Wix text. Online booking was dropped that day. The salon owner wants clients to use the salon's own booking, so there is no online booking link, and the Book Now buttons call 347-671-5095. The live Wix description was \"Book hair and makeup appointments online with HairByGerta in Staten Island, NY. Reserve haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup in minutes.\" The new one is \"Call or text to book hair and makeup appointments with Gerta in Staten Island, NY. Haircuts, color, balayage, keratin treatments, Brazilian blowouts and makeup.\" This change is on the fixed list of intended differences in qa/check_content.py.",
     "INFO: No heading on the live page gets its capitals from styling (textTransform is none for every text), so every heading is stored as Wix writes it.",
     "INFO: Live Wix prints Call for price twice in each card. The first copy is a 1 px label for screen readers only. It is stored once, in price.",

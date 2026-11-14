@@ -1078,7 +1078,7 @@ def test_book_now(env, vp):
         page.goto(url, wait_until="load")
         got = page.evaluate(JS_BOOK)
         pills = got["pills"]
-        ck.put(B + "ten Book Now pills", len(pills) == 10,
+        ck.put(B + "nine Book Now pills", len(pills) == 9,
                f"{len(pills)} a.pill[data-book], {got['marked']} [data-book] elements in all")
         as_served_bad = []
         if served:
@@ -1520,7 +1520,7 @@ def test_nojs(env, slug):
             links = page.evaluate("() => Array.from(document.querySelectorAll('[data-book]')).map((a) => a.getAttribute('href'))")
             pills = page.locator("a.pill[data-book]").count()
             bad = [h for h in links if h != TEL]
-            ck.put(N + "Book Now links call the phone", pills == 10 and not bad,
+            ck.put(N + "Book Now links call the phone", pills == 9 and not bad,
                    f"{pills} a.pill[data-book], {len(links)} [data-book] links" + (", all call the phone" if not bad else ", wrong href: " + ", ".join(repr(h) for h in bad[:4])))
 
         if slug == "gallery":
