@@ -1155,9 +1155,9 @@ body.lightbox-open {
   object-fit: cover;
 }
 
-/* g19 is a wide photo, the hair sits left of the middle (decision 57). */
-.photo-row img[src*="g19"] {
-  object-position: 36% 50%;
+/* g21 is a wide photo, the hair sits left of the middle (decision 57). */
+.photo-row img[src*="g21"] {
+  object-position: 33% 50%;
 }
 
 /* ---------- Meet Gerta ----------
@@ -1235,6 +1235,55 @@ body.lightbox-open {
 
 .meet .p2 img {
   height: 637px;
+}
+
+/* ---------- Meet Gerta from 1101 px upwards (decision 58) ----------
+   The helper asked for texts that line up and a larger makeup photo. Both texts are
+   set flush left. The heading, the first text and the makeup photo share one left
+   edge. The makeup photo takes 26 % of the window width, at least 313 px and at
+   most 440 px. The second text stands beside it, in the middle of its height. The
+   large photo is as tall as everything to its left, and at least 637 px. */
+@media (min-width: 1101px) {
+  .meet {
+    grid-template-columns: clamp(313px, 26vw, 440px) minmax(0, 1fr) calc(35% + 5.95px);
+  }
+
+  .meet .t1,
+  .meet .t2 {
+    text-align: left;
+  }
+
+  .meet .t1 {
+    width: auto;
+    max-width: 34em;
+    margin: 20px 0 0;
+  }
+
+  .meet .p1 {
+    margin-top: 24px;
+  }
+
+  .meet .t2 {
+    align-self: center;
+    justify-self: center;
+    width: auto;
+    max-width: 26em;
+    margin: 0 28px;
+  }
+
+  .meet .p2 {
+    position: relative;
+    align-self: stretch;
+    min-height: 637px;
+  }
+
+  .meet .p2 picture,
+  .meet .p2 img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* ---------- 1100 px and below: zigzag (photo + text, text + photo) ----------
