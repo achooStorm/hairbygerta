@@ -46,6 +46,9 @@ PHOTOS_IN_ROW = 3
 # The photo row: three photos share the width of the window on every screen, so each is a little under a
 # third of it.
 PHOTO_ROW_SIZES = "(max-width: 760px) 34vw, 32vw"
+# The makeup photo of Meet Gerta: as wide as the text on a phone, 313 px up to 1100 px, and from there about
+# a quarter of the window (26 %, at most 440 px, decision 58).
+PORTRAIT_SIZES = "(max-width: 760px) 100vw, (max-width: 1100px) 313px, 26vw"
 # The large photo of Meet Gerta: on a phone it runs from one edge of the screen to the other. Up to 1100 px
 # (the second breakpoint of the stylesheet) it is at most 424 px wide, which is up to half of such a window.
 # On a wider screen it grows with the window and takes about a third of its width (35 % of the room between
@@ -109,7 +112,7 @@ def render(ctx):
         '<section class="meet" aria-labelledby="meet-h">',
         '  <h2 id="meet-h" class="serif">%s</h2>' % esc(meet["heading"]),
         '  <p class="t1">%s</p>' % esc(meet["paragraph_1"]),
-        '  <div class="p1">%s</div>' % _photo(ctx, meet["portrait"]),
+        '  <div class="p1">%s</div>' % _photo(ctx, meet["portrait"], sizes=PORTRAIT_SIZES),
         '  <p class="t2">%s</p>' % esc(meet["paragraph_2"]),
         '  <div class="p2">%s</div>' % _photo(ctx, meet["large"], sizes=LARGE_PHOTO_SIZES),
         "</section>",

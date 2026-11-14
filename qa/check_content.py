@@ -134,7 +134,7 @@ SERVICE_IMAGES = ("svc-haircut", "g10", "makeup-red-lips", "svc-bridal", "foils-
 GALLERY_IMAGES = ("g01", "g02", "foils-highlights", "g04", "g05", "g06", "g07", "brunette-balayage", "copper-waves", "g10",
                   "makeup-red-lips", "g12", "g13", "g14", "g15", "g16", "g17", "g18", "g19", "g20", "g22", "g21")
 ABOUT_LEFT, ABOUT_RIGHT = ("brunette-balayage", "about-salon"), ("g10", "copper-waves")
-HOME_ROW, HOME_MEET = ("g16", "home-smile", "g19"), ("makeup-red-lips", "meet-extensions")
+HOME_ROW, HOME_MEET = ("g16", "home-smile", "g21"), ("makeup-red-lips", "meet-extensions")
 BRIEF_IMAGES = {"book-online": SERVICE_IMAGES, "gallery": GALLERY_IMAGES, "about": ABOUT_LEFT + ABOUT_RIGHT,
                 "home": HOME_ROW + HOME_MEET}
 
