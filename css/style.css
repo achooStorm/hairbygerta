@@ -1155,6 +1155,11 @@ body.lightbox-open {
   object-fit: cover;
 }
 
+/* g19 is a wide photo, the hair sits left of the middle (decision 57). */
+.photo-row img[src*="g19"] {
+  object-position: 36% 50%;
+}
+
 /* ---------- Meet Gerta ----------
    As wide as the window too. The heading and the portrait start 43 px from the left
    window edge and the texts keep their place beside them. The large photo ends 26 px
