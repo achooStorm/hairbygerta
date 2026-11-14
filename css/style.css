@@ -1160,6 +1160,21 @@ body.lightbox-open {
   object-position: 33% 50%;
 }
 
+/* ---------- The Home row from 1101 px upwards (decision 59) ----------
+   The helper asked for the first photo (g16) to be zoomed out. The photo is a close-up,
+   3 wide to 4 tall, so the furthest it can zoom out is to show all of it. Its column
+   is as wide as the whole photo is at 545 px height (408.75 px), never wider than a
+   third of the row. The other two photos share the rest. The row stops growing at
+   1541 px, where those two are 520 px wide, and stays in the middle of the window. */
+@media (min-width: 1101px) {
+  .photo-row {
+    grid-template-columns: min(408.75px, calc((100% - 40px) / 3)) minmax(0, 1fr) minmax(0, 1fr);
+    max-width: 1541px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* ---------- Meet Gerta ----------
    As wide as the window too. The heading and the portrait start 43 px from the left
    window edge and the texts keep their place beside them. The large photo ends 26 px
