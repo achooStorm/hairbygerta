@@ -1968,6 +1968,16 @@ h1.services-title {
   }
 }
 
+/* Nine cards in two columns leave the last one alone in its row. It stands in the
+   middle of the row, at the width of one card (decision 60). */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .services > .card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: min(290px, 100%);
+  }
+}
+
 /* Phones: one card per row, up to 340 px wide, each as tall as its own text,
    and a full width Book Now button that is easy to tap. The text has the sizes of the
    old phone page: title 24 px on 30 px lines, card names 20 px on 28 px lines,

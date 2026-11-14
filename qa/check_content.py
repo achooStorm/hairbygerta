@@ -28,7 +28,7 @@ What it checks on every page
                         email text and mailto links, hours, the Facebook, Instagram and Maps links
   fact-services, fact-service-images (Book Online), fact-gallery-images (Gallery), fact-about-photos (About),
   fact-home-photos (Home)
-                        the ten services with title, description, duration and price, and the photos, in the order
+                        the nine services with title, description, duration and price, and the photos, in the order
                         the brief gives
   privacy-...           (Privacy Policy) no sentence says that Wix stores data or sets cookies, the three statements
                         the brief asks for are there, the last heading is Questions. Online booking was dropped on
@@ -128,9 +128,8 @@ SERVICES = (    # title, description, duration, price
     ("Keratin Treatment", "Frizz-fighting smoothing treatment for sleek, manageable hair.", "2 hr 30 min", PRICE),
     ("Brazilian Blowout", "Long-lasting smoothness with mirror-like shine.", "2 hr", PRICE),
     ("Perm & Texture Waves", "Custom curls or waves with movement and body.", "1 hr", PRICE),
-    ("Kids' Haircut", "Friendly, patient cuts just for kids.", "45 min", PRICE),
 )
-SERVICE_IMAGES = ("svc-haircut", "g10", "makeup-red-lips", "svc-bridal", "foils-highlights", "g19", "g17", "g16", "g14", "g18")
+SERVICE_IMAGES = ("svc-haircut", "g10", "makeup-red-lips", "svc-bridal", "foils-highlights", "g19", "g17", "g16", "g14")
 GALLERY_IMAGES = ("g01", "g02", "foils-highlights", "g04", "g05", "g06", "g07", "brunette-balayage", "copper-waves", "g10",
                   "makeup-red-lips", "g12", "g13", "g14", "g15", "g16", "g17", "g18", "g19", "g20", "g22", "g21")
 ABOUT_LEFT, ABOUT_RIGHT = ("brunette-balayage", "about-salon"), ("g10", "copper-waves")
@@ -1476,9 +1475,9 @@ def check_page_facts(slug, ex, page, content):
         for card in page.with_class("card"):
             cell = lambda tag, cls: next((norm(node_text(n)) for n in find(card, tag, cls)), None)
             on_page.append(row((cell("h2", None), cell(None, "desc"), cell(None, "duration"), cell(None, "price"))))
-        out.append(order_entry(slug, "fact-services", "the ten services (title / description / duration / price)",
+        out.append(order_entry(slug, "fact-services", "the nine services (title / description / duration / price)",
                                [row(s) for s in SERVICES], in_content, on_page, ex))
-        out.append(order_entry(slug, "fact-service-images", "the photos of the ten service cards", SERVICE_IMAGES, slots,
+        out.append(order_entry(slug, "fact-service-images", "the photos of the nine service cards", SERVICE_IMAGES, slots,
                                names_in(page.with_class("card")), ex))
     elif slug == "gallery":
         links = [l for l in page.links if l.place == "main" and find(l.node, "img")]

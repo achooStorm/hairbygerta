@@ -132,14 +132,6 @@
           "name": "Perm & Texture Waves",
           "description": "Custom curls or waves with movement and body."
         }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Kids’ Haircut",
-          "description": "Friendly, patient cuts just for kids."
-        }
       }
     ]
   }
