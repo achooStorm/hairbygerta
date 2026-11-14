@@ -10,7 +10,7 @@
       p.salon                               "hero.salon"
       a.addr                                "hero.address" behind a map pin, opens the map in a new tab
       div.marquee > div.track > span x 6    "hero.hours", the line that scrolls
-    section.photo-row > img x 4             "photo_row"
+    section.photo-row > img x 3             "photo_row"
     section.meet                            "meet"
       h2#meet-h.serif                       "meet.heading"
       p.t1, div.p1 > img                    "meet.paragraph_1", "meet.portrait"
@@ -37,15 +37,15 @@ PHOTO_ROW_LABEL = "Featured work"
 # The map pin in front of the street address. It is decoration, so screen readers skip it.
 PIN = '<span class="pin" aria-hidden="true">&#128205;</span>'
 
-# The stylesheet lays the photo row out as four columns, so the row holds four photos.
-PHOTOS_IN_ROW = 4
+# The stylesheet lays the photo row out as three columns, so the row holds three photos (decision 56).
+PHOTOS_IN_ROW = 3
 
 # How wide a photo is on screen, for the browser to pick between the small copy and the full file. These
 # two texts never change how the page looks, they only steer which file is fetched. 760 px is the phone
 # breakpoint of the stylesheet, and "vw" is one hundredth of the width of the window.
-# The photo row: on a phone it is two photos wide, so a photo is at most half the window wide. On a wider
-# screen the four photos share the width of the window, each is a little under a quarter of it.
-PHOTO_ROW_SIZES = "(max-width: 760px) 50vw, 24vw"
+# The photo row: three photos share the width of the window on every screen, so each is a little under a
+# third of it.
+PHOTO_ROW_SIZES = "(max-width: 760px) 34vw, 32vw"
 # The large photo of Meet Gerta: on a phone it runs from one edge of the screen to the other. Up to 1100 px
 # (the second breakpoint of the stylesheet) it is at most 424 px wide, which is up to half of such a window.
 # On a wider screen it grows with the window and takes about a third of its width (35 % of the room between
