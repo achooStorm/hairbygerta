@@ -1133,11 +1133,11 @@ body.lightbox-open {
 
 /* ---------- Photo row ----------
    As wide as the window, like on the old site: 26 px to each window edge, 20 px
-   between two photos, every photo 545 px tall. The four photos share the width
-   that is left: 288 px each in a 1265 px window, 292 px at 1280, 332 px at 1440. */
+   between two photos, every photo 545 px tall. The three photos share the width
+   that is left (decision 56). */
 .photo-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   margin: 22px 0 0;
   padding: 0 26px;
@@ -1241,7 +1241,7 @@ body.lightbox-open {
 
   .photo-row img {
     height: auto;
-    aspect-ratio: 288 / 545;
+    aspect-ratio: 2 / 3;
   }
 
   .meet {
@@ -1349,12 +1349,12 @@ body.lightbox-open {
   }
 
   .photo-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .photo-row img {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 2 / 3;
   }
 
   .meet {

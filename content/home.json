@@ -21,34 +21,26 @@
   "photo_row": [
     {
       "slot": "photo-row-1",
-      "file": "home-styling",
-      "alt": "Stylist applying hair color with a brush",
-      "alt_original": "Hair Styling Session",
-      "width": 288,
+      "file": "g16",
+      "alt": "Blonde balayage with loose waves",
+      "alt_original": "Blonde balayage with loose waves",
+      "width": 391,
       "height": 545
     },
     {
       "slot": "photo-row-2",
-      "file": "foils-highlights",
-      "alt": "Applying highlights with foils",
-      "alt_original": "iStock-1153438285.jpg",
-      "width": 288,
+      "file": "home-smile",
+      "alt": "Layered haircut with caramel highlights",
+      "alt_original": "Smiling client with long dark styled hair",
+      "width": 391,
       "height": 545
     },
     {
       "slot": "photo-row-3",
-      "file": "home-smile",
-      "alt": "Layered haircut with caramel highlights",
-      "alt_original": "Smiling client with long dark styled hair",
-      "width": 288,
-      "height": 545
-    },
-    {
-      "slot": "photo-row-4",
       "file": "home-waves",
       "alt": "High ponytail with long curls",
       "alt_original": "Client with voluminous copper waves in the salon chair",
-      "width": 288,
+      "width": 391,
       "height": 545
     }
   ],
