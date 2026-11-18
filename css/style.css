@@ -2668,10 +2668,10 @@ h1.services-title {
   line-height: 28.8px;
 }
 
-/* The drawing of an item. The five are one family (tools/pages/contact.py): the same
-   box of 24 units, the same line, and two tones. The lines are the ink of the text,
-   the shapes marked "tone" are filled with the beige of the site, and the dot of the
-   map pin ("hole") shows the page colour again.
+/* The drawing of an item. The five are one family, icons of the Phosphor set in its
+   Duotone style (tools/pages/contact.py): the same box, the same line, and two tones.
+   The lines are the ink of the text, and the shape marked "tone", which the set draws
+   as a light tint, is filled with the beige of the site.
    On a wide screen a drawing is 32 px and stands above its heading, 16 px apart: the
    heading keeps the place it had under the 28 px drawing of before. Every drawing has
    a little air around it inside its box, each a different amount, so each is moved
@@ -2687,24 +2687,21 @@ h1.services-title {
 
 .info-icon .tone {
   fill: var(--beige);
-}
-
-.info-icon .hole {
-  fill: var(--bg);
+  opacity: 1;
 }
 
 .info-icon.icon-address {
-  margin-left: -6.5px;
+  margin-left: -5px;
 }
 
 .info-icon.icon-phone {
-  margin-left: -5px;
+  margin-left: -4px;
 }
 
 .info-icon.icon-email,
 .info-icon.icon-social,
 .info-icon.icon-hours {
-  margin-left: -3.5px;
+  margin-left: -3px;
 }
 
 .info-item h2 {

@@ -9,7 +9,7 @@ Contract, section 7, Contact:
     div.contact
       div.info
         div.info-item             one per entry of "info", in the order of the content file
-          svg.info-icon.icon-ID   a small two-tone drawing, decoration only (aria-hidden)
+          svg.info-icon.icon-ID   a small two-tone icon of the Phosphor set, decoration only (aria-hidden)
           h2.serif                the name of the item
           p                       one per line of the item. The street line of the Address item is a link
                                   to the map (a.map-link, maps_href of content/site.json)
@@ -78,34 +78,60 @@ CONTRACT_FIELDS = ("first-name", "last-name", "email", "message")
 # field with a capital letter (autocapitalize="words").
 NAME_FIELDS = ("name", "given-name", "family-name", "additional-name")
 
-# The drawings of the info items, one per "id" in the content file. One set, made for this site
-# (18 November 2026, decision 64): every drawing sits in the same box of 24 x 24 units, is drawn with the
-# same line (1.5 units, round ends and corners) and is about 17 units large, so the five look like one
-# family and line up in a column. They have two tones: the lines take the colour of the text around them,
-# and the shapes marked class="tone" are filled with the beige of the site by the stylesheet (the dot of
-# the map pin, class="hole", is filled with the page colour again). Without the stylesheet nothing is
-# filled and they are plain line drawings.
+# The drawings of the info items, one per "id" in the content file. They are five icons of the Phosphor
+# set in its Duotone style (phosphoricons.com, taken from icon-sets.iconify.design on 18 November 2026,
+# decision 65): map-pin, phone, envelope-simple, at and clock. Phosphor Icons are free to use under the
+# MIT License, and its text has to travel with them: tools/licenses/MIT-PhosphorIcons.txt.
+# Every drawing sits in the same box of 256 x 256 units and is drawn with the same line (16 units), so
+# the five look like one family and line up in a column. They have two tones: the lines take the colour
+# of the text around them, and the shape marked class="tone" is filled with the beige of the site by the
+# stylesheet. Without the stylesheet that shape is a light tint of the text colour (opacity 0.2, as the
+# set draws it).
 # The stylesheet sets their size (class info-icon) and gives each a second class, icon-ID, which it uses
 # on a wide screen to start every drawing exactly at the left edge of its column. The width and height
 # written here only keep them small should the stylesheet not load.
-# To change a drawing, keep it inside the 24 x 24 box, 3.5 units clear of the edges, and keep the line.
-ICON_OPEN = ('<svg class="info-icon icon-%s" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" '
-             'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">')
+# To change a drawing, take the Duotone icon of the same set, so the line and the box stay the same, mark
+# its light shape class="tone", and set the air on its left side in the stylesheet (.info-icon.icon-ID).
+ICON_OPEN = ('<svg class="info-icon icon-%s" viewBox="0 0 256 256" width="28" height="28" fill="currentColor" '
+             'aria-hidden="true" focusable="false">')
+_TONE = '<path class="tone" opacity=".2" d="%s"/><path d="%s"/>'
 ICONS = {
-    # a map pin
-    "address": ('<path class="tone" d="M12 21.25c-3.75-4.1-6.25-7.6-6.25-11a6.25 6.25 0 0 1 12.5 0c0 3.4-2.5 6.9-6.25 11z"/>'
-                '<circle class="hole" cx="12" cy="10.25" r="2.25"/>'),
-    # a telephone handset
-    "phone": ('<path class="tone" d="M6.6 3.5h2.6a1 1 0 0 1 .95.68l1.1 3.3a1 1 0 0 1-.3 1.07L9.3 9.9a11.5 11.5 0 0 0 4.8 4.8'
-              'l1.35-1.65a1 1 0 0 1 1.07-.3l3.3 1.1a1 1 0 0 1 .68.95v2.6a2.1 2.1 0 0 1-2.1 2.1'
-              'C10.6 19.5 4.5 13.4 4.5 5.6a2.1 2.1 0 0 1 2.1-2.1z"/>'),
-    # an envelope
-    "email": ('<rect class="tone" x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4.2 7.1l7.8 5.65 7.8-5.65"/>'),
-    # an at sign, the mark in front of every name on Facebook and Instagram
-    "social": ('<circle class="tone" cx="12" cy="12" r="3.5"/>'
-               '<path d="M15.5 8.6v4.4a2.5 2.5 0 0 0 5 0V12a8.5 8.5 0 1 0-3.3 6.72"/>'),
-    # a clock
-    "hours": ('<circle class="tone" cx="12" cy="12" r="8.5"/><path d="M12 7.25V12l3.25 2"/>'),
+    # a map pin (ph:map-pin-duotone)
+    "address": _TONE % (
+        "M128 24a80 80 0 0 0-80 80c0 72 80 128 80 128s80-56 80-128a80 80 0 0 0-80-80m0 112a32 32 0 1 1 32-32a32 32 0 "
+        "0 1-32 32",
+        "M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 "
+        "88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27."
+        "45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55."
+        "47 105-72 118"),
+    # a telephone handset (ph:phone-duotone)
+    "phone": _TONE % (
+        "M223.94 174.08A48.33 48.33 0 0 1 176 216A136 136 0 0 1 40 80a48.33 48.33 0 0 1 41.92-47.94a8 8 0 0 1 8.3 4.8l"
+        "21.13 47.2a8 8 0 0 1-.66 7.53L89.32 117a7.93 7.93 0 0 0-.54 7.81c8.27 16.93 25.77 34.22 42.75 42.41a7.92 7.92 "
+        "0 0 0 7.83-.59l25-21.3a8 8 0 0 1 7.59-.69l47.16 21.13a8 8 0 0 1 4.83 8.31",
+        "m222.37 158.46l-47.11-21.11l-.13-.06a16 16 0 0 0-15.17 1.4a8 8 0 0 0-.75.56L134.87 160c-15.42-7.49-31.34-23."
+        "29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16 16 0 0 0 1.32-15.06v-.12L97.54 33.64a16 16 0 0 0-16.62-9.52"
+        "A56.26 56.26 0 0 0 32 80c0 79.4 64.6 144 144 144a56.26 56.26 0 0 0 55.88-48.92a16 16 0 0 0-9.51-16.62M176 208"
+        "A128.14 128.14 0 0 1 48 80a40.2 40.2 0 0 1 34.87-40a.6.6 0 0 0 0 .12l21 47l-20.67 24.74a6 6 0 0 0-.57.77a16 "
+        "16 0 0 0-1 15.7c9.06 18.53 27.73 37.06 46.46 46.11a16 16 0 0 0 15.75-1.14a8 8 0 0 0 .74-.56L168.89 152l47 21."
+        "05h.11A40.21 40.21 0 0 1 176 208"),
+    # an envelope (ph:envelope-simple-duotone)
+    "email": _TONE % (
+        "m224 56l-96 88l-96-88Z",
+        "M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-20.57 16L128 133.15L52."
+        "57 64ZM216 192H40V74.19l82.59 75.71a8 8 0 0 0 10.82 0L216 74.19z"),
+    # an at sign, the mark in front of every name on Facebook and Instagram (ph:at-duotone)
+    "social": _TONE % (
+        "M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96",
+        "M128 24a104 104 0 0 0 0 208c21.51 0 44.1-6.48 60.43-17.33a8 8 0 0 0-8.86-13.33C166 210.38 146.21 216 128 216"
+        "a88 88 0 1 1 88-88c0 26.45-10.88 32-20 32s-20-5.55-20-32V88a8 8 0 0 0-16 0v4.26a48 48 0 1 0 5.93 65.1c6 12 16."
+        "35 18.64 30.07 18.64c22.54 0 36-17.94 36-48A104.11 104.11 0 0 0 128 24m0 136a32 32 0 1 1 32-32a32 32 0 0 1-32 "
+        "32"),
+    # a clock (ph:clock-duotone)
+    "hours": _TONE % (
+        "M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96",
+        "M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m64-88a8 "
+        "8 0 0 1-8 8h-56a8 8 0 0 1-8-8V72a8 8 0 0 1 16 0v48h48a8 8 0 0 1 8 8"),
 }
 
 
