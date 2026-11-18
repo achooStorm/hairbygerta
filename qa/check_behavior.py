@@ -45,7 +45,7 @@ NAME = "check_behavior"
 HOURS = "Tuesday - Saturday, 9 AM - 5 PM"
 TEL = "tel:" + common.PHONE
 MAILTO = "mailto:" + common.EMAIL
-NAV = [("Home", "home"), ("Gallery", "gallery"), ("Book Online", "book-online"), ("About", "about"), ("Contact", "contact")]
+NAV = [("Home", "home"), ("Gallery", "gallery"), ("Services", "book-online"), ("About", "about"), ("Contact", "contact")]   # "Services" was "Book Online" until decision 63
 TEST_BOOKING_URL = "https://example.com/book"
 BROKEN = "nope/deeper/"
 OLD_ADDRESSES = ["booking-calendar/balayage", "service-page/hair-coloring"]
@@ -566,7 +566,7 @@ def seen(v):
 
 def test_page(env, vp, slug):
     year = str(env.year)
-    plan = [("menu: five links to the five pages", "PAGES", "Home, Gallery, Book Online, About, Contact, each to its own page")]
+    plan = [("menu: five links to the five pages", "PAGES", "Home, Gallery, Services, About, Contact, each to its own page")]
     if vp == "desktop":
         plan += [("menu: navigation shown, no menu button", "DESIGN", "all five links visible in the header, .menu-btn not shown")]
     else:
@@ -1483,7 +1483,7 @@ def test_nojs(env, slug):
     vp = "phone"
     N = "no-js: "
     plan = [
-        (N + "five navigation links visible", "DESIGN", "Home, Gallery, Book Online, About, Contact drawn on the page, inside the screen width, not covered"),
+        (N + "five navigation links visible", "DESIGN", "Home, Gallery, Services, About, Contact drawn on the page, inside the screen width, not covered"),
         (N + "menu button hidden", "DESIGN", ".menu-btn not shown, it cannot work without the script"),
     ]
     if slug == "book-online":

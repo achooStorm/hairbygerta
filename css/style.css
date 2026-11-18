@@ -288,7 +288,7 @@ hr {
   box-shadow: 0 0 0 2px var(--bg);
 }
 
-/* The dark button (Book Online on Home, Back to Home on the 404 page). 180 x 37. */
+/* The dark button (View Services on Home, Back to Home on the 404 page). 180 x 37. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1089,6 +1089,28 @@ body.lightbox-open {
     white-space: nowrap;
   }
 
+  /* A visitor who has enlarged the text in the phone browser gets a page that is laid
+     out as if the screen were narrower, down to 260 px and less. Below 300 px the words
+     and the number no longer fit on one line, so the number goes onto a line of its own
+     under the words, and nothing is cut off. */
+  @media (max-width: 299px) {
+    .call-bar a {
+      flex-wrap: wrap;
+      gap: 2px 8px;
+      padding: 6px 8px;
+      white-space: normal;
+    }
+
+    .call-bar-label {
+      white-space: nowrap;
+    }
+
+    .call-bar-num {
+      flex: 1 0 100%;
+      text-align: center;
+    }
+  }
+
   /* While the visitor types into a field, the phone keyboard needs the room: the bar steps aside. */
   body:has(input:focus, textarea:focus) .call-bar {
     display: none;
@@ -1342,6 +1364,32 @@ body.lightbox-open {
   display: block;
 }
 
+/* Each photo of the row is a link to the Gallery. The link is a plain box around its
+   photo and changes nothing in the picture of the row. Like a Gallery photo it is a
+   little lighter under the mouse and while a finger presses it. */
+.photo-row a {
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.photo-row a img {
+  transition: opacity 0.2s ease;
+}
+
+.photo-row a:active img {
+  opacity: 0.88;
+}
+
+@media (hover: hover) {
+  .photo-row a:hover img {
+    opacity: 0.88;
+  }
+}
+
+.photo-row a:focus-visible {
+  outline-offset: 3px;
+}
+
 .photo-row img {
   display: block;
   width: 100%;
@@ -1590,7 +1638,7 @@ body.lightbox-open {
     font-size: calc(14px + 3 * var(--grow));
   }
 
-  /* Book Online: 142 px wide, as on the old phone page (160 px from 390 px), and 44 px
+  /* The button (View Services): 142 px wide, as on the old phone page (160 px from 390 px), and 44 px
      tall, a full tap target. */
   .hero-box .btn {
     min-width: min(calc(142px + 18 * var(--grow)), 100%);
@@ -2798,6 +2846,47 @@ html:not(.js) .contact-form {
   line-height: 20px;
 }
 
+/* The line for a phone without an email app: a link that opens the text message app
+   with the visitor's message in it. The script shows it after Send was pressed. It is
+   for touch screens only, where a text message app is at hand: a computer with a mouse
+   never shows it. The link is underlined like every link in a text and has a larger
+   invisible tap area, 44 px tall. */
+.form-alt {
+  display: none;
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media (pointer: coarse) {
+  .form-alt {
+    display: block;
+  }
+
+  .form-alt[hidden] {
+    display: none;
+  }
+}
+
+/* The link stays on one line, so its tap area is one plain box. */
+.form-alt a {
+  position: relative;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.form-alt a::after {
+  content: "";
+  position: absolute;
+  top: -13px;
+  right: -6px;
+  bottom: -13px;
+  left: -6px;
+}
+
 /* ---------- Contact: map ---------- */
 
 /* The frame is beige until the map has arrived (the script loads it when the visitor
@@ -3095,9 +3184,10 @@ html:not(.js) .contact-form {
     font-size: calc(14px + 2 * var(--grow));
   }
 
-  /* The message under the Email field and the line under Send: 15 px from 390 px. */
+  /* The message under the Email field and the lines under Send: 15 px from 390 px. */
   .field-error,
-  .form-note {
+  .form-note,
+  .form-alt {
     font-size: calc(14px + var(--grow));
   }
 

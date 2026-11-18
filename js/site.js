@@ -736,13 +736,37 @@ var BOOKING_URL = "";
       }
     }
 
+    // The line under the status line, for a phone without an email app
+    // (.form-alt): it holds a link that opens the text message app. Shown
+    // after a send, with the visitor's message written into the link, so the
+    // text message app opens with the message already in it. The link in
+    // the page names the number only ("sms:+1..."). The message is added as
+    // "?&body=...", the one form both iPhone and Android understand.
+    var altLine = form.querySelector(".form-alt");
+
+    function showAlt(text) {
+      var link = altLine ? altLine.querySelector("a.sms-link") : null;
+      if (!altLine) {
+        return;
+      }
+      if (link) {
+        var number = (link.getAttribute("href") || "").split("?")[0];
+        link.setAttribute("href", number + "?&body=" + encode(text));
+      }
+      altLine.hidden = false;
+    }
+
     // The status line only ever speaks about the send that just happened.
     // It is emptied as soon as the visitor types again, and when the browser
     // stops a send because the email address is missing or mistyped (the
     // browser then shows its own message and never reaches the code below).
     // "invalid" does not travel up to the form by itself, hence the "true".
+    // The line for a phone without an email app goes with it.
     function clearNote() {
       setNote("");
+      if (altLine) {
+        altLine.hidden = true;
+      }
     }
     form.addEventListener("invalid", clearNote, true);
     form.addEventListener("input", clearNote);
@@ -823,6 +847,8 @@ var BOOKING_URL = "";
       }
 
       setNote((form.getAttribute("data-sent") || "").trim() || sentFallback);
+      // The same message for the text message app, with plain line breaks.
+      showAlt(lines.join("\n").replace(/\r\n/g, "\n").replace(/^\n+/, ""));
     });
   }
 
