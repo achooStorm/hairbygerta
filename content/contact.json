@@ -48,6 +48,7 @@
     }
   ],
   "form": {
+    "heading": "Send a Message",
     "fields": [
       {"id": "first-name", "label": "First Name", "type": "text", "required": false, "autocomplete": "given-name"},
       {"id": "last-name", "label": "Last Name", "type": "text", "required": false, "autocomplete": "family-name"},
@@ -69,6 +70,7 @@
     "open_label": "Open in Google Maps"
   },
   "notes": [
+    "form.heading (18 November 2026): the name of the form, 'Send a Message'. It is not on the Wix page. On a phone it stands above the fields, inside the beige panel of the form. On a wide screen it is not shown and only read out by screen readers, so the two panels look as they did.",
     "form.no_app_html (18 November 2026): a second line under the Send button, shown on a phone or tablet after Send was pressed. Many iPhones have no email app set up, and then Send opens nothing. The link in this line opens the text message app of the phone with the same message, name and email address already written, addressed to the salon's phone number, which the Book Online page already invites visitors to text. The script fills in the message. The line is not shown on a computer with a mouse. The number in the link is the salon's phone number in digits only: change it here when the phone number changes.",
     "Title and description are new. The live Wix contact page has only the automatic title \"Contact | Hairbygerta\" and no meta description. The new title follows the Gallery page title (\"Gallery | Hair & Makeup by Gerta, Staten Island NY\"). The new description is the one from the first version of the site and uses only the business facts.",
     "Reading order: on the desktop Wix page the kicker \"Let's Connect\" sits above the h1 \"Contact\" (on the Wix phone layout the h1 comes first). This file lists h1 before kicker only because the contract fixes the first five keys. The page shows the kicker, then the h1, then the intro.",

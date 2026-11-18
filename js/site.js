@@ -807,6 +807,23 @@ var BOOKING_URL = "";
       });
     }
 
+    // While the form is on the screen, the Call bar of the phone layout steps
+    // aside (class "form-on-screen" on body, the stylesheet slides the bar
+    // away): it lay over the Send button while the page scrolled. The form
+    // counts as on the screen once it has come 90 px up from the bottom edge,
+    // which is where the bar sits. On a wide screen there is no bar and the
+    // class changes nothing.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        var last = entries[entries.length - 1];
+        if (last.isIntersecting) {
+          document.body.classList.add("form-on-screen");
+        } else {
+          document.body.classList.remove("form-on-screen");
+        }
+      }, { rootMargin: "0px 0px -90px 0px" }).observe(form);
+    }
+
     form.addEventListener("submit", function (event) {
       // Never post the form itself. This script opens the email app instead.
       event.preventDefault();

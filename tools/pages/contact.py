@@ -9,12 +9,15 @@ Contract, section 7, Contact:
     div.contact
       div.info
         div.info-item             one per entry of "info", in the order of the content file
-          svg.info-icon           a small line drawing, decoration only (aria-hidden)
+          svg.info-icon.icon-ID   a small two-tone drawing, decoration only (aria-hidden)
           h2.serif                the name of the item
-          p                       one per line of the item
+          p                       one per line of the item. The street line of the Address item is a link
+                                  to the map (a.map-link, maps_href of content/site.json)
           div.social              only in the Social Media item: the Facebook and Instagram links, each a
                                   bare sign (a letter f, the outline of a camera) in a link of 23 x 23 px
+                                  (on a phone the stylesheet draws a round 44 px button around each)
       form#contact-form.contact-form   no action: the script opens the visitor's email app (data-mailto)
+        h2#form-heading.form-heading   the name of the form, shown on a phone as the heading of its panel
         div.row                   First Name and Last Name side by side, each a div with label and input
         label + input#email       type email, required, described by p#email-error
         p#email-error.field-error empty and hidden; the script writes one of the two error messages into it
@@ -31,6 +34,7 @@ Every word a visitor reads comes from content/contact.json:
     info                     the items: "id" picks the drawing (see ICONS below), "heading" is the
                              name, "lines" are the lines under it (a plain text, or {"html": ...} for
                              a line with a link), "social" is the list of icon links of that item
+    form.heading             the name of the form ("Send a Message")
     form.fields              the fields in reading order: id, label, type (text, email or textarea),
                              required (true or false), autocomplete
     form.required_mark       the star shown after the label of a required field
@@ -74,40 +78,34 @@ CONTRACT_FIELDS = ("first-name", "last-name", "email", "message")
 # field with a capital letter (autocapitalize="words").
 NAME_FIELDS = ("name", "given-name", "family-name", "additional-name")
 
-# The drawings of the info items, one per "id" in the content file. Simple line drawings, made for this
-# site. They take the colour of the text around them, and the stylesheet gives each one a box of
-# 28 x 28 px that starts at the left edge of its column (class info-icon). The width and height written
-# here only keep them small should the stylesheet not load.
-#
-# Each drawing has three parts: its viewBox, its stroke width and its shapes. The viewBox is the window
-# the 28 x 28 box looks through. It is chosen so that the drawing starts at the left edge of the box,
-# stands on its bottom edge and is as large as the icon on the old site (pin 21 x 28 px, handset 23 x 23,
-# envelope 23 x 16 and 2 px in from both edges, thumbs-up 23 x 22, clock 23 x 23). The stroke width is
-# chosen so that every line is 1.5 px thick on screen. To change a drawing, keep its shapes inside the
-# same outline, or work the two numbers out again.
-ICON_OPEN = ('<svg class="info-icon" viewBox="%s" width="28" height="28" fill="none" stroke="currentColor" '
-             'stroke-width="%s" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">')
+# The drawings of the info items, one per "id" in the content file. One set, made for this site
+# (18 November 2026, decision 64): every drawing sits in the same box of 24 x 24 units, is drawn with the
+# same line (1.5 units, round ends and corners) and is about 17 units large, so the five look like one
+# family and line up in a column. They have two tones: the lines take the colour of the text around them,
+# and the shapes marked class="tone" are filled with the beige of the site by the stylesheet (the dot of
+# the map pin, class="hole", is filled with the page colour again). Without the stylesheet nothing is
+# filled and they are plain line drawings.
+# The stylesheet sets their size (class info-icon) and gives each a second class, icon-ID, which it uses
+# on a wide screen to start every drawing exactly at the left edge of its column. The width and height
+# written here only keep them small should the stylesheet not load.
+# To change a drawing, keep it inside the 24 x 24 box, 3.5 units clear of the edges, and keep the line.
+ICON_OPEN = ('<svg class="info-icon icon-%s" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" '
+             'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">')
 ICONS = {
     # a map pin
-    "address": ("4.991 2.991 19.019 19.019", "1.019",
-                '<path d="M12 21.5c-3.9-4.3-6.5-8-6.5-11.5a6.5 6.5 0 0 1 13 0c0 3.5-2.6 7.2-6.5 11.5z"/>'
-                '<circle cx="12" cy="10" r="2.5"/>'),
+    "address": ('<path class="tone" d="M12 21.25c-3.75-4.1-6.25-7.6-6.25-11a6.25 6.25 0 0 1 12.5 0c0 3.4-2.5 6.9-6.25 11z"/>'
+                '<circle class="hole" cx="12" cy="10.25" r="2.25"/>'),
     # a telephone handset
-    "phone": ("3.942 -0.779 20.837 20.837", "1.116",
-              '<path d="M6.6 3.5h2.6a1 1 0 0 1 .95.68l1.1 3.3a1 1 0 0 1-.3 1.07L9.3 9.9a11.5 11.5 0 0 0 4.8 4.8'
+    "phone": ('<path class="tone" d="M6.6 3.5h2.6a1 1 0 0 1 .95.68l1.1 3.3a1 1 0 0 1-.3 1.07L9.3 9.9a11.5 11.5 0 0 0 4.8 4.8'
               'l1.35-1.65a1 1 0 0 1 1.07-.3l3.3 1.1a1 1 0 0 1 .68.95v2.6a2.1 2.1 0 0 1-2.1 2.1'
               'C10.6 19.5 4.5 13.4 4.5 5.6a2.1 2.1 0 0 1 2.1-2.1z"/>'),
     # an envelope
-    "email": ("0.531 -3.628 25.135 25.135", "1.347",
-              '<rect x="3" y="5.5" width="19.3" height="13" rx="1"/><path d="M3.5 6.5l9.15 6.5 9.15-6.5"/>'),
-    # a thumbs-up
-    "social": ("2.917 -1.196 21.780 21.780", "1.167",
-               '<path d="M3.5 10.5H7V20H3.5z"/>'
-               '<path d="M7 11l3.6-7.2c1.5 0 2.6 1.1 2.6 2.6v3.1h5.1a1.9 1.9 0 0 1 1.9 2.2l-1.1 6.7'
-               'a1.9 1.9 0 0 1-1.9 1.6H7"/>'),
+    "email": ('<rect class="tone" x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4.2 7.1l7.8 5.65 7.8-5.65"/>'),
+    # an at sign, the mark in front of every name on Facebook and Instagram
+    "social": ('<circle class="tone" cx="12" cy="12" r="3.5"/>'
+               '<path d="M15.5 8.6v4.4a2.5 2.5 0 0 0 5 0V12a8.5 8.5 0 1 0-3.3 6.72"/>'),
     # a clock
-    "hours": ("2.907 -1.047 22.140 22.140", "1.186",
-              '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.2V12l3.2 2"/>'),
+    "hours": ('<circle class="tone" cx="12" cy="12" r="8.5"/><path d="M12 7.25V12l3.25 2"/>'),
 }
 
 
@@ -122,8 +120,7 @@ def _icon(name):
     if name not in ICONS:
         raise ValueError('%s: key "info": there is no drawing for the id "%s" in tools/pages/contact.py (drawings: %s)'
                          % (CONTENT_FILE, name, ", ".join(ICONS)))
-    view_box, stroke_width, shapes = ICONS[name]
-    return ICON_OPEN % (view_box, stroke_width) + shapes + "</svg>"
+    return ICON_OPEN % name + ICONS[name] + "</svg>"
 
 
 def _info_item(ctx, item):
@@ -134,7 +131,20 @@ def _info_item(ctx, item):
         '  <h2 class="serif">%s</h2>' % ctx.esc(item["heading"]),
     ]
     for line in item["lines"]:
-        lines.append("  <p>%s</p>" % (ctx.inline(line["html"]) if isinstance(line, dict) else ctx.esc(line)))
+        if isinstance(line, dict):
+            text = ctx.inline(line["html"])
+        elif item["id"] == "address" and line == ctx.site.get("address_one_line"):
+            # The street address opens the map, as it does on the home page, so a visitor on a phone can
+            # tap it and be led to the salon. The words stay those of the content file. Where the line is
+            # too long for a phone it breaks after the street and never inside the name of the town:
+            # everything after the first comma stays together.
+            street, comma, town = line.partition(", ")
+            words = ctx.esc(street) + (', <span class="nowrap">%s</span>' % ctx.esc(town) if comma else "")
+            text = ('<a class="map-link" href="%s" target="_blank" rel="noopener">%s</a>'
+                    % (ctx.esc(ctx.site["maps_href"]), words))
+        else:
+            text = ctx.esc(line)
+        lines.append("  <p>%s</p>" % text)
     if item.get("social"):
         # The bare signs, a letter f and the outline of a camera, as on the old Contact page. The footer of
         # every page shows the same two links as filled discs.
@@ -214,9 +224,15 @@ def _form(ctx, form, action):
     mark = form["required_mark"]
     errors = form["errors"]
     lines = [
-        '<form id="contact-form" class="contact-form" data-mailto="%s" data-sent="%s">'
-        % (ctx.esc(action), ctx.esc(form["sent_message"])),
+        '<form id="contact-form" class="contact-form" data-mailto="%s" data-sent="%s"%s>'
+        % (ctx.esc(action), ctx.esc(form["sent_message"]),
+           ' aria-labelledby="form-heading"' if form.get("heading") else ""),
     ]
+    # The name of the form. On a phone it is the heading of the beige panel the form sits in. On a wide
+    # screen, where the form stands beside the details as on the old site, the stylesheet keeps it for
+    # screen readers only. A content file without "heading" has no such line.
+    if form.get("heading"):
+        lines.append('  <h2 class="form-heading serif" id="form-heading">%s</h2>' % ctx.esc(form["heading"]))
     row = []                # the fields of the row that is being collected
 
     def close_row():
