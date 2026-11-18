@@ -584,7 +584,7 @@ def test_page(env, vp, slug):
     plan += [("page: no script error, no broken request", "PAGES", "clean")]
     ck = Checks(slug, vp, plan)
     url = env.url(slug)
-    links_sel = "#main-nav a"
+    links_sel = "#main-nav li a"
 
     def menu_state(page):
         return page.evaluate(JS_MENU)
@@ -1503,7 +1503,7 @@ def test_nojs(env, slug):
         page.goto(env.url(slug), wait_until="load")
         if page.evaluate("() => document.documentElement.classList.contains('js')"):
             raise Stop("scripts ran although JavaScript is switched off in this test", "QA")
-        vis = page.evaluate(JS_VIS, ["#main-nav a", True])
+        vis = page.evaluate(JS_VIS, ["#main-nav li a", True])
         labels = [v["text"] for v in vis]
         good = [v for v in vis if v["rendered"] and v["inX"] and v["hit"]]
         ok = labels == [label for label, _ in NAV] and len(good) == 5
@@ -1619,7 +1619,7 @@ def test_broken(env, vp, layout="", tag=""):
                "js/site.js from the site root: " + (", ".join(str(s) for s in js_status) or "never asked for") + "; logo " +
                ("drawn" if logo_ok else "not drawn" + (f" (asked for {info['logo']['src'].replace(env.base, '/')})" if info["logo"] else " (no .logo img)")))
 
-        vis = page.evaluate(JS_VIS, ["#main-nav a", False])
+        vis = page.evaluate(JS_VIS, ["#main-nav li a", False])
         got = [(v["text"], norm_url(v["href"])) for v in vis]
         want = [(label, env.url(target)) for label, target in NAV]
         ck.put(X + "navigation links lead to the right pages", got == want,

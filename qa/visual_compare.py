@@ -414,7 +414,7 @@ BRIEF_JS = """async (spec) => {
 
 # key -> selector. The class names are those of the build contract (tools/CONTRACT.md, sections 6 and 7).
 BRIEF_SPEC = [
-    ("header", "header.site-header"), ("logo", "header.site-header a.logo img"), ("nav_links", "#main-nav a"), ("menu_btn", "header.site-header .menu-btn"),
+    ("header", "header.site-header"), ("logo", "header.site-header a.logo img"), ("nav_links", "#main-nav li a"), ("menu_btn", "header.site-header .menu-btn"),
     ("footer", "footer.site-footer"), ("foot_rule", "footer.site-footer .foot-rule"), ("foot_cols", "footer.site-footer .foot-cols"),
     ("foot_name", "footer.site-footer .foot-name"), ("foot_role", "footer.site-footer .foot-role"),
     ("foot_brand", "footer.site-footer .foot-brand"), ("foot_contact", "footer.site-footer .foot-contact"), ("foot_links", "footer.site-footer .foot-links"),

@@ -747,6 +747,18 @@ def expect_shell(ex, site, year):
             link("header", item.get("path"), item.get("label"), "", "nav[%d]" % i)
     # The Call button at the bottom of the screen on phones (9 November 2026): its words, a space, the phone number.
     call = " ".join(x for x in (need("call_bar_label") or "", need("phone") or "") if x)
+    # The salon card of the open phone menu (18 November 2026, decision 66), inside the navigation after the five
+    # pages: the hours, the street address as a link to the map, the two social links and the Call button once more.
+    card = "the salon card of the open phone menu is not on the Wix site, it is added on purpose"
+    ex.piece(ex.header, SITE_FILE, "hours", need("hours") or "", place="header", intended=card)
+    ex.piece(ex.header, SITE_FILE, "address_one_line", need("address_one_line") or "", place="header", intended=card)
+    link("header", need("maps_href"), site.get("address_one_line"), "", "maps_href")
+    for i, item in enumerate(site.get("social") if isinstance(site.get("social"), list) else []):
+        if isinstance(item, dict):
+            label("aria-label", item.get("label"), "social[%d].label" % i)
+            link("header", item.get("href"), "", item.get("label"), "social[%d]" % i)
+    ex.piece(ex.header, SITE_FILE, "call_bar_label (then the phone number)", call, place="header", intended=card)
+    link("header", need("tel_href"), call, "", "call_bar_label")
     ex.piece(ex.footer, SITE_FILE, "call_bar_label (then the phone number)", call, place="footer",
              intended="the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose")
     link("footer", need("tel_href"), call, "", "call_bar_label")
