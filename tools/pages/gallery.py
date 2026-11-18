@@ -10,7 +10,7 @@ What it writes between <main> and </main>
     <div class="page">
       <h1 class="page-title">Gallery</h1>
       <div class="gallery">
-        <a href="../images/NAME.jpg" aria-label="View photo 1 of 21"><img src="../images/sm/NAME.jpg" ...></a>
+        <a href="../images/NAME.jpg" data-webp="../images/NAME.webp" aria-label="View photo 1 of 21"><img src="../images/sm/NAME.jpg" ...></a>
         ... one link per photo, in the order of "images" in the content file
       </div>
     </div>
@@ -63,9 +63,15 @@ def render(ctx):
         # The small copy with its real pixel size. ctx.img also checks that the manifest knows the photo
         # and gives every placeholder alt="" and class="ph".
         thumb = ctx.img(name, slot["alt"], lazy=n > EAGER_PHOTOS, variant="sm", sizes=THUMB_SIZES)
-        full = ctx.url("/" + ctx.manifest["images"][name]["file"])
-        links.append('    <a href="%s" aria-label="%s">%s</a>'
-                     % (ctx.esc(full), ctx.esc(_label(template, n, total)), thumb))
+        entry = ctx.manifest["images"][name]
+        full = ctx.url("/" + entry["file"])
+        # A photo that has a WebP copy names it in data-webp. The photo viewer shows that copy to a browser
+        # that reads WebP, because it is the same picture in a much smaller file. The link itself stays the
+        # JPG, which every browser and every program can open.
+        webp = entry.get("webp")
+        light = ' data-webp="%s"' % ctx.esc(ctx.url("/" + webp["file"])) if webp and webp.get("file") else ""
+        links.append('    <a href="%s"%s aria-label="%s">%s</a>'
+                     % (ctx.esc(full), light, ctx.esc(_label(template, n, total)), thumb))
 
     body = "\n".join([
         '<div class="page">',

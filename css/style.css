@@ -1,7 +1,10 @@
 /* Hair & Makeup by Gerta. The one stylesheet of the site.
    Custom properties first, then the fonts, the base rules and one section per part of the site.
    Breakpoints: 1100 px and 760 px. Desktop numbers were measured on the old site
-   in a 1280 px window. */
+   in a 1280 px window.
+   Inside the phone layout a few rules look closer: at a phone lying on its side (from
+   600 px wide, or up to 500 px tall) and, in section 75, at touch screens wider than a
+   phone. Phone text grows with the screen from 320 to 390 px (see --grow). */
 
 :root {
   /* Colours */
@@ -24,24 +27,44 @@
   /* Gallery: the space between two photos, sideways and downwards */
   --gallery-gap: 24px;
   /* Book Online: size of the text in a service card (description, duration, price).
-     16 px as on the old page, 14 px on a phone, where the old page had 14 px too. */
+     16 px as on the old page. On a phone 14 px at 320 px wide, where the old page had
+     14 px too, growing to 16 px at 390 px (see --grow). */
   --svc-text: 16px;
+  /* Phone text that grows with the screen, see below. 0 on wider screens. */
+  --grow: 0px;
+  /* The part of the header that is drawn: all of it, or 64 px of it on a phone once
+     the page is scrolled (see Header). */
+  --header-now: var(--header-h);
+  /* The strips of an iPhone screen that the page must keep clear: beside the camera
+     cut-out when the phone lies on its side, and under the home bar. 0 on every other
+     device. The viewport line of the pages (viewport-fit=cover) switches them on. */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
 }
 
-/* The four sizes that change with the width of the window. Nothing else is ever
-   set on :root. */
+/* The sizes that change with the width of the window. Nothing else is ever set on
+   :root, except --header-now further down (the short header of a scrolled phone page). */
 @media (max-width: 1100px) {
   :root {
     --gallery-gap: 20px;
   }
 }
 
+/* --grow is the yardstick of the phone text. The old phone page was drawn for a screen
+   320 px wide, and its text sizes are the sizes of this site at 320 px. An iPhone is
+   375 to 440 px wide, and 14 px text is small there. So a phone text has its old size
+   plus a few steps of --grow: one step is 0 px at 320 px, grows evenly to 1 px at
+   390 px and stays 1 px from there. "calc(14px + 3 * var(--grow))" reads: 14 px on the
+   narrowest phone, 17 px from 390 px upwards. */
 @media (max-width: 760px) {
   :root {
     --header-h: 96px;
     --gutter: 20px;
     --gallery-gap: 12px;
-    --svc-text: 14px;
+    --grow: clamp(0px, (100vw - 320px) / 70, 1px);
+    --svc-text: calc(14px + 2 * var(--grow));
   }
 }
 
@@ -123,11 +146,15 @@
   box-sizing: border-box;
 }
 
-/* Document. */
+/* Document. On a touch screen: a tap flashes in the warm ink of the site instead of the
+   grey of the phone, and two quick taps in a row (next photo, next photo) are two taps
+   and never a zoom into the page. Zooming with two fingers stays as it is. */
 html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(29, 21, 9, 0.12);
+  touch-action: manipulation;
 }
 
 /* Page defaults. A word, an email address or a link that is longer than its line
@@ -174,6 +201,14 @@ main iframe,
 /* The skip link puts the top of the page content right under the header. */
 main {
   scroll-margin-top: var(--header-h);
+}
+
+/* An iPhone on its side: the page content stays out of the strips beside the camera
+   cut-out. The header and the footer do the same for what is inside them, and their
+   colour still runs to the edge of the glass. */
+main {
+  padding-right: var(--safe-right);
+  padding-left: var(--safe-left);
 }
 
 /* Media. An img may sit inside a picture, so both get the same defaults. */
@@ -275,11 +310,23 @@ hr {
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.btn:hover,
-.btn:focus-visible {
+/* Darker under the mouse, under the keyboard focus and while a finger presses it.
+   The mouse rule is only for a device that has a mouse (hover: hover): on a touch
+   screen a tapped button would otherwise stay dark until the next tap somewhere else.
+   Every hover rule of this file that changes a colour or an underline is written this
+   way, and each button has a pressed look (:active) in its place. */
+.btn:focus-visible,
+.btn:active {
   background-color: var(--ink);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background-color: var(--ink);
+  }
 }
 
 /* Page container of the Gallery and the Book Online page. The content is at most
@@ -313,11 +360,13 @@ body.lightbox-open {
   }
 }
 
-/* Phones (760 px and below): a button 44 px tall, a full tap target. No base rule
+/* Phones (760 px and below): a button 44 px tall, a full tap target, with text of
+   14 px at 320 px that grows to 15 px at 390 px (see --grow at the top). No base rule
    changes at 1100 px. */
 @media (max-width: 760px) {
   .btn {
     min-height: 44px;
+    font-size: calc(14px + var(--grow));
   }
 }
 
@@ -331,12 +380,15 @@ body.lightbox-open {
 
 /* ---------- Header ---------- */
 
-/* 159 px tall (96 px on phones, see --header-h). Stays at the top while the page scrolls. */
+/* 159 px tall (96 px on phones, see --header-h). Stays at the top while the page scrolls.
+   The side padding is 0 except on an iPhone lying on its side, where it keeps the logo
+   and the links out of the strips beside the camera cut-out. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
   height: var(--header-h);
+  padding: 0 var(--safe-right) 0 var(--safe-left);
   background: var(--bg);
 }
 
@@ -404,11 +456,18 @@ body.lightbox-open {
 }
 
 /* The current page is underlined, and so is the link under the mouse. */
-.main-nav a:hover,
 .main-nav a[aria-current="page"] {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 1px;
+}
+
+@media (hover: hover) {
+  .main-nav a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 1px;
+  }
 }
 
 /* A low screen that is wider than a phone held upright (a phone held sideways, a very
@@ -441,16 +500,19 @@ body.lightbox-open {
 
 /* ---------- Footer ---------- */
 
-/* Dark band, light 14 px text on 18.2 px lines. 233 px tall at desktop widths. */
+/* Dark band, light 14 px text on 18.2 px lines. 233 px tall at desktop widths.
+   The side padding is 0 except on an iPhone lying on its side (see the header). */
 .site-footer {
+  padding: 0 var(--safe-right) 0 var(--safe-left);
   background: var(--ink);
   color: var(--bg);
   font-size: 14px;
   line-height: 18.2px;
 }
 
+/* The bottom padding is 21 px, plus the home bar of an iPhone lying on its side. */
 .site-footer .inner {
-  padding: 41px 30px 21px;
+  padding: 41px 30px calc(21px + var(--safe-bottom));
 }
 
 .site-footer a {
@@ -458,10 +520,12 @@ body.lightbox-open {
   text-decoration: none;
 }
 
-.site-footer a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 1px;
+@media (hover: hover) {
+  .site-footer a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 1px;
+  }
 }
 
 /* Keyboard focus on the dark band: a light ring instead of the dark one. */
@@ -662,6 +726,8 @@ body.lightbox-open {
     width: 80px;
     height: 80px;
     margin-left: -40px;
+    transform-origin: 50% 0;
+    transition: transform 0.25s ease;
   }
 
   .logo img {
@@ -687,6 +753,66 @@ body.lightbox-open {
     background: transparent;
     color: var(--ink);
     cursor: pointer;
+    transition: transform 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* While a finger is on the button the bars are a little lighter. */
+  .menu-btn:active {
+    opacity: 0.55;
+  }
+
+  /* ---- The short header ----
+     Once the page is scrolled the header draws only its upper 64 px: the logo is
+     52 px, the menu button moves up beside it and 32 px more of the page show. The
+     script sets the class "compact" on <html> for that (after about 50 px of scrolling,
+     and always on a phone lying on its side, where the screen is low). Back at the top
+     of the page the header is the full 96 px again.
+     The header itself keeps its 96 px in the page, so nothing below it ever moves or
+     jumps. Its light background is a layer of its own that gets shorter, and the
+     strip under that layer lets taps through to the page. Only the logo, the button
+     and the open menu take taps.
+     Without the script none of this applies, the header is a plain block (further down). */
+  html.js .site-header {
+    background: none;
+    pointer-events: none;
+  }
+
+  html.js .site-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: var(--header-h);
+    background: var(--bg);
+    transform-origin: 50% 0;
+    transition: transform 0.25s ease;
+  }
+
+  html.js .site-header .logo,
+  html.js .site-header .menu-btn,
+  html.js .site-header .main-nav {
+    pointer-events: auto;
+  }
+
+  html.compact {
+    --header-now: 64px;
+  }
+
+  /* 64 of 96 px. */
+  html.compact .site-header::before {
+    transform: scaleY(0.66667);
+  }
+
+  /* 52 px, 6 px from the top. */
+  html.compact .logo {
+    transform: translateY(-2px) scale(0.65);
+  }
+
+  /* 8 px from the top, level with the middle of the small logo. */
+  html.compact .menu-btn {
+    transform: translateY(-16px);
   }
 
   /* The bars are borders, not backgrounds, so they stay visible in high contrast mode. */
@@ -715,27 +841,44 @@ body.lightbox-open {
   }
 
   /* Navigation: hidden until the button opens it (class open), then a sheet that
-     fills the screen under the header. Each link is a 52 px tall row. */
+     fills the screen under the header. Each link is a 52 px tall row.
+     Closed, the sheet is not hidden with display: none but with visibility: hidden,
+     which hides it from the eye, from taps, from the Tab key and from screen readers
+     alike, and can be faded: the sheet fades in and its links come down 10 px in a
+     fifth of a second. On closing it stays visible for that fifth of a second.
+     The sheet starts under the part of the header that is drawn (--header-now), and
+     its padding keeps the links clear of the home bar of an iPhone. */
   .main-nav {
     position: fixed;
-    top: var(--header-h);
+    top: var(--header-now);
     right: 0;
     bottom: 0;
     left: 0;
-    display: none;
-    padding: 14px 18px 32px;
+    display: block;
+    visibility: hidden;
+    padding: 14px calc(18px + var(--safe-right)) calc(32px + var(--safe-bottom)) calc(18px + var(--safe-left));
     border-top: 1px solid var(--beige);
     background: var(--bg);
+    opacity: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
   }
 
   .main-nav.open {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
   }
 
   .main-nav ul {
     display: block;
+    transform: translateY(-10px);
+    transition: transform 0.2s ease;
+  }
+
+  .main-nav.open ul {
+    transform: none;
   }
 
   .main-nav a {
@@ -743,6 +886,11 @@ body.lightbox-open {
     font-size: 22px;
     line-height: 28px;
     white-space: normal;
+  }
+
+  /* A row under a finger. */
+  .main-nav a:active {
+    opacity: 0.55;
   }
 
   .main-nav a:hover,
@@ -769,14 +917,19 @@ body.lightbox-open {
   html:not(.js) .main-nav {
     position: static;
     display: block;
+    visibility: visible;
     padding: 0 14px 8px;
     border-top: 0;
+    opacity: 1;
     overflow: visible;
+    transition: none;
   }
 
   html:not(.js) .main-nav ul {
     display: flex;
     justify-content: center;
+    transform: none;
+    transition: none;
   }
 
   html:not(.js) .main-nav a {
@@ -787,7 +940,13 @@ body.lightbox-open {
 
   /* Footer: one column in the order of the old phone layout (name and icons,
      then phone, email and address, then the policy links). Every link is a
-     tap row of 30 px or more. */
+     tap row of 30 px or more. The text is 14 px on 18.2 px lines at 320 px and
+     grows to 16 px on 20.8 px lines at 390 px (see --grow at the top). */
+  .site-footer {
+    font-size: calc(14px + 2 * var(--grow));
+    line-height: 1.3;
+  }
+
   .site-footer .inner {
     padding: 24px var(--gutter) 32px;
   }
@@ -805,18 +964,20 @@ body.lightbox-open {
     padding-right: 0;
   }
 
-  /* Name and role in the sizes of the old phone page: 22 px and 16 px on 24.2 px lines. */
+  /* Name and role in the sizes of the old phone page at 320 px: 22 px and 16 px on
+     24.2 px lines. They grow to 26 px and 19 px at 390 px, close to the 27 px and
+     19 px of the wide page. */
   .foot-name,
   .foot-role {
-    line-height: 24.2px;
+    line-height: calc(24.2px + 4.4 * var(--grow));
   }
 
   .foot-name {
-    font-size: 22px;
+    font-size: calc(22px + 4 * var(--grow));
   }
 
   .foot-role {
-    font-size: 16px;
+    font-size: calc(16px + 3 * var(--grow));
   }
 
   .foot-contact {
@@ -862,9 +1023,11 @@ body.lightbox-open {
 
   /* The dark footer runs on under the call bar, so its last line is never hidden. */
   .site-footer .inner {
-    padding-bottom: calc(32px + 64px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(32px + 64px + var(--safe-bottom));
   }
 
+  /* The bar keeps its button above the home bar of an iPhone (--safe-bottom) and its
+     own light colour runs on under that bar to the edge of the glass. */
   .call-bar {
     position: fixed;
     right: 0;
@@ -872,12 +1035,13 @@ body.lightbox-open {
     left: 0;
     z-index: 40;
     display: flex;
-    padding: 8px var(--gutter) calc(8px + env(safe-area-inset-bottom, 0px));
+    padding: 8px calc(var(--gutter) + var(--safe-right)) calc(8px + var(--safe-bottom)) calc(var(--gutter) + var(--safe-left));
     border-top: 1px solid var(--beige);
     background: var(--bg);
     box-shadow: 0 -2px 12px rgba(29, 21, 9, 0.08);
   }
 
+  /* The words and the number stay on one line, also on a 320 px screen. */
   .call-bar a {
     display: flex;
     flex: 1 1 auto;
@@ -885,19 +1049,27 @@ body.lightbox-open {
     justify-content: center;
     gap: 10px;
     min-height: 48px;
-    padding: 0 16px;
+    padding: 0 10px;
     background-color: var(--btn);
     color: var(--btn-text);
     font-size: 16px;
     line-height: 1.2;
     letter-spacing: 0.8px;
     text-decoration: none;
+    white-space: nowrap;
     transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .call-bar a:hover,
-  .call-bar a:focus-visible {
+  .call-bar a:focus-visible,
+  .call-bar a:active {
     background-color: var(--ink);
+  }
+
+  @media (hover: hover) {
+    .call-bar a:hover {
+      background-color: var(--ink);
+    }
   }
 
   /* On the light bar the dark focus ring of the site shows well. */
@@ -924,6 +1096,25 @@ body.lightbox-open {
 
   .copy {
     margin-top: 28px;
+    font-size: calc(12px + var(--grow));
+  }
+}
+
+/* ---------- A phone lying on its side (up to 760 px wide, up to 500 px tall) ----------
+   The screen is low, so the Call bar is slimmer: 44 px button, 4 px above and below.
+   The script keeps the header short on such a screen (class compact, see above). */
+@media (max-width: 760px) and (max-height: 500px) {
+  .site-footer .inner {
+    padding-bottom: calc(32px + 52px + var(--safe-bottom));
+  }
+
+  .call-bar {
+    padding-top: 4px;
+    padding-bottom: calc(4px + var(--safe-bottom));
+  }
+
+  .call-bar a {
+    min-height: 44px;
   }
 }
 
@@ -1024,9 +1215,11 @@ body.lightbox-open {
   text-decoration: none;
 }
 
-.hero-box .phone:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+@media (hover: hover) {
+  .hero-box .phone:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
 
 .hero-box .salon {
@@ -1091,8 +1284,9 @@ body.lightbox-open {
    width (three copies), which is the very same picture as the start, so the loop
    has no jump. Speed = half the track width / duration:
    desktop, 18 px text: track 2054.7 px wide, 1027.4 px in 37.4 s = 27.5 px per second
-   phone, 14 px text:   track 1704.8 px wide,  852.4 px in 31 s   = 27.5 px per second
-   (measured in Chromium with Figtree loaded; measure again if the text or font changes) */
+   phone, 16 px text:   track 1879.8 px wide,  939.9 px in 34 s   = 27.6 px per second
+   (measured in Chromium with Figtree loaded; measure again if the text or font changes.
+   The phone text is 14 px on a 320 px screen and 16 px from 390 px, see the phone rules) */
 .marquee {
   align-self: stretch;
   overflow: hidden;
@@ -1361,13 +1555,18 @@ body.lightbox-open {
 
 /* ---------- 760 px and below: phone ---------- */
 @media (max-width: 760px) {
-  /* The text sizes of the old phone page, as they were written there: title 21 px,
-     heading 23 px, welcome text 14 px in a 260 px column, phone and salon 19 px,
-     address and hours 14 px, Meet Gerta 25 px. */
+  /* The text sizes of the old phone page, as they were written there, on a 320 px
+     screen: title 21 px, heading 23 px, welcome text 14 px in a 260 px column, phone
+     and salon 19 px, address and hours 14 px, Meet Gerta 25 px.
+     On a wider phone they grow (see --grow at the top), and at 390 px they are: title
+     25 px, heading 28 px, welcome text 17 px in a 320 px column, phone and salon 22 px,
+     address and hours 16 px, Meet Gerta 28 px. None is larger than on the wide page,
+     except the welcome text, which is the reading text of this page. The address still
+     fits on one line at every width. */
   .site-title {
     margin: 16px 0 20px;
-    font-size: 21px;
-    line-height: 25.2px;
+    font-size: calc(21px + 4 * var(--grow));
+    line-height: 1.2;
   }
 
   .hero-box {
@@ -1377,23 +1576,24 @@ body.lightbox-open {
 
   .hero-box h1 {
     max-width: calc(100% - 16px);
-    font-size: 23px;
+    font-size: calc(23px + 5 * var(--grow));
   }
 
   /* The dotted rule is as wide as the welcome text under it. */
   .hero-box .dots,
   .hero-box .welcome {
-    width: 260px;
+    width: calc(260px + 60 * var(--grow));
     max-width: calc(100% - 20px);
   }
 
   .hero-box .welcome {
-    font-size: 14px;
+    font-size: calc(14px + 3 * var(--grow));
   }
 
-  /* Book Online: 142 px wide, as on the old phone page, and 44 px tall, a full tap target. */
+  /* Book Online: 142 px wide, as on the old phone page (160 px from 390 px), and 44 px
+     tall, a full tap target. */
   .hero-box .btn {
-    min-width: min(142px, 100%);
+    min-width: min(calc(142px + 18 * var(--grow)), 100%);
     min-height: 44px;
   }
 
@@ -1405,16 +1605,18 @@ body.lightbox-open {
 
   .hero-box .phone,
   .hero-box .salon {
-    font-size: 19px;
+    font-size: calc(19px + 3 * var(--grow));
   }
 
   .hero-box .addr,
   .marquee {
-    font-size: 14px;
+    font-size: calc(14px + 2 * var(--grow));
   }
 
+  /* With 16 px text the track is 1879.8 px wide: 939.9 px in 34 s = 27.6 px per second.
+     On a 320 px phone (14 px text) the same 34 s make 25 px per second. */
   .marquee .track {
-    animation-duration: 31s;
+    animation-duration: 34s;
   }
 
   .photo-row {
@@ -1432,7 +1634,7 @@ body.lightbox-open {
   }
 
   .meet h2 {
-    font-size: 25px;
+    font-size: calc(25px + 3 * var(--grow));
   }
 
   .meet h2,
@@ -1559,8 +1761,20 @@ body.lightbox-open {
   transition: opacity 0.2s ease;
 }
 
-.gallery a:hover img {
+/* A little lighter under the mouse and while a finger presses the photo. */
+.gallery a:active img {
   opacity: 0.88;
+}
+
+@media (hover: hover) {
+  .gallery a:hover img {
+    opacity: 0.88;
+  }
+}
+
+/* The photo itself answers the tap, so the flash of the phone is not needed here. */
+.gallery a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .gallery a:focus-visible {
@@ -1573,8 +1787,16 @@ body.lightbox-open {
    The script builds it once, adds the class "open" to show it and sets the hidden
    attribute while it is closed. Every part is placed against the layer, and the photo
    keeps clear of the bands that hold the buttons, so it never sits under one.
-   The layer is solid, so the page behind does not show through the photo viewer. */
+   The layer is solid, so the page behind does not show through the photo viewer.
+   The colour is the ink of the site (--ink) written as numbers, because it has a
+   strength: while a finger drags the photo down to close the viewer, the script
+   lowers --lb-dim and the page shows through a little. Without that it is 1, solid.
+   The three --lb sizes are the room the photo leaves free: above it, below it and on
+   each side. They include the strips of an iPhone screen that must stay clear. */
 .lightbox {
+  --lb-top: calc(24px + var(--safe-top));
+  --lb-bottom: calc(56px + var(--safe-bottom));
+  --lb-side: calc(80px + max(var(--safe-left), var(--safe-right)));
   position: fixed;
   top: 0;
   right: 0;
@@ -1582,9 +1804,10 @@ body.lightbox-open {
   left: 0;
   z-index: 2000;
   display: none;
-  background-color: var(--ink);
+  background-color: rgba(29, 21, 9, var(--lb-dim, 1));
   color: var(--bg);
   font-family: var(--sans);
+  overscroll-behavior: contain;
 }
 
 .lightbox.open {
@@ -1606,21 +1829,95 @@ body.lightbox-open {
   }
 }
 
+/* The stage: the part of the viewer that moves with the finger. It fills the layer and
+   holds the photo. An empty spot of it counts as the dark layer, so a click there
+   closes the viewer. The buttons and the counter lie above it.
+   .lb-ghost is a copy of the stage that lives for a quarter of a second: when the
+   visitor goes to another photo, the old photo glides out in the ghost while the new
+   one glides in on the stage. The class lb-move switches the gliding on. While a
+   finger drags the photo there is no gliding, the photo follows the finger at once. */
+.lb-stage,
+.lb-ghost {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.lb-ghost {
+  pointer-events: none;
+}
+
+.lb-move {
+  transition: transform 0.28s cubic-bezier(0.22, 0.8, 0.3, 1);
+}
+
+/* The photo sits in a picture element, which offers the browser the smaller WebP file
+   first. The picture makes no box of its own, the img is placed against the stage. */
+.lb-stage picture {
+  display: contents;
+}
+
 /* The photo: centred, whole, in its own proportions, never larger than its file.
    80 px stay free on the left and right for the arrows and the close button, 24 px
    above and 56 px below for the counter. The box of the img is exactly the photo,
-   so a click next to it lands on the dark layer. */
-.lb-img {
+   so a click next to it lands on the dark layer.
+   It is drawn only when its file has arrived (class lb-loaded) and then fades in. */
+.lb-img,
+.lb-ghost-img {
   position: absolute;
-  top: 24px;
+  top: var(--lb-top);
   right: 0;
-  bottom: 56px;
+  bottom: var(--lb-bottom);
   left: 0;
   width: auto;
   height: auto;
-  max-width: calc(100% - 160px);
-  max-height: calc(100% - 80px);
+  max-width: calc(100% - 2 * var(--lb-side));
+  max-height: calc(100% - var(--lb-top) - var(--lb-bottom));
   margin: auto;
+}
+
+.lb-img {
+  opacity: 0;
+}
+
+/* The fading belongs to this rule alone: a photo fades in, and it is gone at once
+   when the viewer moves on to the next one. */
+.lb-img.lb-loaded {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* The stand-in: the small copy of the photo that the gallery has loaded already. It
+   shows the moment the viewer opens, in the place and size the photo will have, and
+   the full photo fades in over it when it has arrived. So on a phone the viewer never
+   opens onto a dark screen. It fills the room of the photo and fits the picture into
+   it (object-fit), which is right as long as the full photo is larger than that room:
+   on every screen up to 1100 px wide. On a wider screen it is not used.
+   It takes no clicks. The script works out whether a click fell on the picture. */
+.lb-ph,
+.lb-ghost-fit {
+  position: absolute;
+  top: var(--lb-top);
+  left: var(--lb-side);
+  display: none;
+  width: calc(100% - 2 * var(--lb-side));
+  max-width: none;
+  height: calc(100% - var(--lb-top) - var(--lb-bottom));
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .lb-ph,
+  .lb-ghost-fit {
+    display: block;
+  }
+
+  .lb-ph[hidden] {
+    display: none;
+  }
 }
 
 /* The three buttons: round 48 x 48 px targets. The stylesheet draws their signs
@@ -1642,9 +1939,12 @@ body.lightbox-open {
   font-size: 0;
   line-height: 0;
   cursor: pointer;
+  /* Above the stage, which comes after two of them in the page. */
+  z-index: 1;
   /* Quick taps in a row (next, next, next) never zoom the page on a phone. */
   touch-action: manipulation;
   transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .lb-close svg,
@@ -1653,9 +1953,10 @@ body.lightbox-open {
   display: none;
 }
 
+/* 16 px from the edges, and clear of the strips an iPhone keeps free (0 elsewhere). */
 .lb-close {
-  top: 16px;
-  right: 16px;
+  top: calc(16px + var(--safe-top));
+  right: calc(16px + var(--safe-right));
 }
 
 /* Level with the middle of the photo, which sits 16 px above the middle of the window. */
@@ -1665,11 +1966,11 @@ body.lightbox-open {
 }
 
 .lb-prev {
-  left: 16px;
+  left: calc(16px + var(--safe-left));
 }
 
 .lb-next {
-  right: 16px;
+  right: calc(16px + var(--safe-right));
 }
 
 .lb-close::before,
@@ -1717,13 +2018,21 @@ body.lightbox-open {
   transform: translateX(-4px) rotate(135deg);
 }
 
-.lb-close:hover,
-.lb-prev:hover,
-.lb-next:hover,
 .lb-close:focus-visible,
 .lb-prev:focus-visible,
-.lb-next:focus-visible {
+.lb-next:focus-visible,
+.lb-close:active,
+.lb-prev:active,
+.lb-next:active {
   background-color: rgba(254, 254, 253, 0.16);
+}
+
+@media (hover: hover) {
+  .lb-close:hover,
+  .lb-prev:hover,
+  .lb-next:hover {
+    background-color: rgba(254, 254, 253, 0.16);
+  }
 }
 
 /* Focus ring in the light colour, because the dark one cannot be seen on this layer. */
@@ -1739,8 +2048,9 @@ body.lightbox-open {
 .lb-count {
   position: absolute;
   right: 80px;
-  bottom: 8px;
+  bottom: calc(8px + var(--safe-bottom));
   left: 80px;
+  z-index: 1;
   margin: 0;
   color: var(--bg);
   font-size: 14px;
@@ -1767,8 +2077,10 @@ body.lightbox-open {
 /* ---------- Phones (760 px and below) ---------- */
 
 /* Two columns, 12 px apart, inside the normal gutter. The title is as small as on the
-   old phone page (22 px) and sits close to the photos. In the photo viewer the photo
-   gets the full width and the arrows move below it, next to the counter. */
+   old phone page at 320 px (22 px), grows to 28 px at 390 px (see --grow at the top)
+   and sits close to the photos. In the photo viewer the photo gets the full width
+   (64 px free above it, 72 px below, 12 px on each side) and the arrows move below
+   it, next to the counter, above the home bar of an iPhone. */
 @media (max-width: 760px) {
   .page-gallery .page {
     padding-top: 16px;
@@ -1779,44 +2091,73 @@ body.lightbox-open {
 
   .page-title {
     margin: 0 0 12px;
-    font-size: 22px;
+    font-size: calc(22px + 6 * var(--grow));
   }
 
   .gallery {
     column-count: 2;
   }
 
-  .lb-img {
-    top: 64px;
-    bottom: 72px;
-    max-width: calc(100% - 24px);
-    max-height: calc(100% - 136px);
+  .lightbox {
+    --lb-top: calc(64px + var(--safe-top));
+    --lb-bottom: calc(72px + var(--safe-bottom));
+    --lb-side: calc(12px + max(var(--safe-left), var(--safe-right)));
   }
 
   .lb-close {
-    top: 8px;
-    right: 8px;
+    top: calc(8px + var(--safe-top));
+    right: calc(8px + var(--safe-right));
   }
 
   .lb-prev,
   .lb-next {
     top: auto;
-    bottom: 12px;
+    bottom: calc(12px + var(--safe-bottom));
   }
 
   .lb-prev {
-    left: 12px;
+    left: calc(12px + var(--safe-left));
   }
 
   .lb-next {
-    right: 12px;
+    right: calc(12px + var(--safe-right));
   }
 
   .lb-count {
     right: 72px;
-    bottom: 12px;
+    bottom: calc(12px + var(--safe-bottom));
     left: 72px;
     line-height: 48px;
+  }
+}
+
+/* A phone lying on its side that still has the phone layout (600 to 760 px wide):
+   three columns of photos, as on a tablet. */
+@media (min-width: 600px) and (max-width: 760px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+/* The photo viewer on a phone lying on its side (up to 500 px tall): the screen is
+   low, so the arrows go back to the sides of the photo and the photo gets the height:
+   12 px free above it, 40 px below for the counter, 68 px on each side. */
+@media (max-width: 760px) and (max-height: 500px) {
+  .lightbox {
+    --lb-top: calc(12px + var(--safe-top));
+    --lb-bottom: calc(40px + var(--safe-bottom));
+    --lb-side: calc(68px + max(var(--safe-left), var(--safe-right)));
+  }
+
+  .lb-prev,
+  .lb-next {
+    top: calc(50% - 38px);
+    bottom: auto;
+  }
+
+  .lb-count {
+    bottom: var(--safe-bottom);
+    line-height: 40px;
   }
 }
 
@@ -1936,12 +2277,20 @@ h1.services-title {
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.pill:hover,
-.pill:focus-visible {
+.pill:focus-visible,
+.pill:active {
   background-color: var(--btn);
   color: var(--btn-text);
+}
+
+@media (hover: hover) {
+  .pill:hover {
+    background-color: var(--btn);
+    color: var(--btn-text);
+  }
 }
 
 /* The line under the cards: book by phone. One line on a desktop screen,
@@ -1956,9 +2305,21 @@ h1.services-title {
 }
 
 .book-note a {
+  position: relative;
   text-decoration: underline;
   text-underline-offset: 3px;
   white-space: nowrap;
+}
+
+/* A larger invisible tap area around the phone number, 44 px tall. The text stays
+   where it is. */
+.book-note a::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  bottom: -12px;
+  left: -10px;
 }
 
 /* Two cards per row */
@@ -1978,19 +2339,22 @@ h1.services-title {
   }
 }
 
-/* Phones: one card per row, up to 340 px wide, each as tall as its own text,
-   and a full width Book Now button that is easy to tap. The text has the sizes of the
-   old phone page: title 24 px on 30 px lines, card names 20 px on 28 px lines,
-   descriptions 14 px on 19.9 px lines, duration and price 14 px on 24 px lines. */
+/* Phones: one card per row, as wide as the screen allows (up to 420 px, so on every
+   iPhone held upright the card runs from gutter to gutter), each as tall as its own
+   text, and a full width Book Now button that is easy to tap. The text has the sizes
+   of the old phone page on a 320 px screen: title 24 px on 30 px lines, card names
+   20 px on 28 px lines, descriptions 14 px on 19.9 px lines, duration and price 14 px
+   on 24 px lines. At 390 px they have grown to the sizes of the wide page (see --grow
+   at the top): title 30 px, card names 24 px, descriptions, duration and price 16 px. */
 @media (max-width: 760px) {
   h1.services-title {
     margin: 30px 0 40px;
-    font-size: 24px;
-    line-height: 30px;
+    font-size: calc(24px + 6 * var(--grow));
+    line-height: 1.25;
   }
 
   .services {
-    grid-template-columns: minmax(0, 340px);
+    grid-template-columns: minmax(0, 420px);
     grid-auto-rows: auto;
     gap: 24px;
   }
@@ -2004,7 +2368,7 @@ h1.services-title {
   }
 
   .card h2 {
-    font-size: 20px;
+    font-size: calc(20px + 4 * var(--grow));
     line-height: 1.4;
   }
 
@@ -2029,6 +2393,23 @@ h1.services-title {
 
   .book-note {
     margin-top: 40px;
+  }
+}
+
+/* A phone lying on its side that still has the phone layout (600 to 760 px wide):
+   two cards per row, as on a tablet. A last card that is alone in its row stands in
+   the middle, at the width of one card. */
+@media (min-width: 600px) and (max-width: 760px) {
+  .services {
+    grid-template-columns: repeat(2, minmax(0, 320px));
+    grid-auto-rows: 1fr;
+  }
+
+  .services > .card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 12px);
+    max-width: 320px;
   }
 }
 
@@ -2186,9 +2567,22 @@ h1.services-title {
 
 /* Links inside a sentence stay underlined so they can be told from the text around them. */
 .contact-intro a {
+  position: relative;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+}
+
+/* A larger invisible tap area around the phone number and the email address of the
+   sentence: 5 px more above and below, as much as two lines of the sentence allow
+   without the areas of two links touching. The text stays where it is. */
+.contact-intro a::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -3px;
+  bottom: -5px;
+  left: -3px;
 }
 
 /* ---------- Contact: the two bordered panels ---------- */
@@ -2251,9 +2645,11 @@ h1.services-title {
   text-decoration: none;
 }
 
-.info-item a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+@media (hover: hover) {
+  .info-item a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
 
 /* The Facebook and Instagram links of the Social Media item are drawn by the shared
@@ -2306,6 +2702,9 @@ h1.services-title {
   font-family: var(--sans);
   font-size: 14px;
   line-height: 1.4;
+  /* No look of the device: an iPhone would round the corners and add an inner shadow.
+     The first line is for iPhones from before 2022. */
+  -webkit-appearance: none;
   appearance: none;
 }
 
@@ -2339,13 +2738,22 @@ h1.services-title {
   font-size: 14px;
   line-height: 19.6px;
   cursor: pointer;
+  -webkit-appearance: none;
   appearance: none;
   transition: background-color 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.contact-form button:hover {
+.contact-form button:active {
   border-color: var(--ink);
   background: var(--ink);
+}
+
+@media (hover: hover) {
+  .contact-form button:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+  }
 }
 
 /* The message under the Email field (the script fills it). Dark red on the light page,
@@ -2571,24 +2979,28 @@ html:not(.js) .contact-form {
     aspect-ratio: 90 / 133;
   }
 
-  /* Heading and text in the sizes of the old phone page: 22 px on 24.2 px lines
-     and 15 px on 21 px lines, the text 10 px under the heading. */
+  /* Heading and text in the sizes of the old phone page on a 320 px screen: 22 px on
+     24.2 px lines and 15 px on 21 px lines, the text 10 px under the heading. At
+     390 px they have grown to 27 px and 17 px (see --grow at the top). */
   .about h1 {
-    margin-bottom: 10px;
-    font-size: 22px;
-    line-height: 24.2px;
+    margin-bottom: calc(10px + 4 * var(--grow));
+    font-size: calc(22px + 5 * var(--grow));
+    line-height: 1.1;
   }
 
   .about .text p {
-    font-size: 15px;
-    line-height: 21px;
+    font-size: calc(15px + 2 * var(--grow));
+    line-height: 1.4;
+    text-wrap: pretty;
   }
 
   /* Contact heading: the title first, in the size of the old phone page (30 px), and
      Let's Connect under it. The markup keeps its order, only the picture changes.
      The other texts of the page have the sizes of the old phone page too: Let's
      Connect 18 px, the sentence under it 16 px on 28.8 px lines, the headings of the
-     details 19 px, the labels of the form 16 px. */
+     details 19 px, the labels of the form 16 px. Those are the sizes at 320 px. At
+     390 px they have grown (see --grow at the top): the title 38 px, Let's Connect
+     20 px, the sentence and the details 17 px, their headings 21 px. */
   .contact-head {
     display: flex;
     flex-direction: column;
@@ -2597,20 +3009,20 @@ html:not(.js) .contact-form {
 
   .contact-head .kicker {
     margin-bottom: 30px;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: calc(18px + 2 * var(--grow));
+    line-height: 1.22;
   }
 
   .contact-head h1 {
     order: -1;
     margin: 0 0 10px;
-    font-size: 30px;
-    line-height: 37px;
+    font-size: calc(30px + 8 * var(--grow));
+    line-height: 1.23;
   }
 
   .contact-intro {
-    font-size: 16px;
-    line-height: 28.8px;
+    font-size: calc(16px + var(--grow));
+    line-height: 1.8;
   }
 
   /* One item under the other, as on the old phone page, so the address stays on one line. */
@@ -2620,6 +3032,10 @@ html:not(.js) .contact-form {
     padding: 44px var(--gutter);
   }
 
+  .info-item {
+    font-size: calc(16px + var(--grow));
+  }
+
   .info-icon {
     margin-bottom: 14px;
   }
@@ -2627,8 +3043,8 @@ html:not(.js) .contact-form {
   .info-item h2,
   .info-item:nth-child(n+3) h2 {
     margin-bottom: 10px;
-    font-size: 19px;
-    line-height: 24px;
+    font-size: calc(19px + 2 * var(--grow));
+    line-height: 1.27;
   }
 
   /* On the old phone page the icons hang 7 px to the left of the heading. With the
@@ -2671,15 +3087,40 @@ html:not(.js) .contact-form {
     min-height: 96px;
   }
 
-  /* Send: 160 px wide at the left, as on the old phone page, and tall enough to tap. */
+  /* Send: 160 px wide at the left, as on the old phone page, and tall enough to tap.
+     Its text is 14 px at 320 px and 16 px from 390 px (see --grow at the top). */
   .contact-form button {
     width: 160px;
     height: 48px;
+    font-size: calc(14px + 2 * var(--grow));
+  }
+
+  /* The message under the Email field and the line under Send: 15 px from 390 px. */
+  .field-error,
+  .form-note {
+    font-size: calc(14px + var(--grow));
   }
 
   /* The map is 240 px tall on a phone, so it does not fill the screen. */
   .map iframe {
     height: 240px;
+  }
+}
+
+/* The Message field grows with what the visitor writes, up to half the height of the
+   screen, so a long message is never read through a small window with its own
+   scrolling. A browser that does not know field-sizing keeps the fixed height above. */
+@supports (field-sizing: content) {
+  .contact-form textarea {
+    field-sizing: content;
+    height: auto;
+    max-height: 50vh;
+  }
+
+  @media (max-width: 760px) {
+    .contact-form textarea {
+      min-height: 110px;
+    }
   }
 }
 
@@ -2975,10 +3416,15 @@ body.page-accessibility-statement .legal > p:has(+ h2:first-of-type)::after {
    110 px above and 130 px below. On a tall screen the page fills the window,
    the footer sits at the bottom and the block is centred in the space between.
    -------------------------------------------------------------------------- */
+/* The second min-height is for phones: 100vh is the height of the screen without the
+   bars of the phone browser, which is more than a visitor sees when the page opens,
+   so the page would scroll a little for nothing. 100svh is the height that is really
+   there. A browser that does not know svh keeps the first line. */
 body.page-404 {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100svh;
 }
 
 body.page-404 main {
@@ -3042,13 +3488,15 @@ body.page-404 main {
 }
 
 /* Phones (760 px and below). The text sizes of the old phone pages, as they were
-   written there: titles 29 px, section headings 18 px on 19.8 px lines, text 15 px on
-   21 px lines. Headings sit closer to their own text, and the Accessibility band is
-   padded for a narrow screen. */
+   written there, on a 320 px screen: titles 29 px, section headings 18 px on 19.8 px
+   lines, text 15 px on 21 px lines. Headings sit closer to their own text, and the
+   Accessibility band is padded for a narrow screen.
+   On a wider phone the sizes grow (see --grow at the top), and at 390 px they are:
+   titles 36 px, section headings 20 px, text 17 px on 23.8 px lines. */
 @media (max-width: 760px) {
   .legal {
     padding: 48px var(--gutter) 24px;
-    font-size: 15px;
+    font-size: calc(15px + 2 * var(--grow));
   }
 
   /* The old phone pages set the titles with -0.05em between the letters. With the
@@ -3057,13 +3505,13 @@ body.page-404 main {
      further apart. */
   .legal h1 {
     margin-bottom: 40px;
-    font-size: 29px;
+    font-size: calc(29px + 7 * var(--grow));
     letter-spacing: -0.05em;
     word-spacing: 0.1em;
   }
 
   .legal h2 {
-    font-size: 18px;
+    font-size: calc(18px + 2 * var(--grow));
   }
 
   /* One distance around the section headings on all three centred policy pages. The
@@ -3080,10 +3528,11 @@ body.page-404 main {
   }
 
   /* The old phone page had this title, the longest of the four, in 24 px. Its words
-     keep their normal distance, so the title stays on one line on a 320 px screen. */
+     keep their normal distance, so the title stays on one line on a 320 px screen.
+     It grows to 29 px at 390 px and still fits on one line at every width between. */
   body.page-english-refund-policy .legal h1 {
     margin-bottom: 40px;
-    font-size: 24px;
+    font-size: calc(24px + 5 * var(--grow));
     letter-spacing: -0.06em;
     word-spacing: 0;
   }
@@ -3094,21 +3543,23 @@ body.page-404 main {
   }
 
   /* Privacy Policy: on the old phone page the text from the fourth section on ("How
-     do we communicate with site visitors?") kept the 16 px of the wide page. */
+     do we communicate with site visitors?") kept the 16 px of the wide page. At
+     390 px it is 17 px like the text before it. */
   body.page-english-privacy-policy .legal h2:nth-of-type(4) ~ p,
   body.page-english-privacy-policy .legal h2:nth-of-type(4) ~ ul {
-    font-size: 16px;
+    font-size: calc(16px + var(--grow));
   }
 
-  /* Accessibility Statement: 16 px text on the old phone page, in the band too. */
+  /* Accessibility Statement: 16 px text on the old phone page, in the band too
+     (17 px from 390 px). */
   body.page-accessibility-statement .legal {
     padding: 0 var(--gutter) 24px;
-    font-size: 16px;
+    font-size: calc(16px + var(--grow));
   }
 
   body.page-accessibility-statement .legal > h1 + p {
     padding: 36px 0;
-    font-size: 16px;
+    font-size: calc(16px + var(--grow));
   }
 
   /* The title is 47 px, as on the old phone page. Its longest word is ACCESSIBILITY:
@@ -3152,8 +3603,117 @@ body.page-404 main {
 
   .notfound p {
     margin-bottom: 30px;
+    font-size: calc(16px + var(--grow));
+  }
+}
+
+/* ==========================================================================
+   75 Touch screens wider than a phone, and the change from page to page
+   ========================================================================== */
+
+/* ---------- Touch screens from 761 px (an iPhone lying on its side, an iPad) ----------
+   These screens get the layout of a small laptop or of the desktop page, whose links
+   and buttons are sized for a mouse. Where the main pointer is a finger (pointer:
+   coarse) each of them is a tap target of about 44 px. A computer with a mouse never
+   sees these rules, and the phone layout has its own (see each section). */
+@media (min-width: 761px) and (pointer: coarse) {
+  /* Menu links: a larger invisible tap area, 45 px tall. The words stay where they are. */
+  .main-nav a {
+    position: relative;
+  }
+
+  .main-nav a::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: -3px;
+    bottom: -4px;
+    left: -3px;
+  }
+
+  /* The dark button, the Book Now pills, the fields and the Send button: 44 px tall. */
+  .btn,
+  .pill {
+    min-height: 44px;
+  }
+
+  .contact-form input,
+  .contact-form button {
+    height: 44px;
+  }
+
+  /* 16 px in the fields at every width, so no touch device zooms in on focus. */
+  .contact-form input,
+  .contact-form textarea {
     font-size: 16px;
   }
+
+  /* Footer: phone, email and the policy links are 44 px tall tap rows, as on a phone. */
+  .foot-contact {
+    padding-top: 0;
+  }
+
+  .foot-contact p + p {
+    margin-top: 0;
+  }
+
+  .foot-contact a {
+    display: inline-block;
+    padding: 13px 0;
+  }
+
+  .foot-links {
+    padding-top: 0;
+  }
+
+  .foot-links li + li {
+    margin-top: 0;
+  }
+
+  .foot-links a {
+    display: inline-block;
+    padding: 13px 0;
+  }
+
+  /* The social icons: 44 x 44 tap areas that do not touch, as on a phone. */
+  .social {
+    gap: 21px;
+  }
+
+  .social a::after {
+    top: -10.5px;
+    right: -10.5px;
+    bottom: -10.5px;
+    left: -10.5px;
+  }
+
+  .info-item .social {
+    margin-left: -3.5px;
+  }
+
+  /* Contact page: the phone and email links of the details are 44 px tall tap rows. */
+  .info-item p > a {
+    display: inline-block;
+    padding: 12.6px 0;
+    line-height: 18.8px;
+  }
+}
+
+/* ---------- From page to page ----------
+   A browser that can do it (Safari on the iPhone since the end of 2024, Chrome, Edge)
+   lets the old page fade into the new one in a fifth of a second instead of cutting
+   from one to the other. The header and the Call bar are the same on both pages, so
+   they seem to stand still. Other browsers change pages as before. Not for a visitor
+   who has asked the device for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.2s;
 }
 
 /* ==========================================================================
