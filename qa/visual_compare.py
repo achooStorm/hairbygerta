@@ -431,7 +431,7 @@ BRIEF_SPEC = [
     ("kicker", "main .contact-head p.kicker"), ("contact_h1", "main .contact-head h1"), ("labels", "main #contact-form label"), ("map", "main .map iframe"),
 ]
 # Which nav link is the current page (the five pages of the menu; a policy page has none).
-NAV_CURRENT = {"home": "Home", "gallery": "Gallery", "book-online": "Book Online", "about": "About", "contact": "Contact"}
+NAV_CURRENT = {"home": "Home", "gallery": "Gallery", "book-online": "Services", "about": "About", "contact": "Contact"}   # "Services" was "Book Online" until decision 63
 SERIF, SANS = "Bodoni Moda", "Figtree"      # stand in for Didot italic and Proxima Nova, which are licensed for Wix only
 INK, PAPER, BEIGE, BUTTON = (29, 21, 9), (254, 254, 253), (232, 225, 218), (85, 79, 70)     # #1d1509 #fefefd #e8e1da #554f46
 

@@ -9,7 +9,7 @@
     "heading": "It's Your Day to Shine!",
     "welcome": "Welcome to HairByGerta.com. I’m Gerta Lila, a hair stylist and makeup artist in Staten Island, NY. I create fresh cuts, color, extensions and soft, flattering makeup that highlight your natural beauty and last all day.",
     "button": {
-      "label": "Book Online",
+      "label": "View Services",
       "path": "/book-online/"
     },
     "phone": "347-671-5095",
@@ -66,6 +66,7 @@
     }
   },
   "notes": [
+    "hero.button.label read 'Book Online' on Wix and on this site until 18 November 2026. Online booking was dropped on 2 November 2026: the button opens the page with the services, where every Book Now button places a phone call. So it now says 'View Services', and the menu link to the same page says 'Services' (content/site.json). The phone number right under the button and the Call bar are the ways to book.",
     "Typos fixed: one, on 9 November 2026: the comma in high-quality, hair extensions (meet.paragraph_2) was taken out, it now reads high-quality hair extensions. Every other text on this page is word for word the live Wix text.",
     "title is the live Wix title tag, unchanged (it keeps its en dash). description was rewritten on 9 November 2026, because the Wix text read badly (\"is a hair stylist Staten Island NY and makeup artist\"). The Wix text was: Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion. The new text names Gerta, the salon and the town, and fits in the 160 characters a search result shows. This change and the comma are on the fixed list of intended differences in qa/check_content.py. Earlier note: They replace the description of the first version, which read: Gerta Lila is a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, NY. Haircuts, color, balayage, extensions and makeup. Tuesday to Saturday, 9 AM to 5 PM.",
     "h1, site_title and meet.heading are stored as Wix has them. Their capitals are real, not styling (textTransform is none).",

@@ -140,6 +140,9 @@ BRIEF_IMAGES = {"book-online": SERVICE_IMAGES, "gallery": GALLERY_IMAGES, "about
 # ---------------------------------------------------------------- what the build contract fixes (tools/CONTRACT.md)
 MENU_LABEL, NAV_LABEL = "Menu", "Main"                  # section 6: button.menu-btn, nav.main-nav
 PHOTO_ROW_LABEL = "Featured work"                       # section 7, Home: section.photo-row
+PHOTO_LINK_LABEL = "%s. Open the Gallery"               # section 7, Home: the link around each photo of the row (decision 63)
+GALLERY_LINK_LABEL = "Open the Gallery"                 # the same link around a photo without a description
+GALLERY_LABEL_WITH_ALT = "%s: %s"                       # section 7, Gallery: "View photo 3 of 21: WHAT IT SHOWS" (decision 63)
 HOURS_LABEL = "Hours: %s"                               # section 7, Home: div.marquee
 BOOK_LABEL = "%s: %s"                                   # section 7, Book Online: "Book Now: SERVICE"
 BOOK_TEXT = "Book Now"                                  # section 7, used when the content file has no button_label
@@ -687,10 +690,17 @@ def expect_main(ex, content, site):
 
     if slug == "gallery" or isinstance(content.get("link_label"), str):
         template = content.get("link_label") if isinstance(content.get("link_label"), str) else GALLERY_LABEL
-        for i in range(len(ex.slots)):
-            label("aria-label", template.replace("{n}", str(i + 1)).replace("{total}", str(len(ex.slots))), "link_label")
+        for i, slot in enumerate(ex.slots):
+            numbered = template.replace("{n}", str(i + 1)).replace("{total}", str(len(ex.slots)))
+            # The description of the photo follows the number (decision 63). A photo without one keeps the number alone.
+            label("aria-label", GALLERY_LABEL_WITH_ALT % (numbered, slot.alt) if slot.alt else numbered, "link_label")
     if slug == "home":
         ex.labels.append(("aria-label", PHOTO_ROW_LABEL, "build contract, section 7"))
+        # Each photo of the row is a link to the Gallery, named after what the photo shows (decision 63).
+        for slot in ex.slots:
+            if "photo_row" in slot.where:
+                ex.labels.append(("aria-label", norm(PHOTO_LINK_LABEL % slot.alt if slot.alt else GALLERY_LINK_LABEL),
+                                  "build contract, section 7"))
 
     # The h1: the contract fixes its key (fifth in the file), not its place on the page.
     if ex.h1 is None:

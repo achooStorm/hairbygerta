@@ -10,7 +10,7 @@
       p.salon                               "hero.salon"
       a.addr                                "hero.address" behind a map pin, opens the map in a new tab
       div.marquee > div.track > span x 6    "hero.hours", the line that scrolls
-    section.photo-row > img x 3             "photo_row"
+    section.photo-row > a x 3 > img         "photo_row", each photo a link to the Gallery
     section.meet                            "meet"
       h2#meet-h.serif                       "meet.heading"
       p.t1, div.p1 > img                    "meet.paragraph_1", "meet.portrait"
@@ -33,6 +33,12 @@ CONTENT_FILE = "content/%s.json" % SLUG     # only used to name the file in an e
 # Spoken by screen readers, never shown (contract, section 7). %s is the hours text.
 HOURS_LABEL = "Hours: %s"
 PHOTO_ROW_LABEL = "Featured work"
+# Each photo of the row is a link to the Gallery, because on a phone people tap a photo and expect more of
+# them. A screen reader says what the photo shows and where the link leads. %s is the description of the
+# photo. A photo without a description (a placeholder) is announced with GALLERY_LINK_LABEL alone.
+PHOTO_LINK_LABEL = "%s. Open the Gallery"
+GALLERY_LINK_LABEL = "Open the Gallery"
+GALLERY_PATH = "/gallery/"
 
 # The map pin in front of the street address. It is decoration, so screen readers skip it.
 PIN = '<span class="pin" aria-hidden="true">&#128205;</span>'
@@ -106,7 +112,12 @@ def render(ctx):
     # The row is high on the page and on screen as soon as the page opens, so these four are fetched at
     # once (loading="eager"). The two photos of Meet Gerta are further down and are fetched when the
     # visitor scrolls near them (loading="lazy").
-    lines += ["  " + _photo(ctx, slot, lazy=False, sizes=PHOTO_ROW_SIZES) for slot in row]
+    gallery = esc(ctx.url(GALLERY_PATH))
+    for slot in row:
+        described = "" if ctx.is_placeholder(slot["file"]) else (slot["alt"] or "").strip()
+        label = PHOTO_LINK_LABEL % described if described else GALLERY_LINK_LABEL
+        lines.append('  <a href="%s" aria-label="%s">%s</a>'
+                     % (gallery, esc(label), _photo(ctx, slot, lazy=False, sizes=PHOTO_ROW_SIZES)))
     lines += [
         "</section>",
         '<section class="meet" aria-labelledby="meet-h">',

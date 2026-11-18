@@ -234,8 +234,13 @@ def _form(ctx, form, action):
     lines += [
         '  <button type="submit">%s</button>' % ctx.esc(form["button"]),
         '  <p class="form-note" role="status"></p>',
-        "</form>",
     ]
+    # The way out for a phone without an email app: a line with a link that opens the text message app.
+    # It waits hidden until Send was pressed, and js/site.js writes the visitor's message into the link.
+    # The stylesheet shows it on touch screens only. A content file without "no_app_html" has no such line.
+    if form.get("no_app_html"):
+        lines.append('  <p class="form-alt" hidden>%s</p>' % ctx.inline(form["no_app_html"]))
+    lines.append("</form>")
     return "\n".join(lines)
 
 

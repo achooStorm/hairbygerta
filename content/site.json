@@ -30,7 +30,7 @@
   "nav": [
     { "label": "Home", "path": "/" },
     { "label": "Gallery", "path": "/gallery/" },
-    { "label": "Book Online", "path": "/book-online/" },
+    { "label": "Services", "path": "/book-online/" },
     { "label": "About", "path": "/about/" },
     { "label": "Contact", "path": "/contact/" }
   ],
@@ -60,6 +60,7 @@
   "og_site_name": "Hair & Makeup by Gerta",
   "notes": [
     "No typo was fixed. The header and footer text is the same on all nine live Wix pages and is copied here unchanged, in reading order: nav, footer name, footer role, phone, email, the three address lines, the four policy links.",
+    "nav: the third link read 'Book Online' on Wix and on this site until 18 November 2026. Online booking was dropped on 2 November 2026 and every button of that page places a phone call, so the link now says what the page shows: 'Services'. The page keeps its address /book-online/, so old links and bookmarks still work.",
     "skip_link: the live Wix pages show the built-in Wix link 'Skip to Main Content'. This file uses 'Skip to main content', the wording the build contract (section 6) prescribes.",
     "og_site_name: the live Wix tag og:site_name says 'Hairbygerta'. This file uses the business name 'Hair & Makeup by Gerta' on purpose.",
     "og_image: the live Wix pages have no og:image tag. Until 9 November 2026 it was g12, one of the owner's own photos, 900 x 1600 px, which link previews cut badly. Since then it is images/share.jpg, 1200 x 630 px, made by tools/make_share_image.py from g12, g13 and the logo (all three licensed for use outside Wix). The generator joins site_url and og_image and takes the width and height from image-manifest.json. og_image_alt describes that picture for people who cannot see it (og:image:alt and twitter:image:alt). theme_color is the colour a phone browser may give its address bar, the page background.",
