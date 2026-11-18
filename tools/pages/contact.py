@@ -9,12 +9,15 @@ Contract, section 7, Contact:
     div.contact
       div.info
         div.info-item             one per entry of "info", in the order of the content file
-          svg.info-icon           a small line drawing, decoration only (aria-hidden)
+          svg.info-icon.icon-ID   a small two-tone icon of the Phosphor set, decoration only (aria-hidden)
           h2.serif                the name of the item
-          p                       one per line of the item
+          p                       one per line of the item. The street line of the Address item is a link
+                                  to the map (a.map-link, maps_href of content/site.json)
           div.social              only in the Social Media item: the Facebook and Instagram links, each a
                                   bare sign (a letter f, the outline of a camera) in a link of 23 x 23 px
+                                  (on a phone the stylesheet draws a round 44 px button around each)
       form#contact-form.contact-form   no action: the script opens the visitor's email app (data-mailto)
+        h2#form-heading.form-heading   the name of the form, shown on a phone as the heading of its panel
         div.row                   First Name and Last Name side by side, each a div with label and input
         label + input#email       type email, required, described by p#email-error
         p#email-error.field-error empty and hidden; the script writes one of the two error messages into it
@@ -31,6 +34,7 @@ Every word a visitor reads comes from content/contact.json:
     info                     the items: "id" picks the drawing (see ICONS below), "heading" is the
                              name, "lines" are the lines under it (a plain text, or {"html": ...} for
                              a line with a link), "social" is the list of icon links of that item
+    form.heading             the name of the form ("Send a Message")
     form.fields              the fields in reading order: id, label, type (text, email or textarea),
                              required (true or false), autocomplete
     form.required_mark       the star shown after the label of a required field
@@ -74,40 +78,60 @@ CONTRACT_FIELDS = ("first-name", "last-name", "email", "message")
 # field with a capital letter (autocapitalize="words").
 NAME_FIELDS = ("name", "given-name", "family-name", "additional-name")
 
-# The drawings of the info items, one per "id" in the content file. Simple line drawings, made for this
-# site. They take the colour of the text around them, and the stylesheet gives each one a box of
-# 28 x 28 px that starts at the left edge of its column (class info-icon). The width and height written
-# here only keep them small should the stylesheet not load.
-#
-# Each drawing has three parts: its viewBox, its stroke width and its shapes. The viewBox is the window
-# the 28 x 28 box looks through. It is chosen so that the drawing starts at the left edge of the box,
-# stands on its bottom edge and is as large as the icon on the old site (pin 21 x 28 px, handset 23 x 23,
-# envelope 23 x 16 and 2 px in from both edges, thumbs-up 23 x 22, clock 23 x 23). The stroke width is
-# chosen so that every line is 1.5 px thick on screen. To change a drawing, keep its shapes inside the
-# same outline, or work the two numbers out again.
-ICON_OPEN = ('<svg class="info-icon" viewBox="%s" width="28" height="28" fill="none" stroke="currentColor" '
-             'stroke-width="%s" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">')
+# The drawings of the info items, one per "id" in the content file. They are five icons of the Phosphor
+# set in its Duotone style (phosphoricons.com, taken from icon-sets.iconify.design on 18 November 2026,
+# decision 65): map-pin, phone, envelope-simple, at and clock. Phosphor Icons are free to use under the
+# MIT License, and its text has to travel with them: tools/licenses/MIT-PhosphorIcons.txt.
+# Every drawing sits in the same box of 256 x 256 units and is drawn with the same line (16 units), so
+# the five look like one family and line up in a column. They have two tones: the lines take the colour
+# of the text around them, and the shape marked class="tone" is filled with the beige of the site by the
+# stylesheet. Without the stylesheet that shape is a light tint of the text colour (opacity 0.2, as the
+# set draws it).
+# The stylesheet sets their size (class info-icon) and gives each a second class, icon-ID, which it uses
+# on a wide screen to start every drawing exactly at the left edge of its column. The width and height
+# written here only keep them small should the stylesheet not load.
+# To change a drawing, take the Duotone icon of the same set, so the line and the box stay the same, mark
+# its light shape class="tone", and set the air on its left side in the stylesheet (.info-icon.icon-ID).
+ICON_OPEN = ('<svg class="info-icon icon-%s" viewBox="0 0 256 256" width="28" height="28" fill="currentColor" '
+             'aria-hidden="true" focusable="false">')
+_TONE = '<path class="tone" opacity=".2" d="%s"/><path d="%s"/>'
 ICONS = {
-    # a map pin
-    "address": ("4.991 2.991 19.019 19.019", "1.019",
-                '<path d="M12 21.5c-3.9-4.3-6.5-8-6.5-11.5a6.5 6.5 0 0 1 13 0c0 3.5-2.6 7.2-6.5 11.5z"/>'
-                '<circle cx="12" cy="10" r="2.5"/>'),
-    # a telephone handset
-    "phone": ("3.942 -0.779 20.837 20.837", "1.116",
-              '<path d="M6.6 3.5h2.6a1 1 0 0 1 .95.68l1.1 3.3a1 1 0 0 1-.3 1.07L9.3 9.9a11.5 11.5 0 0 0 4.8 4.8'
-              'l1.35-1.65a1 1 0 0 1 1.07-.3l3.3 1.1a1 1 0 0 1 .68.95v2.6a2.1 2.1 0 0 1-2.1 2.1'
-              'C10.6 19.5 4.5 13.4 4.5 5.6a2.1 2.1 0 0 1 2.1-2.1z"/>'),
-    # an envelope
-    "email": ("0.531 -3.628 25.135 25.135", "1.347",
-              '<rect x="3" y="5.5" width="19.3" height="13" rx="1"/><path d="M3.5 6.5l9.15 6.5 9.15-6.5"/>'),
-    # a thumbs-up
-    "social": ("2.917 -1.196 21.780 21.780", "1.167",
-               '<path d="M3.5 10.5H7V20H3.5z"/>'
-               '<path d="M7 11l3.6-7.2c1.5 0 2.6 1.1 2.6 2.6v3.1h5.1a1.9 1.9 0 0 1 1.9 2.2l-1.1 6.7'
-               'a1.9 1.9 0 0 1-1.9 1.6H7"/>'),
-    # a clock
-    "hours": ("2.907 -1.047 22.140 22.140", "1.186",
-              '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.2V12l3.2 2"/>'),
+    # a map pin (ph:map-pin-duotone)
+    "address": _TONE % (
+        "M128 24a80 80 0 0 0-80 80c0 72 80 128 80 128s80-56 80-128a80 80 0 0 0-80-80m0 112a32 32 0 1 1 32-32a32 32 0 "
+        "0 1-32 32",
+        "M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 "
+        "88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27."
+        "45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55."
+        "47 105-72 118"),
+    # a telephone handset (ph:phone-duotone)
+    "phone": _TONE % (
+        "M223.94 174.08A48.33 48.33 0 0 1 176 216A136 136 0 0 1 40 80a48.33 48.33 0 0 1 41.92-47.94a8 8 0 0 1 8.3 4.8l"
+        "21.13 47.2a8 8 0 0 1-.66 7.53L89.32 117a7.93 7.93 0 0 0-.54 7.81c8.27 16.93 25.77 34.22 42.75 42.41a7.92 7.92 "
+        "0 0 0 7.83-.59l25-21.3a8 8 0 0 1 7.59-.69l47.16 21.13a8 8 0 0 1 4.83 8.31",
+        "m222.37 158.46l-47.11-21.11l-.13-.06a16 16 0 0 0-15.17 1.4a8 8 0 0 0-.75.56L134.87 160c-15.42-7.49-31.34-23."
+        "29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16 16 0 0 0 1.32-15.06v-.12L97.54 33.64a16 16 0 0 0-16.62-9.52"
+        "A56.26 56.26 0 0 0 32 80c0 79.4 64.6 144 144 144a56.26 56.26 0 0 0 55.88-48.92a16 16 0 0 0-9.51-16.62M176 208"
+        "A128.14 128.14 0 0 1 48 80a40.2 40.2 0 0 1 34.87-40a.6.6 0 0 0 0 .12l21 47l-20.67 24.74a6 6 0 0 0-.57.77a16 "
+        "16 0 0 0-1 15.7c9.06 18.53 27.73 37.06 46.46 46.11a16 16 0 0 0 15.75-1.14a8 8 0 0 0 .74-.56L168.89 152l47 21."
+        "05h.11A40.21 40.21 0 0 1 176 208"),
+    # an envelope (ph:envelope-simple-duotone)
+    "email": _TONE % (
+        "m224 56l-96 88l-96-88Z",
+        "M224 48H32a8 8 0 0 0-8 8v136a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a8 8 0 0 0-8-8m-20.57 16L128 133.15L52."
+        "57 64ZM216 192H40V74.19l82.59 75.71a8 8 0 0 0 10.82 0L216 74.19z"),
+    # an at sign, the mark in front of every name on Facebook and Instagram (ph:at-duotone)
+    "social": _TONE % (
+        "M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96",
+        "M128 24a104 104 0 0 0 0 208c21.51 0 44.1-6.48 60.43-17.33a8 8 0 0 0-8.86-13.33C166 210.38 146.21 216 128 216"
+        "a88 88 0 1 1 88-88c0 26.45-10.88 32-20 32s-20-5.55-20-32V88a8 8 0 0 0-16 0v4.26a48 48 0 1 0 5.93 65.1c6 12 16."
+        "35 18.64 30.07 18.64c22.54 0 36-17.94 36-48A104.11 104.11 0 0 0 128 24m0 136a32 32 0 1 1 32-32a32 32 0 0 1-32 "
+        "32"),
+    # a clock (ph:clock-duotone)
+    "hours": _TONE % (
+        "M224 128a96 96 0 1 1-96-96a96 96 0 0 1 96 96",
+        "M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m64-88a8 "
+        "8 0 0 1-8 8h-56a8 8 0 0 1-8-8V72a8 8 0 0 1 16 0v48h48a8 8 0 0 1 8 8"),
 }
 
 
@@ -122,8 +146,7 @@ def _icon(name):
     if name not in ICONS:
         raise ValueError('%s: key "info": there is no drawing for the id "%s" in tools/pages/contact.py (drawings: %s)'
                          % (CONTENT_FILE, name, ", ".join(ICONS)))
-    view_box, stroke_width, shapes = ICONS[name]
-    return ICON_OPEN % (view_box, stroke_width) + shapes + "</svg>"
+    return ICON_OPEN % name + ICONS[name] + "</svg>"
 
 
 def _info_item(ctx, item):
@@ -134,7 +157,20 @@ def _info_item(ctx, item):
         '  <h2 class="serif">%s</h2>' % ctx.esc(item["heading"]),
     ]
     for line in item["lines"]:
-        lines.append("  <p>%s</p>" % (ctx.inline(line["html"]) if isinstance(line, dict) else ctx.esc(line)))
+        if isinstance(line, dict):
+            text = ctx.inline(line["html"])
+        elif item["id"] == "address" and line == ctx.site.get("address_one_line"):
+            # The street address opens the map, as it does on the home page, so a visitor on a phone can
+            # tap it and be led to the salon. The words stay those of the content file. Where the line is
+            # too long for a phone it breaks after the street and never inside the name of the town:
+            # everything after the first comma stays together.
+            street, comma, town = line.partition(", ")
+            words = ctx.esc(street) + (', <span class="nowrap">%s</span>' % ctx.esc(town) if comma else "")
+            text = ('<a class="map-link" href="%s" target="_blank" rel="noopener">%s</a>'
+                    % (ctx.esc(ctx.site["maps_href"]), words))
+        else:
+            text = ctx.esc(line)
+        lines.append("  <p>%s</p>" % text)
     if item.get("social"):
         # The bare signs, a letter f and the outline of a camera, as on the old Contact page. The footer of
         # every page shows the same two links as filled discs.
@@ -214,9 +250,15 @@ def _form(ctx, form, action):
     mark = form["required_mark"]
     errors = form["errors"]
     lines = [
-        '<form id="contact-form" class="contact-form" data-mailto="%s" data-sent="%s">'
-        % (ctx.esc(action), ctx.esc(form["sent_message"])),
+        '<form id="contact-form" class="contact-form" data-mailto="%s" data-sent="%s"%s>'
+        % (ctx.esc(action), ctx.esc(form["sent_message"]),
+           ' aria-labelledby="form-heading"' if form.get("heading") else ""),
     ]
+    # The name of the form. On a phone it is the heading of the beige panel the form sits in. On a wide
+    # screen, where the form stands beside the details as on the old site, the stylesheet keeps it for
+    # screen readers only. A content file without "heading" has no such line.
+    if form.get("heading"):
+        lines.append('  <h2 class="form-heading serif" id="form-heading">%s</h2>' % ctx.esc(form["heading"]))
     row = []                # the fields of the row that is being collected
 
     def close_row():

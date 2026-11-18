@@ -295,12 +295,17 @@ VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1, 
 JS_FLAG = ('<script>document.documentElement.classList.add("js");document.addEventListener("DOMContentLoaded",function(){'
            'if(typeof BOOKING_URL!=="string"){document.documentElement.classList.remove("js")}})</script>')
 # A telephone handset, the drawing of the Call button at the bottom of the screen on phones. Decoration: the words
-# of the button say what it does.
-CALL_ICON = ('<svg class="call-bar-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" '
-             'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
-             '<path d="M6.6 3.5h2.6a1 1 0 0 1 .95.68l1.1 3.3a1 1 0 0 1-.3 1.07L9.3 9.9a11.5 11.5 0 0 0 4.8 4.8'
-             'l1.35-1.65a1 1 0 0 1 1.07-.3l3.3 1.1a1 1 0 0 1 .68.95v2.6a2.1 2.1 0 0 1-2.1 2.1'
-             'C10.6 19.5 4.5 13.4 4.5 5.6a2.1 2.1 0 0 1 2.1-2.1z"/></svg>')
+# of the button say what it does. It is the handset of the Phosphor set in its Bold style (ph:phone-bold), the
+# same handset as the Phone item of the Contact page (tools/pages/contact.py, decision 65), with the heavier line
+# a 20 px drawing needs. License: tools/licenses/MIT-PhosphorIcons.txt.
+CALL_ICON = ('<svg class="call-bar-icon" viewBox="0 0 256 256" width="20" height="20" fill="currentColor" '
+             'aria-hidden="true" focusable="false">'
+             '<path d="m224 154.8l-47.09-21.11l-.18-.08a19.94 19.94 0 0 0-19 1.75a13 13 0 0 0-1.12.84l-22.31 19c-13-7.05-'
+             '26.43-20.37-33.49-33.21l19.06-22.66a12 12 0 0 0 .85-1.15a20 20 0 0 0 1.66-18.83a1.4 1.4 0 0 1-.08-.18L101.2 '
+             '32a20.06 20.06 0 0 0-20.78-11.85A60.27 60.27 0 0 0 28 80c0 81.61 66.39 148 148 148a60.27 60.27 0 0 0 59.85-'
+             '52.42A20.06 20.06 0 0 0 224 154.8M176 204A124.15 124.15 0 0 1 52 80a36.29 36.29 0 0 1 28.48-35.54l18.82 42l-'
+             '19.16 22.82a12 12 0 0 0-.86 1.16A20 20 0 0 0 78 130.08c9.42 19.28 28.83 38.56 48.31 48a20 20 0 0 0 19.69-1.'
+             '45a12 12 0 0 0 1.11-.85l22.43-19.07l42 18.81A36.29 36.29 0 0 1 176 204"/></svg>')
 MENU_LABEL = "Menu"                     # accessible name of the phone menu button (contract, section 6)
 NAV_LABEL = "Main"                      # accessible name of the navigation (contract, section 6)
 RESULT_KEYS = ("body", "head_extra", "head_first", "robots")

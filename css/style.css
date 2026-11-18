@@ -228,6 +228,13 @@ a {
   color: inherit;
 }
 
+/* Text a visitor marks with the finger or the mouse is shown in the colours of the
+   site, light on the taupe of the buttons, instead of the blue of the device. */
+::selection {
+  background: var(--btn);
+  color: var(--btn-text);
+}
+
 /* Rules start from nothing. Each component draws its own line (see .dots, .foot-rule). */
 hr {
   height: 0;
@@ -2661,12 +2668,40 @@ h1.services-title {
   line-height: 28.8px;
 }
 
+/* The drawing of an item. The five are one family, icons of the Phosphor set in its
+   Duotone style (tools/pages/contact.py): the same box, the same line, and two tones.
+   The lines are the ink of the text, and the shape marked "tone", which the set draws
+   as a light tint, is filled with the beige of the site.
+   On a wide screen a drawing is 32 px and stands above its heading, 16 px apart: the
+   heading keeps the place it had under the 28 px drawing of before. Every drawing has
+   a little air around it inside its box, each a different amount, so each is moved
+   left by that amount and starts exactly at the left edge of the column, in line with
+   the heading under it. */
 .info-icon {
   display: block;
-  width: 28px;
-  height: 28px;
-  margin: 0 0 20px;
+  width: 32px;
+  height: 32px;
+  margin: 0 0 16px;
   color: var(--ink);
+}
+
+.info-icon .tone {
+  fill: var(--beige);
+  opacity: 1;
+}
+
+.info-icon.icon-address {
+  margin-left: -5px;
+}
+
+.info-icon.icon-phone {
+  margin-left: -4px;
+}
+
+.info-icon.icon-email,
+.info-icon.icon-social,
+.info-icon.icon-hours {
+  margin-left: -3px;
 }
 
 .info-item h2 {
@@ -2687,6 +2722,21 @@ h1.services-title {
 
 .info-item address {
   font-style: normal;
+}
+
+/* Words that stay on one line together (the town, state and zip code of the address). */
+.info-item .nowrap {
+  white-space: nowrap;
+}
+
+/* The street address is a link to the map and may run over two lines. It stays a
+   plain run of text at every width: the taller tap boxes that the phone and email
+   links get on tablets and touch screens (further down) would pull its two lines
+   together. */
+.info-item p > a.map-link {
+  display: inline;
+  padding: 0;
+  line-height: inherit;
 }
 
 .info-item a {
@@ -2715,6 +2765,27 @@ h1.services-title {
 /* Right panel: the form, 460 px wide in the middle of its panel. */
 .contact-form {
   padding: 81px max(32px, calc(50% - 230px)) 80px;
+}
+
+/* The name of the form ("Send a Message"). On a wide screen the form stands beside the
+   details as on the old site and needs no heading to be understood, so the name is
+   hidden from the eye and still read out by screen readers. On a phone it is the
+   heading of the beige panel (see Phone below). */
+.form-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The mark that shows where the visitor types is the taupe of the buttons. */
+.contact-form input,
+.contact-form textarea {
+  caret-color: var(--btn);
 }
 
 .contact-form .row {
@@ -3114,42 +3185,148 @@ html:not(.js) .contact-form {
     line-height: 1.8;
   }
 
-  /* One item under the other, as on the old phone page, so the address stays on one line. */
+  /* ---- The details as a list (decision 64) ----
+     One row per item: its drawing on the left, its name and its lines beside it, and
+     the dotted rule of the site between two rows (the rule of the Home box and of
+     the footer). Before, each item was a drawing above a heading above a line, with
+     32 px of air between two items: five small islands and a full screen of scrolling.
+     A row that leads somewhere (the address opens the map, the phone number calls,
+     the email address writes) is one tap target from edge to edge of the screen,
+     marked with an arrow head on the right, and turns a shade darker under a finger. */
   .info {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 32px;
-    padding: 44px var(--gutter);
+    display: block;
+    padding: 6px var(--gutter) 10px;
   }
 
   .info-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: start;
+    padding: 18px 0;
     font-size: calc(16px + var(--grow));
+    line-height: 1.45;
   }
 
-  .info-icon {
-    margin-bottom: 14px;
+  .info-item + .info-item {
+    border-top: 1px dotted var(--ink);
+  }
+
+  /* The drawing: 30 px, in the first column, level with the name beside it. The longer
+     selector switches off the nudge each drawing has on a wide screen. */
+  .info .info-icon {
+    grid-column: 1;
+    grid-row: 1 / span 6;
+    width: 30px;
+    height: 30px;
+    margin: 0;
   }
 
   .info-item h2,
   .info-item:nth-child(n+3) h2 {
-    margin-bottom: 10px;
-    font-size: calc(19px + 2 * var(--grow));
-    line-height: 1.27;
+    grid-column: 2;
+    margin: 2px 0 3px;
+    font-size: calc(18px + 2 * var(--grow));
+    line-height: 1.3;
   }
 
-  /* On the old phone page the icons hang 7 px to the left of the heading. With the
-     44 px tap areas of the phone the first icon moves 3.5 px right of that, so its
-     tap area does not reach out of the column. */
+  .info-item p,
   .info-item .social {
-    margin-left: -3.5px;
+    grid-column: 2;
   }
 
-  /* Phone and email: 44 px tall tap rows. */
+  /* A row with a link: the link is the whole row. Its invisible area reaches from the
+     top to the bottom of the row and out to both edges of the screen. */
   .info-item p > a {
-    padding: 12.6px 0;
+    display: inline;
+    padding: 0;
+    line-height: inherit;
+    -webkit-tap-highlight-color: transparent;
   }
 
+  .info-item p > a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: calc(-1 * var(--gutter));
+    bottom: 0;
+    left: calc(-1 * var(--gutter));
+  }
+
+  .info-item p > a:active::after {
+    background: rgba(29, 21, 9, 0.06);
+  }
+
+  /* The arrow head on the right of such a row: two sides of a 9 px square. */
+  .info-item:has(p > a) {
+    padding-right: 30px;
+  }
+
+  .info-item:has(p > a)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 9px;
+    height: 9px;
+    margin-top: -5px;
+    border-top: 1.5px solid var(--ink);
+    border-right: 1.5px solid var(--ink);
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+
+  /* Facebook and Instagram: two round buttons of 44 px with a thin line around the
+     sign, 12 px apart. The button itself is the tap target, so the invisible area the
+     small signs have elsewhere is not needed. */
+  .info-item .social {
+    gap: 12px;
+    margin: 8px 0 2px;
+  }
+
+  .info-item .social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .info-item .social a::after {
+    content: none;
+  }
+
+  .info-item .social a:active {
+    background-color: var(--beige);
+  }
+
+  /* ---- The form in a beige panel (decision 64) ----
+     The beige of the Home box and of the service cards, with the name of the form as
+     its heading. The fields are the light page colour with a thin soft line, which
+     turns into the full ink line when the visitor is in the field. Labels are a
+     little heavier than the text, so a label and what was typed under it are told
+     apart at a glance. Send is as wide as the fields. */
   .contact-form {
-    padding: 44px var(--gutter) 24px;
+    margin: 28px var(--gutter);
+    padding: 26px 20px 22px;
+    background: var(--beige);
+  }
+
+  .form-heading {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0 0 20px;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+    font-size: calc(19px + 2 * var(--grow));
+    line-height: 1.3;
   }
 
   .contact-form .row {
@@ -3163,25 +3340,72 @@ html:not(.js) .contact-form {
   }
 
   .contact-form label {
-    font-size: 16px;
-    line-height: 16px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-color: rgba(29, 21, 9, 0.3);
+    font-size: calc(16px + var(--grow));
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  /* The field the visitor is in: its line is the full ink and twice as thick. That is
+     its focus mark here, so the ring that every other link and button gets is not drawn
+     around it as well (the outline is kept, in a colour that cannot be seen, for the
+     high contrast mode of Windows, which draws outlines in its own colours). */
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--ink);
+    outline: 2px solid transparent;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 1px var(--ink);
   }
 
   .contact-form input {
-    height: 48px;
+    height: 50px;
   }
 
   .contact-form textarea {
-    height: 110px;
-    min-height: 96px;
+    height: 120px;
+    min-height: 120px;
+    padding-top: 12px;
   }
 
-  /* Send: 160 px wide at the left, as on the old phone page, and tall enough to tap.
-     Its text is 14 px at 320 px and 16 px from 390 px (see --grow at the top). */
+  /* Send: as wide as the fields and 52 px tall, with the spaced letters of the dark
+     button of the site. Its text is 14 px at 320 px and 15 px from 390 px. */
   .contact-form button {
-    width: 160px;
-    height: 48px;
-    font-size: calc(14px + 2 * var(--grow));
+    width: 100%;
+    height: 52px;
+    margin-top: 4px;
+    font-size: calc(14px + var(--grow));
+    letter-spacing: 1.4px;
+  }
+
+  /* The status line takes room only once it says something, so the empty panel ends
+     22 px under the button. */
+  .form-note {
+    min-height: 0;
+  }
+
+  .form-note:empty {
+    margin-top: 0;
+  }
+
+  /* While the form is on the screen the Call bar steps aside (the script sets the class
+     on body): it lay over the Send button while the page scrolled, and here the visitor
+     is writing, not calling. */
+  .call-bar {
+    transition: transform 0.25s ease;
+  }
+
+  body.form-on-screen .call-bar {
+    transform: translateY(110%);
   }
 
   /* The message under the Email field and the lines under Send: 15 px from 390 px. */
@@ -3209,7 +3433,7 @@ html:not(.js) .contact-form {
 
   @media (max-width: 760px) {
     .contact-form textarea {
-      min-height: 110px;
+      min-height: 120px;
     }
   }
 }
