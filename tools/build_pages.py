@@ -282,6 +282,11 @@ PAGES_HOST = "achoostorm.github.io"     # where the site is published before the
 # crossorigin belongs on such a link also for a file of the site's own: a browser fetches fonts that way,
 # and without the word it would fetch the file twice.
 FONT_PRELOAD = '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>'
+# The viewport line of every page. viewport-fit=cover lets the page use the whole screen of an iPhone, also the
+# strips beside the camera cut-out and under the home bar. Only with it does the phone tell the stylesheet how
+# wide those strips are (env(safe-area-inset-...) in css/style.css), and the stylesheet keeps every link, button
+# and text out of them. Without it those numbers are always 0 and the Call bar can end up under the home bar.
+VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">'
 # The small script in the head of every page. It puts the class "js" on <html> before the page is drawn, which
 # tells the stylesheet that the site script is there (on a phone the menu is then folded behind the menu
 # button). js/site.js starts with "var BOOKING_URL = ...". When that file did not arrive, or the browser could
@@ -939,7 +944,7 @@ def _document(page, ctx, parts, site, jsonld, year):
 
     head = [
         '<meta charset="utf-8">',
-        '<meta name="viewport" content="width=device-width, initial-scale=1">',
+        VIEWPORT,
     ]
     head += _lines(parts["head_first"])
     head.append("<title>%s</title>" % _text(title))
@@ -982,6 +987,9 @@ def _document(page, ctx, parts, site, jsonld, year):
         # 192 x 192: the icon Android shows when the site is added to the home screen
         '<link rel="icon" type="image/png" sizes="192x192" href="%s">' % esc(url("/images/icon-192.png")),
         '<link rel="apple-touch-icon" href="%s">' % esc(url("/images/apple-touch-icon.png")),
+        # The name under the icon when a visitor adds the site to the home screen of an iPhone. Without it the
+        # phone takes the page title, which is far too long for that place and is cut off.
+        '<meta name="apple-mobile-web-app-title" content="%s">' % esc(_need(site, "home_screen_name", str)),
         '<meta name="theme-color" content="%s">' % esc(_need(site, "theme_color", str)),
     ]
     head += [FONT_PRELOAD % esc(url(font)) for font in font_preloads]

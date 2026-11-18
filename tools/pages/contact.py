@@ -70,6 +70,10 @@ ROW_FIELDS = ("first-name", "last-name")
 # The fields js/site.js reads by id (contract, sections 7 and 8).
 CONTRACT_FIELDS = ("first-name", "last-name", "email", "message")
 
+# The "autocomplete" values of a field that takes a name. On a phone the keyboard starts each word of such a
+# field with a capital letter (autocapitalize="words").
+NAME_FIELDS = ("name", "given-name", "family-name", "additional-name")
+
 # The drawings of the info items, one per "id" in the content file. Simple line drawings, made for this
 # site. They take the colour of the text around them, and the stylesheet gives each one a box of
 # 28 x 28 px that starts at the left edge of its column (class info-icon). The width and height written
@@ -178,6 +182,12 @@ def _field(ctx, field, required_mark, errors=None):
         attrs += ' type="%s"' % ctx.esc(kind)
     if field.get("autocomplete"):
         attrs += ' autocomplete="%s"' % ctx.esc(field["autocomplete"])
+    # What a phone keyboard does with the first letter. A name starts every word with a capital, an email
+    # address never gets one and is not "corrected" by the spelling check either.
+    if kind == "email":
+        attrs += ' autocapitalize="none" spellcheck="false"'
+    elif field.get("autocomplete") in NAME_FIELDS:
+        attrs += ' autocapitalize="words"'
     if kind == "textarea":
         attrs += ' rows="4"'
     if required:

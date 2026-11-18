@@ -23,7 +23,7 @@ var BOOKING_URL = "";
  * Nothing below this note has to be changed to add the booking link.
  *
  * Site script for Hair & Makeup by Gerta. Every page loads this one file
- * with "defer". It has six parts:
+ * with "defer". It has seven parts:
  *
  *   1. Book Now buttons       every element marked data-book
  *   2. Phone menu             .menu-btn and #main-nav
@@ -31,15 +31,18 @@ var BOOKING_URL = "";
  *   4. Contact form           #contact-form, #email-error and .form-note
  *   5. Copyright year         every element marked data-year
  *   6. Map                    the iframe with data-src inside .map
+ *   7. Short header           the class "compact" on <html>, and the pressed
+ *                             look of links and buttons on an iPhone
  *
  * Each part looks for its own elements and does nothing on a page that does
  * not have them. A part that fails does not stop the other parts.
  *
  * The pages also work without this script: the Book Now buttons are phone
  * links, the menu is a plain list of links, each gallery photo opens on its
- * own, the year is the one the page was built with, and the Contact page
- * hides its form (the sentence above it gives the phone number and the email
- * address as links) and offers the map as a link to Google Maps.
+ * own, the year is the one the page was built with, the header keeps its
+ * full height, and the Contact page hides its form (the sentence above it
+ * gives the phone number and the email address as links) and offers the map
+ * as a link to Google Maps.
  */
 (function () {
   "use strict";
@@ -197,6 +200,18 @@ var BOOKING_URL = "";
    * Each link in .gallery opens its photo in a full-screen viewer with next and previous
    * buttons, arrow keys, swipe and Escape. Without this script every link is still a plain
    * link that opens its photo, so nothing is lost when the script does not run.
+   *
+   * On a touch screen the photo follows the finger. A swipe to the left or right goes to
+   * the next or previous photo, and the old photo glides out while the new one glides in.
+   * A swipe down closes the viewer. A drag that ends too early lets the photo glide back.
+   *
+   * What the viewer shows, in this order:
+   *   1. at once, the small copy of the photo that the gallery has loaded already
+   *      (img.lb-ph, the stand-in), so the viewer never opens onto a dark screen;
+   *   2. the full photo (img.lb-img), which fades in over the stand-in when it has arrived.
+   *      Its src is the JPG of the gallery link. A link with data-webp also offers the
+   *      WebP copy of the same photo, a much smaller file, and a browser that reads WebP
+   *      takes that one (the picture element with its source does the choosing).
    */
   function initLightbox() {
     var links = Array.prototype.slice.call(document.querySelectorAll(".gallery a[href]"));
@@ -211,7 +226,10 @@ var BOOKING_URL = "";
     var isOpen = false;
     var opening = false;    // true while the click or key press that opened the viewer may not be over yet
     var pressedOn = null;   // where the mouse button went down, see the click handler of the viewer
-    var swipe = null;       // start point of a one-finger touch
+    var drag = null;        // a one-finger touch on the viewer: where it began and which way it goes
+    var ghost = null;       // the old photo while it glides out of the viewer
+    var ghostTimer = 0;
+    var shape = 0;          // width / height of the stand-in picture, 0 while there is none
     var preloaded = null;
 
     function makeButton(className, label, glyph) {
@@ -237,9 +255,25 @@ var BOOKING_URL = "";
 
     var closeBtn = makeButton("lb-close", "Close", "\u00d7");
     var prevBtn = makeButton("lb-prev", "Previous photo", "\u2039");
+    // The stage is the part that moves with the finger. It holds the stand-in and, in a
+    // picture element, the photo. The source for the WebP copy is put into the picture
+    // only for a photo that has one.
+    var stage = document.createElement("div");
+    stage.className = "lb-stage";
+    var standIn = document.createElement("img");
+    standIn.className = "lb-ph";
+    standIn.alt = "";
+    standIn.setAttribute("aria-hidden", "true");
+    standIn.hidden = true;
+    var picture = document.createElement("picture");
+    var webp = document.createElement("source");
+    webp.type = "image/webp";
     var img = document.createElement("img");
     img.className = "lb-img";
     img.alt = "";
+    picture.appendChild(img);
+    stage.appendChild(standIn);
+    stage.appendChild(picture);
     var nextBtn = makeButton("lb-next", "Next photo", "\u203a");
     var count = document.createElement("p");
     count.className = "lb-count";
@@ -247,7 +281,7 @@ var BOOKING_URL = "";
 
     box.appendChild(closeBtn);
     box.appendChild(prevBtn);
-    box.appendChild(img);
+    box.appendChild(stage);
     box.appendChild(nextBtn);
     box.appendChild(count);
     document.body.appendChild(box);
@@ -258,7 +292,35 @@ var BOOKING_URL = "";
       index = ((i % total) + total) % total;
       var link = links[index];
       var thumb = link.querySelector("img");
+      var light = link.getAttribute("data-webp");
+
+      // The photo of before is gone at once. The new one is drawn when its file is in.
+      img.classList.remove("lb-loaded");
+
+      // The stand-in: the file the gallery shows for this photo, if the browser has it.
+      // shape is its width divided by its height, see onStandIn.
+      var small = thumb && thumb.complete && thumb.naturalWidth > 0 ? (thumb.currentSrc || thumb.src) : "";
+      if (small) {
+        if (standIn.getAttribute("src") !== small) {
+          standIn.src = small;
+        }
+        standIn.hidden = false;
+        shape = thumb.naturalWidth / thumb.naturalHeight;
+      } else {
+        standIn.hidden = true;
+        standIn.removeAttribute("src");
+        shape = 0;
+      }
+
       img.alt = thumb ? thumb.alt : "";
+      if (light) {
+        webp.setAttribute("srcset", light);
+        if (webp.parentNode !== picture) {
+          picture.insertBefore(webp, img);
+        }
+      } else if (webp.parentNode === picture) {
+        picture.removeChild(webp);
+      }
       img.src = link.getAttribute("href");
       count.textContent = (index + 1) + " / " + total;
     }
@@ -268,8 +330,97 @@ var BOOKING_URL = "";
       show(index + by);
     }
 
+    // ---- moving the stage
+
+    // Puts the stage x px to the right and y px down of its place (0, 0 = in its place).
+    function place(x, y) {
+      stage.style.transform = x || y ? "translate3d(" + x + "px," + y + "px,0)" : "";
+    }
+
+    // Back in its place and the dark layer solid again. glide = true: it glides there.
+    function rest(glide) {
+      if (glide) {
+        stage.classList.add("lb-move");
+      } else {
+        stage.classList.remove("lb-move");
+      }
+      place(0, 0);
+      box.style.removeProperty("--lb-dim");
+    }
+
+    function clearGhost() {
+      window.clearTimeout(ghostTimer);
+      if (ghost && ghost.parentNode) {
+        ghost.parentNode.removeChild(ghost);
+      }
+      ghost = null;
+    }
+
+    // A copy of the picture that is on show right now (the photo, or its stand-in while
+    // the photo is still on its way), standing where the stage stands. Nothing to copy: null.
+    function makeGhost(x) {
+      var loaded = img.classList.contains("lb-loaded");
+      var standing = !standIn.hidden && standIn.offsetWidth > 0;
+      var src = loaded ? (img.currentSrc || img.src) : (standing ? standIn.src : "");
+      clearGhost();
+      if (!src) {
+        return null;
+      }
+      var copy = document.createElement("img");
+      copy.className = loaded ? "lb-ghost-img" : "lb-ghost-fit";
+      copy.alt = "";
+      copy.src = src;
+      ghost = document.createElement("div");
+      ghost.className = "lb-ghost";
+      ghost.setAttribute("aria-hidden", "true");
+      ghost.style.transform = x ? "translate3d(" + x + "px,0,0)" : "";
+      ghost.appendChild(copy);
+      box.insertBefore(ghost, stage);
+      return ghost;
+    }
+
+    // On to the next (by = 1) or the previous (by = -1) photo with a glide: the old
+    // photo leaves on one side while the new one comes in from the other. from is how
+    // far the finger has moved the photo already (0 for a button or a key).
+    // The photo, the counter and the alt text change at once. Only the picture glides.
+    function glideTo(by, from) {
+      var width = box.clientWidth || window.innerWidth;
+      var old = makeGhost(from);
+      step(by);
+      stage.classList.remove("lb-move");
+      place(from + by * width, 0);
+      box.style.removeProperty("--lb-dim");
+      void stage.offsetWidth;   // the browser notes where both start before they glide
+      stage.classList.add("lb-move");
+      place(0, 0);
+      if (old) {
+        old.classList.add("lb-move");
+        old.style.transform = "translate3d(" + (-by * width) + "px,0,0)";
+        ghostTimer = window.setTimeout(clearGhost, 400);
+      }
+    }
+
+    // An empty spot of the stage is the dark layer too.
     function isBackdrop(node) {
-      return node === box || node === count;
+      return node === box || node === count || node === stage;
+    }
+
+    // The stand-in takes no clicks itself and fills more room than its picture. While
+    // it stands in for the photo, this says whether a click fell on the picture.
+    function onStandIn(e) {
+      if (standIn.hidden || !shape || img.classList.contains("lb-loaded")) {
+        return false;
+      }
+      var room = standIn.getBoundingClientRect();
+      if (!room.width || !room.height) {
+        return false;   // the stylesheet does not use the stand-in on this screen
+      }
+      // The picture is as large as fits into the room without changing its shape.
+      var width = Math.min(room.width, room.height * shape);
+      var height = width / shape;
+      var left = room.left + (room.width - width) / 2;
+      var top = room.top + (room.height - height) / 2;
+      return e.clientX >= left && e.clientX <= left + width && e.clientY >= top && e.clientY <= top + height;
     }
 
     // The press that opened the viewer can still be going on when the viewer is already
@@ -300,10 +451,10 @@ var BOOKING_URL = "";
         closeViewer();
       } else if (key === "ArrowRight" || key === "Right") {
         e.preventDefault();
-        step(1);
+        glideTo(1, 0);
       } else if (key === "ArrowLeft" || key === "Left") {
         e.preventDefault();
-        step(-1);
+        glideTo(-1, 0);
       } else if (key === "Tab") {
         // Tab and Shift+Tab go round the three buttons and never leave the viewer.
         var at = stops.indexOf(document.activeElement);
@@ -326,6 +477,8 @@ var BOOKING_URL = "";
     function openViewer(i, link) {
       opener = link;
       direction = 1;
+      clearGhost();
+      rest(false);
       show(i);
       if (isOpen) {
         return;
@@ -351,7 +504,17 @@ var BOOKING_URL = "";
       box.classList.remove("open");
       box.hidden = true;
       document.body.classList.remove("lightbox-open");
-      img.removeAttribute("src");   // the next opening must not flash the old photo
+      // The next opening must not flash the old photo, and a closed viewer loads nothing.
+      img.classList.remove("lb-loaded");
+      if (webp.parentNode === picture) {
+        picture.removeChild(webp);
+      }
+      img.removeAttribute("src");
+      standIn.hidden = true;
+      standIn.removeAttribute("src");
+      drag = null;
+      clearGhost();
+      rest(false);
       var back = opener;
       opener = null;
       if (back) {
@@ -377,12 +540,12 @@ var BOOKING_URL = "";
     });
     prevBtn.addEventListener("click", function (e) {
       if (!leftoverClick(e)) {
-        step(-1);
+        glideTo(-1, 0);
       }
     });
     nextBtn.addEventListener("click", function (e) {
       if (!leftoverClick(e)) {
-        step(1);
+        glideTo(1, 0);
       }
     });
 
@@ -397,43 +560,120 @@ var BOOKING_URL = "";
       if (leftoverClick(e)) {
         return;
       }
-      if (isBackdrop(e.target) && (from === null || isBackdrop(from))) {
+      if (isBackdrop(e.target) && (from === null || isBackdrop(from)) && !onStandIn(e)) {
         closeViewer();
       }
     });
 
-    // Once a photo is in, fetch the one the visitor is most likely to ask for next.
+    // The photo has arrived: it fades in over its stand-in. Then fetch the one the
+    // visitor is most likely to ask for next, as WebP if this browser took the WebP
+    // copy of the photo on show, so that the very file it will show is the one fetched.
     img.addEventListener("load", function () {
+      // Not complete: this is late news of the photo before, and the one on show is
+      // still on its way. Its own news follows.
+      if (!img.complete) {
+        return;
+      }
+      img.classList.add("lb-loaded");
       var connection = navigator.connection;
       if (!isOpen || total < 2 || (connection && connection.saveData)) {
         return;
       }
+      var next = links[(index + direction + total) % total];
+      var readsWebp = /\.webp(\?|#|$)/i.test(img.currentSrc || "");
       preloaded = new Image();
-      preloaded.src = links[(index + direction + total) % total].href;
+      preloaded.src = (readsWebp && next.getAttribute("data-webp")) || next.href;
     });
 
-    // Swipe: left = next photo, right = previous photo. One finger only, mostly sideways,
-    // and not while the visitor has pinch-zoomed into the photo.
-    // A second finger fires touchstart again, which drops the swipe, so a pinch never counts.
+    // A file did not arrive. If it was the WebP copy, the source is taken out and the
+    // browser fetches the JPG of the link instead. If it was the JPG, there is nothing
+    // more to wait for: the img is drawn, and the browser shows its alt text.
+    img.addEventListener("error", function () {
+      if (webp.parentNode === picture) {
+        picture.removeChild(webp);
+      } else {
+        img.classList.add("lb-loaded");
+      }
+    });
+
+    // ---- touch: the photo follows one finger
+    //
+    // Sideways: left = next photo, right = previous photo. Down: close the viewer.
+    // One finger only, and not while the visitor has pinch-zoomed into the photo: then
+    // a finger moves the enlarged page, which is the browser's business.
+    // A second finger fires touchstart again, which drops the drag, so a pinch never counts.
+    // The swipe itself is judged from where the finger went down and where it came up:
+    // at least 40 px sideways and mostly sideways, or at least 90 px down and mostly down.
     var passive = { passive: true };
-    box.addEventListener("touchstart", function (e) {
-      swipe = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null;
-    }, passive);
-    box.addEventListener("touchcancel", function () {
-      swipe = null;
-    }, passive);
-    box.addEventListener("touchend", function (e) {
-      var start = swipe;
-      var end = e.changedTouches[0];
+
+    function zoomedIn() {
       var view = window.visualViewport;
-      swipe = null;
-      if (!start || !end || (view && view.scale > 1.05)) {
+      return !!view && view.scale > 1.05;
+    }
+
+    box.addEventListener("touchstart", function (e) {
+      if (e.touches.length === 1 && !zoomedIn()) {
+        drag = { x: e.touches[0].clientX, y: e.touches[0].clientY, way: "" };
+      } else {
+        if (drag && drag.way) {
+          rest(true);
+        }
+        drag = null;
+      }
+    }, passive);
+
+    // Not passive: once the finger is dragging the photo, the browser must not also
+    // scroll, bounce or pull the page under it.
+    box.addEventListener("touchmove", function (e) {
+      if (!drag || e.touches.length !== 1) {
+        return;
+      }
+      var dx = e.touches[0].clientX - drag.x;
+      var dy = e.touches[0].clientY - drag.y;
+      if (!drag.way) {
+        if (zoomedIn() || (Math.abs(dx) < 8 && Math.abs(dy) < 8)) {
+          return;   // not yet clear where the finger is going
+        }
+        drag.way = Math.abs(dx) >= Math.abs(dy) ? "x" : "y";
+        stage.classList.remove("lb-move");
+        clearGhost();
+      }
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+      if (drag.way === "x") {
+        place(dx, 0);
+      } else {
+        // Only downwards. The further down, the more of the page shows through.
+        var down = Math.max(0, dy);
+        place(0, down);
+        box.style.setProperty("--lb-dim", String(Math.max(0.35, 1 - down / 450)));
+      }
+    }, { passive: false });
+
+    box.addEventListener("touchcancel", function () {
+      drag = null;
+      rest(true);
+    }, passive);
+
+    box.addEventListener("touchend", function (e) {
+      var start = drag;
+      var end = e.changedTouches[0];
+      drag = null;
+      if (!start || !end || zoomedIn()) {
+        if (start && start.way) {
+          rest(true);
+        }
         return;
       }
       var dx = end.clientX - start.x;
       var dy = end.clientY - start.y;
       if (Math.abs(dx) >= 40 && Math.abs(dx) > 1.5 * Math.abs(dy)) {
-        step(dx < 0 ? 1 : -1);
+        glideTo(dx < 0 ? 1 : -1, start.way === "x" ? dx : 0);
+      } else if (dy >= 90 && dy > 1.5 * Math.abs(dx)) {
+        closeViewer();
+      } else if (start.way) {
+        rest(true);
       }
     }, passive);
   }
@@ -658,6 +898,84 @@ var BOOKING_URL = "";
   }
 
   // ---------------------------------------------------------------------------
+  // 7. Short header and pressed look
+  // ---------------------------------------------------------------------------
+
+  /*
+   * The short header of the phone layout (class "compact" on <html>).
+   * On a phone the header and the Call bar stay on the screen while the page
+   * scrolls. Once the visitor has scrolled about 50 px down, the header draws
+   * only its upper 64 px (smaller logo, the menu button beside it), which
+   * leaves more of the screen to the page. Back at the top it is its full
+   * 96 px again. On a screen that is 500 px tall or lower (a phone lying on
+   * its side) it is short all the time.
+   * This function only sets or removes the class. What the class looks like
+   * is in the stylesheet, which uses it in the phone layout alone, so on a
+   * wide screen nothing changes. The header keeps its place and size in the
+   * page either way, so the page never jumps.
+   * Without this script the header is never short.
+   */
+  function initHeader() {
+    var root = document.documentElement;
+    if (!root.classList || !document.querySelector(".site-header")) {
+      return;
+    }
+
+    var low = window.matchMedia ? window.matchMedia("(max-height: 500px)") : null;
+    var compact = false;
+    var waiting = false;
+
+    function update() {
+      waiting = false;
+      var y = window.pageYOffset || root.scrollTop || 0;
+      // Short after 48 px, full again above 8 px: two marks, so the header does
+      // not flicker when the page rests near one of them.
+      var next = (low && low.matches) || (compact ? y > 8 : y > 48);
+      if (next !== compact) {
+        compact = next;
+        if (compact) {
+          root.classList.add("compact");
+        } else {
+          root.classList.remove("compact");
+        }
+      }
+    }
+
+    // At most one look per picture the browser draws, however often it reports scrolling.
+    function later() {
+      if (waiting) {
+        return;
+      }
+      waiting = true;
+      if (window.requestAnimationFrame) {
+        window.requestAnimationFrame(update);
+      } else {
+        window.setTimeout(update, 50);
+      }
+    }
+
+    window.addEventListener("scroll", later, { passive: true });
+    if (low) {
+      if (low.addEventListener) {
+        low.addEventListener("change", later);
+      } else if (low.addListener) {
+        low.addListener(later);
+      }
+    }
+    update();
+  }
+
+  /*
+   * The pressed look of links and buttons on an iPhone.
+   * The stylesheet gives a button a darker look while a finger is on it
+   * (:active). Safari on the iPhone shows that look only on a page that
+   * listens for touches, and this empty listener is all it takes.
+   */
+  function initPressed() {
+    document.addEventListener("touchstart", function () {}, { passive: true });
+  }
+
+  // ---------------------------------------------------------------------------
   // Start
   // ---------------------------------------------------------------------------
 
@@ -683,6 +1001,8 @@ var BOOKING_URL = "";
     run("Contact form", initContactForm);
     run("Copyright year", initYear);
     run("Map", initMap);
+    run("Short header", initHeader);
+    run("Pressed look", initPressed);
   }
 
   // The pages load this file with "defer", so the whole page has been read
