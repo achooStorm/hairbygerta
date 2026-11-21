@@ -363,6 +363,7 @@ NAV_ICONS = {
 }
 MENU_LABEL = "Menu"                     # accessible name of the phone menu button (contract, section 6)
 NAV_LABEL = "Main"                      # accessible name of the navigation (contract, section 6)
+BAR_LABEL = "Text or call Gerta"        # accessible name of the bar with the Text and Call buttons (contract, section 6)
 RESULT_KEYS = ("body", "head_extra", "head_first", "robots")
 INLINE_TAGS = ("a", "br", "strong", "em")
 LINK_ATTRS = ("href", "target", "rel", "title", "class", "id", "lang", "hreflang", "download")
@@ -1001,6 +1002,21 @@ def _text_href(site):
     return "%s?&body=%s" % (number, urllib.parse.quote(message, safe=""))
 
 
+def _ends_with_reach(body):
+    """Is the box with the Text button and the Call button (section.reach, ctx.reach) the last thing of the page?
+
+    body is the markup of main as lines. True when nothing but closing tags follows the box. The bar of the
+    phone layout holds the same two buttons, so on such a page it must not come to rest right under the box
+    (decision 74).
+    """
+    markup = "\n".join(body)
+    start = markup.rfind('<section class="reach"')
+    if start < 0:
+        return False
+    end = markup.find("</section>", start)
+    return end >= 0 and not re.sub(r"</[a-z0-9]+>|\s+", "", markup[end + len("</section>"):])
+
+
 def _indent(markup, spaces):
     pad = " " * spaces
     return "\n".join(pad + line if line else line for line in markup.split("\n"))
@@ -1169,16 +1185,21 @@ def _document(page, ctx, parts, site, jsonld, year):
         "</header>",
         '<main id="main">',
     ]
-    out += _lines(parts["body"])
+    body = _lines(parts["body"])
+    out += body
     out += [
         "</main>",
+        # The Text button and the Call button of the phone layout (hidden on wider screens). One Call button with
+        # the phone number until 21 November 2026 (decision 69). The bar stands between the page and the footer
+        # (inside the footer until decision 74): there the stylesheet can hold it at the bottom of the screen while
+        # the page scrolls and let it come to rest above the footer at the end of the page, so it never lies over
+        # the footer. A page that ends with the box of the same two buttons says so with a second class, and the
+        # stylesheet then keeps the bar out of sight at the end of the page instead of showing the pair twice.
+        '<aside class="call-bar%s" aria-label="%s">' % (" call-bar-after-box" if _ends_with_reach(body) else "", esc(BAR_LABEL)),
+        '  <a class="call-bar-text" href="%s">%s<span class="call-bar-label">%s</span></a>' % (text_href, TEXT_ICON, text_label),
+        '  <a class="call-bar-call" href="%s">%s<span class="call-bar-label">%s</span></a>' % (tel_href, CALL_ICON, call_label),
+        "</aside>",
         '<footer class="site-footer">',
-        # The Text button and the Call button that stay at the bottom of the screen on phones (hidden on wider
-        # screens). One Call button with the phone number until 21 November 2026 (decision 69).
-        '  <div class="call-bar">',
-        '    <a class="call-bar-text" href="%s">%s<span class="call-bar-label">%s</span></a>' % (text_href, TEXT_ICON, text_label),
-        '    <a class="call-bar-call" href="%s">%s<span class="call-bar-label">%s</span></a>' % (tel_href, CALL_ICON, call_label),
-        "  </div>",
         '  <div class="inner">',
         '    <hr class="foot-rule">',
         '    <div class="foot-cols">',

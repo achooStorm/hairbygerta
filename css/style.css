@@ -680,9 +680,10 @@ body.lightbox-open {
    A Text button and a Call button that stay at the bottom of the screen on phones, so
    Gerta is one tap away wherever the visitor is on the page: Text opens the text message
    app with her number, Call calls it (one Call button with the number until decision
-   69). It sits in the footer markup and is hidden on wider screens (see Phones below).
-   It stays under the open phone menu (the header is above it) and under the photo
-   viewer. */
+   69). At the end of the page it comes to rest above the footer and never lies over it
+   (decision 74). It stands between the page and the footer in the markup and is hidden
+   on wider screens (see Phones below). It stays under the open phone menu (the header is
+   above it) and under the photo viewer. */
 .call-bar {
   display: none;
 }
@@ -1245,25 +1246,88 @@ body.lightbox-open {
     left: -10.5px;
   }
 
-  /* The dark footer runs on under the call bar, so its last line is never hidden. */
-  .site-footer .inner {
-    padding-bottom: calc(32px + 64px + var(--safe-bottom));
+  /* The footer ends 32 px under its last line, plus the home bar of an iPhone. (Until
+     decision 74 it ran on for 64 px more: the room of the call bar, which lay over it.)
+     The footer is drawn above the call bar, see there. */
+  .site-footer {
+    position: relative;
+    z-index: 41;
   }
 
-  /* The bar keeps its button above the home bar of an iPhone (--safe-bottom) and its
-     own light colour runs on under that bar to the edge of the glass. */
+  .site-footer .inner {
+    padding-bottom: calc(32px + var(--safe-bottom));
+  }
+
+  /* The bar belongs to the page: its place is between the page and the footer, right
+     above the footer (decision 74). "sticky" holds it at the bottom of the screen for as
+     long as that place is further down, so it is there wherever the visitor reads. When
+     the footer comes, the bar is in its place and scrolls on with the page. So it never
+     lies over the footer, and it takes the room the footer no longer keeps free for it.
+     No script moves it.
+     The bar keeps its buttons above the home bar of an iPhone (--safe-bottom) and its
+     own light colour runs on under that bar to the edge of the glass. That strip is of
+     use at the edge of the screen only. In the page it takes no room (the negative
+     margin), and the footer, which is drawn above the bar, covers it as it comes up.
+     --bar-h is the height of the bar without that strip: 1 px line, 8 px, the 48 px
+     buttons, 8 px. */
   .call-bar {
-    position: fixed;
-    right: 0;
+    --bar-h: 65px;
+    position: sticky;
     bottom: 0;
-    left: 0;
     z-index: 40;
     display: flex;
     gap: 10px;
+    margin-bottom: calc(-1 * var(--safe-bottom));
     padding: 8px calc(var(--gutter) + var(--safe-right)) calc(8px + var(--safe-bottom)) calc(var(--gutter) + var(--safe-left));
     border-top: 1px solid var(--beige);
     background: var(--bg);
     box-shadow: 0 -2px 12px rgba(29, 21, 9, 0.08);
+    transition: bottom 0.25s ease;
+  }
+
+  /* The colour of the bar runs on for 120 px under its lower edge. While the bar is held
+     at the edge of the screen that is below the screen, where a phone browser may still
+     draw the page under its own bar (Safari from iOS 26 on): there the page must not
+     show under the buttons. In the page the footer, drawn above the bar, covers it. */
+  .call-bar::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 120px;
+    background: var(--bg);
+    pointer-events: none;
+  }
+
+  /* A page that ends with the box of the same two buttons (home, Services): right under
+     that box the bar would show the pair twice. So here its place takes no room at all
+     and lies behind the top of the footer, which covers the bar as it comes up. The
+     16 px: the bar is drawn that much lower than it stands, and stands that much higher
+     while it is held at the screen edge, so its shadow is behind the footer as well. */
+  .call-bar-after-box {
+    bottom: 16px;
+    margin-bottom: calc(-1 * (var(--bar-h) + var(--safe-bottom)));
+    transform: translateY(16px);
+  }
+
+  /* The bar steps aside: while a box with the same two buttons is on the screen (home
+     and Services, class reach-on-screen), while the form of the Contact page is on the
+     screen (form-on-screen; the script sets both on body) and while the visitor types
+     into a field, when the phone keyboard needs the room. Stepping aside means that it
+     is held below the edge of the screen instead of at it, so it slides out of sight,
+     and back when the reason is gone. In its place above the footer nothing holds it,
+     so there it stays where it is and no gap opens in the page. Without the script the
+     bar stays, and both pairs work.
+     Two rules and not one: an older browser that does not know :has() drops the whole
+     rule it stands in, and must keep the first. */
+  body.reach-on-screen .call-bar,
+  body.form-on-screen .call-bar {
+    bottom: calc(-1.1 * (var(--bar-h) + var(--safe-bottom)));
+  }
+
+  body:has(input:focus, textarea:focus) .call-bar {
+    bottom: calc(-1.1 * (var(--bar-h) + var(--safe-bottom)));
   }
 
   /* Two buttons of the same width, Text on the left and Call on the right, 10 px apart.
@@ -1340,11 +1404,6 @@ body.lightbox-open {
     }
   }
 
-  /* While the visitor types into a field, the phone keyboard needs the room: the bar steps aside. */
-  body:has(input:focus, textarea:focus) .call-bar {
-    display: none;
-  }
-
   .copy {
     margin-top: 28px;
     font-size: calc(12px + var(--grow));
@@ -1355,11 +1414,8 @@ body.lightbox-open {
    The screen is low, so the Call bar is slimmer: 44 px button, 4 px above and below.
    The script keeps the header short on such a screen (class compact, see above). */
 @media (max-width: 760px) and (max-height: 500px) {
-  .site-footer .inner {
-    padding-bottom: calc(32px + 52px + var(--safe-bottom));
-  }
-
   .call-bar {
+    --bar-h: 53px;
     padding-top: 4px;
     padding-bottom: calc(4px + var(--safe-bottom));
   }
@@ -2392,14 +2448,9 @@ body.lightbox-open {
   }
 
   /* While the box is on the screen the Call bar steps aside (the script sets the class
-     on body, decision 69): the bar holds the very same two buttons, and two pairs of
-     them on one screen would be one too many. The bar slides back once the box has
-     left the screen. The slide itself is the one of the Contact page (.call-bar,
-     section 60). Without the script the bar stays, and both pairs work. The rule
-     names no page, so it holds for the box of the Services page too (decision 70). */
-  body.reach-on-screen .call-bar {
-    transform: translateY(110%);
-  }
+     reach-on-screen on body, decision 69): the bar holds the very same two buttons, and
+     two pairs of them on one screen would be one too many. The rule is with the bar
+     (section 20, .call-bar). */
 }
 
 /* ---------- Reduced motion: the hours stand still, shown once, centred ---------- */
@@ -4110,15 +4161,9 @@ html:not(.js) .contact-form {
   }
 
   /* While the form is on the screen the Call bar steps aside (the script sets the class
-     on body): it lay over the Send button while the page scrolled, and here the visitor
-     is writing, not calling. */
-  .call-bar {
-    transition: transform 0.25s ease;
-  }
-
-  body.form-on-screen .call-bar {
-    transform: translateY(110%);
-  }
+     form-on-screen on body): it lay over the Send button while the page scrolled, and
+     here the visitor is writing, not calling. The rule is with the bar (section 20,
+     .call-bar). */
 
   /* The message under the Email field and the lines under Send: 15 px from 390 px. */
   .field-error,

@@ -126,7 +126,12 @@ MIN_DESKTOP = 1101              # below this our stylesheet and the Wix page swi
 TOL = {"desktop": 2.0, "phone": 4.0}    # lengths. On the phone places and sizes are only listed, from this size on.
 TYPE_TOL = 2.0                  # line height and corner radius
 # The bar at the bottom of the screen on phones, a Text button and a Call button (build contract, decisions 40 and
-# 69): not on Wix, on purpose. It is fixed to the screen, so it pushes nothing down.
+# 69): not on Wix, on purpose. Until decision 74 it was fixed to the screen and pushed nothing down. Since then its
+# place is in the page, right above the footer (aside.call-bar, held at the bottom of the screen until that place
+# comes), so the footer starts lower by the height of the bar. Not on a page that ends with the Book with Gerta box
+# (aside.call-bar-after-box): there the place of the bar takes no room. Where the bar is measured depends on how
+# far the page is scrolled, so it is not listed as a block at the place it was seen: its height is kept
+# (Compare.bar_rest) and the footer may start that much lower.
 CALL_BAR = "Text and Call buttons at the bottom of the screen on phones"
 # The beige box with the Text button and the Call button, under Meet Gerta on the home page and under the cards of the
 # Book Online page (build contract, decisions 68 and 70): not on Wix, on purpose. It stands in the flow of the page, so
@@ -1003,7 +1008,8 @@ class Compare:
         self.font_metrics = []
         self.unpaired = []          # text that only one side shows: listed, not counted (wording is the content check's job)
         self.blocks_ours, self.blocks_wix = [], []      # intended extra blocks that push what is under them
-        self.page_info = []         # phone: sizes of the page itself that are listed, not judged (label, wix, ours, d)
+        self.bar_rest = 0.0         # phone: height of the Text and Call bar where it rests above the footer (see CALL_BAR)
+        self.page_info = []       # phone: sizes of the page itself that are listed, not judged (label, wix, ours, d)
         self.counts = {}
 
     # -- small tools -------------------------------------------------------------------------------------------
@@ -1257,7 +1263,13 @@ class Compare:
                 break
         else:
             self.intended.append((reason, "not on the Wix page", what, "ours: " + item["sel"]))
-        if reason not in ("copyright line", CALL_BAR):     # the call bar is fixed to the screen: it pushes nothing down
+        if reason == CALL_BAR:
+            # The bar itself (not its buttons or words), on a page where it rests above the footer: the footer
+            # starts lower by its height (decision 74). See CALL_BAR at the top.
+            marks = item.get("marks", ())
+            if item.get("tag") == "aside" and ".call-bar-after-box" not in marks:
+                self.bar_rest = max(self.bar_rest, item.get("h", 0.0))
+        elif reason != "copyright line":
             self.blocks_ours.append((item["y"], item["y"] + item["h"], "the " + reason))
 
     def gallery(self, wl, ol):
@@ -1536,6 +1548,8 @@ class Compare:
             for y0, y1, reason in self.blocks_wix:
                 if d < 0 and lo - tol <= (y0 + y1) / 2.0 <= hi + tol:
                     cls, why = "intended", "Wix has %s above it" % reason
+        if cls == "count" and self.phone and p["k"] == "box" and ".site-footer" in o.get("marks", ()) and 0 < d <= self.bar_rest + tol + EPS:
+            cls, why = "intended", "pushed down by the %s, which rest above the footer and are not on the Wix page" % CALL_BAR
         if cls == "count" and p["k"] == "box" and ".site-footer" in o.get("marks", ()) and d < -EMPTY_GAP * self.scale:
             # seen on the Wix phone version of the accessibility statement: about 1,300 px of nothing between the last
             # line and the footer. That is a fault of the Wix page, not a look to copy.
