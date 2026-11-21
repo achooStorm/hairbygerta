@@ -18,7 +18,7 @@
   "social": [
     {
       "name": "Facebook",
-      "href": "https://www.facebook.com/profile.php?id=61588784402912",
+      "href": "https://www.facebook.com/profile.php?id=61596324347147",
       "label": "Facebook"
     },
     {
@@ -48,6 +48,7 @@
   "copyright": "Hair & Makeup by Gerta",
   "skip_link": "Skip to main content",
   "logo_label": "Hair & Makeup by Gerta home",
+  "logo_alt": "Hair & Makeup by Gerta logo",
   "font_preloads": [
     "/fonts/figtree-latin.woff2",
     "/fonts/bodoni-moda-italic-latin.woff2"
@@ -67,7 +68,7 @@
     "home_screen_name: not visible on the site. It is the name an iPhone writes under the icon when a visitor adds the site to the home screen (added 18 November 2026). Keep it to about 12 characters, a longer name is cut off there. It is the name of the site as the welcome text writes it, without .com.",
     "copyright: this line is not on the Wix site and is added on purpose. The generator prints the copyright sign, the year, then this text.",
     "call_bar_label: the words of the Call button that stays at the bottom of the screen on phones (added 9 November 2026, not on the Wix site). The generator prints this text, then the phone number, and the button calls tel_href. On screens wider than 760 px the bar is hidden.",
-    "logo_label: not visible text. It is the accessible name of the logo link in the header. On Wix the logo image carries the alt text 'Hair & Makeup by Gerta logo' and the link has no name of its own.",
+    "logo_label: not visible text. It is the accessible name of the logo link in the header. On Wix the logo image carries the alt text 'Hair & Makeup by Gerta logo' and the link has no name of its own. logo_alt is that Wix alt text, given back to the logo image on every page on 21 November 2026.",
     "social: name is the network, label is the accessible name of the icon link. The live Wix icon links carry the labels 'Facebook' and 'Instagram', kept as they are.",
     "address_lines: the three lines of the live footer, salon name first. address_one_line: the street address as the live home page shows it in its maps link, without the pin emoji and without the salon name.",
     "hours: written with plain hyphens (U+002D) and plain spaces, exactly as the live Wix text.",

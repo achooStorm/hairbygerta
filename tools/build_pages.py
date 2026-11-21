@@ -1043,8 +1043,8 @@ def _document(page, ctx, parts, site, jsonld, year):
         '<a class="skip" href="#main">%s</a>' % _text(_need(site, "skip_link", str)),
         '<header class="site-header">',
         '  <div class="inner">',
-        '    <a class="logo" href="%s" aria-label="%s"><img src="%s" alt="" width="134" height="138"></a>'
-        % (esc(url("/")), esc(_need(site, "logo_label", str)), esc(url("/images/logo.jpg"))),
+        '    <a class="logo" href="%s" aria-label="%s"><img src="%s" alt="%s" width="134" height="138"></a>'
+        % (esc(url("/")), esc(_need(site, "logo_label", str)), esc(url("/images/logo.jpg")), esc(_need(site, "logo_alt", str))),
         '    <button class="menu-btn" type="button" aria-label="%s" aria-expanded="false" aria-controls="main-nav">'
         "<span></span><span></span><span></span></button>" % esc(MENU_LABEL),
         '    <nav class="main-nav" id="main-nav" aria-label="%s">' % esc(NAV_LABEL),

@@ -419,7 +419,7 @@ BRIEF_SPEC = [
     ("foot_name", "footer.site-footer .foot-name"), ("foot_role", "footer.site-footer .foot-role"),
     ("foot_brand", "footer.site-footer .foot-brand"), ("foot_contact", "footer.site-footer .foot-contact"), ("foot_links", "footer.site-footer .foot-links"),
     ("foot_text", "footer.site-footer .foot-contact p, footer.site-footer .foot-links a"),
-    ("site_title", "main p.site-title"), ("hero_box", "main .hero-box"), ("hero_h", "main #hero-h"), ("dots", "main hr.dots"), ("welcome", "main p.welcome"),
+    ("site_title", "main p.site-title"), ("hero_box", "main .hero-box"), ("hero_h", "main #hero-h"), ("tagline", "main .hero-box p.tagline"), ("dots", "main hr.dots"), ("welcome", "main p.welcome"),
     ("btn", "main a.btn"), ("phone", "main a.phone"), ("salon", "main p.salon"), ("addr", "main a.addr"), ("pin", "main a.addr .pin"),
     ("hours", "main .marquee .track span"),
     ("row", "main .photo-row img"), ("meet_h", "main #meet-h"), ("meet_p", "main .meet p.t1, main .meet p.t2"),
@@ -2097,19 +2097,28 @@ def brief_checks(slug, view, m):
             aligned(b, "site title", g[:1])
             line_height(b, "site title line height", g[:1], 30)
 
-        b = line("beige-box", "Beige box: 778 x 406 px, background #e8e1da, centered (decision 4)", ("hero_box",))
+        # 406 px until 21 November 2026. Decision 66 put the h1 as one small line (22.4 px and 4 px below it) above
+        # the tagline, so the box is 26 px taller.
+        b = line("beige-box", "Beige box: 778 x 432 px, background #e8e1da, centered (decisions 4 and 66)", ("hero_box",))
         g = got(b, "hero_box", "beige box")
         if g:
             b.px("width", g[0]["box"]["w"], 778)
-            b.px("height", g[0]["box"]["h"], 406)
+            b.px("height", g[0]["box"]["h"], 432)
             b.colour("background", [g[0].get("bg")], BEIGE)
             centred(b, "box", g[0]["box"])
 
-        b = line("hero-heading", "Hero heading \"It's Your Day to Shine!\": 32 px italic bold serif, centered", ("hero_h",))
-        g = got(b, "hero_h", "hero heading")
+        b = line("hero-h1", "Hero h1 \"Hair Stylist and Makeup Artist in Staten Island, NY\": 16 px upright sans, weight 400, centered (decision 66)", ("hero_h",))
+        g = got(b, "hero_h", "hero h1")
         if g:
-            b.font("heading", g[:1], size=32, italic=True, wght=700, family=SERIF)
-            aligned(b, "heading", g[:1])
+            b.font("h1", g[:1], size=16, italic=False, wght=400, family=SANS)
+            aligned(b, "h1", g[:1])
+
+        # Until decision 66 this line was the h1. It is the tagline now, in the very same style.
+        b = line("hero-heading", "Hero tagline \"It's Your Day to Shine!\": 32 px italic bold serif, centered", ("tagline",))
+        g = got(b, "tagline", "hero tagline")
+        if g:
+            b.font("tagline", g[:1], size=32, italic=True, wght=700, family=SERIF)
+            aligned(b, "tagline", g[:1])
 
         b = line("dotted-rule", "Dotted rule: 485 px wide, 1 px dotted #1d1509 (the brief's 0.8 px is a 1 px line, decision 3)", ("dots",))
         g = got(b, "dots", "dotted rule")
