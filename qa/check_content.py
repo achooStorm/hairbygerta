@@ -155,6 +155,7 @@ BRIEF_IMAGES = {"book-online": SERVICE_IMAGES, "gallery": GALLERY_IMAGES, "about
 
 # ---------------------------------------------------------------- what the build contract fixes (tools/CONTRACT.md)
 MENU_LABEL, NAV_LABEL = "Menu", "Main"                  # section 6: button.menu-btn, nav.main-nav
+BAR_LABEL = "Text or call Gerta"                        # section 6: aside.call-bar (decision 74)
 PHOTO_ROW_LABEL = "Featured photos"                     # section 7, Home: section.photo-row ("Featured work" until decision 73)
 PHOTO_LINK_LABEL = "%s. Open the Gallery"               # section 7, Home: the link around each photo of the row (decision 63)
 GALLERY_LINK_LABEL = "Open the Gallery"                 # the same link around a photo without a description
@@ -185,8 +186,11 @@ for _slug in common.SERVICE_PAGES:
     BOOK_BOX_INTENDED[_slug] = "the box at the end of a service page (decision 73), a page that is not on Wix"
     BOOK_BOX_PLACE[_slug] = "the box at the end of the service page (decision 73)"
 H1_COMES_AFTER = {"home": "site_title", "contact": "kicker"}    # section 7: where the h1 is not the first text of main
-PLACES = ("header", "main", "footer")
-PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "footer": "footer"}
+# "aside" is the bar with the Text button and the Call button of the phone layout, between main and the footer
+# (decision 74; inside the footer before).
+PLACES = ("header", "main", "aside", "footer")
+PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "aside": "bar between main and the footer",
+               "footer": "footer"}
 
 # Keys of a content file that never hold a text of the page.
 HEAD_KEYS = ("slug", "path", "title", "description", "h1", "notes")       # top level only
@@ -575,14 +579,14 @@ class Expected:
 
     def __init__(self, slug):
         self.slug, self.file = slug, "content/%s.json" % slug
-        self.top, self.header, self.main, self.footer = [], [], [], []
+        self.top, self.header, self.main, self.bar, self.footer = [], [], [], [], []
         self.labels, self.links, self.slots, self.problems = [], [], [], []
         self.title = self.description = self.h1 = None
         self.notes = ""
 
     @property
     def pieces(self):
-        return self.top + self.header + self.main + self.footer
+        return self.top + self.header + self.main + self.bar + self.footer
 
     def lines_in(self, place):
         return [line for p in self.pieces if p.place == place for line in p.lines]
@@ -824,8 +828,10 @@ def expect_shell(ex, site, year):
         if isinstance(item, dict):
             label("aria-label", item.get("label"), "social[%d].label" % i)
             link("header", item.get("href"), "", item.get("label"), "social[%d]" % i)
+    # The bar stands between main and the footer since decision 74 (inside the footer before), in an aside with a name.
     bar = "the Text button and the Call button at the bottom of the screen on phones are not on the Wix site, they are added on purpose"
-    for place, bucket, why in (("header", ex.header, card), ("footer", ex.footer, bar)):
+    label("aria-label", BAR_LABEL, None)
+    for place, bucket, why in (("header", ex.header, card), ("aside", ex.bar, bar)):
         ex.piece(bucket, SITE_FILE, "text_bar_label", text, place=place, intended=why)
         link(place, text_target(site), text, "", "text_bar_label")
         ex.piece(bucket, SITE_FILE, "call_bar_label", call, place=place, intended=why)
@@ -1463,11 +1469,14 @@ def required_facts(slug, view, built):
     need("phone", has_link("footer", TEL, PHONE_TEXT), 'the footer has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
     need("email", has_link("footer", MAILTO, EMAIL), 'the footer has no link %s with the text "%s"' % (MAILTO, EMAIL))
     need("links", has_link("footer", FACEBOOK) and has_link("footer", INSTAGRAM), "the footer does not carry the Facebook link and the Instagram link")
-    # Decision 69: the bar at the bottom of a phone screen (it stands in the footer) is a Text button and a Call button.
-    need("phone", any(p == "footer" and h.split("?")[0] == SMS and "body=" in h for p, h, _ in view.links),
-         "the footer has no Text button: a link %s with a message (?&body=...)" % SMS)
-    need("phone", sum(1 for p, h, _ in view.links if p == "footer" and h == TEL) >= 2,
-         "the footer has no Call button: a second link %s beside the phone number" % TEL)
+    # Decision 69: the bar at the bottom of a phone screen is a Text button and a Call button. Decision 74: it stands
+    # between main and the footer (an aside), no longer inside the footer.
+    need("phone", any(p == "aside" and h.split("?")[0] == SMS and "body=" in h for p, h, _ in view.links),
+         "the bar between main and the footer has no Text button: a link %s with a message (?&body=...)" % SMS)
+    need("phone", any(p == "aside" and h == TEL for p, h, _ in view.links),
+         "the bar between main and the footer has no Call button: a link %s" % TEL)
+    need("phone", not any(p == "footer" and h.split("?")[0] == SMS for p, h, _ in view.links),
+         "the footer holds a Text button: since decision 74 the bar stands above the footer, not in it")
     if slug == "home":
         need("business", BUSINESS in main, 'main does not show the site title "%s"' % BUSINESS)
         need("phone", has_link("main", TEL, PHONE_TEXT), 'main has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
