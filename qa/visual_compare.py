@@ -82,7 +82,8 @@ Reported with ok true
                  purpose (it sits higher than on Wix, because our text there is shorter), the copyright line,
                  the phone photo row (a 2 x 2 grid where Wix hides the row), the Wix chat button, underlined
                  links inside a sentence (decision 18), the Call button at the bottom of the phone screen
-                 (decision 40), the centred beige box
+                 (decision 40), the Book with Gerta box under Meet Gerta on the home page (decision 68: its
+                 beige box, heading, two buttons and phone number), the centred beige box
                  (decision 4), an empty stretch of 300 px or more that only the Wix page has above its footer
   intended x     desktop, the horizontal place alone (size, font and vertical place are compared as everywhere):
                  home (decision 21): site title, welcome paragraph, dotted rule, Book Online button and address
@@ -127,6 +128,9 @@ TYPE_TOL = 2.0                  # line height and corner radius
 # The Call button at the bottom of the screen on phones (build contract, decision 40): not on Wix, on purpose. It is
 # fixed to the screen, so it pushes nothing down.
 CALL_BAR = "Call button at the bottom of the screen on phones"
+# The beige box under Meet Gerta with the Text button and the Call button (build contract, decision 68): not on Wix,
+# on purpose. It stands in the flow of the page, so the footer under it is pushed down by its height.
+REACH = "Book with Gerta box under Meet Gerta (decision 68)"
 PRIVACY_SLUG = "english-privacy-policy"
 WIX_WORD = re.compile(r"\bwix\b", re.I)     # a sentence that names Wix (see the privacy rule of qa/check_content.py)
 FONT_TOL = 0.5                  # font size
@@ -1175,6 +1179,8 @@ class Compare:
                                            actual="our page has no coloured box there", evidence="Wix %s in %s" % (w["tag"], region), owner="DESIGN", d=None))
                 elif self.phone and ".call-bar" in o["marks"]:
                     self.intended_extra(CALL_BAR, o, "%s box %s x %s px" % (show_colour(o["bg"]), num(o["w"]), num(o["h"])))
+                elif ".reach" in o["marks"]:
+                    self.intended_extra(REACH, o, "%s box %s x %s px" % (show_colour(o["bg"]), num(o["w"]), num(o["h"])))
                 else:
                     self.fails.append(dict(check="only on our page: %s box %s" % (show_colour(o["bg"]), o["sel"]), expected="no coloured box (the Wix page shows none there)",
                                            actual="%s, %s x %s px at x %s, y %s" % (show_colour(o["bg"]), num(o["w"]), num(o["h"]), num(o["x"]), num(o["y"])), evidence="ours: " + o["sel"], owner="DESIGN", d=None))
@@ -1218,6 +1224,9 @@ class Compare:
                         if self.phone and ".call-bar" in o["marks"]:
                             self.intended_extra(CALL_BAR, o, "%s %s x %s px" % (names[kind], num(o["w"]), num(o["h"])))
                             continue
+                        if ".reach" in o["marks"]:
+                            self.intended_extra(REACH, o, "%s %s x %s px" % (names[kind], num(o["w"]), num(o["h"])))
+                            continue
                         if self.phone and region == "header" and ".menu-btn" in o["marks"]:
                             self.intended.append(("phone menu button", "the brief: phone header with a menu button (see brief-phone-header)",
                                                   "%s x %s px at x %s, y %s" % (num(o["w"]), num(o["h"]), num(o["x"]), num(o["y"])), "ours: " + o["sel"]))
@@ -1231,6 +1240,8 @@ class Compare:
             return "copyright line"
         if ".call-bar" in marks:
             return CALL_BAR
+        if ".reach" in marks:
+            return REACH
         if ".book-note" in marks:
             return "closing booking note"
         if (".info-item" in marks or ".info" in marks) and text_key(t["group"]) == "hours":
