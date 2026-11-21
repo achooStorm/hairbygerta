@@ -23,7 +23,7 @@ var BOOKING_URL = "";
  * Nothing below this note has to be changed to add the booking link.
  *
  * Site script for Hair & Makeup by Gerta. Every page loads this one file
- * with "defer". It has eight parts:
+ * with "defer". It has nine parts:
  *
  *   1. Book Now buttons       every element marked data-book
  *   2. Phone menu             .menu-btn and #main-nav
@@ -35,6 +35,8 @@ var BOOKING_URL = "";
  *                             look of links and buttons on an iPhone
  *   8. Text and Call box      .reach on the home page and on the Services
  *                             page: the class "reach-on-screen" on <body>
+ *   9. Label on the photos    .row-cue on the home page: the class "on" for
+ *                             a few seconds, on touch screens
  *
  * Each part looks for its own elements and does nothing on a page that does
  * not have them. A part that fails does not stop the other parts.
@@ -46,7 +48,7 @@ var BOOKING_URL = "";
  * gives the phone number and the email address as links) and offers the map
  * as a link to Google Maps. The bar at the bottom of a phone screen then
  * stays on the screen beside the Text and Call box of the home page and
- * of the Services page.
+ * of the Services page, and the label on the home photos never shows.
  */
 (function () {
   "use strict";
@@ -1054,6 +1056,93 @@ var BOOKING_URL = "";
   }
 
   // ---------------------------------------------------------------------------
+  // 9. Label on the home photos
+  // ---------------------------------------------------------------------------
+
+  /*
+   * The three photos of the home page are links to the Gallery. On a touch
+   * screen nothing shows that, so a small blue label on the photos says it,
+   * "Tap for more photos" (.row-cue inside .photo-row, itself a link to the
+   * Gallery). The stylesheet keeps it away until it carries the class "on",
+   * and never shows it under a mouse.
+   * This part puts the class on once two things are true: the visitor has
+   * started to scroll, and the label is in view. It takes the class away
+   * again after the seconds written on the label (data-seconds, from
+   * content/home.json, 4 when nothing usable is there).
+   * Started to scroll: the page has moved at all. On most phones the photos
+   * come into view with that first movement. On a tall screen they are in
+   * view from the start, and there the label waits for the first movement
+   * too, so it does not play while the visitor still reads the top of the
+   * page. A page that opens already scrolled (a reload) counts as scrolled.
+   * In view means: 140 px or more under the upper edge of the screen, so the
+   * header is not over it and a good piece of the photos shows above it, and
+   * 90 px or more above the lower edge, clear of the bar of a phone.
+   * The label waits 0.4 seconds before it comes, so it does not flash up on a
+   * page that is only scrolled past. When the photos leave the screen before
+   * its seconds are over, it goes at once and starts over the next time they
+   * come into view. Once it has had its full time it never comes again on
+   * this page view.
+   * A page without the label, and a browser without IntersectionObserver,
+   * never show it.
+   */
+  function initRowCue() {
+    var cue = document.querySelector(".photo-row .row-cue");
+    if (!cue || !cue.classList || !("IntersectionObserver" in window)) {
+      return;
+    }
+    var seconds = parseFloat(cue.getAttribute("data-seconds"));
+    if (!(seconds > 0)) {
+      seconds = 4;
+    }
+    var scrolled = (window.pageYOffset || document.documentElement.scrollTop || 0) > 0;
+    var inView = false;
+    var coming = null;  // the timer of the 0.4 seconds before the label comes
+    var staying = null; // the timer of the seconds it stays
+    var watcher = null;
+
+    // Called whenever one of the two things may have changed.
+    function look() {
+      if (!inView) {
+        window.clearTimeout(coming);
+        window.clearTimeout(staying);
+        coming = staying = null;
+        cue.classList.remove("on");
+        return;
+      }
+      if (!scrolled || coming !== null || staying !== null) {
+        return;
+      }
+      coming = window.setTimeout(function () {
+        coming = null;
+        cue.classList.add("on");
+        staying = window.setTimeout(function () {
+          staying = null;
+          cue.classList.remove("on");
+          watcher.disconnect();
+        }, seconds * 1000);
+      }, 400);
+    }
+
+    function onFirstScroll() {
+      window.removeEventListener("scroll", onFirstScroll);
+      scrolled = true;
+      look();
+    }
+
+    watcher = new IntersectionObserver(function (entries) {
+      var last = entries[entries.length - 1];
+      // In view: nine tenths of the label or more. Browsers do not agree on what
+      // isIntersecting says below that mark, so the share is asked for as well.
+      inView = last.isIntersecting && last.intersectionRatio >= 0.9;
+      look();
+    }, { rootMargin: "-140px 0px -90px 0px", threshold: 0.9 });
+    watcher.observe(cue);
+    if (!scrolled) {
+      window.addEventListener("scroll", onFirstScroll, { passive: true });
+    }
+  }
+
+  // ---------------------------------------------------------------------------
   // Start
   // ---------------------------------------------------------------------------
 
@@ -1082,6 +1171,7 @@ var BOOKING_URL = "";
     run("Short header", initHeader);
     run("Pressed look", initPressed);
     run("Text and Call box", initReach);
+    run("Label on the home photos", initRowCue);
   }
 
   // The pages load this file with "defer", so the whole page has been read

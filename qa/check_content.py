@@ -58,7 +58,8 @@ What it checks on every page
                         changes of 21 November 2026: the new h1 of the home page (decision 66) and the beige box under
                         Meet Gerta with the Text button and the Call button (decision 68, the "book" key of
                         content/home.json; it took the place of Gerta's own text of decision 66, the "more" key, which was
-                        on the page for a few hours of that day). A note in
+                        on the page for a few hours of that day); and the label on the three home photos, "Tap for more
+                        photos" (decision 72, the "photo_row_cue" key of content/home.json). A note in
                         a content file does not make a difference intended. A title tag or meta description that Wix has
                         must equal the Wix value (the Contact title, the four policy page titles and the Book Online and
                         home meta descriptions apart).
@@ -83,7 +84,7 @@ a dropped paragraph, a wrong phone link, two services swapped and more) and live
 tools folder: stage/qa/check_content/selftest.py.
 
 How a page is read: every text node of the body counts, also text that is hidden from screen readers (the pin, the
-copies of the scrolling hours line, the star behind Email). Scripts and styles do not count. A text built by
+copies of the scrolling hours line, the star behind Email, the label on the home photos). Scripts and styles do not count. A text built by
 js/site.js while the page runs (the photo viewer, the status line of the form) is not in the HTML and is not checked
 here; the status line is checked as the data-sent attribute it is taken from.
 """
@@ -125,7 +126,7 @@ HOURS = HOURS_DAYS + ", " + HOURS_TIMES
 # Saturday, 9 AM to 5 PM), and that wording was accepted on that page only. Decision 70 put the Book with Gerta box in
 # the place of the note, so no page writes the hours with "to" any more and none may. (Gerta's own text on the home
 # page wrote them the same way for a few hours of that day. Decision 68 took that text out again.)
-# Since decision 72 the three service pages write them that way in the running text of How to book, as the helper
+# Since decision 73 the three service pages write them that way in the running text of How to book, as the helper
 # wrote them for those pages. (days, times, the whole line), in the order the hours check reads them.
 HOURS_IN_TEXT = ("Tuesday to Saturday", "9 AM to 5 PM", "Tuesday to Saturday, 9 AM to 5 PM")
 HOURS_OTHER_WORDING = {slug: HOURS_IN_TEXT for slug in common.SERVICE_PAGES}
@@ -154,9 +155,10 @@ BRIEF_IMAGES = {"book-online": SERVICE_IMAGES, "gallery": GALLERY_IMAGES, "about
 
 # ---------------------------------------------------------------- what the build contract fixes (tools/CONTRACT.md)
 MENU_LABEL, NAV_LABEL = "Menu", "Main"                  # section 6: button.menu-btn, nav.main-nav
-PHOTO_ROW_LABEL = "Featured photos"                     # section 7, Home: section.photo-row ("Featured work" until decision 72)
+PHOTO_ROW_LABEL = "Featured photos"                     # section 7, Home: section.photo-row ("Featured work" until decision 73)
 PHOTO_LINK_LABEL = "%s. Open the Gallery"               # section 7, Home: the link around each photo of the row (decision 63)
 GALLERY_LINK_LABEL = "Open the Gallery"                 # the same link around a photo without a description
+GALLERY_PATH = "/gallery/"                              # section 7, Home: where the label on the photo row leads (decision 72)
 GALLERY_LABEL_WITH_ALT = "%s: %s"                       # section 7, Gallery: "View photo 3 of 21: WHAT IT SHOWS" (decision 63)
 HOURS_LABEL = "Hours: %s"                               # section 7, Home: div.marquee
 BOOK_LABEL = "%s: %s"                                   # section 7, Book Online: "Book Now: SERVICE"
@@ -173,12 +175,15 @@ HOME_BOOK_INTENDED = ("the beige box under Meet Gerta is not on the Wix page, it
 SERVICES_BOOK_INTENDED = ("the beige box under the service cards is not on the Wix page, it was added on purpose on 21 November 2026 "
                           "(decision 70): a heading, a Text button, a Call button and the phone number")
 BOOK_BOX_INTENDED = {"home": HOME_BOOK_INTENDED, "book-online": SERVICES_BOOK_INTENDED}
+# 21 November 2026 (decision 72): the label on the photo row of the home page, the "photo_row_cue" key of content/home.json.
+HOME_CUE_INTENDED = ("the label on the three home photos is not on the Wix page, it was added on purpose on 21 November 2026 "
+                     "(decision 72): on a phone or a tablet it says for a few seconds that a tap opens the Gallery")
 BOOK_BOX_PLACE = {"home": "the box under Meet Gerta (decision 68)", "book-online": "the box under the service cards (decision 70)"}
-# The service pages of decision 72 end with the same box. They were never on Wix, so nothing on them is a difference
+# The service pages of decision 73 end with the same box. They were never on Wix, so nothing on them is a difference
 # from Wix, intended or not.
 for _slug in common.SERVICE_PAGES:
-    BOOK_BOX_INTENDED[_slug] = "the box at the end of a service page (decision 72), a page that is not on Wix"
-    BOOK_BOX_PLACE[_slug] = "the box at the end of the service page (decision 72)"
+    BOOK_BOX_INTENDED[_slug] = "the box at the end of a service page (decision 73), a page that is not on Wix"
+    BOOK_BOX_PLACE[_slug] = "the box at the end of the service page (decision 73)"
 H1_COMES_AFTER = {"home": "site_title", "contact": "kicker"}    # section 7: where the h1 is not the first text of main
 PLACES = ("header", "main", "footer")
 PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "footer": "footer"}
@@ -591,7 +596,7 @@ class Expected:
             for href, link_text in links:
                 self.links.append(ContentLink(place, content_target(href), link_text, "", "%s: %s" % (file, key)))
             # A link in an html field may carry its own name for screen readers (the links to the service pages on
-            # the home page, decision 72: "More about balayage" on the word "balayage").
+            # the home page, decision 73: "More about balayage" on the word "balayage").
             for m in re.finditer(r'\baria-label="([^"]*)"', text):
                 if norm(m.group(1)):
                     self.labels.append(("aria-label", norm(m.group(1)), "%s: %s" % (file, key)))
@@ -714,6 +719,14 @@ def expect_main(ex, content, site):
             emit(path, value)
             maps = site.get("maps_href") if isinstance(site.get("maps_href"), str) else MAPS
             ex.links.append(ContentLink("main", maps.strip(), norm(value), "", "%s: %s, a Maps link by section 7 of the build contract" % (file, path)))
+        elif slug == "home" and path == "photo_row_cue" and isinstance(value, dict):
+            # Decision 72. The words of the label are in the HTML of the page after the three photos (js/site.js shows
+            # the label for a few seconds on a touch screen). The label is a link to the Gallery. "seconds" is a
+            # number and no text of the page.
+            if isinstance(value.get("label"), str):
+                emit(path + ".label", value["label"], intended=HOME_CUE_INTENDED)
+                ex.links.append(ContentLink("main", content_target(GALLERY_PATH), norm(value["label"]), "",
+                                            "%s: %s.label, a link to the Gallery by section 7 of the build contract" % (file, path)))
         elif slug in BOOK_BOX_INTENDED and path in ("book.text", "book.call") and isinstance(value, dict):
             # Decisions 68 and 70. The label is the visible text of the button. The Text button opens the text message
             # app with the number and the first words of content/site.json (sms_href, sms_message, decision 69).
@@ -929,7 +942,8 @@ ACCESSIBILITY_UPDATED = ("accessibility-statement",
 
 class Rules:
     """Which differences from the live Wix wording are intended. The list is fixed and lives in this class (and in the
-    intended= marks of the extraction: copyright line, Hours block, Book with Gerta box). Nothing else is intended."""
+    intended= marks of the extraction: copyright line, Hours block, Book with Gerta box, label on the home photos).
+    Nothing else is intended."""
 
     def __init__(self, slug, ex):
         self.slug, self.ex = slug, ex

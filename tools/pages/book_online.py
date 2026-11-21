@@ -11,7 +11,7 @@ Contract, section 7, Book Online:
             h2.serif              the name of the service
             p.desc                one sentence about it
             p.more > a            only in a card whose service has "more": the link to the page of that
-                                  service, "More about balayage" (decision 72)
+                                  service, "More about balayage" (decision 73)
             div.meta
               p.duration
               p.price
@@ -25,7 +25,7 @@ Every word a visitor reads comes from content/book-online.json:
     services            the cards, each with title, description, duration, price and image
                         (image is an image slot, see section 3 of tools/CONTRACT.md). Four of them also
                         have "more", the link to the page of that service: its words ("label") and
-                        its address ("path"), decision 72
+                        its address ("path"), decision 73
     button_label        the text of the button in every card
     book                the box under the cards: its heading, the words of the Text button and of the
                         Call button, and the phone number shown under them on screens wider than a phone
@@ -74,7 +74,7 @@ def _card(ctx, service, button, tel_href, on_screen):
     ]
     more = service.get("more")
     if more is not None:
-        # The link to the page of this service, under its description (decision 72).
+        # The link to the page of this service, under its description (decision 73).
         lines.append('    <p class="more"><a href="%s">%s</a></p>' % (ctx.esc(ctx.url(more["path"])), ctx.esc(more["label"])))
     return "\n".join(lines + [
         '    <div class="meta">',

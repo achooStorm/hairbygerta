@@ -115,7 +115,7 @@
     "phone": "347-671-5095"
   },
   "notes": [
-    "Added on 21 November 2026 (decision 72), so that search engines can show Gerta for this service in Staten Island. The page is not in the five-link menu. The home page (more_links in content/home.json) and the matching cards of the Services page (more in content/book-online.json) link to it.",
+    "Added on 21 November 2026 (decision 73), so that search engines can show Gerta for this service in Staten Island. The page is not in the five-link menu. The home page (more_links in content/home.json) and the matching cards of the Services page (more in content/book-online.json) link to it.",
     "Layout: tools/pages/service.py, shared by the three service pages. h1, intro, photos, then blocks (the same block types as a policy page: h2, h3, p, ul), then book, the beige Book with Gerta box with the Text button and the Call button (ctx.reach, the box of the home page and of the Services page).",
     "The text is in Gerta’s first person, in the voice of her own text of decision 66 (commit 845247c). Facts used: her name, the salon and its address, about seven years at the salon (confirmed by the helper on 21 November 2026), the phone number, Instagram, the Facebook business Page, the hours, and the service names, descriptions and durations of the Services page. No price, no discount, no guarantee, no promise of how long a result lasts, no home visits, no travel and no trial session.",
     "Prices: the sentence \"Prices are set by the salon, so just ask when you book.\" stands in How to book, and the page names no price.",

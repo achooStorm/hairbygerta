@@ -3,7 +3,7 @@
 What it checks
   every page   the vnu validator (the same checker as validator.w3.org/nu) on index.html, the page folders and 404.html.
                One entry per validator message: an error is a failure, a warning or note is listed with ok true.
-               The home page embeds seo/jsonld-home.json exactly once, each of the three service pages (decision 72)
+               The home page embeds seo/jsonld-home.json exactly once, each of the three service pages (decision 73)
                embeds its own seo/jsonld-<slug>.json exactly once, every other page has no JSON-LD script.
                The facts in seo/jsonld-home.json are the facts of the brief (entry jsonld-facts): a Person, Gerta
                Lila, with her phone, email, the address of the site, Facebook and Instagram, who works for Le Vigne
@@ -54,7 +54,7 @@ BOOKING_EXPECTED = 'var BOOKING_URL = "";  or  var BOOKING_URL = "https://...";'
 CSS_FILE = "css/style.css"
 JS_FILE = "js/site.js"
 JSONLD_FILE = "seo/jsonld-home.json"
-# The pages that carry JSON-LD and the file each one embeds (decision 72 added the three service pages).
+# The pages that carry JSON-LD and the file each one embeds (decision 73 added the three service pages).
 JSONLD_FILES = dict([("home", JSONLD_FILE)] + [(s, "seo/jsonld-%s.json" % s) for s in common.SERVICE_PAGES])
 # A service page: a Service in Staten Island, NY, whose provider is the Person of the home page (the same @id).
 JSONLD_AREA = "Staten Island, NY"
@@ -379,7 +379,7 @@ def person_id(home_value):
 
 
 def check_service_jsonld(slug, value, home_id):
-    """The JSON-LD file of a service page (decision 72): one Service with a name, the address of its own page,
+    """The JSON-LD file of a service page (decision 73): one Service with a name, the address of its own page,
     areaServed Staten Island, NY, and as provider the Person of the home page by the same @id. One entry, owner SEO."""
     rel = JSONLD_FILES[slug]
     page_url = CANON + common.PAGES[slug]
@@ -781,7 +781,7 @@ def main(argv=None):
             if not ld_problem and not isinstance(ld_value, (dict, list)):
                 ld_problem = "is not a JSON object"
                 ld_entry = entry(SITE_PAGE, "jsonld-file-parses", False, ld_entry["expected"], "%s %s" % (JSONLD_FILE, ld_problem), JSONLD_FILE, "SEO")
-            # The JSON-LD file of each service page (decision 72): it parses, and it holds the facts of a Service.
+            # The JSON-LD file of each service page (decision 73): it parses, and it holds the facts of a Service.
             service_ld = {}
             for s in common.SERVICE_PAGES:
                 rel = JSONLD_FILES[s]

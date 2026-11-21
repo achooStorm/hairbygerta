@@ -70,7 +70,7 @@ PAGES = {
     "keratin-brazilian-blowout-staten-island": "keratin-brazilian-blowout-staten-island/",
     "404": "404.html",
 }
-# The three service pages of decision 72 (21 November 2026). They were never on the Wix site, so there is no Wix
+# The three service pages of decision 73 (21 November 2026). They were never on the Wix site, so there is no Wix
 # reference to compare them with, and they are not in the menu.
 SERVICE_PAGES = ("balayage-staten-island", "bridal-hair-makeup-staten-island", "keratin-brazilian-blowout-staten-island")
 # The pages that exist on the Wix site: every page but the 404 page and the service pages.

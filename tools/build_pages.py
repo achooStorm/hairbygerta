@@ -276,7 +276,7 @@ REGISTRY = tuple(Page(*row) for row in (
     ("english-privacy-policy",  "/english-privacy-policy/",   "content/english-privacy-policy.json",    "tools/pages/english_privacy_policy.py",     "english-privacy-policy/index.html"),
     ("terms-conditions",        "/terms-conditions/",         "content/terms-conditions.json",          "tools/pages/terms_conditions.py",           "terms-conditions/index.html"),
     ("404",                     "/404.html",                  "content/404.json",                       "tools/pages/not_found.py",                  "404.html"),
-    # The three service pages (decision 72): one layout and one page module for the three, each page its own content
+    # The three service pages (decision 73): one layout and one page module for the three, each page its own content
     # file. Their names are too long for the columns above, so each row is one plain line.
     ("balayage-staten-island", "/balayage-staten-island/", "content/balayage-staten-island.json", "tools/pages/service.py", "balayage-staten-island/index.html"),
     ("bridal-hair-makeup-staten-island", "/bridal-hair-makeup-staten-island/", "content/bridal-hair-makeup-staten-island.json", "tools/pages/service.py", "bridal-hair-makeup-staten-island/index.html"),
@@ -292,7 +292,7 @@ MANIFEST_JSON = "image-manifest.json"
 PLACEHOLDER_STATUS = "placeholder"
 OWNER_STATUS = "owner-photo"
 # Data for search engines (JSON-LD), one file per page that carries it: seo/jsonld-home.json (Gerta as a Person,
-# the salon she works for, the WebSite) and since decision 72 one Service per service page, whose provider is that
+# the salon she works for, the WebSite) and since decision 73 one Service per service page, whose provider is that
 # same Person (its @id). Any other page carries none, and its file is never read.
 JSONLD_JSON = "seo/jsonld-%s.json"
 JSONLD_SLUGS = ("home", "balayage-staten-island", "bridal-hair-makeup-staten-island", "keratin-brazilian-blowout-staten-island")
@@ -1307,7 +1307,7 @@ def _load_module(path, shown, slug):
         raise BuildError("%s: the file cannot be loaded%s (%s: %s)" % (shown, _line_text(path, e), type(e).__name__, e))
     slugs = getattr(module, "SLUGS", None)
     if slugs is not None:
-        # One module for several pages of one layout (the service pages, decision 72).
+        # One module for several pages of one layout (the service pages, decision 73).
         if not isinstance(slugs, tuple) or slug not in slugs:
             raise BuildError('%s: SLUGS is %r, it must be a tuple that holds "%s"' % (shown, slugs, slug))
     elif getattr(module, "SLUG", None) != slug:

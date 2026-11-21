@@ -1,4 +1,4 @@
-"""Page module of the three service pages (decision 72), one layout for the three:
+"""Page module of the three service pages (decision 73), one layout for the three:
 
     /balayage-staten-island/                   content/balayage-staten-island.json
     /bridal-hair-makeup-staten-island/         content/bridal-hair-makeup-staten-island.json
