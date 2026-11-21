@@ -83,7 +83,7 @@ Shared text (navigation, footer, business facts, social links, the font files to
 <body class="page-<slug>">
 <a class="skip" href="#main">Skip to main content</a>
 <header class="site-header"><div class="inner">
-  <a class="logo" href="…home…" aria-label="Hair &amp; Makeup by Gerta home"><img src="…images/logo.jpg" alt="" width="134" height="138"></a>
+  <a class="logo" href="…home…" aria-label="Hair &amp; Makeup by Gerta home"><img src="…images/logo.jpg" alt="Hair &amp; Makeup by Gerta logo" width="134" height="138"></a>
   <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
   <nav class="main-nav" id="main-nav" aria-label="Main"><ul><li><a href="…" aria-current="page">Home</a></li> … Gallery, Services, About, Contact</ul></nav> (the third link read Book Online until decision 63; it still leads to `/book-online/`)
 </div></header>
@@ -107,10 +107,10 @@ No inline `style` attributes anywhere. Exactly one `h1` per page.
 ## 7. HTML per page (inside `main`)
 
 - Home
-  `p.site-title.serif > a` · `section.hero-box[aria-labelledby=hero-h]` holding `h1#hero-h.serif`, `hr.dots`, `p.welcome`, `a.btn` "View Services" (to the Book Online page, no `data-book`; it read Book Online until decision 63), `a.phone` (tel), `p.salon`, `a.addr` (maps link, new tab, starts with `<span class="pin" aria-hidden="true">&#128205;</span>`), then
+  `p.site-title.serif > a` · `section.hero-box[aria-labelledby=hero-h]` holding `h1#hero-h` (one small line, decision 66), `p.tagline.serif`, `hr.dots`, `p.welcome`, `a.btn` "View Services" (to the Book Online page, no `data-book`; it read Book Online until decision 63), `a.phone` (tel), `p.salon`, `a.addr` (maps link, new tab, starts with `<span class="pin" aria-hidden="true">&#128205;</span>`), then
   `div.marquee[role=img][aria-label="Hours: Tuesday - Saturday, 9 AM - 5 PM"] > div.track[aria-hidden=true] > span × 6` ·
   `section.photo-row[aria-label="Featured work"] > a × 3`, each a link to the Gallery around one `img` with `aria-label="WHAT THE PHOTO SHOWS. Open the Gallery"` (decision 63) (g16, home-smile, g21, three columns 545 px tall, the first one narrower from 1101 px upwards, decisions 56, 57 and 59) ·
-  `section.meet[aria-labelledby=meet-h]` holding `h2#meet-h.serif`, `p.t1`, `div.p1 > img` (makeup-red-lips, 313 × 422), `p.t2`, `div.p2 > img` (meet-extensions, 424 × 637). From 1101 px upwards the makeup photo is larger and both texts are flush left (decision 58).
+  `section.meet[aria-labelledby=meet-h]` holding `h2#meet-h.serif`, `p.t1`, `div.p1 > img` (makeup-red-lips, 313 × 422), `p.t2`, `div.p2 > img` (meet-extensions, 424 × 637). From 1101 px upwards the makeup photo is larger and both texts are flush left (decision 58) · `section.legal.home-more[aria-labelledby=more-h]` holding `h2#more-h` and the `h2` and `p` blocks of `more.blocks` (decision 66).
 - Gallery
   `div.page > h1.page-title` + `div.gallery > a × 21`, each `<a href="…images/NAME.jpg" aria-label="View photo N of 21: WHAT THE PHOTO SHOWS"><img src="…images/sm/NAME.jpg" alt="…" width height loading="lazy" decoding="async"></a>` (the description follows the number since decision 63; the photos at the top of each column are `loading="eager"`). A photo whose manifest entry has a WebP copy also names it on the link, `data-webp="…images/NAME.webp"` (decision 62).
 - Book Online
@@ -233,3 +233,11 @@ One file, `css/style.css`, CSS variables in one `:root` block at the top, breakp
     - **The license.** Phosphor Icons are free under the MIT License. Its text has to travel with the icons and is in `tools/licenses/MIT-PhosphorIcons.txt`. The Solar set was left out because its license (CC BY 4.0) asks for a visible credit on the site.
     - **What stays.** Sizes and places: 32 px above the heading on a wide screen, each icon starting exactly at the left edge of its column (the air inside the box of the new icons is 5, 4 and 3 px, `.info-icon.icon-ID`), 30 px in the first column of a row on a phone, 20 px in the Call bar. The Facebook and Instagram signs are the ones of before: the Facebook sign of the set has a ring of its own, which does not fit inside the round buttons of a phone. No colour changed.
     - **How it was tested.** The 30 checks of decision 64, the 18 of decision 63 and the 24 of decision 62 again, all passing, and the place of each icon measured at 390, 1024 and 1280 px. `qa/run_all.py --only content,repo` as before.
+66. **Search engines and Gerta's own text (21 November 2026).** The helper asked for these SEO fixes, with the design, colours, fonts and photos unchanged.
+    - **Facebook.** Every link to Gerta's personal Facebook profile now goes to the Facebook business Page, https://www.facebook.com/profile.php?id=61596324347147 (`content/site.json`, `content/contact.json`, `seo/jsonld-home.json` and the QA scripts).
+    - **Search data.** `seo/jsonld-home.json` no longer describes a HairSalon business called Hair & Makeup by Gerta at the salon's address: Gerta works at Le Vigne Hair Salon and does not own a business there. It now holds a `Person` (Gerta Lila, alternateName Hair & Makeup by Gerta, jobTitle Hair Stylist and Makeup Artist, url, image `images/share.jpg`, telephone, email, sameAs Instagram and the Facebook Page, knowsAbout her services) with `worksFor` the `HairSalon` Le Vigne Hair Salon and its `PostalAddress`, and a `WebSite`. No opening hours, offers, prices, reviews or ratings. `qa/check_html.py` (jsonld-facts) checks this.
+    - **Home h1.** The h1 is "Hair Stylist and Makeup Artist in Staten Island, NY", one small line (16 px, the size of the welcome text) at the top of the beige box. "It's Your Day to Shine!" follows as `p.tagline.serif` in the style the h1 had. The box is 26 px taller on a wide screen. `content/home.json` stores the tagline as `hero.tagline`.
+    - **Gerta's own text.** About 320 words in her voice under Meet Gerta (`more.blocks` in `content/home.json`), in `section.legal.home-more`, which uses the text style of the policy pages plus a little air between paragraphs. Each service links to the Book Online page. The sentence that she has worked at the salon for about seven years is to be confirmed by Gerta.
+    - **Logo.** The header logo of every page has the alt text "Hair & Makeup by Gerta logo" again (`logo_alt` in `content/site.json`), as on Wix. The link keeps its own name, "Hair & Makeup by Gerta home".
+    - **Hours line.** Unchanged: it keeps moving (decision 63), its copies are hidden from screen readers and the label says the hours once.
+    - **Sitemap.** Every page changed (footer Facebook link, logo alt), so every lastmod is 2026-11-21.

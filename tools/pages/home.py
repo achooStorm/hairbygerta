@@ -2,7 +2,8 @@
 
     p.site-title.serif > a                  the business name, a link to the home page
     section.hero-box                        the beige box
-      h1#hero-h.serif                       "h1" (the same text as "hero.heading")
+      h1#hero-h                             "h1", what Gerta does and where, one small line
+      p.tagline.serif                       "hero.tagline", the large italic line under the h1
       hr.dots                               the dotted rule
       p.welcome                             "hero.welcome"
       a.btn                                 "hero.button", goes to the Book Online page
@@ -15,6 +16,7 @@
       h2#meet-h.serif                       "meet.heading"
       p.t1, div.p1 > img                    "meet.paragraph_1", "meet.portrait"
       p.t2, div.p2 > img                    "meet.paragraph_2", "meet.large"
+    section.legal.home-more                 "more.blocks", Gerta's own text, in the text style of the policy pages
 
 Where the words come from
     content/home.json    every text of the page, the photos and the size each photo is shown at
@@ -76,10 +78,10 @@ def render(ctx):
     c, site, esc = ctx.content, ctx.site, ctx.esc
     hero, meet, row = c["hero"], c["meet"], c["photo_row"]
 
-    # The heading is in the content file twice and on the page once.
-    if hero["heading"] != c["h1"]:
-        raise _wrong("hero.heading", 'must be the very same text as "h1". The page shows this heading once, '
-                                     "so when one of the two is edited the other needs the same change")
+    # Since 21 November 2026 the h1 says what Gerta does and where, and "It's Your Day to Shine!" is the tagline.
+    if hero["tagline"] == c["h1"]:
+        raise _wrong("hero.tagline", 'must differ from "h1": the h1 is the small line above the tagline, the page '
+                                     "would show the same words twice")
     # The stylesheet slides the hours line to the left by half of its length and starts over. That only
     # looks seamless when the line is made of two equal halves, so the number of copies must be even.
     copies = hero["marquee_repeat"]
@@ -93,7 +95,8 @@ def render(ctx):
     lines = [
         '<p class="site-title serif"><a href="%s">%s</a></p>' % (esc(ctx.url("/")), esc(c["site_title"])),
         '<section class="hero-box" aria-labelledby="hero-h">',
-        '  <h1 id="hero-h" class="serif">%s</h1>' % esc(c["h1"]),
+        '  <h1 id="hero-h">%s</h1>' % esc(c["h1"]),
+        '  <p class="tagline serif">%s</p>' % esc(hero["tagline"]),
         '  <hr class="dots">',
         '  <p class="welcome">%s</p>' % esc(hero["welcome"]),
         '  <a class="btn" href="%s">%s</a>' % (esc(ctx.url(hero["button"]["path"])), esc(hero["button"]["label"])),
@@ -127,5 +130,14 @@ def render(ctx):
         '  <p class="t2">%s</p>' % esc(meet["paragraph_2"]),
         '  <div class="p2">%s</div>' % _photo(ctx, meet["large"], sizes=LARGE_PHOTO_SIZES),
         "</section>",
+        # Gerta's own text about her work, her services and how to book (21 November 2026). It uses the text
+        # style of the policy pages (.legal), so it adds no new look to the site.
+        '<section class="legal home-more" aria-labelledby="more-h">',
     ]
+    more = ctx.blocks(c["more"]["blocks"])
+    # The first heading of the section names it for screen readers.
+    if not more.startswith("<h2>"):
+        raise _wrong("more.blocks", "must start with a heading (a block of type h2)")
+    lines.append('<h2 id="more-h">' + more[len("<h2>"):])
+    lines.append("</section>")
     return {"body": "\n".join(lines), "head_extra": ""}

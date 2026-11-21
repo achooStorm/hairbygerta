@@ -52,7 +52,9 @@ What it checks on every page
                         home page and the comma taken out of "high-quality, hair extensions" on the home page; and three
                         changes of 12 November 2026: the titles of the four policy pages end with "Hair & Makeup by Gerta"
                         (Wix: "Hairbygerta"), three sentences of the Terms & Conditions no longer speak of booking online
-                        or through the site, and the Accessibility Statement says it was last updated on 11/12/2026. A note in
+                        or through the site, and the Accessibility Statement says it was last updated on 11/12/2026; and two
+                        changes of 21 November 2026 (decision 66): the new h1 of the home page and Gerta's own text under
+                        Meet Gerta (the "more" key of content/home.json). A note in
                         a content file does not make a difference intended. A title tag or meta description that Wix has
                         must equal the Wix value (the Contact title, the four policy page titles and the Book Online and
                         home meta descriptions apart).
@@ -112,9 +114,11 @@ MAILTO = "mailto:" + EMAIL
 HOURS_DAYS, HOURS_TIMES = "Tuesday - Saturday", "9 AM - 5 PM"
 HOURS = HOURS_DAYS + ", " + HOURS_TIMES
 # The closing note of the Book Online page is the closing line of the first version of the site, word for word.
-# It gives the hours with "to". That wording is accepted on that page only.
-HOURS_OTHER_WORDING = {"book-online": ("Tuesday to Saturday", "9 AM to 5 PM", "Tuesday to Saturday, 9 AM to 5 PM")}
-FACEBOOK = "https://www.facebook.com/profile.php?id=61588784402912"
+# It gives the hours with "to". Gerta's own text on the home page (21 November 2026, decision 66) writes them the
+# same way, in a sentence. That wording is accepted on those two pages only.
+HOURS_TO = ("Tuesday to Saturday", "9 AM to 5 PM", "Tuesday to Saturday, 9 AM to 5 PM")
+HOURS_OTHER_WORDING = {"book-online": HOURS_TO, "home": HOURS_TO}
+FACEBOOK = "https://www.facebook.com/profile.php?id=61596324347147"
 INSTAGRAM = "https://www.instagram.com/hairbygerta/"
 MAPS = "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310"
 PRICE = "Call for price"
@@ -149,7 +153,11 @@ BOOK_TEXT = "Book Now"                                  # section 7, used when t
 GALLERY_LABEL = "View photo {n} of {total}"             # section 7, used when the content file has no link_label
 PIN = "\U0001F4CD"                                      # section 7, Home: span.pin in front of the address
 COPYRIGHT_SIGN = "\u00a9"                               # section 6: p.copy
-H1_IS_ALSO = {"home": "hero.heading"}                   # the h1 is stored twice in home.json, the page prints it once
+H1_IS_ALSO = {}                                        # a page whose h1 is stored twice (home until 21 November 2026)
+# 21 November 2026 (decision 66): the h1 of the home page is new and not on Wix. "It's Your Day to Shine!" stays as the tagline.
+H1_INTENDED = {"home": "changed on 21 November 2026 (decision 66): the h1 says what Gerta does and where, the Wix heading stays as the tagline"}
+HOME_MORE_INTENDED = ("the text under Meet Gerta is not on the Wix page, it was added on purpose on 21 November 2026 (decision 66): "
+                      "Gerta's own words about her work, her services and how to book")
 H1_COMES_AFTER = {"home": "site_title", "contact": "kicker"}    # section 7: where the h1 is not the first text of main
 PLACES = ("header", "main", "footer")
 PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "footer": "footer"}
@@ -592,6 +600,8 @@ def expect_main(ex, content, site):
             before = state["intended"]
             if slug == "contact" and path.startswith("info[") and (value.get("id") == "hours" or value.get("heading") == "Hours"):
                 state["intended"] = "the Hours block of the contact page is not on the Wix page, it is added on purpose"
+            if slug == "home" and path == "more":
+                state["intended"] = HOME_MORE_INTENDED
             for key, item in value.items():
                 handle(key, item, value, "%s.%s" % (path, key) if path else key, depth)
             state["intended"] = before
@@ -713,7 +723,7 @@ def expect_main(ex, content, site):
         ex.problems.append('%s: h1 is "%s" but %s is "%s". The two keys hold the one heading of the page and must be the same text'
                            % (file, ex.h1, same.key, same.text))
     after = next((i for i, p in enumerate(ex.main) if p.key == H1_COMES_AFTER.get(slug)), None)
-    made = Piece(file, "h1", ex.h1, (), [ex.h1], "h1", "main", None)
+    made = Piece(file, "h1", ex.h1, (), [ex.h1], "h1", "main", H1_INTENDED.get(slug))
     ex.main.insert(0 if after is None else after + 1, made)
 
 
@@ -738,6 +748,7 @@ def expect_shell(ex, site, year):
 
     ex.piece(ex.top, SITE_FILE, "skip_link", need("skip_link") or "", place="top")
     label("aria-label", need("logo_label"), "logo_label")
+    label("alt", need("logo_alt"), "logo_alt")           # the logo image in the header (decision 66)
     link("header", "/", "", site.get("logo_label"), "logo_label")
     label("aria-label", MENU_LABEL, None)
     label("aria-label", NAV_LABEL, None)

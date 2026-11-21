@@ -4,9 +4,9 @@ What it checks
   every page   the vnu validator (the same checker as validator.w3.org/nu) on index.html, the page folders and 404.html.
                One entry per validator message: an error is a failure, a warning or note is listed with ok true.
                The home page embeds seo/jsonld-home.json exactly once, every other page has no JSON-LD script.
-               The business facts in seo/jsonld-home.json are the facts of the brief (entry jsonld-facts): business
-               name, phone, email, address of the site, street address, opening days and hours, Facebook and
-               Instagram. No other QA script reads them: the content check does not look into scripts.
+               The facts in seo/jsonld-home.json are the facts of the brief (entry jsonld-facts): a Person, Gerta
+               Lila, with her phone, email, the address of the site, Facebook and Instagram, who works for Le Vigne
+               Hair Salon at its street address, and a WebSite. No opening hours, reviews, ratings or prices. No other QA script reads them: the content check does not look into scripts.
   site files   css/style.css through the vnu CSS checker (--css)
                sitemap.xml is well formed and lists exactly the nine www.hairbygerta.com page addresses
                robots.txt allows everything and names the sitemap
@@ -50,12 +50,18 @@ BOOKING_EXPECTED = 'var BOOKING_URL = "";  or  var BOOKING_URL = "https://...";'
 CSS_FILE = "css/style.css"
 JS_FILE = "js/site.js"
 JSONLD_FILE = "seo/jsonld-home.json"
-# FACTS of the brief, as structured data states them. Never paraphrase.
-JSONLD_FACTS = {"name": "Hair & Makeup by Gerta", "telephone": common.PHONE, "email": common.EMAIL, "url": CANON}
-JSONLD_ADDRESS = {"streetAddress": "644 Forest Ave", "addressLocality": "Staten Island", "addressRegion": "NY", "postalCode": "10310"}
-JSONLD_DAYS = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-JSONLD_OPENS, JSONLD_CLOSES = "09:00", "17:00"
-JSONLD_SAME_AS = ["https://www.facebook.com/profile.php?id=61588784402912", "https://www.instagram.com/hairbygerta/"]
+# FACTS of the brief, as structured data states them. Never paraphrase. Since 21 November 2026 the file
+# describes Gerta as a Person who works for Le Vigne Hair Salon (she does not own a business there), plus the
+# WebSite. Business hours, reviews, ratings and prices must not appear in it.
+JSONLD_PERSON = {"name": "Gerta Lila", "alternateName": "Hair & Makeup by Gerta", "jobTitle": "Hair Stylist and Makeup Artist",
+                 "url": CANON, "telephone": common.PHONE, "email": common.EMAIL}
+JSONLD_SALON = "Le Vigne Hair Salon"
+JSONLD_ADDRESS = {"streetAddress": "644 Forest Ave", "addressLocality": "Staten Island", "addressRegion": "NY", "postalCode": "10310",
+                  "addressCountry": "US"}
+JSONLD_WEBSITE = {"name": "Hair & Makeup by Gerta", "url": CANON}
+JSONLD_SAME_AS = ["https://www.facebook.com/profile.php?id=61596324347147", "https://www.instagram.com/hairbygerta/"]
+JSONLD_FORBIDDEN = ("openingHours", "openingHoursSpecification", "review", "aggregateRating", "offers", "priceRange",
+                    "hasOfferCatalog", "price")
 MANIFEST_FILE = "image-manifest.json"
 # The content files the build contract names. Any other content/*.json found in the site folder is checked too.
 CONTRACT_CONTENT = ["content/site.json"] + ["content/%s.json" % s for s in common.PAGES]
@@ -440,40 +446,55 @@ def check_json_file(rel, got, owner, check=None, optional=False):
 
 
 def check_jsonld_facts(value):
-    """The business facts inside the JSON-LD file against the facts of the brief. One entry, owner SEO.
-    Read loosely where schema.org allows more than one spelling (a day as a word or as a schema.org address,
-    a time with or without seconds, one opening rule or a list of them), strictly in what the values say."""
-    expected = ("the facts in %s are the facts of the brief: name %s, telephone %s, email %s, url %s, address %s, "
-                "open %s to %s from %s to %s, sameAs the Facebook and the Instagram address"
-                % (JSONLD_FILE, JSONLD_FACTS["name"], JSONLD_FACTS["telephone"], JSONLD_FACTS["email"], JSONLD_FACTS["url"],
-                   ", ".join(JSONLD_ADDRESS.values()), JSONLD_DAYS[0], JSONLD_DAYS[-1], JSONLD_OPENS, JSONLD_CLOSES))
-    nodes = value if isinstance(value, list) else [value]
-    node = next((n for n in nodes if isinstance(n, dict) and ("telephone" in n or "address" in n)), nodes[0] if nodes and isinstance(nodes[0], dict) else {})
+    """The facts inside the JSON-LD file against the facts of the brief. One entry, owner SEO.
+    The file holds a Person (Gerta Lila) who worksFor a HairSalon (Le Vigne Hair Salon and its address) and a
+    WebSite. No business opening hours, reviews, ratings or prices anywhere in it."""
+    expected = ("%s holds a Person %s (%s, %s) with telephone %s, email %s, url %s, sameAs the Facebook Page and the "
+                "Instagram address, worksFor the HairSalon %s at %s, and a WebSite %s; no opening hours, reviews, ratings or prices"
+                % (JSONLD_FILE, JSONLD_PERSON["name"], JSONLD_PERSON["alternateName"], JSONLD_PERSON["jobTitle"],
+                   JSONLD_PERSON["telephone"], JSONLD_PERSON["email"], JSONLD_PERSON["url"], JSONLD_SALON,
+                   ", ".join(JSONLD_ADDRESS.values()), JSONLD_WEBSITE["name"]))
+    if isinstance(value, dict) and isinstance(value.get("@graph"), list):
+        nodes = value["@graph"]
+    else:
+        nodes = value if isinstance(value, list) else [value]
+    nodes = [n for n in nodes if isinstance(n, dict)]
+    person = next((n for n in nodes if n.get("@type") == "Person"), {})
+    website = next((n for n in nodes if n.get("@type") == "WebSite"), {})
     wrong = []
-    for key, want in JSONLD_FACTS.items():
-        if node.get(key) != want:
-            wrong.append("%s is %s (the brief: %s)" % (key, json.dumps(node.get(key), ensure_ascii=False), want))
-    address = node.get("address") if isinstance(node.get("address"), dict) else {}
+    if not person:
+        wrong.append("no Person item")
+    if not website:
+        wrong.append("no WebSite item")
+    for key, want in JSONLD_PERSON.items():
+        if person and person.get(key) != want:
+            wrong.append("Person.%s is %s (the brief: %s)" % (key, json.dumps(person.get(key), ensure_ascii=False), want))
+    salon = person.get("worksFor") if isinstance(person.get("worksFor"), dict) else {}
+    if person and (salon.get("@type") != "HairSalon" or salon.get("name") != JSONLD_SALON):
+        wrong.append("worksFor is %s (the brief: the HairSalon %s)" % (json.dumps(salon, ensure_ascii=False)[:80], JSONLD_SALON))
+    address = salon.get("address") if isinstance(salon.get("address"), dict) else {}
     for key, want in JSONLD_ADDRESS.items():
-        if address.get(key) != want:
-            wrong.append("address.%s is %s (the brief: %s)" % (key, json.dumps(address.get(key), ensure_ascii=False), want))
-    rules = node.get("openingHoursSpecification")
-    rules = [rules] if isinstance(rules, dict) else [r for r in rules or [] if isinstance(r, dict)] if isinstance(rules, list) else []
-    days, hours = [], set()
-    for rule in rules:
-        listed = rule.get("dayOfWeek")
-        for day in (listed if isinstance(listed, list) else [listed]):
-            days.append(str(day).rstrip("/").rsplit("/", 1)[-1])
-        hours.add(tuple(re.sub(r"^(\d\d:\d\d):00$", r"\1", str(rule.get(k))) for k in ("opens", "closes")))
-    if sorted(days) != sorted(JSONLD_DAYS):
-        wrong.append("the opening days are %s (the brief: %s)" % (", ".join(days) or "not given", ", ".join(JSONLD_DAYS)))
-    if hours != {(JSONLD_OPENS, JSONLD_CLOSES)}:
-        wrong.append("the opening hours are %s (the brief: %s to %s)" % (
-            "; ".join("%s to %s" % h for h in sorted(hours)) or "not given", JSONLD_OPENS, JSONLD_CLOSES))
-    same = node.get("sameAs")
+        if person and address.get(key) != want:
+            wrong.append("worksFor.address.%s is %s (the brief: %s)" % (key, json.dumps(address.get(key), ensure_ascii=False), want))
+    same = person.get("sameAs")
     same = [same] if isinstance(same, str) else same if isinstance(same, list) else []
-    if sorted(map(str, same)) != sorted(JSONLD_SAME_AS):
+    if person and sorted(map(str, same)) != sorted(JSONLD_SAME_AS):
         wrong.append("sameAs is %s (the brief: %s)" % (json.dumps(same, ensure_ascii=False), ", ".join(JSONLD_SAME_AS)))
+    for key, want in JSONLD_WEBSITE.items():
+        if website and website.get(key) != want:
+            wrong.append("WebSite.%s is %s (the brief: %s)" % (key, json.dumps(website.get(key), ensure_ascii=False), want))
+
+    def keys(node):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                yield k
+                yield from keys(v)
+        elif isinstance(node, list):
+            for v in node:
+                yield from keys(v)
+    found = sorted(set(k for k in keys(value) if k in JSONLD_FORBIDDEN))
+    if found:
+        wrong.append("the file has %s, which the brief rules out" % ", ".join(found))
     actual = "%s: %s" % (plural(len(wrong), "fact") + " differ" + ("s" if len(wrong) == 1 else ""), "; ".join(wrong)) if wrong else "all facts match the brief"
     return entry(SITE_PAGE, "jsonld-facts", not wrong, expected, actual, JSONLD_FILE, "SEO")
 

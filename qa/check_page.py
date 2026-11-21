@@ -50,7 +50,7 @@ NAME = "check_page"
 
 # FACTS. Never paraphrase.
 CANONICAL_ROOT = "https://www.hairbygerta.com/"
-FACEBOOK = "https://www.facebook.com/profile.php?id=61588784402912"
+FACEBOOK = "https://www.facebook.com/profile.php?id=61596324347147"
 INSTAGRAM = "https://www.instagram.com/hairbygerta/"
 MAPS = "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310"
 TEL = "tel:" + common.PHONE
