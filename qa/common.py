@@ -65,8 +65,16 @@ EXPECTED_EXTERNAL_HOSTS = ("www.google.com", "maps.google.com", "maps.googleapis
 PAGES = {
     "home": "", "gallery": "gallery/", "book-online": "book-online/", "about": "about/", "contact": "contact/",
     "english-refund-policy": "english-refund-policy/", "accessibility-statement": "accessibility-statement/",
-    "english-privacy-policy": "english-privacy-policy/", "terms-conditions": "terms-conditions/", "404": "404.html",
+    "english-privacy-policy": "english-privacy-policy/", "terms-conditions": "terms-conditions/",
+    "balayage-staten-island": "balayage-staten-island/", "bridal-hair-makeup-staten-island": "bridal-hair-makeup-staten-island/",
+    "keratin-brazilian-blowout-staten-island": "keratin-brazilian-blowout-staten-island/",
+    "404": "404.html",
 }
+# The three service pages of decision 73 (21 November 2026). They were never on the Wix site, so there is no Wix
+# reference to compare them with, and they are not in the menu.
+SERVICE_PAGES = ("balayage-staten-island", "bridal-hair-makeup-staten-island", "keratin-brazilian-blowout-staten-island")
+# The pages that exist on the Wix site: every page but the 404 page and the service pages.
+WIX_PAGES = tuple(s for s in PAGES if s != "404" and s not in SERVICE_PAGES)
 VIEWPORTS = ("desktop", "phone")
 PHONE = "+1-347-671-5095"
 EMAIL = "info@hairbygerta.com"

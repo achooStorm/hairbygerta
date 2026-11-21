@@ -1,0 +1,128 @@
+{
+  "slug": "bridal-hair-makeup-staten-island",
+  "path": "/bridal-hair-makeup-staten-island/",
+  "title": "Bridal Hair and Makeup in Staten Island, NY | Hair & Makeup by Gerta",
+  "description": "Romantic bridal hair and natural makeup by Gerta Lila at Le Vigne Hair Salon in Staten Island, NY, tailored to your dress. Call or text to book.",
+  "h1": "Bridal Hair and Makeup in Staten Island",
+  "intro": "Hi, I’m Gerta Lila, a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, where I’ve worked for about seven years. On your wedding day I do your hair and makeup, so you look and feel like yourself, only more polished.",
+  "photos": [
+    {
+      "slot": "bridal-photo-1",
+      "file": "g15",
+      "alt": "Bridal updo with a twisted bun, on a client in a white robe that says Bride",
+      "alt_original": ""
+    },
+    {
+      "slot": "bridal-photo-2",
+      "file": "g06",
+      "alt": "Long half-up curls with soft, natural makeup",
+      "alt_original": ""
+    },
+    {
+      "slot": "bridal-photo-3",
+      "file": "g20",
+      "alt": "Sleek pulled-back blonde hair with soft makeup",
+      "alt_original": ""
+    }
+  ],
+  "blocks": [
+    {
+      "type": "h2",
+      "text": "What I do"
+    },
+    {
+      "type": "p",
+      "text": "I do romantic bridal hair tailored to your dress and your vision, from soft curls and half-up looks to updos, and natural makeup that enhances your beauty and photographs beautifully. You can book your hair, your makeup or both."
+    },
+    {
+      "type": "h2",
+      "text": "Who it’s for"
+    },
+    {
+      "type": "p",
+      "text": "Brides first of all, and anyone getting ready for a wedding, a party, a photoshoot or another special event."
+    },
+    {
+      "type": "h2",
+      "text": "Your visit"
+    },
+    {
+      "type": "p",
+      "text": "When you book, tell me about your dress, your hair and the look you have in mind. Bring photos of looks you love and we’ll plan yours together. On the day you come to me at the salon. Bridal hair takes about 1 hour 30 minutes, and a makeup session about 45 minutes."
+    },
+    {
+      "type": "h2",
+      "text": "Before your day"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Wear a top that buttons or zips at the front, so you can change without touching your hair or makeup.",
+        "Come with clean, dry hair, unless I tell you otherwise.",
+        "Keep your skin care simple in the days before, and don’t try a new product right before the wedding.",
+        "Bring the hair accessories you plan to wear, like a veil or clips."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Questions"
+    },
+    {
+      "type": "h3",
+      "text": "Can I book hair and makeup together?"
+    },
+    {
+      "type": "p",
+      "text": "Yes. I’m a hair stylist and a makeup artist, so just ask for both when you book."
+    },
+    {
+      "type": "h3",
+      "text": "Will my makeup look good in photos?"
+    },
+    {
+      "type": "p",
+      "text": "I do makeup that looks natural and photographs beautifully. Tell me if you’d like it softer or a little stronger, and I’ll adjust it to suit you."
+    },
+    {
+      "type": "h3",
+      "text": "Which hairstyles can I choose from?"
+    },
+    {
+      "type": "p",
+      "text": "Anything from soft curls and half-up looks to sleek pulled-back hair and updos. Bring photos, and we’ll find the style that suits you and your dress."
+    },
+    {
+      "type": "h2",
+      "text": "How to book"
+    },
+    {
+      "type": "p",
+      "html": "Call or text me at <a href=\"tel:+1-347-671-5095\">347-671-5095</a>, or send me a message on <a href=\"https://www.instagram.com/hairbygerta/\" target=\"_blank\">Instagram</a> or <a href=\"https://www.facebook.com/profile.php?id=61596324347147\" target=\"_blank\">Facebook</a>. I’m at Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310, Tuesday to Saturday, 9 AM to 5 PM. Prices are set by the salon, so just ask when you book."
+    },
+    {
+      "type": "p",
+      "html": "You’ll find all my services on the <a href=\"/book-online/\">Services</a> page, and more photos in the <a href=\"/gallery/\">Gallery</a>."
+    }
+  ],
+  "book": {
+    "heading": "Book with Gerta",
+    "text": {
+      "label": "Text me"
+    },
+    "call": {
+      "label": "Call me"
+    },
+    "phone": "347-671-5095"
+  },
+  "notes": [
+    "Added on 21 November 2026 (decision 73), so that search engines can show Gerta for this service in Staten Island. The page is not in the five-link menu. The home page (more_links in content/home.json) and the matching cards of the Services page (more in content/book-online.json) link to it.",
+    "Layout: tools/pages/service.py, shared by the three service pages. h1, intro, photos, then blocks (the same block types as a policy page: h2, h3, p, ul), then book, the beige Book with Gerta box with the Text button and the Call button (ctx.reach, the box of the home page and of the Services page).",
+    "The text is in Gerta’s first person, in the voice of her own text of decision 66 (commit 845247c). Facts used: her name, the salon and its address, about seven years at the salon (confirmed by the helper on 21 November 2026), the phone number, Instagram, the Facebook business Page, the hours, and the service names, descriptions and durations of the Services page. No price, no discount, no guarantee, no promise of how long a result lasts, no home visits, no travel and no trial session.",
+    "Prices: the sentence \"Prices are set by the salon, so just ask when you book.\" stands in How to book, and the page names no price.",
+    "Hours: written \"Tuesday to Saturday, 9 AM to 5 PM\" in the running text of How to book, as the helper wrote them for these pages. Everywhere else the site keeps the Wix wording \"Tuesday - Saturday, 9 AM - 5 PM\" (content/site.json).",
+    "Photos: only photos of Gerta’s own work, never one of the ten licensed Shutterstock photos (decision 49). Each alt describes what the photo shows. alt_original is empty: these places are new and were never on Wix.",
+    "The data for search engines is seo/jsonld-<slug>.json: a Service with this name, areaServed Staten Island, NY, and as provider the Person of the home page (@id https://www.hairbygerta.com/#gerta). No price, rating or review.",
+    "ASK Gerta to confirm these sentences, written for this page from the general facts of the site: \"On your wedding day I do your hair and makeup, so you look and feel like yourself, only more polished.\" / \"from soft curls and half-up looks to updos\" / \"You can book your hair, your makeup or both.\" / \"Brides first of all, and anyone getting ready for a wedding, a party, a photoshoot or another special event.\" / \"On the day you come to me at the salon.\" / \"Bridal hair takes about 1 hour 30 minutes, and a makeup session about 45 minutes.\" (the Services page gives 1 hr 30 min for Dream Bridal Hair and 45 min for a Makeup Session; is bridal makeup that Makeup Session?) / the four tips under Before your day, above all \"Come with clean, dry hair, unless I tell you otherwise.\" / \"Tell me if you’d like it softer or a little stronger, and I’ll adjust it to suit you.\" / \"Anything from soft curls and half-up looks to sleek pulled-back hair and updos.\"",
+    "ASK Gerta to confirm that the three photos are her own work: g15 (the twisted bun on a client in a robe that says Bride), g06 (half-up curls with soft makeup) and g20 (sleek pulled-back hair with soft makeup). The helper confirmed it on 21 November 2026."
+  ]
+}

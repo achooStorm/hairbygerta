@@ -29,6 +29,7 @@
     {
       "title": "Dream Bridal Hair",
       "description": "Romantic, long-lasting bridal hair tailored to your dress and vision.",
+      "more": {"label": "More about bridal hair", "path": "/bridal-hair-makeup-staten-island/"},
       "duration": "1 hr 30 min",
       "price": "Call for price",
       "image": {"slot": "service-04", "file": "svc-bridal", "alt": "Bridal updo with a twisted bun", "alt_original": ""}
@@ -43,13 +44,15 @@
     {
       "title": "Balayage",
       "description": "Hand-painted color for a soft, sun-kissed finish.",
+      "more": {"label": "More about balayage", "path": "/balayage-staten-island/"},
       "duration": "3 hr",
       "price": "Call for price",
-      "image": {"slot": "service-06", "file": "g19", "alt": "Happy client with fresh balayage", "alt_original": "Happy client with fresh balayage"}
+      "image": {"slot": "service-06", "file": "g19", "alt": "Smiling woman with blonde balayage waves in a salon", "alt_original": "Happy client with fresh balayage"}
     },
     {
       "title": "Keratin Treatment",
       "description": "Frizz-fighting smoothing treatment for sleek, manageable hair.",
+      "more": {"label": "More about keratin treatments", "path": "/keratin-brazilian-blowout-staten-island/"},
       "duration": "2 hr 30 min",
       "price": "Call for price",
       "image": {"slot": "service-07", "file": "g17", "alt": "Smoothing blow-dry with a round brush", "alt_original": "Smoothing blow-dry with a round brush"}
@@ -57,6 +60,7 @@
     {
       "title": "Brazilian Blowout",
       "description": "Long-lasting smoothness with mirror-like shine.",
+      "more": {"label": "More about Brazilian blowouts", "path": "/keratin-brazilian-blowout-staten-island/"},
       "duration": "2 hr",
       "price": "Call for price",
       "image": {"slot": "service-08", "file": "g16", "alt": "Blonde balayage with loose waves", "alt_original": "Blonde balayage with loose waves"}
@@ -87,6 +91,8 @@
     "INFO: Live Wix prints Call for price twice in each card. The first copy is a 1 px label for screen readers only. It is stored once, in price.",
     "INFO: button_label is the text of the button in every card. On live Wix the photo, the title and the Book Now button of a card all link to a Wix Bookings page for that service. Those pages are not part of this site. Here only the button is a link, and it calls the phone number. No online booking link is planned, because clients book through the salon's own booking.",
     "INFO: book (21 November 2026, decision 70) is the beige box under the cards, the same box as at the end of the home page (book in home.json): a heading and two buttons. text.label is the button that opens the visitor's own text message app with Gerta's number and the first words already written (sms_href and sms_message in site.json). call.label is the button that calls tel_href. phone is the number under the two buttons, shown on screens wider than a phone. The box is not on the live Wix page. Until that day one line stood in its place, closing_note_html: To book, call or text 347-671-5095, Tuesday to Saturday, 9 AM to 5 PM. (before 9 November 2026: Prefer to book by phone or text? Call 347-671-5095, ...). The helper asked for the buttons in its place, so that a visitor who scrolls to the end finds them at once. The opening hours are still in the open phone menu, on the home page and on the Contact page.",
+    "INFO: more (21 November 2026, decision 73) is the link under the description of four cards to the page of that service: Balayage to /balayage-staten-island/, Dream Bridal Hair to /bridal-hair-makeup-staten-island/, Keratin Treatment and Brazilian Blowout both to /keratin-brazilian-blowout-staten-island/. label is the visible text of the link. These links are not on the live Wix page.",
+    "INFO: The alt of the Balayage card photo (g19, a licensed Shutterstock photo, decision 49) read Happy client with fresh balayage until 21 November 2026. The woman in it is a stock model, not a client, so it now describes the photo: Smiling woman with blonde balayage waves in a salon (decision 73). alt_original keeps the old text for reference.",
     "INFO: All ten card photos are placeholders, so alt is empty for each. Live Wix also gives all ten an empty alt, and so did the first version of this page, so there is no old alt text for these slots. alt_original holds, for reference only, the description the first version gave the same photo file on its Gallery page (the same text as in the gallery content file). svc-haircut and svc-bridal are used on this page only and have no description in either source, so their alt_original is empty.",
     "INFO: Each card photo is shown 290 x 195 px. Wix crops the photo to fill that box (object-fit cover).",
     "ASK: none. The earlier question was what the photo foils-highlights (Highlights & Lowlights card) shows. Version 1, first version of this site: Stylist finishing a blowout with hairspray (Gallery page) and Stylist finishing a blowout in the salon (Home page). Version 2, live Wix About page, alt text on the same Wix media file (37eb08_e3724fb50274487ab7afa56767278d97~mv2.jpg): Applying blonde highlights with foils to a client’s long hair in the salon. The reference screenshots of the live Gallery and About pages answer it: the photo shows a stylist using hairspray on a finished style, with no foils. So alt_original keeps version 1, the same as the gallery content file, and the Wix alt text of version 2 does not describe this photo. Nothing shown on the page depends on it. The one question left for the owner on this subject is which photo belongs in the top right box of the About page, see the ASK in content/about.json."

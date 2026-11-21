@@ -1002,7 +1002,7 @@ To see the size of a placeholder, right-click it, choose **Properties** and open
 
 ## 7. Booking by phone
 
-Every **Book Now** button on the new site calls 347-671-5095. There are 10 of them, one for each service on the Book Online page. Under Meet Gerta the home page has two more buttons: **Text me** opens the visitor's text message app with your number and the first words already written, and **Call me** calls it. The Services page ends with the same two buttons. On a phone they also stay at the bottom of the screen on every page. The **Book Online** button on the home page opens that page. There is no online booking link to paste and nothing to set up. [Section 1, Part 3](#part-3-booking-stays-by-phone) says why.
+Every **Book Now** button on the new site calls 347-671-5095. There are 10 of them, one for each service on the Book Online page. Under Meet Gerta the home page has two more buttons: **Text me** opens the visitor's text message app with your number and the first words already written, and **Call me** calls it. The Services page ends with the same two buttons, and so do the three service pages (balayage, bridal hair and makeup, keratin and Brazilian blowout). On a phone they also stay at the bottom of the screen on every page. The **Book Online** button on the home page opens that page. There is no online booking link to paste and nothing to set up. [Section 1, Part 3](#part-3-booking-stays-by-phone) says why.
 
 If the phone number ever changes, tell your helper. The site is in the helper's GitHub account, so the helper makes the change, in three places in the folder `hairbygerta`.
 

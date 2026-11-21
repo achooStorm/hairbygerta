@@ -3,15 +3,19 @@
 What it checks
   every page   the vnu validator (the same checker as validator.w3.org/nu) on index.html, the page folders and 404.html.
                One entry per validator message: an error is a failure, a warning or note is listed with ok true.
-               The home page embeds seo/jsonld-home.json exactly once, every other page has no JSON-LD script.
+               The home page embeds seo/jsonld-home.json exactly once, each of the three service pages (decision 73)
+               embeds its own seo/jsonld-<slug>.json exactly once, every other page has no JSON-LD script.
                The facts in seo/jsonld-home.json are the facts of the brief (entry jsonld-facts): a Person, Gerta
                Lila, with her phone, email, the address of the site, Facebook and Instagram, who works for Le Vigne
                Hair Salon at its street address, and a WebSite. No opening hours, reviews, ratings or prices. No other QA script reads them: the content check does not look into scripts.
+               The file of a service page holds one Service (entry jsonld-service-facts): its name, the address of
+               its page, areaServed Staten Island, NY, and as provider the Person of the home page by the same @id.
+               No offers, prices, ratings or reviews.
   site files   css/style.css through the vnu CSS checker (--css)
-               sitemap.xml is well formed and lists exactly the nine www.hairbygerta.com page addresses
+               sitemap.xml is well formed and lists exactly the twelve www.hairbygerta.com page addresses
                robots.txt allows everything and names the sitemap
                .nojekyll is empty
-               seo/jsonld-home.json, every content/*.json and image-manifest.json parse as strict UTF-8 JSON
+               the seo/jsonld-*.json files, every content/*.json and image-manifest.json parse as strict UTF-8 JSON
                js/site.js passes node --check and its first statement is one of the two forms the build contract
                allows (decision 19):  var BOOKING_URL = "";  (no booking link yet, Book Now calls the phone) or
                var BOOKING_URL = "https://...";  (the owner's booking link). The report says which one was found.
@@ -50,6 +54,10 @@ BOOKING_EXPECTED = 'var BOOKING_URL = "";  or  var BOOKING_URL = "https://...";'
 CSS_FILE = "css/style.css"
 JS_FILE = "js/site.js"
 JSONLD_FILE = "seo/jsonld-home.json"
+# The pages that carry JSON-LD and the file each one embeds (decision 73 added the three service pages).
+JSONLD_FILES = dict([("home", JSONLD_FILE)] + [(s, "seo/jsonld-%s.json" % s) for s in common.SERVICE_PAGES])
+# A service page: a Service in Staten Island, NY, whose provider is the Person of the home page (the same @id).
+JSONLD_AREA = "Staten Island, NY"
 # FACTS of the brief, as structured data states them. Never paraphrase. Since 21 November 2026 the file
 # describes Gerta as a Person who works for Le Vigne Hair Salon (she does not own a business there), plus the
 # WebSite. Business hours, reviews, ratings and prices must not appear in it.
@@ -317,12 +325,15 @@ def ld_blocks(body):
 
 
 def check_page_jsonld(slug, body, label, ld_value, ld_problem):
+    """The home page and the service pages embed their own JSON-LD file exactly once, every other page none.
+    ld_value and ld_problem belong to the file of this page (JSONLD_FILES), or to the home file for any other page."""
     blocks = ld_blocks(body)
     parsed = [load_json_text(b.strip()) for b in blocks]
-    if slug == "home":
-        expected = "exactly one JSON-LD script in the page, with the same content as %s" % JSONLD_FILE
+    ld_file = JSONLD_FILES.get(slug)
+    if ld_file:
+        expected = "exactly one JSON-LD script in the page, with the same content as %s" % ld_file
         if ld_problem:
-            return entry(slug, "jsonld-embedded", False, expected, "cannot compare: %s %s" % (JSONLD_FILE, ld_problem), label, "SEO")
+            return entry(slug, "jsonld-embedded", False, expected, "cannot compare: %s %s" % (ld_file, ld_problem), label, "SEO")
         if len(blocks) != 1:
             return entry(slug, "jsonld-embedded", False, expected, "%s in the page" % plural(len(blocks), "JSON-LD script"), label, "PAGES")
         value, problem = parsed[0]
@@ -330,10 +341,10 @@ def check_page_jsonld(slug, body, label, ld_value, ld_problem):
             return entry(slug, "jsonld-embedded", False, expected, "the JSON-LD script in the page " + problem, label, "PAGES")
         if value != ld_value:
             diff = json_diff(ld_value, value)
-            actual = "the page embeds other content than %s (%s)" % (JSONLD_FILE, plural(len(diff), "difference"))
+            actual = "the page embeds other content than %s (%s)" % (ld_file, plural(len(diff), "difference"))
             return entry(slug, "jsonld-embedded", False, expected, actual, "%s: %s" % (label, "; ".join(diff[:4])), "PAGES")
-        return entry(slug, "jsonld-embedded", True, expected, "one JSON-LD script, same content as %s" % JSONLD_FILE, label, "PAGES")
-    expected = "no JSON-LD script on this page (the build contract puts it on the home page only)"
+        return entry(slug, "jsonld-embedded", True, expected, "one JSON-LD script, same content as %s" % ld_file, label, "PAGES")
+    expected = "no JSON-LD script on this page (the build contract puts it on the home page and the service pages only)"
     if not blocks:
         return entry(slug, "jsonld-absent", True, expected, "no JSON-LD script", label, "PAGES")
     same = sum(1 for value, problem in parsed if not problem and not ld_problem and value == ld_value)
@@ -341,6 +352,67 @@ def check_page_jsonld(slug, body, label, ld_value, ld_problem):
     if same:
         actual += ", with the content of %s" % JSONLD_FILE
     return entry(slug, "jsonld-absent", False, expected, actual, "%s: %s" % (label, short(blocks[0], 120)), "PAGES")
+
+
+def forbidden_keys(value):
+    """The keys of JSONLD_FORBIDDEN anywhere in a JSON value, sorted."""
+    def keys(node):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                yield k
+                yield from keys(v)
+        elif isinstance(node, list):
+            for v in node:
+                yield from keys(v)
+    return sorted(set(k for k in keys(value) if k in JSONLD_FORBIDDEN))
+
+
+def person_id(home_value):
+    """The @id of the Person in seo/jsonld-home.json, or None."""
+    if isinstance(home_value, dict) and isinstance(home_value.get("@graph"), list):
+        nodes = home_value["@graph"]
+    else:
+        nodes = home_value if isinstance(home_value, list) else [home_value]
+    person = next((n for n in nodes if isinstance(n, dict) and n.get("@type") == "Person"), {})
+    found = person.get("@id")
+    return found if isinstance(found, str) and found else None
+
+
+def check_service_jsonld(slug, value, home_id):
+    """The JSON-LD file of a service page (decision 73): one Service with a name, the address of its own page,
+    areaServed Staten Island, NY, and as provider the Person of the home page by the same @id. One entry, owner SEO."""
+    rel = JSONLD_FILES[slug]
+    page_url = CANON + common.PAGES[slug]
+    expected = ("%s holds one Service with a name, url %s, areaServed %s and a provider whose @id is the @id of the Person "
+                "in %s (%s); no offers, prices, ratings or reviews" % (rel, page_url, JSONLD_AREA, JSONLD_FILE, home_id or "?"))
+    wrong = []
+    if not isinstance(value, dict) or value.get("@type") != "Service":
+        wrong.append("the file is not one object of @type Service")
+        value = value if isinstance(value, dict) else {}
+    if value.get("@context") not in ("https://schema.org", "https://schema.org/"):
+        wrong.append("@context is %s, not https://schema.org" % json.dumps(value.get("@context")))
+    name = value.get("name")
+    if not isinstance(name, str) or not name.strip():
+        wrong.append("the Service has no name")
+    if value.get("url") != page_url:
+        wrong.append("url is %s (the address of the page: %s)" % (json.dumps(value.get("url")), page_url))
+    area = value.get("areaServed")
+    area_name = area.get("name") if isinstance(area, dict) else area
+    if area_name != JSONLD_AREA:
+        wrong.append("areaServed is %s (wanted: %s)" % (json.dumps(area, ensure_ascii=False)[:80], JSONLD_AREA))
+    provider = value.get("provider") if isinstance(value.get("provider"), dict) else {}
+    if not home_id:
+        wrong.append("%s has no Person with an @id to point to" % JSONLD_FILE)
+    elif provider.get("@id") != home_id:
+        wrong.append("provider.@id is %s (the Person of the home page: %s)" % (json.dumps(provider.get("@id")), home_id))
+    if provider.get("@type") not in (None, "Person") or provider.get("name") not in (None, JSONLD_PERSON["name"]):
+        wrong.append("provider is %s, not the Person %s" % (json.dumps(provider, ensure_ascii=False)[:80], JSONLD_PERSON["name"]))
+    found = forbidden_keys(value)
+    if found:
+        wrong.append("the file has %s, which the brief rules out" % ", ".join(found))
+    actual = ("%s: %s" % (plural(len(wrong), "fact") + " differ" + ("s" if len(wrong) == 1 else ""), "; ".join(wrong))
+              if wrong else "all facts match")
+    return entry(slug, "jsonld-service-facts", not wrong, expected, actual, rel, "SEO")
 
 
 # ---------------------------------------------------------------- site files, standard library only
@@ -484,15 +556,7 @@ def check_jsonld_facts(value):
         if website and website.get(key) != want:
             wrong.append("WebSite.%s is %s (the brief: %s)" % (key, json.dumps(website.get(key), ensure_ascii=False), want))
 
-    def keys(node):
-        if isinstance(node, dict):
-            for k, v in node.items():
-                yield k
-                yield from keys(v)
-        elif isinstance(node, list):
-            for v in node:
-                yield from keys(v)
-    found = sorted(set(k for k in keys(value) if k in JSONLD_FORBIDDEN))
+    found = forbidden_keys(value)
     if found:
         wrong.append("the file has %s, which the brief rules out" % ", ".join(found))
     actual = "%s: %s" % (plural(len(wrong), "fact") + " differ" + ("s" if len(wrong) == 1 else ""), "; ".join(wrong)) if wrong else "all facts match the brief"
@@ -682,7 +746,7 @@ def main(argv=None):
 
     # what to read: key -> (path in the site folder, address on the server)
     plan = {("page", s): (page_file(s), common.PAGES[s]) for s in slugs}
-    for rel in [CSS_FILE, JS_FILE, "sitemap.xml", "robots.txt", ".nojekyll", JSONLD_FILE, MANIFEST_FILE] + content_files:
+    for rel in [CSS_FILE, JS_FILE, "sitemap.xml", "robots.txt", ".nojekyll", MANIFEST_FILE] + list(JSONLD_FILES.values()) + content_files:
         plan[("file", rel)] = (rel, None)
 
     results = []
@@ -717,13 +781,28 @@ def main(argv=None):
             if not ld_problem and not isinstance(ld_value, (dict, list)):
                 ld_problem = "is not a JSON object"
                 ld_entry = entry(SITE_PAGE, "jsonld-file-parses", False, ld_entry["expected"], "%s %s" % (JSONLD_FILE, ld_problem), JSONLD_FILE, "SEO")
+            # The JSON-LD file of each service page (decision 73): it parses, and it holds the facts of a Service.
+            service_ld = {}
+            for s in common.SERVICE_PAGES:
+                rel = JSONLD_FILES[s]
+                e, v, problem = check_json_file(rel, got[("file", rel)], "SEO", check="jsonld-file-parses %s" % rel)
+                if not problem and not isinstance(v, dict):
+                    problem = "is not a JSON object"
+                    e = entry(SITE_PAGE, "jsonld-file-parses %s" % rel, False, e["expected"], "%s %s" % (rel, problem), rel, "SEO")
+                service_ld[s] = (e, v, problem)
             label = {s: (got[("page", s)].where if source.remote else page_file(s)) for s in slugs}
-            jsonld = {s: check_page_jsonld(s, g.body, label[s], ld_value, ld_problem) for s, g in usable.items()}
+            jsonld = {s: check_page_jsonld(s, g.body, label[s], *(service_ld[s][1:] if s in service_ld else (ld_value, ld_problem)))
+                      for s, g in usable.items()}
             site = check_sitemap(got[("file", "sitemap.xml")]) + check_robots(got[("file", "robots.txt")])
             site.append(check_nojekyll(source, got[("file", ".nojekyll")]))
             site.append(ld_entry)
             if not ld_problem:      # a file that cannot be read has its failed entry already
                 site.append(check_jsonld_facts(ld_value))
+            home_id = person_id(ld_value) if not ld_problem else None
+            for s, (e, v, problem) in service_ld.items():
+                site.append(e)
+                if not problem:
+                    site.append(check_service_jsonld(s, v, home_id))
             for rel in content_files:
                 site.append(check_json_file(rel, got[("file", rel)], "CONTENT", optional=source.remote and rel not in CONTRACT_CONTENT)[0])
             site.append(check_json_file(MANIFEST_FILE, got[("file", MANIFEST_FILE)], "ASSETS")[0])
