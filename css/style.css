@@ -1149,16 +1149,20 @@ body.lightbox-open {
 
 /* ==========================================================================
    30 Home
-   Site title, the beige box (heading, dotted rule, welcome text, button, phone,
-   salon, address), the scrolling hours line, the photo row, Meet Gerta.
+   Site title, the beige box (heading, tagline, dotted rule, welcome text, button,
+   phone, salon, address), the scrolling hours line, the photo row, Meet Gerta,
+   Gerta's own text (section.legal.home-more, styled with the policy pages).
    Vertical rhythm of the beige box at 1280 px (box top = 0):
-   32 | h1 35.2 | 6 | rule 1 | 19 | welcome 112 | 9 | button 37 | 9 | phone 28.6 |
-   2 | salon 26 | 5 | address 23.4 | 9 | hours 21.6 | 30 and the rest = 406 px
+   32 | h1 22.4 | 4 | tagline 35.2 | 6 | rule 1 | 19 | welcome 112 | 9 | button 37 |
+   9 | phone 28.6 | 2 | salon 26 | 5 | address 23.4 | 9 | hours 21.6 | 30 = 432 px
+   Until 21 November 2026 the h1 was the large line, "It's Your Day to Shine!", and
+   the box was 406 px. That line is now the tagline, in the very same style, and the
+   h1 is the small line above it that says what Gerta does and where.
    ========================================================================== */
 
 /* ---------- Site title ---------- */
 .site-title,
-.hero-box h1,
+.hero-box .tagline,
 .meet h2 {
   font-family: var(--serif);
   font-style: italic;
@@ -1203,7 +1207,17 @@ body.lightbox-open {
   text-align: center;
 }
 
+/* The h1: one small line in the size of the welcome text. */
 .hero-box h1 {
+  max-width: calc(100% - 40px);
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+.hero-box .tagline {
   max-width: calc(100% - 40px);
   margin: 0;
   font-size: 32px;
@@ -1501,6 +1515,14 @@ body.lightbox-open {
   height: 637px;
 }
 
+/* ---------- Gerta's own text under Meet Gerta (21 November 2026) ----------
+   section.legal.home-more takes the text style of the policy pages (.legal, section
+   "Policy pages" below). Only this: a little air between its paragraphs, because each
+   paragraph here is one service. */
+.home-more p + p {
+  margin-top: 0.7em;
+}
+
 /* ---------- Meet Gerta from 1101 px upwards (decision 58) ----------
    The helper asked for texts that line up and a larger makeup photo. Both texts are
    set flush left. The heading, the first text and the makeup photo share one left
@@ -1630,6 +1652,11 @@ body.lightbox-open {
   }
 
   .hero-box h1 {
+    max-width: calc(100% - 16px);
+    font-size: calc(14px + 3 * var(--grow));
+  }
+
+  .hero-box .tagline {
     max-width: calc(100% - 16px);
     font-size: calc(23px + 5 * var(--grow));
   }
