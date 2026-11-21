@@ -177,6 +177,15 @@ ctx.text_href() -> str
     it from here and never writes one itself. Plain text: it goes through ctx.esc like every address.
     (This helper is an addition to the list in section 5 of the contract, decision 69.)
 
+ctx.reach(book) -> str
+    The beige box "Book with Gerta" with the Text button and the Call button, <section class="reach">, as the
+    home page has it under Meet Gerta and the Services page under its cards. book is the "book" object of the
+    content file of the page: "heading", "text" and "call" (each with a "label") and "phone", the number that
+    stands under the two buttons on screens wider than a phone. The Text button gets ctx.text_href(), the Call
+    button and the number get "tel_href" of content/site.json. The result starts at the left edge and is
+    finished HTML. One box per page: its heading has the id "reach-h".
+    (This helper is an addition to the list in section 5 of the contract, decision 70.)
+
 RULES FOR A PAGE MODULE
 
   - Standard library only, no import from another page module, no file reading, nothing that changes from
@@ -655,6 +664,36 @@ class Ctx:
     def text_href(self):
         """The address of a Text button: the text message app, Gerta's number, the first words already written."""
         return _text_href(self.site)
+
+    def reach(self, book):
+        """The beige box with the Text button and the Call button (section.reach, decisions 68 and 70).
+
+        Text comes first: it is the button the box was made for. Each button is a plain link, so both work
+        without the script. The two drawings are those of the bar at the bottom of a phone screen (TEXT_ICON
+        and CALL_ICON), with the class of the box. Decoration: the words of a button say what it does.
+        """
+        where = "content/%s.json" % self.slug
+        if not isinstance(book, Node):
+            raise BuildError('%s: ctx.reach needs the "book" object of the content file (heading, text, call, phone), '
+                             "it was given %s" % (where, type(book).__name__))
+        heading, phone = _need(book, "heading", str), _need(book, "phone", str)
+        labels = []
+        for key in ("text", "call"):
+            button = _need(book, key, dict)
+            labels.append(_need(button, "label", str))
+        tel = esc(_need(self.site, "tel_href", str))
+        icon = lambda svg: svg.replace('class="call-bar-icon"', 'class="reach-icon"', 1)
+        return "\n".join([
+            '<section class="reach" aria-labelledby="reach-h">',
+            '  <h2 id="reach-h" class="serif">%s</h2>' % esc(heading),
+            '  <div class="reach-btns">',
+            '    <a class="reach-btn reach-text" href="%s">%s<span>%s</span></a>'
+            % (esc(self.text_href()), icon(TEXT_ICON), esc(labels[0])),
+            '    <a class="reach-btn reach-call" href="%s">%s<span>%s</span></a>' % (tel, icon(CALL_ICON), esc(labels[1])),
+            "  </div>",
+            '  <a class="reach-num" href="%s">%s</a>' % (tel, esc(phone)),
+            "</section>",
+        ])
 
     def blocks(self, blocks):
         if not isinstance(blocks, list):

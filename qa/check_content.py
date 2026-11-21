@@ -40,7 +40,9 @@ What it checks on every page
                         compared sentence by sentence with the reference files in the tools folder (wix-ref/<slug>.txt).
                         One entry per sentence that differs. A difference is intended, and listed with ok true, only
                         when it is on this fixed list: the privacy rule above (with a sentence that goes on about Wix),
-                        the closing booking note, the Hours block and the Open in Google Maps link of the contact page,
+                        the Book with Gerta box of the home page and of the Book Online page (decisions 68 and 70; the
+                        Book Online page had a closing booking note there before), the Hours block and the Open in
+                        Google Maps link of the contact page,
                         the copyright line, the Call
                         button at the bottom of the screen on phones (its label and the phone number), text that Wix
                         repeats for screen readers, the copies of the scrolling hours line, an order the build contract
@@ -119,11 +121,11 @@ EMAIL = common.EMAIL
 MAILTO = "mailto:" + EMAIL
 HOURS_DAYS, HOURS_TIMES = "Tuesday - Saturday", "9 AM - 5 PM"
 HOURS = HOURS_DAYS + ", " + HOURS_TIMES
-# The closing note of the Book Online page is the closing line of the first version of the site, word for word.
-# It gives the hours with "to". That wording is accepted on that page only. (Gerta's own text on the home page
-# wrote them the same way for a few hours of 21 November 2026. Decision 68 took that text out again.)
-HOURS_TO = ("Tuesday to Saturday", "9 AM to 5 PM", "Tuesday to Saturday, 9 AM to 5 PM")
-HOURS_OTHER_WORDING = {"book-online": HOURS_TO}
+# Until 21 November 2026 the Book Online page ended with a closing note that gave the hours with "to" (Tuesday to
+# Saturday, 9 AM to 5 PM), and that wording was accepted on that page only. Decision 70 put the Book with Gerta box in
+# the place of the note, so no page writes the hours with "to" any more and none may. (Gerta's own text on the home
+# page wrote them the same way for a few hours of that day. Decision 68 took that text out again.)
+HOURS_OTHER_WORDING = {}
 FACEBOOK = "https://www.facebook.com/profile.php?id=61596324347147"
 INSTAGRAM = "https://www.instagram.com/hairbygerta/"
 MAPS = "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310"
@@ -164,6 +166,11 @@ H1_IS_ALSO = {}                                        # a page whose h1 is stor
 H1_INTENDED = {"home": "changed on 21 November 2026 (decision 66): the h1 says what Gerta does and where, the Wix heading stays as the tagline"}
 HOME_BOOK_INTENDED = ("the beige box under Meet Gerta is not on the Wix page, it was added on purpose on 21 November 2026 (decision 68): "
                       "a heading, a Text button, a Call button and the phone number")
+# The same box closes the Book Online page since that day (decision 70), in the place of the closing booking note.
+SERVICES_BOOK_INTENDED = ("the beige box under the service cards is not on the Wix page, it was added on purpose on 21 November 2026 "
+                          "(decision 70): a heading, a Text button, a Call button and the phone number")
+BOOK_BOX_INTENDED = {"home": HOME_BOOK_INTENDED, "book-online": SERVICES_BOOK_INTENDED}
+BOOK_BOX_PLACE = {"home": "the box under Meet Gerta (decision 68)", "book-online": "the box under the service cards (decision 70)"}
 H1_COMES_AFTER = {"home": "site_title", "contact": "kicker"}    # section 7: where the h1 is not the first text of main
 PLACES = ("header", "main", "footer")
 PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "footer": "footer"}
@@ -613,8 +620,8 @@ def expect_main(ex, content, site):
             before = state["intended"]
             if slug == "contact" and path.startswith("info[") and (value.get("id") == "hours" or value.get("heading") == "Hours"):
                 state["intended"] = "the Hours block of the contact page is not on the Wix page, it is added on purpose"
-            if slug == "home" and path == "book":
-                state["intended"] = HOME_BOOK_INTENDED
+            if slug in BOOK_BOX_INTENDED and path == "book":
+                state["intended"] = BOOK_BOX_INTENDED[slug]
             for key, item in value.items():
                 handle(key, item, value, "%s.%s" % (path, key) if path else key, depth)
             state["intended"] = before
@@ -694,17 +701,17 @@ def expect_main(ex, content, site):
             emit(path, value)
             maps = site.get("maps_href") if isinstance(site.get("maps_href"), str) else MAPS
             ex.links.append(ContentLink("main", maps.strip(), norm(value), "", "%s: %s, a Maps link by section 7 of the build contract" % (file, path)))
-        elif slug == "home" and path in ("book.text", "book.call") and isinstance(value, dict):
-            # Decision 68. The label is the visible text of the button. The Text button opens the text message app
-            # with the number and the first words of content/site.json (sms_href, sms_message, decision 69).
+        elif slug in BOOK_BOX_INTENDED and path in ("book.text", "book.call") and isinstance(value, dict):
+            # Decisions 68 and 70. The label is the visible text of the button. The Text button opens the text message
+            # app with the number and the first words of content/site.json (sms_href, sms_message, decision 69).
             emit(path + ".label", value.get("label"))
             if key == "text":
                 target = text_target(site)
             else:
                 target = (site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL).strip()
             ex.links.append(ContentLink("main", target, norm(value.get("label") or ""), "",
-                                        "%s: %s, a button of the box under Meet Gerta (decision 68)" % (file, path)))
-        elif key == "phone" and slug == "home" and isinstance(value, str):
+                                        "%s: %s, a button of %s" % (file, path, BOOK_BOX_PLACE[slug])))
+        elif key == "phone" and (slug == "home" or (slug == "book-online" and path == "book.phone")) and isinstance(value, str):
             emit(path, value)
             tel = site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL
             ex.links.append(ContentLink("main", tel.strip(), norm(value), "", "%s: %s, a phone link by section 7 of the build contract" % (file, path)))
@@ -712,10 +719,7 @@ def expect_main(ex, content, site):
             emit(path + ".label", value["label"])       # a button: a text and where it leads
             ex.links.append(ContentLink("main", content_target(value["path"]), norm(value["label"]), "", "%s: %s" % (file, path)))
         elif isinstance(value, str):
-            intended = None
-            if slug == "book-online" and path == "closing_note_html":
-                intended = "the closing booking note is not on the Wix page, it is kept from the first version of the site"
-            emit(path, value, key.endswith("_html") or key == "html", None, intended)
+            emit(path, value, key.endswith("_html") or key == "html", None, None)
         else:
             walk(value, path, depth + 1)
 
@@ -912,7 +916,7 @@ ACCESSIBILITY_UPDATED = ("accessibility-statement",
 
 class Rules:
     """Which differences from the live Wix wording are intended. The list is fixed and lives in this class (and in the
-    intended= marks of the extraction: copyright line, Hours block, closing booking note). Nothing else is intended."""
+    intended= marks of the extraction: copyright line, Hours block, Book with Gerta box). Nothing else is intended."""
 
     def __init__(self, slug, ex):
         self.slug, self.ex = slug, ex
@@ -1462,6 +1466,12 @@ def required_facts(slug, view, built):
                  "insecure form, the script opens the email app from data-mailto instead (decision 41)" % ", ".join(a for a in built.form_actions if a))
     if slug in LEGAL_NAME_PAGES:
         need("stylist", any(LEGAL_NAME in l for l in main), 'main does not name "%s"' % LEGAL_NAME)
+    if slug == "book-online":
+        # Decision 70: the box under the cards has a button that opens a text message to Gerta, one that calls her,
+        # and the phone number as a link.
+        need("phone", has_link("main", TEL, PHONE_TEXT), 'main has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
+        need("phone", any(p == "main" and h.split("?")[0] == SMS and "body=" in h for p, h, _ in view.links),
+             "main has no Text button: a link %s with a message (?&body=...)" % SMS)
     if slug == "book-online" and built is not None:
         book = [l for l in built.links if l.book]
         wrong = [l.href for l in book if l.href != TEL]

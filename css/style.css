@@ -1847,7 +1847,9 @@ body.lightbox-open {
    Call bar): 48 px tall, 16 px words, a 20 px drawing in front of them.
    Vertical rhythm at 1280 px (box top = 0):
    34 | heading 33.6 | 10 | rule 1 | 22 | buttons 48 | 14 | number 28.6 | 30 = 221.2 px
-   56 px of page above the box, 64 px between it and the footer. */
+   56 px of page above the box, 64 px between it and the footer.
+   The Services page ends with the same box (decision 70). Its width and the room
+   around it there are set with the cards of that page (see Book Online). */
 .reach {
   display: flex;
   flex-direction: column;
@@ -2209,7 +2211,8 @@ body.lightbox-open {
      on body, decision 69): the bar holds the very same two buttons, and two pairs of
      them on one screen would be one too many. The bar slides back once the box has
      left the screen. The slide itself is the one of the Contact page (.call-bar,
-     section 60). Without the script the bar stays, and both pairs work. */
+     section 60). Without the script the bar stays, and both pairs work. The rule
+     names no page, so it holds for the box of the Services page too (decision 70). */
   body.reach-on-screen .call-bar {
     transform: translateY(110%);
   }
@@ -2845,39 +2848,27 @@ h1.services-title {
   }
 }
 
-/* The line under the cards: book by phone. One line on a desktop screen,
-   evenly broken lines on a phone, and the phone number is never split. */
-.book-note {
-  max-width: 640px;
+/* ---------- Book with Gerta under the cards (decision 70) ----------
+   The page ends with the beige box of the home page (.reach, see Home): the heading,
+   the Text button and the Call button, and on a wide screen the number under them.
+   Until decision 70 one line stood here (p.book-note). Everything inside the box is
+   the box of the home page, unchanged. Only its place is of this page: it is as wide
+   as the row of cards above it (three cards and two gaps, 938 px), 48 px under the
+   last row, and the page container gives the room under it. */
+.page-book-online .reach {
+  width: 938px;
+  max-width: 100%;
   margin: 48px auto 0;
-  font-size: 16px;
-  line-height: 22.4px;
-  text-align: center;
-  text-wrap: balance;
 }
 
-.book-note a {
-  position: relative;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  white-space: nowrap;
-}
-
-/* A larger invisible tap area around the phone number, 44 px tall. The text stays
-   where it is. */
-.book-note a::after {
-  content: "";
-  position: absolute;
-  top: -12px;
-  right: -10px;
-  bottom: -12px;
-  left: -10px;
-}
-
-/* Two cards per row */
+/* Two cards per row, and the box as wide as the two (614 px) */
 @media (max-width: 1100px) {
   .services {
     grid-template-columns: repeat(2, minmax(0, 290px));
+  }
+
+  .page-book-online .reach {
+    width: 614px;
   }
 }
 
@@ -2943,8 +2934,10 @@ h1.services-title {
     min-height: 50px;
   }
 
-  .book-note {
-    margin-top: 40px;
+  /* The box is as wide as a card and stands 40 px under the last one. */
+  .page-book-online .reach {
+    width: 420px;
+    margin: 40px auto 0;
   }
 }
 
@@ -2962,6 +2955,11 @@ h1.services-title {
     justify-self: center;
     width: calc(50% - 12px);
     max-width: 320px;
+  }
+
+  /* As wide as the two cards with their gap. */
+  .page-book-online .reach {
+    width: 664px;
   }
 }
 
