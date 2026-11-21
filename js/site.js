@@ -23,7 +23,7 @@ var BOOKING_URL = "";
  * Nothing below this note has to be changed to add the booking link.
  *
  * Site script for Hair & Makeup by Gerta. Every page loads this one file
- * with "defer". It has seven parts:
+ * with "defer". It has eight parts:
  *
  *   1. Book Now buttons       every element marked data-book
  *   2. Phone menu             .menu-btn and #main-nav
@@ -33,6 +33,8 @@ var BOOKING_URL = "";
  *   6. Map                    the iframe with data-src inside .map
  *   7. Short header           the class "compact" on <html>, and the pressed
  *                             look of links and buttons on an iPhone
+ *   8. Text and Call box      .reach on the home page: the class
+ *                             "reach-on-screen" on <body>
  *
  * Each part looks for its own elements and does nothing on a page that does
  * not have them. A part that fails does not stop the other parts.
@@ -42,7 +44,8 @@ var BOOKING_URL = "";
  * own, the year is the one the page was built with, the header keeps its
  * full height, and the Contact page hides its form (the sentence above it
  * gives the phone number and the email address as links) and offers the map
- * as a link to Google Maps.
+ * as a link to Google Maps. The bar at the bottom of a phone screen then
+ * stays on the screen beside the Text and Call box of the home page.
  */
 (function () {
   "use strict";
@@ -1019,6 +1022,37 @@ var BOOKING_URL = "";
   }
 
   // ---------------------------------------------------------------------------
+  // 8. Text and Call box of the home page
+  // ---------------------------------------------------------------------------
+
+  /*
+   * The beige box under Meet Gerta (.reach) holds a Text button and a Call
+   * button, and so does the bar at the bottom of a phone screen (.call-bar).
+   * While the box is on the screen the bar steps aside (class
+   * "reach-on-screen" on body, the stylesheet slides the bar away), so the
+   * visitor never sees the same two buttons twice. The box counts as on the
+   * screen once it has come 90 px up from the bottom edge, which is where
+   * the bar sits. When the box has left the screen, the bar comes back.
+   * On a wide screen there is no bar and the class changes nothing.
+   * A page without the box, and a browser without IntersectionObserver,
+   * keep the bar where it is.
+   */
+  function initReach() {
+    var box = document.querySelector(".reach");
+    if (!box || !("IntersectionObserver" in window)) {
+      return;
+    }
+    new IntersectionObserver(function (entries) {
+      var last = entries[entries.length - 1];
+      if (last.isIntersecting) {
+        document.body.classList.add("reach-on-screen");
+      } else {
+        document.body.classList.remove("reach-on-screen");
+      }
+    }, { rootMargin: "0px 0px -90px 0px" }).observe(box);
+  }
+
+  // ---------------------------------------------------------------------------
   // Start
   // ---------------------------------------------------------------------------
 
@@ -1046,6 +1080,7 @@ var BOOKING_URL = "";
     run("Map", initMap);
     run("Short header", initHeader);
     run("Pressed look", initPressed);
+    run("Text and Call box", initReach);
   }
 
   // The pages load this file with "defer", so the whole page has been read

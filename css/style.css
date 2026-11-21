@@ -477,8 +477,8 @@ body.lightbox-open {
   }
 }
 
-/* The salon card of the open phone menu (hours, address, social buttons, Call button).
-   It exists in the open phone menu only, see Phones below. */
+/* The salon card of the open phone menu (hours, address, social buttons, the Text and
+   Call buttons). It exists in the open phone menu only, see Phones below. */
 .nav-more {
   display: none;
 }
@@ -674,10 +674,12 @@ body.lightbox-open {
 }
 
 /* ---------- Call bar ----------
-   A Call button that stays at the bottom of the screen on phones, so the number is one
-   tap away wherever the visitor is on the page. It sits in the footer markup and is
-   hidden on wider screens (see Phones below). It stays under the open phone menu (the
-   header is above it) and under the photo viewer. */
+   A Text button and a Call button that stay at the bottom of the screen on phones, so
+   Gerta is one tap away wherever the visitor is on the page: Text opens the text message
+   app with her number, Call calls it (one Call button with the number until decision
+   69). It sits in the footer markup and is hidden on wider screens (see Phones below).
+   It stays under the open phone menu (the header is above it) and under the photo
+   viewer. */
 .call-bar {
   display: none;
 }
@@ -973,9 +975,9 @@ body.lightbox-open {
      A beige panel at the bottom of the sheet, pushed down by the free room above it.
      Two lines with a small drawing in front (hours, address: the address is one tap
      target from edge to edge and opens the map), the two round buttons of Facebook and
-     Instagram, and the Call button. That button has the look, the size and the place
-     of the Call bar of the page (8 px above the lower edge), so it seems to stay where
-     it was when the menu opens over the page. */
+     Instagram, and the Text and Call buttons. Those two have the look, the size and the
+     place of the Call bar of the page (8 px above the lower edge), so they seem to stay
+     where they were when the menu opens over the page. */
   html.js .nav-more {
     display: block;
     flex: none;
@@ -1254,18 +1256,26 @@ body.lightbox-open {
     left: 0;
     z-index: 40;
     display: flex;
+    gap: 10px;
     padding: 8px calc(var(--gutter) + var(--safe-right)) calc(8px + var(--safe-bottom)) calc(var(--gutter) + var(--safe-left));
     border-top: 1px solid var(--beige);
     background: var(--bg);
     box-shadow: 0 -2px 12px rgba(29, 21, 9, 0.08);
   }
 
-  /* The words and the number stay on one line, also on a 320 px screen. The Call
-     button of the open menu (a.nav-call) is the same button. */
+  /* Two buttons of the same width, Text on the left and Call on the right, 10 px apart.
+     The words of a button stay on one line, also on a 320 px screen. The two buttons of
+     the open menu (div.nav-calls > a.nav-call) are the same buttons. */
+  .nav-calls {
+    display: flex;
+    gap: 10px;
+  }
+
   .call-bar a,
   .nav-more .nav-call {
     display: flex;
-    flex: 1 1 auto;
+    flex: 1 1 0;
+    min-width: 0;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -1309,31 +1319,21 @@ body.lightbox-open {
     height: 20px;
   }
 
-  .call-bar-num {
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
   /* A visitor who has enlarged the text in the phone browser gets a page that is laid
-     out as if the screen were narrower, down to 260 px and less. Below 300 px the words
-     and the number no longer fit on one line, so the number goes onto a line of its own
-     under the words, and nothing is cut off. */
+     out as if the screen were narrower, down to 260 px and less. Below 300 px the two
+     buttons stand closer and keep less air inside, so the words of each still fit on
+     one line and nothing is cut off. */
   @media (max-width: 299px) {
+    .call-bar,
+    .nav-calls {
+      gap: 6px;
+    }
+
     .call-bar a,
     .nav-more .nav-call {
-      flex-wrap: wrap;
-      gap: 2px 8px;
-      padding: 6px 8px;
-      white-space: normal;
-    }
-
-    .call-bar-label {
-      white-space: nowrap;
-    }
-
-    .call-bar-num {
-      flex: 1 0 100%;
-      text-align: center;
+      gap: 6px;
+      padding: 0 4px;
+      letter-spacing: 0.4px;
     }
   }
 
@@ -1366,7 +1366,7 @@ body.lightbox-open {
     min-height: 44px;
   }
 
-  /* The Call button of the open menu keeps the place of the slimmer bar. */
+  /* The two buttons of the open menu keep the place of the slimmer bar. */
   html.js .nav-more {
     padding-bottom: calc(4px + var(--safe-bottom));
   }
@@ -1408,7 +1408,7 @@ body.lightbox-open {
     margin-bottom: 10px;
   }
 
-  .nav-more .nav-call {
+  .nav-calls {
     flex: none;
   }
 }
@@ -1464,7 +1464,7 @@ body.lightbox-open {
     display: none;
   }
 
-  .nav-more .nav-call {
+  .nav-calls {
     margin-top: 8px;
   }
 }
@@ -1473,7 +1473,7 @@ body.lightbox-open {
    30 Home
    Site title, the beige box (heading, tagline, dotted rule, welcome text, button,
    phone, salon, address), the scrolling hours line, the photo row, Meet Gerta,
-   Gerta's own text (section.legal.home-more, styled with the policy pages).
+   Book with Gerta (section.reach, the second beige box: Text button, Call button).
    Vertical rhythm of the beige box at 1280 px (box top = 0):
    32 | h1 22.4 | 4 | tagline 35.2 | 6 | rule 1 | 19 | welcome 112 | 9 | button 37 |
    9 | phone 28.6 | 2 | salon 26 | 5 | address 23.4 | 9 | hours 21.6 | 30 = 432 px
@@ -1485,7 +1485,8 @@ body.lightbox-open {
 /* ---------- Site title ---------- */
 .site-title,
 .hero-box .tagline,
-.meet h2 {
+.meet h2,
+.reach h2 {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 700;
@@ -1837,12 +1838,118 @@ body.lightbox-open {
   height: 637px;
 }
 
-/* ---------- Gerta's own text under Meet Gerta (21 November 2026) ----------
-   section.legal.home-more takes the text style of the policy pages (.legal, section
-   "Policy pages" below). Only this: a little air between its paragraphs, because each
-   paragraph here is one service. */
-.home-more p + p {
-  margin-top: 0.7em;
+/* ---------- Book with Gerta: the Text button and the Call button (decision 68) ----------
+   The second beige box of the page, under Meet Gerta. It is as wide as the first one
+   and built from the same parts: a heading in the serif, the dotted rule (485 px, here
+   the line under the heading) and the dark button. It holds two buttons side by side
+   and nothing to read: Text opens the visitor's text message app with Gerta's number,
+   Call calls it. Both look like the Call button at the bottom of a phone screen (the
+   Call bar): 48 px tall, 16 px words, a 20 px drawing in front of them.
+   Vertical rhythm at 1280 px (box top = 0):
+   34 | heading 33.6 | 10 | rule 1 | 22 | buttons 48 | 14 | number 28.6 | 30 = 221.2 px
+   56 px of page above the box, 64 px between it and the footer. */
+.reach {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 778px;
+  max-width: calc(100% - 2 * var(--gutter));
+  margin: 56px auto 64px;
+  padding: 34px 20px 30px;
+  background: var(--beige);
+  text-align: center;
+}
+
+.reach h2 {
+  width: 485px;
+  max-width: 100%;
+  margin: 0 0 22px;
+  padding: 0 0 10px;
+  border-bottom: 1px dotted var(--ink);
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* Two buttons of the same width, 200 px each, with 16 px between them. In a box too
+   narrow for both they share its width, and where even that is too little for the
+   words (a visitor who enlarged the text a lot) the second one goes under the first. */
+.reach-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.reach-btn {
+  display: flex;
+  flex: 0 1 200px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 14px;
+  background-color: var(--btn);
+  color: var(--btn-text);
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reach-btn:focus-visible,
+.reach-btn:active {
+  background-color: var(--ink);
+}
+
+@media (hover: hover) {
+  .reach-btn:hover {
+    background-color: var(--ink);
+  }
+}
+
+.reach-icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+/* The number under the buttons, in the style of the number of the first beige box.
+   For a visitor at a computer, where a tap on Text or Call often opens nothing: the
+   number is there to be typed into a phone. A phone does not show it (see below). */
+.reach-num {
+  position: relative;
+  margin: 14px 0 0;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .reach-num:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* A larger invisible tap area around the number, about 44 px tall, for a tablet. It
+   ends 6 px under the buttons, and the text stays where it is. */
+.reach-num::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  bottom: -8px;
+  left: -12px;
+}
+
+.reach-num:focus-visible {
+  outline-offset: 3px;
 }
 
 /* ---------- Meet Gerta from 1101 px upwards (decision 58) ----------
@@ -2064,6 +2171,47 @@ body.lightbox-open {
   .meet .p2 img {
     max-height: 637px;
     aspect-ratio: 320 / 414;
+  }
+
+  /* Book with Gerta on a phone: the box is as wide as the first beige box, and the two
+     buttons share its width, each 52 px tall, a full thumb. The heading has the size of
+     Meet Gerta and its rule the width of the rule in the first box. The number is not
+     shown: on a phone the two buttons do the work. */
+  .reach {
+    margin: 28px auto 32px;
+    padding: 24px 16px 24px;
+  }
+
+  .reach h2 {
+    width: calc(260px + 60 * var(--grow));
+    margin-bottom: 20px;
+    font-size: calc(25px + 3 * var(--grow));
+  }
+
+  .reach-btns {
+    gap: 12px;
+  }
+
+  /* At most 220 px each, so on a phone lying on its side the two stay a pair in the
+     middle of the box. */
+  .reach-btn {
+    flex: 1 1 104px;
+    max-width: 220px;
+    min-height: 52px;
+    padding: 0 8px;
+  }
+
+  .reach-num {
+    display: none;
+  }
+
+  /* While the box is on the screen the Call bar steps aside (the script sets the class
+     on body, decision 69): the bar holds the very same two buttons, and two pairs of
+     them on one screen would be one too many. The bar slides back once the box has
+     left the screen. The slide itself is the one of the Contact page (.call-bar,
+     section 60). Without the script the bar stays, and both pairs work. */
+  body.reach-on-screen .call-bar {
+    transform: translateY(110%);
   }
 }
 

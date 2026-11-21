@@ -53,8 +53,10 @@ What it checks on every page
                         changes of 12 November 2026: the titles of the four policy pages end with "Hair & Makeup by Gerta"
                         (Wix: "Hairbygerta"), three sentences of the Terms & Conditions no longer speak of booking online
                         or through the site, and the Accessibility Statement says it was last updated on 11/12/2026; and two
-                        changes of 21 November 2026 (decision 66): the new h1 of the home page and Gerta's own text under
-                        Meet Gerta (the "more" key of content/home.json). A note in
+                        changes of 21 November 2026: the new h1 of the home page (decision 66) and the beige box under
+                        Meet Gerta with the Text button and the Call button (decision 68, the "book" key of
+                        content/home.json; it took the place of Gerta's own text of decision 66, the "more" key, which was
+                        on the page for a few hours of that day). A note in
                         a content file does not make a difference intended. A title tag or meta description that Wix has
                         must equal the Wix value (the Contact title, the four policy page titles and the Book Online and
                         home meta descriptions apart).
@@ -109,15 +111,19 @@ CITY = "Staten Island, NY 10310"
 ADDRESS = STREET + ", " + CITY
 PHONE_TEXT = "347-671-5095"
 TEL = "tel:" + common.PHONE
+# The address that opens a text message to the same number, written without hyphens (the text link of the Contact
+# page since 18 November 2026, the Text button of the home page since 21 November 2026, decision 68). A link may
+# carry a message after it ("?&body=..."), the number in front of the question mark is the fact.
+SMS = "sms:" + common.PHONE.replace("-", "")
 EMAIL = common.EMAIL
 MAILTO = "mailto:" + EMAIL
 HOURS_DAYS, HOURS_TIMES = "Tuesday - Saturday", "9 AM - 5 PM"
 HOURS = HOURS_DAYS + ", " + HOURS_TIMES
 # The closing note of the Book Online page is the closing line of the first version of the site, word for word.
-# It gives the hours with "to". Gerta's own text on the home page (21 November 2026, decision 66) writes them the
-# same way, in a sentence. That wording is accepted on those two pages only.
+# It gives the hours with "to". That wording is accepted on that page only. (Gerta's own text on the home page
+# wrote them the same way for a few hours of 21 November 2026. Decision 68 took that text out again.)
 HOURS_TO = ("Tuesday to Saturday", "9 AM to 5 PM", "Tuesday to Saturday, 9 AM to 5 PM")
-HOURS_OTHER_WORDING = {"book-online": HOURS_TO, "home": HOURS_TO}
+HOURS_OTHER_WORDING = {"book-online": HOURS_TO}
 FACEBOOK = "https://www.facebook.com/profile.php?id=61596324347147"
 INSTAGRAM = "https://www.instagram.com/hairbygerta/"
 MAPS = "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310"
@@ -156,8 +162,8 @@ COPYRIGHT_SIGN = "\u00a9"                               # section 6: p.copy
 H1_IS_ALSO = {}                                        # a page whose h1 is stored twice (home until 21 November 2026)
 # 21 November 2026 (decision 66): the h1 of the home page is new and not on Wix. "It's Your Day to Shine!" stays as the tagline.
 H1_INTENDED = {"home": "changed on 21 November 2026 (decision 66): the h1 says what Gerta does and where, the Wix heading stays as the tagline"}
-HOME_MORE_INTENDED = ("the text under Meet Gerta is not on the Wix page, it was added on purpose on 21 November 2026 (decision 66): "
-                      "Gerta's own words about her work, her services and how to book")
+HOME_BOOK_INTENDED = ("the beige box under Meet Gerta is not on the Wix page, it was added on purpose on 21 November 2026 (decision 68): "
+                      "a heading, a Text button, a Call button and the phone number")
 H1_COMES_AFTER = {"home": "site_title", "contact": "kicker"}    # section 7: where the h1 is not the first text of main
 PLACES = ("header", "main", "footer")
 PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "footer": "footer"}
@@ -420,6 +426,13 @@ def resolve(slug, href):
     return urllib.parse.urljoin(ORIGIN + common.PAGES[slug], href.strip())
 
 
+def text_target(site):
+    """The address of every Text button (decisions 68 and 69): sms_href and sms_message of content/site.json as one address."""
+    sms = site.get("sms_href") if isinstance(site.get("sms_href"), str) else SMS
+    message = site.get("sms_message") if isinstance(site.get("sms_message"), str) else ""
+    return "%s?&body=%s" % (sms.strip(), urllib.parse.quote(message.strip(), safe=""))
+
+
 def content_target(target):
     """A link of a content file (a site path, a {{root}} address, or tel:, mailto:, https:) as a full address."""
     target = target.strip()
@@ -600,8 +613,8 @@ def expect_main(ex, content, site):
             before = state["intended"]
             if slug == "contact" and path.startswith("info[") and (value.get("id") == "hours" or value.get("heading") == "Hours"):
                 state["intended"] = "the Hours block of the contact page is not on the Wix page, it is added on purpose"
-            if slug == "home" and path == "more":
-                state["intended"] = HOME_MORE_INTENDED
+            if slug == "home" and path == "book":
+                state["intended"] = HOME_BOOK_INTENDED
             for key, item in value.items():
                 handle(key, item, value, "%s.%s" % (path, key) if path else key, depth)
             state["intended"] = before
@@ -681,6 +694,16 @@ def expect_main(ex, content, site):
             emit(path, value)
             maps = site.get("maps_href") if isinstance(site.get("maps_href"), str) else MAPS
             ex.links.append(ContentLink("main", maps.strip(), norm(value), "", "%s: %s, a Maps link by section 7 of the build contract" % (file, path)))
+        elif slug == "home" and path in ("book.text", "book.call") and isinstance(value, dict):
+            # Decision 68. The label is the visible text of the button. The Text button opens the text message app
+            # with the number and the first words of content/site.json (sms_href, sms_message, decision 69).
+            emit(path + ".label", value.get("label"))
+            if key == "text":
+                target = text_target(site)
+            else:
+                target = (site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL).strip()
+            ex.links.append(ContentLink("main", target, norm(value.get("label") or ""), "",
+                                        "%s: %s, a button of the box under Meet Gerta (decision 68)" % (file, path)))
         elif key == "phone" and slug == "home" and isinstance(value, str):
             emit(path, value)
             tel = site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL
@@ -756,10 +779,13 @@ def expect_shell(ex, site, year):
         if isinstance(item, dict):
             ex.piece(ex.header, SITE_FILE, "nav[%d].label" % i, item.get("label"), place="header")
             link("header", item.get("path"), item.get("label"), "", "nav[%d]" % i)
-    # The Call button at the bottom of the screen on phones (9 November 2026): its words, a space, the phone number.
-    call = " ".join(x for x in (need("call_bar_label") or "", need("phone") or "") if x)
+    # The two buttons at the bottom of the screen on phones (21 November 2026, decision 69): Text opens a text message
+    # to Gerta with the first words written, Call calls. From 9 November 2026 (decision 40) until then the bar was one
+    # Call button: its words, a space, the phone number.
+    text, call = need("text_bar_label") or "", need("call_bar_label") or ""
+    need("sms_href"), need("sms_message")
     # The salon card of the open phone menu (18 November 2026, decision 67), inside the navigation after the five
-    # pages: the hours, the street address as a link to the map, the two social links and the Call button once more.
+    # pages: the hours, the street address as a link to the map, the two social links and the two buttons once more.
     card = "the salon card of the open phone menu is not on the Wix site, it is added on purpose"
     ex.piece(ex.header, SITE_FILE, "hours", need("hours") or "", place="header", intended=card)
     ex.piece(ex.header, SITE_FILE, "address_one_line", need("address_one_line") or "", place="header", intended=card)
@@ -768,11 +794,12 @@ def expect_shell(ex, site, year):
         if isinstance(item, dict):
             label("aria-label", item.get("label"), "social[%d].label" % i)
             link("header", item.get("href"), "", item.get("label"), "social[%d]" % i)
-    ex.piece(ex.header, SITE_FILE, "call_bar_label (then the phone number)", call, place="header", intended=card)
-    link("header", need("tel_href"), call, "", "call_bar_label")
-    ex.piece(ex.footer, SITE_FILE, "call_bar_label (then the phone number)", call, place="footer",
-             intended="the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose")
-    link("footer", need("tel_href"), call, "", "call_bar_label")
+    bar = "the Text button and the Call button at the bottom of the screen on phones are not on the Wix site, they are added on purpose"
+    for place, bucket, why in (("header", ex.header, card), ("footer", ex.footer, bar)):
+        ex.piece(bucket, SITE_FILE, "text_bar_label", text, place=place, intended=why)
+        link(place, text_target(site), text, "", "text_bar_label")
+        ex.piece(bucket, SITE_FILE, "call_bar_label", call, place=place, intended=why)
+        link(place, need("tel_href"), call, "", "call_bar_label")
     ex.piece(ex.footer, SITE_FILE, "footer.name", need("footer.name") or "", place="footer")
     ex.piece(ex.footer, SITE_FILE, "footer.role", need("footer.role") or "", place="footer")
     for i, item in enumerate(need("social", list) or []):
@@ -1241,7 +1268,7 @@ FACT_KINDS = (
     ("business", "fact-business-name", 'every mention of the business name is exactly "%s"' % BUSINESS),
     ("stylist", "fact-stylist-name", 'the name is exactly "%s"; "%s" is used on the Terms and Accessibility pages and nowhere else' % (STYLIST, LEGAL_NAME)),
     ("address", "fact-salon-address", 'salon and address are exactly "%s" and "%s"' % (SALON, ADDRESS)),
-    ("phone", "fact-phone", 'the phone number is written "%s" and every phone link is %s' % (PHONE_TEXT, TEL)),
+    ("phone", "fact-phone", 'the phone number is written "%s", every phone link is %s and every text message link starts with %s' % (PHONE_TEXT, TEL, SMS)),
     ("email", "fact-email", 'the email address is written "%s" and every mail link is %s' % (EMAIL, MAILTO)),
     ("hours", "fact-hours", 'the hours are exactly "%s"' % HOURS),
     ("links", "fact-links", "the Facebook, Instagram and Maps links are exactly the three links of the brief"),
@@ -1360,6 +1387,10 @@ def scan_facts(slug, view):
             mentions["phone"] += 1
             if href != TEL:
                 bad("phone", href, "is not exactly %s" % TEL, where)
+        elif low.startswith("sms:"):
+            mentions["phone"] += 1
+            if href.split("?")[0] != SMS:
+                bad("phone", href, "does not open a text message to %s" % SMS, where)
         elif low.startswith("mailto:"):
             mentions["email"] += 1
             if href != MAILTO:
@@ -1401,9 +1432,19 @@ def required_facts(slug, view, built):
     need("phone", has_link("footer", TEL, PHONE_TEXT), 'the footer has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
     need("email", has_link("footer", MAILTO, EMAIL), 'the footer has no link %s with the text "%s"' % (MAILTO, EMAIL))
     need("links", has_link("footer", FACEBOOK) and has_link("footer", INSTAGRAM), "the footer does not carry the Facebook link and the Instagram link")
+    # Decision 69: the bar at the bottom of a phone screen (it stands in the footer) is a Text button and a Call button.
+    need("phone", any(p == "footer" and h.split("?")[0] == SMS and "body=" in h for p, h, _ in view.links),
+         "the footer has no Text button: a link %s with a message (?&body=...)" % SMS)
+    need("phone", sum(1 for p, h, _ in view.links if p == "footer" and h == TEL) >= 2,
+         "the footer has no Call button: a second link %s beside the phone number" % TEL)
     if slug == "home":
         need("business", BUSINESS in main, 'main does not show the site title "%s"' % BUSINESS)
         need("phone", has_link("main", TEL, PHONE_TEXT), 'main has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
+        # Decision 68: the box under Meet Gerta has a button that opens a text message to Gerta and one that calls her.
+        need("phone", any(p == "main" and h.split("?")[0] == SMS and "body=" in h for p, h, _ in view.links),
+             "main has no Text button: a link %s with a message (?&body=...)" % SMS)
+        need("phone", sum(1 for p, h, _ in view.links if p == "main" and h == TEL) >= 2,
+             "main has no Call button: a second link %s beside the phone number of the beige box" % TEL)
         need("address", SALON in main, 'main has no line "%s"' % SALON)
         need("address", has_link("main", MAPS, ADDRESS), 'main has no Maps link with the text "%s"' % ADDRESS)
         need("links", has_link("main", MAPS), "main does not carry the Maps link %s" % MAPS)
@@ -1451,7 +1492,7 @@ def check_site_facts(site, problem):
         return [entry(SITE_PAGE, "site-json-facts", False, "content/site.json holds the business facts of the brief", "not checked: " + problem, SITE_FILE, "CONTENT")]
     wanted = [("business_name", BUSINESS, False), ("stylist", STYLIST, False), ("salon", SALON, False),
               ("address_lines", [SALON, STREET, CITY], True), ("address_one_line", ADDRESS, False), ("phone", PHONE_TEXT, True),
-              ("tel_href", TEL, True), ("email", EMAIL, True), ("mailto_href", MAILTO, True), ("hours", HOURS, False),
+              ("tel_href", TEL, True), ("sms_href", SMS, True), ("email", EMAIL, True), ("mailto_href", MAILTO, True), ("hours", HOURS, False),
               ("maps_href", MAPS, False), ("footer.name", STYLIST, True), ("copyright", BUSINESS, True), ("og_site_name", BUSINESS, True)]
     wrong, checked = [], 0
     for dotted, fact, required in wanted:

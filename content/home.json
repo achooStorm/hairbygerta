@@ -65,52 +65,19 @@
       "height": 637
     }
   },
-  "more": {
-    "blocks": [
-      {
-        "type": "h2",
-        "text": "A little about me"
-      },
-      {
-        "type": "p",
-        "text": "Hi, I’m Gerta Lila, a hair stylist and makeup artist. You’ll find me at Le Vigne Hair Salon, 644 Forest Ave in Staten Island, where I’ve worked for about seven years. I love getting to know each client, listening to what you want and creating a look that feels like you, only more polished. Whether you want a small change or something completely new, I’ll be honest about what will work for your hair and help you get there."
-      },
-      {
-        "type": "h2",
-        "text": "What I do"
-      },
-      {
-        "type": "p",
-        "html": "<a href=\"/book-online/\">Balayage and color</a>: I hand-paint balayage for a soft, sun-kissed finish and mix custom color for anything from a gentle refresh to a full change. Highlights and lowlights add brightness and depth right where you want them."
-      },
-      {
-        "type": "p",
-        "html": "<a href=\"/book-online/\">Cuts and layers</a>: A good cut makes everyday styling easy. I shape layers that suit your face and the way you really wear your hair, and I’ll show you how to style it at home."
-      },
-      {
-        "type": "p",
-        "html": "<a href=\"/book-online/\">Keratin and Brazilian blowout</a>: If frizz fights you every morning, a keratin treatment or a Brazilian blowout leaves your hair smoother, shinier and easier to manage."
-      },
-      {
-        "type": "p",
-        "html": "<a href=\"/book-online/\">Hair extensions</a>: I work with high-quality extensions that blend with your own hair, for more length, more volume or both. I’ll also show you how to care for them so they stay looking fresh."
-      },
-      {
-        "type": "p",
-        "html": "<a href=\"/book-online/\">Bridal and event hair and makeup</a>: For weddings, parties, photoshoots and special events, I do hair and makeup that photographs beautifully and lasts all day, so you can relax and enjoy the moment. Bring photos of looks you love and we’ll plan yours together."
-      },
-      {
-        "type": "h2",
-        "text": "How to book"
-      },
-      {
-        "type": "p",
-        "html": "The easiest way is to call or text me at <a href=\"tel:+1-347-671-5095\">347-671-5095</a>, or send me a message on <a href=\"https://www.instagram.com/hairbygerta/\" target=\"_blank\">Instagram</a> or <a href=\"https://www.facebook.com/profile.php?id=61596324347147\" target=\"_blank\">Facebook</a>. I’m at the salon Tuesday to Saturday, 9 AM to 5 PM. Prices are set by the salon, so just ask when you book. I look forward to seeing you in my chair here in Staten Island!"
-      }
-    ]
+  "book": {
+    "heading": "Book with Gerta",
+    "text": {
+      "label": "Text me"
+    },
+    "call": {
+      "label": "Call me"
+    },
+    "phone": "347-671-5095"
   },
   "notes": [
-    "more (21 November 2026): the text under Meet Gerta is new, not on Wix. It is Gerta's own first-person text about her work at Le Vigne Hair Salon, her services (each linked to the services page) and how to book. The sentence that she has worked there for about seven years is to be confirmed by Gerta. No prices: the salon sets them. It uses the text style of the policy pages (blocks, as in the policy page files).",
+    "book (21 November 2026, decision 68): the beige box under Meet Gerta, not on Wix. It holds a heading and two buttons and nothing else. text.label is the button that opens the visitor's own text message app with Gerta's number and with the first words already written (sms_href and sms_message in site.json), so the visitor only finishes the message and sends it. call.label is the button that calls tel_href. phone is the number under the two buttons, shown on screens wider than a phone, where a text message app is rare and the visitor types the number into a phone. Until decision 69 the words of the text message were stored here as text.message. They are sms_message in site.json now, because the bar at the bottom of a phone screen opens the same message on every page.",
+    "more (taken out on 21 November 2026, decision 68): for a few hours that day the page had about 320 words of Gerta's own text under Meet Gerta (A little about me, What I do, How to book, decision 66). The helper found it too long and asked for it to go and for a button that makes texting easy. Nothing of it is left on the page. The text is in the history of the repository (commit 845247c) should it ever be wanted on another page.",
     "hero.button.label read 'Book Online' on Wix and on this site until 18 November 2026. Online booking was dropped on 2 November 2026: the button opens the page with the services, where every Book Now button places a phone call. So it now says 'View Services', and the menu link to the same page says 'Services' (content/site.json). The phone number right under the button and the Call bar are the ways to book.",
     "Typos fixed: one, on 9 November 2026: the comma in high-quality, hair extensions (meet.paragraph_2) was taken out, it now reads high-quality hair extensions. Every other text on this page is word for word the live Wix text.",
     "title is the live Wix title tag, unchanged (it keeps its en dash). description was rewritten on 9 November 2026, because the Wix text read badly (\"is a hair stylist Staten Island NY and makeup artist\"). The Wix text was: Hair & Makeup by Gerta is a hair stylist Staten Island NY and makeup artist specializing in balayage highlights, color, cuts, keratin treatments, Brazilian blowouts and soft, natural glam for every occasion. The new text names Gerta, the salon and the town, and fits in the 160 characters a search result shows. This change and the comma are on the fixed list of intended differences in qa/check_content.py. Earlier note: They replace the description of the first version, which read: Gerta Lila is a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, NY. Haircuts, color, balayage, extensions and makeup. Tuesday to Saturday, 9 AM to 5 PM.",

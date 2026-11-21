@@ -169,6 +169,14 @@ ctx.social(links=None, icons="disc") -> str
                         item of the Contact page
     (This helper is an addition to the list in section 5 of the contract.)
 
+ctx.text_href() -> str
+    The address of a Text button: "sms_href" and "sms_message" of content/site.json joined to
+    sms:+13476715095?&body=..., which opens the text message app of the visitor with Gerta's number and the
+    first words already written. The Text button of the bar at the bottom of a phone screen and the one of
+    the open phone menu use the same address, so a page that has its own Text button (the home page) takes
+    it from here and never writes one itself. Plain text: it goes through ctx.esc like every address.
+    (This helper is an addition to the list in section 5 of the contract, decision 69.)
+
 RULES FOR A PAGE MODULE
 
   - Standard library only, no import from another page module, no file reading, nothing that changes from
@@ -306,6 +314,15 @@ CALL_ICON = ('<svg class="call-bar-icon" viewBox="0 0 256 256" width="20" height
              '52.42A20.06 20.06 0 0 0 224 154.8M176 204A124.15 124.15 0 0 1 52 80a36.29 36.29 0 0 1 28.48-35.54l18.82 42l-'
              '19.16 22.82a12 12 0 0 0-.86 1.16A20 20 0 0 0 78 130.08c9.42 19.28 28.83 38.56 48.31 48a20 20 0 0 0 19.69-1.'
              '45a12 12 0 0 0 1.11-.85l22.43-19.07l42 18.81A36.29 36.29 0 0 1 176 204"/></svg>')
+# A speech bubble, the drawing of the Text button that stands beside the Call button since 21 November 2026
+# (decision 69). Decoration too. Phosphor in its Bold style (ph:chat-circle-dots-bold), the path of the set
+# unchanged. License: tools/licenses/MIT-PhosphorIcons.txt.
+TEXT_ICON = ('<svg class="call-bar-icon" viewBox="0 0 256 256" width="20" height="20" fill="currentColor" '
+             'aria-hidden="true" focusable="false">'
+             '<path d="M120 128a16 16 0 1 1-16-16a16 16 0 0 1 16 16m32-16a16 16 0 1 0 16 16a16 16 0 0 0-16-16m84 16a108 '
+             '108 0 0 1-157.23 96.15L46.34 235A20 20 0 0 1 21 209.66l10.81-32.43A108 108 0 1 1 236 128m-24 0a84 84 0 1 0-'
+             '156.73 42.06a12 12 0 0 1 1 9.81l-9.93 29.79l29.79-9.93a12.1 12.1 0 0 1 3.8-.62a12 12 0 0 1 6 1.62A84 84 0 0 '
+             '0 212 128"/></svg>')
 # The two small drawings of the salon card at the bottom of the open phone menu (div.nav-more): a clock in front of
 # the opening hours and a map pin in front of the address. Decoration. Phosphor in its Regular style (ph:clock,
 # ph:map-pin), the same set as the Contact page. License: tools/licenses/MIT-PhosphorIcons.txt.
@@ -635,6 +652,10 @@ class Ctx:
     def inline(self, html):
         return self._inline(html, None)
 
+    def text_href(self):
+        """The address of a Text button: the text message app, Gerta's number, the first words already written."""
+        return _text_href(self.site)
+
     def blocks(self, blocks):
         if not isinstance(blocks, list):
             raise BuildError("%s: ctx.blocks needs the list of blocks, it was given %s"
@@ -912,6 +933,21 @@ class Ctx:
 # The shared page: head, header, footer (contract, section 6)
 # ----------------------------------------------------------------------------------------------------------
 
+def _text_href(site):
+    """The address of every Text button: "sms_href" and "sms_message" of content/site.json as one address.
+
+    "sms:NUMBER?&body=MESSAGE" is the one form that both an iPhone and an Android phone understand, and the
+    form the script uses for the text link of the Contact page (js/site.js). Every character of the message
+    that is not a letter or a digit is written as a percent code, so nothing in it can end the address early.
+    """
+    number = _need(site, "sms_href", str).strip()
+    message = _need(site, "sms_message", str).strip()
+    if not number.lower().startswith("sms:") or "?" in number or "&" in number:
+        raise BuildError('content/site.json: key "sms_href" must be "sms:" and the phone number, nothing after it '
+                         '(it is "%s"). The words of the text message are the key "sms_message"' % number)
+    return "%s?&body=%s" % (number, urllib.parse.quote(message, safe=""))
+
+
 def _indent(markup, spaces):
     pad = " " * spaces
     return "\n".join(pad + line if line else line for line in markup.split("\n"))
@@ -1053,9 +1089,13 @@ def _document(page, ctx, parts, site, jsonld, year):
     out += ["        " + line for line in nav]
     out.append("      </ul>")
     # The salon card at the bottom of the open phone menu: opening hours, the address (it opens the map), the
-    # Facebook and Instagram buttons and the Call button, all from content/site.json and all said elsewhere on
-    # the page too (footer, Call bar). The stylesheet shows it in the open phone menu only: on a wide screen and
-    # without the script it is not there for anyone, a screen reader included.
+    # Facebook and Instagram buttons and the Text and Call buttons, all from content/site.json and all said
+    # elsewhere on the page too (footer, Call bar). The stylesheet shows it in the open phone menu only: on a
+    # wide screen and without the script it is not there for anyone, a screen reader included.
+    # The Text button and the Call button (decision 69): the same two in the card and in the bar at the bottom
+    # of the screen. Text opens the text message app with the number and the first words, Call calls the number.
+    text_href, tel_href = esc(_text_href(site)), esc(_need(site, "tel_href", str))
+    text_label, call_label = _text(_need(site, "text_bar_label", str)), _text(_need(site, "call_bar_label", str))
     days, comma, times = _need(site, "hours", str).partition(", ")
     street, comma2, town = _need(site, "address_one_line", str).partition(", ")
     out += [
@@ -1066,8 +1106,10 @@ def _document(page, ctx, parts, site, jsonld, year):
         % (esc(_need(site, "maps_href", str)), NAV_ICONS["address"], _text(street),
            ', <span class="nowrap">%s</span>' % _text(town) if comma2 else ""),
         _indent(ctx.social(_need_objects(site, "social"), icons="bare"), 8),
-        '        <a class="nav-call" href="%s">%s<span class="call-bar-label">%s</span> <span class="call-bar-num">%s</span></a>'
-        % (esc(_need(site, "tel_href", str)), CALL_ICON, _text(_need(site, "call_bar_label", str)), _text(_need(site, "phone", str))),
+        '        <div class="nav-calls">',
+        '          <a class="nav-call nav-text" href="%s">%s<span class="call-bar-label">%s</span></a>' % (text_href, TEXT_ICON, text_label),
+        '          <a class="nav-call" href="%s">%s<span class="call-bar-label">%s</span></a>' % (tel_href, CALL_ICON, call_label),
+        "        </div>",
         "      </div>",
         "    </nav>",
         "  </div>",
@@ -1078,10 +1120,11 @@ def _document(page, ctx, parts, site, jsonld, year):
     out += [
         "</main>",
         '<footer class="site-footer">',
-        # The Call button that stays at the bottom of the screen on phones (hidden on wider screens).
+        # The Text button and the Call button that stay at the bottom of the screen on phones (hidden on wider
+        # screens). One Call button with the phone number until 21 November 2026 (decision 69).
         '  <div class="call-bar">',
-        '    <a class="call-bar-call" href="%s">%s<span class="call-bar-label">%s</span> <span class="call-bar-num">%s</span></a>'
-        % (esc(_need(site, "tel_href", str)), CALL_ICON, _text(_need(site, "call_bar_label", str)), _text(_need(site, "phone", str))),
+        '    <a class="call-bar-text" href="%s">%s<span class="call-bar-label">%s</span></a>' % (text_href, TEXT_ICON, text_label),
+        '    <a class="call-bar-call" href="%s">%s<span class="call-bar-label">%s</span></a>' % (tel_href, CALL_ICON, call_label),
         "  </div>",
         '  <div class="inner">',
         '    <hr class="foot-rule">',

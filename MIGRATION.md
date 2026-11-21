@@ -1002,11 +1002,11 @@ To see the size of a placeholder, right-click it, choose **Properties** and open
 
 ## 7. Booking by phone
 
-Every **Book Now** button on the new site calls 347-671-5095. There are 10 of them, one for each service on the Book Online page. The **Book Online** button on the home page opens that page. There is no online booking link to paste and nothing to set up. [Section 1, Part 3](#part-3-booking-stays-by-phone) says why.
+Every **Book Now** button on the new site calls 347-671-5095. There are 10 of them, one for each service on the Book Online page. Under Meet Gerta the home page has two more buttons: **Text me** opens the visitor's text message app with your number and the first words already written, and **Call me** calls it. On a phone the same two buttons also stay at the bottom of the screen on every page. The **Book Online** button on the home page opens that page. There is no online booking link to paste and nothing to set up. [Section 1, Part 3](#part-3-booking-stays-by-phone) says why.
 
 If the phone number ever changes, tell your helper. The site is in the helper's GitHub account, so the helper makes the change, in three places in the folder `hairbygerta`.
 
-- In several files in the folder `content`. Search all of them for the old number, 347-671-5095.
+- In several files in the folder `content`. Search all of them for the old number, 347-671-5095, and for 3476715095, which is how the text message links write it.
 - In `js/site.js`, on the line with `var phoneHref`. This is the number the **Book Now** buttons call.
 - In `seo/jsonld-home.json`, which gives the number to search engines.
 

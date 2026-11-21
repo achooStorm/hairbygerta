@@ -16,12 +16,19 @@
       h2#meet-h.serif                       "meet.heading"
       p.t1, div.p1 > img                    "meet.paragraph_1", "meet.portrait"
       p.t2, div.p2 > img                    "meet.paragraph_2", "meet.large"
-    section.legal.home-more                 "more.blocks", Gerta's own text, in the text style of the policy pages
+    section.reach                           "book", the beige box with the Text button and the Call button
+      h2#reach-h.serif                      "book.heading"
+      div.reach-btns
+        a.reach-btn.reach-text              "book.text": opens the text message app with Gerta's number and
+                                            the first words already written (ctx.text_href())
+        a.reach-btn.reach-call              "book.call": calls the number
+      a.reach-num                           "book.phone", calls the number too. The stylesheet shows it on
+                                            screens wider than a phone
 
 Where the words come from
     content/home.json    every text of the page, the photos and the size each photo is shown at
-    content/site.json    the two addresses behind the phone number and the street address
-                         ("tel_href" and "maps_href")
+    content/site.json    the addresses behind the phone number, the Text button and the street address
+                         ("tel_href", "sms_href" with "sms_message", and "maps_href")
 
 To change a text or a photo, edit content/home.json and run
     python tools/build_pages.py --only home
@@ -44,6 +51,26 @@ GALLERY_PATH = "/gallery/"
 
 # The map pin in front of the street address. It is decoration, so screen readers skip it.
 PIN = '<span class="pin" aria-hidden="true">&#128205;</span>'
+
+# The two drawings of the Text button and the Call button (section.reach). Decoration: the words of a button say
+# what it does. Both are Phosphor icons in the Bold style, a speech bubble (ph:chat-circle-dots-bold) and a
+# handset (ph:phone-bold), the very paths of TEXT_ICON and CALL_ICON in tools/build_pages.py, the two drawings
+# of the bar at the bottom of a phone screen, unchanged. License: tools/licenses/MIT-PhosphorIcons.txt.
+_REACH_SVG = ('<svg class="reach-icon" viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true" '
+              'focusable="false"><path d="%s"/></svg>')
+REACH_ICONS = {
+    "text": _REACH_SVG % (
+        "M120 128a16 16 0 1 1-16-16a16 16 0 0 1 16 16m32-16a16 16 0 1 0 16 16a16 16 0 0 0-16-16m84 16a108 108 0 0 1-"
+        "157.23 96.15L46.34 235A20 20 0 0 1 21 209.66l10.81-32.43A108 108 0 1 1 236 128m-24 0a84 84 0 1 0-156.73 42."
+        "06a12 12 0 0 1 1 9.81l-9.93 29.79l29.79-9.93a12.1 12.1 0 0 1 3.8-.62a12 12 0 0 1 6 1.62A84 84 0 0 0 212 128"),
+    "call": _REACH_SVG % (
+        "m224 154.8l-47.09-21.11l-.18-.08a19.94 19.94 0 0 0-19 1.75a13 13 0 0 0-1.12.84l-22.31 19c-13-7.05-26.43-20."
+        "37-33.49-33.21l19.06-22.66a12 12 0 0 0 .85-1.15a20 20 0 0 0 1.66-18.83a1.4 1.4 0 0 1-.08-.18L101.2 32a20.06 "
+        "20.06 0 0 0-20.78-11.85A60.27 60.27 0 0 0 28 80c0 81.61 66.39 148 148 148a60.27 60.27 0 0 0 59.85-52.42A20."
+        "06 20.06 0 0 0 224 154.8M176 204A124.15 124.15 0 0 1 52 80a36.29 36.29 0 0 1 28.48-35.54l18.82 42l-19.16 22."
+        "82a12 12 0 0 0-.86 1.16A20 20 0 0 0 78 130.08c9.42 19.28 28.83 38.56 48.31 48a20 20 0 0 0 19.69-1.45a12 12 0 "
+        "0 0 1.11-.85l22.43-19.07l42 18.81A36.29 36.29 0 0 1 176 204"),
+}
 
 # The stylesheet lays the photo row out as three columns, so the row holds three photos (decision 56).
 PHOTOS_IN_ROW = 3
@@ -76,7 +103,7 @@ def _photo(ctx, slot, lazy=True, sizes=None):
 
 def render(ctx):
     c, site, esc = ctx.content, ctx.site, ctx.esc
-    hero, meet, row = c["hero"], c["meet"], c["photo_row"]
+    hero, meet, row, book = c["hero"], c["meet"], c["photo_row"], c["book"]
 
     # Since 21 November 2026 the h1 says what Gerta does and where, and "It's Your Day to Shine!" is the tagline.
     if hero["tagline"] == c["h1"]:
@@ -130,14 +157,18 @@ def render(ctx):
         '  <p class="t2">%s</p>' % esc(meet["paragraph_2"]),
         '  <div class="p2">%s</div>' % _photo(ctx, meet["large"], sizes=LARGE_PHOTO_SIZES),
         "</section>",
-        # Gerta's own text about her work, her services and how to book (21 November 2026). It uses the text
-        # style of the policy pages (.legal), so it adds no new look to the site.
-        '<section class="legal home-more" aria-labelledby="more-h">',
+        # The beige box with the two ways to reach Gerta (21 November 2026, decision 68). It took the place of
+        # Gerta's own text, which the helper found too long. Text comes first: it is the button the box was made
+        # for. Each button is a plain link, so both work without the script.
+        '<section class="reach" aria-labelledby="reach-h">',
+        '  <h2 id="reach-h" class="serif">%s</h2>' % esc(book["heading"]),
+        '  <div class="reach-btns">',
+        '    <a class="reach-btn reach-text" href="%s">%s<span>%s</span></a>'
+        % (esc(ctx.text_href()), REACH_ICONS["text"], esc(book["text"]["label"])),
+        '    <a class="reach-btn reach-call" href="%s">%s<span>%s</span></a>'
+        % (esc(site["tel_href"]), REACH_ICONS["call"], esc(book["call"]["label"])),
+        "  </div>",
+        '  <a class="reach-num" href="%s">%s</a>' % (esc(site["tel_href"]), esc(book["phone"])),
+        "</section>",
     ]
-    more = ctx.blocks(c["more"]["blocks"])
-    # The first heading of the section names it for screen readers.
-    if not more.startswith("<h2>"):
-        raise _wrong("more.blocks", "must start with a heading (a block of type h2)")
-    lines.append('<h2 id="more-h">' + more[len("<h2>"):])
-    lines.append("</section>")
     return {"body": "\n".join(lines), "head_extra": ""}
