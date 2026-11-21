@@ -1753,14 +1753,18 @@ body.lightbox-open {
 /* ---------- The label on the photo row (decision 72) ----------
    On a touch screen nothing shows that the three photos are links: no mouse pointer
    changes its shape there. So a small blue label, "Tap for more photos" with a star in
-   front, comes up on the lower edge of the photos once they have scrolled into view,
-   and goes again after a few seconds (js/site.js, part 9, puts the class "on" on it
-   and takes it away).
+   front, comes up on the lower edge of the photos once the visitor has started to
+   scroll and they are in view, and goes again after a few seconds (js/site.js, part 9,
+   puts the class "on" on it and takes it away).
    The label lies on top of the photos and takes no room, so the page is not one pixel
-   taller with it. A tap on it reaches the photo under it (pointer-events).
+   taller with it. It is a link to the Gallery itself, because it is wider than the
+   photo under it and reaches over the gaps between the photos. While it is away it
+   cannot be tapped (visibility), and a tap there reaches the photo.
    Without the script, and under a mouse, it is never shown: there the row is exactly
-   what it was. */
-.row-cue {
+   what it was.
+   ".photo-row" stands in front of these rules so that they win over ".photo-row a",
+   which would lay the label out as a fourth photo. */
+.photo-row .row-cue {
   display: none;
 }
 
@@ -1769,22 +1773,26 @@ body.lightbox-open {
      photos. It never moves (the script watches it to know when the label is in view).
      Hidden until the script says "on", and hidden again half a second after the script
      took the word away, when the label inside has faded. */
-  html.js .row-cue {
+  html.js .photo-row .row-cue {
     position: absolute;
     bottom: 10px;
     left: 50%;
     z-index: 1;
     display: block;
-    margin: 0;
     transform: translateX(-50%);
     visibility: hidden;
     transition: visibility 0s linear 0.5s;
-    pointer-events: none;
+    text-decoration: none;
   }
 
-  html.js .row-cue.on {
+  html.js .photo-row .row-cue.on {
     visibility: visible;
     transition-delay: 0s;
+  }
+
+  /* A little darker while a finger is on it, as the buttons of the site. */
+  .row-cue:active span {
+    filter: brightness(0.88);
   }
 
   /* The label itself. Away it is see-through and 12 px lower, so it rises as it comes. */
@@ -1858,7 +1866,7 @@ body.lightbox-open {
 
 /* On a tablet the photos are larger, and so is the label. */
 @media (min-width: 761px) {
-  html.js .row-cue {
+  html.js .photo-row .row-cue {
     bottom: 18px;
   }
 

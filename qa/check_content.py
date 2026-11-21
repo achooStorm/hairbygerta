@@ -155,6 +155,7 @@ MENU_LABEL, NAV_LABEL = "Menu", "Main"                  # section 6: button.menu
 PHOTO_ROW_LABEL = "Featured work"                       # section 7, Home: section.photo-row
 PHOTO_LINK_LABEL = "%s. Open the Gallery"               # section 7, Home: the link around each photo of the row (decision 63)
 GALLERY_LINK_LABEL = "Open the Gallery"                 # the same link around a photo without a description
+GALLERY_PATH = "/gallery/"                              # section 7, Home: where the label on the photo row leads (decision 72)
 GALLERY_LABEL_WITH_ALT = "%s: %s"                       # section 7, Gallery: "View photo 3 of 21: WHAT IT SHOWS" (decision 63)
 HOURS_LABEL = "Hours: %s"                               # section 7, Home: div.marquee
 BOOK_LABEL = "%s: %s"                                   # section 7, Book Online: "Book Now: SERVICE"
@@ -707,9 +708,12 @@ def expect_main(ex, content, site):
             ex.links.append(ContentLink("main", maps.strip(), norm(value), "", "%s: %s, a Maps link by section 7 of the build contract" % (file, path)))
         elif slug == "home" and path == "photo_row_cue" and isinstance(value, dict):
             # Decision 72. The words of the label are in the HTML of the page after the three photos (js/site.js shows
-            # the label for a few seconds on a touch screen). "seconds" is a number and no text of the page.
+            # the label for a few seconds on a touch screen). The label is a link to the Gallery. "seconds" is a
+            # number and no text of the page.
             if isinstance(value.get("label"), str):
                 emit(path + ".label", value["label"], intended=HOME_CUE_INTENDED)
+                ex.links.append(ContentLink("main", content_target(GALLERY_PATH), norm(value["label"]), "",
+                                            "%s: %s.label, a link to the Gallery by section 7 of the build contract" % (file, path)))
         elif slug in BOOK_BOX_INTENDED and path in ("book.text", "book.call") and isinstance(value, dict):
             # Decisions 68 and 70. The label is the visible text of the button. The Text button opens the text message
             # app with the number and the first words of content/site.json (sms_href, sms_message, decision 69).

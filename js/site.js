@@ -1062,11 +1062,18 @@ var BOOKING_URL = "";
   /*
    * The three photos of the home page are links to the Gallery. On a touch
    * screen nothing shows that, so a small blue label on the photos says it,
-   * "Tap for more photos" (.row-cue inside .photo-row). The stylesheet keeps
-   * it away until it carries the class "on", and never shows it under a mouse.
-   * This part puts the class on when the label has scrolled into view, and
-   * takes it away again after the seconds written on the label (data-seconds,
-   * from content/home.json, 4 when nothing usable is there).
+   * "Tap for more photos" (.row-cue inside .photo-row, itself a link to the
+   * Gallery). The stylesheet keeps it away until it carries the class "on",
+   * and never shows it under a mouse.
+   * This part puts the class on once two things are true: the visitor has
+   * started to scroll, and the label is in view. It takes the class away
+   * again after the seconds written on the label (data-seconds, from
+   * content/home.json, 4 when nothing usable is there).
+   * Started to scroll: the page has moved at all. On most phones the photos
+   * come into view with that first movement. On a tall screen they are in
+   * view from the start, and there the label waits for the first movement
+   * too, so it does not play while the visitor still reads the top of the
+   * page. A page that opens already scrolled (a reload) counts as scrolled.
    * In view means: 140 px or more under the upper edge of the screen, so the
    * header is not over it and a good piece of the photos shows above it, and
    * 90 px or more above the lower edge, clear of the bar of a phone.
@@ -1087,20 +1094,22 @@ var BOOKING_URL = "";
     if (!(seconds > 0)) {
       seconds = 4;
     }
+    var scrolled = (window.pageYOffset || document.documentElement.scrollTop || 0) > 0;
+    var inView = false;
     var coming = null;  // the timer of the 0.4 seconds before the label comes
     var staying = null; // the timer of the seconds it stays
-    var watcher = new IntersectionObserver(function (entries) {
-      var last = entries[entries.length - 1];
-      // In view: nine tenths of the label or more. Browsers do not agree on what
-      // isIntersecting says below that mark, so the share is asked for as well.
-      if (!last.isIntersecting || last.intersectionRatio < 0.9) {
+    var watcher = null;
+
+    // Called whenever one of the two things may have changed.
+    function look() {
+      if (!inView) {
         window.clearTimeout(coming);
         window.clearTimeout(staying);
         coming = staying = null;
         cue.classList.remove("on");
         return;
       }
-      if (coming !== null || staying !== null) {
+      if (!scrolled || coming !== null || staying !== null) {
         return;
       }
       coming = window.setTimeout(function () {
@@ -1112,8 +1121,25 @@ var BOOKING_URL = "";
           watcher.disconnect();
         }, seconds * 1000);
       }, 400);
+    }
+
+    function onFirstScroll() {
+      window.removeEventListener("scroll", onFirstScroll);
+      scrolled = true;
+      look();
+    }
+
+    watcher = new IntersectionObserver(function (entries) {
+      var last = entries[entries.length - 1];
+      // In view: nine tenths of the label or more. Browsers do not agree on what
+      // isIntersecting says below that mark, so the share is asked for as well.
+      inView = last.isIntersecting && last.intersectionRatio >= 0.9;
+      look();
     }, { rootMargin: "-140px 0px -90px 0px", threshold: 0.9 });
     watcher.observe(cue);
+    if (!scrolled) {
+      window.addEventListener("scroll", onFirstScroll, { passive: true });
+    }
   }
 
   // ---------------------------------------------------------------------------
