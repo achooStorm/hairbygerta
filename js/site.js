@@ -33,8 +33,8 @@ var BOOKING_URL = "";
  *   6. Map                    the iframe with data-src inside .map
  *   7. Short header           the class "compact" on <html>, and the pressed
  *                             look of links and buttons on an iPhone
- *   8. Text and Call box      .reach on the home page: the class
- *                             "reach-on-screen" on <body>
+ *   8. Text and Call box      .reach on the home page and on the Services
+ *                             page: the class "reach-on-screen" on <body>
  *
  * Each part looks for its own elements and does nothing on a page that does
  * not have them. A part that fails does not stop the other parts.
@@ -45,7 +45,8 @@ var BOOKING_URL = "";
  * full height, and the Contact page hides its form (the sentence above it
  * gives the phone number and the email address as links) and offers the map
  * as a link to Google Maps. The bar at the bottom of a phone screen then
- * stays on the screen beside the Text and Call box of the home page.
+ * stays on the screen beside the Text and Call box of the home page and
+ * of the Services page.
  */
 (function () {
   "use strict";
@@ -1022,12 +1023,12 @@ var BOOKING_URL = "";
   }
 
   // ---------------------------------------------------------------------------
-  // 8. Text and Call box of the home page
+  // 8. Text and Call box of the home page and of the Services page
   // ---------------------------------------------------------------------------
 
   /*
-   * The beige box under Meet Gerta (.reach) holds a Text button and a Call
-   * button, and so does the bar at the bottom of a phone screen (.call-bar).
+   * The beige box under Meet Gerta and the one under the cards of the
+   * Services page (.reach) hold a Text button and a Call button, and so does the bar at the bottom of a phone screen (.call-bar).
    * While the box is on the screen the bar steps aside (class
    * "reach-on-screen" on body, the stylesheet slides the bar away), so the
    * visitor never sees the same two buttons twice. The box counts as on the

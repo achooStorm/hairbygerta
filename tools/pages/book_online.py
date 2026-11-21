@@ -14,15 +14,19 @@ Contract, section 7, Book Online:
               p.duration
               p.price
             a.pill[data-book]     the Book Now button
-      p.book-note                 the closing line under the cards
+      section.reach               the beige box "Book with Gerta" under the cards, with the Text button and
+                                  the Call button, built by ctx.reach (tools/build_pages.py). Until
+                                  21 November 2026 one line stood here, p.book-note (decision 70)
 
 Every word a visitor reads comes from content/book-online.json:
     h1                  the heading of the page
     services            the cards, each with title, description, duration, price and image
                         (image is an image slot, see section 3 of tools/CONTRACT.md)
     button_label        the text of the button in every card
-    closing_note_html   the line under the cards, with the phone number as a link
-The phone link of the buttons comes from content/site.json (tel_href).
+    book                the box under the cards: its heading, the words of the Text button and of the
+                        Call button, and the phone number shown under them on screens wider than a phone
+The phone link of the buttons comes from content/site.json (tel_href), and so does the address of the
+Text button (sms_href with sms_message).
 
 The Book Now button calls the phone number. The salon uses its own booking, so the site has no online
 booking link and BOOKING_URL in js/site.js stays empty. Should a link ever be filled in there, the
@@ -93,7 +97,8 @@ def render(ctx):
         '  <div class="services">',
         _indent("\n".join(cards), 4),
         "  </div>",
-        '  <p class="book-note">%s</p>' % ctx.inline(c["closing_note_html"]),
+        # The same box as at the end of the home page (decision 70). It took the place of the closing line.
+        _indent(ctx.reach(c["book"]), 2),
         "</div>",
     ])
     return {"body": body, "head_extra": ""}

@@ -60,7 +60,7 @@ Phone (decision 16): Wix draws its phone page 320 px wide and the phone enlarges
   block order   one entry per page: the paired blocks of main and footer come in the same order, top to bottom,
                 as on the Wix phone page. Two blocks are out of order when one is wholly above the other on Wix
                 and wholly below it on our page. Not part of it: the phone header, the home photo row, the extra
-                Hours block, the closing booking note, the copyright line, the order of the contact details
+                Hours block, the Book with Gerta box, the copyright line, the order of the contact details
                 among themselves (decision 8), and what PHONE_ORDER_OPEN lists as an open question for the
                 owner (those blocks get an entry of their own with ok true).
   fits screen   one entry per page: no element and no line of text reaches past the edge of the screen, and
@@ -77,13 +77,13 @@ The brief's measurement list (entries whose check name starts with "brief-")
 Reported with ok true
   font metrics   width of text and height of wrapped text (Bodoni Moda and Figtree are not Didot and Proxima Nova)
   intended       placeholders instead of photos, the extra Hours block and the Open in Google Maps link under the
-                 map on the contact page, the closing booking
-                 note, on the Privacy Policy what stands under a sentence about Wix that our page leaves out on
+                 map on the contact page, on the Privacy Policy what stands under a sentence about Wix that our page leaves out on
                  purpose (it sits higher than on Wix, because our text there is shorter), the copyright line,
                  the phone photo row (a 2 x 2 grid where Wix hides the row), the Wix chat button, underlined
                  links inside a sentence (decision 18), the Text and Call buttons at the bottom of the phone
-                 screen (decisions 40 and 69), the Book with Gerta box under Meet Gerta on the home page (decision 68: its
-                 beige box, heading, two buttons and phone number), the centred beige box
+                 screen (decisions 40 and 69), the Book with Gerta box under Meet Gerta on the home page and
+                 under the cards of the Book Online page (decisions 68 and 70: its beige box, heading, two
+                 buttons and phone number), the centred beige box
                  (decision 4), an empty stretch of 300 px or more that only the Wix page has above its footer
   intended x     desktop, the horizontal place alone (size, font and vertical place are compared as everywhere):
                  home (decision 21): site title, welcome paragraph, dotted rule, Book Online button and address
@@ -128,9 +128,11 @@ TYPE_TOL = 2.0                  # line height and corner radius
 # The bar at the bottom of the screen on phones, a Text button and a Call button (build contract, decisions 40 and
 # 69): not on Wix, on purpose. It is fixed to the screen, so it pushes nothing down.
 CALL_BAR = "Text and Call buttons at the bottom of the screen on phones"
-# The beige box under Meet Gerta with the Text button and the Call button (build contract, decision 68): not on Wix,
-# on purpose. It stands in the flow of the page, so the footer under it is pushed down by its height.
-REACH = "Book with Gerta box under Meet Gerta (decision 68)"
+# The beige box with the Text button and the Call button, under Meet Gerta on the home page and under the cards of the
+# Book Online page (build contract, decisions 68 and 70): not on Wix, on purpose. It stands in the flow of the page, so
+# the footer under it is pushed down by its height. Until decision 70 the Book Online page had a closing booking note
+# in that place (p.book-note), intended too.
+REACH = "Book with Gerta box with the Text button and the Call button (decisions 68 and 70)"
 PRIVACY_SLUG = "english-privacy-policy"
 WIX_WORD = re.compile(r"\bwix\b", re.I)     # a sentence that names Wix (see the privacy rule of qa/check_content.py)
 FONT_TOL = 0.5                  # font size
@@ -1242,8 +1244,6 @@ class Compare:
             return CALL_BAR
         if ".reach" in marks:
             return REACH
-        if ".book-note" in marks:
-            return "closing booking note"
         if (".info-item" in marks or ".info" in marks) and text_key(t["group"]) == "hours":
             return "extra Hours block on the contact page"
         if ".map-open" in marks:
@@ -1677,7 +1677,7 @@ class Compare:
         moved = []
         if self.phone:
             looked, moved, left_out = self.block_order()
-            excepted = ("not part of the order: the phone header, the home photo row, the extra Hours block, the closing booking note, the copyright line, "
+            excepted = ("not part of the order: the phone header, the home photo row, the extra Hours block, the Book with Gerta box, the copyright line, "
                         "pieces of a sentence, and the contact details among themselves (%s)" % DECISION_8)
             if left_out:
                 out.append(entry(slug, vp, name("block order: open question"), True, PHONE_ORDER_OPEN[slug][1],
