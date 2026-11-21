@@ -306,6 +306,21 @@ CALL_ICON = ('<svg class="call-bar-icon" viewBox="0 0 256 256" width="20" height
              '52.42A20.06 20.06 0 0 0 224 154.8M176 204A124.15 124.15 0 0 1 52 80a36.29 36.29 0 0 1 28.48-35.54l18.82 42l-'
              '19.16 22.82a12 12 0 0 0-.86 1.16A20 20 0 0 0 78 130.08c9.42 19.28 28.83 38.56 48.31 48a20 20 0 0 0 19.69-1.'
              '45a12 12 0 0 0 1.11-.85l22.43-19.07l42 18.81A36.29 36.29 0 0 1 176 204"/></svg>')
+# The two small drawings of the salon card at the bottom of the open phone menu (div.nav-more): a clock in front of
+# the opening hours and a map pin in front of the address. Decoration. Phosphor in its Regular style (ph:clock,
+# ph:map-pin), the same set as the Contact page. License: tools/licenses/MIT-PhosphorIcons.txt.
+_NAV_SVG = ('<svg class="nav-icon" viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true" '
+            'focusable="false"><path d="%s"/></svg>')
+NAV_ICONS = {
+    "hours": _NAV_SVG % (
+        "M128 24a104 104 0 1 0 104 104A104.11 104.11 0 0 0 128 24m0 192a88 88 0 1 1 88-88a88.1 88.1 0 0 1-88 88m64-88a8 "
+        "8 0 0 1-8 8h-56a8 8 0 0 1-8-8V72a8 8 0 0 1 16 0v48h48a8 8 0 0 1 8 8"),
+    "address": _NAV_SVG % (
+        "M128 64a40 40 0 1 0 40 40a40 40 0 0 0-40-40m0 64a24 24 0 1 1 24-24a24 24 0 0 1-24 24m0-112a88.1 88.1 0 0 0-88 "
+        "88c0 31.4 14.51 64.68 42 96.25a254.2 254.2 0 0 0 41.45 38.3a8 8 0 0 0 9.18 0a254.2 254.2 0 0 0 41.37-38.3c27."
+        "45-31.57 42-64.85 42-96.25a88.1 88.1 0 0 0-88-88m0 206c-16.53-13-72-60.75-72-118a72 72 0 0 1 144 0c0 57.23-55."
+        "47 105-72 118"),
+}
 MENU_LABEL = "Menu"                     # accessible name of the phone menu button (contract, section 6)
 NAV_LABEL = "Main"                      # accessible name of the navigation (contract, section 6)
 RESULT_KEYS = ("body", "head_extra", "head_first", "robots")
@@ -1036,8 +1051,24 @@ def _document(page, ctx, parts, site, jsonld, year):
         "      <ul>",
     ]
     out += ["        " + line for line in nav]
+    out.append("      </ul>")
+    # The salon card at the bottom of the open phone menu: opening hours, the address (it opens the map), the
+    # Facebook and Instagram buttons and the Call button, all from content/site.json and all said elsewhere on
+    # the page too (footer, Call bar). The stylesheet shows it in the open phone menu only: on a wide screen and
+    # without the script it is not there for anyone, a screen reader included.
+    days, comma, times = _need(site, "hours", str).partition(", ")
+    street, comma2, town = _need(site, "address_one_line", str).partition(", ")
     out += [
-        "      </ul>",
+        '      <div class="nav-more">',
+        '        <p class="nav-fact">%s<span>%s%s</span></p>'
+        % (NAV_ICONS["hours"], _text(days), ', <span class="nowrap">%s</span>' % _text(times) if comma else ""),
+        '        <p class="nav-fact"><a href="%s" target="_blank" rel="noopener">%s<span>%s%s</span></a></p>'
+        % (esc(_need(site, "maps_href", str)), NAV_ICONS["address"], _text(street),
+           ', <span class="nowrap">%s</span>' % _text(town) if comma2 else ""),
+        _indent(ctx.social(_need_objects(site, "social"), icons="bare"), 8),
+        '        <a class="nav-call" href="%s">%s<span class="call-bar-label">%s</span> <span class="call-bar-num">%s</span></a>'
+        % (esc(_need(site, "tel_href", str)), CALL_ICON, _text(_need(site, "call_bar_label", str)), _text(_need(site, "phone", str))),
+        "      </div>",
         "    </nav>",
         "  </div>",
         "</header>",

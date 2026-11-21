@@ -477,6 +477,12 @@ body.lightbox-open {
   }
 }
 
+/* The salon card of the open phone menu (hours, address, social buttons, Call button).
+   It exists in the open phone menu only, see Phones below. */
+.nav-more {
+  display: none;
+}
+
 /* A low screen that is wider than a phone held upright (a phone held sideways, a very
    low browser window): the 159 px header would cover two fifths of it, so it scrolls
    away with the page instead of staying on top, and nothing has to stop clear of it.
@@ -848,22 +854,26 @@ body.lightbox-open {
   }
 
   /* Navigation: hidden until the button opens it (class open), then a sheet that
-     fills the screen under the header. Each link is a 52 px tall row.
+     fills the screen under the header, laid out like the menu of an app (decision 67):
+     the five pages as large rows at the top, and at the bottom the salon card with the
+     opening hours, the address, Facebook and Instagram and the Call button.
      Closed, the sheet is not hidden with display: none but with visibility: hidden,
      which hides it from the eye, from taps, from the Tab key and from screen readers
-     alike, and can be faded: the sheet fades in and its links come down 10 px in a
-     fifth of a second. On closing it stays visible for that fifth of a second.
-     The sheet starts under the part of the header that is drawn (--header-now), and
-     its padding keeps the links clear of the home bar of an iPhone. */
+     alike, and can be faded. On closing it stays visible for the fifth of a second the
+     fade takes.
+     The sheet starts under the part of the header that is drawn (--header-now). Its
+     two parts keep clear of the edges of an iPhone themselves (--safe-...). When a
+     screen is too low for both parts the sheet scrolls. */
   .main-nav {
     position: fixed;
     top: var(--header-now);
     right: 0;
     bottom: 0;
     left: 0;
-    display: block;
+    display: flex;
+    flex-direction: column;
     visibility: hidden;
-    padding: 14px calc(18px + var(--safe-right)) calc(32px + var(--safe-bottom)) calc(18px + var(--safe-left));
+    padding: 0;
     border-top: 1px solid var(--beige);
     background: var(--bg);
     opacity: 0;
@@ -880,29 +890,231 @@ body.lightbox-open {
 
   .main-nav ul {
     display: block;
-    transform: translateY(-10px);
-    transition: transform 0.2s ease;
+    flex: none;
   }
 
-  .main-nav.open ul {
+  /* ---- The five pages ----
+     Each page is a row of 58 px in the serif of the headings, with the dotted rule of
+     the site between two rows and an arrow head on the right, as the rows of the
+     Contact page have. The page the visitor is on is heavier and carries a dot in
+     place of the arrow head. A row under a finger turns beige from edge to edge. */
+  html.js .main-nav ul {
+    padding: 4px calc(var(--gutter) + var(--safe-right)) 20px calc(var(--gutter) + var(--safe-left));
+  }
+
+  html.js .main-nav li + li {
+    border-top: 1px dotted var(--ink);
+  }
+
+  html.js .main-nav li a {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    min-height: 58px;
+    padding: 6px 30px 6px 2px;
+    font-family: var(--serif);
+    font-size: calc(26px + 3 * var(--grow));
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-decoration: none;
+    white-space: normal;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html.js .main-nav li a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: calc(-1 * (var(--gutter) + var(--safe-right)));
+    bottom: 0;
+    left: calc(-1 * (var(--gutter) + var(--safe-left)));
+    background: var(--beige);
+    opacity: 0;
+  }
+
+  html.js .main-nav li a:active::before {
+    opacity: 1;
+  }
+
+  /* The arrow head: two sides of a 9 px square. */
+  html.js .main-nav li a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 9px;
+    height: 9px;
+    margin-top: -5px;
+    border-top: 1.5px solid var(--ink);
+    border-right: 1.5px solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  html.js .main-nav li a[aria-current="page"] {
+    font-weight: 700;
+  }
+
+  html.js .main-nav li a[aria-current="page"]::after {
+    right: 3px;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
     transform: none;
   }
 
-  .main-nav a {
-    padding: 12px 6px;
-    font-size: 22px;
-    line-height: 28px;
+  /* ---- The salon card ----
+     A beige panel at the bottom of the sheet, pushed down by the free room above it.
+     Two lines with a small drawing in front (hours, address: the address is one tap
+     target from edge to edge and opens the map), the two round buttons of Facebook and
+     Instagram, and the Call button. That button has the look, the size and the place
+     of the Call bar of the page (8 px above the lower edge), so it seems to stay where
+     it was when the menu opens over the page. */
+  html.js .nav-more {
+    display: block;
+    flex: none;
+    margin-top: auto;
+    padding: 12px calc(var(--gutter) + var(--safe-right)) calc(8px + var(--safe-bottom)) calc(var(--gutter) + var(--safe-left));
+    background: var(--beige);
+    font-size: calc(14px + var(--grow));
+    line-height: 1.4;
+  }
+
+  .nav-more .nowrap {
+    white-space: nowrap;
+  }
+
+  .nav-fact {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    padding: 6px 0;
+  }
+
+  /* The links of the card are links of the navigation too, so each rule here first
+     takes back what .main-nav a gives a link of the navigation row. */
+  .nav-more .nav-fact a {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 12px;
+    padding: 0 30px 0 0;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: 0;
+    text-decoration: none;
     white-space: normal;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  /* A row under a finger. */
-  .main-nav a:active {
-    opacity: 0.55;
+  /* The tap area of the address: the row, 6 px more above and below (44 px in all),
+     out to both edges of the screen. */
+  .nav-fact a::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: calc(-1 * (var(--gutter) + var(--safe-right)));
+    bottom: -6px;
+    left: calc(-1 * (var(--gutter) + var(--safe-left)));
   }
 
-  .main-nav a:hover,
-  .main-nav a[aria-current="page"] {
-    text-underline-offset: 3px;
+  .nav-fact a:active::before {
+    background: rgba(29, 21, 9, 0.06);
+  }
+
+  .nav-fact a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 9px;
+    height: 9px;
+    margin-top: -5px;
+    border-top: 1.5px solid var(--ink);
+    border-right: 1.5px solid var(--ink);
+    transform: rotate(45deg);
+  }
+
+  /* 20 px, level with the first line of the text beside it. */
+  .nav-icon {
+    flex: none;
+    width: 20px;
+    height: 20px;
+    margin-top: calc(0.7em - 10px);
+  }
+
+  .nav-more .social {
+    gap: 12px;
+    margin: 6px 0 14px 32px;
+  }
+
+  .nav-more .social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-more .social a::after {
+    content: none;
+  }
+
+  .nav-more .social a:active {
+    background-color: var(--bg);
+  }
+
+  /* ---- How the open menu arrives ----
+     The sheet fades in, and its rows follow one after the other, each rising 12 px
+     into its place, the salon card last. Closing is one short fade of the whole sheet.
+     A visitor who asked for less motion gets the menu at once (see Reduced motion). */
+  html.js .main-nav li,
+  html.js .nav-more {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.2s ease, transform 0s linear 0.2s;
+  }
+
+  html.js .main-nav.open li,
+  html.js .main-nav.open .nav-more {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s ease-out, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  html.js .main-nav.open li:nth-child(1) {
+    transition-delay: 0.03s;
+  }
+
+  html.js .main-nav.open li:nth-child(2) {
+    transition-delay: 0.07s;
+  }
+
+  html.js .main-nav.open li:nth-child(3) {
+    transition-delay: 0.11s;
+  }
+
+  html.js .main-nav.open li:nth-child(4) {
+    transition-delay: 0.15s;
+  }
+
+  html.js .main-nav.open li:nth-child(n+5) {
+    transition-delay: 0.19s;
+  }
+
+  html.js .main-nav.open .nav-more {
+    transition-delay: 0.16s;
   }
 
   /* Without the script: no button, the links are a plain list under the logo
@@ -1048,8 +1260,10 @@ body.lightbox-open {
     box-shadow: 0 -2px 12px rgba(29, 21, 9, 0.08);
   }
 
-  /* The words and the number stay on one line, also on a 320 px screen. */
-  .call-bar a {
+  /* The words and the number stay on one line, also on a 320 px screen. The Call
+     button of the open menu (a.nav-call) is the same button. */
+  .call-bar a,
+  .nav-more .nav-call {
     display: flex;
     flex: 1 1 auto;
     align-items: center;
@@ -1069,18 +1283,22 @@ body.lightbox-open {
   }
 
   .call-bar a:focus-visible,
-  .call-bar a:active {
+  .call-bar a:active,
+  .nav-more .nav-call:focus-visible,
+  .nav-more .nav-call:active {
     background-color: var(--ink);
   }
 
   @media (hover: hover) {
-    .call-bar a:hover {
+    .call-bar a:hover,
+    .nav-more .nav-call:hover {
       background-color: var(--ink);
     }
   }
 
   /* On the light bar the dark focus ring of the site shows well. */
-  .call-bar a:focus-visible {
+  .call-bar a:focus-visible,
+  .nav-more .nav-call:focus-visible {
     outline-color: var(--ink);
     box-shadow: 0 0 0 2px var(--bg);
   }
@@ -1101,7 +1319,8 @@ body.lightbox-open {
      and the number no longer fit on one line, so the number goes onto a line of its own
      under the words, and nothing is cut off. */
   @media (max-width: 299px) {
-    .call-bar a {
+    .call-bar a,
+    .nav-more .nav-call {
       flex-wrap: wrap;
       gap: 2px 8px;
       padding: 6px 8px;
@@ -1142,8 +1361,111 @@ body.lightbox-open {
     padding-bottom: calc(4px + var(--safe-bottom));
   }
 
-  .call-bar a {
+  .call-bar a,
+  .nav-more .nav-call {
     min-height: 44px;
+  }
+
+  /* The Call button of the open menu keeps the place of the slimmer bar. */
+  html.js .nav-more {
+    padding-bottom: calc(4px + var(--safe-bottom));
+  }
+}
+
+/* The open menu on a phone lying on its side: the pages on the left, the salon card
+   on the right, each half of the sheet, so both fit without scrolling. */
+@media (max-width: 760px) and (max-height: 500px) and (orientation: landscape) {
+  .main-nav {
+    flex-direction: row;
+  }
+
+  html.js .main-nav ul {
+    flex: 1 1 50%;
+    padding-right: var(--gutter);
+    padding-bottom: 4px;
+  }
+
+  html.js .main-nav li a {
+    min-height: 44px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 22px;
+  }
+
+  html.js .nav-more {
+    display: flex;
+    flex: 1 1 50%;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0;
+    padding-top: 8px;
+    padding-bottom: calc(4px + var(--safe-bottom));
+    padding-left: var(--gutter);
+  }
+
+  .nav-more .social {
+    margin-top: 4px;
+    margin-bottom: 10px;
+  }
+
+  .nav-more .nav-call {
+    flex: none;
+  }
+}
+
+/* The open menu on a low upright screen (a small iPhone with the bars of the browser
+   showing): lower rows and less air, so the pages and the salon card fit together
+   where they can. */
+@media (max-width: 760px) and (max-height: 600px) and (orientation: portrait) {
+  html.js .main-nav ul {
+    padding-bottom: 12px;
+  }
+
+  html.js .main-nav li a {
+    min-height: 48px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: calc(23px + 3 * var(--grow));
+  }
+
+  html.js .nav-more {
+    padding-top: 8px;
+  }
+
+  .nav-fact {
+    padding: 4px 0;
+  }
+
+  .nav-fact a::before {
+    top: -9px;
+    bottom: -6px;
+  }
+
+  .nav-more .social {
+    margin-top: 6px;
+    margin-bottom: 10px;
+  }
+}
+
+/* The lowest upright screens (the smallest iPhones): rows of 44 px, and the card goes
+   without the Facebook and Instagram buttons, which the footer of every page has too,
+   so the Call button is still on the screen when the menu opens. */
+@media (max-width: 760px) and (max-height: 480px) and (orientation: portrait) {
+  html.js .main-nav ul {
+    padding-bottom: 8px;
+  }
+
+  html.js .main-nav li a {
+    min-height: 44px;
+    font-size: calc(22px + 3 * var(--grow));
+  }
+
+  .nav-more .social {
+    display: none;
+  }
+
+  .nav-more .nav-call {
+    margin-top: 8px;
   }
 }
 
