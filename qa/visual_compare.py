@@ -149,7 +149,7 @@ AREA_HEIGHT_SHARE = 0.20
 WIDE_GALLERY = (1500, 1700)     # px: where a min-width rule for that fourth column may start ("about 1600 px")
 ICON_MAX = 48                   # an image up to this size is an icon and is compared through its link
 EMPTY_GAP = 300                 # px: a Wix footer that sits this much further below the content than ours stands under an empty stretch
-SLUGS = [s for s in common.PAGES if s != "404"]     # the nine pages that exist on Wix
+SLUGS = list(common.WIX_PAGES)     # the nine pages that exist on Wix (not the 404 page, not the service pages of decision 72)
 PAGE_TIMEOUT = 60000
 LOAD_TRIES = 3                  # a page whose own files did not all arrive is loaded again before it is measured
 # What a busy machine does to a local server, as opposed to a file that is really missing (that one answers 404).

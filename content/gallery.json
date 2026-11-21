@@ -1,8 +1,8 @@
 {
   "slug": "gallery",
   "path": "/gallery/",
-  "title": "Gallery | Hair & Makeup by Gerta, Staten Island NY",
-  "description": "See hair and makeup looks by Gerta Lila in Staten Island, NY. Balayage, highlights, haircuts, extensions and natural makeup at Le Vigne Hair Salon.",
+  "title": "Gallery of Hair and Makeup Looks | Staten Island NY",
+  "description": "Hair and makeup looks for ideas: balayage, highlights, haircuts, updos and natural makeup. Book your appointment in Staten Island, NY.",
   "h1": "Gallery",
   "images": [
     {"slot": "gallery-01", "file": "g01", "alt": "Half-up braid with soft curls", "alt_original": "Stylist pinning an elegant updo"},
@@ -22,7 +22,7 @@
     {"slot": "gallery-15", "file": "g15", "alt": "Bridal updo with a twisted bun", "alt_original": "Curling long blonde hair"},
     {"slot": "gallery-16", "file": "g16", "alt": "Blonde balayage with loose waves", "alt_original": "Blonde balayage with loose waves"},
     {"slot": "gallery-17", "file": "g17", "alt": "Smoothing blow-dry with a round brush", "alt_original": "Smoothing blow-dry with a round brush"},
-    {"slot": "gallery-19", "file": "g19", "alt": "Happy client with fresh balayage", "alt_original": "Happy client with fresh balayage"},
+    {"slot": "gallery-19", "file": "g19", "alt": "Smiling woman with blonde balayage waves in a salon", "alt_original": "Happy client with fresh balayage"},
     {"slot": "gallery-20", "file": "g20", "alt": "Sleek pulled-back hair with soft makeup seen from the front", "alt_original": "Creating soft golden curls"},
     {"slot": "gallery-21", "file": "g22", "alt": "Sleek pulled-back hair with soft makeup seen from an angle", "alt_original": ""},
     {"slot": "gallery-22", "file": "g21", "alt": "Blow-drying soft blonde curls", "alt_original": "Blow-drying a bouncy blonde style"}
@@ -30,7 +30,9 @@
   "link_label": "View photo {n} of {total}",
   "notes": [
     "Typos fixed: none. The main area of the live Wix gallery page holds one piece of text, the heading Gallery. It is stored exactly as Wix writes it. Its capital G is typed, not styling (textTransform is none).",
-    "title and description are the live Wix title tag and meta description, unchanged. The first version had the same two texts.",
+    "title and description (21 November 2026, decision 72): 9 of the 21 photos are licensed Shutterstock photos (foils-highlights, g04, brunette-balayage, g10, makeup-red-lips, g16, g17, g19 and g21; decision 49), so the title and the description no longer say that the looks are by Gerta Lila. They name what the photos show and nothing else: they do not mention stock photos either, because the helper does not want that on the site. Until that day they were the live Wix texts: Gallery | Hair & Makeup by Gerta, Staten Island NY, and See hair and makeup looks by Gerta Lila in Staten Island, NY. Balayage, highlights, haircuts, extensions and natural makeup at Le Vigne Hair Salon. Once Gerta’s own photos have replaced the stock ones, both can say again that the looks are hers. No photo was removed, and the page shows no text but the heading Gallery.",
+    "The alt of g19 (slot gallery-19, a stock photo) read Happy client with fresh balayage until 21 November 2026. The woman in it is a stock model, not a client, so it now describes the photo (decision 72). alt_original keeps the old text.",
+    "title and description were the live Wix title tag and meta description until 21 November 2026, see the note above. The first version had the same two texts.",
     "The 21 slots are in the order of the live Wix gallery, checked against the reference screenshot of the live page.",
     "On the live Wix page the second item (g02) is a video that shows a still frame with a play button. The first version replaced it with a still image and this file keeps that: 21 image slots, no video.",
     "The live Wix gallery gives all 21 photos an empty alt text, so every alt_original is the description from the first version, copied exactly. Each one was compared with the reference screenshot and describes the photo in its position.",

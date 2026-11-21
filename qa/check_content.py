@@ -125,7 +125,10 @@ HOURS = HOURS_DAYS + ", " + HOURS_TIMES
 # Saturday, 9 AM to 5 PM), and that wording was accepted on that page only. Decision 70 put the Book with Gerta box in
 # the place of the note, so no page writes the hours with "to" any more and none may. (Gerta's own text on the home
 # page wrote them the same way for a few hours of that day. Decision 68 took that text out again.)
-HOURS_OTHER_WORDING = {}
+# Since decision 72 the three service pages write them that way in the running text of How to book, as the helper
+# wrote them for those pages. (days, times, the whole line), in the order the hours check reads them.
+HOURS_IN_TEXT = ("Tuesday to Saturday", "9 AM to 5 PM", "Tuesday to Saturday, 9 AM to 5 PM")
+HOURS_OTHER_WORDING = {slug: HOURS_IN_TEXT for slug in common.SERVICE_PAGES}
 FACEBOOK = "https://www.facebook.com/profile.php?id=61596324347147"
 INSTAGRAM = "https://www.instagram.com/hairbygerta/"
 MAPS = "https://www.google.com/maps/search/?api=1&query=644+Forest+Ave,+Staten+Island,+NY+10310"
@@ -151,7 +154,7 @@ BRIEF_IMAGES = {"book-online": SERVICE_IMAGES, "gallery": GALLERY_IMAGES, "about
 
 # ---------------------------------------------------------------- what the build contract fixes (tools/CONTRACT.md)
 MENU_LABEL, NAV_LABEL = "Menu", "Main"                  # section 6: button.menu-btn, nav.main-nav
-PHOTO_ROW_LABEL = "Featured work"                       # section 7, Home: section.photo-row
+PHOTO_ROW_LABEL = "Featured photos"                     # section 7, Home: section.photo-row ("Featured work" until decision 72)
 PHOTO_LINK_LABEL = "%s. Open the Gallery"               # section 7, Home: the link around each photo of the row (decision 63)
 GALLERY_LINK_LABEL = "Open the Gallery"                 # the same link around a photo without a description
 GALLERY_LABEL_WITH_ALT = "%s: %s"                       # section 7, Gallery: "View photo 3 of 21: WHAT IT SHOWS" (decision 63)
@@ -171,6 +174,11 @@ SERVICES_BOOK_INTENDED = ("the beige box under the service cards is not on the W
                           "(decision 70): a heading, a Text button, a Call button and the phone number")
 BOOK_BOX_INTENDED = {"home": HOME_BOOK_INTENDED, "book-online": SERVICES_BOOK_INTENDED}
 BOOK_BOX_PLACE = {"home": "the box under Meet Gerta (decision 68)", "book-online": "the box under the service cards (decision 70)"}
+# The service pages of decision 72 end with the same box. They were never on Wix, so nothing on them is a difference
+# from Wix, intended or not.
+for _slug in common.SERVICE_PAGES:
+    BOOK_BOX_INTENDED[_slug] = "the box at the end of a service page (decision 72), a page that is not on Wix"
+    BOOK_BOX_PLACE[_slug] = "the box at the end of the service page (decision 72)"
 H1_COMES_AFTER = {"home": "site_title", "contact": "kicker"}    # section 7: where the h1 is not the first text of main
 PLACES = ("header", "main", "footer")
 PLACE_NAMES = {"top": "above the header", "header": "header", "main": "main", "footer": "footer"}
@@ -582,6 +590,11 @@ class Expected:
             body, marks, lines, links = inline_parts(text)
             for href, link_text in links:
                 self.links.append(ContentLink(place, content_target(href), link_text, "", "%s: %s" % (file, key)))
+            # A link in an html field may carry its own name for screen readers (the links to the service pages on
+            # the home page, decision 72: "More about balayage" on the word "balayage").
+            for m in re.finditer(r'\baria-label="([^"]*)"', text):
+                if norm(m.group(1)):
+                    self.labels.append(("aria-label", norm(m.group(1)), "%s: %s" % (file, key)))
         else:
             body, marks = norm(text), ()
             lines = [body] if body else []
@@ -711,7 +724,7 @@ def expect_main(ex, content, site):
                 target = (site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL).strip()
             ex.links.append(ContentLink("main", target, norm(value.get("label") or ""), "",
                                         "%s: %s, a button of %s" % (file, path, BOOK_BOX_PLACE[slug])))
-        elif key == "phone" and (slug == "home" or (slug == "book-online" and path == "book.phone")) and isinstance(value, str):
+        elif key == "phone" and (slug == "home" or (slug in BOOK_BOX_INTENDED and path == "book.phone")) and isinstance(value, str):
             emit(path, value)
             tel = site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL
             ex.links.append(ContentLink("main", tel.strip(), norm(value), "", "%s: %s, a phone link by section 7 of the build contract" % (file, path)))
@@ -1864,7 +1877,7 @@ def check_one(slug, server, content_dir, site, site_problem, wix_there):
     ex = expect(slug, content, site, year)
     out.append(entry(slug, "content-file", not ex.problems, "%s has a title, a description, an h1 and notes, and every text key holds a text" % file,
                      "as expected, %s" % plural(len(ex.main), "text") if not ex.problems else "; ".join(ex.problems), file, "CONTENT"))
-    ref = read_wix(slug) if wix_there and slug != "404" else None
+    ref = read_wix(slug) if wix_there and slug in common.WIX_PAGES else None
     rules = Rules(slug, ex)
     out += compare_head(slug, ex, page, site)
     out += compare_text(slug, ex, page, ref, rules)
@@ -1878,7 +1891,7 @@ def check_one(slug, server, content_dir, site, site_problem, wix_there):
         out += check_privacy(slug, ex, page)
     if ref:
         out += compare_wix(slug, ex, page, ref, rules)
-    elif wix_there and slug != "404":
+    elif wix_there and slug in common.WIX_PAGES:
         out.append(entry(slug, "wix-wording", True, "the text is the live Wix wording, apart from the intended differences",
                          "skipped: the reference folder has no file %s.txt" % slug, "wix-ref/%s.txt" % slug, "QA", skipped=True))
     return out

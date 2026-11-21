@@ -16,6 +16,8 @@
       h2#meet-h.serif                       "meet.heading"
       p.t1, div.p1 > img                    "meet.paragraph_1", "meet.portrait"
       p.t2, div.p2 > img                    "meet.paragraph_2", "meet.large"
+    p.more-links                            "more_links_html", the line of links to the three service pages
+                                            (decision 72)
     section.reach                           "book", the beige box with the Text button and the Call button,
                                             built by ctx.reach (tools/build_pages.py):
       h2#reach-h.serif                      "book.heading"
@@ -42,7 +44,9 @@ CONTENT_FILE = "content/%s.json" % SLUG     # only used to name the file in an e
 
 # Spoken by screen readers, never shown (contract, section 7). %s is the hours text.
 HOURS_LABEL = "Hours: %s"
-PHOTO_ROW_LABEL = "Featured work"
+# "Featured work" until 21 November 2026: two of the three photos are licensed stock photos, not Gerta's own
+# work (decision 72).
+PHOTO_ROW_LABEL = "Featured photos"
 # Each photo of the row is a link to the Gallery, because on a phone people tap a photo and expect more of
 # them. A screen reader says what the photo shows and where the link leads. %s is the description of the
 # photo. A photo without a description (a placeholder) is announced with GALLERY_LINK_LABEL alone.
@@ -138,6 +142,9 @@ def render(ctx):
         '  <p class="t2">%s</p>' % esc(meet["paragraph_2"]),
         '  <div class="p2">%s</div>' % _photo(ctx, meet["large"], sizes=LARGE_PHOTO_SIZES),
         "</section>",
+        # One line of links to the three service pages (decision 72), right above the box. The menu keeps its
+        # five links, so this line is the way to those pages from the home page.
+        '<p class="more-links">%s</p>' % ctx.inline(c["more_links_html"]),
         # The beige box with the two ways to reach Gerta (21 November 2026, decision 68). It took the place of
         # Gerta's own text, which the helper found too long. The box itself is ctx.reach, because the Services
         # page ends with the same one (decision 70).

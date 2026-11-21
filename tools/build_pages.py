@@ -20,8 +20,10 @@ WHERE THINGS ARE (all inside the site folder, one level above this file)
                              from its two files instead, and the script then writes that photo into this
                              file by itself (see the note above the list PLACEHOLDERS, right below). That is
                              the only thing the script ever changes in it.
-    seo/jsonld-home.json     data for search engines, copied into the head of the home page (may be absent)
+    seo/jsonld-<slug>.json   data for search engines, copied into the head of that page: the home page and the three
+                             service pages (see JSONLD_SLUGS below; a missing file gives a WARNING line)
     tools/pages/<name>.py    one page module per page: turns the content of that page into the HTML inside <main>
+                             (the three service pages share one module, tools/pages/service.py)
     tools/build_pages.py     this file: the page table, the shared head, header and footer, and the helpers
 
 The HTML files are only ever made by this script. To change a text, edit the content file and run the script
@@ -46,6 +48,10 @@ two things in it:
             "</article>",
         ])
         return {"body": body, "head_extra": ""}
+
+A module that serves several pages of one layout (the three service pages, tools/pages/service.py) names
+them all in SLUGS = ("balayage-staten-island", ...) instead of SLUG. The page table then gives the same file to
+each of those pages, the script loads it once per page, and ctx.slug says which page is being built.
 
 render(ctx) returns a dict with these keys (any other key is an error):
 
@@ -270,6 +276,11 @@ REGISTRY = tuple(Page(*row) for row in (
     ("english-privacy-policy",  "/english-privacy-policy/",   "content/english-privacy-policy.json",    "tools/pages/english_privacy_policy.py",     "english-privacy-policy/index.html"),
     ("terms-conditions",        "/terms-conditions/",         "content/terms-conditions.json",          "tools/pages/terms_conditions.py",           "terms-conditions/index.html"),
     ("404",                     "/404.html",                  "content/404.json",                       "tools/pages/not_found.py",                  "404.html"),
+    # The three service pages (decision 72): one layout and one page module for the three, each page its own content
+    # file. Their names are too long for the columns above, so each row is one plain line.
+    ("balayage-staten-island", "/balayage-staten-island/", "content/balayage-staten-island.json", "tools/pages/service.py", "balayage-staten-island/index.html"),
+    ("bridal-hair-makeup-staten-island", "/bridal-hair-makeup-staten-island/", "content/bridal-hair-makeup-staten-island.json", "tools/pages/service.py", "bridal-hair-makeup-staten-island/index.html"),
+    ("keratin-brazilian-blowout-staten-island", "/keratin-brazilian-blowout-staten-island/", "content/keratin-brazilian-blowout-staten-island.json", "tools/pages/service.py", "keratin-brazilian-blowout-staten-island/index.html"),
 ))
 
 SITE_JSON = "content/site.json"
@@ -280,8 +291,11 @@ MANIFEST_JSON = "image-manifest.json"
 # pictures (logo, g12, g13) are never touched.
 PLACEHOLDER_STATUS = "placeholder"
 OWNER_STATUS = "owner-photo"
-JSONLD_JSON = "seo/jsonld-home.json"
-JSONLD_SLUG = "home"                    # the only page that carries the JSON-LD script
+# Data for search engines (JSON-LD), one file per page that carries it: seo/jsonld-home.json (Gerta as a Person,
+# the salon she works for, the WebSite) and since decision 72 one Service per service page, whose provider is that
+# same Person (its @id). Any other page carries none, and its file is never read.
+JSONLD_JSON = "seo/jsonld-%s.json"
+JSONLD_SLUGS = ("home", "balayage-staten-island", "bridal-hair-makeup-staten-island", "keratin-brazilian-blowout-staten-island")
 # The two tags that show Google Search Console and Bing Webmaster Tools that this site belongs to its owner. They
 # are the same tags the old Wix site had, so both stay verified after the move. Google and Bing read them on the
 # home page, so only the home page has them. Keep them exactly as they are.
@@ -1291,7 +1305,12 @@ def _load_module(path, shown, slug):
         raise
     except Exception as e:
         raise BuildError("%s: the file cannot be loaded%s (%s: %s)" % (shown, _line_text(path, e), type(e).__name__, e))
-    if getattr(module, "SLUG", None) != slug:
+    slugs = getattr(module, "SLUGS", None)
+    if slugs is not None:
+        # One module for several pages of one layout (the service pages, decision 72).
+        if not isinstance(slugs, tuple) or slug not in slugs:
+            raise BuildError('%s: SLUGS is %r, it must be a tuple that holds "%s"' % (shown, slugs, slug))
+    elif getattr(module, "SLUG", None) != slug:
         raise BuildError('%s: SLUG is %r, it must be "%s"' % (shown, getattr(module, "SLUG", None), slug))
     if not callable(getattr(module, "render", None)):
         raise BuildError("%s: the function render(ctx) is missing" % shown)
@@ -1515,10 +1534,10 @@ def _build_page(page, site_dir, pages_dir, pages_shown, raw_site, raw_manifest, 
     ctx = Ctx(page, content, _wrap(raw_site, SITE_JSON), _wrap(raw_manifest, MANIFEST_JSON), photos, warnings, replaced)
     parts = _render(module, ctx, path, shown)
     jsonld = None
-    if page.slug == JSONLD_SLUG:
-        jsonld = _read_json(site_dir, JSONLD_JSON, optional=True, any_type=True)
+    if page.slug in JSONLD_SLUGS:
+        jsonld = _read_json(site_dir, JSONLD_JSON % page.slug, optional=True, any_type=True)
         if jsonld is None:
-            warnings.append("%s not found, the home page is built without the JSON-LD script." % JSONLD_JSON)
+            warnings.append("%s not found, the page %s is built without the JSON-LD script." % (JSONLD_JSON % page.slug, page.output))
     # The shared layout works on its own fresh copies, so nothing a module did to ctx can reach it.
     site = _wrap(raw_site, SITE_JSON)
     layout = Ctx(page, _wrap(raw_content, page.content), site, _wrap(raw_manifest, MANIFEST_JSON), photos, warnings)

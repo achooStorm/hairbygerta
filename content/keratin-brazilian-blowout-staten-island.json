@@ -1,0 +1,109 @@
+{
+  "slug": "keratin-brazilian-blowout-staten-island",
+  "path": "/keratin-brazilian-blowout-staten-island/",
+  "title": "Keratin and Brazilian Blowout in Staten Island, NY | Hair & Makeup by Gerta",
+  "description": "Keratin treatments and Brazilian blowouts for smoother, shinier hair, by Gerta Lila at Le Vigne Hair Salon in Staten Island, NY. Call or text to book.",
+  "h1": "Keratin and Brazilian Blowout in Staten Island",
+  "intro": "Hi, I’m Gerta Lila, a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, where I’ve worked for about seven years. If frizz fights you every morning, a keratin treatment or a Brazilian blowout can leave your hair smoother, shinier and easier to manage.",
+  "photos": [],
+  "blocks": [
+    {
+      "type": "h2",
+      "text": "What they are"
+    },
+    {
+      "type": "p",
+      "text": "Both are smoothing treatments. A keratin treatment fights frizz for sleek, manageable hair. A Brazilian blowout smooths your hair and gives it a mirror-like shine. They use different products and take a different amount of time."
+    },
+    {
+      "type": "h2",
+      "text": "Who it’s for"
+    },
+    {
+      "type": "p",
+      "text": "For frizzy, puffy or hard-to-manage hair, and for anyone who would like smoother, shinier hair that is easier to style every day."
+    },
+    {
+      "type": "h2",
+      "text": "Your visit"
+    },
+    {
+      "type": "p",
+      "text": "We start by looking at your hair and talking about how you style it now. Then I wash your hair, apply the treatment, blow-dry it and smooth it with a flat iron. A keratin treatment takes about 2 hours 30 minutes, and a Brazilian blowout about 2 hours."
+    },
+    {
+      "type": "h2",
+      "text": "Caring for it at home"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Before you leave, I’ll tell you when you can wash your hair and tie it back, because that depends on the treatment.",
+        "Use a sulfate-free shampoo and conditioner.",
+        "Use a heat protectant before you blow-dry or use a flat iron.",
+        "Choose a soft scrunchie or a claw clip instead of a tight hair tie."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Questions"
+    },
+    {
+      "type": "h3",
+      "text": "Keratin or Brazilian blowout: which one is right for me?"
+    },
+    {
+      "type": "p",
+      "text": "Both fight frizz and add shine. Which one suits you depends on your hair and on what you want from it, so I’ll look at your hair and help you choose."
+    },
+    {
+      "type": "h3",
+      "text": "Will my hair be completely straight?"
+    },
+    {
+      "type": "p",
+      "text": "These treatments are made to smooth frizz and add shine, so your hair is easier to style. How straight it looks depends on your hair, and I’ll tell you what to expect before we start."
+    },
+    {
+      "type": "h3",
+      "text": "How long will it last?"
+    },
+    {
+      "type": "p",
+      "text": "That depends on your hair and on how you care for it, so I can’t promise a number. Gentle products and the tips above help."
+    },
+    {
+      "type": "h2",
+      "text": "How to book"
+    },
+    {
+      "type": "p",
+      "html": "Call or text me at <a href=\"tel:+1-347-671-5095\">347-671-5095</a>, or send me a message on <a href=\"https://www.instagram.com/hairbygerta/\" target=\"_blank\">Instagram</a> or <a href=\"https://www.facebook.com/profile.php?id=61596324347147\" target=\"_blank\">Facebook</a>. I’m at Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310, Tuesday to Saturday, 9 AM to 5 PM. Prices are set by the salon, so just ask when you book."
+    },
+    {
+      "type": "p",
+      "html": "You’ll find all my services on the <a href=\"/book-online/\">Services</a> page, and more photos in the <a href=\"/gallery/\">Gallery</a>."
+    }
+  ],
+  "book": {
+    "heading": "Book with Gerta",
+    "text": {
+      "label": "Text me"
+    },
+    "call": {
+      "label": "Call me"
+    },
+    "phone": "347-671-5095"
+  },
+  "notes": [
+    "Added on 21 November 2026 (decision 72), so that search engines can show Gerta for this service in Staten Island. The page is not in the five-link menu. The home page (more_links in content/home.json) and the matching cards of the Services page (more in content/book-online.json) link to it.",
+    "Layout: tools/pages/service.py, shared by the three service pages. h1, intro, photos, then blocks (the same block types as a policy page: h2, h3, p, ul), then book, the beige Book with Gerta box with the Text button and the Call button (ctx.reach, the box of the home page and of the Services page).",
+    "The text is in Gerta’s first person, in the voice of her own text of decision 66 (commit 845247c). Facts used: her name, the salon and its address, about seven years at the salon (confirmed by the helper on 21 November 2026), the phone number, Instagram, the Facebook business Page, the hours, and the service names, descriptions and durations of the Services page. No price, no discount, no guarantee, no promise of how long a result lasts, no home visits, no travel and no trial session.",
+    "Prices: the sentence \"Prices are set by the salon, so just ask when you book.\" stands in How to book, and the page names no price.",
+    "Hours: written \"Tuesday to Saturday, 9 AM to 5 PM\" in the running text of How to book, as the helper wrote them for these pages. Everywhere else the site keeps the Wix wording \"Tuesday - Saturday, 9 AM - 5 PM\" (content/site.json).",
+    "Photos: only photos of Gerta’s own work, never one of the ten licensed Shutterstock photos (decision 49). Each alt describes what the photo shows. alt_original is empty: these places are new and were never on Wix.",
+    "The data for search engines is seo/jsonld-<slug>.json: a Service with this name, areaServed Staten Island, NY, and as provider the Person of the home page (@id https://www.hairbygerta.com/#gerta). No price, rating or review.",
+    "ASK Gerta to confirm these sentences, written for this page from the general facts of the site: \"They use different products and take a different amount of time.\" / \"For frizzy, puffy or hard-to-manage hair ...\" / \"Then I wash your hair, apply the treatment, blow-dry it and smooth it with a flat iron.\" / the four home care tips, above all \"Use a sulfate-free shampoo and conditioner.\" / \"Will my hair be completely straight? ... How straight it looks depends on your hair ...\"",
+    "No photo on this page: none of Gerta’s own photos on the site shows a keratin treatment or a Brazilian blowout, and a stock photo is not allowed here. ASK Gerta for one or two photos of her own smoothing work; they go in \"photos\" (at most four)."
+  ]
+}

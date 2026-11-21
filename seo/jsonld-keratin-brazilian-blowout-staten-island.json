@@ -1,0 +1,18 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.hairbygerta.com/keratin-brazilian-blowout-staten-island/#service",
+  "name": "Keratin and Brazilian Blowout",
+  "serviceType": "Keratin and Brazilian Blowout",
+  "description": "Frizz-fighting keratin treatments and Brazilian blowouts for smoother, shinier hair.",
+  "url": "https://www.hairbygerta.com/keratin-brazilian-blowout-staten-island/",
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Staten Island, NY"
+  },
+  "provider": {
+    "@type": "Person",
+    "@id": "https://www.hairbygerta.com/#gerta",
+    "name": "Gerta Lila"
+  }
+}

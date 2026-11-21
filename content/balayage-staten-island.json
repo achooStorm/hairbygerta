@@ -1,0 +1,128 @@
+{
+  "slug": "balayage-staten-island",
+  "path": "/balayage-staten-island/",
+  "title": "Balayage in Staten Island, NY | Hair & Makeup by Gerta",
+  "description": "Hand-painted balayage for a soft, sun-kissed finish, by Gerta Lila at Le Vigne Hair Salon in Staten Island, NY. Call or text to book.",
+  "h1": "Balayage in Staten Island",
+  "intro": "Hi, I’m Gerta Lila, a hair stylist and makeup artist at Le Vigne Hair Salon in Staten Island, where I’ve worked for about seven years. Balayage is hand-painted color for a soft, sun-kissed finish, and I’d love to create yours.",
+  "photos": [
+    {
+      "slot": "balayage-photo-1",
+      "file": "g14",
+      "alt": "Long blonde balayage waves seen from the back, in a salon",
+      "alt_original": ""
+    },
+    {
+      "slot": "balayage-photo-2",
+      "file": "g13",
+      "alt": "Long brunette hair with caramel pieces and loose waves, seen from the back",
+      "alt_original": ""
+    },
+    {
+      "slot": "balayage-photo-3",
+      "file": "g05",
+      "alt": "Shoulder-length layered cut with caramel highlights, seen from the side",
+      "alt_original": ""
+    }
+  ],
+  "blocks": [
+    {
+      "type": "h2",
+      "text": "What balayage is"
+    },
+    {
+      "type": "p",
+      "text": "I paint the color onto your hair by hand and place the lighter pieces where the sun would naturally catch them. That way it looks soft and blended rather than stripy."
+    },
+    {
+      "type": "h2",
+      "text": "Who it’s for"
+    },
+    {
+      "type": "p",
+      "text": "Balayage suits you if you want brightness and dimension that still looks natural. It can work on many hair colors and lengths, from dark brunette to blonde. I’ll look at your hair first and tell you honestly what will work for it."
+    },
+    {
+      "type": "h2",
+      "text": "Your visit"
+    },
+    {
+      "type": "p",
+      "text": "We start by talking about the look you want, and photos of colors you love help a lot. Then I paint the color, let it work, and finish with a wash and a style, so you leave ready to go. A balayage appointment takes about 3 hours."
+    },
+    {
+      "type": "h2",
+      "text": "Caring for it at home"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "Wash with a shampoo and conditioner made for colored hair, in lukewarm rather than hot water.",
+        "Use a heat protectant before you blow-dry, straighten or curl.",
+        "If your balayage is blonde, a purple shampoo now and then helps keep brassy tones away.",
+        "Protect your hair from strong sun, and rinse it after a swim in a pool or the sea."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Questions"
+    },
+    {
+      "type": "h3",
+      "text": "What is the difference between balayage and highlights?"
+    },
+    {
+      "type": "p",
+      "text": "Highlights are placed in foils to add brightness, depth and dimension. Balayage is painted on by hand for a softer, sun-kissed look. I do both, so I’ll help you choose."
+    },
+    {
+      "type": "h3",
+      "text": "Can I have balayage on dark hair?"
+    },
+    {
+      "type": "p",
+      "text": "Yes. How light we can go depends on your hair, and I’ll tell you honestly what to expect before we start."
+    },
+    {
+      "type": "h3",
+      "text": "What should I bring?"
+    },
+    {
+      "type": "p",
+      "text": "Photos of colors you love, and of any you don’t. They help me see exactly what you have in mind."
+    },
+    {
+      "type": "h2",
+      "text": "How to book"
+    },
+    {
+      "type": "p",
+      "html": "Call or text me at <a href=\"tel:+1-347-671-5095\">347-671-5095</a>, or send me a message on <a href=\"https://www.instagram.com/hairbygerta/\" target=\"_blank\">Instagram</a> or <a href=\"https://www.facebook.com/profile.php?id=61596324347147\" target=\"_blank\">Facebook</a>. I’m at Le Vigne Hair Salon, 644 Forest Ave, Staten Island, NY 10310, Tuesday to Saturday, 9 AM to 5 PM. Prices are set by the salon, so just ask when you book."
+    },
+    {
+      "type": "p",
+      "html": "You’ll find all my services on the <a href=\"/book-online/\">Services</a> page, and more photos in the <a href=\"/gallery/\">Gallery</a>."
+    }
+  ],
+  "book": {
+    "heading": "Book with Gerta",
+    "text": {
+      "label": "Text me"
+    },
+    "call": {
+      "label": "Call me"
+    },
+    "phone": "347-671-5095"
+  },
+  "notes": [
+    "Added on 21 November 2026 (decision 72), so that search engines can show Gerta for this service in Staten Island. The page is not in the five-link menu. The home page (more_links in content/home.json) and the matching cards of the Services page (more in content/book-online.json) link to it.",
+    "Layout: tools/pages/service.py, shared by the three service pages. h1, intro, photos, then blocks (the same block types as a policy page: h2, h3, p, ul), then book, the beige Book with Gerta box with the Text button and the Call button (ctx.reach, the box of the home page and of the Services page).",
+    "The text is in Gerta’s first person, in the voice of her own text of decision 66 (commit 845247c). Facts used: her name, the salon and its address, about seven years at the salon (confirmed by the helper on 21 November 2026), the phone number, Instagram, the Facebook business Page, the hours, and the service names, descriptions and durations of the Services page. No price, no discount, no guarantee, no promise of how long a result lasts, no home visits, no travel and no trial session.",
+    "Prices: the sentence \"Prices are set by the salon, so just ask when you book.\" stands in How to book, and the page names no price.",
+    "Hours: written \"Tuesday to Saturday, 9 AM to 5 PM\" in the running text of How to book, as the helper wrote them for these pages. Everywhere else the site keeps the Wix wording \"Tuesday - Saturday, 9 AM - 5 PM\" (content/site.json).",
+    "Photos: only photos of Gerta’s own work, never one of the ten licensed Shutterstock photos (decision 49). Each alt describes what the photo shows. alt_original is empty: these places are new and were never on Wix.",
+    "The data for search engines is seo/jsonld-<slug>.json: a Service with this name, areaServed Staten Island, NY, and as provider the Person of the home page (@id https://www.hairbygerta.com/#gerta). No price, rating or review.",
+    "ASK Gerta to confirm these sentences, written for this page from the general facts of the site: \"I’d love to create yours.\" / \"I paint the color onto your hair by hand and place the lighter pieces where the sun would naturally catch them.\" / \"It can work on many hair colors and lengths, from dark brunette to blonde.\" / \"Then I paint the color, let it work, and finish with a wash and a style, so you leave ready to go.\" / the four home care tips / \"Can I have balayage on dark hair? Yes. How light we can go depends on your hair ...\" / \"Photos of colors you love, and of any you don’t.\"",
+    "ASK Gerta to confirm that the three photos are her own work: g14 (blonde balayage waves), g13 (brunette hair with caramel pieces) and g05 (layered cut with caramel highlights). The helper confirmed it on 21 November 2026."
+  ]
+}
