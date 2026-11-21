@@ -426,6 +426,13 @@ def resolve(slug, href):
     return urllib.parse.urljoin(ORIGIN + common.PAGES[slug], href.strip())
 
 
+def text_target(site):
+    """The address of every Text button (decisions 68 and 69): sms_href and sms_message of content/site.json as one address."""
+    sms = site.get("sms_href") if isinstance(site.get("sms_href"), str) else SMS
+    message = site.get("sms_message") if isinstance(site.get("sms_message"), str) else ""
+    return "%s?&body=%s" % (sms.strip(), urllib.parse.quote(message.strip(), safe=""))
+
+
 def content_target(target):
     """A link of a content file (a site path, a {{root}} address, or tel:, mailto:, https:) as a full address."""
     target = target.strip()
@@ -688,13 +695,11 @@ def expect_main(ex, content, site):
             maps = site.get("maps_href") if isinstance(site.get("maps_href"), str) else MAPS
             ex.links.append(ContentLink("main", maps.strip(), norm(value), "", "%s: %s, a Maps link by section 7 of the build contract" % (file, path)))
         elif slug == "home" and path in ("book.text", "book.call") and isinstance(value, dict):
-            # Decision 68. The label is the visible text of the button. "message" is never shown: it is the text the
-            # visitor's text message app opens with, and it travels in the address of the Text button.
+            # Decision 68. The label is the visible text of the button. The Text button opens the text message app
+            # with the number and the first words of content/site.json (sms_href, sms_message, decision 69).
             emit(path + ".label", value.get("label"))
             if key == "text":
-                sms = site.get("sms_href") if isinstance(site.get("sms_href"), str) else SMS
-                message = value.get("message") if isinstance(value.get("message"), str) else ""
-                target = "%s?&body=%s" % (sms.strip(), urllib.parse.quote(message.strip(), safe=""))
+                target = text_target(site)
             else:
                 target = (site.get("tel_href") if isinstance(site.get("tel_href"), str) else TEL).strip()
             ex.links.append(ContentLink("main", target, norm(value.get("label") or ""), "",
@@ -774,10 +779,13 @@ def expect_shell(ex, site, year):
         if isinstance(item, dict):
             ex.piece(ex.header, SITE_FILE, "nav[%d].label" % i, item.get("label"), place="header")
             link("header", item.get("path"), item.get("label"), "", "nav[%d]" % i)
-    # The Call button at the bottom of the screen on phones (9 November 2026): its words, a space, the phone number.
-    call = " ".join(x for x in (need("call_bar_label") or "", need("phone") or "") if x)
+    # The two buttons at the bottom of the screen on phones (21 November 2026, decision 69): Text opens a text message
+    # to Gerta with the first words written, Call calls. From 9 November 2026 (decision 40) until then the bar was one
+    # Call button: its words, a space, the phone number.
+    text, call = need("text_bar_label") or "", need("call_bar_label") or ""
+    need("sms_href"), need("sms_message")
     # The salon card of the open phone menu (18 November 2026, decision 67), inside the navigation after the five
-    # pages: the hours, the street address as a link to the map, the two social links and the Call button once more.
+    # pages: the hours, the street address as a link to the map, the two social links and the two buttons once more.
     card = "the salon card of the open phone menu is not on the Wix site, it is added on purpose"
     ex.piece(ex.header, SITE_FILE, "hours", need("hours") or "", place="header", intended=card)
     ex.piece(ex.header, SITE_FILE, "address_one_line", need("address_one_line") or "", place="header", intended=card)
@@ -786,11 +794,12 @@ def expect_shell(ex, site, year):
         if isinstance(item, dict):
             label("aria-label", item.get("label"), "social[%d].label" % i)
             link("header", item.get("href"), "", item.get("label"), "social[%d]" % i)
-    ex.piece(ex.header, SITE_FILE, "call_bar_label (then the phone number)", call, place="header", intended=card)
-    link("header", need("tel_href"), call, "", "call_bar_label")
-    ex.piece(ex.footer, SITE_FILE, "call_bar_label (then the phone number)", call, place="footer",
-             intended="the Call button at the bottom of the screen on phones is not on the Wix site, it is added on purpose")
-    link("footer", need("tel_href"), call, "", "call_bar_label")
+    bar = "the Text button and the Call button at the bottom of the screen on phones are not on the Wix site, they are added on purpose"
+    for place, bucket, why in (("header", ex.header, card), ("footer", ex.footer, bar)):
+        ex.piece(bucket, SITE_FILE, "text_bar_label", text, place=place, intended=why)
+        link(place, text_target(site), text, "", "text_bar_label")
+        ex.piece(bucket, SITE_FILE, "call_bar_label", call, place=place, intended=why)
+        link(place, need("tel_href"), call, "", "call_bar_label")
     ex.piece(ex.footer, SITE_FILE, "footer.name", need("footer.name") or "", place="footer")
     ex.piece(ex.footer, SITE_FILE, "footer.role", need("footer.role") or "", place="footer")
     for i, item in enumerate(need("social", list) or []):
@@ -1423,6 +1432,11 @@ def required_facts(slug, view, built):
     need("phone", has_link("footer", TEL, PHONE_TEXT), 'the footer has no link %s with the text "%s"' % (TEL, PHONE_TEXT))
     need("email", has_link("footer", MAILTO, EMAIL), 'the footer has no link %s with the text "%s"' % (MAILTO, EMAIL))
     need("links", has_link("footer", FACEBOOK) and has_link("footer", INSTAGRAM), "the footer does not carry the Facebook link and the Instagram link")
+    # Decision 69: the bar at the bottom of a phone screen (it stands in the footer) is a Text button and a Call button.
+    need("phone", any(p == "footer" and h.split("?")[0] == SMS and "body=" in h for p, h, _ in view.links),
+         "the footer has no Text button: a link %s with a message (?&body=...)" % SMS)
+    need("phone", sum(1 for p, h, _ in view.links if p == "footer" and h == TEL) >= 2,
+         "the footer has no Call button: a second link %s beside the phone number" % TEL)
     if slug == "home":
         need("business", BUSINESS in main, 'main does not show the site title "%s"' % BUSINESS)
         need("phone", has_link("main", TEL, PHONE_TEXT), 'main has no link %s with the text "%s"' % (TEL, PHONE_TEXT))

@@ -20,23 +20,21 @@
       h2#reach-h.serif                      "book.heading"
       div.reach-btns
         a.reach-btn.reach-text              "book.text": opens the text message app with Gerta's number and
-                                            "book.text.message" already written
+                                            the first words already written (ctx.text_href())
         a.reach-btn.reach-call              "book.call": calls the number
       a.reach-num                           "book.phone", calls the number too. The stylesheet shows it on
                                             screens wider than a phone
 
 Where the words come from
     content/home.json    every text of the page, the photos and the size each photo is shown at
-    content/site.json    the three addresses behind the phone number, the Text button and the street
-                         address ("tel_href", "sms_href" and "maps_href")
+    content/site.json    the addresses behind the phone number, the Text button and the street address
+                         ("tel_href", "sms_href" with "sms_message", and "maps_href")
 
 To change a text or a photo, edit content/home.json and run
     python tools/build_pages.py --only home
 This module holds no text that a visitor reads. The only words typed here are the two labels below, which
 screen readers speak and nobody sees.
 """
-import urllib.parse
-
 SLUG = "home"
 
 CONTENT_FILE = "content/%s.json" % SLUG     # only used to name the file in an error message
@@ -55,9 +53,9 @@ GALLERY_PATH = "/gallery/"
 PIN = '<span class="pin" aria-hidden="true">&#128205;</span>'
 
 # The two drawings of the Text button and the Call button (section.reach). Decoration: the words of a button say
-# what it does. Both are Phosphor icons in the Bold style, a speech bubble (ph:chat-circle-dots-bold) and the
-# handset of the Call bar (ph:phone-bold, the very path of CALL_ICON in tools/build_pages.py), with the paths of
-# the set unchanged. License: tools/licenses/MIT-PhosphorIcons.txt.
+# what it does. Both are Phosphor icons in the Bold style, a speech bubble (ph:chat-circle-dots-bold) and a
+# handset (ph:phone-bold), the very paths of TEXT_ICON and CALL_ICON in tools/build_pages.py, the two drawings
+# of the bar at the bottom of a phone screen, unchanged. License: tools/licenses/MIT-PhosphorIcons.txt.
 _REACH_SVG = ('<svg class="reach-icon" viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true" '
               'focusable="false"><path d="%s"/></svg>')
 REACH_ICONS = {
@@ -101,22 +99,6 @@ def _wrong(key, problem):
 def _photo(ctx, slot, lazy=True, sizes=None):
     """The img of one image slot of the content file, at the size the slot gives."""
     return ctx.img(slot["file"], slot["alt"], slot["width"], slot["height"], lazy=lazy, sizes=sizes)
-
-
-def _text_href(sms_href, message):
-    """The address of the Text button: the text message app, Gerta's number, the message already written.
-
-    "sms:NUMBER?&body=MESSAGE" is the one form that both an iPhone and an Android phone understand, and the
-    form the script uses for the text link of the Contact page (js/site.js). Every character of the message
-    that is not a letter or a digit is written as a percent code, so nothing in it can end the address early.
-    """
-    if not sms_href.lower().startswith("sms:") or "?" in sms_href or "&" in sms_href:
-        raise ValueError('content/site.json: key "sms_href" must be "sms:" and the phone number, nothing after it '
-                         '(it is "%s"). The message of the Text button is "book.text.message" in %s'
-                         % (sms_href, CONTENT_FILE))
-    if not message.strip():
-        raise _wrong("book.text.message", "is empty. Write the few words the text message starts with")
-    return "%s?&body=%s" % (sms_href, urllib.parse.quote(message.strip(), safe=""))
 
 
 def render(ctx):
@@ -182,7 +164,7 @@ def render(ctx):
         '  <h2 id="reach-h" class="serif">%s</h2>' % esc(book["heading"]),
         '  <div class="reach-btns">',
         '    <a class="reach-btn reach-text" href="%s">%s<span>%s</span></a>'
-        % (esc(_text_href(site["sms_href"], book["text"]["message"])), REACH_ICONS["text"], esc(book["text"]["label"])),
+        % (esc(ctx.text_href()), REACH_ICONS["text"], esc(book["text"]["label"])),
         '    <a class="reach-btn reach-call" href="%s">%s<span>%s</span></a>'
         % (esc(site["tel_href"]), REACH_ICONS["call"], esc(book["call"]["label"])),
         "  </div>",

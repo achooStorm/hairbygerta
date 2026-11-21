@@ -81,8 +81,8 @@ Reported with ok true
                  note, on the Privacy Policy what stands under a sentence about Wix that our page leaves out on
                  purpose (it sits higher than on Wix, because our text there is shorter), the copyright line,
                  the phone photo row (a 2 x 2 grid where Wix hides the row), the Wix chat button, underlined
-                 links inside a sentence (decision 18), the Call button at the bottom of the phone screen
-                 (decision 40), the Book with Gerta box under Meet Gerta on the home page (decision 68: its
+                 links inside a sentence (decision 18), the Text and Call buttons at the bottom of the phone
+                 screen (decisions 40 and 69), the Book with Gerta box under Meet Gerta on the home page (decision 68: its
                  beige box, heading, two buttons and phone number), the centred beige box
                  (decision 4), an empty stretch of 300 px or more that only the Wix page has above its footer
   intended x     desktop, the horizontal place alone (size, font and vertical place are compared as everywhere):
@@ -125,9 +125,9 @@ DESKTOP_WIDTHS = (1265, 1280, 1440, 1920)
 MIN_DESKTOP = 1101              # below this our stylesheet and the Wix page switch to another layout
 TOL = {"desktop": 2.0, "phone": 4.0}    # lengths. On the phone places and sizes are only listed, from this size on.
 TYPE_TOL = 2.0                  # line height and corner radius
-# The Call button at the bottom of the screen on phones (build contract, decision 40): not on Wix, on purpose. It is
-# fixed to the screen, so it pushes nothing down.
-CALL_BAR = "Call button at the bottom of the screen on phones"
+# The bar at the bottom of the screen on phones, a Text button and a Call button (build contract, decisions 40 and
+# 69): not on Wix, on purpose. It is fixed to the screen, so it pushes nothing down.
+CALL_BAR = "Text and Call buttons at the bottom of the screen on phones"
 # The beige box under Meet Gerta with the Text button and the Call button (build contract, decision 68): not on Wix,
 # on purpose. It stands in the flow of the page, so the footer under it is pushed down by its height.
 REACH = "Book with Gerta box under Meet Gerta (decision 68)"

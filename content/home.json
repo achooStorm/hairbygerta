@@ -68,8 +68,7 @@
   "book": {
     "heading": "Book with Gerta",
     "text": {
-      "label": "Text me",
-      "message": "Hi Gerta, I'd like to book an appointment."
+      "label": "Text me"
     },
     "call": {
       "label": "Call me"
@@ -77,7 +76,7 @@
     "phone": "347-671-5095"
   },
   "notes": [
-    "book (21 November 2026, decision 68): the beige box under Meet Gerta, not on Wix. It holds a heading and two buttons and nothing else. text.label is the button that opens the visitor's own text message app with Gerta's number (sms_href in site.json) and with text.message already written, so the visitor only finishes it and sends it. call.label is the button that calls tel_href. phone is the number under the two buttons, shown on screens wider than a phone, where a text message app is rare and the visitor types the number into a phone. text.message is never shown on the page. It is written with a straight apostrophe on purpose: it travels inside a link and ends up in a text message.",
+    "book (21 November 2026, decision 68): the beige box under Meet Gerta, not on Wix. It holds a heading and two buttons and nothing else. text.label is the button that opens the visitor's own text message app with Gerta's number and with the first words already written (sms_href and sms_message in site.json), so the visitor only finishes the message and sends it. call.label is the button that calls tel_href. phone is the number under the two buttons, shown on screens wider than a phone, where a text message app is rare and the visitor types the number into a phone. Until decision 69 the words of the text message were stored here as text.message. They are sms_message in site.json now, because the bar at the bottom of a phone screen opens the same message on every page.",
     "more (taken out on 21 November 2026, decision 68): for a few hours that day the page had about 320 words of Gerta's own text under Meet Gerta (A little about me, What I do, How to book, decision 66). The helper found it too long and asked for it to go and for a button that makes texting easy. Nothing of it is left on the page. The text is in the history of the repository (commit 845247c) should it ever be wanted on another page.",
     "hero.button.label read 'Book Online' on Wix and on this site until 18 November 2026. Online booking was dropped on 2 November 2026: the button opens the page with the services, where every Book Now button places a phone call. So it now says 'View Services', and the menu link to the same page says 'Services' (content/site.json). The phone number right under the button and the Call bar are the ways to book.",
     "Typos fixed: one, on 9 November 2026: the comma in high-quality, hair extensions (meet.paragraph_2) was taken out, it now reads high-quality hair extensions. Every other text on this page is word for word the live Wix text.",
