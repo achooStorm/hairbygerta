@@ -12,6 +12,9 @@
       a.addr                                "hero.address" behind a map pin, opens the map in a new tab
       div.marquee > div.track > span x 6    "hero.hours", the line that scrolls
     section.photo-row > a x 3 > img         "photo_row", each photo a link to the Gallery
+      a.row-cue > span                      "photo_row_cue", the small blue label that says so for a few seconds on
+                                            phones and tablets, a link to the Gallery too (decision 72). Left out
+                                            when the key is not there
     section.meet                            "meet"
       h2#meet-h.serif                       "meet.heading"
       p.t1, div.p1 > img                    "meet.paragraph_1", "meet.portrait"
@@ -36,6 +39,9 @@ To change a text or a photo, edit content/home.json and run
 This module holds no text that a visitor reads. The only words typed here are the two labels below, which
 screen readers speak and nobody sees.
 """
+import math
+
+
 SLUG = "home"
 
 CONTENT_FILE = "content/%s.json" % SLUG     # only used to name the file in an error message
@@ -49,6 +55,18 @@ PHOTO_ROW_LABEL = "Featured work"
 PHOTO_LINK_LABEL = "%s. Open the Gallery"
 GALLERY_LINK_LABEL = "Open the Gallery"
 GALLERY_PATH = "/gallery/"
+
+# The label on the photo row (decision 72): on a phone or a tablet nothing shows that the three photos are links,
+# so a small blue label says it for a few seconds, "Tap for more photos" with a four-point star in front. Its text
+# and the seconds it stays are "photo_row_cue" in content/home.json. js/site.js switches it on when the visitor has
+# started to scroll and the photos are in view, and off again after the seconds of data-seconds, and css/style.css
+# shows it on touch screens only. Screen readers skip it: every photo link already says "Open the Gallery".
+# The star was drawn for this site (four curved points in a 24 px square), so it needs no license.
+CUE_STAR = ('<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" focusable="false">'
+            '<path d="M12 1.5c.7 6.3 4.2 9.8 10.5 10.5-6.3.7-9.8 4.2-10.5 10.5-.7-6.3-4.2-9.8-10.5-10.5 6.3-.7 9.8-4.2 '
+            '10.5-10.5z"/></svg>')
+# How long the label may stay, in seconds. Under 2 nobody could read it, and over 20 it is no longer a hint.
+CUE_SECONDS_MIN, CUE_SECONDS_MAX = 2, 20
 
 # The map pin in front of the street address. It is decoration, so screen readers skip it.
 PIN = '<span class="pin" aria-hidden="true">&#128205;</span>'
@@ -80,6 +98,31 @@ def _wrong(key, problem):
 def _photo(ctx, slot, lazy=True, sizes=None):
     """The img of one image slot of the content file, at the size the slot gives."""
     return ctx.img(slot["file"], slot["alt"], slot["width"], slot["height"], lazy=lazy, sizes=sizes)
+
+
+def _row_cue(ctx, gallery):
+    """The label on the photo row, or nothing when content/home.json has no "photo_row_cue". gallery is the
+    address of the Gallery page, ready for the HTML."""
+    cue = ctx.content.get("photo_row_cue")
+    if cue is None:
+        return None
+    if not isinstance(cue, dict):
+        raise _wrong("photo_row_cue", 'must hold "label" and "seconds" between curly brackets (or be deleted, then '
+                                      "the photo row has no label)")
+    label, seconds = cue.get("label"), cue.get("seconds")
+    if not isinstance(label, str) or not label.strip():
+        raise _wrong("photo_row_cue.label", "must be the words of the label, for example Tap for more photos")
+    if (isinstance(seconds, bool) or not isinstance(seconds, (int, float)) or not math.isfinite(seconds)
+            or not CUE_SECONDS_MIN <= seconds <= CUE_SECONDS_MAX):
+        raise _wrong("photo_row_cue.seconds", "must be a number from %d to %d, the seconds the label stays (it is 4 on "
+                                              "the finished page)" % (CUE_SECONDS_MIN, CUE_SECONDS_MAX))
+    # The label is a link to the Gallery itself: it is wider than the photo under it and reaches over the gaps
+    # between the photos, and a tap anywhere on it has to open the Gallery. The a is the place of the label and
+    # never moves, which is what js/site.js watches. The span inside it is the blue label, which slides and fades.
+    # tabindex="-1" keeps the Tab key away from it, as aria-hidden keeps screen readers away: both already have
+    # the three photo links.
+    return ('  <a class="row-cue" href="%s" aria-hidden="true" tabindex="-1" data-seconds="%s"><span>%s%s</span></a>'
+            % (gallery, ctx.esc("%g" % seconds), CUE_STAR, ctx.esc(label.strip())))
 
 
 def render(ctx):
@@ -129,6 +172,10 @@ def render(ctx):
         label = PHOTO_LINK_LABEL % described if described else GALLERY_LINK_LABEL
         lines.append('  <a href="%s" aria-label="%s">%s</a>'
                      % (gallery, esc(label), _photo(ctx, slot, lazy=False, sizes=PHOTO_ROW_SIZES)))
+    # The label comes after the three links, so the order of the Tab key and of a screen reader stays as it was.
+    cue = _row_cue(ctx, gallery)
+    if cue:
+        lines.append(cue)
     lines += [
         "</section>",
         '<section class="meet" aria-labelledby="meet-h">',

@@ -14,6 +14,9 @@
   --btn: #554f46;
   --btn-text: #fefefd;
   --error: #9b1c1c;
+  /* The one blue of the site: the label that shows for a few seconds on the home photos
+     (decision 72). The helper chose blue because nothing else on the site is blue. */
+  --cue: #0a6cff;
   /* Fonts */
   --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
   --sans: "Figtree", "Proxima Nova", "Helvetica Neue", Arial, sans-serif;
@@ -1696,6 +1699,7 @@ body.lightbox-open {
    between two photos, every photo 545 px tall. The three photos share the width
    that is left (decision 56). */
 .photo-row {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
@@ -1744,6 +1748,138 @@ body.lightbox-open {
 /* g21 is a wide photo, the hair sits left of the middle (decision 57). */
 .photo-row img[src*="g21"] {
   object-position: 33% 50%;
+}
+
+/* ---------- The label on the photo row (decision 72) ----------
+   On a touch screen nothing shows that the three photos are links: no mouse pointer
+   changes its shape there. So a small blue label, "Tap for more photos" with a star in
+   front, comes up on the lower edge of the photos once the visitor has started to
+   scroll and they are in view, and goes again after a few seconds (js/site.js, part 9,
+   puts the class "on" on it and takes it away).
+   The label lies on top of the photos and takes no room, so the page is not one pixel
+   taller with it. It is a link to the Gallery itself, because it is wider than the
+   photo under it and reaches over the gaps between the photos. While it is away it
+   cannot be tapped (visibility), and a tap there reaches the photo.
+   Without the script, and under a mouse, it is never shown: there the row is exactly
+   what it was.
+   ".photo-row" stands in front of these rules so that they win over ".photo-row a",
+   which would lay the label out as a fourth photo. */
+.photo-row .row-cue {
+  display: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  /* The place of the label: in the middle of the row, 10 px above the lower edge of the
+     photos. It never moves (the script watches it to know when the label is in view).
+     Hidden until the script says "on", and hidden again half a second after the script
+     took the word away, when the label inside has faded. */
+  html.js .photo-row .row-cue {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 1;
+    display: block;
+    transform: translateX(-50%);
+    visibility: hidden;
+    transition: visibility 0s linear 0.5s;
+    text-decoration: none;
+  }
+
+  html.js .photo-row .row-cue.on {
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  /* A little darker while a finger is on it, as the buttons of the site. */
+  .row-cue:active span {
+    filter: brightness(0.88);
+  }
+
+  /* The label itself. Away it is see-through and 12 px lower, so it rises as it comes. */
+  .row-cue span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px 8px 10px;
+    background-color: var(--cue);
+    box-shadow: 0 2px 10px rgba(29, 21, 9, 0.3);
+    color: var(--btn-text);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .row-cue.on span {
+    opacity: 1;
+    transform: none;
+  }
+
+  .row-cue svg {
+    flex: none;
+    width: 14px;
+    height: 14px;
+  }
+
+  /* While the label is there, a soft ring leaves it three times and the star twinkles
+     three times. Then both rest. */
+  .row-cue span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .row-cue.on span::after {
+    animation: cue-ring 1.15s ease-out 0.5s 3;
+  }
+
+  .row-cue.on svg {
+    animation: cue-star 1.15s ease-in-out 0.5s 3;
+  }
+}
+
+@keyframes cue-ring {
+  from {
+    box-shadow: 0 0 0 0 rgba(10, 108, 255, 0.85);
+  }
+
+  to {
+    box-shadow: 0 0 0 13px rgba(10, 108, 255, 0);
+  }
+}
+
+@keyframes cue-star {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  50% {
+    transform: scale(1.4) rotate(20deg);
+  }
+}
+
+/* On a tablet the photos are larger, and so is the label. */
+@media (min-width: 761px) {
+  html.js .photo-row .row-cue {
+    bottom: 18px;
+  }
+
+  .row-cue span {
+    gap: 8px;
+    padding: 11px 16px 11px 13px;
+    font-size: 16px;
+  }
+
+  .row-cue svg {
+    width: 17px;
+    height: 17px;
+  }
 }
 
 /* ---------- The Home row from 1101 px upwards (decision 59) ----------
