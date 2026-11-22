@@ -2146,6 +2146,93 @@ body.lightbox-open {
   outline-offset: 3px;
 }
 
+/* ---------- Book with Gerta on a computer (decision 75) ----------
+   Under a mouse a Text or Call button opens nothing (a computer has no text message
+   app and no phone line), so there the box is a banner in two columns: on the left
+   the heading with its dotted rule, "Text or call for an appointment" and the number,
+   large; on the right a QR code that a phone camera reads and that opens the text
+   message app with Gerta's number and the first words written, and its caption.
+   The buttons are not shown. Phones and touch tablets keep the box as it was: the
+   line and the code are never shown there. */
+.reach-line,
+.reach-qr {
+  display: none;
+}
+
+@media (min-width: 761px) and (hover: hover) and (pointer: fine) {
+  .reach {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 48px;
+    padding: 28px 40px;
+    text-align: left;
+  }
+
+  .reach h2,
+  .reach-line,
+  .reach-num {
+    grid-column: 1;
+  }
+
+  .reach h2 {
+    width: auto;
+    margin: 0 0 14px;
+    padding: 0 0 10px;
+  }
+
+  .reach-btns {
+    display: none;
+  }
+
+  .reach-line {
+    display: block;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+  }
+
+  .reach-num {
+    justify-self: start;
+    margin: 4px 0 0;
+    font-size: 34px;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+  }
+
+  .reach-num::after {
+    display: none;
+  }
+
+  /* The code: 33 modules and four of quiet zone, 3 px each, white on the beige. */
+  .reach-qr {
+    display: flex;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding-left: 48px;
+    border-left: 1px dotted var(--ink);
+  }
+
+  .reach-qr-code {
+    display: block;
+    width: 123px;
+    height: 123px;
+    color: var(--ink);
+  }
+
+  .reach-qr figcaption {
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+  }
+}
+
 /* ---------- Links to the three service pages (decision 73) ----------
    One line between Meet Gerta and the Book with Gerta box: "More about balayage ·
    bridal hair and makeup · keratin and Brazilian blowout", centred, as wide as the

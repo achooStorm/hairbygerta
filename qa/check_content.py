@@ -646,6 +646,10 @@ def expect_main(ex, content, site):
                 state["intended"] = BOOK_BOX_INTENDED[slug]
             for key, item in value.items():
                 handle(key, item, value, "%s.%s" % (path, key) if path else key, depth)
+                if path == "book" and key == "heading":
+                    reach_line(value)
+                if path == "book" and key == "phone":
+                    reach_caption()
             state["intended"] = before
         elif isinstance(value, list):
             for i, item in enumerate(value):
@@ -656,6 +660,15 @@ def expect_main(ex, content, site):
                     walk(item, where, depth + 1)
         elif isinstance(value, str):
             emit(path, value)
+
+    def reach_line(book):
+        # The banner of a computer (decision 75): "reach_line" of content/site.json stands right under the heading
+        # of the box, and the caption of its QR code ("reach_qr_caption") after the number.
+        ex.piece(ex.main, SITE_FILE, "reach_line", site.get("reach_line"), False, None, "main", state["intended"])
+
+    def reach_caption():
+        ex.piece(ex.main, SITE_FILE, "reach_qr_caption", site.get("reach_qr_caption"), False, None, "main",
+                 state["intended"])
 
     def handle(key, value, parent, path, depth):
         if depth == 0 and key in HEAD_KEYS or key in NON_TEXT_KEYS:
