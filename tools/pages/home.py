@@ -24,14 +24,17 @@
     section#book.reach                      "book", the beige box with the Text button and the Call button,
                                             built by ctx.reach (tools/build_pages.py):
       h2#reach-h.serif                      "book.heading"
-      p.reach-line.serif                    "reach_line" of content/site.json with "book.phone" as a link:
-                                            the one line a computer with a mouse shows instead (decision 75)
+      p.reach-line                          "reach_line" of content/site.json, shown on a computer with a
+                                            mouse only (decision 75)
       div.reach-btns
         a.reach-btn.reach-text              "book.text": opens the text message app with Gerta's number and
                                             the first words already written (ctx.text_href())
         a.reach-btn.reach-call              "book.call": calls the number
       a.reach-num                           "book.phone", calls the number too. The stylesheet shows it on
                                             screens wider than a phone
+      figure.reach-qr                       the QR code of a text message to Gerta ("reach_qr" of
+                                            content/site.json, tools/make_qr.py) and "reach_qr_caption",
+                                            shown on a computer with a mouse only (decision 75)
 
 Where the words come from
     content/home.json    every text of the page, the photos and the size each photo is shown at

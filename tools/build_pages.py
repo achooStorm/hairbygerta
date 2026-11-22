@@ -683,9 +683,11 @@ class Ctx:
     def reach(self, book):
         """The beige box with the Text button and the Call button (section.reach, decisions 68 and 70).
 
-        On a computer with a mouse the box is one line instead, "Text or call 347-671-5095 for an
-        appointment" (p.reach-line, "reach_line" in content/site.json, decision 75): there a Text or
-        Call button opens nothing. The stylesheet shows either the line or the heading and buttons.
+        On a computer with a mouse a Text or Call button opens nothing, so there the box is a banner
+        (decision 75): the heading, one line ("reach_line" in content/site.json), the number large, and
+        a QR code that opens the text message app on the visitor's phone ("reach_qr", drawn by
+        tools/make_qr.py) with its caption ("reach_qr_caption"). The stylesheet shows either the banner
+        or the buttons.
 
         Text comes first: it is the button the box was made for. Each button is a plain link, so both work
         without the script. The two drawings are those of the bar at the bottom of a phone screen (TEXT_ICON
@@ -701,21 +703,23 @@ class Ctx:
             button = _need(book, key, dict)
             labels.append(_need(button, "label", str))
         tel = esc(_need(self.site, "tel_href", str))
-        line = _need(self.site, "reach_line", str)
-        if line.count("{phone}") != 1:
-            raise BuildError('content/site.json: "reach_line" must hold {phone} exactly once, where the number goes')
-        before, after = (esc(part) for part in line.split("{phone}"))
+        line, caption = _need(self.site, "reach_line", str), _need(self.site, "reach_qr_caption", str)
+        qr = _reach_qr(self.site)
         icon = lambda svg: svg.replace('class="call-bar-icon"', 'class="reach-icon"', 1)
         return "\n".join([
             '<section class="reach" id="book" aria-labelledby="reach-h">',
             '  <h2 id="reach-h" class="serif">%s</h2>' % esc(heading),
-            '  <p class="reach-line serif">%s<a href="%s">%s</a>%s</p>' % (before, tel, esc(phone), after),
+            '  <p class="reach-line">%s</p>' % esc(line),
             '  <div class="reach-btns">',
             '    <a class="reach-btn reach-text" href="%s">%s<span>%s</span></a>'
             % (esc(self.text_href()), icon(TEXT_ICON), esc(labels[0])),
             '    <a class="reach-btn reach-call" href="%s">%s<span>%s</span></a>' % (tel, icon(CALL_ICON), esc(labels[1])),
             "  </div>",
             '  <a class="reach-num" href="%s">%s</a>' % (tel, esc(phone)),
+            '  <figure class="reach-qr">',
+            "    " + qr,
+            "    <figcaption>%s</figcaption>" % esc(caption),
+            "  </figure>",
             "</section>",
         ])
 
@@ -995,6 +999,29 @@ class Ctx:
 # ----------------------------------------------------------------------------------------------------------
 # The shared page: head, header, footer (contract, section 6)
 # ----------------------------------------------------------------------------------------------------------
+
+def _reach_qr(site):
+    """The QR code of the banner (decision 75) as an inline SVG: "reach_qr" of content/site.json.
+
+    tools/make_qr.py draws it (this script has the standard library only) as one path of squares, one per dark
+    module. A camera that reads it opens the text message app with Gerta's number and the first words written
+    ("SMSTO:number:message"). The build stops when it holds another number or other words than "sms_href" and
+    "sms_message", so the code can never send a text to an old number. Four light modules of quiet zone around it.
+    """
+    qr = _need(site, "reach_qr", dict)
+    text, size, path = _need(qr, "text", str), _need(qr, "modules", int), _need(qr, "path", str)
+    number = _need(site, "sms_href", str).strip()[len("sms:"):]
+    want = "SMSTO:%s:%s" % (number, _need(site, "sms_message", str).strip())
+    if text != want:
+        raise BuildError('content/site.json: "reach_qr" holds "%s", but the number and words are now "%s". '
+                         "Run python tools/make_qr.py (it needs pip install segno) and build again" % (text, want))
+    if not re.fullmatch(r"[Mhvz0-9 -]+", path):
+        raise BuildError('content/site.json: "reach_qr.path" may hold only the path that tools/make_qr.py writes')
+    box = size + 8
+    return ('<svg class="reach-qr-code" viewBox="-4 -4 %d %d" width="%d" height="%d" aria-hidden="true" '
+            'focusable="false" shape-rendering="crispEdges"><rect x="-4" y="-4" width="%d" height="%d" fill="#fff"/>'
+            '<path fill="currentColor" d="%s"/></svg>' % (box, box, box * 4, box * 4, box, box, path))
+
 
 def _text_href(site):
     """The address of every Text button: "sms_href" and "sms_message" of content/site.json as one address.

@@ -92,15 +92,15 @@ var BOOKING_URL = "";
 
   /*
    * On a computer with a mouse a phone link opens nothing, so there a Book Now
-   * button brings the visitor to the banner at the end of the page, "Text or
-   * call 347-671-5095 for an appointment" (decision 75). On a phone or a touch
+   * button brings the visitor to the banner at the end of the page, with the
+   * number and the QR code (decision 75). On a phone or a touch
    * tablet it calls, as before.
    */
   function toBanner(event) {
     var banner = document.getElementById("book");
     var mouse = window.matchMedia && window.matchMedia("(min-width: 761px) and (hover: hover) and (pointer: fine)").matches;
     var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var line = banner && banner.querySelector(".reach-line a");
+    var line = banner && banner.querySelector(".reach-num");
     if (!mouse || !banner) {
       return;
     }
