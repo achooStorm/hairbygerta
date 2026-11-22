@@ -683,6 +683,10 @@ class Ctx:
     def reach(self, book):
         """The beige box with the Text button and the Call button (section.reach, decisions 68 and 70).
 
+        On a computer with a mouse the box is one line instead, "Text or call 347-671-5095 for an
+        appointment" (p.reach-line, "reach_line" in content/site.json, decision 75): there a Text or
+        Call button opens nothing. The stylesheet shows either the line or the heading and buttons.
+
         Text comes first: it is the button the box was made for. Each button is a plain link, so both work
         without the script. The two drawings are those of the bar at the bottom of a phone screen (TEXT_ICON
         and CALL_ICON), with the class of the box. Decoration: the words of a button say what it does.
@@ -697,10 +701,15 @@ class Ctx:
             button = _need(book, key, dict)
             labels.append(_need(button, "label", str))
         tel = esc(_need(self.site, "tel_href", str))
+        line = _need(self.site, "reach_line", str)
+        if line.count("{phone}") != 1:
+            raise BuildError('content/site.json: "reach_line" must hold {phone} exactly once, where the number goes')
+        before, after = (esc(part) for part in line.split("{phone}"))
         icon = lambda svg: svg.replace('class="call-bar-icon"', 'class="reach-icon"', 1)
         return "\n".join([
-            '<section class="reach" aria-labelledby="reach-h">',
+            '<section class="reach" id="book" aria-labelledby="reach-h">',
             '  <h2 id="reach-h" class="serif">%s</h2>' % esc(heading),
+            '  <p class="reach-line serif">%s<a href="%s">%s</a>%s</p>' % (before, tel, esc(phone), after),
             '  <div class="reach-btns">',
             '    <a class="reach-btn reach-text" href="%s">%s<span>%s</span></a>'
             % (esc(self.text_href()), icon(TEXT_ICON), esc(labels[0])),

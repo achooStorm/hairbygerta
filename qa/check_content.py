@@ -646,6 +646,8 @@ def expect_main(ex, content, site):
                 state["intended"] = BOOK_BOX_INTENDED[slug]
             for key, item in value.items():
                 handle(key, item, value, "%s.%s" % (path, key) if path else key, depth)
+                if path == "book" and key == "heading":
+                    reach_line(value)
             state["intended"] = before
         elif isinstance(value, list):
             for i, item in enumerate(value):
@@ -656,6 +658,16 @@ def expect_main(ex, content, site):
                     walk(item, where, depth + 1)
         elif isinstance(value, str):
             emit(path, value)
+
+    def reach_line(book):
+        # The banner of a computer (decision 75): "reach_line" of content/site.json with the number of the box in
+        # place of {phone}, the number a link that calls it. It stands right under the heading of the box.
+        line, phone, tel = site.get("reach_line"), book.get("phone"), site.get("tel_href")
+        if not (isinstance(line, str) and line.count("{phone}") == 1 and isinstance(phone, str) and isinstance(tel, str)):
+            ex.problems.append('content/site.json: "reach_line" must be a text with {phone} once, and the box needs its phone')
+            return
+        html_line = line.replace("{phone}", '<a href="%s">%s</a>' % (tel, phone))
+        ex.piece(ex.main, SITE_FILE, "reach_line", html_line, True, None, "main", state["intended"])
 
     def handle(key, value, parent, path, depth):
         if depth == 0 and key in HEAD_KEYS or key in NON_TEXT_KEYS:

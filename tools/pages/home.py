@@ -21,9 +21,11 @@
       p.t2, div.p2 > img                    "meet.paragraph_2", "meet.large"
     p.more-links                            "more_links_html", the line of links to the three service pages
                                             (decision 73)
-    section.reach                           "book", the beige box with the Text button and the Call button,
+    section#book.reach                      "book", the beige box with the Text button and the Call button,
                                             built by ctx.reach (tools/build_pages.py):
       h2#reach-h.serif                      "book.heading"
+      p.reach-line.serif                    "reach_line" of content/site.json with "book.phone" as a link:
+                                            the one line a computer with a mouse shows instead (decision 75)
       div.reach-btns
         a.reach-btn.reach-text              "book.text": opens the text message app with Gerta's number and
                                             the first words already written (ctx.text_href())

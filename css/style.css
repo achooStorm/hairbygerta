@@ -2146,6 +2146,55 @@ body.lightbox-open {
   outline-offset: 3px;
 }
 
+/* ---------- Book with Gerta on a computer (decision 75) ----------
+   Under a mouse a Text or Call button opens nothing (a computer has no text message
+   app or phone), so there the box is a banner of one line in the italic serif of
+   its heading: "Text or call 347-671-5095 for an appointment". Heading, buttons and
+   number are not shown. Phones and touch tablets keep the box as it was. The box
+   is 98 px tall instead of 221, and the room around it is unchanged. */
+.reach-line {
+  display: none;
+}
+
+@media (min-width: 761px) and (hover: hover) and (pointer: fine) {
+  .reach {
+    padding: 30px 20px;
+  }
+
+  .reach h2,
+  .reach-btns,
+  .reach-num {
+    display: none;
+  }
+
+  .reach-line {
+    display: block;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .reach-line a {
+    color: inherit;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .reach-line a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .reach-line a:focus-visible {
+    outline-offset: 3px;
+  }
+}
+
 /* ---------- Links to the three service pages (decision 73) ----------
    One line between Meet Gerta and the Book with Gerta box: "More about balayage ·
    bridal hair and makeup · keratin and Brazilian blowout", centred, as wide as the
